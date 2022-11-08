@@ -1,0 +1,908 @@
+{"frames": {
+
+"enemies-red-border/b1v1/Boss_ship1_b1_v1.png":
+{
+	"frame": {"x":756,"y":589,"w":139,"h":76},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":139,"h":76},
+	"sourceSize": {"w":141,"h":78}
+},
+"enemies-red-border/b1v1/Boss_ship2_b1_v1.png":
+{
+	"frame": {"x":1,"y":501,"w":150,"h":73},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":150,"h":73},
+	"sourceSize": {"w":152,"h":75}
+},
+"enemies-red-border/b1v1/Boss_ship3_b1_v1.png":
+{
+	"frame": {"x":379,"y":218,"w":155,"h":91},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":155,"h":91},
+	"sourceSize": {"w":157,"h":93}
+},
+"enemies-red-border/b1v1/Boss_ship4_b1_v1.png":
+{
+	"frame": {"x":756,"y":485,"w":150,"h":102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":150,"h":102},
+	"sourceSize": {"w":152,"h":104}
+},
+"enemies-red-border/b1v1/Boss_ship5_b1_v1.png":
+{
+	"frame": {"x":153,"y":397,"w":150,"h":99},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":150,"h":99},
+	"sourceSize": {"w":152,"h":101}
+},
+"enemies-red-border/b1v1/Boss_ship6_b1_v1.png":
+{
+	"frame": {"x":1,"y":205,"w":164,"h":108},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":164,"h":108},
+	"sourceSize": {"w":166,"h":110}
+},
+"enemies-red-border/b1v1/Boss_ship7_b1_v1.png":
+{
+	"frame": {"x":1,"y":1,"w":187,"h":108},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":187,"h":108},
+	"sourceSize": {"w":189,"h":110}
+},
+"enemies-red-border/b1v2/Boss_ship1_b1_v2.png":
+{
+	"frame": {"x":379,"y":622,"w":139,"h":76},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":139,"h":76},
+	"sourceSize": {"w":141,"h":78}
+},
+"enemies-red-border/b1v2/Boss_ship2_b1_v2.png":
+{
+	"frame": {"x":1,"y":576,"w":150,"h":73},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":150,"h":73},
+	"sourceSize": {"w":152,"h":75}
+},
+"enemies-red-border/b1v2/Boss_ship3_b1_v2.png":
+{
+	"frame": {"x":536,"y":218,"w":155,"h":91},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":155,"h":91},
+	"sourceSize": {"w":157,"h":93}
+},
+"enemies-red-border/b1v2/Boss_ship4_b1_v2.png":
+{
+	"frame": {"x":1,"y":397,"w":150,"h":102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":150,"h":102},
+	"sourceSize": {"w":152,"h":104}
+},
+"enemies-red-border/b1v2/Boss_ship5_b1_v2.png":
+{
+	"frame": {"x":153,"y":498,"w":150,"h":99},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":150,"h":99},
+	"sourceSize": {"w":152,"h":101}
+},
+"enemies-red-border/b1v2/Boss_ship6_b1_v2.png":
+{
+	"frame": {"x":167,"y":205,"w":164,"h":108},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":164,"h":108},
+	"sourceSize": {"w":166,"h":110}
+},
+"enemies-red-border/b1v2/Boss_ship7_b1_v2.png":
+{
+	"frame": {"x":190,"y":1,"w":187,"h":108},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":187,"h":108},
+	"sourceSize": {"w":189,"h":110}
+},
+"enemies-red-border/b2v1/Boss_ship1_b2_v1.png":
+{
+	"frame": {"x":911,"y":309,"w":126,"h":112},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":126,"h":112},
+	"sourceSize": {"w":128,"h":114}
+},
+"enemies-red-border/b2v1/Boss_ship2_b2_v1.png":
+{
+	"frame": {"x":147,"y":705,"w":137,"h":87},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":137,"h":87},
+	"sourceSize": {"w":139,"h":89}
+},
+"enemies-red-border/b2v1/Boss_ship3_b2_v1.png":
+{
+	"frame": {"x":937,"y":1,"w":152,"h":86},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":152,"h":86},
+	"sourceSize": {"w":154,"h":88}
+},
+"enemies-red-border/b2v1/Boss_ship4_b2_v1.png":
+{
+	"frame": {"x":757,"y":298,"w":152,"h":97},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":152,"h":97},
+	"sourceSize": {"w":154,"h":99}
+},
+"enemies-red-border/b2v1/Boss_ship5_b2_v1.png":
+{
+	"frame": {"x":153,"y":599,"w":144,"h":104},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":144,"h":104},
+	"sourceSize": {"w":146,"h":106}
+},
+"enemies-red-border/b2v1/Boss_ship6_b2_v1.png":
+{
+	"frame": {"x":379,"y":410,"w":149,"h":104},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":149,"h":104},
+	"sourceSize": {"w":151,"h":106}
+},
+"enemies-red-border/b2v1/Boss_ship7_b2_v1.png":
+{
+	"frame": {"x":379,"y":101,"w":170,"h":115},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":170,"h":115},
+	"sourceSize": {"w":172,"h":117}
+},
+"enemies-red-border/b2v2/Boss_ship1_b2_v2.png":
+{
+	"frame": {"x":910,"y":437,"w":126,"h":112},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":126,"h":112},
+	"sourceSize": {"w":128,"h":114}
+},
+"enemies-red-border/b2v2/Boss_ship2_b2_v2.png":
+{
+	"frame": {"x":1,"y":757,"w":137,"h":87},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":137,"h":87},
+	"sourceSize": {"w":139,"h":89}
+},
+"enemies-red-border/b2v2/Boss_ship3_b2_v2.png":
+{
+	"frame": {"x":937,"y":155,"w":152,"h":86},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":152,"h":86},
+	"sourceSize": {"w":154,"h":88}
+},
+"enemies-red-border/b2v2/Boss_ship4_b2_v2.png":
+{
+	"frame": {"x":379,"y":311,"w":152,"h":97},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":152,"h":97},
+	"sourceSize": {"w":154,"h":99}
+},
+"enemies-red-border/b2v2/Boss_ship5_b2_v2.png":
+{
+	"frame": {"x":1,"y":651,"w":144,"h":104},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":144,"h":104},
+	"sourceSize": {"w":146,"h":106}
+},
+"enemies-red-border/b2v2/Boss_ship6_b2_v2.png":
+{
+	"frame": {"x":530,"y":410,"w":149,"h":104},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":149,"h":104},
+	"sourceSize": {"w":151,"h":106}
+},
+"enemies-red-border/b2v2/Boss_ship7_b2_v2.png":
+{
+	"frame": {"x":551,"y":101,"w":170,"h":115},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":170,"h":115},
+	"sourceSize": {"w":172,"h":117}
+},
+"enemies-red-border/b2v3/Boss_ship1_b2_v3.png":
+{
+	"frame": {"x":908,"y":565,"w":126,"h":112},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":126,"h":112},
+	"sourceSize": {"w":128,"h":114}
+},
+"enemies-red-border/b2v3/Boss_ship2_b2_v3.png":
+{
+	"frame": {"x":520,"y":622,"w":137,"h":87},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":137,"h":87},
+	"sourceSize": {"w":139,"h":89}
+},
+"enemies-red-border/b2v3/Boss_ship3_b2_v3.png":
+{
+	"frame": {"x":756,"y":397,"w":152,"h":86},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":152,"h":86},
+	"sourceSize": {"w":154,"h":88}
+},
+"enemies-red-border/b2v3/Boss_ship4_b2_v3.png":
+{
+	"frame": {"x":533,"y":311,"w":152,"h":97},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":152,"h":97},
+	"sourceSize": {"w":154,"h":99}
+},
+"enemies-red-border/b2v3/Boss_ship5_b2_v3.png":
+{
+	"frame": {"x":530,"y":516,"w":144,"h":104},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":144,"h":104},
+	"sourceSize": {"w":146,"h":106}
+},
+"enemies-red-border/b2v3/Boss_ship6_b2_v3.png":
+{
+	"frame": {"x":379,"y":516,"w":149,"h":104},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":149,"h":104},
+	"sourceSize": {"w":151,"h":106}
+},
+"enemies-red-border/b2v3/Boss_ship7_b2_v3.png":
+{
+	"frame": {"x":757,"y":181,"w":170,"h":115},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":170,"h":115},
+	"sourceSize": {"w":172,"h":117}
+},
+"enemies-red-border/b3v1/Boss_ship1_b3_v1.png":
+{
+	"frame": {"x":377,"y":849,"w":123,"h":74},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":123,"h":74},
+	"sourceSize": {"w":125,"h":76}
+},
+"enemies-red-border/b3v1/Boss_ship2_b3_v1.png":
+{
+	"frame": {"x":676,"y":517,"w":118,"h":78},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":118,"h":78},
+	"sourceSize": {"w":120,"h":80}
+},
+"enemies-red-border/b3v1/Boss_ship3_b3_v1.png":
+{
+	"frame": {"x":756,"y":667,"w":131,"h":80},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":131,"h":80},
+	"sourceSize": {"w":133,"h":82}
+},
+"enemies-red-border/b3v1/Boss_ship4_b3_v1.png":
+{
+	"frame": {"x":1,"y":315,"w":160,"h":80},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":160,"h":80},
+	"sourceSize": {"w":162,"h":82}
+},
+"enemies-red-border/b3v1/Boss_ship5_b3_v1.png":
+{
+	"frame": {"x":757,"y":1,"w":178,"h":88},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":178,"h":88},
+	"sourceSize": {"w":180,"h":90}
+},
+"enemies-red-border/b3v1/Boss_ship6_b3_v1.png":
+{
+	"frame": {"x":1,"y":111,"w":167,"h":92},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":167,"h":92},
+	"sourceSize": {"w":169,"h":94}
+},
+"enemies-red-border/b3v1/Boss_ship7_b3_v1.png":
+{
+	"frame": {"x":379,"y":1,"w":187,"h":98},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":187,"h":98},
+	"sourceSize": {"w":189,"h":100}
+},
+"enemies-red-border/b3v2/Boss_ship1_b3_v2.png":
+{
+	"frame": {"x":1,"y":846,"w":123,"h":74},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":123,"h":74},
+	"sourceSize": {"w":125,"h":76}
+},
+"enemies-red-border/b3v2/Boss_ship2_b3_v2.png":
+{
+	"frame": {"x":299,"y":677,"w":118,"h":78},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":118,"h":78},
+	"sourceSize": {"w":120,"h":80}
+},
+"enemies-red-border/b3v2/Boss_ship3_b3_v2.png":
+{
+	"frame": {"x":889,"y":693,"w":131,"h":80},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":131,"h":80},
+	"sourceSize": {"w":133,"h":82}
+},
+"enemies-red-border/b3v2/Boss_ship4_b3_v2.png":
+{
+	"frame": {"x":163,"y":315,"w":160,"h":80},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":160,"h":80},
+	"sourceSize": {"w":162,"h":82}
+},
+"enemies-red-border/b3v2/Boss_ship5_b3_v2.png":
+{
+	"frame": {"x":757,"y":91,"w":178,"h":88},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":178,"h":88},
+	"sourceSize": {"w":180,"h":90}
+},
+"enemies-red-border/b3v2/Boss_ship6_b3_v2.png":
+{
+	"frame": {"x":170,"y":111,"w":167,"h":92},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":167,"h":92},
+	"sourceSize": {"w":169,"h":94}
+},
+"enemies-red-border/b3v2/Boss_ship7_b3_v2.png":
+{
+	"frame": {"x":568,"y":1,"w":187,"h":98},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":187,"h":98},
+	"sourceSize": {"w":189,"h":100}
+},
+"enemies-red-border/e2v1/ship1_e2_v1.png":
+{
+	"frame": {"x":266,"y":967,"w":79,"h":40},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":79,"h":40},
+	"sourceSize": {"w":81,"h":42}
+},
+"enemies-red-border/e2v1/ship2_e2_v1.png":
+{
+	"frame": {"x":126,"y":875,"w":92,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":92,"h":48},
+	"sourceSize": {"w":94,"h":50}
+},
+"enemies-red-border/e2v1/ship3_e2_v1.png":
+{
+	"frame": {"x":623,"y":933,"w":92,"h":56},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":92,"h":56},
+	"sourceSize": {"w":94,"h":58}
+},
+"enemies-red-border/e2v1/ship4_e2_v1.png":
+{
+	"frame": {"x":693,"y":295,"w":87,"h":62},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":87,"h":62},
+	"sourceSize": {"w":89,"h":64}
+},
+"enemies-red-border/e2v1/ship5_e2_v1.png":
+{
+	"frame": {"x":659,"y":671,"w":93,"h":60},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":93,"h":60},
+	"sourceSize": {"w":95,"h":62}
+},
+"enemies-red-border/e2v1/ship6_e2_v1.png":
+{
+	"frame": {"x":643,"y":789,"w":109,"h":74},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":109,"h":74},
+	"sourceSize": {"w":111,"h":76}
+},
+"enemies-red-border/e2v1/ship7_e2_v1.png":
+{
+	"frame": {"x":379,"y":774,"w":130,"h":73},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":130,"h":73},
+	"sourceSize": {"w":132,"h":75}
+},
+"enemies-red-border/e2v2/ship1_e2_v2.png":
+{
+	"frame": {"x":308,"y":967,"w":79,"h":40},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":79,"h":40},
+	"sourceSize": {"w":81,"h":42}
+},
+"enemies-red-border/e2v2/ship2_e2_v2.png":
+{
+	"frame": {"x":220,"y":854,"w":92,"h":48},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":92,"h":48},
+	"sourceSize": {"w":94,"h":50}
+},
+"enemies-red-border/e2v2/ship3_e2_v2.png":
+{
+	"frame": {"x":717,"y":933,"w":92,"h":56},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":92,"h":56},
+	"sourceSize": {"w":94,"h":58}
+},
+"enemies-red-border/e2v2/ship4_e2_v2.png":
+{
+	"frame": {"x":248,"y":1048,"w":87,"h":62},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":87,"h":62},
+	"sourceSize": {"w":89,"h":64}
+},
+"enemies-red-border/e2v2/ship5_e2_v2.png":
+{
+	"frame": {"x":153,"y":1053,"w":93,"h":60},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":93,"h":60},
+	"sourceSize": {"w":95,"h":62}
+},
+"enemies-red-border/e2v2/ship6_e2_v2.png":
+{
+	"frame": {"x":1,"y":991,"w":109,"h":74},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":109,"h":74},
+	"sourceSize": {"w":111,"h":76}
+},
+"enemies-red-border/e2v2/ship7_e2_v2.png":
+{
+	"frame": {"x":511,"y":780,"w":130,"h":73},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":130,"h":73},
+	"sourceSize": {"w":132,"h":75}
+},
+"enemies-red-border/e2v3/ship1_e2_v3.png":
+{
+	"frame": {"x":350,"y":967,"w":79,"h":40},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":79,"h":40},
+	"sourceSize": {"w":81,"h":42}
+},
+"enemies-red-border/e2v3/ship2_e2_v3.png":
+{
+	"frame": {"x":905,"y":972,"w":92,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":92,"h":48},
+	"sourceSize": {"w":94,"h":50}
+},
+"enemies-red-border/e2v3/ship3_e2_v3.png":
+{
+	"frame": {"x":811,"y":931,"w":92,"h":56},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":92,"h":56},
+	"sourceSize": {"w":94,"h":58}
+},
+"enemies-red-border/e2v3/ship4_e2_v3.png":
+{
+	"frame": {"x":337,"y":1048,"w":87,"h":62},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":87,"h":62},
+	"sourceSize": {"w":89,"h":64}
+},
+"enemies-red-border/e2v3/ship5_e2_v3.png":
+{
+	"frame": {"x":905,"y":910,"w":93,"h":60},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":93,"h":60},
+	"sourceSize": {"w":95,"h":62}
+},
+"enemies-red-border/e2v3/ship6_e2_v3.png":
+{
+	"frame": {"x":77,"y":991,"w":109,"h":74},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":109,"h":74},
+	"sourceSize": {"w":111,"h":76}
+},
+"enemies-red-border/e2v3/ship7_e2_v3.png":
+{
+	"frame": {"x":889,"y":775,"w":130,"h":73},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":130,"h":73},
+	"sourceSize": {"w":132,"h":75}
+},
+"enemies-red-border/e3v1/ship1_e3_v1.png":
+{
+	"frame": {"x":153,"y":990,"w":61,"h":43},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":61,"h":43},
+	"sourceSize": {"w":63,"h":45}
+},
+"enemies-red-border/e3v1/ship2_e3_v1.png":
+{
+	"frame": {"x":744,"y":878,"w":73,"h":51},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":73,"h":51},
+	"sourceSize": {"w":75,"h":53}
+},
+"enemies-red-border/e3v1/ship3_e3_v1.png":
+{
+	"frame": {"x":325,"y":320,"w":85,"h":52},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":85,"h":52},
+	"sourceSize": {"w":87,"h":54}
+},
+"enemies-red-border/e3v1/ship4_e3_v1.png":
+{
+	"frame": {"x":695,"y":991,"w":97,"h":54},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":97,"h":54},
+	"sourceSize": {"w":99,"h":56}
+},
+"enemies-red-border/e3v1/ship5_e3_v1.png":
+{
+	"frame": {"x":1,"y":925,"w":98,"h":63},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":98,"h":63},
+	"sourceSize": {"w":100,"h":65}
+},
+"enemies-red-border/e3v1/ship6_e3_v1.png":
+{
+	"frame": {"x":502,"y":855,"w":119,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":119,"h":66},
+	"sourceSize": {"w":121,"h":68}
+},
+"enemies-red-border/e3v1/ship7_e3_v1.png":
+{
+	"frame": {"x":305,"y":407,"w":133,"h":72},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":133,"h":72},
+	"sourceSize": {"w":135,"h":74}
+},
+"enemies-red-border/e3v2/ship1_e3_v2.png":
+{
+	"frame": {"x":819,"y":878,"w":61,"h":43},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":61,"h":43},
+	"sourceSize": {"w":63,"h":45}
+},
+"enemies-red-border/e3v2/ship2_e3_v2.png":
+{
+	"frame": {"x":863,"y":1022,"w":73,"h":51},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":73,"h":51},
+	"sourceSize": {"w":75,"h":53}
+},
+"enemies-red-border/e3v2/ship3_e3_v2.png":
+{
+	"frame": {"x":426,"y":1023,"w":85,"h":52},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":85,"h":52},
+	"sourceSize": {"w":87,"h":54}
+},
+"enemies-red-border/e3v2/ship4_e3_v2.png":
+{
+	"frame": {"x":751,"y":991,"w":97,"h":54},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":97,"h":54},
+	"sourceSize": {"w":99,"h":56}
+},
+"enemies-red-border/e3v2/ship5_e3_v2.png":
+{
+	"frame": {"x":101,"y":925,"w":98,"h":63},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":98,"h":63},
+	"sourceSize": {"w":100,"h":65}
+},
+"enemies-red-border/e3v2/ship6_e3_v2.png":
+{
+	"frame": {"x":623,"y":865,"w":119,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":119,"h":66},
+	"sourceSize": {"w":121,"h":68}
+},
+"enemies-red-border/e3v2/ship7_e3_v2.png":
+{
+	"frame": {"x":305,"y":542,"w":133,"h":72},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":133,"h":72},
+	"sourceSize": {"w":135,"h":74}
+},
+"enemies-red-border/e3v3/ship1_e3_v3.png":
+{
+	"frame": {"x":969,"y":1022,"w":61,"h":43},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":61,"h":43},
+	"sourceSize": {"w":63,"h":45}
+},
+"enemies-red-border/e3v3/ship2_e3_v3.png":
+{
+	"frame": {"x":916,"y":1022,"w":73,"h":51},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":73,"h":51},
+	"sourceSize": {"w":75,"h":53}
+},
+"enemies-red-border/e3v3/ship3_e3_v3.png":
+{
+	"frame": {"x":480,"y":1023,"w":85,"h":52},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":85,"h":52},
+	"sourceSize": {"w":87,"h":54}
+},
+"enemies-red-border/e3v3/ship4_e3_v3.png":
+{
+	"frame": {"x":807,"y":991,"w":97,"h":54},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":97,"h":54},
+	"sourceSize": {"w":99,"h":56}
+},
+"enemies-red-border/e3v3/ship5_e3_v3.png":
+{
+	"frame": {"x":201,"y":948,"w":98,"h":63},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":98,"h":63},
+	"sourceSize": {"w":100,"h":65}
+},
+"enemies-red-border/e3v3/ship6_e3_v3.png":
+{
+	"frame": {"x":502,"y":923,"w":119,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":119,"h":66},
+	"sourceSize": {"w":121,"h":68}
+},
+"enemies-red-border/e3v3/ship7_e3_v3.png":
+{
+	"frame": {"x":379,"y":700,"w":133,"h":72},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":133,"h":72},
+	"sourceSize": {"w":135,"h":74}
+},
+"enemies-red-border/v1/ship1_e1_v1.png":
+{
+	"frame": {"x":723,"y":101,"w":95,"h":32},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":95,"h":32},
+	"sourceSize": {"w":97,"h":34}
+},
+"enemies-red-border/v1/ship2_e1_v1.png":
+{
+	"frame": {"x":339,"y":111,"w":104,"h":37},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":104,"h":37},
+	"sourceSize": {"w":106,"h":39}
+},
+"enemies-red-border/v1/ship3_e1_v1.png":
+{
+	"frame": {"x":333,"y":217,"w":101,"h":44},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":101,"h":44},
+	"sourceSize": {"w":103,"h":46}
+},
+"enemies-red-border/v1/ship4_e1_v1.png":
+{
+	"frame": {"x":392,"y":925,"w":108,"h":47},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":108,"h":47},
+	"sourceSize": {"w":110,"h":49}
+},
+"enemies-red-border/v1/ship5_e1_v1.png":
+{
+	"frame": {"x":647,"y":733,"w":107,"h":54},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":107,"h":54},
+	"sourceSize": {"w":109,"h":56}
+},
+"enemies-red-border/v1/ship6_e1_v1.png":
+{
+	"frame": {"x":754,"y":818,"w":129,"h":58},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":129,"h":58},
+	"sourceSize": {"w":131,"h":60}
+},
+"enemies-red-border/v1/ship7_e1_v1.png":
+{
+	"frame": {"x":687,"y":384,"w":131,"h":67},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":131,"h":67},
+	"sourceSize": {"w":133,"h":69}
+},
+"enemies-red-border/v2/ship1_e1_v2.png":
+{
+	"frame": {"x":723,"y":198,"w":95,"h":32},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":95,"h":32},
+	"sourceSize": {"w":97,"h":34}
+},
+"enemies-red-border/v2/ship2_e1_v2.png":
+{
+	"frame": {"x":271,"y":797,"w":104,"h":37},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":104,"h":37},
+	"sourceSize": {"w":106,"h":39}
+},
+"enemies-red-border/v2/ship3_e1_v2.png":
+{
+	"frame": {"x":270,"y":875,"w":101,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":101,"h":44},
+	"sourceSize": {"w":103,"h":46}
+},
+"enemies-red-border/v2/ship4_e1_v2.png":
+{
+	"frame": {"x":392,"y":974,"w":108,"h":47},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":108,"h":47},
+	"sourceSize": {"w":110,"h":49}
+},
+"enemies-red-border/v2/ship5_e1_v2.png":
+{
+	"frame": {"x":583,"y":991,"w":107,"h":54},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":107,"h":54},
+	"sourceSize": {"w":109,"h":56}
+},
+"enemies-red-border/v2/ship6_e1_v2.png":
+{
+	"frame": {"x":885,"y":850,"w":129,"h":58},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":129,"h":58},
+	"sourceSize": {"w":131,"h":60}
+},
+"enemies-red-border/v2/ship7_e1_v2.png":
+{
+	"frame": {"x":514,"y":711,"w":131,"h":67},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":131,"h":67},
+	"sourceSize": {"w":133,"h":69}
+},
+"enemies-red-border/v3/ship1_e1_v3.png":
+{
+	"frame": {"x":659,"y":637,"w":95,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":95,"h":32},
+	"sourceSize": {"w":97,"h":34}
+},
+"enemies-red-border/v3/ship2_e1_v3.png":
+{
+	"frame": {"x":271,"y":836,"w":104,"h":37},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":104,"h":37},
+	"sourceSize": {"w":106,"h":39}
+},
+"enemies-red-border/v3/ship3_e1_v3.png":
+{
+	"frame": {"x":270,"y":921,"w":101,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":101,"h":44},
+	"sourceSize": {"w":103,"h":46}
+},
+"enemies-red-border/v3/ship4_e1_v3.png":
+{
+	"frame": {"x":534,"y":991,"w":108,"h":47},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":108,"h":47},
+	"sourceSize": {"w":110,"h":49}
+},
+"enemies-red-border/v3/ship5_e1_v3.png":
+{
+	"frame": {"x":639,"y":991,"w":107,"h":54},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":107,"h":54},
+	"sourceSize": {"w":109,"h":56}
+},
+"enemies-red-border/v3/ship6_e1_v3.png":
+{
+	"frame": {"x":140,"y":794,"w":129,"h":58},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":129,"h":58},
+	"sourceSize": {"w":131,"h":60}
+},
+"enemies-red-border/v3/ship7_e1_v3.png":
+{
+	"frame": {"x":756,"y":749,"w":131,"h":67},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":131,"h":67},
+	"sourceSize": {"w":133,"h":69}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "enemies.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1114},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:70bd1ae1f07ce7c36e33ed3a84867224:65438ab608bdf56b9abbbede15791fa1:9b2a76c8b2a408b3f0547a4eddda1e06$"
+}
+}
