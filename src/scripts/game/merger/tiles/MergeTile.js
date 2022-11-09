@@ -93,7 +93,7 @@ export default class MergeTile extends PIXI.Container {
         this.container.addChild(this.damageTimerView)
         this.damageTimerView.rotation = -Math.PI * 0.5
         //this.damageTimerView.build()
-
+this.startTimer = Math.random() * 2
     }
     reset() {
         this.generateResource = 0;
@@ -101,7 +101,7 @@ export default class MergeTile extends PIXI.Container {
         this.generateResourceNormal = 0;
 
 
-        this.generateDamage = 0;
+        this.generateDamage = 1000;
         this.generateDamageTime = -1;
         this.generateDamageNormal = 0;
     }
@@ -113,6 +113,10 @@ export default class MergeTile extends PIXI.Container {
         this.tileSprite.y = this.backSlot.height / 2 + this.positionOffset.y;
     }
     update(delta, dateTimeStamp, autoUpdateResources = true) {
+        if(this.startTimer > 0){
+            this.startTimer -= delta
+            return
+        }
         if (this.animSprite) {
             this.sin += delta;
             this.sin %= Math.PI * 2;
@@ -120,7 +124,7 @@ export default class MergeTile extends PIXI.Container {
         }
         this.damageTimerView.visible = false;
         //console.log(this, dateTimeStamp)
-        if (autoUpdateResources) {
+        if (false && autoUpdateResources) {
             this.updateResource(delta, dateTimeStamp)
         }
         if (this.tileData) {
@@ -163,11 +167,12 @@ export default class MergeTile extends PIXI.Container {
                 let targetColor = 0xff810a
                 this.generateDamage = dateTimeStamp - this.updatedDamageTimestamp
                 let calcTiime = (this.generateDamageTime / window.TIME_SCALE) * 1000
+                //console.log(this.generateDamage,calcTiime)
                 if (this.generateDamage > calcTiime) {
                     this.updatedDamageTimestamp = Date.now()//(Date.now() / 1000 | 0);
                     this.generateDamageNormal = 1;
                     //console.log(this.generateDamage,  this.generateDamageTime,  gameModifyers.getAttackSpeed())                    
-                    //this.damageReady();
+                    this.resourceReady();
                 } else {
                     if (this.generateDamageTime < 0.5) {
                         this.generateDamageNormal = 1
@@ -279,6 +284,10 @@ export default class MergeTile extends PIXI.Container {
         this.label.x = this.backSlot.width / 2 - this.label.width / 2;
         this.showSprite()
         this.enterAnimation()
+
+        this.generateDamage = 1000
+
+
     }
     enterAnimation() {
         this.tileSprite.scale.set(0, 2);

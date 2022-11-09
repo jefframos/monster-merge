@@ -81,15 +81,10 @@ export default class ChargerTile extends MergeTile {
         this.levelBar.visible = false;
         this.levelBar.setProgressBar(0, 0,true);
     }
-    completeCharge(){
-
-        console.log(this.currentChargeTime)
-
-        
+    completeCharge(){        
         this.isCharged = true;
         this.levelBar.visible = false;
         this.tileSprite.visible = true;
-        this.currentChargeTime = this.defaultChargeTime;
         this.onCompleteCharge.dispatch();
     }
     lookAt(target) {

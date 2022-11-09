@@ -86,7 +86,8 @@ export default class MergeSystem {
             }
         }
 
-        this.addPieceGenerator();
+        this.mainGenerator = this.addPieceGenerator();
+        
         this.adjustSlotsPosition();
 
         this.entityDragSprite = new PIXI.Sprite.from('');
@@ -224,24 +225,24 @@ export default class MergeSystem {
         //piece.addEntity(this.dataTiles[0])
         //this.uiContainer.addChild(piece);
 
-        piece.onHold.add((slot) => {
-            if (!slot.tileData) {
-                return;
-            }
-            this.startDrag(slot)
-        });
-        piece.onEndHold.add((slot) => {
-            if (!slot.tileData) {
-                return;
-            }
-            this.endDrag(slot)
-            setTimeout(() => {
-                if (!slot.tileData) {
-                    slot.startCharging()
-                }
-            }, 10);
+        // piece.onHold.add((slot) => {
+        //     if (!slot.tileData) {
+        //         return;
+        //     }
+        //     this.startDrag(slot)
+        // });
+        // piece.onEndHold.add((slot) => {
+        //     if (!slot.tileData) {
+        //         return;
+        //     }
+        //     this.endDrag(slot)
+        //     setTimeout(() => {
+        //         if (!slot.tileData) {
+        //             slot.startCharging()
+        //         }
+        //     }, 10);
 
-        });
+        // });
         piece.onCompleteCharge.add((slot) => {
 
             //alert()
@@ -268,6 +269,8 @@ export default class MergeSystem {
         if (this.pieceGeneratorsList.length > 1) {
             piece.visible = false;
         }
+
+        return piece;
     }
     findAllAutomerges() {
         // if (window.gameModifyers.modifyersData.autoMerge > 1 || window.gameModifyers.bonusData.autoMerge > 1) {
@@ -391,30 +394,34 @@ export default class MergeSystem {
 
             let customData = {}
             customData.texture = 'coin'
-            customData.scale = 0.01
-            customData.alphaDecress = 0.1
+            customData.scale = 0.03
+            customData.forceX = 0
+            customData.forceY = 50
+            customData.alphaDecress = 1
             let targetPos = slot.tileSprite.getGlobalPosition()
-            this.onGetResources.dispatch(targetPos, customData, data.resources, 5)
+            this.onGetResources.dispatch(targetPos, customData, data.getDamage(), 1)
 
         });
         slot.onGenerateDamage.add((slot, data) => {
-            let customData = {}
-            customData.texture = 'shoot'
-            customData.scale = 0.002
-            customData.topLimit = this.enemySystem.getEnemy().getGlobalPosition().y
+            // let customData = {}
+            // customData.texture = 'shoot'
+            // customData.scale = 0.002
+            // customData.topLimit = this.enemySystem.getEnemy().getGlobalPosition().y
 
-            customData.gravity = 0
-            customData.alphaDecress = 0
-            if (this.enemySystem) {
-                let globalEnemy = this.enemySystem.getEnemy().getGlobalPosition()
-                customData.target = { x: globalEnemy.x, y: globalEnemy.y, timer: 0, speed: 700 }
-            }
-            customData.forceX = 0
-            customData.forceY = 300
-            customData.tint = this.shootColor
-            customData.callback = this.finishDamage.bind(this, data)
-            let targetPos = slot.tileSprite.getGlobalPosition()
-            this.onDealDamage.dispatch(targetPos, customData, data.getDamage(), 1)
+            // customData.gravity = 0
+            // customData.alphaDecress = 0
+            // if (this.enemySystem) {
+            //     let globalEnemy = this.enemySystem.getEnemy().getGlobalPosition()
+            //     customData.target = { x: globalEnemy.x, y: globalEnemy.y, timer: 0, speed: 700 }
+            // }
+            // customData.forceX = 0
+            // customData.forceY = 300
+            // customData.tint = this.shootColor
+            // customData.callback = this.finishDamage.bind(this, data)
+            // let targetPos = slot.tileSprite.getGlobalPosition()
+            // this.onDealDamage.dispatch(targetPos, customData, data.getDamage(), 1)
+
+            console.log('DAMAGE')
             //this.posShootingParticles(targetPos)
 
         });
@@ -560,6 +567,19 @@ export default class MergeSystem {
             }
         }
     }
+    totalAvailable(){
+        let av = 0
+        for (var i = 0; i < this.slots.length; i++) {
+            for (var j = 0; j < this.slots[i].length; j++) {
+                if (this.slots[i][j] && !this.slots[i][j].tileData && this.slots[i][j].visible) {
+                    av ++
+                }
+                
+            }
+        }
+
+        return av
+    }
     autoPlace(piece) {
         console.log("autoplace")
         let allAvailables = []
@@ -569,44 +589,37 @@ export default class MergeSystem {
                 if (this.slots[i][j] && !this.slots[i][j].tileData && this.slots[i][j].visible) {
                     allAvailables.push(this.slots[i][j])
                 }
-                // if (this.slots[i][j] && this.slots[i][j].tileData && this.slots[i][j].visible) {
-                //     let slot = this.slots[i][j];
-                //     if (slot.tileData.getValue()){// == piece.tileData.getValue()) {
-                //         firstAvailable = this.slots[i][j];
-                //         break;
-                //     }
-
-                // } else if (!firstAvailable && this.slots[i][j].visible) {
-                //     firstAvailable = this.slots[i][j];
-                // }
+                
             }
         }
 
         this.currentDragSlot = piece;
 
-        if (piece.isGenerator) {
+        // if (piece.isGenerator) {
 
             
-            this.endDrag(piece)
-            setTimeout(() => {
-                if (!piece.tileData) {
-                    piece.startCharging()
-                }
-            }, 10);
-        }
+        //     this.endDrag(piece)
+        //     setTimeout(() => {
+        //         if (!piece.tileData) {
+        //             piece.startCharging()
+        //         }
+        //     }, 10);
+        // }
         
         if (firstAvailable && firstAvailable.tileData) {
             
         }
-        console.log(allAvailables)
         this.releaseEntity(allAvailables[Math.floor(Math.random() * allAvailables.length)])
         
-        piece.startCharging()
-        //this.autoMerge();
+        console.log(this.totalAvailable())
+        if(this.totalAvailable() > 0){
+            piece.startCharging()
+        }
+        this.autoMerge();
     }
 
     releaseEntity(slot) {
-        if (!this.currentDragSlot) {
+        if (!this.currentDragSlot || !slot) {
             return;
         }
         let copyData = this.currentDragSlot.tileData
@@ -666,6 +679,10 @@ export default class MergeSystem {
         this.draggingEntity = false;
         this.currentDragSlot = null;
         this.updateAllData();
+
+        if(this.totalAvailable() > 0){
+            this.mainGenerator.startCharging()
+        }
 
 
     }
