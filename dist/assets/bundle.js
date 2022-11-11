@@ -244,7 +244,7 @@ module.exports = { "default": __webpack_require__(327), __esModule: true };
 
 exports.__esModule = true;
 
-var _typeof2 = __webpack_require__(53);
+var _typeof2 = __webpack_require__(52);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -275,7 +275,7 @@ var _create = __webpack_require__(333);
 
 var _create2 = _interopRequireDefault(_create);
 
-var _typeof2 = __webpack_require__(53);
+var _typeof2 = __webpack_require__(52);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -792,7 +792,7 @@ Object.defineProperty(exports, 'glCore', {
   }
 });
 
-var _Bounds = __webpack_require__(72);
+var _Bounds = __webpack_require__(71);
 
 Object.defineProperty(exports, 'Bounds', {
   enumerable: true,
@@ -837,7 +837,7 @@ Object.defineProperty(exports, 'TransformStatic', {
   }
 });
 
-var _TransformBase = __webpack_require__(74);
+var _TransformBase = __webpack_require__(73);
 
 Object.defineProperty(exports, 'TransformBase', {
   enumerable: true,
@@ -846,7 +846,7 @@ Object.defineProperty(exports, 'TransformBase', {
   }
 });
 
-var _Sprite = __webpack_require__(75);
+var _Sprite = __webpack_require__(74);
 
 Object.defineProperty(exports, 'Sprite', {
   enumerable: true,
@@ -864,7 +864,7 @@ Object.defineProperty(exports, 'CanvasSpriteRenderer', {
   }
 });
 
-var _CanvasTinter = __webpack_require__(79);
+var _CanvasTinter = __webpack_require__(78);
 
 Object.defineProperty(exports, 'CanvasTinter', {
   enumerable: true,
@@ -981,7 +981,7 @@ Object.defineProperty(exports, 'BaseTexture', {
   }
 });
 
-var _RenderTexture = __webpack_require__(78);
+var _RenderTexture = __webpack_require__(77);
 
 Object.defineProperty(exports, 'RenderTexture', {
   enumerable: true,
@@ -1111,11 +1111,11 @@ var _utils = __webpack_require__(9);
 
 var utils = _interopRequireWildcard(_utils);
 
-var _ticker = __webpack_require__(77);
+var _ticker = __webpack_require__(76);
 
 var ticker = _interopRequireWildcard(_ticker);
 
-var _settings = __webpack_require__(11);
+var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
@@ -1518,7 +1518,7 @@ exports.premultiplyTintToRgba = premultiplyTintToRgba;
 
 var _const = __webpack_require__(8);
 
-var _settings = __webpack_require__(11);
+var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
@@ -1534,7 +1534,7 @@ var _mixin = __webpack_require__(208);
 
 var mixins = _interopRequireWildcard(_mixin);
 
-var _ismobilejs = __webpack_require__(73);
+var _ismobilejs = __webpack_require__(72);
 
 var isMobile = _interopRequireWildcard(_ismobilejs);
 
@@ -1977,6 +1977,284 @@ function premultiplyTintToRgba(tint, alpha, out, premultiply) {
 "use strict";
 
 
+exports.__esModule = true;
+
+var _maxRecommendedTextures = __webpack_require__(205);
+
+var _maxRecommendedTextures2 = _interopRequireDefault(_maxRecommendedTextures);
+
+var _canUploadSameBuffer = __webpack_require__(206);
+
+var _canUploadSameBuffer2 = _interopRequireDefault(_canUploadSameBuffer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * User's customizable globals for overriding the default PIXI settings, such
+ * as a renderer's default resolution, framerate, float percision, etc.
+ * @example
+ * // Use the native window resolution as the default resolution
+ * // will support high-density displays when rendering
+ * PIXI.settings.RESOLUTION = window.devicePixelRatio.
+ *
+ * // Disable interpolation when scaling, will make texture be pixelated
+ * PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
+ * @namespace PIXI.settings
+ */
+exports.default = {
+
+  /**
+   * Target frames per millisecond.
+   *
+   * @static
+   * @memberof PIXI.settings
+   * @type {number}
+   * @default 0.06
+   */
+  TARGET_FPMS: 0.06,
+
+  /**
+   * If set to true WebGL will attempt make textures mimpaped by default.
+   * Mipmapping will only succeed if the base texture uploaded has power of two dimensions.
+   *
+   * @static
+   * @memberof PIXI.settings
+   * @type {boolean}
+   * @default true
+   */
+  MIPMAP_TEXTURES: true,
+
+  /**
+   * Default resolution / device pixel ratio of the renderer.
+   *
+   * @static
+   * @memberof PIXI.settings
+   * @type {number}
+   * @default 1
+   */
+  RESOLUTION: 1,
+
+  /**
+   * Default filter resolution.
+   *
+   * @static
+   * @memberof PIXI.settings
+   * @type {number}
+   * @default 1
+   */
+  FILTER_RESOLUTION: 1,
+
+  /**
+   * The maximum textures that this device supports.
+   *
+   * @static
+   * @memberof PIXI.settings
+   * @type {number}
+   * @default 32
+   */
+  SPRITE_MAX_TEXTURES: (0, _maxRecommendedTextures2.default)(32),
+
+  // TODO: maybe change to SPRITE.BATCH_SIZE: 2000
+  // TODO: maybe add PARTICLE.BATCH_SIZE: 15000
+
+  /**
+   * The default sprite batch size.
+   *
+   * The default aims to balance desktop and mobile devices.
+   *
+   * @static
+   * @memberof PIXI.settings
+   * @type {number}
+   * @default 4096
+   */
+  SPRITE_BATCH_SIZE: 4096,
+
+  /**
+   * The prefix that denotes a URL is for a retina asset.
+   *
+   * @static
+   * @memberof PIXI.settings
+   * @type {RegExp}
+   * @example `@2x`
+   * @default /@([0-9\.]+)x/
+   */
+  RETINA_PREFIX: /@([0-9\.]+)x/,
+
+  /**
+   * The default render options if none are supplied to {@link PIXI.WebGLRenderer}
+   * or {@link PIXI.CanvasRenderer}.
+   *
+   * @static
+   * @constant
+   * @memberof PIXI.settings
+   * @type {object}
+   * @property {HTMLCanvasElement} view=null
+   * @property {number} resolution=1
+   * @property {boolean} antialias=false
+   * @property {boolean} forceFXAA=false
+   * @property {boolean} autoResize=false
+   * @property {boolean} transparent=false
+   * @property {number} backgroundColor=0x000000
+   * @property {boolean} clearBeforeRender=true
+   * @property {boolean} preserveDrawingBuffer=false
+   * @property {boolean} roundPixels=false
+   * @property {number} width=800
+   * @property {number} height=600
+   * @property {boolean} legacy=false
+   */
+  RENDER_OPTIONS: {
+    view: null,
+    antialias: false,
+    forceFXAA: false,
+    autoResize: false,
+    transparent: false,
+    backgroundColor: 0x000000,
+    clearBeforeRender: true,
+    preserveDrawingBuffer: false,
+    roundPixels: false,
+    width: 800,
+    height: 600,
+    legacy: false
+  },
+
+  /**
+   * Default transform type.
+   *
+   * @static
+   * @memberof PIXI.settings
+   * @type {PIXI.TRANSFORM_MODE}
+   * @default PIXI.TRANSFORM_MODE.STATIC
+   */
+  TRANSFORM_MODE: 0,
+
+  /**
+   * Default Garbage Collection mode.
+   *
+   * @static
+   * @memberof PIXI.settings
+   * @type {PIXI.GC_MODES}
+   * @default PIXI.GC_MODES.AUTO
+   */
+  GC_MODE: 0,
+
+  /**
+   * Default Garbage Collection max idle.
+   *
+   * @static
+   * @memberof PIXI.settings
+   * @type {number}
+   * @default 3600
+   */
+  GC_MAX_IDLE: 60 * 60,
+
+  /**
+   * Default Garbage Collection maximum check count.
+   *
+   * @static
+   * @memberof PIXI.settings
+   * @type {number}
+   * @default 600
+   */
+  GC_MAX_CHECK_COUNT: 60 * 10,
+
+  /**
+   * Default wrap modes that are supported by pixi.
+   *
+   * @static
+   * @memberof PIXI.settings
+   * @type {PIXI.WRAP_MODES}
+   * @default PIXI.WRAP_MODES.CLAMP
+   */
+  WRAP_MODE: 0,
+
+  /**
+   * The scale modes that are supported by pixi.
+   *
+   * @static
+   * @memberof PIXI.settings
+   * @type {PIXI.SCALE_MODES}
+   * @default PIXI.SCALE_MODES.LINEAR
+   */
+  SCALE_MODE: 0,
+
+  /**
+   * Default specify float precision in vertex shader.
+   *
+   * @static
+   * @memberof PIXI.settings
+   * @type {PIXI.PRECISION}
+   * @default PIXI.PRECISION.HIGH
+   */
+  PRECISION_VERTEX: 'highp',
+
+  /**
+   * Default specify float precision in fragment shader.
+   *
+   * @static
+   * @memberof PIXI.settings
+   * @type {PIXI.PRECISION}
+   * @default PIXI.PRECISION.MEDIUM
+   */
+  PRECISION_FRAGMENT: 'mediump',
+
+  /**
+   * Can we upload the same buffer in a single frame?
+   *
+   * @static
+   * @constant
+   * @memberof PIXI.settings
+   * @type {boolean}
+   */
+  CAN_UPLOAD_SAME_BUFFER: (0, _canUploadSameBuffer2.default)(),
+
+  /**
+   * Default Mesh `canvasPadding`.
+   *
+   * @see PIXI.mesh.Mesh#canvasPadding
+   * @static
+   * @constant
+   * @memberof PIXI.settings
+   * @type {number}
+   */
+  MESH_CANVAS_PADDING: 0
+};
+//# sourceMappingURL=settings.js.map
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = {
+	width: 750 * 0.8,
+	height: 1334 * 0.8,
+	webgl: true,
+	effectsLayer: null,
+	colors: {
+		background: 0x000000
+	},
+	rendererOptions: {
+		//pixi rendererOptions
+		resolution: 2, //window.devicePixelRatio,
+		antialias: true,
+		backgroundColor: 0x000000
+	},
+	levels: []
+};
+module.exports = exports["default"];
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -1985,7 +2263,7 @@ var _defineProperty2 = __webpack_require__(158);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-var _typeof2 = __webpack_require__(53);
+var _typeof2 = __webpack_require__(52);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -1995,7 +2273,7 @@ var _isNan2 = _interopRequireDefault(_isNan);
 
 var _resizeToFitMaxAR$res;
 
-var _config = __webpack_require__(12);
+var _config = __webpack_require__(11);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -2686,284 +2964,6 @@ exports.default = (_resizeToFitMaxAR$res = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-
-var _maxRecommendedTextures = __webpack_require__(205);
-
-var _maxRecommendedTextures2 = _interopRequireDefault(_maxRecommendedTextures);
-
-var _canUploadSameBuffer = __webpack_require__(206);
-
-var _canUploadSameBuffer2 = _interopRequireDefault(_canUploadSameBuffer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * User's customizable globals for overriding the default PIXI settings, such
- * as a renderer's default resolution, framerate, float percision, etc.
- * @example
- * // Use the native window resolution as the default resolution
- * // will support high-density displays when rendering
- * PIXI.settings.RESOLUTION = window.devicePixelRatio.
- *
- * // Disable interpolation when scaling, will make texture be pixelated
- * PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
- * @namespace PIXI.settings
- */
-exports.default = {
-
-  /**
-   * Target frames per millisecond.
-   *
-   * @static
-   * @memberof PIXI.settings
-   * @type {number}
-   * @default 0.06
-   */
-  TARGET_FPMS: 0.06,
-
-  /**
-   * If set to true WebGL will attempt make textures mimpaped by default.
-   * Mipmapping will only succeed if the base texture uploaded has power of two dimensions.
-   *
-   * @static
-   * @memberof PIXI.settings
-   * @type {boolean}
-   * @default true
-   */
-  MIPMAP_TEXTURES: true,
-
-  /**
-   * Default resolution / device pixel ratio of the renderer.
-   *
-   * @static
-   * @memberof PIXI.settings
-   * @type {number}
-   * @default 1
-   */
-  RESOLUTION: 1,
-
-  /**
-   * Default filter resolution.
-   *
-   * @static
-   * @memberof PIXI.settings
-   * @type {number}
-   * @default 1
-   */
-  FILTER_RESOLUTION: 1,
-
-  /**
-   * The maximum textures that this device supports.
-   *
-   * @static
-   * @memberof PIXI.settings
-   * @type {number}
-   * @default 32
-   */
-  SPRITE_MAX_TEXTURES: (0, _maxRecommendedTextures2.default)(32),
-
-  // TODO: maybe change to SPRITE.BATCH_SIZE: 2000
-  // TODO: maybe add PARTICLE.BATCH_SIZE: 15000
-
-  /**
-   * The default sprite batch size.
-   *
-   * The default aims to balance desktop and mobile devices.
-   *
-   * @static
-   * @memberof PIXI.settings
-   * @type {number}
-   * @default 4096
-   */
-  SPRITE_BATCH_SIZE: 4096,
-
-  /**
-   * The prefix that denotes a URL is for a retina asset.
-   *
-   * @static
-   * @memberof PIXI.settings
-   * @type {RegExp}
-   * @example `@2x`
-   * @default /@([0-9\.]+)x/
-   */
-  RETINA_PREFIX: /@([0-9\.]+)x/,
-
-  /**
-   * The default render options if none are supplied to {@link PIXI.WebGLRenderer}
-   * or {@link PIXI.CanvasRenderer}.
-   *
-   * @static
-   * @constant
-   * @memberof PIXI.settings
-   * @type {object}
-   * @property {HTMLCanvasElement} view=null
-   * @property {number} resolution=1
-   * @property {boolean} antialias=false
-   * @property {boolean} forceFXAA=false
-   * @property {boolean} autoResize=false
-   * @property {boolean} transparent=false
-   * @property {number} backgroundColor=0x000000
-   * @property {boolean} clearBeforeRender=true
-   * @property {boolean} preserveDrawingBuffer=false
-   * @property {boolean} roundPixels=false
-   * @property {number} width=800
-   * @property {number} height=600
-   * @property {boolean} legacy=false
-   */
-  RENDER_OPTIONS: {
-    view: null,
-    antialias: false,
-    forceFXAA: false,
-    autoResize: false,
-    transparent: false,
-    backgroundColor: 0x000000,
-    clearBeforeRender: true,
-    preserveDrawingBuffer: false,
-    roundPixels: false,
-    width: 800,
-    height: 600,
-    legacy: false
-  },
-
-  /**
-   * Default transform type.
-   *
-   * @static
-   * @memberof PIXI.settings
-   * @type {PIXI.TRANSFORM_MODE}
-   * @default PIXI.TRANSFORM_MODE.STATIC
-   */
-  TRANSFORM_MODE: 0,
-
-  /**
-   * Default Garbage Collection mode.
-   *
-   * @static
-   * @memberof PIXI.settings
-   * @type {PIXI.GC_MODES}
-   * @default PIXI.GC_MODES.AUTO
-   */
-  GC_MODE: 0,
-
-  /**
-   * Default Garbage Collection max idle.
-   *
-   * @static
-   * @memberof PIXI.settings
-   * @type {number}
-   * @default 3600
-   */
-  GC_MAX_IDLE: 60 * 60,
-
-  /**
-   * Default Garbage Collection maximum check count.
-   *
-   * @static
-   * @memberof PIXI.settings
-   * @type {number}
-   * @default 600
-   */
-  GC_MAX_CHECK_COUNT: 60 * 10,
-
-  /**
-   * Default wrap modes that are supported by pixi.
-   *
-   * @static
-   * @memberof PIXI.settings
-   * @type {PIXI.WRAP_MODES}
-   * @default PIXI.WRAP_MODES.CLAMP
-   */
-  WRAP_MODE: 0,
-
-  /**
-   * The scale modes that are supported by pixi.
-   *
-   * @static
-   * @memberof PIXI.settings
-   * @type {PIXI.SCALE_MODES}
-   * @default PIXI.SCALE_MODES.LINEAR
-   */
-  SCALE_MODE: 0,
-
-  /**
-   * Default specify float precision in vertex shader.
-   *
-   * @static
-   * @memberof PIXI.settings
-   * @type {PIXI.PRECISION}
-   * @default PIXI.PRECISION.HIGH
-   */
-  PRECISION_VERTEX: 'highp',
-
-  /**
-   * Default specify float precision in fragment shader.
-   *
-   * @static
-   * @memberof PIXI.settings
-   * @type {PIXI.PRECISION}
-   * @default PIXI.PRECISION.MEDIUM
-   */
-  PRECISION_FRAGMENT: 'mediump',
-
-  /**
-   * Can we upload the same buffer in a single frame?
-   *
-   * @static
-   * @constant
-   * @memberof PIXI.settings
-   * @type {boolean}
-   */
-  CAN_UPLOAD_SAME_BUFFER: (0, _canUploadSameBuffer2.default)(),
-
-  /**
-   * Default Mesh `canvasPadding`.
-   *
-   * @see PIXI.mesh.Mesh#canvasPadding
-   * @static
-   * @constant
-   * @memberof PIXI.settings
-   * @type {number}
-   */
-  MESH_CANVAS_PADDING: 0
-};
-//# sourceMappingURL=settings.js.map
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.default = {
-	width: 750 * 0.8,
-	height: 1334 * 0.8,
-	webgl: true,
-	effectsLayer: null,
-	colors: {
-		background: 0x000000
-	},
-	rendererOptions: {
-		//pixi rendererOptions
-		resolution: 2, //window.devicePixelRatio,
-		antialias: true,
-		backgroundColor: 0x000000
-	},
-	levels: []
-};
-module.exports = exports["default"];
-
-/***/ }),
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2972,7 +2972,7 @@ module.exports = exports["default"];
 
 exports.__esModule = true;
 
-var _Point = __webpack_require__(68);
+var _Point = __webpack_require__(67);
 
 Object.defineProperty(exports, 'Point', {
   enumerable: true,
@@ -2990,7 +2990,7 @@ Object.defineProperty(exports, 'ObservablePoint', {
   }
 });
 
-var _Matrix = __webpack_require__(69);
+var _Matrix = __webpack_require__(68);
 
 Object.defineProperty(exports, 'Matrix', {
   enumerable: true,
@@ -3035,7 +3035,7 @@ Object.defineProperty(exports, 'Polygon', {
   }
 });
 
-var _Rectangle = __webpack_require__(70);
+var _Rectangle = __webpack_require__(69);
 
 Object.defineProperty(exports, 'Rectangle', {
   enumerable: true,
@@ -11353,7 +11353,7 @@ var _gsap = __webpack_require__(14);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(12);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -11668,7 +11668,7 @@ var _math = __webpack_require__(13);
 
 var _utils = __webpack_require__(9);
 
-var _settings = __webpack_require__(11);
+var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
@@ -12407,7 +12407,7 @@ module.exports = $export;
 
 var anObject = __webpack_require__(34);
 var IE8_DOM_DEFINE = __webpack_require__(90);
-var toPrimitive = __webpack_require__(52);
+var toPrimitive = __webpack_require__(51);
 var dP = Object.defineProperty;
 
 exports.f = __webpack_require__(23) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
@@ -12449,7 +12449,7 @@ module.exports = function (it, key) {
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
 var IObject = __webpack_require__(168);
-var defined = __webpack_require__(55);
+var defined = __webpack_require__(54);
 module.exports = function (it) {
   return IObject(defined(it));
 };
@@ -12800,7 +12800,7 @@ module.exports = function (it) {
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var store = __webpack_require__(61)('wks');
+var store = __webpack_require__(60)('wks');
 var uid = __webpack_require__(46);
 var Symbol = __webpack_require__(19).Symbol;
 var USE_SYMBOL = typeof Symbol == 'function';
@@ -12824,7 +12824,7 @@ exports.__esModule = true;
 
 var _utils = __webpack_require__(9);
 
-var _settings = __webpack_require__(11);
+var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
@@ -12836,7 +12836,7 @@ var _determineCrossOrigin = __webpack_require__(114);
 
 var _determineCrossOrigin2 = _interopRequireDefault(_determineCrossOrigin);
 
-var _bitTwiddle = __webpack_require__(76);
+var _bitTwiddle = __webpack_require__(75);
 
 var _bitTwiddle2 = _interopRequireDefault(_bitTwiddle);
 
@@ -13925,11 +13925,11 @@ var _gsap = __webpack_require__(14);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
-var _config = __webpack_require__(12);
+var _config = __webpack_require__(11);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(12);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -14806,7 +14806,7 @@ var _utils = __webpack_require__(9);
 
 var _const = __webpack_require__(8);
 
-var _settings = __webpack_require__(11);
+var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
@@ -15218,7 +15218,7 @@ exports.__esModule = true;
 
 var _pixiGlCore = __webpack_require__(15);
 
-var _settings = __webpack_require__(11);
+var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
@@ -15294,7 +15294,7 @@ exports.default = Shader;
 /* eslint-disable no-undef */
 
 var Loader = __webpack_require__(274).default;
-var Resource = __webpack_require__(81).default;
+var Resource = __webpack_require__(80).default;
 var async = __webpack_require__(146);
 var b64 = __webpack_require__(147);
 
@@ -16964,7 +16964,7 @@ var _math = __webpack_require__(13);
 
 var _const = __webpack_require__(8);
 
-var _settings = __webpack_require__(11);
+var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
@@ -17562,82 +17562,6 @@ function buildNativeLine(graphicsData, webGLData) {
 /* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _getPrototypeOf = __webpack_require__(3);
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__(1);
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(2);
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__(4);
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__(5);
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _pixi = __webpack_require__(0);
-
-var PIXI = _interopRequireWildcard(_pixi);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// import * as FILTERS from 'pixi-filters';
-var TextBox = function (_PIXI$Container) {
-    (0, _inherits3.default)(TextBox, _PIXI$Container);
-
-    function TextBox() {
-        var padding = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 10;
-        var tex = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'small-no-pattern';
-        (0, _classCallCheck3.default)(this, TextBox);
-
-        var _this = (0, _possibleConstructorReturn3.default)(this, (TextBox.__proto__ || (0, _getPrototypeOf2.default)(TextBox)).call(this));
-
-        _this.padding = padding;
-        _this.background = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame(tex), 10, 10, 10, 10);
-        _this.addChild(_this.background);
-
-        _this.label = new PIXI.Text('Thanks for helping us\nChoose your prize', LABELS.LABEL1);
-        _this.label.style.fontSize = 18;
-        _this.label.x = _this.padding;
-        _this.label.y = _this.padding;
-        _this.addChild(_this.label);
-        return _this;
-    }
-
-    (0, _createClass3.default)(TextBox, [{
-        key: 'updateText',
-        value: function updateText(text) {
-            this.label.text = text;
-            this.background.width = this.label.width + this.padding * 2;
-            this.background.height = this.label.height + this.padding * 2;
-        }
-    }]);
-    return TextBox;
-}(PIXI.Container);
-
-exports.default = TextBox;
-module.exports = exports['default'];
-
-/***/ }),
-/* 52 */
-/***/ (function(module, exports, __webpack_require__) {
-
 // 7.1.1 ToPrimitive(input [, PreferredType])
 var isObject = __webpack_require__(28);
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
@@ -17653,7 +17577,7 @@ module.exports = function (it, S) {
 
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17680,7 +17604,7 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 };
 
 /***/ }),
-/* 54 */
+/* 53 */
 /***/ (function(module, exports) {
 
 // 7.1.4 ToInteger
@@ -17692,7 +17616,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 55 */
+/* 54 */
 /***/ (function(module, exports) {
 
 // 7.2.1 RequireObjectCoercible(argument)
@@ -17703,28 +17627,28 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 56 */
+/* 55 */
 /***/ (function(module, exports) {
 
 module.exports = true;
 
 
 /***/ }),
-/* 57 */
+/* 56 */
 /***/ (function(module, exports) {
 
 module.exports = {};
 
 
 /***/ }),
-/* 58 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(34);
 var dPs = __webpack_require__(167);
-var enumBugKeys = __webpack_require__(62);
-var IE_PROTO = __webpack_require__(60)('IE_PROTO');
+var enumBugKeys = __webpack_require__(61);
+var IE_PROTO = __webpack_require__(59)('IE_PROTO');
 var Empty = function () { /* empty */ };
 var PROTOTYPE = 'prototype';
 
@@ -17764,12 +17688,12 @@ module.exports = Object.create || function create(O, Properties) {
 
 
 /***/ }),
-/* 59 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
 var $keys = __webpack_require__(94);
-var enumBugKeys = __webpack_require__(62);
+var enumBugKeys = __webpack_require__(61);
 
 module.exports = Object.keys || function keys(O) {
   return $keys(O, enumBugKeys);
@@ -17777,10 +17701,10 @@ module.exports = Object.keys || function keys(O) {
 
 
 /***/ }),
-/* 60 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var shared = __webpack_require__(61)('keys');
+var shared = __webpack_require__(60)('keys');
 var uid = __webpack_require__(46);
 module.exports = function (key) {
   return shared[key] || (shared[key] = uid(key));
@@ -17788,7 +17712,7 @@ module.exports = function (key) {
 
 
 /***/ }),
-/* 61 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(19);
@@ -17800,7 +17724,7 @@ module.exports = function (key) {
 
 
 /***/ }),
-/* 62 */
+/* 61 */
 /***/ (function(module, exports) {
 
 // IE 8- don't enum bug keys
@@ -17810,7 +17734,7 @@ module.exports = (
 
 
 /***/ }),
-/* 63 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var def = __webpack_require__(22).f;
@@ -17823,20 +17747,20 @@ module.exports = function (it, tag, stat) {
 
 
 /***/ }),
-/* 64 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.f = __webpack_require__(29);
 
 
 /***/ }),
-/* 65 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(19);
 var core = __webpack_require__(16);
-var LIBRARY = __webpack_require__(56);
-var wksExt = __webpack_require__(64);
+var LIBRARY = __webpack_require__(55);
+var wksExt = __webpack_require__(63);
 var defineProperty = __webpack_require__(22).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
@@ -17845,20 +17769,20 @@ module.exports = function (name) {
 
 
 /***/ }),
-/* 66 */
+/* 65 */
 /***/ (function(module, exports) {
 
 exports.f = {}.propertyIsEnumerable;
 
 
 /***/ }),
-/* 67 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var pIE = __webpack_require__(66);
+var pIE = __webpack_require__(65);
 var createDesc = __webpack_require__(45);
 var toIObject = __webpack_require__(25);
-var toPrimitive = __webpack_require__(52);
+var toPrimitive = __webpack_require__(51);
 var has = __webpack_require__(24);
 var IE8_DOM_DEFINE = __webpack_require__(90);
 var gOPD = Object.getOwnPropertyDescriptor;
@@ -17874,7 +17798,7 @@ exports.f = __webpack_require__(23) ? gOPD : function getOwnPropertyDescriptor(O
 
 
 /***/ }),
-/* 68 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17970,7 +17894,7 @@ exports.default = Point;
 //# sourceMappingURL=Point.js.map
 
 /***/ }),
-/* 69 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17980,7 +17904,7 @@ exports.__esModule = true;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Point = __webpack_require__(68);
+var _Point = __webpack_require__(67);
 
 var _Point2 = _interopRequireDefault(_Point);
 
@@ -18506,7 +18430,7 @@ exports.default = Matrix;
 //# sourceMappingURL=Matrix.js.map
 
 /***/ }),
-/* 70 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18774,7 +18698,7 @@ exports.default = Rectangle;
 //# sourceMappingURL=Rectangle.js.map
 
 /***/ }),
-/* 71 */
+/* 70 */
 /***/ (function(module, exports) {
 
 
@@ -18826,7 +18750,7 @@ module.exports = mapType;
 
 
 /***/ }),
-/* 72 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19174,7 +19098,7 @@ exports.default = Bounds;
 //# sourceMappingURL=Bounds.js.map
 
 /***/ }),
-/* 73 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -19320,7 +19244,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 74 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19412,7 +19336,7 @@ TransformBase.IDENTITY = new TransformBase();
 //# sourceMappingURL=TransformBase.js.map
 
 /***/ }),
-/* 75 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20040,7 +19964,7 @@ exports.default = Sprite;
 //# sourceMappingURL=Sprite.js.map
 
 /***/ }),
-/* 76 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20251,7 +20175,7 @@ exports.nextCombination = function(v) {
 
 
 /***/ }),
-/* 77 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20336,7 +20260,7 @@ exports.Ticker = _Ticker2.default;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 78 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20495,7 +20419,7 @@ exports.default = RenderTexture;
 //# sourceMappingURL=RenderTexture.js.map
 
 /***/ }),
-/* 79 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20751,7 +20675,7 @@ exports.default = CanvasTinter;
 //# sourceMappingURL=CanvasTinter.js.map
 
 /***/ }),
-/* 80 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20790,7 +20714,7 @@ function createIndicesForQuads(size) {
 //# sourceMappingURL=createIndicesForQuads.js.map
 
 /***/ }),
-/* 81 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21951,7 +21875,7 @@ function reqType(xhr) {
 //# sourceMappingURL=Resource.js.map
 
 /***/ }),
-/* 82 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22444,7 +22368,7 @@ function findTextStyle(item, queue) {
 //# sourceMappingURL=BasePrepare.js.map
 
 /***/ }),
-/* 83 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22498,11 +22422,11 @@ var _UpgradesToggles = __webpack_require__(356);
 
 var _UpgradesToggles2 = _interopRequireDefault(_UpgradesToggles);
 
-var _config = __webpack_require__(12);
+var _config = __webpack_require__(11);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(12);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -22796,7 +22720,7 @@ exports.default = EntityShop;
 module.exports = exports['default'];
 
 /***/ }),
-/* 84 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22834,7 +22758,7 @@ var _signals = __webpack_require__(6);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _config = __webpack_require__(12);
+var _config = __webpack_require__(11);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -22924,7 +22848,7 @@ exports.default = UIBar;
 module.exports = exports['default'];
 
 /***/ }),
-/* 85 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23025,7 +22949,7 @@ exports.default = CircleCounter;
 module.exports = exports['default'];
 
 /***/ }),
-/* 86 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23063,7 +22987,7 @@ var _signals = __webpack_require__(6);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _CircleCounter = __webpack_require__(85);
+var _CircleCounter = __webpack_require__(84);
 
 var _CircleCounter2 = _interopRequireDefault(_CircleCounter);
 
@@ -23099,21 +23023,24 @@ var MergeTile = function (_PIXI$Container) {
         _this.container.addChild(_this.backSlot);
         _this.backSlot.alpha = 0;
 
-        _this.backShape = new PIXI.Sprite.fromFrame('backTilesSquare');
+        var slotId = Math.ceil(Math.random() * 3);
+        _this.backShape = new PIXI.Sprite.fromFrame("gameSlot" + slotId);
         _this.backShape.width = size;
         _this.backShape.height = size;
         _this.backShape.alpha = 0.8;
         _this.container.addChild(_this.backShape);
 
-        _this.label = new PIXI.Text('', LABELS.LABEL1);
-        _this.container.addChild(_this.label);
-        _this.label.style.fontSize = 24;
-        _this.label.x = _this.backSlot.width / 2 - _this.label.width / 2;
-
         _this.tileSprite = new PIXI.Sprite.from('');
         _this.container.addChild(_this.tileSprite);
         _this.tileSprite.anchor.set(0.5, 1);
         _this.tileSprite.visible = false;
+
+        _this.label = new PIXI.Text('', LABELS.LABEL1);
+        _this.container.addChild(_this.label);
+        _this.label.style.stroke = 0;
+        _this.label.style.strokeThickness = 4;
+        _this.label.style.fontSize = 18;
+        _this.label.x = _this.backSlot.width / 2 - _this.label.width / 2;
 
         _this.onShowParticles = new _signals2.default();
         _this.onClick = new _signals2.default();
@@ -23157,10 +23084,10 @@ var MergeTile = function (_PIXI$Container) {
         _this.damageTimerView.x = 0;
         _this.damageTimerView.y = 98;
         //this.damageTimerView = new CircleCounter(10,10)
-        _this.container.addChild(_this.damageTimerView);
+        //this.container.addChild(this.damageTimerView)
         _this.damageTimerView.rotation = -Math.PI * 0.5;
         //this.damageTimerView.build()
-
+        _this.startTimer = Math.random() * 2;
         return _this;
     }
 
@@ -23171,7 +23098,7 @@ var MergeTile = function (_PIXI$Container) {
             this.generateResourceTime = -1;
             this.generateResourceNormal = 0;
 
-            this.generateDamage = 0;
+            this.generateDamage = 1000;
             this.generateDamageTime = -1;
             this.generateDamageNormal = 0;
         }
@@ -23188,6 +23115,10 @@ var MergeTile = function (_PIXI$Container) {
         value: function update(delta, dateTimeStamp) {
             var autoUpdateResources = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
 
+            if (this.startTimer > 0) {
+                this.startTimer -= delta;
+                return;
+            }
             if (this.animSprite) {
                 this.sin += delta;
                 this.sin %= Math.PI * 2;
@@ -23195,7 +23126,7 @@ var MergeTile = function (_PIXI$Container) {
             }
             this.damageTimerView.visible = false;
             //console.log(this, dateTimeStamp)
-            if (autoUpdateResources) {
+            if (false) {
                 this.updateResource(delta, dateTimeStamp);
             }
             if (this.tileData) {
@@ -23242,11 +23173,12 @@ var MergeTile = function (_PIXI$Container) {
                     var targetColor = 0xff810a;
                     this.generateDamage = dateTimeStamp - this.updatedDamageTimestamp;
                     var calcTiime = this.generateDamageTime / window.TIME_SCALE * 1000;
+                    //console.log(this.generateDamage,calcTiime)
                     if (this.generateDamage > calcTiime) {
                         this.updatedDamageTimestamp = Date.now(); //(Date.now() / 1000 | 0);
                         this.generateDamageNormal = 1;
                         //console.log(this.generateDamage,  this.generateDamageTime,  gameModifyers.getAttackSpeed())                    
-                        this.damageReady();
+                        this.resourceReady();
                     } else {
                         if (this.generateDamageTime < 0.5) {
                             this.generateDamageNormal = 1;
@@ -23363,7 +23295,7 @@ var MergeTile = function (_PIXI$Container) {
             this.updatedDamageTimestamp = Date.now() / 1000 | 0;
             this.tileSprite.texture = PIXI.Texture.from(this.tileData.getTexture());
             this.updatePosition();
-            this.entityScale = 1.2; //Math.abs(this.backSlot.width / this.tileData.graphicsData.baseWidth * 0.75)
+            this.entityScale = 1; //Math.abs(this.backSlot.width / this.tileData.graphicsData.baseWidth * 0.75)
             this.tileSprite.anchor.set(0.5);
             this.sin = Math.random();
             var v = this.tileData.getValue();
@@ -23371,25 +23303,25 @@ var MergeTile = function (_PIXI$Container) {
                 v = utils.formatPointsLabel(this.tileData.getValue());
             }
             this.label.text = v;
+            this.label.text = this.tileData.rawData.id + 1;
             //this.label.text = this.tileData.getGenerateDamageTime() +' --'+  this.tileData.rawData.initialTime
-            this.label.x = this.backSlot.width / 2 - this.label.width / 2;
+            this.label.x = this.backSlot.width - this.label.width - 10;
+            this.label.y = this.backSlot.height - this.label.height - 10;
             this.showSprite();
             this.enterAnimation();
+
+            this.generateDamage = 1000;
         }
     }, {
         key: 'enterAnimation',
         value: function enterAnimation() {
-            var _this2 = this;
-
             this.tileSprite.scale.set(0, 2);
 
+            this.animSprite = true;
             TweenLite.to(this.tileSprite.scale, 0.5, {
                 x: this.entityScale,
                 y: this.entityScale,
-                ease: Elastic.easeOut,
-                onComplete: function onComplete() {
-                    _this2.animSprite = true;
-                }
+                ease: Elastic.easeOut
             });
         }
     }, {
@@ -23508,6 +23440,82 @@ var MergeTile = function (_PIXI$Container) {
 }(PIXI.Container);
 
 exports.default = MergeTile;
+module.exports = exports['default'];
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _getPrototypeOf = __webpack_require__(3);
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(1);
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(2);
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(4);
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(5);
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _pixi = __webpack_require__(0);
+
+var PIXI = _interopRequireWildcard(_pixi);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import * as FILTERS from 'pixi-filters';
+var TextBox = function (_PIXI$Container) {
+    (0, _inherits3.default)(TextBox, _PIXI$Container);
+
+    function TextBox() {
+        var padding = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 10;
+        var tex = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'small-no-pattern';
+        (0, _classCallCheck3.default)(this, TextBox);
+
+        var _this = (0, _possibleConstructorReturn3.default)(this, (TextBox.__proto__ || (0, _getPrototypeOf2.default)(TextBox)).call(this));
+
+        _this.padding = padding;
+        _this.background = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame(tex), 10, 10, 10, 10);
+        _this.addChild(_this.background);
+
+        _this.label = new PIXI.Text('Thanks for helping us\nChoose your prize', LABELS.LABEL1);
+        _this.label.style.fontSize = 18;
+        _this.label.x = _this.padding;
+        _this.label.y = _this.padding;
+        _this.addChild(_this.label);
+        return _this;
+    }
+
+    (0, _createClass3.default)(TextBox, [{
+        key: 'updateText',
+        value: function updateText(text) {
+            this.label.text = text;
+            this.background.width = this.label.width + this.padding * 2;
+            this.background.height = this.label.height + this.padding * 2;
+        }
+    }]);
+    return TextBox;
+}(PIXI.Container);
+
+exports.default = TextBox;
 module.exports = exports['default'];
 
 /***/ }),
@@ -23671,14 +23679,14 @@ module.exports = function (it) {
 
 "use strict";
 
-var LIBRARY = __webpack_require__(56);
+var LIBRARY = __webpack_require__(55);
 var $export = __webpack_require__(21);
 var redefine = __webpack_require__(93);
 var hide = __webpack_require__(27);
 var has = __webpack_require__(24);
-var Iterators = __webpack_require__(57);
+var Iterators = __webpack_require__(56);
 var $iterCreate = __webpack_require__(166);
-var setToStringTag = __webpack_require__(63);
+var setToStringTag = __webpack_require__(62);
 var getPrototypeOf = __webpack_require__(96);
 var ITERATOR = __webpack_require__(29)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
@@ -23756,7 +23764,7 @@ module.exports = __webpack_require__(27);
 var has = __webpack_require__(24);
 var toIObject = __webpack_require__(25);
 var arrayIndexOf = __webpack_require__(169)(false);
-var IE_PROTO = __webpack_require__(60)('IE_PROTO');
+var IE_PROTO = __webpack_require__(59)('IE_PROTO');
 
 module.exports = function (object, names) {
   var O = toIObject(object);
@@ -23790,7 +23798,7 @@ module.exports = function (it) {
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has = __webpack_require__(24);
 var toObject = __webpack_require__(97);
-var IE_PROTO = __webpack_require__(60)('IE_PROTO');
+var IE_PROTO = __webpack_require__(59)('IE_PROTO');
 var ObjectProto = Object.prototype;
 
 module.exports = Object.getPrototypeOf || function (O) {
@@ -23807,7 +23815,7 @@ module.exports = Object.getPrototypeOf || function (O) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.13 ToObject(argument)
-var defined = __webpack_require__(55);
+var defined = __webpack_require__(54);
 module.exports = function (it) {
   return Object(defined(it));
 };
@@ -23826,7 +23834,7 @@ exports.f = Object.getOwnPropertySymbols;
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
 var $keys = __webpack_require__(94);
-var hiddenKeys = __webpack_require__(62).concat('length', 'prototype');
+var hiddenKeys = __webpack_require__(61).concat('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   return $keys(O, hiddenKeys);
@@ -23964,7 +23972,7 @@ exports.default = ObservablePoint;
 
 exports.__esModule = true;
 
-var _Matrix = __webpack_require__(69);
+var _Matrix = __webpack_require__(68);
 
 var _Matrix2 = _interopRequireDefault(_Matrix);
 
@@ -24644,7 +24652,7 @@ module.exports = compileProgram;
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var mapType = __webpack_require__(71);
+var mapType = __webpack_require__(70);
 var mapSize = __webpack_require__(106);
 
 /**
@@ -24732,7 +24740,7 @@ module.exports = mapSize;
 /* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var mapType = __webpack_require__(71);
+var mapType = __webpack_require__(70);
 var defaultValue = __webpack_require__(108);
 
 /**
@@ -25021,7 +25029,7 @@ var _eventemitter2 = _interopRequireDefault(_eventemitter);
 
 var _const = __webpack_require__(8);
 
-var _settings = __webpack_require__(11);
+var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
@@ -25033,7 +25041,7 @@ var _Transform = __webpack_require__(113);
 
 var _Transform2 = _interopRequireDefault(_Transform);
 
-var _Bounds = __webpack_require__(72);
+var _Bounds = __webpack_require__(71);
 
 var _Bounds2 = _interopRequireDefault(_Bounds);
 
@@ -25716,7 +25724,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(13);
 
-var _TransformBase2 = __webpack_require__(74);
+var _TransformBase2 = __webpack_require__(73);
 
 var _TransformBase3 = _interopRequireDefault(_TransformBase2);
 
@@ -25931,7 +25939,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(13);
 
-var _TransformBase2 = __webpack_require__(74);
+var _TransformBase2 = __webpack_require__(73);
 
 var _TransformBase3 = _interopRequireDefault(_TransformBase2);
 
@@ -26921,7 +26929,7 @@ var _BaseTexture3 = _interopRequireDefault(_BaseTexture2);
 
 var _utils = __webpack_require__(9);
 
-var _ticker = __webpack_require__(77);
+var _ticker = __webpack_require__(76);
 
 var _const = __webpack_require__(8);
 
@@ -27378,7 +27386,7 @@ var _math = __webpack_require__(13);
 
 var _const = __webpack_require__(8);
 
-var _settings = __webpack_require__(11);
+var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
@@ -27386,7 +27394,7 @@ var _Container = __webpack_require__(37);
 
 var _Container2 = _interopRequireDefault(_Container);
 
-var _RenderTexture = __webpack_require__(78);
+var _RenderTexture = __webpack_require__(77);
 
 var _RenderTexture2 = _interopRequireDefault(_RenderTexture);
 
@@ -27744,7 +27752,7 @@ var _BaseTexture2 = __webpack_require__(30);
 
 var _BaseTexture3 = _interopRequireDefault(_BaseTexture2);
 
-var _settings = __webpack_require__(11);
+var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
@@ -27909,7 +27917,7 @@ exports.__esModule = true;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _settings = __webpack_require__(11);
+var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
@@ -28205,7 +28213,7 @@ var _utils = __webpack_require__(9);
 
 var _const = __webpack_require__(8);
 
-var _settings = __webpack_require__(11);
+var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
@@ -28398,7 +28406,7 @@ exports.__esModule = true;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Matrix = __webpack_require__(69);
+var _Matrix = __webpack_require__(68);
 
 var _Matrix2 = _interopRequireDefault(_Matrix);
 
@@ -28569,7 +28577,7 @@ var _pixiGlCore = __webpack_require__(15);
 
 var _pixiGlCore2 = _interopRequireDefault(_pixiGlCore);
 
-var _createIndicesForQuads = __webpack_require__(80);
+var _createIndicesForQuads = __webpack_require__(79);
 
 var _createIndicesForQuads2 = _interopRequireDefault(_createIndicesForQuads);
 
@@ -30672,9 +30680,9 @@ var _Container = __webpack_require__(37);
 
 var _Container2 = _interopRequireDefault(_Container);
 
-var _ticker = __webpack_require__(77);
+var _ticker = __webpack_require__(76);
 
-var _settings = __webpack_require__(11);
+var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
@@ -33219,7 +33227,7 @@ var _signals = __webpack_require__(6);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _LocalizationManager = __webpack_require__(382);
+var _LocalizationManager = __webpack_require__(381);
 
 var _LocalizationManager2 = _interopRequireDefault(_LocalizationManager);
 
@@ -33524,11 +33532,11 @@ function tryStuff() {
 "use strict";
 
 
-var _config = __webpack_require__(12);
+var _config = __webpack_require__(11);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(12);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -33706,7 +33714,7 @@ module.exports = { "default": __webpack_require__(163), __esModule: true };
 
 __webpack_require__(164);
 __webpack_require__(173);
-module.exports = __webpack_require__(64).f('iterator');
+module.exports = __webpack_require__(63).f('iterator');
 
 
 /***/ }),
@@ -33737,8 +33745,8 @@ __webpack_require__(92)(String, 'String', function (iterated) {
 /* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(54);
-var defined = __webpack_require__(55);
+var toInteger = __webpack_require__(53);
+var defined = __webpack_require__(54);
 // true  -> String#at
 // false -> String#codePointAt
 module.exports = function (TO_STRING) {
@@ -33762,9 +33770,9 @@ module.exports = function (TO_STRING) {
 
 "use strict";
 
-var create = __webpack_require__(58);
+var create = __webpack_require__(57);
 var descriptor = __webpack_require__(45);
-var setToStringTag = __webpack_require__(63);
+var setToStringTag = __webpack_require__(62);
 var IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
@@ -33782,7 +33790,7 @@ module.exports = function (Constructor, NAME, next) {
 
 var dP = __webpack_require__(22);
 var anObject = __webpack_require__(34);
-var getKeys = __webpack_require__(59);
+var getKeys = __webpack_require__(58);
 
 module.exports = __webpack_require__(23) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
@@ -33841,7 +33849,7 @@ module.exports = function (IS_INCLUDES) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.15 ToLength
-var toInteger = __webpack_require__(54);
+var toInteger = __webpack_require__(53);
 var min = Math.min;
 module.exports = function (it) {
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
@@ -33852,7 +33860,7 @@ module.exports = function (it) {
 /* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(54);
+var toInteger = __webpack_require__(53);
 var max = Math.max;
 var min = Math.min;
 module.exports = function (index, length) {
@@ -33876,7 +33884,7 @@ module.exports = document && document.documentElement;
 __webpack_require__(174);
 var global = __webpack_require__(19);
 var hide = __webpack_require__(27);
-var Iterators = __webpack_require__(57);
+var Iterators = __webpack_require__(56);
 var TO_STRING_TAG = __webpack_require__(29)('toStringTag');
 
 var DOMIterables = ('CSSRuleList,CSSStyleDeclaration,CSSValueList,ClientRectList,DOMRectList,DOMStringList,' +
@@ -33902,7 +33910,7 @@ for (var i = 0; i < DOMIterables.length; i++) {
 
 var addToUnscopables = __webpack_require__(175);
 var step = __webpack_require__(176);
-var Iterators = __webpack_require__(57);
+var Iterators = __webpack_require__(56);
 var toIObject = __webpack_require__(25);
 
 // 22.1.3.4 Array.prototype.entries()
@@ -33982,24 +33990,24 @@ var $export = __webpack_require__(21);
 var redefine = __webpack_require__(93);
 var META = __webpack_require__(180).KEY;
 var $fails = __webpack_require__(35);
-var shared = __webpack_require__(61);
-var setToStringTag = __webpack_require__(63);
+var shared = __webpack_require__(60);
+var setToStringTag = __webpack_require__(62);
 var uid = __webpack_require__(46);
 var wks = __webpack_require__(29);
-var wksExt = __webpack_require__(64);
-var wksDefine = __webpack_require__(65);
+var wksExt = __webpack_require__(63);
+var wksDefine = __webpack_require__(64);
 var enumKeys = __webpack_require__(181);
 var isArray = __webpack_require__(182);
 var anObject = __webpack_require__(34);
 var isObject = __webpack_require__(28);
 var toIObject = __webpack_require__(25);
-var toPrimitive = __webpack_require__(52);
+var toPrimitive = __webpack_require__(51);
 var createDesc = __webpack_require__(45);
-var _create = __webpack_require__(58);
+var _create = __webpack_require__(57);
 var gOPNExt = __webpack_require__(183);
-var $GOPD = __webpack_require__(67);
+var $GOPD = __webpack_require__(66);
 var $DP = __webpack_require__(22);
-var $keys = __webpack_require__(59);
+var $keys = __webpack_require__(58);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
 var gOPN = gOPNExt.f;
@@ -34123,10 +34131,10 @@ if (!USE_NATIVE) {
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f = $defineProperty;
   __webpack_require__(99).f = gOPNExt.f = $getOwnPropertyNames;
-  __webpack_require__(66).f = $propertyIsEnumerable;
+  __webpack_require__(65).f = $propertyIsEnumerable;
   __webpack_require__(98).f = $getOwnPropertySymbols;
 
-  if (DESCRIPTORS && !__webpack_require__(56)) {
+  if (DESCRIPTORS && !__webpack_require__(55)) {
     redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
   }
 
@@ -34273,9 +34281,9 @@ var meta = module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
-var getKeys = __webpack_require__(59);
+var getKeys = __webpack_require__(58);
 var gOPS = __webpack_require__(98);
-var pIE = __webpack_require__(66);
+var pIE = __webpack_require__(65);
 module.exports = function (it) {
   var result = getKeys(it);
   var getSymbols = gOPS.f;
@@ -34335,14 +34343,14 @@ module.exports.f = function getOwnPropertyNames(it) {
 /* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(65)('asyncIterator');
+__webpack_require__(64)('asyncIterator');
 
 
 /***/ }),
 /* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(65)('observable');
+__webpack_require__(64)('observable');
 
 
 /***/ }),
@@ -34634,7 +34642,7 @@ if (!Math.sign) {
 
 exports.__esModule = true;
 
-var _Rectangle = __webpack_require__(70);
+var _Rectangle = __webpack_require__(69);
 
 var _Rectangle2 = _interopRequireDefault(_Rectangle);
 
@@ -34753,7 +34761,7 @@ exports.default = Circle;
 
 exports.__esModule = true;
 
-var _Rectangle = __webpack_require__(70);
+var _Rectangle = __webpack_require__(69);
 
 var _Rectangle2 = _interopRequireDefault(_Rectangle);
 
@@ -34880,7 +34888,7 @@ exports.default = Ellipse;
 
 exports.__esModule = true;
 
-var _Point = __webpack_require__(68);
+var _Point = __webpack_require__(67);
 
 var _Point2 = _interopRequireDefault(_Point);
 
@@ -35918,7 +35926,7 @@ module.exports = {
     generateUniformAccessObject: __webpack_require__(110),
     setPrecision: __webpack_require__(109),
     mapSize: __webpack_require__(106),
-    mapType: __webpack_require__(71)
+    mapType: __webpack_require__(70)
 };
 
 /***/ }),
@@ -35931,7 +35939,7 @@ module.exports = {
 exports.__esModule = true;
 exports.default = maxRecommendedTextures;
 
-var _ismobilejs = __webpack_require__(73);
+var _ismobilejs = __webpack_require__(72);
 
 var _ismobilejs2 = _interopRequireDefault(_ismobilejs);
 
@@ -36983,7 +36991,7 @@ exports.__esModule = true;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _settings = __webpack_require__(11);
+var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
@@ -37646,7 +37654,7 @@ var _const = __webpack_require__(8);
 
 var _math = __webpack_require__(13);
 
-var _CanvasTinter = __webpack_require__(79);
+var _CanvasTinter = __webpack_require__(78);
 
 var _CanvasTinter2 = _interopRequireDefault(_CanvasTinter);
 
@@ -38055,7 +38063,7 @@ var _WebGLRenderer = __webpack_require__(48);
 
 var _WebGLRenderer2 = _interopRequireDefault(_WebGLRenderer);
 
-var _createIndicesForQuads = __webpack_require__(80);
+var _createIndicesForQuads = __webpack_require__(79);
 
 var _createIndicesForQuads2 = _interopRequireDefault(_createIndicesForQuads);
 
@@ -38071,7 +38079,7 @@ var _BatchBuffer = __webpack_require__(237);
 
 var _BatchBuffer2 = _interopRequireDefault(_BatchBuffer);
 
-var _settings = __webpack_require__(11);
+var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
@@ -38081,7 +38089,7 @@ var _pixiGlCore = __webpack_require__(15);
 
 var _pixiGlCore2 = _interopRequireDefault(_pixiGlCore);
 
-var _bitTwiddle = __webpack_require__(76);
+var _bitTwiddle = __webpack_require__(75);
 
 var _bitTwiddle2 = _interopRequireDefault(_bitTwiddle);
 
@@ -39255,7 +39263,7 @@ var _filterTransforms = __webpack_require__(228);
 
 var filterTransforms = _interopRequireWildcard(_filterTransforms);
 
-var _bitTwiddle = __webpack_require__(76);
+var _bitTwiddle = __webpack_require__(75);
 
 var _bitTwiddle2 = _interopRequireDefault(_bitTwiddle);
 
@@ -40160,7 +40168,7 @@ exports.__esModule = true;
 
 var _const = __webpack_require__(8);
 
-var _settings = __webpack_require__(11);
+var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
@@ -40888,7 +40896,7 @@ exports.__esModule = true;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Sprite2 = __webpack_require__(75);
+var _Sprite2 = __webpack_require__(74);
 
 var _Sprite3 = _interopRequireDefault(_Sprite2);
 
@@ -40902,7 +40910,7 @@ var _utils = __webpack_require__(9);
 
 var _const = __webpack_require__(8);
 
-var _settings = __webpack_require__(11);
+var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
@@ -41631,7 +41639,7 @@ var _Container2 = __webpack_require__(37);
 
 var _Container3 = _interopRequireDefault(_Container2);
 
-var _RenderTexture = __webpack_require__(78);
+var _RenderTexture = __webpack_require__(77);
 
 var _RenderTexture2 = _interopRequireDefault(_RenderTexture);
 
@@ -41643,7 +41651,7 @@ var _GraphicsData = __webpack_require__(128);
 
 var _GraphicsData2 = _interopRequireDefault(_GraphicsData);
 
-var _Sprite = __webpack_require__(75);
+var _Sprite = __webpack_require__(74);
 
 var _Sprite2 = _interopRequireDefault(_Sprite);
 
@@ -41653,7 +41661,7 @@ var _utils = __webpack_require__(9);
 
 var _const = __webpack_require__(8);
 
-var _Bounds = __webpack_require__(72);
+var _Bounds = __webpack_require__(71);
 
 var _Bounds2 = _interopRequireDefault(_Bounds);
 
@@ -45518,7 +45526,7 @@ var _core = __webpack_require__(7);
 
 var core = _interopRequireWildcard(_core);
 
-var _ismobilejs = __webpack_require__(73);
+var _ismobilejs = __webpack_require__(72);
 
 var _ismobilejs2 = _interopRequireDefault(_ismobilejs);
 
@@ -46888,7 +46896,7 @@ var _core = __webpack_require__(7);
 
 var core = _interopRequireWildcard(_core);
 
-var _CanvasTinter = __webpack_require__(79);
+var _CanvasTinter = __webpack_require__(78);
 
 var _CanvasTinter2 = _interopRequireDefault(_CanvasTinter);
 
@@ -47512,7 +47520,7 @@ var _ObservablePoint2 = _interopRequireDefault(_ObservablePoint);
 
 var _utils = __webpack_require__(9);
 
-var _settings = __webpack_require__(11);
+var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
@@ -51748,7 +51756,7 @@ var _async = __webpack_require__(146);
 
 var async = _interopRequireWildcard(_async);
 
-var _Resource = __webpack_require__(81);
+var _Resource = __webpack_require__(80);
 
 var _Resource2 = _interopRequireDefault(_Resource);
 
@@ -52570,7 +52578,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 exports.blobMiddlewareFactory = blobMiddlewareFactory;
 
-var _Resource = __webpack_require__(81);
+var _Resource = __webpack_require__(80);
 
 var _Resource2 = _interopRequireDefault(_Resource);
 
@@ -54753,7 +54761,7 @@ var _pixiGlCore = __webpack_require__(15);
 
 var _pixiGlCore2 = _interopRequireDefault(_pixiGlCore);
 
-var _createIndicesForQuads = __webpack_require__(80);
+var _createIndicesForQuads = __webpack_require__(79);
 
 var _createIndicesForQuads2 = _interopRequireDefault(_createIndicesForQuads);
 
@@ -55019,7 +55027,7 @@ Object.defineProperty(exports, 'canvas', {
   }
 });
 
-var _BasePrepare = __webpack_require__(82);
+var _BasePrepare = __webpack_require__(81);
 
 Object.defineProperty(exports, 'BasePrepare', {
   enumerable: true,
@@ -55062,7 +55070,7 @@ var _core = __webpack_require__(7);
 
 var core = _interopRequireWildcard(_core);
 
-var _BasePrepare2 = __webpack_require__(82);
+var _BasePrepare2 = __webpack_require__(81);
 
 var _BasePrepare3 = _interopRequireDefault(_BasePrepare2);
 
@@ -55189,7 +55197,7 @@ var _core = __webpack_require__(7);
 
 var core = _interopRequireWildcard(_core);
 
-var _BasePrepare2 = __webpack_require__(82);
+var _BasePrepare2 = __webpack_require__(81);
 
 var _BasePrepare3 = _interopRequireDefault(_BasePrepare2);
 
@@ -56112,7 +56120,7 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(12);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -57061,7 +57069,7 @@ module.exports = {
   set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
     function (test, buggy, set) {
       try {
-        set = __webpack_require__(89)(Function.call, __webpack_require__(67).f(Object.prototype, '__proto__').set, 2);
+        set = __webpack_require__(89)(Function.call, __webpack_require__(66).f(Object.prototype, '__proto__').set, 2);
         set(test, []);
         buggy = !(test instanceof Array);
       } catch (e) { buggy = true; }
@@ -57099,7 +57107,7 @@ module.exports = function create(P, D) {
 
 var $export = __webpack_require__(21);
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-$export($export.S, 'Object', { create: __webpack_require__(58) });
+$export($export.S, 'Object', { create: __webpack_require__(57) });
 
 
 /***/ }),
@@ -60159,11 +60167,11 @@ var assets = [{
 	"id": "entities",
 	"url": "assets/json\\entities.json"
 }, {
-	"id": "localization_EN",
-	"url": "assets/json\\localization_EN.json"
-}, {
 	"id": "localization_DE",
 	"url": "assets/json\\localization_DE.json"
+}, {
+	"id": "localization_EN",
+	"url": "assets/json\\localization_EN.json"
 }, {
 	"id": "localization_ES",
 	"url": "assets/json\\localization_ES.json"
@@ -60180,20 +60188,20 @@ var assets = [{
 	"id": "localization_KO",
 	"url": "assets/json\\localization_KO.json"
 }, {
-	"id": "localization_RU",
-	"url": "assets/json\\localization_RU.json"
-}, {
 	"id": "localization_PT",
 	"url": "assets/json\\localization_PT.json"
+}, {
+	"id": "localization_RU",
+	"url": "assets/json\\localization_RU.json"
 }, {
 	"id": "localization_TR",
 	"url": "assets/json\\localization_TR.json"
 }, {
-	"id": "localization_ZH",
-	"url": "assets/json\\localization_ZH.json"
-}, {
 	"id": "modifyers",
 	"url": "assets/json\\modifyers.json"
+}, {
+	"id": "localization_ZH",
+	"url": "assets/json\\localization_ZH.json"
 }, {
 	"id": "resources",
 	"url": "assets/json\\resources.json"
@@ -60533,11 +60541,11 @@ var _MergeScreen = __webpack_require__(346);
 
 var _MergeScreen2 = _interopRequireDefault(_MergeScreen);
 
-var _ScreenManager2 = __webpack_require__(381);
+var _ScreenManager2 = __webpack_require__(380);
 
 var _ScreenManager3 = _interopRequireDefault(_ScreenManager2);
 
-var _config = __webpack_require__(12);
+var _config = __webpack_require__(11);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -60776,7 +60784,7 @@ module.exports = function getOwnPropertyDescriptor(it, key) {
 
 // 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
 var toIObject = __webpack_require__(25);
-var $getOwnPropertyDescriptor = __webpack_require__(67).f;
+var $getOwnPropertyDescriptor = __webpack_require__(66).f;
 
 __webpack_require__(154)('getOwnPropertyDescriptor', function () {
   return function getOwnPropertyDescriptor(it, key) {
@@ -60828,7 +60836,7 @@ var _EnemySystem = __webpack_require__(347);
 
 var _EnemySystem2 = _interopRequireDefault(_EnemySystem);
 
-var _EntityShop = __webpack_require__(83);
+var _EntityShop = __webpack_require__(82);
 
 var _EntityShop2 = _interopRequireDefault(_EntityShop);
 
@@ -60884,7 +60892,7 @@ var _UIButton = __webpack_require__(18);
 
 var _UIButton2 = _interopRequireDefault(_UIButton);
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(12);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -60924,11 +60932,7 @@ var _UILabelButton = __webpack_require__(33);
 
 var _UILabelButton2 = _interopRequireDefault(_UILabelButton);
 
-var _GameTutorial = __webpack_require__(379);
-
-var _GameTutorial2 = _interopRequireDefault(_GameTutorial);
-
-var _BonusSystem = __webpack_require__(380);
+var _BonusSystem = __webpack_require__(379);
 
 var _BonusSystem2 = _interopRequireDefault(_BonusSystem);
 
@@ -61018,8 +61022,6 @@ var MergeScreen = function (_Screen) {
                 _this.prizeContainer = new PIXI.Container();
                 _this.container.addChild(_this.prizeContainer);
 
-                _this.bonusContainer = new PIXI.Container();
-
                 _this.resourcesContainer = new PIXI.Container();
                 _this.container.addChild(_this.resourcesContainer);
 
@@ -61077,14 +61079,6 @@ var MergeScreen = function (_Screen) {
                         _this.allMergeData.push(_mergeData2);
                 }
 
-                _this.prizeSystem = new _PrizeSystem2.default({
-                        mainContainer: _this.prizeContainer
-                });
-
-                _this.bonusSystem = new _BonusSystem2.default({
-                        mainContainer: _this.bonusContainer
-                });
-
                 _this.mergeSystem1 = new _MergeSystem2.default({
                         mainContainer: _this.mergeSystemContainer,
                         uiContainer: _this.uiContainer,
@@ -61092,78 +61086,14 @@ var MergeScreen = function (_Screen) {
                         topContainer: _this.topContainer
                 }, window.baseConfigGame, _this.rawMergeDataList);
 
-                _this.resourceSystem = new _ResourceSystem2.default({
-                        mainContainer: _this.resourcesContainer,
-                        wrapper: _this.resourcesWrapper
-                }, window.baseConfigGame, _this.rawMergeResourceList);
-
-                _this.resourceSystemRight = new _ResourceSystem2.default({
-                        mainContainer: _this.resourcesContainerRight,
-                        wrapper: _this.resourcesWrapperRight
-                }, window.baseConfigGame, _this.rawMergeResourceListRight);
-
-                _this.enemiesSystem = new _EnemySystem2.default({
-                        mainContainer: _this.enemiesContainer
-                }, window.baseEnemies);
-
                 _this.addSystem(_this.mergeSystem1);
-                _this.addSystem(_this.prizeSystem);
-                _this.addSystem(_this.bonusSystem);
-                _this.addSystem(_this.resourceSystem);
-                _this.addSystem(_this.resourceSystemRight);
-                _this.addSystem(_this.enemiesSystem);
 
                 _this.mergeSystem1.enemySystem = _this.enemiesSystem;
-
-                _this.resourceSystem.onParticles.add(_this.addParticles.bind(_this));
-                _this.resourceSystem.onGetResources.add(_this.addResourceParticles.bind(_this));
-                _this.resourceSystem.onPopLabel.add(_this.popLabel.bind(_this));
-                _this.resourceSystem.onStandardPopUp.add(_this.standardPopUpShow.bind(_this));
-
-                _this.resourceSystemRight.onParticles.add(_this.addParticles.bind(_this));
-                _this.resourceSystemRight.onGetResources.add(_this.addResourceParticles.bind(_this));
-                _this.resourceSystemRight.onPopLabel.add(_this.popLabel.bind(_this));
-                _this.resourceSystemRight.onStandardPopUp.add(_this.standardPopUpShow.bind(_this));
 
                 _this.mergeSystem1.onParticles.add(_this.addParticles.bind(_this));
                 _this.mergeSystem1.onDealDamage.add(_this.addDamageParticles.bind(_this));
                 _this.mergeSystem1.onPopLabel.add(_this.popLabel.bind(_this));
-
-                _this.enemiesSystem.onParticles.add(_this.addParticles.bind(_this));
-                _this.enemiesSystem.onPopLabel.add(_this.popLabelDamage.bind(_this));
-                _this.enemiesSystem.onGetResources.add(_this.addResourceParticles.bind(_this));
-                _this.enemiesSystem.onChangeEnemySet.add(function (set) {
-                        _this.spaceBackground.setTopColor(set.color);
-                });
-
-                _this.prizeSystem.onCollect.add(function (prize) {
-                        _this.openPopUp(_this.openChestPopUp, { prize: prize, onConfirm: _this.onPrizeCollected.bind(_this) });
-                });
-
-                _this.bonusSystem.onCollect.add(function (prize) {
-
-                        var bonus = Math.floor(Math.random() * _this.bonusTimers.length);
-
-                        var target = _this.bonusTimers[bonus];
-                        _this.openPopUp(_this.bonusPopUp, {
-                                texture: target.mainButton.icon.texture,
-                                description: target.fullDescription,
-                                shortDescription: target.shortDescription,
-                                onConfirm: function onConfirm() {
-                                        target.confirmBonus();
-                                        target.visible = true;
-                                        _this.activeBonuses[target.id] = 0;
-                                }
-                        });
-
-                        //this.openPopUp(this.openChestPopUp, { prize, onConfirm: this.onPrizeCollected.bind(this) })
-                });
-
-                _this.mergeSystem1.addSystem(_this.enemiesSystem);
-                _this.mergeSystem1.addSystem(_this.resourceSystem);
-                _this.mergeSystem1.addSystem(_this.resourceSystemRight);
-                _this.mergeSystem1.addSystem(_this.prizeSystem);
-                _this.mergeSystem1.addSystem(_this.bonusSystem);
+                _this.mergeSystem1.onGetResources.add(_this.addResourceParticles.bind(_this));
 
                 _this.entityDragSprite = new PIXI.Sprite.from('');
                 _this.addChild(_this.entityDragSprite);
@@ -61179,25 +61109,8 @@ var MergeScreen = function (_Screen) {
 
                 _this.statsList = new _UIList2.default();
                 _this.statsList.w = 100;
-                _this.statsList.h = 140;
+                _this.statsList.h = 80;
                 _this.container.addChild(_this.statsList);
-
-                _this.resourcesContainerLabel = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('grid1'), 20, 20, 20, 5);
-                _this.resourcesContainerLabel.width = _this.statsList.w;
-                _this.resourcesContainerLabel.height = 40;
-
-                _this.resourcesLabel = new PIXI.Text('', LABELS.LABEL1);
-                _this.resourcesLabel.style.fontSize = 14;
-                _utils2.default.centerObject(_this.resourcesLabel, _this.resourcesContainerLabel);
-                _this.resourcesLabel.x -= 10;
-                _this.resourcesContainerLabel.addChild(_this.resourcesLabel);
-                _this.statsList.addElement(_this.resourcesContainerLabel);
-
-                _this.coinTexture = new PIXI.Sprite.from('coin');
-                _this.resourcesLabel.addChild(_this.coinTexture);
-                _this.coinTexture.scale.set(_this.resourcesContainerLabel.height / _this.coinTexture.height * 0.5);
-                _this.coinTexture.x = -23;
-                _this.coinTexture.y = -3;
 
                 _this.rpsContainer = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('grid1'), 20, 20, 20, 5);
                 _this.rpsContainer.width = _this.statsList.w;
@@ -61212,21 +61125,6 @@ var MergeScreen = function (_Screen) {
                 _this.resourcesTexture.x = -23;
                 _this.resourcesTexture.y = -3;
                 _this.rpsLabel.addChild(_this.resourcesTexture);
-
-                _this.dpsContainer = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('grid1'), 20, 20, 20, 5);
-                _this.dpsContainer.width = _this.statsList.w;
-                _this.dpsContainer.height = 40;
-
-                _this.dpsLabel = new PIXI.Text('', LABELS.LABEL1);
-                _this.dpsLabel.style.fontSize = 14;
-                _this.dpsContainer.addChild(_this.dpsLabel);
-                _this.statsList.addElement(_this.dpsContainer);
-
-                _this.damageTexture = new PIXI.Sprite.from('bullets-s');
-                _this.dpsLabel.addChild(_this.damageTexture);
-                _this.damageTexture.scale.set(_this.dpsContainer.height / _this.damageTexture.height * 0.5);
-                _this.damageTexture.x = -23;
-                _this.damageTexture.y = -3;
 
                 _this.shardsCounter = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('grid1'), 20, 20, 20, 5);
                 _this.shardsCounter.width = _this.statsList.w;
@@ -61249,8 +61147,8 @@ var MergeScreen = function (_Screen) {
                 _this.frontLayer.addChild(_this.particleSystem);
 
                 _this.helperButtonList = new _UIList2.default();
-                _this.helperButtonList.h = 60;
-                _this.helperButtonList.w = 370;
+                _this.helperButtonList.h = 370;
+                _this.helperButtonList.w = 60;
                 _this.speedUpToggle = new _UIButton2.default(0x002299, 'fast_forward_icon');
                 _this.helperButtonList.addElement(_this.speedUpToggle);
                 _this.speedUpToggle.onClick.add(function () {
@@ -61299,15 +61197,15 @@ var MergeScreen = function (_Screen) {
                 });
                 _this.refreshToggles();
 
-                _this.helperButtonList.updateHorizontalList();
+                _this.helperButtonList.updateVerticalList();
                 _this.container.addChild(_this.helperButtonList);
 
                 _this.helperButtonList.visible = false;
                 _this.helperButtonList.scale.set(0.5);
-                var buttonSize = 90;
+                var buttonSize = 70;
                 _this.shopButtonsList = new _UIList2.default();
-                _this.shopButtonsList.w = buttonSize * 3 + 15;
-                _this.shopButtonsList.h = buttonSize;
+                _this.shopButtonsList.w = buttonSize;
+                _this.shopButtonsList.h = buttonSize * 2.5;
                 _this.container.addChild(_this.shopButtonsList);
 
                 _this.currentOpenPopUp = null;
@@ -61336,19 +61234,19 @@ var MergeScreen = function (_Screen) {
                         _this.openPopUp(_this.generalShop);
                 });
 
-                _this.openShop = new _UIButton2.default(0x002299, 'asteroid (2)', 0xFFFFFF, buttonSize, buttonSize);
-                _this.openShop.addBadge('icon_increase');
-                _this.openShop.updateIconScale(0.75);
-                _this.openShop.newItem = new PIXI.Sprite.fromFrame('new_item');
-                _this.openShop.newItem.scale.set(0.7);
-                _this.openShop.newItem.anchor.set(0);
-                _this.openShop.newItem.position.set(-buttonSize / 2);
-                _this.openShop.newItem.visible = false;
-                _this.openShop.addChild(_this.openShop.newItem);
-                _this.shopButtonsList.addElement(_this.openShop);
-                _this.openShop.onClick.add(function () {
-                        _this.openPopUp(_this.entityShop);
-                });
+                // this.openShop = new UIButton1(0x002299, 'asteroid (2)', 0xFFFFFF, buttonSize, buttonSize)
+                // this.openShop.addBadge('icon_increase')
+                // this.openShop.updateIconScale(0.75)
+                // this.openShop.newItem = new PIXI.Sprite.fromFrame('new_item')
+                // this.openShop.newItem.scale.set(0.7)
+                // this.openShop.newItem.anchor.set(0)
+                // this.openShop.newItem.position.set(-buttonSize / 2)
+                // this.openShop.newItem.visible = false;
+                // this.openShop.addChild(this.openShop.newItem)
+                // this.shopButtonsList.addElement(this.openShop)
+                // this.openShop.onClick.add(() => {
+                //     this.openPopUp(this.entityShop)
+                // })
 
                 _this.openMergeShop = new _UIButton2.default(0x002299, 'ship01', 0xFFFFFF, buttonSize, buttonSize);
                 _this.openMergeShop.updateIconScale(0.75);
@@ -61364,17 +61262,18 @@ var MergeScreen = function (_Screen) {
                         _this.openPopUp(_this.mergeItemsShop);
                 });
 
-                _this.shopButtonsList.updateHorizontalList();
+                _this.shopButtonsList.updateVerticalList();
 
                 window.TIME_SCALE = 1;
 
                 _this.uiPanels = [];
 
-                _this.entityShop = new _EntityShop2.default([_this.resourceSystem, _this.resourceSystemRight]);
-                _this.uiLayer.addChild(_this.entityShop);
-                _this.entityShop.hide();
+                // this.entityShop = new EntityShop([this.resourceSystem, this.resourceSystemRight]);
+                // this.uiLayer.addChild(this.entityShop);
+                // this.entityShop.hide();
 
-                _this.entityShop.addItems(_this.allRawResources);
+
+                // this.entityShop.addItems(this.allRawResources)
 
                 _this.mergeItemsShop = new _MergeItemsShop2.default([_this.mergeSystem1]);
                 _this.uiLayer.addChild(_this.mergeItemsShop);
@@ -61402,7 +61301,7 @@ var MergeScreen = function (_Screen) {
                 _this.sellAllPopUp = new _SellAllPopUp2.default('sell', _this.screenManager);
                 _this.uiLayer.addChild(_this.sellAllPopUp);
 
-                _this.uiPanels.push(_this.entityShop);
+                //this.uiPanels.push(this.entityShop)
                 _this.uiPanels.push(_this.mergeItemsShop);
                 _this.uiPanels.push(_this.generalShop);
                 _this.uiPanels.push(_this.standardPopUp);
@@ -61410,9 +61309,9 @@ var MergeScreen = function (_Screen) {
                 _this.uiPanels.push(_this.openChestPopUp);
                 _this.uiPanels.push(_this.sellAllPopUp);
 
-                _this.entityShop.onPossiblePurchase.add(function (canBuy) {
-                        _this.openShop.newItem.visible = canBuy;
-                });
+                // this.entityShop.onPossiblePurchase.add((canBuy) => {
+                //     this.openShop.newItem.visible = canBuy;
+                // })
                 _this.mergeItemsShop.onPossiblePurchase.add(function (canBuy) {
                         _this.openMergeShop.newItem.visible = canBuy;
                 });
@@ -61436,71 +61335,11 @@ var MergeScreen = function (_Screen) {
                         }
                 });
 
-                _this.timeBonus = new _TimeBonusButton2.default('speedShip', 100, 50, 'large-square-pattern-cyan');
-                _this.timeBonus.setParams(window.gameModifyers.bonusData, 'generateTimerBonus', 1, 5, 30);
-                _this.timeBonus.onClickBuff.add(_this.onConfirmBonus.bind(_this));
-                _this.timeBonus.setDescription(window.localizationManager.getLabel('bonus4'), window.localizationManager.getLabel('bonus4desc'), true);
-
-                _this.damageBonus = new _TimeBonusButton2.default('damageBonus', 100, 50, 'large-square-pattern-cyan');
-                _this.damageBonus.setParams(window.gameModifyers.bonusData, 'damageBonus', 1, 10, 30);
-                _this.damageBonus.onClickBuff.add(_this.onConfirmBonus.bind(_this));
-                _this.damageBonus.setDescription(window.localizationManager.getLabel('bonus3'), window.localizationManager.getLabel('bonus3desc'), true);
-
-                _this.speedBonus = new _TimeBonusButton2.default('drill', 100, 50, 'large-square-pattern-cyan');
-                _this.speedBonus.setParams(window.gameModifyers.bonusData, 'autoCollectResource', false, true, 120);
-                //this.speedBonus.setParams(window.gameModifyers.bonusData, 'resourceSpeed', 1, 0.05, 30)
-                _this.speedBonus.onClickBuff.add(_this.onConfirmBonus.bind(_this));
-                _this.speedBonus.setDescription(window.localizationManager.getLabel('bonus2'), window.localizationManager.getLabel('bonus2desc'), true);
-
-                _this.autoMergeBonus = new _TimeBonusButton2.default('auto-merge-icon', 100, 50, 'large-square-pattern-cyan');
-                _this.autoMergeBonus.setParams(window.gameModifyers.bonusData, 'autoMerge', 1, 2, 120);
-                //this.autoMergeBonus.setParams(window.gameModifyers.bonusData, 'resourceSpeed', 1, 0.05, 30)
-                _this.autoMergeBonus.onClickBuff.add(_this.onConfirmBonus.bind(_this));
-                _this.autoMergeBonus.setDescription(window.localizationManager.getLabel('bonus1'), window.localizationManager.getLabel('bonus1desc'), true);
-
-                _this.bonusTimers = [];
-                _this.bonusTimers.push(_this.damageBonus);
-                _this.bonusTimers.push(_this.timeBonus);
-                _this.bonusTimers.push(_this.speedBonus);
-                _this.bonusTimers.push(_this.autoMergeBonus);
-
-                _this.bonusTimerList = new _UIList2.default();
-                _this.bonusTimerList.w = 120;
-                _this.bonusTimerList.h = 320;
-                _this.container.addChild(_this.bonusTimerList);
-                _this.bonusTimerList.addElement(_this.damageBonus);
-                _this.bonusTimerList.addElement(_this.timeBonus);
-                _this.bonusTimerList.addElement(_this.speedBonus);
-                _this.bonusTimerList.addElement(_this.autoMergeBonus);
-
-                _this.container.addChild(_this.bonusContainer);
-
-                _this.bonusTimerList.updateVerticalList();
-                _this.shopButtonsList.updateHorizontalList();
-
-                _this.activeBonuses = [];
-                var bid = 0;
-                _this.bonusTimers.forEach(function (element) {
-                        element.id = bid;
-                        bid++;
-
-                        _this.activeBonuses.push(1);
-                });
-                _this.bonusTimers.forEach(function (element) {
-                        element.x = 0;
-                        element.visible = false;
-
-                        element.onCompleteBuff.add(function (target) {
-                                console.log(target);
-
-                                _this.activeBonuses[target.id] = 1;
-                        });
-                });
-
+                _this.shopButtonsList.updateVerticalList();
                 _this.savedEconomy = COOKIE_MANAGER.getEconomy();
 
                 var now = Date.now() / 1000 | 0;
-                var diff = now - _this.savedEconomy.lastChanged;
+                var diff = 0; //now - this.savedEconomy.lastChanged
 
                 if (_this.tutorialStep > 1 && diff > 60 && _this.sumStart > 10) {
                         var params = {
@@ -61514,8 +61353,9 @@ var MergeScreen = function (_Screen) {
                 }
 
                 _this.forcePauseSystemsTimer = 0.05;
+
                 _this.spaceStation = new _SpaceStation2.default();
-                _this.container.addChild(_this.spaceStation);
+                //this.container.addChild(this.spaceStation);
                 _this.spaceStation.onParticles.add(_this.addParticles.bind(_this));
                 _this.spaceStation.scale.set(0.55);
                 _this.spaceStation.addCallback(function () {
@@ -61532,18 +61372,17 @@ var MergeScreen = function (_Screen) {
 
                 _this.tutorialStep = window.COOKIE_MANAGER.getStats().tutorialStep;
 
-                _this.gameTutorial = new _GameTutorial2.default(_this);
-                if (_this.tutorialStep == 0) {
-                        if (window.gameEconomy.currentResources > 10) {
-                                COOKIE_MANAGER.endTutorial(2);
-                        } else {
+                // this.gameTutorial = new GameTutorial(this)
+                // if (this.tutorialStep == 0) {
+                //     if (window.gameEconomy.currentResources > 10) {
+                //         COOKIE_MANAGER.endTutorial(2);
+                //     } else {
 
-                                _this.startTutorial();
-                                _this.addChild(_this.gameTutorial);
-                        }
-                }
+                //         this.startTutorial();
+                //         this.addChild(this.gameTutorial);
+                //     }
+                // }
 
-                console.log(window.COOKIE_MANAGER.getStats().tutorialStep);
 
                 return _this;
         }
@@ -61637,10 +61476,8 @@ var MergeScreen = function (_Screen) {
                         var progression = COOKIE_MANAGER.getProgression();
                         var shards = 10;
 
-                        var rps = Math.max(1, (this.resourceSystem.rps + this.resourceSystemRight.rps) * 0.01);
                         var dps = Math.max(1, this.mergeSystem1.dps * 0.01) / (2000 / (progression.currentEnemyLevel + 1));
                         var res = 1; //Math.max(1, window.gameEconomy.currentResources)
-                        console.log(rps, dps, res);
 
                         shards = shardsTotal; //this.getShardBonusValue()
                         shards = Math.max(shards, 10);
@@ -61656,11 +61493,6 @@ var MergeScreen = function (_Screen) {
                         });
                         this.allMergeData.forEach(function (element) {
                                 element.reset();
-                        });
-                        this.bonusTimers.forEach(function (element) {
-                                if (element.stop) {
-                                        element.stop();
-                                }
                         });
                         COOKIE_MANAGER.resetProgression();
                         window.gameEconomy.resetAll();
@@ -61720,16 +61552,14 @@ var MergeScreen = function (_Screen) {
         }, {
                 key: 'collectStartAmountDouble',
                 value: function collectStartAmountDouble() {
-                        var _this4 = this;
-
                         window.DO_REWARD(function () {
-                                _this4.resourceSystem.collectCustomStartAmount(_this4.sumStart * 2);
+                                //this.resourceSystem.collectCustomStartAmount(this.sumStart * 2)
                         });
                 }
         }, {
                 key: 'collectStartAmount',
                 value: function collectStartAmount() {
-                        this.resourceSystem.collectCustomStartAmount(this.sumStart);
+                        //this.resourceSystem.collectCustomStartAmount(this.sumStart)
                 }
         }, {
                 key: 'standardPopUpShow',
@@ -61783,6 +61613,7 @@ var MergeScreen = function (_Screen) {
 
                         window.gameEconomy.addResources(totalResources);
 
+                        this.popLabelDamage(targetPosition, _utils2.default.formatPointsLabel(totalResources));
                         if (quantParticles <= 0) {
                                 return;
                         }
@@ -61791,15 +61622,10 @@ var MergeScreen = function (_Screen) {
                                 quantParticles = 1;
                         }
 
-                        var coinPosition = this.coinTexture.parent.getGlobalPosition();
-
-                        var frontLayer = this.frontLayer.getGlobalPosition();
-
-                        var toLocalTarget = this.particleSystem.toLocal(coinPosition);
-
                         for (var index = 0; index < quantParticles; index++) {
                                 //customData.target = { x: coinPosition.x - frontLayer.x, y: coinPosition.y - frontLayer.y, timer: 0.2 + Math.random() * 0.75 }
-                                customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.2 + Math.random() * 0.75 };
+                                //customData.target = { x: toLocal.x, y: toLocal.y - 50, timer: 0 }
+                                customData.gravity = 0;
                                 customData.ignoreMatchRotation = true;
                                 this.particleSystem.show(toLocal, 1, customData);
                         }
@@ -61838,14 +61664,9 @@ var MergeScreen = function (_Screen) {
         }, {
                 key: 'update',
                 value: function update(delta) {
-                        this.bonusTimers.forEach(function (element) {
-                                if (element.update) {
-                                        element.update(delta);
-                                }
-                        });
                         delta *= window.TIME_SCALE * window.gameModifyers.bonusData.gameSpeed;
 
-                        this.gameTutorial.update(delta);
+                        //this.gameTutorial.update(delta);
 
                         if (this.forcePauseSystemsTimer > 0) {
                                 this.forcePauseSystemsTimer -= delta;
@@ -61862,17 +61683,9 @@ var MergeScreen = function (_Screen) {
                                 }
                         });
 
-                        this.resourcesLabel.text = _utils2.default.formatPointsLabel(window.gameEconomy.currentResources);
-                        _utils2.default.centerObject(this.resourcesLabel, this.resourcesContainerLabel);
-                        this.resourcesLabel.x = 30;
-
-                        this.rpsLabel.text = _utils2.default.formatPointsLabel(this.resourceSystem.rps + this.resourceSystemRight.rps) + '/s';
+                        this.rpsLabel.text = _utils2.default.formatPointsLabel(this.mergeSystem1.dps) + '/s';
                         _utils2.default.centerObject(this.rpsLabel, this.rpsContainer);
                         this.rpsLabel.x = 30;
-
-                        this.dpsLabel.text = _utils2.default.formatPointsLabel(this.mergeSystem1.dps) + '/s';
-                        _utils2.default.centerObject(this.dpsLabel, this.dpsContainer);
-                        this.dpsLabel.x = 30;
 
                         this.shardsLabel.text = 'x ' + _utils2.default.formatPointsLabel(window.gameModifyers.permanentBonusData.shards);
                         _utils2.default.centerObject(this.shardsLabel, this.shardsCounter);
@@ -61884,22 +61697,11 @@ var MergeScreen = function (_Screen) {
 
                                 this.spaceBackground.update(delta);
                         }
-
-                        var progression = COOKIE_MANAGER.getProgression();
-
-                        if (progression.currentEnemyLevel > 100) {
-                                this.spaceStation.setVisible(true);
-                                this.spaceStation.updateBar(0);
-                                this.spaceStation.update(delta);
-                        } else {
-                                this.spaceStation.setVisible(false);
-                                this.spaceStation.updateBar(progression.currentEnemyLevel);
-                        }
                 }
         }, {
                 key: 'resize',
                 value: function resize(resolution, innerResolution) {
-                        var _this5 = this;
+                        var _this4 = this;
 
                         if (!resolution || !resolution.width || !resolution.height || !innerResolution) {
                                 return;
@@ -61921,31 +61723,6 @@ var MergeScreen = function (_Screen) {
                         this.gridWrapper.x = config.width / 2 - this.gridWrapper.width / 2;
                         this.gridWrapper.y = config.height * (1 - this.areaConfig.bottomArea) - this.gridWrapper.height;
 
-                        this.resourcesWrapper.x = Math.min(0, toGlobal.x + 150);
-                        var xRightMax = this.gridWrapper.x + this.gridWrapper.width;
-                        this.resourcesWrapper.y = this.gridWrapper.y - 90;
-                        this.resourcesWrapperRight.x = Math.max(xRightMax, -this.resourcesWrapper.x + xRightMax);
-                        this.bonusTimerList.x = this.resourcesWrapperRight.x + this.resourcesWrapperRight.width / 2 - 12;
-
-                        if (!window.isPortrait) {
-                                this.resourcesWrapper.y -= 65;
-                                this.resourcesWrapperRight.x -= 20;
-                                this.bonusTimerList.x -= 8;
-                                this.bonusTimerList.scale.set(1.2);
-                                this.shopsLabel.scale.set(1.5);
-
-                                this.resourcesWrapperRight.y = this.resourcesWrapper.y;
-                                this.bonusTimerList.y = this.resourcesWrapperRight.y + this.resourcesWrapperRight.height + 50;
-                        } else {
-                                this.bonusTimerList.scale.set(1);
-                                this.shopsLabel.scale.set(1);
-
-                                this.resourcesWrapperRight.y = this.resourcesWrapper.y;
-                                this.bonusTimerList.y = this.resourcesWrapperRight.y + this.resourcesWrapperRight.height + 30;
-                        }
-
-                        // this.sellEverything.x = this.resourcesWrapperRight.x + this.resourcesWrapperRight.width / 2
-                        // this.sellEverything.y = this.resourcesWrapperRight.y + this.resourcesWrapperRight.height + 50
                         // if (this.helperButtonList.visible) {
 
                         //     this.statsList.y = config.height - 240
@@ -61967,18 +61744,19 @@ var MergeScreen = function (_Screen) {
                                 this.spaceStation.y = this.resourcesWrapper.y + 40;
                         }
 
-                        this.statsList.x = this.resourcesWrapper.x;
-                        this.statsList.y = config.height - this.statsList.h - 100;
-                        this.shopButtonsList.x = config.width / 2 - this.shopButtonsList.w / 2 + 40;
-                        this.shopButtonsList.y = config.height - this.shopButtonsList.h + 35;
+                        this.statsList.x = config.width - 110;
+                        this.statsList.y = 10;
+                        this.shopButtonsList.x = this.shopButtonsList.width;
+                        this.shopButtonsList.y = 60;
 
-                        this.shopsLabel.x = this.shopButtonsList.x - this.shopsLabel.width - 50;
+                        this.shopsLabel.x = this.shopButtonsList.x;
                         this.shopsLabel.y = this.shopButtonsList.y + 50 - this.shopsLabel.height;
+                        this.shopsLabel.visible = false;
 
                         this.autoSpend.x = this.shopButtonsList.x - this.autoSpend.width - 50;
                         this.autoSpend.y = this.shopButtonsList.y - 45;
-                        this.helperButtonList.x = 15;
-                        this.helperButtonList.y = config.height - this.shopButtonsList.h - 30;
+                        this.helperButtonList.x = 50;
+                        this.helperButtonList.y = 220;
 
                         this.enemiesContainer.x = config.width / 2;
                         this.enemiesContainer.y = config.height * this.areaConfig.topArea * 0.5;
@@ -61989,7 +61767,7 @@ var MergeScreen = function (_Screen) {
                         });
 
                         this.systemsList.forEach(function (element) {
-                                element.resize(resolution, innerResolution, _this5.resourcesWrapperRight);
+                                element.resize(resolution, innerResolution, _this4.resourcesWrapperRight);
                         });
                 }
         }, {
@@ -62020,6 +61798,9 @@ var MergeScreen = function (_Screen) {
         }]);
         return MergeScreen;
 }(_Screen3.default);
+
+//import GameTutorial from '../tutorial/GameTutorial';
+
 
 exports.default = MergeScreen;
 module.exports = exports['default'];
@@ -62067,11 +61848,11 @@ var _UIButton = __webpack_require__(18);
 
 var _UIButton2 = _interopRequireDefault(_UIButton);
 
-var _config = __webpack_require__(12);
+var _config = __webpack_require__(11);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(12);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -62866,7 +62647,7 @@ var _signals = __webpack_require__(6);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _UIBar = __webpack_require__(84);
+var _UIBar = __webpack_require__(83);
 
 var _UIBar2 = _interopRequireDefault(_UIBar);
 
@@ -62874,7 +62655,7 @@ var _UIList2 = __webpack_require__(44);
 
 var _UIList3 = _interopRequireDefault(_UIList2);
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(12);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -64438,7 +64219,7 @@ var PIXI = _interopRequireWildcard(_pixi);
 
 var _core = __webpack_require__(7);
 
-var _EntityShop2 = __webpack_require__(83);
+var _EntityShop2 = __webpack_require__(82);
 
 var _EntityShop3 = _interopRequireDefault(_EntityShop2);
 
@@ -64536,7 +64317,7 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _EntityShop2 = __webpack_require__(83);
+var _EntityShop2 = __webpack_require__(82);
 
 var _EntityShop3 = _interopRequireDefault(_EntityShop2);
 
@@ -64625,7 +64406,7 @@ var _ChargerTile = __webpack_require__(362);
 
 var _ChargerTile2 = _interopRequireDefault(_ChargerTile);
 
-var _MergeTile = __webpack_require__(86);
+var _MergeTile = __webpack_require__(85);
 
 var _MergeTile2 = _interopRequireDefault(_MergeTile);
 
@@ -64633,11 +64414,11 @@ var _signals = __webpack_require__(6);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _config = __webpack_require__(12);
+var _config = __webpack_require__(11);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(12);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -64728,10 +64509,8 @@ var MergeSystem = function () {
             }
         }
 
-        this.addPieceGenerator();
-        this.addPieceGenerator();
-        this.addPieceGenerator();
-        this.addPieceGenerator();
+        this.mainGenerator = this.addPieceGenerator();
+
         this.adjustSlotsPosition();
 
         this.entityDragSprite = new PIXI.Sprite.from('');
@@ -64879,27 +64658,29 @@ var MergeSystem = function () {
             var targetScale = _config2.default.height * 0.2 / piece.height;
             piece.scale.set(Math.min(targetScale, 1));
             //piece.addEntity(this.dataTiles[0])
-            this.uiContainer.addChild(piece);
+            //this.uiContainer.addChild(piece);
 
-            piece.onHold.add(function (slot) {
-                if (!slot.tileData) {
-                    return;
-                }
-                _this2.startDrag(slot);
-            });
-            piece.onEndHold.add(function (slot) {
-                if (!slot.tileData) {
-                    return;
-                }
-                _this2.endDrag(slot);
-                setTimeout(function () {
-                    if (!slot.tileData) {
-                        slot.startCharging();
-                    }
-                }, 10);
-            });
+            // piece.onHold.add((slot) => {
+            //     if (!slot.tileData) {
+            //         return;
+            //     }
+            //     this.startDrag(slot)
+            // });
+            // piece.onEndHold.add((slot) => {
+            //     if (!slot.tileData) {
+            //         return;
+            //     }
+            //     this.endDrag(slot)
+            //     setTimeout(() => {
+            //         if (!slot.tileData) {
+            //             slot.startCharging()
+            //         }
+            //     }, 10);
+
+            // });
             piece.onCompleteCharge.add(function (slot) {
 
+                //alert()
                 //upgrade this
                 var id = 0;
                 if (_this2.boardLevel > 4) {
@@ -64917,33 +64698,35 @@ var MergeSystem = function () {
                 piece.addEntity(_this2.dataTiles[id]);
 
                 _this2.sortAutoMerge(piece);
+                //piece.startCharging()
             });
             this.pieceGeneratorsList.push(piece);
             if (this.pieceGeneratorsList.length > 1) {
                 piece.visible = false;
             }
+
+            return piece;
         }
     }, {
         key: 'findAllAutomerges',
         value: function findAllAutomerges() {
-            var _this3 = this;
-
-            if (window.gameModifyers.modifyersData.autoMerge > 1 || window.gameModifyers.bonusData.autoMerge > 1) {
-                this.pieceGeneratorsList.forEach(function (element) {
-                    if (element.isCharged) {
-                        _this3.sortAutoMerge(element);
-                    }
-                });
-            }
+            // if (window.gameModifyers.modifyersData.autoMerge > 1 || window.gameModifyers.bonusData.autoMerge > 1) {
+            //     this.pieceGeneratorsList.forEach(element => {
+            //         if (element.isCharged) {
+            //             this.sortAutoMerge(element);
+            //         }
+            //     });
+            // }
         }
     }, {
         key: 'sortAutoMerge',
         value: function sortAutoMerge(piece) {
             if (!piece.tileData) return;
-            if (window.gameModifyers.modifyersData.autoMerge > 1 || window.gameModifyers.bonusData.autoMerge > 1) {
-                this.autoPlace(piece);
-                this.autoMerge();
-            }
+
+            this.autoPlace(piece);
+            // if (window.gameModifyers.modifyersData.autoMerge > 1 || window.gameModifyers.bonusData.autoMerge > 1) {
+            //     this.autoMerge()
+            // }
         }
     }, {
         key: 'updateMouseSystems',
@@ -65032,7 +64815,7 @@ var MergeSystem = function () {
                         if (this.enemySystem) {
                             slot.lookAt(this.enemySystem.getEnemy());
                         }
-                        slot.update(delta, this.timestamp, this.enemySystem.isAlive());
+                        slot.update(delta, this.timestamp, true);
                     }
                 }
             }
@@ -65042,7 +64825,7 @@ var MergeSystem = function () {
     }, {
         key: 'addSlot',
         value: function addSlot(i, j) {
-            var _this4 = this;
+            var _this3 = this;
 
             var slot = new _MergeTile2.default(i, j, this.slotSize.width, 'coin');
             this.slots[i][j] = slot;
@@ -65051,43 +64834,47 @@ var MergeSystem = function () {
             slot.y = (this.slotSize.height + this.slotSize.distance) * i - this.slotSize.distance;
             slot.onClick.add(function (slot) {});
             slot.onHold.add(function (slot) {
-                _this4.startDrag(slot);
+                _this3.startDrag(slot);
             });
             slot.onEndHold.add(function (slot) {
-                _this4.endDrag(slot);
+                _this3.endDrag(slot);
             });
             slot.onUp.add(function (slot) {
-                _this4.releaseEntity(slot);
+                _this3.releaseEntity(slot);
             });
             slot.onGenerateResource.add(function (slot, data) {
 
-                _this4.resources += data.resources;
+                _this3.resources += data.resources;
 
                 var customData = {};
                 customData.texture = 'coin';
-                customData.scale = 0.01;
-                customData.alphaDecress = 0.1;
+                customData.scale = 0.03;
+                customData.forceX = 0;
+                customData.forceY = 50;
+                customData.alphaDecress = 1;
                 var targetPos = slot.tileSprite.getGlobalPosition();
-                _this4.onGetResources.dispatch(targetPos, customData, data.resources, 5);
+                _this3.onGetResources.dispatch(targetPos, customData, data.getDamage(), 1);
             });
             slot.onGenerateDamage.add(function (slot, data) {
-                var customData = {};
-                customData.texture = 'shoot';
-                customData.scale = 0.002;
-                customData.topLimit = _this4.enemySystem.getEnemy().getGlobalPosition().y;
+                // let customData = {}
+                // customData.texture = 'shoot'
+                // customData.scale = 0.002
+                // customData.topLimit = this.enemySystem.getEnemy().getGlobalPosition().y
 
-                customData.gravity = 0;
-                customData.alphaDecress = 0;
-                if (_this4.enemySystem) {
-                    var globalEnemy = _this4.enemySystem.getEnemy().getGlobalPosition();
-                    customData.target = { x: globalEnemy.x, y: globalEnemy.y, timer: 0, speed: 700 };
-                }
-                customData.forceX = 0;
-                customData.forceY = 300;
-                customData.tint = _this4.shootColor;
-                customData.callback = _this4.finishDamage.bind(_this4, data);
-                var targetPos = slot.tileSprite.getGlobalPosition();
-                _this4.onDealDamage.dispatch(targetPos, customData, data.getDamage(), 1);
+                // customData.gravity = 0
+                // customData.alphaDecress = 0
+                // if (this.enemySystem) {
+                //     let globalEnemy = this.enemySystem.getEnemy().getGlobalPosition()
+                //     customData.target = { x: globalEnemy.x, y: globalEnemy.y, timer: 0, speed: 700 }
+                // }
+                // customData.forceX = 0
+                // customData.forceY = 300
+                // customData.tint = this.shootColor
+                // customData.callback = this.finishDamage.bind(this, data)
+                // let targetPos = slot.tileSprite.getGlobalPosition()
+                // this.onDealDamage.dispatch(targetPos, customData, data.getDamage(), 1)
+
+                console.log('DAMAGE');
                 //this.posShootingParticles(targetPos)
             });
 
@@ -65130,7 +64917,7 @@ var MergeSystem = function () {
             this.currentDragSlot = slot;
             this.entityDragSprite.texture = tex;
             this.entityDragSprite.visible = true;
-            this.entityDragSprite.scale.set(slot.tileSprite.scale.y * 2);
+            this.entityDragSprite.scale.set(slot.tileSprite.scale.y * 3);
             if (window.isMobile) {
                 this.entityDragSprite.anchor.set(0.5, 1);
             } else {
@@ -65248,43 +65035,63 @@ var MergeSystem = function () {
             }
         }
     }, {
+        key: 'totalAvailable',
+        value: function totalAvailable() {
+            var av = 0;
+            for (var i = 0; i < this.slots.length; i++) {
+                for (var j = 0; j < this.slots[i].length; j++) {
+                    if (this.slots[i][j] && !this.slots[i][j].tileData && this.slots[i][j].visible) {
+                        av++;
+                    }
+                }
+            }
+
+            return av;
+        }
+    }, {
         key: 'autoPlace',
         value: function autoPlace(piece) {
+            console.log("autoplace");
+            var allAvailables = [];
             var firstAvailable = null;
             for (var i = 0; i < this.slots.length; i++) {
                 for (var j = 0; j < this.slots[i].length; j++) {
-                    if (this.slots[i][j] && this.slots[i][j].tileData && this.slots[i][j].visible) {
-                        var slot = this.slots[i][j];
-                        if (slot.tileData.getValue() == piece.tileData.getValue()) {
-                            firstAvailable = this.slots[i][j];
-                            break;
-                        }
-                    } else if (!firstAvailable && this.slots[i][j].visible) {
-                        firstAvailable = this.slots[i][j];
+                    if (this.slots[i][j] && !this.slots[i][j].tileData && this.slots[i][j].visible) {
+                        allAvailables.push(this.slots[i][j]);
                     }
                 }
             }
 
             this.currentDragSlot = piece;
 
-            if (piece.isGenerator) {
-                this.endDrag(piece);
-                setTimeout(function () {
-                    if (!piece.tileData) {
-                        piece.startCharging();
-                    }
-                }, 10);
-            }
+            // if (piece.isGenerator) {
+
+
+            //     this.endDrag(piece)
+            //     setTimeout(() => {
+            //         if (!piece.tileData) {
+            //             piece.startCharging()
+            //         }
+            //     }, 10);
+            // }
 
             if (firstAvailable && firstAvailable.tileData) {}
-            this.releaseEntity(firstAvailable);
+            this.releaseEntity(allAvailables[Math.floor(Math.random() * allAvailables.length)]);
 
-            //this.autoMerge();
+            console.log(this.totalAvailable());
+            if (this.totalAvailable() > 0) {
+                piece.startCharging();
+            }
+
+            if (window.gameModifyers.modifyersData.autoMerge == 2) {
+
+                this.autoMerge();
+            }
         }
     }, {
         key: 'releaseEntity',
         value: function releaseEntity(slot) {
-            if (!this.currentDragSlot) {
+            if (!this.currentDragSlot || !slot) {
                 return;
             }
             var copyData = this.currentDragSlot.tileData;
@@ -65340,6 +65147,10 @@ var MergeSystem = function () {
             this.draggingEntity = false;
             this.currentDragSlot = null;
             this.updateAllData();
+
+            if (this.totalAvailable() > 0) {
+                this.mainGenerator.startCharging();
+            }
         }
     }, {
         key: 'updateTotalGenerators',
@@ -65413,13 +65224,13 @@ var MergeSystem = function () {
     }, {
         key: 'updateBottomPosition',
         value: function updateBottomPosition() {
-            var _this5 = this;
+            var _this4 = this;
 
             var accumPiece = 0;
             var maxPos = 0;
             this.pieceGeneratorsList.forEach(function (piece) {
                 if (piece.visible) {
-                    piece.x = (piece.backShape.width + _this5.slotSize.distance) * accumPiece;
+                    piece.x = (piece.backShape.width + _this4.slotSize.distance) * accumPiece;
                     accumPiece++;
                     maxPos = piece.x + piece.backShape.width;
                 }
@@ -65478,11 +65289,11 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _CircleCounter = __webpack_require__(85);
+var _CircleCounter = __webpack_require__(84);
 
 var _CircleCounter2 = _interopRequireDefault(_CircleCounter);
 
-var _MergeTile2 = __webpack_require__(86);
+var _MergeTile2 = __webpack_require__(85);
 
 var _MergeTile3 = _interopRequireDefault(_MergeTile2);
 
@@ -65494,7 +65305,7 @@ var _signals = __webpack_require__(6);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _UIBar = __webpack_require__(84);
+var _UIBar = __webpack_require__(83);
 
 var _UIBar2 = _interopRequireDefault(_UIBar);
 
@@ -65552,9 +65363,10 @@ var ChargerTile = function (_MergeTile) {
     }, {
         key: 'update',
         value: function update(delta, timeStamp) {
-            if (COOKIE_MANAGER.getStats().tutorialStep <= 0) {
-                this.currentChargeTime = delta;
-            }
+            // if(COOKIE_MANAGER.getStats().tutorialStep <= 0){
+            //     this.currentChargeTime = delta
+            // }
+            //console.log(this.currentChargeTime)
             (0, _get3.default)(ChargerTile.prototype.__proto__ || (0, _getPrototypeOf2.default)(ChargerTile.prototype), 'update', this).call(this, delta, timeStamp);
             if (this.currentChargeTime > 0) {
                 this.currentChargeTime -= delta;
@@ -65938,11 +65750,11 @@ var _signals = __webpack_require__(6);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _config = __webpack_require__(12);
+var _config = __webpack_require__(11);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(12);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -66198,11 +66010,11 @@ var _signals = __webpack_require__(6);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _config = __webpack_require__(12);
+var _config = __webpack_require__(11);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(12);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -66520,11 +66332,11 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _CircleCounter = __webpack_require__(85);
+var _CircleCounter = __webpack_require__(84);
 
 var _CircleCounter2 = _interopRequireDefault(_CircleCounter);
 
-var _MergeTile2 = __webpack_require__(86);
+var _MergeTile2 = __webpack_require__(85);
 
 var _MergeTile3 = _interopRequireDefault(_MergeTile2);
 
@@ -66532,11 +66344,11 @@ var _signals = __webpack_require__(6);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _UIBar = __webpack_require__(84);
+var _UIBar = __webpack_require__(83);
 
 var _UIBar2 = _interopRequireDefault(_UIBar);
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(12);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -67113,11 +66925,11 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(12);
 
 var _utils2 = _interopRequireDefault(_utils);
 
-var _config = __webpack_require__(12);
+var _config = __webpack_require__(11);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -67456,11 +67268,11 @@ var _UIButton = __webpack_require__(18);
 
 var _UIButton2 = _interopRequireDefault(_UIButton);
 
-var _config = __webpack_require__(12);
+var _config = __webpack_require__(11);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _TextBox = __webpack_require__(51);
+var _TextBox = __webpack_require__(86);
 
 var _TextBox2 = _interopRequireDefault(_TextBox);
 
@@ -67719,7 +67531,7 @@ var _gsap = __webpack_require__(14);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(12);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -67969,7 +67781,7 @@ var _gsap = __webpack_require__(14);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(12);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -68082,11 +67894,11 @@ var _gsap = __webpack_require__(14);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
-var _config = __webpack_require__(12);
+var _config = __webpack_require__(11);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(12);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -68320,7 +68132,7 @@ var _UILabelButton = __webpack_require__(33);
 
 var _UILabelButton2 = _interopRequireDefault(_UILabelButton);
 
-var _config = __webpack_require__(12);
+var _config = __webpack_require__(11);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -68752,7 +68564,7 @@ var _UILabelButton = __webpack_require__(33);
 
 var _UILabelButton2 = _interopRequireDefault(_UILabelButton);
 
-var _config = __webpack_require__(12);
+var _config = __webpack_require__(11);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -68760,7 +68572,7 @@ var _SinglePrizeContainer = __webpack_require__(87);
 
 var _SinglePrizeContainer2 = _interopRequireDefault(_SinglePrizeContainer);
 
-var _TextBox = __webpack_require__(51);
+var _TextBox = __webpack_require__(86);
 
 var _TextBox2 = _interopRequireDefault(_TextBox);
 
@@ -69341,7 +69153,7 @@ var _UILabelButton = __webpack_require__(33);
 
 var _UILabelButton2 = _interopRequireDefault(_UILabelButton);
 
-var _config = __webpack_require__(12);
+var _config = __webpack_require__(11);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -69349,7 +69161,7 @@ var _SinglePrizeContainer = __webpack_require__(87);
 
 var _SinglePrizeContainer2 = _interopRequireDefault(_SinglePrizeContainer);
 
-var _TextBox = __webpack_require__(51);
+var _TextBox = __webpack_require__(86);
 
 var _TextBox2 = _interopRequireDefault(_TextBox);
 
@@ -69600,451 +69412,6 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _getPrototypeOf = __webpack_require__(3);
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__(1);
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(2);
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__(4);
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__(5);
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _pixi = __webpack_require__(0);
-
-var PIXI = _interopRequireWildcard(_pixi);
-
-var _signals = __webpack_require__(6);
-
-var signals = _interopRequireWildcard(_signals);
-
-var _utils = __webpack_require__(10);
-
-var _utils2 = _interopRequireDefault(_utils);
-
-var _TextBox = __webpack_require__(51);
-
-var _TextBox2 = _interopRequireDefault(_TextBox);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var GameTutorial = function (_PIXI$Container) {
-    (0, _inherits3.default)(GameTutorial, _PIXI$Container);
-
-    function GameTutorial(mainScreen) {
-        (0, _classCallCheck3.default)(this, GameTutorial);
-
-        var _this = (0, _possibleConstructorReturn3.default)(this, (GameTutorial.__proto__ || (0, _getPrototypeOf2.default)(GameTutorial)).call(this));
-
-        _this.mainScreen = mainScreen;
-
-        _this.tutorialSteps = [{
-            text: 'tutorial_1',
-            target: _this.mainScreen.resourceSystemRight.resourceSlots[0].backShape,
-            callback: function callback() {
-                _this.mainScreen.resourceSystemRight.purchaseSlot(_this.mainScreen.resourceSystemRight.resourceSlots[0]);
-            },
-            handOffset: { x: -10, y: 60 },
-            hitOffset: { x: 0, y: 0 },
-            textBoxOffset: { x: -40, y: 0 }
-
-        }, {
-            text: 'tutorial_2',
-            handOffset: { x: 0, y: 30 },
-            hitOffset: { x: 0, y: 0 },
-            handMoveTo: { x: 0, y: -80 },
-            textBoxOffset: { x: -40, y: 0 },
-            onShow: function onShow() {
-                setTimeout(function () {
-                    _this.next();
-                }, 3000);
-            },
-            hideHitBox: true,
-            target: _this.mainScreen.resourceSystemRight.resourceSlots[0].backShape,
-            event: _this.mainScreen.resourceSystemRight.resourceSlots[0].onOver
-        }, {
-            text: 'tutorial_3',
-            target: _this.mainScreen.openShop.backShape,
-            toShow: [_this.mainScreen.openShop, _this.mainScreen.shopButtonsList],
-            callback: function callback() {
-                _this.mainScreen.openPopUp(_this.mainScreen.entityShop);
-            },
-            handOffset: { x: 0, y: 0 },
-            hitOffset: { x: -40, y: -40 },
-            textBoxOffset: { x: 60, y: -40 }
-        }, {
-            text: 'tutorial_4',
-            targetF: function targetF() {
-                return _this.mainScreen.entityShop.currentItens[0].shopButton;
-            },
-            toShow: [_this.mainScreen.openShop, _this.mainScreen.shopButtonsList],
-            onShow: function onShow() {
-                window.gameEconomy.addResources(25);
-            },
-            callback: function callback() {
-                _this.mainScreen.entityShop.currentItens[0].onShopItem(_this.mainScreen.entityShop.currentItens[0].shopButton);
-                setTimeout(function () {
-                    _this.mainScreen.entityShop.hide();
-                }, 150);
-                _this.mainScreen.statsList.visible = true;
-            },
-            handOffset: { x: 40, y: 0 },
-            hitOffset: { x: 0, y: 0 },
-            textBoxOffset: { x: -40, y: -20 }
-        }, {
-            text: 'tutorial_5',
-            target: _this.mainScreen.mergeSystem1.pieceGeneratorsList[0].backShape,
-            toShow: [_this.mainScreen.enemiesContainer, _this.mainScreen.uiContainer, _this.mainScreen.mergeSystemContainer],
-            onShow: function onShow() {
-                _this.mainScreen.openShop.visible = false;
-            },
-            hideHitBox: true,
-            event: _this.mainScreen.mergeSystem1.onEntityAdd,
-            handMoveTo: { x: 0, y: -180 },
-            handOffset: { x: 0, y: 0 },
-            hitOffset: { x: 0, y: 0 },
-            textBoxOffset: { x: 80, y: -280 }
-        }, {
-            text: 'tutorial_6',
-            target: _this.mainScreen.mergeSystem1.pieceGeneratorsList[0].backShape,
-            toShow: [_this.mainScreen.enemiesContainer, _this.mainScreen.uiContainer, _this.mainScreen.mergeSystemContainer],
-            onShow: function onShow() {},
-            hideHitBox: true,
-            event: _this.mainScreen.mergeSystem1.onEntityMerge,
-            handMoveTo: { x: 0, y: -180 },
-            handOffset: { x: 0, y: 0 },
-            hitOffset: { x: 0, y: 0 },
-            textBoxOffset: { x: 80, y: -280 }
-        }, {
-            text: 'tutorial_7',
-            target: _this.mainScreen.openMergeShop.backShape,
-            toShow: [_this.mainScreen.openMergeShop, _this.mainScreen.shopButtonsList],
-            callback: function callback() {
-                window.gameEconomy.addResources(25);
-                _this.mainScreen.openPopUp(_this.mainScreen.mergeItemsShop);
-                _this.mainScreen.openPopUp(_this.mainScreen.mergeItemsShop);
-                COOKIE_MANAGER.endTutorial(1);
-
-                _this.mainScreen.mergeItemsShop.updateToggleValue();
-            },
-            handOffset: { x: 0, y: 0 },
-            hitOffset: { x: -40, y: -40 },
-            textBoxOffset: { x: -40, y: -40 }
-        }, {
-            text: 'tutorial_8',
-            targetF: function targetF() {
-                return _this.mainScreen.mergeItemsShop.currentItens[0].shopButton;
-            },
-            toShow: [],
-            callback: function callback() {
-                _this.mainScreen.mergeItemsShop.currentItens[0].onShopItem(_this.mainScreen.mergeItemsShop.currentItens[0].shopButton);
-                setTimeout(function () {
-                    _this.mainScreen.mergeItemsShop.hide();
-                }, 150);
-            },
-            handOffset: { x: 40, y: 0 },
-            hitOffset: { x: 0, y: 0 },
-            textBoxOffset: { x: -40, y: -20 }
-        }, {
-            text: 'tutorial_9',
-            target: _this.mainScreen.openSettingsShop.backShape,
-            toShow: [_this.mainScreen.openSettingsShop, _this.mainScreen.shopButtonsList],
-            onShow: function onShow() {
-                _this.mainScreen.openShop.visible = false;
-                _this.mainScreen.openMergeShop.visible = false;
-            },
-            callback: function callback() {
-                window.gameEconomy.addResources(3000);
-                _this.mainScreen.openPopUp(_this.mainScreen.generalShop);
-            },
-            handOffset: { x: 0, y: 0 },
-            hitOffset: { x: -40, y: -40 },
-            textBoxOffset: { x: 250, y: -40 }
-        }, {
-            text: 'tutorial_10',
-            targetF: function targetF() {
-                return _this.mainScreen.generalShop.currentItens[0].shopButton;
-            },
-            toShow: [],
-            callback: function callback() {
-                _this.mainScreen.generalShop.currentItens[0].onShopItem(_this.mainScreen.generalShop.currentItens[0].shopButton);
-                setTimeout(function () {
-                    _this.mainScreen.generalShop.hide();
-                }, 150);
-            },
-            handOffset: { x: 40, y: 0 },
-            hitOffset: { x: 0, y: 0 },
-            textBoxOffset: { x: -40, y: -20 }
-        },
-        //  {
-        //     text: 'tutorial_11',
-        //     targetF: () => {
-        //         return this.mainScreen.damageBonus
-        //     },
-        //     toShow: [this.mainScreen.bonusTimerList, this.mainScreen.damageBonus],
-        //     callback: () => {
-        //         this.mainScreen.damageBonus.confirmConfirm();
-        //     },
-        //     handOffset: { x: 0, y: 30 },
-        //     hitOffset: { x: -60, y: -40 },
-        //     textBoxOffset: { x: -120, y: 0 }
-        // },
-        {
-            text: 'tutorial_12',
-            target: _this.mainScreen.mergeSystemContainer,
-            toShow: [],
-            onShow: function onShow() {
-                _this.handIconContainer.visible = false;
-                _this.visibleList.forEach(function (element) {
-                    element.visible = true;
-                });
-                setTimeout(function () {
-                    _this.endTutorial(2);
-                }, 8000);
-            },
-            callback: function callback() {},
-            hideHitBox: true,
-            handOffset: { x: 40, y: 0 },
-            hitOffset: { x: 0, y: 0 },
-            textBoxOffset: { x: 140, y: -200 }
-        }];
-        _this.boundingButtom = new PIXI.Graphics().beginFill(0x445566).drawRect(0, 0, 140, 140);
-        _this.addChild(_this.boundingButtom);
-        _this.boundingButtom.alpha = 0;
-        _this.boundingButtom.interactive = true;
-        _this.boundingButtom.buttonMode = true;
-        _this.boundingButtom.on('mousedown', _this.onTutorialCallback.bind(_this)).on('touchstart', _this.onTutorialCallback.bind(_this));
-
-        _this.handIcon = new PIXI.Sprite.fromFrame('hand');
-        _this.handIcon.anchor.set(0.1, 0.1);
-
-        _this.handIconContainer = new PIXI.Container();
-        _this.handIconContainer.addChild(_this.handIcon);
-        _this.addChild(_this.handIconContainer);
-
-        _this.handIconContainer.x = 500;
-        _this.handIconContainer.y = 2500;
-
-        _this.textBox = new _TextBox2.default(20, 'small-no-pattern-white');
-        _this.addChild(_this.textBox);
-        _this.textBox.label.style.fontSize = 22;
-        _this.textBox.label.style.fill = 0x15376c;
-
-        _this.textBox.updateText("Test");
-
-        _this.currentListener = null;
-        _this.currentCallback = null;
-        _this.tutorialStep;
-        _this.tutorialStepID = 10;
-        return _this;
-    }
-
-    (0, _createClass3.default)(GameTutorial, [{
-        key: 'onEventNext',
-        value: function onEventNext() {
-            if (!this.currentListener) return;
-            this.currentListener.remove(this.onEventNext.bind(this));
-            this.next();
-        }
-    }, {
-        key: 'endTutorial',
-        value: function endTutorial() {
-            this.visibleList.forEach(function (element) {
-                element.visible = true;
-            });
-            this.started = false;
-            this.visible = false;
-
-            COOKIE_MANAGER.endTutorial();
-        }
-    }, {
-        key: 'start',
-        value: function start() {
-            //console.log(this.mainScreen.entityShop.currentItems[0])
-            this.started = true;
-
-            this.visibleList = [];
-
-            this.visibleList.push(this.mainScreen.entityShop.openShop);
-            this.visibleList.push(this.mainScreen.mergeItemsShop.openShop);
-            this.visibleList.push(this.mainScreen.generalShop.openShop);
-
-            this.visibleList.push(this.mainScreen.enemiesContainer);
-            this.visibleList.push(this.mainScreen.bonusTimerList);
-            this.visibleList.push(this.mainScreen.shopButtonsList);
-            this.visibleList.push(this.mainScreen.openShop);
-            this.visibleList.push(this.mainScreen.openMergeShop);
-            this.visibleList.push(this.mainScreen.openSettingsShop);
-            this.visibleList.push(this.mainScreen.resourcesContainer);
-            this.visibleList.push(this.mainScreen.statsList);
-            this.visibleList.push(this.mainScreen.shopsLabel);
-            this.visibleList.push(this.mainScreen.mergeSystemContainer);
-            this.visibleList.push(this.mainScreen.uiContainer);
-
-            this.visibleList.push(this.mainScreen.damageBonus);
-            this.visibleList.push(this.mainScreen.timeBonus);
-            this.visibleList.push(this.mainScreen.speedBonus);
-            this.visibleList.push(this.mainScreen.autoMergeBonus);
-            this.visibleList.push(this.mainScreen.prizeContainer);
-            this.visibleList.push(this.mainScreen.bonusContainer);
-
-            this.visibleList.forEach(function (element) {
-                element.visible = false;
-            });
-
-            this.tutorialStepID = 0;
-            this.updateStep();
-        }
-    }, {
-        key: 'onTutorialCallback',
-        value: function onTutorialCallback() {
-            this.currentCallback();
-
-            this.currentCallback = null;
-            this.next();
-        }
-    }, {
-        key: 'next',
-        value: function next() {
-            console.log(this.tutorialStepID);
-            this.tutorialStepID++;
-            if (this.currentListener) {
-                this.currentListener.remove(this.onEventNext.bind(this));
-            }
-            this.updateStep();
-        }
-    }, {
-        key: 'updateStep',
-        value: function updateStep() {
-            var _this2 = this;
-
-            if (this.tutorialStepID >= this.tutorialSteps.length) {
-                console.log("END");
-                return;
-            }
-            this.tutorialStep = this.tutorialSteps[this.tutorialStepID];
-
-            if (this.tutorialStep.toShow) {
-                this.tutorialStep.toShow.forEach(function (element) {
-                    element.visible = true;
-                });
-            }
-
-            if (this.tutorialStep.onShow) {
-                this.tutorialStep.onShow();
-            }
-
-            this.textBox.updateText(window.localizationManager.getLabelTutorial(this.tutorialStep.text));
-            this.currentListener = null;
-            if (this.tutorialStep.timer) {
-                setTimeout(function () {
-                    //this.next();
-                }, this.tutorialStep.timer);
-            } else {
-                if (this.tutorialStep.event) {
-                    setTimeout(function () {
-                        _this2.currentListener = _this2.tutorialStep.event;
-                        _this2.currentListener.add(_this2.onEventNext.bind(_this2));
-                    }, 1000);
-                } else {
-
-                    this.currentCallback = this.tutorialStep.callback;
-                }
-            }
-
-            var element = this.tutorialStep.target;
-            if (!element && this.tutorialStep.targetF) {
-                element = this.tutorialStep.targetF();
-            }
-            this.fitBounding(element);
-        }
-    }, {
-        key: 'fitText',
-        value: function fitText(element) {}
-    }, {
-        key: 'fitBounding',
-        value: function fitBounding(element, delta) {
-            if (!element) {
-                this.boundingButtom.visible = false;
-                return;
-            }
-
-            var hitOffset = this.tutorialStep.hitOffset;
-            if (!hitOffset) hitOffset = { x: 0, y: 0 };
-
-            var handOffset = this.tutorialStep.handOffset;
-            if (!handOffset) handOffset = { x: 0, y: 0 };
-
-            var textBoxOffset = this.tutorialStep.textBoxOffset;
-            if (!textBoxOffset) textBoxOffset = { x: 0, y: 0 };
-
-            this.boundingButtom.visible = !this.tutorialStep.hideHitBox;
-            var toGlobal = element.getGlobalPosition();
-            var toLocal = this.toLocal(toGlobal);
-            this.boundingButtom.x = toLocal.x + hitOffset.x - 10;
-            this.boundingButtom.y = toLocal.y + hitOffset.y - 10;
-            this.boundingButtom.width = element.width + 50;
-            this.boundingButtom.height = element.height + 30;
-
-            this.handIconContainer.x = _utils2.default.lerp(this.handIconContainer.x, this.boundingButtom.x + element.width / 2 + handOffset.x, 0.05);
-            this.handIconContainer.y = _utils2.default.lerp(this.handIconContainer.y, this.boundingButtom.y + element.height / 2 + handOffset.y, 0.05);
-
-            this.textBox.x = this.boundingButtom.x + element.width / 2 + handOffset.x - this.textBox.width + textBoxOffset.x;
-            this.textBox.y = this.boundingButtom.y + element.height / 2 + handOffset.y - this.textBox.height + textBoxOffset.y;
-
-            if (this.tutorialStep.handMoveTo) {
-                this.handIcon.x = _utils2.default.lerp(this.handIcon.x, this.tutorialStep.handMoveTo.x, 0.01);
-                this.handIcon.y = _utils2.default.lerp(this.handIcon.y, this.tutorialStep.handMoveTo.y, 0.01);
-
-                if (_utils2.default.distance(this.handIcon.x, this.handIcon.y, this.tutorialStep.handMoveTo.x, this.tutorialStep.handMoveTo.y) < 10) {
-                    this.handIcon.x = 0;
-                    this.handIcon.y = 0;
-                }
-            } else {
-                this.handIcon.x = 0;
-                this.handIcon.y = 0;
-            }
-        }
-    }, {
-        key: 'update',
-        value: function update(delta) {
-            if (!this.started) return;
-            var element = this.tutorialStep.target;
-            if (!element && this.tutorialStep.targetF) {
-                element = this.tutorialStep.targetF();
-            }
-            this.fitBounding(element, delta);
-        }
-    }]);
-    return GameTutorial;
-}(PIXI.Container);
-
-exports.default = GameTutorial;
-module.exports = exports['default'];
-
-/***/ }),
-/* 380 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
 var _classCallCheck2 = __webpack_require__(1);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -70057,11 +69424,11 @@ var _gsap = __webpack_require__(14);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
-var _config = __webpack_require__(12);
+var _config = __webpack_require__(11);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(12);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -70233,7 +69600,7 @@ exports.default = BonusSystem;
 module.exports = exports["default"];
 
 /***/ }),
-/* 381 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70369,7 +69736,7 @@ exports.default = ScreenManager;
 module.exports = exports['default'];
 
 /***/ }),
-/* 382 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

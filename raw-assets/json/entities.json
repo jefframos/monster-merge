@@ -162,7 +162,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_01",
-                "imageSrc": "ship01",
+                "imageSrc": "witch",
                 "displayName": "Ship - 01",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -176,7 +176,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_02",
-                "imageSrc": "ship02",
+                "imageSrc": "imp",
                 "displayName": "Ship - 02",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -190,7 +190,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_03",
-                "imageSrc": "ship03",
+                "imageSrc": "werewolf",
                 "displayName": "Ship - 03",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -204,7 +204,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_04",
-                "imageSrc": "ship04",
+                "imageSrc": "ghost",
                 "displayName": "Ship - 04",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -218,7 +218,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_05",
-                "imageSrc": "ship05",
+                "imageSrc": "bat",
                 "displayName": "Ship - 05",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -232,7 +232,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_06",
-                "imageSrc": "ship06",
+                "imageSrc": "troll",
                 "displayName": "Ship - 06",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -246,7 +246,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_07",
-                "imageSrc": "ship07",
+                "imageSrc": "frank",
                 "displayName": "Ship - 07",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -260,7 +260,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_08",
-                "imageSrc": "ship08",
+                "imageSrc": "succubus",
                 "displayName": "Ship - 08",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -274,7 +274,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_09",
-                "imageSrc": "ship09",
+                "imageSrc": "sasquaat",
                 "displayName": "Ship - 09",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -288,7 +288,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_10",
-                "imageSrc": "ship10",
+                "imageSrc": "mummy",
                 "displayName": "Ship - 10",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.11,
@@ -302,7 +302,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_11",
-                "imageSrc": "ship11",
+                "imageSrc": "blobMonster",
                 "displayName": "Ship - 11",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -316,7 +316,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_12",
-                "imageSrc": "ship12",
+                "imageSrc": "vampire",
                 "displayName": "Ship - 12",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -330,7 +330,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_13",
-                "imageSrc": "ship13",
+                "imageSrc": "zombie",
                 "displayName": "Ship - 13",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -344,7 +344,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_14",
-                "imageSrc": "ship14",
+                "imageSrc": "ghoul",
                 "displayName": "Ship - 14",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -358,7 +358,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_15",
-                "imageSrc": "ship15",
+                "imageSrc": "minotaur",
                 "displayName": "Ship - 15",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -372,7 +372,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_16",
-                "imageSrc": "ship16",
+                "imageSrc": "gargoyle",
                 "displayName": "Ship - 16",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -386,7 +386,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_17",
-                "imageSrc": "ship17",
+                "imageSrc": "evinWitch",
                 "displayName": "Ship - 17",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -400,7 +400,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_18",
-                "imageSrc": "ship18",
+                "imageSrc": "dracula",
                 "displayName": "Ship - 18",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -414,7 +414,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_19",
-                "imageSrc": "ship19",
+                "imageSrc": "swamp",
                 "displayName": "Ship - 19",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -428,7 +428,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_20",
-                "imageSrc": "ship20",
+                "imageSrc": "demon",
                 "displayName": "Ship - 20",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -442,7 +442,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_21",
-                "imageSrc": "ship21",
+                "imageSrc": "licker",
                 "displayName": "Ship - 21",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -456,7 +456,7 @@
             {
                 "type": "damage",
                 "nameID": "entity_starship_22",
-                "imageSrc": "ship22",
+                "imageSrc": "nosferatu",
                 "displayName": "Ship - 22",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,

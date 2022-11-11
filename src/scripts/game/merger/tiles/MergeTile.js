@@ -25,22 +25,25 @@ export default class MergeTile extends PIXI.Container {
         this.backSlot.alpha = 0
 
 
-
-        this.backShape = new PIXI.Sprite.fromFrame('backTilesSquare')
+        let slotId = Math.ceil(Math.random() * 3)
+        this.backShape = new PIXI.Sprite.fromFrame("gameSlot" + slotId)
         this.backShape.width = size
         this.backShape.height = size
         this.backShape.alpha = 0.8
         this.container.addChild(this.backShape)
 
-        this.label = new PIXI.Text('', LABELS.LABEL1);
-        this.container.addChild(this.label)
-        this.label.style.fontSize = 24
-        this.label.x = this.backSlot.width / 2 - this.label.width / 2;
-
+        
         this.tileSprite = new PIXI.Sprite.from('');
         this.container.addChild(this.tileSprite)
         this.tileSprite.anchor.set(0.5, 1)
         this.tileSprite.visible = false;
+
+        this.label = new PIXI.Text('', LABELS.LABEL1);
+        this.container.addChild(this.label)
+        this.label.style.stroke = 0
+        this.label.style.strokeThickness = 4
+        this.label.style.fontSize = 18
+        this.label.x = this.backSlot.width / 2 - this.label.width / 2;
 
         this.onShowParticles = new Signals();
         this.onClick = new Signals();
@@ -90,10 +93,10 @@ export default class MergeTile extends PIXI.Container {
         this.damageTimerView.x = 0
         this.damageTimerView.y = 98
         //this.damageTimerView = new CircleCounter(10,10)
-        this.container.addChild(this.damageTimerView)
+        //this.container.addChild(this.damageTimerView)
         this.damageTimerView.rotation = -Math.PI * 0.5
         //this.damageTimerView.build()
-this.startTimer = Math.random() * 2
+        this.startTimer = Math.random() * 2
     }
     reset() {
         this.generateResource = 0;
@@ -113,7 +116,7 @@ this.startTimer = Math.random() * 2
         this.tileSprite.y = this.backSlot.height / 2 + this.positionOffset.y;
     }
     update(delta, dateTimeStamp, autoUpdateResources = true) {
-        if(this.startTimer > 0){
+        if (this.startTimer > 0) {
             this.startTimer -= delta
             return
         }
@@ -272,7 +275,7 @@ this.startTimer = Math.random() * 2
         this.updatedDamageTimestamp = (Date.now() / 1000 | 0);
         this.tileSprite.texture = PIXI.Texture.from(this.tileData.getTexture());
         this.updatePosition()
-        this.entityScale = 1.2//Math.abs(this.backSlot.width / this.tileData.graphicsData.baseWidth * 0.75)
+        this.entityScale = 1//Math.abs(this.backSlot.width / this.tileData.graphicsData.baseWidth * 0.75)
         this.tileSprite.anchor.set(0.5)
         this.sin = Math.random();
         let v = this.tileData.getValue();
@@ -280,8 +283,10 @@ this.startTimer = Math.random() * 2
             v = utils.formatPointsLabel(this.tileData.getValue())
         }
         this.label.text = v
+        this.label.text = this.tileData.rawData.id + 1
         //this.label.text = this.tileData.getGenerateDamageTime() +' --'+  this.tileData.rawData.initialTime
-        this.label.x = this.backSlot.width / 2 - this.label.width / 2;
+        this.label.x = this.backSlot.width  - this.label.width - 10;
+        this.label.y = this.backSlot.height  - this.label.height - 10;
         this.showSprite()
         this.enterAnimation()
 
@@ -292,13 +297,11 @@ this.startTimer = Math.random() * 2
     enterAnimation() {
         this.tileSprite.scale.set(0, 2);
 
+        this.animSprite = true;
         TweenLite.to(this.tileSprite.scale, 0.5, {
             x: this.entityScale,
             y: this.entityScale,
-            ease: Elastic.easeOut,
-            onComplete: () => {
-                this.animSprite = true;
-            }
+            ease: Elastic.easeOut
         })
     }
     onMouseMove(e) {

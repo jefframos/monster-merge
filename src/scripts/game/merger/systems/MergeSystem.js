@@ -459,7 +459,7 @@ export default class MergeSystem {
         this.currentDragSlot = slot;
         this.entityDragSprite.texture = tex;
         this.entityDragSprite.visible = true;
-        this.entityDragSprite.scale.set(slot.tileSprite.scale.y * 2);
+        this.entityDragSprite.scale.set(slot.tileSprite.scale.y * 3);
         if (window.isMobile) {
             this.entityDragSprite.anchor.set(0.5, 1);
         } else {
@@ -615,7 +615,11 @@ export default class MergeSystem {
         if(this.totalAvailable() > 0){
             piece.startCharging()
         }
-        this.autoMerge();
+
+        if(window.gameModifyers.modifyersData.autoMerge == 2){
+
+            this.autoMerge();
+        }
     }
 
     releaseEntity(slot) {
