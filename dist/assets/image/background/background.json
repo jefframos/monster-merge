@@ -1,28 +1,104 @@
 {"frames": {
 
-"background_space.png":
+"backPinePatch1.png":
 {
-	"frame": {"x":442,"y":1,"w":1024,"h":600},
+	"frame": {"x":1243,"y":1130,"w":227,"h":332},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":1024,"h":600},
-	"sourceSize": {"w":1024,"h":600}
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":332},
+	"sourceSize": {"w":227,"h":332}
 },
-"base-gradient.png":
+"backPinePatch2.png":
 {
-	"frame": {"x":1,"y":1,"w":625,"h":439},
+	"frame": {"x":1243,"y":1464,"w":214,"h":334},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":214,"h":334},
+	"sourceSize": {"w":214,"h":334}
+},
+"base-terrain.png":
+{
+	"frame": {"x":855,"y":1130,"w":732,"h":386},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":732,"h":386},
+	"sourceSize": {"w":732,"h":386}
+},
+"castleBase.png":
+{
+	"frame": {"x":330,"y":887,"w":964,"h":523},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":964,"h":523},
+	"sourceSize": {"w":964,"h":523}
+},
+"leftPatch.png":
+{
+	"frame": {"x":1,"y":509,"w":376,"h":983},
 	"rotated": true,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":1,"w":625,"h":439},
-	"sourceSize": {"w":625,"h":440}
+	"spriteSourceSize": {"x":0,"y":12,"w":376,"h":983},
+	"sourceSize": {"w":384,"h":995}
+},
+"moon.png":
+{
+	"frame": {"x":986,"y":742,"w":386,"h":401},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":39,"y":32,"w":386,"h":401},
+	"sourceSize": {"w":469,"h":469}
+},
+"pineSidePatch.png":
+{
+	"frame": {"x":1,"y":1,"w":506,"h":1029},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":506,"h":1029},
+	"sourceSize": {"w":506,"h":1029}
+},
+"rightPatch.png":
+{
+	"frame": {"x":1,"y":887,"w":327,"h":976},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":12,"w":327,"h":976},
+	"sourceSize": {"w":327,"h":988}
+},
+"skullLight1.png":
+{
+	"frame": {"x":855,"y":887,"w":125,"h":219},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":12,"w":125,"h":219},
+	"sourceSize": {"w":148,"h":231}
+},
+"skullLight2.png":
+{
+	"frame": {"x":1389,"y":742,"w":139,"h":219},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":12,"w":139,"h":219},
+	"sourceSize": {"w":153,"h":231}
+},
+"sky.png":
+{
+	"frame": {"x":1032,"y":1,"w":739,"h":489},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":739,"h":489},
+	"sourceSize": {"w":739,"h":489}
 }},
+"animations": {
+	"backPinePatch": ["backPinePatch1.png","backPinePatch2.png"],
+	"skullLight": ["skullLight1.png","skullLight2.png"]
+},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "background.png",
 	"format": "RGBA8888",
-	"size": {"w":1467,"h":627},
+	"size": {"w":1529,"h":1864},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:1d05e505d7f5fecd31cba2f4c521f447:a4e48895a79f10969c292189c858580e:2ba65c328dea799e4d80739630892abf$"
+	"smartupdate": "$TexturePacker:SmartUpdate:78468aca981321209568fff42e9e508c:610c8145128d0386804d7721fd9b4fb9:2ba65c328dea799e4d80739630892abf$"
 }
 }

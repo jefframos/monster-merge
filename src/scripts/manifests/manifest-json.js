@@ -52,12 +52,12 @@ const assets = [
 	"url":"assets/json\\localization_TR.json"
 	},
 	{
-	"id":"modifyers",
-	"url":"assets/json\\modifyers.json"
-	},
-	{
 	"id":"localization_ZH",
 	"url":"assets/json\\localization_ZH.json"
+	},
+	{
+	"id":"modifyers",
+	"url":"assets/json\\modifyers.json"
 	},
 	{
 	"id":"resources",

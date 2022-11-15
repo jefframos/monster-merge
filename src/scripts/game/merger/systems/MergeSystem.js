@@ -581,7 +581,7 @@ export default class MergeSystem {
         return av
     }
     autoPlace(piece) {
-        console.log("autoplace")
+        //console.log("autoplace")
         let allAvailables = []
         let firstAvailable = null;
         for (var i = 0; i < this.slots.length; i++) {
@@ -611,7 +611,7 @@ export default class MergeSystem {
         }
         this.releaseEntity(allAvailables[Math.floor(Math.random() * allAvailables.length)])
         
-        console.log(this.totalAvailable())
+        //console.log(this.totalAvailable())
         if(this.totalAvailable() > 0){
             piece.startCharging()
         }

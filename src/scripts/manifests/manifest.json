@@ -1,13 +1,11 @@
 {
     "default": [
-        "image/asteroids/asteroids.json",
-        "image/pattern2/pattern2.json",
         "image/particles/particles.json",
-        "image/background/background.json",
+        "image/pattern2/pattern2.json",
         "image/pattern/pattern.json",
-        "image/entities/entities.json",
+        "image/parts/parts.json",
         "image/portraits/portraits.json",
-        "image/enemies/enemies.json",
+        "image/background/background.json",
         "image/ui/ui.json"
     ]
 }

@@ -12,6 +12,8 @@ import ParticleSystem from '../../effects/ParticleSystem';
 import ResourceSystem from '../systems/ResourceSystem';
 import Screen from '../../../screenManager/Screen';
 import SpaceBackground from '../effects/SpaceBackground';
+import PuzzleBackground from '../effects/PuzzleBackground';
+import CastleBackground from '../effects/CastleBackground';
 import StandardPop from '../../popup/StandardPop';
 import TweenMax from 'gsap';
 import UIButton1 from '../../ui/UIButton1';
@@ -22,7 +24,7 @@ import PrizeSystem from '../systems/PrizeSystem';
 import OpenChestPopUp from '../../popup/OpenChestPopUp';
 import SellAllPopUp from '../../popup/SellAllPopUp';
 import StandardEnemy from '../enemy/StandardEnemy';
-import SpaceStation from '../../ui/SpaceStation';
+//import SpaceStation from '../../ui/SpaceStation';
 import BonusConfirmation from '../../popup/BonusConfirmation';
 import UILabelButton1 from '../../ui/UILabelButton1';
 
@@ -69,8 +71,10 @@ export default class MergeScreen extends Screen {
         }
 
         setTimeout(() => {
-            this.spaceBackground = new SpaceBackground();
-            this.addChildAt(this.spaceBackground, 0);
+            this.castleBackground = new CastleBackground();
+            this.puzzleBackground = new PuzzleBackground();
+            this.addChildAt(this.puzzleBackground, 0);
+            this.addChildAt(this.castleBackground, 0);
         }, 10);
         this.container = new PIXI.Container()
         this.addChild(this.container);
@@ -243,7 +247,7 @@ export default class MergeScreen extends Screen {
         this.frontLayer.addChild(this.particleSystem)
 
         this.helperButtonList = new UIList();
-        this.helperButtonList.h = 370;
+        this.helperButtonList.h = 350;
         this.helperButtonList.w = 60;
         this.speedUpToggle = new UIButton1(0x002299, 'fast_forward_icon')
         this.helperButtonList.addElement(this.speedUpToggle)
@@ -273,31 +277,32 @@ export default class MergeScreen extends Screen {
         })
 
 
-        this.addRandomShip = new UIButton1(0x002299, 'ship01')
+        this.addRandomShip = new UIButton1(0x002299, 'vampire')
         this.helperButtonList.addElement(this.addRandomShip)
         this.addRandomShip.onClick.add(() => {
             this.mergeSystem1.addShipBasedOnMax()
         })
 
 
-        this.autoCollectToggle = new UIButton1(0x002299, 'shards')
-        this.helperButtonList.addElement(this.autoCollectToggle)
-        this.autoCollectToggle.onClick.add(() => {
-            window.gameModifyers.addShards(Math.max(10, window.gameModifyers.permanentBonusData.shards * 0.2));
-            this.refreshToggles();
+        // this.autoCollectToggle = new UIButton1(0x002299, 'shards')
+        // this.helperButtonList.addElement(this.autoCollectToggle)
+        // this.autoCollectToggle.onClick.add(() => {
+        //     window.gameModifyers.addShards(Math.max(10, window.gameModifyers.permanentBonusData.shards * 0.2));
+        //     this.refreshToggles();
 
-        })
+        // })
 
         this.autoMergeToggle = new UIButton1(0x002299, 'auto-merge-icon')
         this.helperButtonList.addElement(this.autoMergeToggle)
         this.autoMergeToggle.onClick.add(() => {
-            if (window.gameModifyers.modifyersData.autoMerge == 1) {
-
-                window.gameModifyers.modifyersData.autoMerge = 2
-                window.gameModifyers.updateModifyer('autoMerge')
+            if (window.gameModifyers.modifyersData.autoMerge >= 2) {                
+                window.gameModifyers.modifyersData.autoMerge = 1
             }
-            else
-                window.gameModifyers.modifyersData.autoMerge == 1
+            else{
+                window.gameModifyers.modifyersData.autoMerge = 2
+                //window.gameModifyers.updateModifyer('autoMerge')
+
+            }
         })
         this.refreshToggles();
 
@@ -305,12 +310,12 @@ export default class MergeScreen extends Screen {
         this.container.addChild(this.helperButtonList)
 
         this.helperButtonList.visible = false
-        this.helperButtonList.scale.set(0.5)
+        this.helperButtonList.scale.set(0.85)
         let buttonSize = 70
         this.shopButtonsList = new UIList();
         this.shopButtonsList.w = buttonSize;
         this.shopButtonsList.h = buttonSize * 2.5;
-        this.container.addChild(this.shopButtonsList)
+        //this.container.addChild(this.shopButtonsList)
 
         this.currentOpenPopUp = null;
 
@@ -352,7 +357,7 @@ export default class MergeScreen extends Screen {
         //     this.openPopUp(this.entityShop)
         // })
 
-        this.openMergeShop = new UIButton1(0x002299, 'ship01', 0xFFFFFF, buttonSize, buttonSize)
+        this.openMergeShop = new UIButton1(0x002299, 'vampire', 0xFFFFFF, buttonSize, buttonSize)
         this.openMergeShop.updateIconScale(0.75)
         this.openMergeShop.addBadge('icon_increase')
         this.openMergeShop.newItem = new PIXI.Sprite.fromFrame('new_item')
@@ -461,16 +466,16 @@ export default class MergeScreen extends Screen {
 
         this.forcePauseSystemsTimer = 0.05;
 
-        this.spaceStation = new SpaceStation()
-        //this.container.addChild(this.spaceStation);
-        this.spaceStation.onParticles.add(this.addParticles.bind(this))
-        this.spaceStation.scale.set(0.55)
-        this.spaceStation.addCallback(() => {
+        // this.spaceStation = new SpaceStation()
+        // //this.container.addChild(this.spaceStation);
+        // this.spaceStation.onParticles.add(this.addParticles.bind(this))
+        // this.spaceStation.scale.set(0.55)
+        // this.spaceStation.addCallback(() => {
 
-            var shards = this.getShardBonusValue()
-            this.openPopUp(this.sellAllPopUp, { shards, onConfirm: this.resetAll.bind(this) })
-            //this.resetAll();
-        })
+        //     var shards = this.getShardBonusValue()
+        //     this.openPopUp(this.sellAllPopUp, { shards, onConfirm: this.resetAll.bind(this) })
+        //     //this.resetAll();
+        // })
 
 
         this.resetWhiteShape = new PIXI.Graphics().beginFill(0xFFFFFF).drawRect(-config.width * 4, -config.height * 4, config.width * 8, config.height * 8);
@@ -634,11 +639,11 @@ export default class MergeScreen extends Screen {
     refreshToggles() {
         let toggleValue = window.gameModifyers.modifyersData.autoCollectResource
 
-        if (toggleValue) {
-            this.autoCollectToggle.enableState();
-        } else {
-            this.autoCollectToggle.disableState();
-        }
+        // if (toggleValue) {
+        //     this.autoCollectToggle.enableState();
+        // } else {
+        //     this.autoCollectToggle.disableState();
+        // }
     }
 
     addSystem(system) {
@@ -772,9 +777,13 @@ export default class MergeScreen extends Screen {
 
         this.timestamp = (Date.now() / 1000 | 0);
 
-        if (this.spaceBackground) {
+        if (this.puzzleBackground) {
 
-            this.spaceBackground.update(delta)
+            this.puzzleBackground.update(delta)
+        }
+        if (this.castleBackground) {
+
+            this.castleBackground.update(delta)
         }
 
     }
@@ -786,12 +795,19 @@ export default class MergeScreen extends Screen {
 
         //console.log(resolution.width * this.screenManager.scale.x)
         var newRes = { width: resolution.width * this.screenManager.scale.x }
-        if (this.spaceBackground) {
+        if (this.puzzleBackground) {
 
-            this.spaceBackground.resize(resolution, this.screenManager.scale);
+            this.puzzleBackground.resize(resolution, this.screenManager.scale);
 
-            this.spaceBackground.x = config.width / 2
-            this.spaceBackground.y = config.height / 2
+            this.puzzleBackground.x = config.width / 2
+            this.puzzleBackground.y = config.height / 2 - 100
+        }
+        if (this.castleBackground) {
+
+            this.castleBackground.resize(resolution, this.screenManager.scale);
+
+            this.castleBackground.x = config.width / 2
+            this.castleBackground.y = config.height / 2 - 150
         }
 
         var toGlobal = this.toLocal({ x: 0, y: innerResolution.height })
@@ -810,15 +826,15 @@ export default class MergeScreen extends Screen {
         // this.statsList.y = 150
 
         if (!window.isPortrait) {
-            this.statsList.scale.set(1.6)
-            this.spaceStation.x = this.resourcesWrapper.x + 180;
-            this.spaceStation.y = this.resourcesWrapper.y + 150;
+            this.statsList.scale.set(1)
+            // this.spaceStation.x = this.resourcesWrapper.x + 180;
+            // this.spaceStation.y = this.resourcesWrapper.y + 150;
 
         } else {
             this.statsList.scale.set(1.1)
 
-            this.spaceStation.x = this.resourcesWrapper.x + 50;
-            this.spaceStation.y = this.resourcesWrapper.y + 40;
+            // this.spaceStation.x = this.resourcesWrapper.x + 50;
+            // this.spaceStation.y = this.resourcesWrapper.y + 40;
         }
 
 
@@ -835,8 +851,8 @@ export default class MergeScreen extends Screen {
 
         this.autoSpend.x = this.shopButtonsList.x - this.autoSpend.width - 50
         this.autoSpend.y = this.shopButtonsList.y - 45
-        this.helperButtonList.x = 50
-        this.helperButtonList.y = 220
+        this.helperButtonList.x = config.width  - 30
+        this.helperButtonList.y = 120
 
 
         this.enemiesContainer.x = config.width / 2;

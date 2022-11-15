@@ -1,0 +1,200 @@
+{"frames": {
+
+"backforest.png":
+{
+	"frame": {"x":941,"y":423,"w":174,"h":259},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":174,"h":259},
+	"sourceSize": {"w":174,"h":259}
+},
+"backTower.png":
+{
+	"frame": {"x":342,"y":576,"w":75,"h":336},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":336},
+	"sourceSize": {"w":75,"h":336}
+},
+"bridgeTower.png":
+{
+	"frame": {"x":571,"y":1,"w":165,"h":564},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":165,"h":564},
+	"sourceSize": {"w":165,"h":564}
+},
+"centerHouse1.png":
+{
+	"frame": {"x":687,"y":693,"w":153,"h":279},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":279},
+	"sourceSize": {"w":153,"h":279}
+},
+"door1.png":
+{
+	"frame": {"x":968,"y":684,"w":131,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":131,"h":155},
+	"sourceSize": {"w":131,"h":155}
+},
+"frontTower1.png":
+{
+	"frame": {"x":419,"y":835,"w":92,"h":266},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":92,"h":266},
+	"sourceSize": {"w":92,"h":266}
+},
+"leftTower.png":
+{
+	"frame": {"x":194,"y":1,"w":190,"h":573},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":190,"h":573},
+	"sourceSize": {"w":190,"h":573}
+},
+"mainTower.png":
+{
+	"frame": {"x":1,"y":596,"w":172,"h":379},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":172,"h":379},
+	"sourceSize": {"w":172,"h":379}
+},
+"middle1.png":
+{
+	"frame": {"x":952,"y":1,"w":266,"h":266},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":266,"h":266},
+	"sourceSize": {"w":266,"h":266}
+},
+"middle1.png.png":
+{
+	"frame": {"x":419,"y":567,"w":266,"h":266},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":266,"h":266},
+	"sourceSize": {"w":266,"h":266}
+},
+"side1.png":
+{
+	"frame": {"x":738,"y":1,"w":212,"h":389},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":212,"h":389},
+	"sourceSize": {"w":212,"h":389}
+},
+"side2.png":
+{
+	"frame": {"x":687,"y":848,"w":136,"h":211},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":211},
+	"sourceSize": {"w":136,"h":211}
+},
+"side3.png":
+{
+	"frame": {"x":975,"y":841,"w":170,"h":235},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":170,"h":235},
+	"sourceSize": {"w":170,"h":235}
+},
+"side4.png":
+{
+	"frame": {"x":243,"y":576,"w":97,"h":438},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":97,"h":438},
+	"sourceSize": {"w":97,"h":438}
+},
+"side5.png":
+{
+	"frame": {"x":386,"y":1,"w":183,"h":564},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":183,"h":564},
+	"sourceSize": {"w":183,"h":564}
+},
+"side5.png.png":
+{
+	"frame": {"x":1,"y":1,"w":191,"h":593},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":191,"h":593},
+	"sourceSize": {"w":191,"h":593}
+},
+"sideHouse1.png":
+{
+	"frame": {"x":952,"y":269,"w":152,"h":267},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":152,"h":267},
+	"sourceSize": {"w":152,"h":267}
+},
+"sideHouse2.png":
+{
+	"frame": {"x":738,"y":392,"w":201,"h":299},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":201,"h":299},
+	"sourceSize": {"w":201,"h":299}
+},
+"sideTower.png":
+{
+	"frame": {"x":900,"y":848,"w":73,"h":159},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":159},
+	"sourceSize": {"w":73,"h":159}
+},
+"stairs.png":
+{
+	"frame": {"x":1101,"y":721,"w":90,"h":116},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":90,"h":116},
+	"sourceSize": {"w":90,"h":116}
+},
+"statue1.png":
+{
+	"frame": {"x":342,"y":929,"w":86,"h":79},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":86,"h":79},
+	"sourceSize": {"w":86,"h":79}
+},
+"thinHouse.png":
+{
+	"frame": {"x":1117,"y":423,"w":125,"h":296},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":125,"h":296},
+	"sourceSize": {"w":125,"h":296}
+},
+"thinMiddle.png":
+{
+	"frame": {"x":175,"y":596,"w":66,"h":393},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":393},
+	"sourceSize": {"w":66,"h":393}
+}},
+"animations": {
+	"side": ["side1.png","side2.png","side3.png","side4.png","side5.png"],
+	"sideHouse": ["sideHouse1.png","sideHouse2.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "parts.png",
+	"format": "RGBA8888",
+	"size": {"w":1243,"h":1015},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:b438431dbde3d6143e819d8d34acc0d6:86af6207f19343bc927155e604a9e382:b42592a80b33b2d53d1875ff79b84b53$"
+}
+}

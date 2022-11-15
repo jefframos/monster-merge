@@ -32,7 +32,7 @@
         "area":{
             "bottomArea": 0.05,
             "topArea": 0.13,
-            "gameArea": {"w":1, "h":0.6},
+            "gameArea": {"w":1, "h":0.55},
             "resourcesArea": {"w":0.15, "h":0.6},
             "perspective": 0
           }        
