@@ -20,7 +20,7 @@ export default class CastleBackground extends PIXI.Container {
         this.moon = new PIXI.Sprite.fromFrame('moon')
         this.moon.anchor.set(0.5)
         this.baseContainer.addChild(this.moon)
-        this.moon.x = 200
+        this.moon.x = 0
         this.moon.y = -300
 
         this.castleBase = new PIXI.Sprite.fromFrame('castleBase')
@@ -69,7 +69,7 @@ export default class CastleBackground extends PIXI.Container {
             { src: 'backTower', order: 19 , pos: { x: 317.9, y: 0 } },
             { src: 'thinMiddle', order: 15 , pos: { x: 448.25, y: 91.7 } },
             { src: 'mainTower', order: 13 , pos: { x: 301.1, y: 133.1 } },
-            { src: 'statue1', order: 18 , pos: { x: 347.2, y: 91.05 } }
+            { src: 'statue1', order: 18 , pos: { x: 355.2, y: 71.05 } }
         ]
 
 

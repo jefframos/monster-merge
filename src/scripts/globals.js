@@ -44,20 +44,22 @@ window.console.groupCollapsed = function (teste) {
 
 window.MAX_NUMBER = 1000000;
 
-window.MAIN_FONT = 'retro_computerregular'
+window.MAIN_FONT = 'fredokaone'
 
 
 
 window.LABELS = {};
 window.LABELS.LABEL1 = {
-    fontFamily: 'retro_computerregular',
+    fontFamily: 'fredokaone',
     fontSize: '18px',
     fill: 0xFFFFFF,
     align: 'center',
-    fontWeight: '800'
+    fontWeight: '600',
+    stroke: 0,
+    strokeThickness: 4
 }
 window.LABELS.LABEL_CHEST = {
-    fontFamily: 'retro_computerregular',
+    fontFamily: 'fredokaone',
     fontSize: '18px',
     fill: 0xFFFFFF,
     align: 'center',
@@ -66,7 +68,7 @@ window.LABELS.LABEL_CHEST = {
     strokeThickness:4,
 }
 window.LABELS.LABEL_SPACESHIP = {
-    fontFamily: 'retro_computerregular',
+    fontFamily: 'fredokaone',
     fontSize: '18px',
     fill: 0xFFFFFF,
     align: 'center',
@@ -75,23 +77,24 @@ window.LABELS.LABEL_SPACESHIP = {
     strokeThickness:4,
 }
 window.LABELS.LABEL_STATS = {
-    fontFamily: 'retro_computerregular',
+    fontFamily: 'fredokaone',
     fontSize: '14px',
     fill: 0xFFFFFF,
     align: 'center',
-    fontWeight: '800'
+    stroke: 0,
+    strokeThickness: 4
 }
 
 window.LABELS.LABEL2 = {
-    fontFamily: 'retro_computerregular',
+    fontFamily: 'fredokaone',
     fontSize: '24px',
     fill: 0x000000,
     align: 'center',
-    fontWeight: '800'
+    fontWeight: '200'
 }
 
 window.LABELS.LABEL_DAMAGE= {
-    fontFamily: 'retro_computerregular',
+    fontFamily: 'fredokaone',
     fontSize: '14px',
     fill: 0xFFFFFF,
     align: 'center',

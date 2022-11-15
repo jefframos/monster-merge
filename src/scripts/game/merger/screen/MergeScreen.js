@@ -30,6 +30,7 @@ import UILabelButton1 from '../../ui/UILabelButton1';
 
 //import GameTutorial from '../tutorial/GameTutorial';
 import BonusSystem from '../systems/BonusSystem';
+import LevelMeter from '../ui/shop/LevelMeter';
 
 export default class MergeScreen extends Screen {
     constructor(label) {
@@ -466,6 +467,9 @@ export default class MergeScreen extends Screen {
 
         this.forcePauseSystemsTimer = 0.05;
 
+
+        this.levelMeter = new LevelMeter();
+        this.uiLayer.addChild(this.levelMeter)
         // this.spaceStation = new SpaceStation()
         // //this.container.addChild(this.spaceStation);
         // this.spaceStation.onParticles.add(this.addParticles.bind(this))
@@ -767,7 +771,7 @@ export default class MergeScreen extends Screen {
         });
 
 
-        this.rpsLabel.text = utils.formatPointsLabel(this.mergeSystem1.dps) + '/s';
+        this.rpsLabel.text = utils.formatPointsLabel(window.gameEconomy.currentResources);
         utils.centerObject(this.rpsLabel, this.rpsContainer)
         this.rpsLabel.x = 30
 
@@ -810,6 +814,8 @@ export default class MergeScreen extends Screen {
             this.castleBackground.y = config.height / 2 - 150
         }
 
+
+        this.levelMeter.y = this.castleBackground.y
         var toGlobal = this.toLocal({ x: 0, y: innerResolution.height })
 
         this.gridWrapper.x = config.width / 2 - this.gridWrapper.width / 2

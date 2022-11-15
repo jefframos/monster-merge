@@ -2,8 +2,8 @@
 
 "backforest.png":
 {
-	"frame": {"x":941,"y":423,"w":174,"h":259},
-	"rotated": false,
+	"frame": {"x":738,"y":392,"w":174,"h":259},
+	"rotated": true,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":174,"h":259},
 	"sourceSize": {"w":174,"h":259}
@@ -26,7 +26,7 @@
 },
 "centerHouse1.png":
 {
-	"frame": {"x":687,"y":693,"w":153,"h":279},
+	"frame": {"x":687,"y":568,"w":153,"h":279},
 	"rotated": true,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":279},
@@ -34,8 +34,8 @@
 },
 "door1.png":
 {
-	"frame": {"x":968,"y":684,"w":131,"h":155},
-	"rotated": false,
+	"frame": {"x":956,"y":880,"w":131,"h":155},
+	"rotated": true,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":131,"h":155},
 	"sourceSize": {"w":131,"h":155}
@@ -66,14 +66,6 @@
 },
 "middle1.png":
 {
-	"frame": {"x":952,"y":1,"w":266,"h":266},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":266,"h":266},
-	"sourceSize": {"w":266,"h":266}
-},
-"middle1.png.png":
-{
 	"frame": {"x":419,"y":567,"w":266,"h":266},
 	"rotated": false,
 	"trimmed": false,
@@ -90,16 +82,16 @@
 },
 "side2.png":
 {
-	"frame": {"x":687,"y":848,"w":136,"h":211},
-	"rotated": true,
+	"frame": {"x":999,"y":302,"w":136,"h":211},
+	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":211},
 	"sourceSize": {"w":136,"h":211}
 },
 "side3.png":
 {
-	"frame": {"x":975,"y":841,"w":170,"h":235},
-	"rotated": true,
+	"frame": {"x":985,"y":568,"w":170,"h":235},
+	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":170,"h":235},
 	"sourceSize": {"w":170,"h":235}
@@ -130,7 +122,7 @@
 },
 "sideHouse1.png":
 {
-	"frame": {"x":952,"y":269,"w":152,"h":267},
+	"frame": {"x":687,"y":850,"w":152,"h":267},
 	"rotated": true,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":152,"h":267},
@@ -138,7 +130,7 @@
 },
 "sideHouse2.png":
 {
-	"frame": {"x":738,"y":392,"w":201,"h":299},
+	"frame": {"x":952,"y":1,"w":201,"h":299},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":201,"h":299},
@@ -146,23 +138,23 @@
 },
 "sideTower.png":
 {
-	"frame": {"x":900,"y":848,"w":73,"h":159},
-	"rotated": false,
+	"frame": {"x":985,"y":805,"w":73,"h":159},
+	"rotated": true,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":159},
 	"sourceSize": {"w":73,"h":159}
 },
 "stairs.png":
 {
-	"frame": {"x":1101,"y":721,"w":90,"h":116},
-	"rotated": false,
+	"frame": {"x":342,"y":929,"w":90,"h":116},
+	"rotated": true,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":90,"h":116},
 	"sourceSize": {"w":90,"h":116}
 },
 "statue1.png":
 {
-	"frame": {"x":342,"y":929,"w":86,"h":79},
+	"frame": {"x":460,"y":929,"w":86,"h":79},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":86,"h":79},
@@ -170,8 +162,8 @@
 },
 "thinHouse.png":
 {
-	"frame": {"x":1117,"y":423,"w":125,"h":296},
-	"rotated": false,
+	"frame": {"x":687,"y":723,"w":125,"h":296},
+	"rotated": true,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":125,"h":296},
 	"sourceSize": {"w":125,"h":296}
@@ -193,8 +185,8 @@
 	"version": "1.0",
 	"image": "parts.png",
 	"format": "RGBA8888",
-	"size": {"w":1243,"h":1015},
+	"size": {"w":1156,"h":1020},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:b438431dbde3d6143e819d8d34acc0d6:86af6207f19343bc927155e604a9e382:b42592a80b33b2d53d1875ff79b84b53$"
+	"smartupdate": "$TexturePacker:SmartUpdate:0c6a9ce847ff702f22f6e039d394dd88:d65f55494afa464172e8f8749b268a10:b42592a80b33b2d53d1875ff79b84b53$"
 }
 }

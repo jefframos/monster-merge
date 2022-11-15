@@ -1,11 +1,11 @@
 const assets = [
 	{
-	"id":"asas",
-	"url":"assets/json\\asas"
-	},
-	{
 	"id":"baseGameConfig",
 	"url":"assets/json\\baseGameConfig.json"
+	},
+	{
+	"id":"asas",
+	"url":"assets/json\\asas"
 	},
 	{
 	"id":"entities",
@@ -24,12 +24,12 @@ const assets = [
 	"url":"assets/json\\localization_ES.json"
 	},
 	{
-	"id":"localization_FR",
-	"url":"assets/json\\localization_FR.json"
-	},
-	{
 	"id":"localization_IT",
 	"url":"assets/json\\localization_IT.json"
+	},
+	{
+	"id":"localization_FR",
+	"url":"assets/json\\localization_FR.json"
 	},
 	{
 	"id":"localization_JA",

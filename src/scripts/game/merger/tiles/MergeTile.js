@@ -32,11 +32,16 @@ export default class MergeTile extends PIXI.Container {
         this.backShape.alpha = 0.8
         this.container.addChild(this.backShape)
 
-        
+
         this.tileSprite = new PIXI.Sprite.from('');
         this.container.addChild(this.tileSprite)
         this.tileSprite.anchor.set(0.5, 1)
         this.tileSprite.visible = false;
+
+        this.giftSprite = new PIXI.Sprite.from('coffin1');
+        this.container.addChild(this.giftSprite)
+        this.giftSprite.anchor.set(0.5, 1)
+        this.giftSprite.visible = false;
 
         this.label = new PIXI.Text('', LABELS.LABEL1);
         this.container.addChild(this.label)
@@ -97,6 +102,9 @@ export default class MergeTile extends PIXI.Container {
         this.damageTimerView.rotation = -Math.PI * 0.5
         //this.damageTimerView.build()
         this.startTimer = Math.random() * 2
+
+        this.showingGift = false;
+        this.isSpecialTile = false;
     }
     reset() {
         this.generateResource = 0;
@@ -114,6 +122,10 @@ export default class MergeTile extends PIXI.Container {
 
         this.tileSprite.x = this.backSlot.width / 2 + this.positionOffset.x;
         this.tileSprite.y = this.backSlot.height / 2 + this.positionOffset.y;
+
+
+        this.giftSprite.x = this.tileSprite.x
+        this.giftSprite.y = this.tileSprite.y
     }
     update(delta, dateTimeStamp, autoUpdateResources = true) {
         if (this.startTimer > 0) {
@@ -125,6 +137,12 @@ export default class MergeTile extends PIXI.Container {
             this.sin %= Math.PI * 2;
             this.updatePosition();
         }
+
+        if (this.showingGift) {
+            this.label.visible = false;
+            return;
+        }
+        this.label.visible = true;
         this.damageTimerView.visible = false;
         //console.log(this, dateTimeStamp)
         if (false && autoUpdateResources) {
@@ -276,6 +294,7 @@ export default class MergeTile extends PIXI.Container {
         this.tileSprite.texture = PIXI.Texture.from(this.tileData.getTexture());
         this.updatePosition()
         this.entityScale = 1//Math.abs(this.backSlot.width / this.tileData.graphicsData.baseWidth * 0.75)
+        this.giftSprite.anchor.set(0.5)
         this.tileSprite.anchor.set(0.5)
         this.sin = Math.random();
         let v = this.tileData.getValue();
@@ -285,20 +304,60 @@ export default class MergeTile extends PIXI.Container {
         this.label.text = v
         this.label.text = this.tileData.rawData.id + 1
         //this.label.text = this.tileData.getGenerateDamageTime() +' --'+  this.tileData.rawData.initialTime
-        this.label.x = this.backSlot.width  - this.label.width - 10;
-        this.label.y = this.backSlot.height  - this.label.height - 10;
-        this.showSprite()
+        this.label.x = this.backSlot.width - this.label.width - 10;
+        this.label.y = this.backSlot.height - this.label.height - 10;
         this.enterAnimation()
+        this.giftSprite.visible = false;
+        this.tileSprite.visible = true;
 
         this.generateDamage = 1000
+    }
 
+    giftState(level = 0) {
+        if (!this.tileData) {
+            return;
+        }
+        this.showingGift = true;
 
+        let coffinID = 0;
+        if (this.tileData.currentLevel < 3) {
+            coffinID = 0
+        } else if (this.tileData.currentLevel < 8) {
+            coffinID = 1
+        } else if (this.tileData.currentLevel < 12) {
+            coffinID = 2
+        } else if (this.tileData.currentLevel < 22) {
+            coffinID = 3
+        }
+        console.log(this.tileData.currentLevel);
+        this.giftSprite.texture = new PIXI.Texture.from('coffin' + (coffinID+1));
+
+        this.giftSprite.visible = true;
+        this.tileSprite.visible = false;
+
+        console.log("GIFT")
+    }
+
+    reveal() {
+
+        if(this.isSpecialTile){
+            console.log("SPECIAL", this.isSpecialTile)
+        }
+        this.giftSprite.visible = false;
+        this.showSprite()
     }
     enterAnimation() {
         this.tileSprite.scale.set(0, 2);
+        this.giftSprite.scale.set(0, 2);
 
         this.animSprite = true;
         TweenLite.to(this.tileSprite.scale, 0.5, {
+            x: this.entityScale,
+            y: this.entityScale,
+            ease: Elastic.easeOut
+        })
+
+        TweenLite.to(this.giftSprite.scale, 0.5, {
             x: this.entityScale,
             y: this.entityScale,
             ease: Elastic.easeOut
@@ -330,6 +389,11 @@ export default class MergeTile extends PIXI.Container {
         this.endHold();
     }
     onMouseUp(e) {
+        if (this.showingGift) {
+            this.reveal();
+            this.showingGift = false;
+            return;
+        }
         this.isOver = false;
 
         if (!this.mouseDown) {
@@ -352,6 +416,9 @@ export default class MergeTile extends PIXI.Container {
         }
     }
     onMouseDown(e) {
+        if (this.showingGift) {
+            return;
+        }
         this.mouseDown = true;
         if (this.lockIcon.visible) {
             this.lockIcon.visible = false;

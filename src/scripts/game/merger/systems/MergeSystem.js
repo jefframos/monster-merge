@@ -171,6 +171,8 @@ export default class MergeSystem {
                 if (found) {
 
                     this.virtualSlots[split[0]][split[1]].addEntity(found)
+
+                    this.virtualSlots[split[0]][split[1]].visible = true;
                 }
             }
         }
@@ -261,8 +263,10 @@ export default class MergeSystem {
 
             id = Math.min(this.dataTiles.length - 1, id)
             piece.addEntity(this.dataTiles[id]);
+            piece.giftState();
 
             this.sortAutoMerge(piece)
+
             //piece.startCharging()
         });
         this.pieceGeneratorsList.push(piece);
@@ -496,6 +500,7 @@ export default class MergeSystem {
 
         //slot.removeEntity();
         slot.addEntity(data);
+        slot.giftState();
 
 
         let customData = {}
@@ -609,7 +614,13 @@ export default class MergeSystem {
         if (firstAvailable && firstAvailable.tileData) {
             
         }
-        this.releaseEntity(allAvailables[Math.floor(Math.random() * allAvailables.length)])
+
+        let slot = allAvailables[Math.floor(Math.random() * allAvailables.length)]
+        this.releaseEntity(slot)
+
+        if(slot){
+            slot.giftState()
+        }
         
         //console.log(this.totalAvailable())
         if(this.totalAvailable() > 0){
