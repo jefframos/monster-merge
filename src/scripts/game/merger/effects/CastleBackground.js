@@ -17,6 +17,33 @@ export default class CastleBackground extends PIXI.Container {
         this.baseContainer.addChild(this.baseTerrain)
         this.baseTerrain.y = 200
 
+        this.baseTerrainTop = new PIXI.Sprite.fromFrame('sky')
+        this.baseTerrainTop.anchor.set(0.5, 0)
+        this.baseTerrainTop.scale.set(1,-1)
+        this.baseTerrain.addChild(this.baseTerrainTop)
+        this.baseTerrainTop.y = -this.baseTerrain.height/2+1
+
+        this.baseTerrainLeft = new PIXI.Sprite.fromFrame('sky')
+        this.baseTerrainLeft.anchor.set(0.5, 1)
+        this.baseTerrainLeft.scale.set(-1,1)
+        this.baseTerrain.addChild(this.baseTerrainLeft)
+        this.baseTerrainLeft.x = -this.baseTerrainTop.width+1
+
+        this.baseTerrainTopLeft = new PIXI.Sprite.fromFrame('sky')
+        this.baseTerrainTopLeft.anchor.set(0.5, 0)
+        this.baseTerrainTopLeft.scale.set(-1,-1)
+        this.baseTerrain.addChild(this.baseTerrainTopLeft)
+        this.baseTerrainTopLeft.x = -this.baseTerrainTop.width+1
+        this.baseTerrainTopLeft.y = -this.baseTerrainTop.height+1
+
+
+        this.baseTerrainBottomLeft = new PIXI.Sprite.fromFrame('sky')
+        this.baseTerrainBottomLeft.anchor.set(0.5, 0)
+        this.baseTerrainBottomLeft.scale.set(1,-1)
+        this.baseTerrain.addChild(this.baseTerrainBottomLeft)
+        this.baseTerrainBottomLeft.y = this.baseTerrainTop.height+1
+
+
         this.moon = new PIXI.Sprite.fromFrame('moon')
         this.moon.anchor.set(0.5)
         this.baseContainer.addChild(this.moon)
@@ -26,27 +53,34 @@ export default class CastleBackground extends PIXI.Container {
         this.castleBase = new PIXI.Sprite.fromFrame('castleBase')
         this.castleBase.anchor.set(0.5, 1)
         this.baseContainer.addChild(this.castleBase)
-        this.castleBase.y = 100
+        this.castleBase.y = 180
         this.castleBase.scale.set(650 / this.castleBase.width)
 
         
+
         this.castleContainer = new PIXI.Container();
         this.baseContainer.addChild(this.castleContainer)
 
         this.leftDetail = new PIXI.Sprite.fromFrame('backPinePatch1')
         this.leftDetail.scale.set(0.7)
         this.leftDetail.anchor.set(1, 0)
-        this.leftDetail.x = -110
-        this.leftDetail.y = -185
+        this.leftDetail.x = -170
+        this.leftDetail.y = -135
         this.baseContainer.addChild(this.leftDetail)
         
         
         this.rightDetail = new PIXI.Sprite.fromFrame('backPinePatch2')
         this.rightDetail.scale.set(0.7)
-        this.rightDetail.x = 160
+        this.rightDetail.x = 190
         this.rightDetail.y = -155
         this.baseContainer.addChild(this.rightDetail)
 
+        this.bottomTree = new PIXI.Sprite.fromFrame('bottomTreePatch')
+        this.bottomTree.anchor.set(0.5, 1)
+        this.baseContainer.addChild(this.bottomTree)
+        this.bottomTree.x = 0
+        this.bottomTree.y = 280
+        this.bottomTree.scale.set(650 / this.bottomTree.width)
 
         this.castleSet = [
             { src: 'stairs', order: 0, pos: { x: 299.7, y: 676.45 } },
@@ -79,10 +113,11 @@ export default class CastleBackground extends PIXI.Container {
             img.x = element.pos.x
             img.y = element.pos.y
             this.castleContainer.addChild(img)
+            
         });
 
         this.castleSet.forEach(element => {
-            this.castleContainer.addChildAt(element.sprite, 20-element.order)
+            this.castleContainer.addChildAt(element.sprite, this.castleSet.lenght-element.order)
         });
 
 
@@ -104,7 +139,6 @@ export default class CastleBackground extends PIXI.Container {
     }
 
     update(delta) {
-
     }
 
 }

@@ -358,6 +358,70 @@ export default class MergeScreen extends Screen {
         //     this.openPopUp(this.entityShop)
         // })
 
+//36  72 - 120 - 180
+
+//500 - 600 - 720 - 864 - 1040
+//1250 - 1500 - 1800 - 2160
+//3130 - 3750 - 4500 - 5400
+// 7820
+//19530
+
+
+
+//1040 ?? - 1240 - 1490
+//2160 * 3
+//6480 * 3
+//16200 * 3
+
+//every merge gain the id number of points
+        // GameHandler.prototype.calculateCurrencyPerSec = function() {
+        //     var e = 0;
+        //     this.entity.children.forEach((function(t) {
+        //         t.enabled && t.script.has("buildingHandler") && (e += Math.pow(2, t.script.buildingHandler.level + 1))
+        //     }
+        //     )),
+        //     this.currencyPerSec = Math.round(e / 3)
+        // }
+
+        // GameHandler.prototype.onExperience = function(e, t) {
+        //     this.experienceBar.script.barHandler.changeValues(e, this.remainder),
+        //     e >= this.remainder && (this.experience = e - this.remainder,
+        //     this.level = pc.math.clamp(this.level + 1, 1, this.maxLevel))
+        // }
+        // ,
+        // GameHandler.prototype.onLevel = function(e, t) {
+        //     var i = this;
+        //     this.entity.children.forEach((function(t) {
+        //         t.name == "Slot_" + (e + 5) && (t.enabled = !0,
+        //         i.scaleCamera())
+        //     }
+        //     )),
+        //     this.remainder = e < 6 ? 6 * (e + 1) * (e + 1) - 6 * (e + 1) : e < 7 ? 5 * (e + 1) * (e + 1) - 5 * (e + 1) : e < 8 ? 4 * (e + 1) * (e + 1) - 4 * (e + 1) : e < 9 ? 3 * (e + 1) * (e + 1) - 3 * (e + 1) : e < 10 ? 2 * (e + 1) * (e + 1) - 2 * (e + 1) : (e + 1) * (e + 1) - (e + 1),
+        //     this.levelTxt.element.text = e,
+        //     this.experienceBar.script.barHandler.changeValues(this.experience, this.remainder),
+        //     e != t && (6 == e ? this.levelPopUpWorld.enabled = !0 : this.levelPopUp.enabled = !0,
+        //     PokiSDK.happyTime(pc.math.clamp(this.level / 10), 0, 1)),
+        //     this.shopHandler.script.worldHandler.updateWorlds()
+        // }
+
+window.getCurrency = function(e){
+    let a = Math.pow(2, e)
+    console.log(a)
+}
+
+window.getLevels = function(e){
+    let a = e < 6 ? 6 * (e + 1) * (e + 1) - 6 * (e + 1) : e < 7 ? 5 * (e + 1) * (e + 1) - 5 * (e + 1) : e < 8 ? 4 * (e + 1) * (e + 1) - 4 * (e + 1) : e < 9 ? 3 * (e + 1) * (e + 1) - 3 * (e + 1) : e < 10 ? 2 * (e + 1) * (e + 1) - 2 * (e + 1) : (e + 1) * (e + 1) - (e + 1)
+    console.log(a)
+}
+
+window.getPrices = function(e){
+    let s = 50;
+    for (let index = 0; index < e; index++) {
+        s *= 2.5        
+    }
+    s = Math.floor(s)
+    console.log(s * 10)
+}
         this.openMergeShop = new UIButton1(0x002299, 'vampire', 0xFFFFFF, buttonSize, buttonSize)
         this.openMergeShop.updateIconScale(0.75)
         this.openMergeShop.addBadge('icon_increase')
@@ -833,16 +897,53 @@ export default class MergeScreen extends Screen {
 
         if (!window.isPortrait) {
             this.statsList.scale.set(1)
+
+            var toGlobalBack = this.toLocal({ x: 0, y: innerResolution.height })
+
+            this.puzzleBackground.x = toGlobalBack.x + 390
+            this.puzzleBackground.y = 200
+            this.puzzleBackground.scale.set(1.3)
+
+            let resF = (innerResolution.width - 500)
+            let castScale = resF / 500
+            castScale = Math.min(castScale, 1.8)
+            castScale = Math.max(castScale, 0.4)
+            this.castleBackground.scale.set(castScale)
+            this.castleBackground.x = this.puzzleBackground.x + 450 + resF/2
+            //this.castleBackground.x = this.puzzleBackground.x +( 800 * castScale )
+           // this.castleBackground.x = Math.max(this.castleBackground.x, this.puzzleBackground.x + 500)
+            //this.castleBackground.x = Math.min(this.castleBackground.x, this.puzzleBackground.x + 1000)
+            this.castleBackground.y = toGlobalBack.y + 20
+            
+            this.gridWrapper.x = toGlobalBack.x + 50
+            this.gridWrapper.y= 200
+            
+            this.gridWrapper.width = config.width * 1.15
+            this.gridWrapper.height = config.height * 0.7
+            
+
+            this.levelMeter.x = toGlobalBack.x + 10
+            this.levelMeter.y = 140
+
+            this.levelMeter.scale.set(1.3)
+
             // this.spaceStation.x = this.resourcesWrapper.x + 180;
             // this.spaceStation.y = this.resourcesWrapper.y + 150;
-
+            
         } else {
             this.statsList.scale.set(1.1)
+            this.puzzleBackground.scale.set(1)
+            this.mergeSystemContainer.scale.set(1)
+            this.castleBackground.scale.set(1)
+            this.levelMeter.scale.set(1)
+            this.levelMeter.x = 0
+            this.gridWrapper.width = config.width * this.areaConfig.gameArea.w
+            this.gridWrapper.height = config.height * this.areaConfig.gameArea.h
 
             // this.spaceStation.x = this.resourcesWrapper.x + 50;
             // this.spaceStation.y = this.resourcesWrapper.y + 40;
         }
-
+        
 
 
 

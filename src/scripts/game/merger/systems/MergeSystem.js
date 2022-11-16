@@ -118,6 +118,8 @@ export default class MergeSystem {
                 this.findAllAutomerges()
             }
         })
+
+        this.highestPiece = 0;
     }
 
     resetSystem() {
@@ -138,6 +140,7 @@ export default class MergeSystem {
         this.loadData();
 
         this.boardLevel = 0;
+        this.highestPiece = 0;
         this.latest = 0;
         this.maxTilePlaced = 0;
 
@@ -171,6 +174,10 @@ export default class MergeSystem {
                 if (found) {
 
                     this.virtualSlots[split[0]][split[1]].addEntity(found)
+
+                    if(found.rawData.id > this.highestPiece){
+                        this.highestPiece = found.rawData.id;
+                    }
 
                     this.virtualSlots[split[0]][split[1]].visible = true;
                 }
@@ -249,6 +256,7 @@ export default class MergeSystem {
 
             //alert()
             //upgrade this
+            console.log(this.boardLevel)
             let id = 0;
             if (this.boardLevel > 4) {
                 id = Math.min(Math.floor(Math.random() * this.boardLevel / 3), 5);
@@ -684,6 +692,11 @@ export default class MergeSystem {
 
 
         let tempMaxTiledPlaced = utils.findMax(this.slots);
+        if(tempMaxTiledPlaced > this.highestPiece){
+            this.highestPiece = tempMaxTiledPlaced;
+        }
+
+        console.log("MAX "+this.highestPiece)
         if (tempMaxTiledPlaced > this.maxTilePlaced) {
             this.maxTilePlaced = tempMaxTiledPlaced;
             let nextLevel = Math.max(0, this.maxTilePlaced - 3);

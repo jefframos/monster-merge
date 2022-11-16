@@ -23027,7 +23027,7 @@ var MergeTile = function (_PIXI$Container) {
         _this.backShape = new PIXI.Sprite.fromFrame("gameSlot" + slotId);
         _this.backShape.width = size;
         _this.backShape.height = size;
-        _this.backShape.alpha = 0.8;
+        _this.backShape.alpha = 1;
         _this.container.addChild(_this.backShape);
 
         _this.tileSprite = new PIXI.Sprite.from('');
@@ -23080,6 +23080,7 @@ var MergeTile = function (_PIXI$Container) {
         _this.reset();
 
         _this.positionOffset = { x: 0, y: 0 };
+        _this.positionGiftOffset = { x: 0, y: 0 };
         _this.sin = Math.random();
 
         window.gameModifyers.onUpdateModifyers.add(_this.updateModifyers.bind(_this));
@@ -23119,7 +23120,7 @@ var MergeTile = function (_PIXI$Container) {
             this.tileSprite.y = this.backSlot.height / 2 + this.positionOffset.y;
 
             this.giftSprite.x = this.tileSprite.x;
-            this.giftSprite.y = this.tileSprite.y;
+            this.giftSprite.y = this.tileSprite.y + this.positionGiftOffset.y;
         }
     }, {
         key: 'update',
@@ -23139,6 +23140,9 @@ var MergeTile = function (_PIXI$Container) {
             if (this.showingGift) {
                 this.label.visible = false;
                 return;
+            }
+            if (this.tileData) {
+                this.tileSprite.visible = true;
             }
             this.label.visible = true;
             this.damageTimerView.visible = false;
@@ -23251,6 +23255,9 @@ var MergeTile = function (_PIXI$Container) {
     }, {
         key: 'removeEntity',
         value: function removeEntity() {
+            console.log('remove');
+            //console.trace()
+
             this.tileData = null;
             this.tileSprite.visible = false;
             this.animSprite = false;
@@ -23273,6 +23280,9 @@ var MergeTile = function (_PIXI$Container) {
             if (!this.tileData) {
                 return;
             }
+            console.log('hide');
+            //console.trace()
+
             this.tileSprite.alpha = 0; //.5
             this.tileSprite.visible = false;
             return this.tileSprite.texture;
@@ -23325,33 +23335,31 @@ var MergeTile = function (_PIXI$Container) {
             //this.label.text = this.tileData.getGenerateDamageTime() +' --'+  this.tileData.rawData.initialTime
             this.label.x = this.backSlot.width - this.label.width - 10;
             this.label.y = this.backSlot.height - this.label.height - 10;
-            this.enterAnimation();
             this.giftSprite.visible = false;
             this.tileSprite.visible = true;
 
+            this.enterAnimation();
             this.generateDamage = 1000;
         }
     }, {
         key: 'giftState',
         value: function giftState() {
-            var level = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-
             if (!this.tileData) {
                 return;
             }
             this.showingGift = true;
-
+            var level = this.tileData.rawData.id;
             var coffinID = 0;
-            if (this.tileData.currentLevel < 3) {
+            if (level < 3) {
                 coffinID = 0;
-            } else if (this.tileData.currentLevel < 8) {
+            } else if (level < 8) {
                 coffinID = 1;
-            } else if (this.tileData.currentLevel < 12) {
+            } else if (level < 12) {
                 coffinID = 2;
-            } else if (this.tileData.currentLevel < 22) {
+            } else if (level < 22) {
                 coffinID = 3;
             }
-            console.log(this.tileData.currentLevel);
+            console.log(level);
             this.giftSprite.texture = new PIXI.Texture.from('coffin' + (coffinID + 1));
 
             this.giftSprite.visible = true;
@@ -23372,8 +23380,19 @@ var MergeTile = function (_PIXI$Container) {
     }, {
         key: 'enterAnimation',
         value: function enterAnimation() {
+
+            this.tileSprite.alpha = 1;
             this.tileSprite.scale.set(0, 2);
             this.giftSprite.scale.set(0, 2);
+            TweenLite.killTweensOf(this.tileSprite.scale);
+            TweenLite.killTweensOf(this.giftSprite.scale);
+            TweenLite.killTweensOf(this.positionGiftOffset);
+            this.positionGiftOffset.y = -250;
+
+            TweenLite.to(this.positionGiftOffset, 0.5, {
+                y: 0,
+                ease: Bounce.easeOut
+            });
 
             this.animSprite = true;
             TweenLite.to(this.tileSprite.scale, 0.5, {
@@ -23382,7 +23401,7 @@ var MergeTile = function (_PIXI$Container) {
                 ease: Elastic.easeOut
             });
 
-            TweenLite.to(this.giftSprite.scale, 0.5, {
+            TweenLite.to(this.giftSprite.scale, 0.35, {
                 x: this.entityScale,
                 y: this.entityScale,
                 ease: Elastic.easeOut
@@ -60233,11 +60252,11 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 var assets = [{
-	"id": "baseGameConfig",
-	"url": "assets/json\\baseGameConfig.json"
-}, {
 	"id": "asas",
 	"url": "assets/json\\asas"
+}, {
+	"id": "baseGameConfig",
+	"url": "assets/json\\baseGameConfig.json"
 }, {
 	"id": "entities",
 	"url": "assets/json\\entities.json"
@@ -60251,11 +60270,11 @@ var assets = [{
 	"id": "localization_ES",
 	"url": "assets/json\\localization_ES.json"
 }, {
-	"id": "localization_IT",
-	"url": "assets/json\\localization_IT.json"
-}, {
 	"id": "localization_FR",
 	"url": "assets/json\\localization_FR.json"
+}, {
+	"id": "localization_IT",
+	"url": "assets/json\\localization_IT.json"
 }, {
 	"id": "localization_JA",
 	"url": "assets/json\\localization_JA.json"
@@ -60272,11 +60291,11 @@ var assets = [{
 	"id": "localization_TR",
 	"url": "assets/json\\localization_TR.json"
 }, {
-	"id": "localization_ZH",
-	"url": "assets/json\\localization_ZH.json"
-}, {
 	"id": "modifyers",
 	"url": "assets/json\\modifyers.json"
+}, {
+	"id": "localization_ZH",
+	"url": "assets/json\\localization_ZH.json"
 }, {
 	"id": "resources",
 	"url": "assets/json\\resources.json"
@@ -60571,7 +60590,7 @@ module.exports = exports["default"];
 /* 341 */
 /***/ (function(module, exports) {
 
-module.exports = {"default":["image/pattern2/pattern2.json","image/particles/particles.json","image/pattern/pattern.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
+module.exports = {"default":["image/pattern2/pattern2.json","image/particles/particles.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
 
 /***/ }),
 /* 342 */
@@ -61338,6 +61357,69 @@ var MergeScreen = function (_Screen) {
                 //     this.openPopUp(this.entityShop)
                 // })
 
+                //36  72 - 120 - 180
+
+                //500 - 600 - 720 - 864 - 1040
+                //1250 - 1500 - 1800 - 2160
+                //3130 - 3750 - 4500 - 5400
+                // 7820
+                //19530
+
+
+                //1040 ?? - 1240 - 1490
+                //2160 * 3
+                //6480 * 3
+                //16200 * 3
+
+                //every merge gain the id number of points
+                // GameHandler.prototype.calculateCurrencyPerSec = function() {
+                //     var e = 0;
+                //     this.entity.children.forEach((function(t) {
+                //         t.enabled && t.script.has("buildingHandler") && (e += Math.pow(2, t.script.buildingHandler.level + 1))
+                //     }
+                //     )),
+                //     this.currencyPerSec = Math.round(e / 3)
+                // }
+
+                // GameHandler.prototype.onExperience = function(e, t) {
+                //     this.experienceBar.script.barHandler.changeValues(e, this.remainder),
+                //     e >= this.remainder && (this.experience = e - this.remainder,
+                //     this.level = pc.math.clamp(this.level + 1, 1, this.maxLevel))
+                // }
+                // ,
+                // GameHandler.prototype.onLevel = function(e, t) {
+                //     var i = this;
+                //     this.entity.children.forEach((function(t) {
+                //         t.name == "Slot_" + (e + 5) && (t.enabled = !0,
+                //         i.scaleCamera())
+                //     }
+                //     )),
+                //     this.remainder = e < 6 ? 6 * (e + 1) * (e + 1) - 6 * (e + 1) : e < 7 ? 5 * (e + 1) * (e + 1) - 5 * (e + 1) : e < 8 ? 4 * (e + 1) * (e + 1) - 4 * (e + 1) : e < 9 ? 3 * (e + 1) * (e + 1) - 3 * (e + 1) : e < 10 ? 2 * (e + 1) * (e + 1) - 2 * (e + 1) : (e + 1) * (e + 1) - (e + 1),
+                //     this.levelTxt.element.text = e,
+                //     this.experienceBar.script.barHandler.changeValues(this.experience, this.remainder),
+                //     e != t && (6 == e ? this.levelPopUpWorld.enabled = !0 : this.levelPopUp.enabled = !0,
+                //     PokiSDK.happyTime(pc.math.clamp(this.level / 10), 0, 1)),
+                //     this.shopHandler.script.worldHandler.updateWorlds()
+                // }
+
+                window.getCurrency = function (e) {
+                        var a = Math.pow(2, e);
+                        console.log(a);
+                };
+
+                window.getLevels = function (e) {
+                        var a = e < 6 ? 6 * (e + 1) * (e + 1) - 6 * (e + 1) : e < 7 ? 5 * (e + 1) * (e + 1) - 5 * (e + 1) : e < 8 ? 4 * (e + 1) * (e + 1) - 4 * (e + 1) : e < 9 ? 3 * (e + 1) * (e + 1) - 3 * (e + 1) : e < 10 ? 2 * (e + 1) * (e + 1) - 2 * (e + 1) : (e + 1) * (e + 1) - (e + 1);
+                        console.log(a);
+                };
+
+                window.getPrices = function (e) {
+                        var s = 50;
+                        for (var _index3 = 0; _index3 < e; _index3++) {
+                                s *= 2.5;
+                        }
+                        s = Math.floor(s);
+                        console.log(s * 10);
+                };
                 _this.openMergeShop = new _UIButton2.default(0x002299, 'vampire', 0xFFFFFF, buttonSize, buttonSize);
                 _this.openMergeShop.updateIconScale(0.75);
                 _this.openMergeShop.addBadge('icon_increase');
@@ -61840,10 +61922,46 @@ var MergeScreen = function (_Screen) {
 
                         if (!window.isPortrait) {
                                 this.statsList.scale.set(1);
+
+                                var toGlobalBack = this.toLocal({ x: 0, y: innerResolution.height });
+
+                                this.puzzleBackground.x = toGlobalBack.x + 390;
+                                this.puzzleBackground.y = 200;
+                                this.puzzleBackground.scale.set(1.3);
+
+                                var resF = innerResolution.width - 500;
+                                var castScale = resF / 500;
+                                castScale = Math.min(castScale, 1.8);
+                                castScale = Math.max(castScale, 0.4);
+                                this.castleBackground.scale.set(castScale);
+                                this.castleBackground.x = this.puzzleBackground.x + 450 + resF / 2;
+                                //this.castleBackground.x = this.puzzleBackground.x +( 800 * castScale )
+                                // this.castleBackground.x = Math.max(this.castleBackground.x, this.puzzleBackground.x + 500)
+                                //this.castleBackground.x = Math.min(this.castleBackground.x, this.puzzleBackground.x + 1000)
+                                this.castleBackground.y = toGlobalBack.y + 20;
+
+                                this.gridWrapper.x = toGlobalBack.x + 50;
+                                this.gridWrapper.y = 200;
+
+                                this.gridWrapper.width = config.width * 1.15;
+                                this.gridWrapper.height = config.height * 0.7;
+
+                                this.levelMeter.x = toGlobalBack.x + 10;
+                                this.levelMeter.y = 140;
+
+                                this.levelMeter.scale.set(1.3);
+
                                 // this.spaceStation.x = this.resourcesWrapper.x + 180;
                                 // this.spaceStation.y = this.resourcesWrapper.y + 150;
                         } else {
                                 this.statsList.scale.set(1.1);
+                                this.puzzleBackground.scale.set(1);
+                                this.mergeSystemContainer.scale.set(1);
+                                this.castleBackground.scale.set(1);
+                                this.levelMeter.scale.set(1);
+                                this.levelMeter.x = 0;
+                                this.gridWrapper.width = config.width * this.areaConfig.gameArea.w;
+                                this.gridWrapper.height = config.height * this.areaConfig.gameArea.h;
 
                                 // this.spaceStation.x = this.resourcesWrapper.x + 50;
                                 // this.spaceStation.y = this.resourcesWrapper.y + 40;
@@ -64643,6 +64761,8 @@ var MergeSystem = function () {
                 _this.findAllAutomerges();
             }
         });
+
+        this.highestPiece = 0;
     }
 
     (0, _createClass3.default)(MergeSystem, [{
@@ -64664,6 +64784,7 @@ var MergeSystem = function () {
             this.loadData();
 
             this.boardLevel = 0;
+            this.highestPiece = 0;
             this.latest = 0;
             this.maxTilePlaced = 0;
 
@@ -64698,6 +64819,10 @@ var MergeSystem = function () {
                     if (found) {
 
                         this.virtualSlots[split[0]][split[1]].addEntity(found);
+
+                        if (found.rawData.id > this.highestPiece) {
+                            this.highestPiece = found.rawData.id;
+                        }
 
                         this.virtualSlots[split[0]][split[1]].visible = true;
                     }
@@ -64786,6 +64911,7 @@ var MergeSystem = function () {
 
                 //alert()
                 //upgrade this
+                console.log(_this2.boardLevel);
                 var id = 0;
                 if (_this2.boardLevel > 4) {
                     id = Math.min(Math.floor(Math.random() * _this2.boardLevel / 3), 5);
@@ -65250,6 +65376,11 @@ var MergeSystem = function () {
             }
 
             var tempMaxTiledPlaced = _utils2.default.findMax(this.slots);
+            if (tempMaxTiledPlaced > this.highestPiece) {
+                this.highestPiece = tempMaxTiledPlaced;
+            }
+
+            console.log("MAX " + this.highestPiece);
             if (tempMaxTiledPlaced > this.maxTilePlaced) {
                 this.maxTilePlaced = tempMaxTiledPlaced;
                 var nextLevel = Math.max(0, this.maxTilePlaced - 3);
@@ -65476,6 +65607,7 @@ var ChargerTile = function (_MergeTile) {
     }, {
         key: 'update',
         value: function update(delta, timeStamp) {
+            //return
             // if(COOKIE_MANAGER.getStats().tutorialStep <= 0){
             //     this.currentChargeTime = delta
             // }
@@ -67346,7 +67478,7 @@ module.exports = exports['default'];
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+        value: true
 });
 
 var _getPrototypeOf = __webpack_require__(3);
@@ -67390,58 +67522,90 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PuzzleBackground = function (_PIXI$Container) {
-  (0, _inherits3.default)(PuzzleBackground, _PIXI$Container);
+        (0, _inherits3.default)(PuzzleBackground, _PIXI$Container);
 
-  function PuzzleBackground() {
-    (0, _classCallCheck3.default)(this, PuzzleBackground);
+        function PuzzleBackground() {
+                (0, _classCallCheck3.default)(this, PuzzleBackground);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (PuzzleBackground.__proto__ || (0, _getPrototypeOf2.default)(PuzzleBackground)).call(this));
+                var _this = (0, _possibleConstructorReturn3.default)(this, (PuzzleBackground.__proto__ || (0, _getPrototypeOf2.default)(PuzzleBackground)).call(this));
 
-    _this.baseContainer = new PIXI.Container();
-    _this.addChild(_this.baseContainer);
+                _this.baseContainer = new PIXI.Container();
+                _this.addChild(_this.baseContainer);
 
-    _this.baseTerrain = new PIXI.Sprite.fromFrame('base-terrain');
-    _this.baseTerrain.anchor.set(0.5, 0);
-    _this.baseTerrain.scale.set(2);
-    _this.baseContainer.addChild(_this.baseTerrain);
+                _this.baseTerrain = new PIXI.Sprite.fromFrame('base-terrain');
+                _this.baseTerrain.anchor.set(0.5, 0);
+                _this.baseTerrain.scale.set(1);
+                _this.baseContainer.addChild(_this.baseTerrain);
 
-    _this.leftDetail = new PIXI.Sprite.fromFrame('leftPatch');
-    _this.leftDetail.anchor.set(1, 0);
-    _this.leftDetail.x = -150;
-    _this.leftDetail.y = -185;
-    _this.baseContainer.addChild(_this.leftDetail);
+                // this.bottomPatch = new PIXI.Sprite.fromFrame('bottomPatch')
+                // this.bottomPatch.x = 220
+                // this.bottomPatch.y = 550
+                // this.baseContainer.addChild(this.bottomPatch)
 
-    _this.rightDetail = new PIXI.Sprite.fromFrame('rightPatch');
-    _this.rightDetail.x = 150;
-    _this.rightDetail.y = -185;
-    _this.baseContainer.addChild(_this.rightDetail);
+                _this.leftDetail = new PIXI.Sprite.fromFrame('leftPatch');
+                _this.leftDetail.anchor.set(1, 0);
+                _this.leftDetail.x = -150;
+                _this.leftDetail.y = -180;
+                _this.baseContainer.addChild(_this.leftDetail);
 
-    _this.leftPines = new PIXI.Sprite.fromFrame('pineSidePatch');
-    _this.leftPines.anchor.set(1, 0);
-    _this.leftPines.x = -400;
-    _this.leftPines.y = -350;
-    _this.baseContainer.addChild(_this.leftPines);
+                _this.rightDetail = new PIXI.Sprite.fromFrame('rightPatch');
+                _this.rightDetail.x = 150;
+                _this.rightDetail.y = -180;
+                _this.baseContainer.addChild(_this.rightDetail);
 
-    _this.rightPines = new PIXI.Sprite.fromFrame('pineSidePatch');
-    _this.rightPines.x = 400;
-    _this.rightPines.y = -350;
-    _this.baseContainer.addChild(_this.rightPines);
-    return _this;
-  }
+                _this.leftPines = new PIXI.Sprite.fromFrame('pineSidePatch');
+                _this.leftPines.anchor.set(1, 0);
+                _this.leftPines.x = -400;
+                _this.leftPines.y = -350;
+                _this.baseContainer.addChild(_this.leftPines);
 
-  (0, _createClass3.default)(PuzzleBackground, [{
-    key: 'resize',
-    value: function resize(innerResolution, scale) {
-      if (innerResolution && innerResolution.width && innerResolution.height) {
+                _this.rightPines = new PIXI.Sprite.fromFrame('pineSidePatch');
+                _this.rightPines.x = 400;
+                _this.rightPines.y = -350;
+                _this.baseContainer.addChild(_this.rightPines);
 
-        this.innerResolution = innerResolution;
-      }
-    }
-  }, {
-    key: 'update',
-    value: function update(delta) {}
-  }]);
-  return PuzzleBackground;
+                return _this;
+        }
+
+        (0, _createClass3.default)(PuzzleBackground, [{
+                key: 'resize',
+                value: function resize(innerResolution, scale) {
+                        if (innerResolution && innerResolution.width && innerResolution.height) {
+
+                                this.innerResolution = innerResolution;
+
+                                if (window.isPortrait) {
+                                        this.rightPines.visible = true;
+                                        this.baseTerrain.scale.set(1);
+                                        this.rightDetail.texture = new PIXI.Texture.fromFrame('rightPatch');
+                                        this.rightDetail.scale.set(1);
+                                        this.leftDetail.scale.set(1);
+                                        this.leftDetail.x = -150;
+                                        this.leftDetail.y = -180;
+                                        this.rightDetail.x = 150;
+                                        this.rightDetail.y = -158;
+                                        //this.bottomPatch.visible = false;
+                                } else {
+                                        this.rightPines.visible = false;
+                                        this.baseTerrain.scale.x = 0.7;
+                                        this.rightDetail.texture = new PIXI.Texture.fromFrame('rightPatchCliff');
+                                        this.rightDetail.scale.set(0.8);
+                                        this.leftDetail.scale.set(0.8);
+
+                                        this.leftDetail.x = -150;
+                                        this.leftDetail.y = -140;
+
+                                        this.rightDetail.x = 160;
+                                        this.rightDetail.y = -140;
+                                        //this.bottomPatch.visible = true;
+                                }
+                        }
+                }
+        }, {
+                key: 'update',
+                value: function update(delta) {}
+        }]);
+        return PuzzleBackground;
 }(PIXI.Container);
 
 exports.default = PuzzleBackground;
@@ -67515,6 +67679,31 @@ var CastleBackground = function (_PIXI$Container) {
                 _this.baseContainer.addChild(_this.baseTerrain);
                 _this.baseTerrain.y = 200;
 
+                _this.baseTerrainTop = new PIXI.Sprite.fromFrame('sky');
+                _this.baseTerrainTop.anchor.set(0.5, 0);
+                _this.baseTerrainTop.scale.set(1, -1);
+                _this.baseTerrain.addChild(_this.baseTerrainTop);
+                _this.baseTerrainTop.y = -_this.baseTerrain.height / 2 + 1;
+
+                _this.baseTerrainLeft = new PIXI.Sprite.fromFrame('sky');
+                _this.baseTerrainLeft.anchor.set(0.5, 1);
+                _this.baseTerrainLeft.scale.set(-1, 1);
+                _this.baseTerrain.addChild(_this.baseTerrainLeft);
+                _this.baseTerrainLeft.x = -_this.baseTerrainTop.width + 1;
+
+                _this.baseTerrainTopLeft = new PIXI.Sprite.fromFrame('sky');
+                _this.baseTerrainTopLeft.anchor.set(0.5, 0);
+                _this.baseTerrainTopLeft.scale.set(-1, -1);
+                _this.baseTerrain.addChild(_this.baseTerrainTopLeft);
+                _this.baseTerrainTopLeft.x = -_this.baseTerrainTop.width + 1;
+                _this.baseTerrainTopLeft.y = -_this.baseTerrainTop.height + 1;
+
+                _this.baseTerrainBottomLeft = new PIXI.Sprite.fromFrame('sky');
+                _this.baseTerrainBottomLeft.anchor.set(0.5, 0);
+                _this.baseTerrainBottomLeft.scale.set(1, -1);
+                _this.baseTerrain.addChild(_this.baseTerrainBottomLeft);
+                _this.baseTerrainBottomLeft.y = _this.baseTerrainTop.height + 1;
+
                 _this.moon = new PIXI.Sprite.fromFrame('moon');
                 _this.moon.anchor.set(0.5);
                 _this.baseContainer.addChild(_this.moon);
@@ -67524,7 +67713,7 @@ var CastleBackground = function (_PIXI$Container) {
                 _this.castleBase = new PIXI.Sprite.fromFrame('castleBase');
                 _this.castleBase.anchor.set(0.5, 1);
                 _this.baseContainer.addChild(_this.castleBase);
-                _this.castleBase.y = 100;
+                _this.castleBase.y = 180;
                 _this.castleBase.scale.set(650 / _this.castleBase.width);
 
                 _this.castleContainer = new PIXI.Container();
@@ -67533,15 +67722,22 @@ var CastleBackground = function (_PIXI$Container) {
                 _this.leftDetail = new PIXI.Sprite.fromFrame('backPinePatch1');
                 _this.leftDetail.scale.set(0.7);
                 _this.leftDetail.anchor.set(1, 0);
-                _this.leftDetail.x = -110;
-                _this.leftDetail.y = -185;
+                _this.leftDetail.x = -170;
+                _this.leftDetail.y = -135;
                 _this.baseContainer.addChild(_this.leftDetail);
 
                 _this.rightDetail = new PIXI.Sprite.fromFrame('backPinePatch2');
                 _this.rightDetail.scale.set(0.7);
-                _this.rightDetail.x = 160;
+                _this.rightDetail.x = 190;
                 _this.rightDetail.y = -155;
                 _this.baseContainer.addChild(_this.rightDetail);
+
+                _this.bottomTree = new PIXI.Sprite.fromFrame('bottomTreePatch');
+                _this.bottomTree.anchor.set(0.5, 1);
+                _this.baseContainer.addChild(_this.bottomTree);
+                _this.bottomTree.x = 0;
+                _this.bottomTree.y = 280;
+                _this.bottomTree.scale.set(650 / _this.bottomTree.width);
 
                 _this.castleSet = [{ src: 'stairs', order: 0, pos: { x: 299.7, y: 676.45 } }, { src: 'door1', order: 7, pos: { x: 282.35, y: 562.95 } }, { src: 'frontTower1', order: 2, pos: { x: 374.6, y: 447.3 } }, { src: 'side2', order: 1, pos: { x: 442.1, y: 532.5 } }, { src: 'side1', order: 3, pos: { x: 101.05, y: 368.55 } }, { src: 'side3', order: 4, pos: { x: 566.5, y: 506.5 } }, { src: 'side4', order: 6, pos: { x: 717.7, y: 264.9 } }, { src: 'sideTower', order: 5, pos: { x: 780.65, y: 320.35 } }, { src: 'middle1', order: 8, pos: { x: 385.35, y: 387.25 } }, { src: 'centerHouse1', order: 11, pos: { x: 274.3, y: 317.1 } }, { src: 'leftTower', order: 15, pos: { x: 123, y: 31.6 } }, { src: 'backforest', order: 20, pos: { x: -15.85, y: 348 } }, { src: 'bridgeTower', order: 16, pos: { x: 518.4, y: 49.4 } }, { src: 'sideHouse2', order: 10, pos: { x: 490.8, y: 277.15 } }, { src: 'sideHouse1', order: 9, pos: { x: 565.95, y: 308.35 } }, { src: 'side5', order: 17, pos: { x: 630.45, y: 0 } }, { src: 'thinHouse', order: 15, pos: { x: 225.05, y: 223.25 } }, { src: 'backTower', order: 19, pos: { x: 317.9, y: 0 } }, { src: 'thinMiddle', order: 15, pos: { x: 448.25, y: 91.7 } }, { src: 'mainTower', order: 13, pos: { x: 301.1, y: 133.1 } }, { src: 'statue1', order: 18, pos: { x: 355.2, y: 71.05 } }];
 
@@ -67554,7 +67750,7 @@ var CastleBackground = function (_PIXI$Container) {
                 });
 
                 _this.castleSet.forEach(function (element) {
-                        _this.castleContainer.addChildAt(element.sprite, 20 - element.order);
+                        _this.castleContainer.addChildAt(element.sprite, _this.castleSet.lenght - element.order);
                 });
 
                 _this.castleContainer.x = -250;

@@ -46,6 +46,7 @@ export default class ChargerTile extends MergeTile {
         }
     }
     update(delta, timeStamp){
+        //return
         // if(COOKIE_MANAGER.getStats().tutorialStep <= 0){
         //     this.currentChargeTime = delta
         // }
