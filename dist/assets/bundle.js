@@ -22529,7 +22529,7 @@ var EntityShop = function (_PIXI$Container) {
         });
 
         _this.toggles = new _UpgradesToggles2.default({ w: _this.size.w * 0.7, h: 60 });
-        _this.container.addChild(_this.toggles);
+        //this.container.addChild(this.toggles);
         _this.toggles.x = _this.size.w / 2 - _this.size.w * 0.35 - 30;
         _this.toggles.y = _this.size.h - _this.toggles.height - 30;
         _this.toggles.onUpdateValue.add(_this.updateToggleValue.bind(_this));
@@ -22674,7 +22674,7 @@ var EntityShop = function (_PIXI$Container) {
 
             this.currentItens = [];
             for (var index = 0; index < items.length; index++) {
-                var shopItem = new _ShopItem2.default({ w: this.size.w * 0.95, h: 120 });
+                var shopItem = new _ShopItem2.default({ w: this.size.w * 0.65, h: 150 });
                 shopItem.setData(items[index]);
                 shopItem.nameID = items[index].rawData.nameID;
                 this.currentItens.push(shopItem);
@@ -60264,11 +60264,11 @@ var assets = [{
 	"id": "localization_DE",
 	"url": "assets/json\\localization_DE.json"
 }, {
-	"id": "localization_EN",
-	"url": "assets/json\\localization_EN.json"
-}, {
 	"id": "localization_ES",
 	"url": "assets/json\\localization_ES.json"
+}, {
+	"id": "localization_EN",
+	"url": "assets/json\\localization_EN.json"
 }, {
 	"id": "localization_FR",
 	"url": "assets/json\\localization_FR.json"
@@ -60279,11 +60279,11 @@ var assets = [{
 	"id": "localization_JA",
 	"url": "assets/json\\localization_JA.json"
 }, {
-	"id": "localization_KO",
-	"url": "assets/json\\localization_KO.json"
-}, {
 	"id": "localization_PT",
 	"url": "assets/json\\localization_PT.json"
+}, {
+	"id": "localization_KO",
+	"url": "assets/json\\localization_KO.json"
 }, {
 	"id": "localization_RU",
 	"url": "assets/json\\localization_RU.json"
@@ -60291,11 +60291,11 @@ var assets = [{
 	"id": "localization_TR",
 	"url": "assets/json\\localization_TR.json"
 }, {
-	"id": "modifyers",
-	"url": "assets/json\\modifyers.json"
-}, {
 	"id": "localization_ZH",
 	"url": "assets/json\\localization_ZH.json"
+}, {
+	"id": "modifyers",
+	"url": "assets/json\\modifyers.json"
 }, {
 	"id": "resources",
 	"url": "assets/json\\resources.json"
@@ -60590,7 +60590,7 @@ module.exports = exports["default"];
 /* 341 */
 /***/ (function(module, exports) {
 
-module.exports = {"default":["image/pattern2/pattern2.json","image/particles/particles.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
+module.exports = {"default":["image/particles/particles.json","image/pattern2/pattern2.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
 
 /***/ }),
 /* 342 */
@@ -61253,6 +61253,9 @@ var MergeScreen = function (_Screen) {
                 _this.particleSystem = new _ParticleSystem2.default();
                 _this.frontLayer.addChild(_this.particleSystem);
 
+                _this.levelMeter = new _LevelMeter2.default();
+                _this.uiLayer.addChild(_this.levelMeter);
+
                 _this.helperButtonList = new _UIList2.default();
                 _this.helperButtonList.h = 350;
                 _this.helperButtonList.w = 60;
@@ -61315,7 +61318,7 @@ var MergeScreen = function (_Screen) {
                 _this.shopButtonsList = new _UIList2.default();
                 _this.shopButtonsList.w = buttonSize;
                 _this.shopButtonsList.h = buttonSize * 2.5;
-                //this.container.addChild(this.shopButtonsList)
+                _this.container.addChild(_this.shopButtonsList);
 
                 _this.currentOpenPopUp = null;
 
@@ -61338,7 +61341,7 @@ var MergeScreen = function (_Screen) {
                 _this.openSettingsShop.newItem.position.set(-buttonSize / 2);
                 _this.openSettingsShop.newItem.visible = false;
                 _this.openSettingsShop.addChild(_this.openSettingsShop.newItem);
-                _this.shopButtonsList.addElement(_this.openSettingsShop);
+                //this.shopButtonsList.addElement(this.openSettingsShop)
                 _this.openSettingsShop.onClick.add(function () {
                         _this.openPopUp(_this.generalShop);
                 });
@@ -61358,7 +61361,7 @@ var MergeScreen = function (_Screen) {
                 // })
 
                 //36  72 - 120 - 180
-
+                //*1.2
                 //500 - 600 - 720 - 864 - 1040
                 //1250 - 1500 - 1800 - 2160
                 //3130 - 3750 - 4500 - 5400
@@ -61526,8 +61529,6 @@ var MergeScreen = function (_Screen) {
 
                 _this.forcePauseSystemsTimer = 0.05;
 
-                _this.levelMeter = new _LevelMeter2.default();
-                _this.uiLayer.addChild(_this.levelMeter);
                 // this.spaceStation = new SpaceStation()
                 // //this.container.addChild(this.spaceStation);
                 // this.spaceStation.onParticles.add(this.addParticles.bind(this))
@@ -61788,7 +61789,11 @@ var MergeScreen = function (_Screen) {
 
                         window.gameEconomy.addResources(totalResources);
 
-                        this.popLabelDamage(targetPosition, _utils2.default.formatPointsLabel(totalResources));
+                        if (totalResources < 1000) {
+                                this.popLabelDamage(targetPosition, totalResources);
+                        } else {
+                                this.popLabelDamage(targetPosition, _utils2.default.formatPointsLabel(totalResources));
+                        }
                         if (quantParticles <= 0) {
                                 return;
                         }
@@ -61934,11 +61939,11 @@ var MergeScreen = function (_Screen) {
                                 castScale = Math.min(castScale, 1.8);
                                 castScale = Math.max(castScale, 0.4);
                                 this.castleBackground.scale.set(castScale);
-                                this.castleBackground.x = this.puzzleBackground.x + 450 + resF / 2;
+                                this.castleBackground.x = this.puzzleBackground.x + 520 + resF / 2;
                                 //this.castleBackground.x = this.puzzleBackground.x +( 800 * castScale )
                                 // this.castleBackground.x = Math.max(this.castleBackground.x, this.puzzleBackground.x + 500)
                                 //this.castleBackground.x = Math.min(this.castleBackground.x, this.puzzleBackground.x + 1000)
-                                this.castleBackground.y = toGlobalBack.y + 20;
+                                this.castleBackground.y = toGlobalBack.y + 120;
 
                                 this.gridWrapper.x = toGlobalBack.x + 50;
                                 this.gridWrapper.y = 200;
@@ -62889,7 +62894,7 @@ var ShopItem = function (_UIList) {
     function ShopItem() {
         var rect = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
             w: 500,
-            h: 80
+            h: 200
         };
         (0, _classCallCheck3.default)(this, ShopItem);
 
@@ -62912,12 +62917,13 @@ var ShopItem = function (_UIList) {
         _this.backgroundContainer.addChildAt(_this.backShapeGeneral, 0);
 
         _this.itemIcon = new PIXI.Sprite.from('ship01');
-        // this.itemIcon.scaleContent = true;
-        _this.itemIcon.listScl = 0.15;
+        _this.itemIcon.listScl = 0.5;
+        //this.itemIcon.anchor.set(0,0.5)
         // this.itemIcon.fitHeight = 0.7;
+        _this.itemIcon.scaleContent = true;
         _this.itemIcon.scaleContentMax = true;
-        _this.itemIcon.fitWidth = 0.75;
-        // this.itemIcon.scaleContent = false;
+        _this.itemIcon.fitHeight = 0.75;
+
         _this.elementsList.push(_this.itemIcon);
         _this.container.addChild(_this.itemIcon);
 
@@ -62933,8 +62939,8 @@ var ShopItem = function (_UIList) {
         _this.levelBar.updatePowerBar(0.5);
         _this.levelContainer.scaleContentMax = true;
         _this.levelContainer.listScl = 0.15;
-        _this.elementsList.push(_this.levelContainer);
-        _this.container.addChild(_this.levelContainer);
+        //this.elementsList.push(this.levelContainer);
+        //this.container.addChild(this.levelContainer);
 
         _this.levelBar.y = _this.levelLabel.y + _this.levelLabel.height + 3;
         _this.levelBar.scale.set(0.2);
@@ -62950,16 +62956,16 @@ var ShopItem = function (_UIList) {
         _this.descriptionContainer.align = 0;
         _this.descriptionContainer.addChild(_this.descriptionLabel);
 
-        _this.elementsList.push(_this.descriptionContainer);
-        _this.container.addChild(_this.descriptionContainer);
+        //this.elementsList.push(this.descriptionContainer);
+        //this.container.addChild(this.descriptionContainer);
 
         _this.shopButton = new _ShopButton2.default();
         _this.shopButton.onClickItem.add(_this.onShopItem.bind(_this));
 
         // this.totalLabel2.fitHeight = 0.7;
         _this.shopButton.scaleContentMax = true;
-        _this.shopButton.listScl = 0.2;
-        _this.shopButton.align = 1;
+        _this.shopButton.listScl = 0.5;
+        _this.shopButton.align = 0.5;
         _this.elementsList.push(_this.shopButton);
         _this.container.addChild(_this.shopButton);
 
@@ -62980,8 +62986,8 @@ var ShopItem = function (_UIList) {
         _this.infoButton.align = 0.25;
         _this.infoButton.fitHeight = 0.22;
         // this.infoButton.scaleContentMax = true;
-        _this.elementsList.push(_this.infoButton);
-        _this.container.addChild(_this.infoButton);
+        //this.elementsList.push(this.infoButton);
+        //this.container.addChild(this.infoButton);
 
         // this.itemIcon.scaleContent = false;
         _this.isLocked = false;
@@ -63102,7 +63108,7 @@ var ShopItem = function (_UIList) {
                 // this.descriptionLabel.pivot.x = this.descriptionLabel.width / 2
                 // this.totalLabel.text = 'cooldown ' + leveldValues.cooldown+ '\nactive time' + leveldValues.activeTime + '\nvalue' + leveldValues.value;
             }
-            this.updateHorizontalList();
+            this.updateHorizontalList(true);
             this.descriptionContainer.y = 0;
             this.descriptionLabel.text = this.staticData.shopDesc.toUpperCase();
             // this.descriptionLabel.x = this.attributesList.x + this.attributesList.width / 2
@@ -63175,10 +63181,10 @@ var ShopItem = function (_UIList) {
     }, {
         key: 'updateData',
         value: function updateData() {
-            var next = this.previewValue;
+            var next = 1; //this.previewValue
 
             //this.attributesList['cost'].text = utils.formatPointsLabel(this.itemData.getRPS())+'/s'
-            this.realCost = this.itemData.getUpgradeCost(next);
+            this.realCost = this.itemData.getUpgradeCost2(next);
 
             var currentRPS = this.itemData.getRPS();
             var nextRPS = this.itemData.getRPS(next);
@@ -63197,11 +63203,19 @@ var ShopItem = function (_UIList) {
 
                 extra += ' ' + desc;
             }
+
             this.attributesList['cost'].text = _utils2.default.formatPointsLabel(currentRPS) + extra;
             //this.attributesList['value'].text = utils.formatPointsLabel(Math.ceil(nextRPS - currentRPS)) + extra
             this.attributesList['value'].text = '+ ' + _utils2.default.formatPointsLabel(nextRPS - currentRPS);
 
-            this.shopButton.updateCoast(_utils2.default.formatPointsLabel(this.realCost));
+            console.log(this.realCost);
+            if (this.realCost < 1000) {
+
+                this.shopButton.updateCoast(this.realCost);
+            } else {
+
+                this.shopButton.updateCoast(_utils2.default.formatPointsLabel(this.realCost));
+            }
 
             if (this.realCost <= window.gameEconomy.currentResources) {
                 this.shopButton.enable();
@@ -63255,7 +63269,7 @@ var ShopItem = function (_UIList) {
                 }
             }
 
-            this.updateHorizontalList();
+            this.updateHorizontalList(true);
         }
     }, {
         key: 'filterLocalized',
@@ -63316,10 +63330,10 @@ var ShopItem = function (_UIList) {
                     count++;
                 });
 
-                //this.attributesList.updateHorizontalList();
+                //this.attributesList.updateHorizontalList(true);
                 this.descriptionContainer.y = 0;
             }
-            this.updateHorizontalList();
+            this.updateHorizontalList(true);
 
             this.updateData();
         }
@@ -65085,7 +65099,8 @@ var MergeSystem = function () {
                 customData.forceY = 50;
                 customData.alphaDecress = 1;
                 var targetPos = slot.tileSprite.getGlobalPosition();
-                _this3.onGetResources.dispatch(targetPos, customData, data.getDamage(), 1);
+                //this.onGetResources.dispatch(targetPos, customData, data.getDamage(), 1)
+                _this3.onGetResources.dispatch(targetPos, customData, Math.pow(2, data.rawData.id + 1), 1);
             });
             slot.onGenerateDamage.add(function (slot, data) {
                 // let customData = {}
@@ -65818,13 +65833,32 @@ var MergerData = function () {
         var scaling = index * 14 + index * index * index * 0.11;
         scaling = Math.max(1, scaling);
         rawData.initialDamage = 2 * Math.pow(1.2, scaling);
+
+        rawData.initialCost = this.calcSimplePrice(index);
         this.rawData = rawData;
 
         this.currentLevel = 1;
         this.resourceAccum = true;
+
+        console.log(this.rawData);
     }
 
     (0, _createClass3.default)(MergerData, [{
+        key: "calcSimplePrice",
+        value: function calcSimplePrice(level) {
+            var s = 50;
+            for (var index = 0; index < level; index++) {
+                s *= 2.5;
+            }
+            s = Math.floor(s);
+            return s * 10;
+        }
+    }, {
+        key: "calcSimpleCurrency",
+        value: function calcSimpleCurrency(level) {
+            return Math.pow(2, level);
+        }
+    }, {
         key: "reset",
         value: function reset() {
             this.currentLevel = 1;
@@ -65908,6 +65942,19 @@ var MergerData = function () {
         key: "getCoast",
         value: function getCoast() {
             return this.rawData.initialCost;
+        }
+    }, {
+        key: "getUpgradeCost2",
+        value: function getUpgradeCost2() {
+
+            var s = this.rawData.initialCost / 10;
+            for (var index = 0; index < this.currentLevel - 1; index++) {
+                s *= 1.2;
+            }
+            s = Math.floor(s);
+
+            console.log(this.rawData.initialCost, s, this.currentLevel);
+            return s * 10;
         }
     }, {
         key: "getUpgradeCost",
@@ -67702,7 +67749,7 @@ var CastleBackground = function (_PIXI$Container) {
                 _this.baseTerrainBottomLeft.anchor.set(0.5, 0);
                 _this.baseTerrainBottomLeft.scale.set(1, -1);
                 _this.baseTerrain.addChild(_this.baseTerrainBottomLeft);
-                _this.baseTerrainBottomLeft.y = _this.baseTerrainTop.height + 1;
+                _this.baseTerrainBottomLeft.y = _this.baseTerrainTop.height - 1;
 
                 _this.moon = new PIXI.Sprite.fromFrame('moon');
                 _this.moon.anchor.set(0.5);
@@ -67738,6 +67785,13 @@ var CastleBackground = function (_PIXI$Container) {
                 _this.bottomTree.x = 0;
                 _this.bottomTree.y = 280;
                 _this.bottomTree.scale.set(650 / _this.bottomTree.width);
+
+                _this.bottomTree2 = new PIXI.Sprite.fromFrame('bottomTreePatch');
+                _this.bottomTree2.anchor.set(0.5, 1);
+                _this.baseContainer.addChild(_this.bottomTree2);
+                _this.bottomTree2.x = 0;
+                _this.bottomTree2.y = 380;
+                _this.bottomTree2.scale.set(650 / _this.bottomTree2.width);
 
                 _this.castleSet = [{ src: 'stairs', order: 0, pos: { x: 299.7, y: 676.45 } }, { src: 'door1', order: 7, pos: { x: 282.35, y: 562.95 } }, { src: 'frontTower1', order: 2, pos: { x: 374.6, y: 447.3 } }, { src: 'side2', order: 1, pos: { x: 442.1, y: 532.5 } }, { src: 'side1', order: 3, pos: { x: 101.05, y: 368.55 } }, { src: 'side3', order: 4, pos: { x: 566.5, y: 506.5 } }, { src: 'side4', order: 6, pos: { x: 717.7, y: 264.9 } }, { src: 'sideTower', order: 5, pos: { x: 780.65, y: 320.35 } }, { src: 'middle1', order: 8, pos: { x: 385.35, y: 387.25 } }, { src: 'centerHouse1', order: 11, pos: { x: 274.3, y: 317.1 } }, { src: 'leftTower', order: 15, pos: { x: 123, y: 31.6 } }, { src: 'backforest', order: 20, pos: { x: -15.85, y: 348 } }, { src: 'bridgeTower', order: 16, pos: { x: 518.4, y: 49.4 } }, { src: 'sideHouse2', order: 10, pos: { x: 490.8, y: 277.15 } }, { src: 'sideHouse1', order: 9, pos: { x: 565.95, y: 308.35 } }, { src: 'side5', order: 17, pos: { x: 630.45, y: 0 } }, { src: 'thinHouse', order: 15, pos: { x: 225.05, y: 223.25 } }, { src: 'backTower', order: 19, pos: { x: 317.9, y: 0 } }, { src: 'thinMiddle', order: 15, pos: { x: 448.25, y: 91.7 } }, { src: 'mainTower', order: 13, pos: { x: 301.1, y: 133.1 } }, { src: 'statue1', order: 18, pos: { x: 355.2, y: 71.05 } }];
 

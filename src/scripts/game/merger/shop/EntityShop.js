@@ -98,7 +98,7 @@ export default class EntityShop extends PIXI.Container {
         })
 
         this.toggles = new UpgradesToggles({ w: this.size.w * 0.7, h: 60 })
-        this.container.addChild(this.toggles);
+        //this.container.addChild(this.toggles);
         this.toggles.x = this.size.w / 2 - this.size.w * 0.35 - 30
         this.toggles.y = this.size.h - this.toggles.height - 30
         this.toggles.onUpdateValue.add(this.updateToggleValue.bind(this))
@@ -217,7 +217,7 @@ export default class EntityShop extends PIXI.Container {
 
         this.currentItens = []
         for (let index = 0; index < items.length; index++) {
-            let shopItem = new ShopItem({ w: this.size.w * 0.95, h: 120 })
+            let shopItem = new ShopItem({ w: this.size.w * 0.65, h: 150 })
             shopItem.setData(items[index])
             shopItem.nameID = items[index].rawData.nameID;
             this.currentItens.push(shopItem)

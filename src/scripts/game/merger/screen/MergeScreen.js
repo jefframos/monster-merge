@@ -180,9 +180,9 @@ export default class MergeScreen extends Screen {
             wrapper: this.gridWrapper,
             topContainer: this.topContainer,
         }, window.baseConfigGame, this.rawMergeDataList);
-      
 
-      
+
+
         this.addSystem(this.mergeSystem1)
 
         this.mergeSystem1.enemySystem = this.enemiesSystem;
@@ -247,6 +247,10 @@ export default class MergeScreen extends Screen {
         this.particleSystem = new ParticleSystem();
         this.frontLayer.addChild(this.particleSystem)
 
+
+        this.levelMeter = new LevelMeter();
+        this.uiLayer.addChild(this.levelMeter)
+
         this.helperButtonList = new UIList();
         this.helperButtonList.h = 350;
         this.helperButtonList.w = 60;
@@ -296,10 +300,10 @@ export default class MergeScreen extends Screen {
         this.autoMergeToggle = new UIButton1(0x002299, 'auto-merge-icon')
         this.helperButtonList.addElement(this.autoMergeToggle)
         this.autoMergeToggle.onClick.add(() => {
-            if (window.gameModifyers.modifyersData.autoMerge >= 2) {                
+            if (window.gameModifyers.modifyersData.autoMerge >= 2) {
                 window.gameModifyers.modifyersData.autoMerge = 1
             }
-            else{
+            else {
                 window.gameModifyers.modifyersData.autoMerge = 2
                 //window.gameModifyers.updateModifyer('autoMerge')
 
@@ -316,7 +320,7 @@ export default class MergeScreen extends Screen {
         this.shopButtonsList = new UIList();
         this.shopButtonsList.w = buttonSize;
         this.shopButtonsList.h = buttonSize * 2.5;
-        //this.container.addChild(this.shopButtonsList)
+        this.container.addChild(this.shopButtonsList)
 
         this.currentOpenPopUp = null;
 
@@ -339,7 +343,7 @@ export default class MergeScreen extends Screen {
         this.openSettingsShop.newItem.position.set(-buttonSize / 2)
         this.openSettingsShop.newItem.visible = false;
         this.openSettingsShop.addChild(this.openSettingsShop.newItem)
-        this.shopButtonsList.addElement(this.openSettingsShop)
+        //this.shopButtonsList.addElement(this.openSettingsShop)
         this.openSettingsShop.onClick.add(() => {
             this.openPopUp(this.generalShop)
         })
@@ -358,22 +362,22 @@ export default class MergeScreen extends Screen {
         //     this.openPopUp(this.entityShop)
         // })
 
-//36  72 - 120 - 180
+        //36  72 - 120 - 180
+        //*1.2
+        //500 - 600 - 720 - 864 - 1040
+        //1250 - 1500 - 1800 - 2160
+        //3130 - 3750 - 4500 - 5400
+        // 7820
+        //19530
 
-//500 - 600 - 720 - 864 - 1040
-//1250 - 1500 - 1800 - 2160
-//3130 - 3750 - 4500 - 5400
-// 7820
-//19530
 
 
+        //1040 ?? - 1240 - 1490
+        //2160 * 3
+        //6480 * 3
+        //16200 * 3
 
-//1040 ?? - 1240 - 1490
-//2160 * 3
-//6480 * 3
-//16200 * 3
-
-//every merge gain the id number of points
+        //every merge gain the id number of points
         // GameHandler.prototype.calculateCurrencyPerSec = function() {
         //     var e = 0;
         //     this.entity.children.forEach((function(t) {
@@ -404,24 +408,24 @@ export default class MergeScreen extends Screen {
         //     this.shopHandler.script.worldHandler.updateWorlds()
         // }
 
-window.getCurrency = function(e){
-    let a = Math.pow(2, e)
-    console.log(a)
-}
+        window.getCurrency = function (e) {
+            let a = Math.pow(2, e)
+            console.log(a)
+        }
 
-window.getLevels = function(e){
-    let a = e < 6 ? 6 * (e + 1) * (e + 1) - 6 * (e + 1) : e < 7 ? 5 * (e + 1) * (e + 1) - 5 * (e + 1) : e < 8 ? 4 * (e + 1) * (e + 1) - 4 * (e + 1) : e < 9 ? 3 * (e + 1) * (e + 1) - 3 * (e + 1) : e < 10 ? 2 * (e + 1) * (e + 1) - 2 * (e + 1) : (e + 1) * (e + 1) - (e + 1)
-    console.log(a)
-}
+        window.getLevels = function (e) {
+            let a = e < 6 ? 6 * (e + 1) * (e + 1) - 6 * (e + 1) : e < 7 ? 5 * (e + 1) * (e + 1) - 5 * (e + 1) : e < 8 ? 4 * (e + 1) * (e + 1) - 4 * (e + 1) : e < 9 ? 3 * (e + 1) * (e + 1) - 3 * (e + 1) : e < 10 ? 2 * (e + 1) * (e + 1) - 2 * (e + 1) : (e + 1) * (e + 1) - (e + 1)
+            console.log(a)
+        }
 
-window.getPrices = function(e){
-    let s = 50;
-    for (let index = 0; index < e; index++) {
-        s *= 2.5        
-    }
-    s = Math.floor(s)
-    console.log(s * 10)
-}
+        window.getPrices = function (e) {
+            let s = 50;
+            for (let index = 0; index < e; index++) {
+                s *= 2.5
+            }
+            s = Math.floor(s)
+            console.log(s * 10)
+        }
         this.openMergeShop = new UIButton1(0x002299, 'vampire', 0xFFFFFF, buttonSize, buttonSize)
         this.openMergeShop.updateIconScale(0.75)
         this.openMergeShop.addBadge('icon_increase')
@@ -532,8 +536,7 @@ window.getPrices = function(e){
         this.forcePauseSystemsTimer = 0.05;
 
 
-        this.levelMeter = new LevelMeter();
-        this.uiLayer.addChild(this.levelMeter)
+        
         // this.spaceStation = new SpaceStation()
         // //this.container.addChild(this.spaceStation);
         // this.spaceStation.onParticles.add(this.addParticles.bind(this))
@@ -766,7 +769,11 @@ window.getPrices = function(e){
     addResourceParticles(targetPosition, customData, totalResources, quantParticles, showParticles = true) {
         window.gameEconomy.addResources(totalResources)
 
-        this.popLabelDamage(targetPosition, utils.formatPointsLabel(totalResources))
+        if (totalResources < 1000) {
+            this.popLabelDamage(targetPosition, totalResources)
+        } else {
+            this.popLabelDamage(targetPosition, utils.formatPointsLabel(totalResources))
+        }
         if (quantParticles <= 0) {
             return;
         }
@@ -909,18 +916,18 @@ window.getPrices = function(e){
             castScale = Math.min(castScale, 1.8)
             castScale = Math.max(castScale, 0.4)
             this.castleBackground.scale.set(castScale)
-            this.castleBackground.x = this.puzzleBackground.x + 450 + resF/2
+            this.castleBackground.x = this.puzzleBackground.x + 520 + resF / 2
             //this.castleBackground.x = this.puzzleBackground.x +( 800 * castScale )
-           // this.castleBackground.x = Math.max(this.castleBackground.x, this.puzzleBackground.x + 500)
+            // this.castleBackground.x = Math.max(this.castleBackground.x, this.puzzleBackground.x + 500)
             //this.castleBackground.x = Math.min(this.castleBackground.x, this.puzzleBackground.x + 1000)
-            this.castleBackground.y = toGlobalBack.y + 20
-            
+            this.castleBackground.y = toGlobalBack.y + 120
+
             this.gridWrapper.x = toGlobalBack.x + 50
-            this.gridWrapper.y= 200
-            
+            this.gridWrapper.y = 200
+
             this.gridWrapper.width = config.width * 1.15
             this.gridWrapper.height = config.height * 0.7
-            
+
 
             this.levelMeter.x = toGlobalBack.x + 10
             this.levelMeter.y = 140
@@ -929,7 +936,7 @@ window.getPrices = function(e){
 
             // this.spaceStation.x = this.resourcesWrapper.x + 180;
             // this.spaceStation.y = this.resourcesWrapper.y + 150;
-            
+
         } else {
             this.statsList.scale.set(1.1)
             this.puzzleBackground.scale.set(1)
@@ -943,7 +950,7 @@ window.getPrices = function(e){
             // this.spaceStation.x = this.resourcesWrapper.x + 50;
             // this.spaceStation.y = this.resourcesWrapper.y + 40;
         }
-        
+
 
 
 
@@ -958,7 +965,7 @@ window.getPrices = function(e){
 
         this.autoSpend.x = this.shopButtonsList.x - this.autoSpend.width - 50
         this.autoSpend.y = this.shopButtonsList.y - 45
-        this.helperButtonList.x = config.width  - 30
+        this.helperButtonList.x = config.width - 30
         this.helperButtonList.y = 120
 
 

@@ -411,7 +411,8 @@ export default class MergeSystem {
             customData.forceY = 50
             customData.alphaDecress = 1
             let targetPos = slot.tileSprite.getGlobalPosition()
-            this.onGetResources.dispatch(targetPos, customData, data.getDamage(), 1)
+            //this.onGetResources.dispatch(targetPos, customData, data.getDamage(), 1)
+            this.onGetResources.dispatch(targetPos, customData, Math.pow(2, data.rawData.id+1), 1)
 
         });
         slot.onGenerateDamage.add((slot, data) => {

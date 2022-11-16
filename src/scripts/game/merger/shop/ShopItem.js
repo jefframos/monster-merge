@@ -10,7 +10,7 @@ import utils from '../../../utils';
 export default class ShopItem extends UIList {
     constructor(rect = {
         w: 500,
-        h: 80
+        h: 200
     }) {
         super();
         this.w = rect.w;
@@ -32,12 +32,13 @@ export default class ShopItem extends UIList {
         this.backgroundContainer.addChildAt(this.backShapeGeneral, 0);
 
         this.itemIcon = new PIXI.Sprite.from('ship01');
-        // this.itemIcon.scaleContent = true;
-        this.itemIcon.listScl = 0.15;
+        this.itemIcon.listScl = 0.5;
+        //this.itemIcon.anchor.set(0,0.5)
         // this.itemIcon.fitHeight = 0.7;
+        this.itemIcon.scaleContent = true;
         this.itemIcon.scaleContentMax = true;
-        this.itemIcon.fitWidth = 0.75;
-        // this.itemIcon.scaleContent = false;
+        this.itemIcon.fitHeight = 0.75;
+        
         this.elementsList.push(this.itemIcon);
         this.container.addChild(this.itemIcon);
 
@@ -54,8 +55,8 @@ export default class ShopItem extends UIList {
         this.levelBar.updatePowerBar(0.5)
         this.levelContainer.scaleContentMax = true;
         this.levelContainer.listScl = 0.15;
-        this.elementsList.push(this.levelContainer);
-        this.container.addChild(this.levelContainer);
+        //this.elementsList.push(this.levelContainer);
+        //this.container.addChild(this.levelContainer);
 
         this.levelBar.y = this.levelLabel.y + this.levelLabel.height + 3;
         this.levelBar.scale.set(0.2)
@@ -71,16 +72,16 @@ export default class ShopItem extends UIList {
         this.descriptionContainer.align = 0;
         this.descriptionContainer.addChild(this.descriptionLabel)
 
-        this.elementsList.push(this.descriptionContainer);
-        this.container.addChild(this.descriptionContainer);
+        //this.elementsList.push(this.descriptionContainer);
+        //this.container.addChild(this.descriptionContainer);
 
         this.shopButton = new ShopButton();
         this.shopButton.onClickItem.add(this.onShopItem.bind(this));
 
         // this.totalLabel2.fitHeight = 0.7;
         this.shopButton.scaleContentMax = true;
-        this.shopButton.listScl = 0.2;
-        this.shopButton.align = 1;
+        this.shopButton.listScl = 0.5;
+        this.shopButton.align = 0.5;
         this.elementsList.push(this.shopButton);
         this.container.addChild(this.shopButton);
 
@@ -101,8 +102,8 @@ export default class ShopItem extends UIList {
         this.infoButton.align = 0.25;
         this.infoButton.fitHeight = 0.22;
         // this.infoButton.scaleContentMax = true;
-        this.elementsList.push(this.infoButton);
-        this.container.addChild(this.infoButton);
+        //this.elementsList.push(this.infoButton);
+        //this.container.addChild(this.infoButton);
 
         // this.itemIcon.scaleContent = false;
         this.isLocked = false;
@@ -221,7 +222,7 @@ export default class ShopItem extends UIList {
             // this.descriptionLabel.pivot.x = this.descriptionLabel.width / 2
             // this.totalLabel.text = 'cooldown ' + leveldValues.cooldown+ '\nactive time' + leveldValues.activeTime + '\nvalue' + leveldValues.value;
         }
-        this.updateHorizontalList();
+        this.updateHorizontalList(true);
         this.descriptionContainer.y = 0;
         this.descriptionLabel.text = this.staticData.shopDesc.toUpperCase()
         // this.descriptionLabel.x = this.attributesList.x + this.attributesList.width / 2
@@ -282,10 +283,10 @@ export default class ShopItem extends UIList {
         this.updateData()
     }
     updateData() {
-        let next = this.previewValue
+        let next = 1//this.previewValue
 
         //this.attributesList['cost'].text = utils.formatPointsLabel(this.itemData.getRPS())+'/s'
-        this.realCost = this.itemData.getUpgradeCost(next);
+        this.realCost = this.itemData.getUpgradeCost2(next);
 
         let currentRPS = this.itemData.getRPS()
         let nextRPS = this.itemData.getRPS(next)
@@ -293,7 +294,7 @@ export default class ShopItem extends UIList {
             currentRPS = this.itemData.getDPS()
             nextRPS = this.itemData.getDPS(next)
         }
-
+        
         let extra = ''
         if (!this.itemData.rawData.quantify || this.itemData.rawData.quantifyBoolean) {
             extra += '/s'
@@ -304,11 +305,20 @@ export default class ShopItem extends UIList {
 
             extra += ' ' + desc
         }
+
+        
         this.attributesList['cost'].text = utils.formatPointsLabel(currentRPS) + extra
         //this.attributesList['value'].text = utils.formatPointsLabel(Math.ceil(nextRPS - currentRPS)) + extra
         this.attributesList['value'].text = '+ ' + utils.formatPointsLabel(nextRPS - currentRPS)
 
-        this.shopButton.updateCoast(utils.formatPointsLabel(this.realCost))
+        console.log(this.realCost)
+        if(this.realCost < 1000){
+
+            this.shopButton.updateCoast(this.realCost)
+        }else{
+
+            this.shopButton.updateCoast(utils.formatPointsLabel(this.realCost))
+        }
 
         if (this.realCost <= window.gameEconomy.currentResources) {
             this.shopButton.enable()
@@ -370,7 +380,7 @@ export default class ShopItem extends UIList {
         }
 
 
-        this.updateHorizontalList();
+        this.updateHorizontalList(true);
     }
     filterLocalized(label) {
         let desc = label;
@@ -430,10 +440,10 @@ export default class ShopItem extends UIList {
             });
 
 
-            //this.attributesList.updateHorizontalList();
+            //this.attributesList.updateHorizontalList(true);
             this.descriptionContainer.y = 0;
         }
-        this.updateHorizontalList();
+        this.updateHorizontalList(true);
 
         this.updateData();
 

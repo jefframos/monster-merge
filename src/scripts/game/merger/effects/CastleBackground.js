@@ -41,7 +41,7 @@ export default class CastleBackground extends PIXI.Container {
         this.baseTerrainBottomLeft.anchor.set(0.5, 0)
         this.baseTerrainBottomLeft.scale.set(1,-1)
         this.baseTerrain.addChild(this.baseTerrainBottomLeft)
-        this.baseTerrainBottomLeft.y = this.baseTerrainTop.height+1
+        this.baseTerrainBottomLeft.y = this.baseTerrainTop.height-1
 
 
         this.moon = new PIXI.Sprite.fromFrame('moon')
@@ -81,6 +81,13 @@ export default class CastleBackground extends PIXI.Container {
         this.bottomTree.x = 0
         this.bottomTree.y = 280
         this.bottomTree.scale.set(650 / this.bottomTree.width)
+
+        this.bottomTree2 = new PIXI.Sprite.fromFrame('bottomTreePatch')
+        this.bottomTree2.anchor.set(0.5, 1)
+        this.baseContainer.addChild(this.bottomTree2)
+        this.bottomTree2.x = 0
+        this.bottomTree2.y = 380
+        this.bottomTree2.scale.set(650 / this.bottomTree2.width)
 
         this.castleSet = [
             { src: 'stairs', order: 0, pos: { x: 299.7, y: 676.45 } },
