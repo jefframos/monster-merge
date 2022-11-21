@@ -233,15 +233,19 @@ function configGame(evt) {
     //window.screenManager = new HellScreenManager();
     game.screenManager = screenManager;
 
-    game.initialize()
     // // screenManager.timeScale = 0;
     // //create screen manager
     // //add screens
     // let gameScreen = new GameScreen('GameScreen');
     game.stage.addChild(screenManager);
+    game.initialize()
     // screenManager.addScreen(gameScreen);
     // screenManager.forceChange('GameScreen');
     game.start();
+
+    setTimeout(() => {        
+        game.resize();
+    }, 1);
     window.GAMEPLAY_START(true)
     window.addEventListener("focus", myFocusFunction, true);
     window.addEventListener("blur", myBlurFunction, true);

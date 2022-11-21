@@ -32,6 +32,14 @@ export default class Game {
 
         this.forceResizeTimer = 5;
 
+        this.borders = {
+            topLeft:{x:0,y:0},
+            bottomLeft:{x:0,y:0},
+            topRight:{x:0,y:0},
+            bottomRight:{x:0,y:0},
+        }
+
+       
         this.resize()
     }
     initialize(){
@@ -52,6 +60,10 @@ export default class Game {
     resize() {
         var w = window.innerHeight
         var h = window.innerWidth;
+
+        window.isPortrait = w < h
+
+
         if (window.innerWidth / window.innerHeight >= this.ratio) {
             var w = window.innerHeight * this.ratio;
         } else {
@@ -135,12 +147,21 @@ export default class Game {
             // 	this.screenManager.y = 0// window.innerHeight/2 * sclY - this.desktopResolution.height/2* sclY // this.screenManager.scale.y
 
             // 	//console.log(window.appScale)
+            window.isPortrait = this.innerResolution.width < this.innerResolution.height * 1.2
 
             this.screenManager.resize(this.resolution, this.innerResolution);
+            this.borders.topRight.x = config.width + this.screenManager.x / this.screenManager.scale.x
+            this.borders.bottomRight.x = config.width + this.screenManager.x / this.screenManager.scale.x
+            this.borders.bottomRight.y = config.height
+            this.borders.bottomLeft.y = config.height
+        
         }
     }
 
-
+    getBorder(type, parent){
+        var toGlobal = this.screenManager.toGlobal(this.borders[type])
+        return parent.toLocal(toGlobal)
+    }
     /**
      * 
      *  let sclX = this.innerResolution.width / config.width

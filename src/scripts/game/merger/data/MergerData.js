@@ -83,7 +83,7 @@ export default class MergerData {
         }
         s = Math.floor(s)
 
-        console.log(this.rawData.initialCost,s, this.currentLevel)
+        //console.log(this.rawData.initialCost,s, this.currentLevel)
         return (s * 10)
 
     }

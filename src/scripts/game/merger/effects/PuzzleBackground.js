@@ -45,9 +45,12 @@ export default class PuzzleBackground extends PIXI.Container {
         this.rightPines = new PIXI.Sprite.fromFrame('pineSidePatch')
         this.rightPines.x = 400
         this.rightPines.y = -350
-        this.baseContainer.addChild(this.rightPines)
+        this.baseContainer.addChild(this.rightPines) 
 
-       
+       this.usableArea = new PIXI.Graphics().beginFill(0x00FF00).drawRect(0,0,530,650)
+       //this.addChild(this.usableArea)
+       this.usableArea.alpha = 0.15
+       this.usableArea.x = - this.usableArea.width / 2
     }
 
     resize(innerResolution, scale) {
@@ -68,6 +71,7 @@ export default class PuzzleBackground extends PIXI.Container {
         //this.bottomPatch.visible = false;
         
       }else{
+        
         this.rightPines.visible = false;
         this.baseTerrain.scale.x = 0.7
         this.rightDetail.texture = new PIXI.Texture.fromFrame('rightPatchCliff')

@@ -22,7 +22,12 @@ export default class CookieManager {
 			version: '0.0.1',
 			currentBoardLevel: 0,
 			entities: {},
-			dataProgression: {}
+			dataProgression: {},
+			boardLevel:{
+				currentLevel:1,
+				progress:0,
+				percent:0,
+			}
 		}
 		this.defaultModifyers = {
 			version: '0.0.1',
@@ -154,6 +159,11 @@ export default class CookieManager {
 	}
 	saveBoardLevel(level) {
 		this.board.currentBoardLevel = level;
+		this.storeObject('board', this.board)
+
+	}
+	saveBoardProgress(boardProgress) {
+		this.board.boardLevel = boardProgress;
 		this.storeObject('board', this.board)
 
 	}

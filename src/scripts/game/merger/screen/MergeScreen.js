@@ -36,8 +36,6 @@ export default class MergeScreen extends Screen {
     constructor(label) {
         super(label);
 
-        window.isPortrait = window.innerWidth < window.innerHeight
-
         // let a = ''
         // for (let index = 1; index <= 20; index++) {
         //     console.log(Math.pow(1.1, index * 0.5))
@@ -191,6 +189,11 @@ export default class MergeScreen extends Screen {
         this.mergeSystem1.onDealDamage.add(this.addDamageParticles.bind(this));
         this.mergeSystem1.onPopLabel.add(this.popLabel.bind(this));
         this.mergeSystem1.onGetResources.add(this.addResourceParticles.bind(this));
+        this.mergeSystem1.onBoardLevelUpdate.add(this.onMergeSystemUpdate.bind(this));
+        this.mergeSystem1.updateAvailableSlots.add((availables)=>{
+           this.mergeItemsShop.updateLocks(availables)
+        });
+
 
         this.entityDragSprite = new PIXI.Sprite.from('');
         this.addChild(this.entityDragSprite);
@@ -209,36 +212,36 @@ export default class MergeScreen extends Screen {
         this.statsList.h = 80
         this.container.addChild(this.statsList)
 
-        this.rpsContainer = new PIXI.mesh.NineSlicePlane(
+        this.totalCoinsContainer = new PIXI.mesh.NineSlicePlane(
             PIXI.Texture.fromFrame('grid1'), 20, 20, 20, 5)
-        this.rpsContainer.width = this.statsList.w
-        this.rpsContainer.height = 40
-        this.rpsLabel = new PIXI.Text('', LABELS.LABEL1);
-        this.rpsLabel.style.fontSize = 14
-        this.rpsContainer.addChild(this.rpsLabel)
-        this.statsList.addElement(this.rpsContainer)
+        this.totalCoinsContainer.width = this.statsList.w
+        this.totalCoinsContainer.height = 40
+        this.totalCoins = new PIXI.Text('', LABELS.LABEL2);
+        this.totalCoins.style.fontSize = 14
+        this.totalCoinsContainer.addChild(this.totalCoins)
+        this.statsList.addElement(this.totalCoinsContainer)
 
-        this.resourcesTexture = new PIXI.Sprite.from('coin-s')
-        this.resourcesTexture.scale.set(this.rpsContainer.height / this.resourcesTexture.height * 0.5)
-        this.resourcesTexture.x = -23
+        this.resourcesTexture = new PIXI.Sprite.from('coin')
+        this.resourcesTexture.scale.set(this.totalCoinsContainer.height / this.resourcesTexture.height * 0.5)
+        this.resourcesTexture.x = -30
         this.resourcesTexture.y = -3
-        this.rpsLabel.addChild(this.resourcesTexture)
+        this.totalCoins.addChild(this.resourcesTexture)
 
 
-        this.shardsCounter = new PIXI.mesh.NineSlicePlane(
+        this.CoinsPerSecondCounter = new PIXI.mesh.NineSlicePlane(
             PIXI.Texture.fromFrame('grid1'), 20, 20, 20, 5)
-        this.shardsCounter.width = this.statsList.w
-        this.shardsCounter.height = 40
+        this.CoinsPerSecondCounter.width = this.statsList.w
+        this.CoinsPerSecondCounter.height = 40
 
-        this.shardsLabel = new PIXI.Text('0', LABELS.LABEL1);
-        this.shardsLabel.style.fontSize = 14
-        this.shardsCounter.addChild(this.shardsLabel)
-        this.statsList.addElement(this.shardsCounter)
+        this.coisPerSecond = new PIXI.Text('0', LABELS.LABEL2);
+        this.coisPerSecond.style.fontSize = 14
+        this.CoinsPerSecondCounter.addChild(this.coisPerSecond)
+        this.statsList.addElement(this.CoinsPerSecondCounter)
 
-        this.shardsTexture = new PIXI.Sprite.from('shards')
-        this.shardsLabel.addChild(this.shardsTexture)
-        this.shardsTexture.scale.set(this.shardsCounter.height / this.shardsTexture.height * 0.5)
-        this.shardsTexture.x = -23
+        this.shardsTexture = new PIXI.Sprite.from('coin-s')
+        this.coisPerSecond.addChild(this.shardsTexture)
+        this.shardsTexture.scale.set(this.CoinsPerSecondCounter.height / this.shardsTexture.height * 0.5)
+        this.shardsTexture.x = -30
         this.shardsTexture.y = -3
 
 
@@ -249,7 +252,7 @@ export default class MergeScreen extends Screen {
 
 
         this.levelMeter = new LevelMeter();
-        this.uiLayer.addChild(this.levelMeter)
+        this.container.addChild(this.levelMeter)
 
         this.helperButtonList = new UIList();
         this.helperButtonList.h = 350;
@@ -415,7 +418,7 @@ export default class MergeScreen extends Screen {
 
         window.getLevels = function (e) {
             let a = e < 6 ? 6 * (e + 1) * (e + 1) - 6 * (e + 1) : e < 7 ? 5 * (e + 1) * (e + 1) - 5 * (e + 1) : e < 8 ? 4 * (e + 1) * (e + 1) - 4 * (e + 1) : e < 9 ? 3 * (e + 1) * (e + 1) - 3 * (e + 1) : e < 10 ? 2 * (e + 1) * (e + 1) - 2 * (e + 1) : (e + 1) * (e + 1) - (e + 1)
-            console.log(a)
+            return a
         }
 
         window.getPrices = function (e) {
@@ -457,6 +460,9 @@ export default class MergeScreen extends Screen {
         this.uiLayer.addChild(this.mergeItemsShop);
         this.mergeItemsShop.addItems(this.rawMergeDataList)
         this.mergeItemsShop.hide();
+        this.mergeItemsShop.onAddEntity.add((entity)=>{
+            this.mergeSystem1.buyEntity(entity)
+        })
 
         this.generalShop = new GeneralShop()
         this.uiLayer.addChild(this.generalShop);
@@ -536,7 +542,7 @@ export default class MergeScreen extends Screen {
         this.forcePauseSystemsTimer = 0.05;
 
 
-        
+
         // this.spaceStation = new SpaceStation()
         // //this.container.addChild(this.spaceStation);
         // this.spaceStation.onParticles.add(this.addParticles.bind(this))
@@ -766,6 +772,9 @@ export default class MergeScreen extends Screen {
         this.particleSystem.show(toLocal, quant, customData)
         //this.particleSystem.popLabel(targetPosition, "+" + label, 0, 1, 1, LABELS.LABEL1)
     }
+    onMergeSystemUpdate(data){
+        this.levelMeter.updateData(data)
+    }
     addResourceParticles(targetPosition, customData, totalResources, quantParticles, showParticles = true) {
         window.gameEconomy.addResources(totalResources)
 
@@ -842,13 +851,13 @@ export default class MergeScreen extends Screen {
         });
 
 
-        this.rpsLabel.text = utils.formatPointsLabel(window.gameEconomy.currentResources);
-        utils.centerObject(this.rpsLabel, this.rpsContainer)
-        this.rpsLabel.x = 30
+        this.totalCoins.text = utils.formatPointsLabel(window.gameEconomy.currentResources);
+        utils.centerObject(this.totalCoins, this.totalCoinsContainer)
+        this.totalCoins.x = 40
 
-        this.shardsLabel.text = 'x ' + utils.formatPointsLabel(window.gameModifyers.permanentBonusData.shards);
-        utils.centerObject(this.shardsLabel, this.shardsCounter)
-        this.shardsLabel.x = 30
+        this.coisPerSecond.text = utils.formatPointsLabel(this.mergeSystem1.dps);
+        utils.centerObject(this.coisPerSecond, this.CoinsPerSecondCounter)
+        this.coisPerSecond.x = 40
 
         this.timestamp = (Date.now() / 1000 | 0);
 
@@ -866,7 +875,6 @@ export default class MergeScreen extends Screen {
         if (!resolution || !resolution.width || !resolution.height || !innerResolution) {
             return;
         }
-        window.isPortrait = innerResolution.width < innerResolution.height
 
         //console.log(resolution.width * this.screenManager.scale.x)
         var newRes = { width: resolution.width * this.screenManager.scale.x }
@@ -902,45 +910,63 @@ export default class MergeScreen extends Screen {
         // this.statsList.x = config.width - this.statsList.w
         // this.statsList.y = 150
 
+        var topRight = game.getBorder('topRight', this)
+        var toGlobalBack = this.toLocal({ x: 0, y: innerResolution.height })
         if (!window.isPortrait) {
             this.statsList.scale.set(1)
 
-            var toGlobalBack = this.toLocal({ x: 0, y: innerResolution.height })
-
-            this.puzzleBackground.x = toGlobalBack.x + 390
-            this.puzzleBackground.y = 200
-            this.puzzleBackground.scale.set(1.3)
-
-            let resF = (innerResolution.width - 500)
-            let castScale = resF / 500
-            castScale = Math.min(castScale, 1.8)
-            castScale = Math.max(castScale, 0.4)
-            this.castleBackground.scale.set(castScale)
-            this.castleBackground.x = this.puzzleBackground.x + 520 + resF / 2
-            //this.castleBackground.x = this.puzzleBackground.x +( 800 * castScale )
-            // this.castleBackground.x = Math.max(this.castleBackground.x, this.puzzleBackground.x + 500)
-            //this.castleBackground.x = Math.min(this.castleBackground.x, this.puzzleBackground.x + 1000)
-            this.castleBackground.y = toGlobalBack.y + 120
-
-            this.gridWrapper.x = toGlobalBack.x + 50
-            this.gridWrapper.y = 200
-
-            this.gridWrapper.width = config.width * 1.15
-            this.gridWrapper.height = config.height * 0.7
+            this.puzzleBackground.pivot.x = this.puzzleBackground.usableArea.x
+            this.puzzleBackground.pivot.y = this.puzzleBackground.usableArea.height + this.puzzleBackground.usableArea.y
+            this.puzzleBackground.x = toGlobalBack.x//toGlobalBack.x + 390
+            this.puzzleBackground.y = config.height
+            let scale = Math.min(
+                topRight.x / this.puzzleBackground.usableArea.width * 0.6,
+                config.height / this.puzzleBackground.usableArea.height * 0.9)
+            this.puzzleBackground.scale.set(scale)
 
 
-            this.levelMeter.x = toGlobalBack.x + 10
-            this.levelMeter.y = 140
+            this.gridWrapper.x = toGlobalBack.x + 20
+            this.gridWrapper.y = config.height - (this.puzzleBackground.pivot.y + 25) * scale//this.puzzleBackground.y - this.puzzleBackground.pivot.y
 
-            this.levelMeter.scale.set(1.3)
+            this.gridWrapper.width = this.puzzleBackground.usableArea.width * scale
+            this.gridWrapper.height = this.puzzleBackground.usableArea.height * scale
 
-            // this.spaceStation.x = this.resourcesWrapper.x + 180;
-            // this.spaceStation.y = this.resourcesWrapper.y + 150;
+
+
+
+            this.castleBackground.x = toGlobalBack.x + (this.puzzleBackground.usableArea.width + 100) * scale
+
+            scale = Math.min((topRight.x - this.castleBackground.x) / this.castleBackground.usableArea.width * 0.95, config.height / this.castleBackground.usableArea.height * 0.9)
+            scale = Math.max(0.85, scale)
+            this.castleBackground.scale.set(scale)
+            this.castleBackground.pivot.x = this.castleBackground.usableArea.x
+            this.castleBackground.pivot.y = this.castleBackground.usableArea.height + this.castleBackground.usableArea.y
+            this.castleBackground.y = config.height * 0.85
+
+
+            this.shopButtonsList.x = this.shopButtonsList.width
+            this.shopButtonsList.y = 10
+
+            this.shopButtonsList.scale.set(1.8)
+
+
+
+            this.levelMeter.scale.set(this.levelMeter.usableArea.width / (this.puzzleBackground.usableArea.width) * this.puzzleBackground.scale.x)
+            this.levelMeter.x = this.puzzleBackground.x + (this.puzzleBackground.usableArea.width) * this.puzzleBackground.scale.x / 2//+ this.puzzleBackground
+            this.levelMeter.x -= this.levelMeter.usableArea.width * this.levelMeter.scale.x / 2
+            this.levelMeter.y = this.puzzleBackground.y - (this.puzzleBackground.pivot.y) * this.puzzleBackground.scale.x - 80
+    
 
         } else {
-            this.statsList.scale.set(1.1)
+            this.puzzleBackground.pivot.x = 0
+            this.puzzleBackground.pivot.y = 0
             this.puzzleBackground.scale.set(1)
+
+            this.statsList.scale.set(1.1)
             this.mergeSystemContainer.scale.set(1)
+
+            this.castleBackground.pivot.x = 0
+            this.castleBackground.pivot.y = 0
             this.castleBackground.scale.set(1)
             this.levelMeter.scale.set(1)
             this.levelMeter.x = 0
@@ -949,24 +975,35 @@ export default class MergeScreen extends Screen {
 
             // this.spaceStation.x = this.resourcesWrapper.x + 50;
             // this.spaceStation.y = this.resourcesWrapper.y + 40;
+            this.statsList.x = config.width - 110
+            this.statsList.y = 10
+           
+
+            this.shopsLabel.x = this.shopButtonsList.x
+            this.shopsLabel.y = this.shopButtonsList.y + 50 - this.shopsLabel.height
+            this.shopsLabel.visible = false;
+
+
+            this.levelMeter.scale.set(this.levelMeter.usableArea.width / (this.puzzleBackground.usableArea.width) * this.puzzleBackground.scale.x)
+            this.levelMeter.x = this.puzzleBackground.x// + (this.puzzleBackground.usableArea.width) * this.puzzleBackground.scale.x / 2//+ this.puzzleBackground
+            this.levelMeter.x -= this.levelMeter.usableArea.width * this.levelMeter.scale.x * 0.5
+            this.levelMeter.y = this.puzzleBackground.y - (this.puzzleBackground.pivot.y) * this.puzzleBackground.scale.x - 60
+
         }
 
 
-
-
-        this.statsList.x = config.width - 110
-        this.statsList.y = 10
-        this.shopButtonsList.x = this.shopButtonsList.width
-        this.shopButtonsList.y = 60
-
-        this.shopsLabel.x = this.shopButtonsList.x
-        this.shopsLabel.y = this.shopButtonsList.y + 50 - this.shopsLabel.height
+      
+        this.statsList.scale.set(1.5)
+        this.statsList.x = topRight.x - 110 * 1.5
         this.shopsLabel.visible = false;
+        this.statsList.y = 10
+        this.helperButtonList.y = 80
+        this.helperButtonList.x = toGlobalBack.x + 60
 
-        this.autoSpend.x = this.shopButtonsList.x - this.autoSpend.width - 50
-        this.autoSpend.y = this.shopButtonsList.y - 45
-        this.helperButtonList.x = config.width - 30
-        this.helperButtonList.y = 120
+        this.shopButtonsList.x = topRight.x -this.shopButtonsList.width / 2 - 20
+        this.shopButtonsList.y = 130
+        this.shopButtonsList.scale.set(1.5)
+
 
 
         this.enemiesContainer.x = config.width / 2;

@@ -47,8 +47,8 @@ export default class CastleBackground extends PIXI.Container {
         this.moon = new PIXI.Sprite.fromFrame('moon')
         this.moon.anchor.set(0.5)
         this.baseContainer.addChild(this.moon)
-        this.moon.x = 0
-        this.moon.y = -300
+        this.moon.x = 50
+        this.moon.y = -380
 
         this.castleBase = new PIXI.Sprite.fromFrame('castleBase')
         this.castleBase.anchor.set(0.5, 1)
@@ -133,6 +133,12 @@ export default class CastleBackground extends PIXI.Container {
         this.castleContainer.y = -380
 
         this.castleContainer.scale.set(0.55)
+
+        this.usableArea = new PIXI.Graphics().beginFill(0x00FF00).drawRect(0,0,530,500)
+       // this.addChild(this.usableArea)
+        this.usableArea.alpha = 0.15
+        this.usableArea.x = - this.usableArea.width / 2
+        this.usableArea.y = - 450
 
     }
 

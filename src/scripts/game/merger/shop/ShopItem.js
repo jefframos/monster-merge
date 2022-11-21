@@ -38,7 +38,7 @@ export default class ShopItem extends UIList {
         this.itemIcon.scaleContent = true;
         this.itemIcon.scaleContentMax = true;
         this.itemIcon.fitHeight = 0.75;
-        
+
         this.elementsList.push(this.itemIcon);
         this.container.addChild(this.itemIcon);
 
@@ -87,6 +87,7 @@ export default class ShopItem extends UIList {
 
         this.onConfirmShop = new Signals();
         this.onShowInfo = new Signals();
+        this.onShowBlock = new Signals();
         // this.icons = {
         //     value: 'icon_increase',
         //     cooldown: 'icon_duration_orange',
@@ -123,15 +124,24 @@ export default class ShopItem extends UIList {
         this.unlockItem();
         this.currentTogglePreviewValue = 1;
 
-    }
+        this.isBlocked = false;
 
+    }
+    block() {
+        this.isBlocked = true;
+        this.shopButton.deactive();
+    }
+    unblock() {
+        this.isBlocked = false;
+    }
     lockItem() {
         if (this.itemData) {
             if (this.itemData.rawData.type == "resource") {
                 this.lockState.setLabel(window.localizationManager.getLabel('purchase') + ' ' + this.filterLocalized(this.itemData.rawData.displayName) + ' ' + window.localizationManager.getLabel('to-upgrade'))
                 this.lockState.setIcon(this.itemData.rawData.tileImageSrc)
             } else {
-                this.lockState.setLabel(window.localizationManager.getLabel('unlock') + ' ' + this.filterLocalized(this.itemData.rawData.displayName) + ' ' + window.localizationManager.getLabel('to-upgrade'))
+                this.lockState.setLabel('?????')
+                //this.lockState.setLabel(window.localizationManager.getLabel('unlock') + ' ' + this.filterLocalized(this.itemData.rawData.displayName) + ' ' + window.localizationManager.getLabel('to-upgrade'))
                 this.lockState.setIcon(this.itemData.rawData.imageSrc, 0.8)
             }
         }
@@ -151,7 +161,10 @@ export default class ShopItem extends UIList {
         this.onShowInfo.dispatch(this.itemData, this.infoButton);
     }
     onShopItem(itemData) {
-
+        if (this.isBlocked) {
+            this.onShowBlock.dispatch();
+            return;
+        }
         if (window.gameEconomy.hasEnoughtResources(this.realCost)) {
 
             window.gameEconomy.useResources(this.realCost)
@@ -171,7 +184,7 @@ export default class ShopItem extends UIList {
         this.shopButton.updateCoast(cost)
 
 
-        if (!GAME_DATA.canBuyIt(this.itemData)) {
+        if (!GAME_DATA.canBuyIt(this.itemData) && !this.isBlocked) {
             this.shopButton.deactive();
         }
         else {
@@ -294,7 +307,7 @@ export default class ShopItem extends UIList {
             currentRPS = this.itemData.getDPS()
             nextRPS = this.itemData.getDPS(next)
         }
-        
+
         let extra = ''
         if (!this.itemData.rawData.quantify || this.itemData.rawData.quantifyBoolean) {
             extra += '/s'
@@ -306,21 +319,21 @@ export default class ShopItem extends UIList {
             extra += ' ' + desc
         }
 
-        
+
         this.attributesList['cost'].text = utils.formatPointsLabel(currentRPS) + extra
         //this.attributesList['value'].text = utils.formatPointsLabel(Math.ceil(nextRPS - currentRPS)) + extra
         this.attributesList['value'].text = '+ ' + utils.formatPointsLabel(nextRPS - currentRPS)
 
-        console.log(this.realCost)
-        if(this.realCost < 1000){
+        //console.log(this.realCost)
+        if (this.realCost < 1000) {
 
             this.shopButton.updateCoast(this.realCost)
-        }else{
+        } else {
 
             this.shopButton.updateCoast(utils.formatPointsLabel(this.realCost))
         }
 
-        if (this.realCost <= window.gameEconomy.currentResources) {
+        if (this.realCost <= window.gameEconomy.currentResources && !this.isBlocked) {
             this.shopButton.enable()
         } else {
             this.shopButton.deactive()
@@ -336,10 +349,10 @@ export default class ShopItem extends UIList {
         if (this.itemData.rawData.quantify && !this.itemData.rawData.quantifyBoolean) {
             isMax = this.itemData.currentLevel >= this.itemData.rawData.levelMax;
         }
-        this.levelLabel.text = window.localizationManager.getLabel('level')+'\n' + this.itemData.currentLevel
+        this.levelLabel.text = window.localizationManager.getLabel('level') + '\n' + this.itemData.currentLevel
         // this.itemData = GAME_DATA.getUpdatedItem(this.itemData.dataType, this.itemData.id)
         if (isMax) {
-            this.levelLabel.text = window.localizationManager.getLabel('level')+'\n' + this.itemData.rawData.levelMax;
+            this.levelLabel.text = window.localizationManager.getLabel('level') + '\n' + this.itemData.rawData.levelMax;
             this.levelBar.updatePowerBar(1)
             this.shopButton.deactiveMax()
             this.infoUpgrade.text = ''
@@ -380,7 +393,7 @@ export default class ShopItem extends UIList {
         }
 
 
-        this.updateHorizontalList(true);
+        this.updateHorizontalList();
     }
     filterLocalized(label) {
         let desc = label;
@@ -443,7 +456,7 @@ export default class ShopItem extends UIList {
             //this.attributesList.updateHorizontalList(true);
             this.descriptionContainer.y = 0;
         }
-        this.updateHorizontalList(true);
+        this.updateHorizontalList();
 
         this.updateData();
 

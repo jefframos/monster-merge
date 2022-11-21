@@ -24,6 +24,8 @@ export default class MergeSystem {
         this.onParticles = new Signals();
         this.onEntityMerge = new Signals();
         this.onEntityAdd = new Signals();
+        this.onBoardLevelUpdate = new Signals();
+        this.updateAvailableSlots = new Signals();
 
         this.slotsContainer = new PIXI.Container();
         this.container.addChild(this.slotsContainer)
@@ -87,7 +89,7 @@ export default class MergeSystem {
         }
 
         this.mainGenerator = this.addPieceGenerator();
-        
+
         this.adjustSlotsPosition();
 
         this.entityDragSprite = new PIXI.Sprite.from('');
@@ -161,6 +163,7 @@ export default class MergeSystem {
     }
     loadData() {
         this.savedProgression = COOKIE_MANAGER.getBoard();
+        this.boardProgression = this.savedProgression.boardLevel;
         this.boardLevel = 1
         this.levelUp(this.savedProgression.currentBoardLevel, true)
 
@@ -175,7 +178,7 @@ export default class MergeSystem {
 
                     this.virtualSlots[split[0]][split[1]].addEntity(found)
 
-                    if(found.rawData.id > this.highestPiece){
+                    if (found.rawData.id > this.highestPiece) {
                         this.highestPiece = found.rawData.id;
                     }
 
@@ -196,6 +199,11 @@ export default class MergeSystem {
         }
 
         this.updateAllData();
+
+        setTimeout(() => {
+            this.onBoardLevelUpdate.dispatch(this.boardProgression)
+            this.updateAvailableSlots.dispatch(this.totalAvailable())
+        }, 1);
     }
     findUpgrade(item) {
 
@@ -256,7 +264,7 @@ export default class MergeSystem {
 
             //alert()
             //upgrade this
-            console.log(this.boardLevel)
+            //console.log(this.boardLevel)
             let id = 0;
             if (this.boardLevel > 4) {
                 id = Math.min(Math.floor(Math.random() * this.boardLevel / 3), 5);
@@ -292,6 +300,33 @@ export default class MergeSystem {
         //         }
         //     });
         // }
+    }
+    buyEntity(data){
+        let allAvailables = []
+        let firstAvailable = null;
+        for (var i = 0; i < this.slots.length; i++) {
+            for (var j = 0; j < this.slots[i].length; j++) {
+                if (this.slots[i][j] && !this.slots[i][j].tileData && this.slots[i][j].visible) {
+                    allAvailables.push(this.slots[i][j])
+                }
+
+            }
+        }        
+ 
+        let slot = allAvailables[Math.floor(Math.random() * allAvailables.length)]
+        slot.addEntity(data)
+        this.releaseEntity(slot)
+
+        if (slot) {
+            slot.giftState()
+        }
+ 
+        if (window.gameModifyers.modifyersData.autoMerge == 2) {
+
+            this.autoMerge();
+        }
+
+        this.updateAvailableSlots.dispatch(this.totalAvailable())
     }
     sortAutoMerge(piece) {
         if (!piece.tileData) return;
@@ -412,7 +447,7 @@ export default class MergeSystem {
             customData.alphaDecress = 1
             let targetPos = slot.tileSprite.getGlobalPosition()
             //this.onGetResources.dispatch(targetPos, customData, data.getDamage(), 1)
-            this.onGetResources.dispatch(targetPos, customData, Math.pow(2, data.rawData.id+1), 1)
+            this.onGetResources.dispatch(targetPos, customData, Math.pow(2, data.rawData.id + 1), 1)
 
         });
         slot.onGenerateDamage.add((slot, data) => {
@@ -581,14 +616,14 @@ export default class MergeSystem {
             }
         }
     }
-    totalAvailable(){
+    totalAvailable() {
         let av = 0
         for (var i = 0; i < this.slots.length; i++) {
             for (var j = 0; j < this.slots[i].length; j++) {
                 if (this.slots[i][j] && !this.slots[i][j].tileData && this.slots[i][j].visible) {
-                    av ++
+                    av++
                 }
-                
+
             }
         }
 
@@ -603,7 +638,7 @@ export default class MergeSystem {
                 if (this.slots[i][j] && !this.slots[i][j].tileData && this.slots[i][j].visible) {
                     allAvailables.push(this.slots[i][j])
                 }
-                
+
             }
         }
 
@@ -611,7 +646,7 @@ export default class MergeSystem {
 
         // if (piece.isGenerator) {
 
-            
+
         //     this.endDrag(piece)
         //     setTimeout(() => {
         //         if (!piece.tileData) {
@@ -619,29 +654,41 @@ export default class MergeSystem {
         //         }
         //     }, 10);
         // }
-        
+
         if (firstAvailable && firstAvailable.tileData) {
-            
+
         }
 
         let slot = allAvailables[Math.floor(Math.random() * allAvailables.length)]
         this.releaseEntity(slot)
 
-        if(slot){
+        if (slot) {
             slot.giftState()
         }
-        
+
         //console.log(this.totalAvailable())
-        if(this.totalAvailable() > 0){
+        if (this.totalAvailable() > 0) {
             piece.startCharging()
         }
 
-        if(window.gameModifyers.modifyersData.autoMerge == 2){
+        if (window.gameModifyers.modifyersData.autoMerge == 2) {
 
             this.autoMerge();
         }
     }
+    updateProgression(addId) {
+        let target = getLevels(this.boardProgression.currentLevel)
+        this.boardProgression.progress += addId
+        if(target <= this.boardProgression.progress){
+            this.boardProgression.progress = this.boardProgression.progress % target
+            this.boardProgression.currentLevel ++
+        }
+        this.boardProgression.percent = this.boardProgression.progress / getLevels(this.boardProgression.currentLevel)
+        this.onBoardLevelUpdate.dispatch(this.boardProgression)
 
+
+        COOKIE_MANAGER.saveBoardProgress(this.boardProgression);
+    }
     releaseEntity(slot) {
         if (!this.currentDragSlot || !slot) {
             return;
@@ -663,6 +710,7 @@ export default class MergeSystem {
 
                 slot.addEntity(target);
                 COOKIE_MANAGER.addMergePiece(target, slot.id.i, slot.id.j)
+                this.updateProgression(target.rawData.id + 1)
 
                 this.onEntityMerge.dispatch()
 
@@ -679,7 +727,7 @@ export default class MergeSystem {
                     //doesnt do anything coz is coming from the generator
                     //this.currentDragSlot.addEntity(copyDataTargetSlot);   
                     this.onEntityAdd.dispatch()
-                    
+
                 }
             }
         } else {
@@ -693,11 +741,11 @@ export default class MergeSystem {
 
 
         let tempMaxTiledPlaced = utils.findMax(this.slots);
-        if(tempMaxTiledPlaced > this.highestPiece){
+        if (tempMaxTiledPlaced > this.highestPiece) {
             this.highestPiece = tempMaxTiledPlaced;
         }
 
-        console.log("MAX "+this.highestPiece)
+        console.log("MAX " + this.highestPiece)
         if (tempMaxTiledPlaced > this.maxTilePlaced) {
             this.maxTilePlaced = tempMaxTiledPlaced;
             let nextLevel = Math.max(0, this.maxTilePlaced - 3);
@@ -709,7 +757,9 @@ export default class MergeSystem {
         this.currentDragSlot = null;
         this.updateAllData();
 
-        if(this.totalAvailable() > 0){
+
+        this.updateAvailableSlots.dispatch(this.totalAvailable())
+        if (this.totalAvailable() > 0) {
             this.mainGenerator.startCharging()
         }
 

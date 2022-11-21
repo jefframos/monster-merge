@@ -16,12 +16,12 @@ const assets = [
 	"url":"assets/json\\localization_DE.json"
 	},
 	{
-	"id":"localization_ES",
-	"url":"assets/json\\localization_ES.json"
-	},
-	{
 	"id":"localization_EN",
 	"url":"assets/json\\localization_EN.json"
+	},
+	{
+	"id":"localization_ES",
+	"url":"assets/json\\localization_ES.json"
 	},
 	{
 	"id":"localization_FR",
@@ -32,16 +32,16 @@ const assets = [
 	"url":"assets/json\\localization_IT.json"
 	},
 	{
+	"id":"localization_KO",
+	"url":"assets/json\\localization_KO.json"
+	},
+	{
 	"id":"localization_JA",
 	"url":"assets/json\\localization_JA.json"
 	},
 	{
 	"id":"localization_PT",
 	"url":"assets/json\\localization_PT.json"
-	},
-	{
-	"id":"localization_KO",
-	"url":"assets/json\\localization_KO.json"
 	},
 	{
 	"id":"localization_RU",

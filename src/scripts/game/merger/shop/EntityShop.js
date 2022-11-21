@@ -14,8 +14,8 @@ export default class EntityShop extends PIXI.Container {
         super()
         this.mainSystem = mainSystem;
         this.size = {
-            w: config.width - 10,
-            h: config.height - 80
+            w: config.width *0.75,
+            h: config.height *0.8
         }
 
         this.currentItens = [];
@@ -50,12 +50,12 @@ export default class EntityShop extends PIXI.Container {
         this.title.style.stroke = 0
         this.title.style.strokeThickness = 6
 
-        this.portrait = new PIXI.Sprite.fromFrame('portraitMale');
-        this.container.addChild(this.portrait);
-        this.portrait.scale.set(0.65)
-        this.portrait.anchor.set(0, 1)
-        this.portrait.x = 20
-        this.portrait.y = 104
+        // this.portrait = new PIXI.Sprite.fromFrame('skull');
+        // this.container.addChild(this.portrait);
+        // this.portrait.scale.set(0.65)
+        // this.portrait.anchor.set(0, 1)
+        // this.portrait.x = 20
+        // this.portrait.y = 104
 
 
         this.currencyContainer = new PIXI.Sprite.fromFrame('grid1');
@@ -87,6 +87,7 @@ export default class EntityShop extends PIXI.Container {
 
 
         this.shopList.onItemShop.add(this.confirmItemShop.bind(this))
+        this.shopList.onShowBlock.add(this.showBlock.bind(this))
 
         this.openShop = new UIButton1(0xFFffff, window.TILE_ASSSETS_POOL['image-X'], 0xFFffff, 60, 60, 'boss-button')
         this.openShop.updateIconScale(0.5)
@@ -123,6 +124,9 @@ export default class EntityShop extends PIXI.Container {
             }
            this.hideFromClick();
         })
+    }
+    showBlock() {
+
     }
     confirm() {
         this.hide();
@@ -217,7 +221,7 @@ export default class EntityShop extends PIXI.Container {
 
         this.currentItens = []
         for (let index = 0; index < items.length; index++) {
-            let shopItem = new ShopItem({ w: this.size.w * 0.65, h: 150 })
+            let shopItem = new ShopItem({ w: this.size.w - this.size.w * 0.05, h: this.size.h * 0.8 / 6 })
             shopItem.setData(items[index])
             shopItem.nameID = items[index].rawData.nameID;
             this.currentItens.push(shopItem)
