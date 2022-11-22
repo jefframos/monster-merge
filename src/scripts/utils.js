@@ -104,6 +104,21 @@ export default
             }
             return max* window.gameModifyers.getResourcesMultiplier()
         },
+        findRPS3(target) {
+            let max = 0;
+            for (let index = 0; index < target.length; index++) {
+                for (let j = 0; j < target[index].length; j++) {
+                    if (target[index][j] && target[index][j].tileData && target[index][j].visible && !target[index][j].showingGift) {
+                        let data = target[index][j].tileData
+                        max += data.getRPS();
+                    }
+                }
+            }
+            if (Number.isNaN(max)) {
+                return 0
+            }
+            return max//* window.gameModifyers.getResourcesMultiplier()
+        },
         generateTextureFromContainer(id, content, list) {
             if (list[id]) {
                 return list[id]

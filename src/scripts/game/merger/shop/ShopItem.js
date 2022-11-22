@@ -137,8 +137,13 @@ export default class ShopItem extends UIList {
     lockItem() {
         if (this.itemData) {
             if (this.itemData.rawData.type == "resource") {
-                this.lockState.setLabel(window.localizationManager.getLabel('purchase') + ' ' + this.filterLocalized(this.itemData.rawData.displayName) + ' ' + window.localizationManager.getLabel('to-upgrade'))
-                this.lockState.setIcon(this.itemData.rawData.tileImageSrc)
+                //this.lockState.setLabel(window.localizationManager.getLabel('purchase') + ' ' + this.filterLocalized(this.itemData.rawData.displayName) + ' ' + window.localizationManager.getLabel('to-upgrade'))
+                //this.lockState.setIcon(this.itemData.rawData.tileImageSrc)
+
+                this.lockState.setLabel('?????')
+                //this.lockState.setLabel(window.localizationManager.getLabel('unlock') + ' ' + this.filterLocalized(this.itemData.rawData.displayName) + ' ' + window.localizationManager.getLabel('to-upgrade'))
+                this.lockState.setIcon(this.itemData.rawData.imageSrc, 0.8)
+                
             } else {
                 this.lockState.setLabel('?????')
                 //this.lockState.setLabel(window.localizationManager.getLabel('unlock') + ' ' + this.filterLocalized(this.itemData.rawData.displayName) + ' ' + window.localizationManager.getLabel('to-upgrade'))
@@ -322,7 +327,7 @@ export default class ShopItem extends UIList {
 
         this.attributesList['cost'].text = utils.formatPointsLabel(currentRPS) + extra
         //this.attributesList['value'].text = utils.formatPointsLabel(Math.ceil(nextRPS - currentRPS)) + extra
-        this.attributesList['value'].text = '+ ' + utils.formatPointsLabel(nextRPS - currentRPS)
+        //this.attributesList['value'].text = '+ ' + utils.formatPointsLabel(nextRPS - currentRPS)
 
         //console.log(this.realCost)
         if (this.realCost < 1000) {

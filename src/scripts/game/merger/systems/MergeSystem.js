@@ -429,6 +429,11 @@ export default class MergeSystem {
         slot.onHold.add((slot) => {
             this.startDrag(slot)
         });
+        slot.onReveal.add((slot) => {            
+            this.updateAllData();
+        });
+
+
         slot.onEndHold.add((slot) => {
             this.endDrag(slot)
         });
@@ -436,7 +441,6 @@ export default class MergeSystem {
             this.releaseEntity(slot)
         });
         slot.onGenerateResource.add((slot, data) => {
-
             this.resources += data.resources
 
             let customData = {}
@@ -520,6 +524,8 @@ export default class MergeSystem {
         this.draggingEntity = false;
         this.entityDragSprite.visible = false;
         slot.showSprite();
+
+        this.updateAllData();
     }
     removeEntity(slot) {
         if (this.currentDragSlot) {
@@ -755,8 +761,10 @@ export default class MergeSystem {
 
         this.draggingEntity = false;
         this.currentDragSlot = null;
-        this.updateAllData();
-
+        setTimeout(() => {
+            this.updateAllData();            
+            //this.rps = utils.findRPS3(this.slots);
+        }, 1);
 
         this.updateAvailableSlots.dispatch(this.totalAvailable())
         if (this.totalAvailable() > 0) {
@@ -775,7 +783,9 @@ export default class MergeSystem {
     }
     updateAllData() {
         this.dps = utils.findDPS(this.slots);
-        this.rps = utils.findRPS(this.slots);
+        this.rps = utils.findRPS3(this.slots);
+
+       
 
         let clone = utils.cloneMatrix(this.slots)
 

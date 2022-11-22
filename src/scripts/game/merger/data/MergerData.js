@@ -16,8 +16,6 @@ export default class MergerData {
         this.currentLevel = 1;
         this.resourceAccum = true;
 
-        console.log(this.rawData)
-
     }
     calcSimplePrice(level) {
         let s = 50;
@@ -100,10 +98,9 @@ export default class MergerData {
         this.currentLevel = next;
     }
     getRPS(simulate = 0) {
-        let res = this.getResources(simulate);
-        let time = this.getGenerateResourceTime(simulate);
-
-        return res / time;
+        let res = Math.pow(2, this.rawData.id + 1)//Math.pow(this.rawData.value, 2) //this.getResources(simulate);
+        let time = this.rawData.initialTime //this.getGenerateResourceTime(simulate);
+        return res // time;
     }
     getDPS(simulate = 0) {
         let res = this.getDamage(simulate);

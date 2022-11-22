@@ -1,17 +1,12 @@
 import * as PIXI from 'pixi.js';
 
-import EnemySystem from '../systems/EnemySystem';
-import EntityShop from '../shop/EntityShop';
 import GameEconomy from '../GameEconomy';
 import GameModifyers from '../GameModifyers';
-import GeneralShop from '../shop/GeneralShop';
 import MergeItemsShop from '../shop/MergeItemsShop';
 import MergeSystem from '../systems/MergeSystem';
 import MergerData from '../data/MergerData';
 import ParticleSystem from '../../effects/ParticleSystem';
-import ResourceSystem from '../systems/ResourceSystem';
 import Screen from '../../../screenManager/Screen';
-import SpaceBackground from '../effects/SpaceBackground';
 import PuzzleBackground from '../effects/PuzzleBackground';
 import CastleBackground from '../effects/CastleBackground';
 import StandardPop from '../../popup/StandardPop';
@@ -19,17 +14,10 @@ import TweenMax from 'gsap';
 import UIButton1 from '../../ui/UIButton1';
 import utils from '../../../utils';
 import UIList from '../../ui/uiElements/UIList';
-import TimeBonusButton from '../../ui/TimeBonusButton';
-import PrizeSystem from '../systems/PrizeSystem';
 import OpenChestPopUp from '../../popup/OpenChestPopUp';
 import SellAllPopUp from '../../popup/SellAllPopUp';
-import StandardEnemy from '../enemy/StandardEnemy';
-//import SpaceStation from '../../ui/SpaceStation';
 import BonusConfirmation from '../../popup/BonusConfirmation';
 import UILabelButton1 from '../../ui/UILabelButton1';
-
-//import GameTutorial from '../tutorial/GameTutorial';
-import BonusSystem from '../systems/BonusSystem';
 import LevelMeter from '../ui/shop/LevelMeter';
 
 export default class MergeScreen extends Screen {
@@ -47,8 +35,6 @@ export default class MergeScreen extends Screen {
 
         window.baseConfigGame = PIXI.loader.resources['baseGameConfig'].data.baseGame;
         window.baseEntities = PIXI.loader.resources[window.baseConfigGame.entitiesData].data;
-        window.baseEnemies = PIXI.loader.resources[window.baseConfigGame.entitiesData].data.mergeEntities.enemies;
-        window.baseResources = PIXI.loader.resources[window.baseConfigGame.resourcesData].data;
         window.baseModifyers = PIXI.loader.resources[window.baseConfigGame.modifyersData].data;
         window.gameEconomy = new GameEconomy()
         window.gameModifyers = new GameModifyers()
@@ -135,18 +121,7 @@ export default class MergeScreen extends Screen {
         this.dataResourcesTiles = []
 
         this.allMergeData = [];
-        this.rawModifyers = []
-        for (let index = 0; index < window.baseModifyers.modifyers.length; index++) {
-            let mergeData = new MergerData(window.baseModifyers.modifyers[index], index)
 
-
-            mergeData.currentLevel = window.gameModifyers.getLevel(mergeData);
-            console.log(window.baseModifyers.modifyers[index].type)
-            mergeData.type = window.baseModifyers.modifyers[index].type
-            mergeData.modifyerIcon = window.baseModifyers.modifyers[index].modifyerIcon
-            this.rawModifyers.push(mergeData)
-            this.allMergeData.push(mergeData)
-        }
 
 
         this.rawMergeDataList = []
@@ -157,20 +132,7 @@ export default class MergeScreen extends Screen {
             this.allMergeData.push(mergeData)
         }
 
-        this.rawMergeResourceList = []
-        this.allRawResources = []
-        this.rawMergeResourceListRight = []
-        for (let index = 0; index < window.baseResources.generators.length; index++) {
-            let mergeData = new MergerData(window.baseResources.generators[index][0], index)
-            if (index % 2 == 0) {
-                mergeData.isRight = true;
-                this.rawMergeResourceListRight.push(mergeData)
-            } else {
-                this.rawMergeResourceList.push(mergeData)
-            }
-            this.allRawResources.push(mergeData)
-            this.allMergeData.push(mergeData)
-        }
+       
 
         this.mergeSystem1 = new MergeSystem({
             mainContainer: this.mergeSystemContainer,
@@ -190,8 +152,8 @@ export default class MergeScreen extends Screen {
         this.mergeSystem1.onPopLabel.add(this.popLabel.bind(this));
         this.mergeSystem1.onGetResources.add(this.addResourceParticles.bind(this));
         this.mergeSystem1.onBoardLevelUpdate.add(this.onMergeSystemUpdate.bind(this));
-        this.mergeSystem1.updateAvailableSlots.add((availables)=>{
-           this.mergeItemsShop.updateLocks(availables)
+        this.mergeSystem1.updateAvailableSlots.add((availables) => {
+            this.mergeItemsShop.updateLocks(availables)
         });
 
 
@@ -337,79 +299,7 @@ export default class MergeScreen extends Screen {
         this.shopsLabel.style.stroke = 0x002299
         this.shopsLabel.style.strokeThickness = 6
 
-        this.openSettingsShop = new UIButton1(0x002299, 'stationIcon', 0xFFFFFF, buttonSize, buttonSize)
-        this.openSettingsShop.updateIconScale(0.75)
-        this.openSettingsShop.addBadge('icon_increase')
-        this.openSettingsShop.newItem = new PIXI.Sprite.fromFrame('new_item')
-        this.openSettingsShop.newItem.scale.set(0.7)
-        this.openSettingsShop.newItem.anchor.set(0)
-        this.openSettingsShop.newItem.position.set(-buttonSize / 2)
-        this.openSettingsShop.newItem.visible = false;
-        this.openSettingsShop.addChild(this.openSettingsShop.newItem)
-        //this.shopButtonsList.addElement(this.openSettingsShop)
-        this.openSettingsShop.onClick.add(() => {
-            this.openPopUp(this.generalShop)
-        })
-
-        // this.openShop = new UIButton1(0x002299, 'asteroid (2)', 0xFFFFFF, buttonSize, buttonSize)
-        // this.openShop.addBadge('icon_increase')
-        // this.openShop.updateIconScale(0.75)
-        // this.openShop.newItem = new PIXI.Sprite.fromFrame('new_item')
-        // this.openShop.newItem.scale.set(0.7)
-        // this.openShop.newItem.anchor.set(0)
-        // this.openShop.newItem.position.set(-buttonSize / 2)
-        // this.openShop.newItem.visible = false;
-        // this.openShop.addChild(this.openShop.newItem)
-        // this.shopButtonsList.addElement(this.openShop)
-        // this.openShop.onClick.add(() => {
-        //     this.openPopUp(this.entityShop)
-        // })
-
-        //36  72 - 120 - 180
-        //*1.2
-        //500 - 600 - 720 - 864 - 1040
-        //1250 - 1500 - 1800 - 2160
-        //3130 - 3750 - 4500 - 5400
-        // 7820
-        //19530
-
-
-
-        //1040 ?? - 1240 - 1490
-        //2160 * 3
-        //6480 * 3
-        //16200 * 3
-
-        //every merge gain the id number of points
-        // GameHandler.prototype.calculateCurrencyPerSec = function() {
-        //     var e = 0;
-        //     this.entity.children.forEach((function(t) {
-        //         t.enabled && t.script.has("buildingHandler") && (e += Math.pow(2, t.script.buildingHandler.level + 1))
-        //     }
-        //     )),
-        //     this.currencyPerSec = Math.round(e / 3)
-        // }
-
-        // GameHandler.prototype.onExperience = function(e, t) {
-        //     this.experienceBar.script.barHandler.changeValues(e, this.remainder),
-        //     e >= this.remainder && (this.experience = e - this.remainder,
-        //     this.level = pc.math.clamp(this.level + 1, 1, this.maxLevel))
-        // }
-        // ,
-        // GameHandler.prototype.onLevel = function(e, t) {
-        //     var i = this;
-        //     this.entity.children.forEach((function(t) {
-        //         t.name == "Slot_" + (e + 5) && (t.enabled = !0,
-        //         i.scaleCamera())
-        //     }
-        //     )),
-        //     this.remainder = e < 6 ? 6 * (e + 1) * (e + 1) - 6 * (e + 1) : e < 7 ? 5 * (e + 1) * (e + 1) - 5 * (e + 1) : e < 8 ? 4 * (e + 1) * (e + 1) - 4 * (e + 1) : e < 9 ? 3 * (e + 1) * (e + 1) - 3 * (e + 1) : e < 10 ? 2 * (e + 1) * (e + 1) - 2 * (e + 1) : (e + 1) * (e + 1) - (e + 1),
-        //     this.levelTxt.element.text = e,
-        //     this.experienceBar.script.barHandler.changeValues(this.experience, this.remainder),
-        //     e != t && (6 == e ? this.levelPopUpWorld.enabled = !0 : this.levelPopUp.enabled = !0,
-        //     PokiSDK.happyTime(pc.math.clamp(this.level / 10), 0, 1)),
-        //     this.shopHandler.script.worldHandler.updateWorlds()
-        // }
+    
 
         window.getCurrency = function (e) {
             let a = Math.pow(2, e)
@@ -460,24 +350,16 @@ export default class MergeScreen extends Screen {
         this.uiLayer.addChild(this.mergeItemsShop);
         this.mergeItemsShop.addItems(this.rawMergeDataList)
         this.mergeItemsShop.hide();
-        this.mergeItemsShop.onAddEntity.add((entity)=>{
+        this.mergeItemsShop.onAddEntity.add((entity) => {
             this.mergeSystem1.buyEntity(entity)
         })
 
-        this.generalShop = new GeneralShop()
-        this.uiLayer.addChild(this.generalShop);
-        this.generalShop.addItems(this.rawModifyers)
-        this.generalShop.hide();
-        this.generalShop.onPurchase.add(() => {
-            this.mergeSystem1.findAllAutomerges();
-            this.mergeSystem1.updateAllData();
-        });
-
+    
         this.standardPopUp = new StandardPop('any', this.screenManager)
         this.uiLayer.addChild(this.standardPopUp)
 
-        this.bonusPopUp = new BonusConfirmation('bonus', this.screenManager)
-        this.uiLayer.addChild(this.bonusPopUp)
+        // this.bonusPopUp = new BonusConfirmation('bonus', this.screenManager)
+        // this.uiLayer.addChild(this.bonusPopUp)
 
         this.openChestPopUp = new OpenChestPopUp('chest', this.screenManager)
         this.uiLayer.addChild(this.openChestPopUp)
@@ -489,37 +371,18 @@ export default class MergeScreen extends Screen {
 
         //this.uiPanels.push(this.entityShop)
         this.uiPanels.push(this.mergeItemsShop)
-        this.uiPanels.push(this.generalShop)
         this.uiPanels.push(this.standardPopUp)
-        this.uiPanels.push(this.bonusPopUp)
+        // this.uiPanels.push(this.bonusPopUp)
         this.uiPanels.push(this.openChestPopUp)
         this.uiPanels.push(this.sellAllPopUp)
 
-        // this.entityShop.onPossiblePurchase.add((canBuy) => {
-        //     this.openShop.newItem.visible = canBuy;
-        // })
         this.mergeItemsShop.onPossiblePurchase.add((canBuy) => {
             this.openMergeShop.newItem.visible = canBuy;
         })
-        this.generalShop.onPossiblePurchase.add((canBuy) => {
-            this.openSettingsShop.newItem.visible = canBuy;
-        })
-        //this.openPopUp(this.generalShop)
 
         this.sumStart = 0;
         this.savedResources = COOKIE_MANAGER.getResources();
-        this.allRawResources.forEach(element => {
-            if (this.savedResources.entities[element.rawData.nameID]) {
-                let saved = this.savedResources.entities[element.rawData.nameID];
-                let time = saved.latestResourceAdd - saved.latestResourceCollect
-                if (time < 0) {
-                    time = 0.1
-                }
-                this.sumStart += time * element.getRPS();
-
-                //console.log(this.sumStart, element.getRPS(), time)
-            }
-        });
+        
 
 
         this.shopButtonsList.updateVerticalList();
@@ -540,19 +403,6 @@ export default class MergeScreen extends Screen {
         }
 
         this.forcePauseSystemsTimer = 0.05;
-
-
-
-        // this.spaceStation = new SpaceStation()
-        // //this.container.addChild(this.spaceStation);
-        // this.spaceStation.onParticles.add(this.addParticles.bind(this))
-        // this.spaceStation.scale.set(0.55)
-        // this.spaceStation.addCallback(() => {
-
-        //     var shards = this.getShardBonusValue()
-        //     this.openPopUp(this.sellAllPopUp, { shards, onConfirm: this.resetAll.bind(this) })
-        //     //this.resetAll();
-        // })
 
 
         this.resetWhiteShape = new PIXI.Graphics().beginFill(0xFFFFFF).drawRect(-config.width * 4, -config.height * 4, config.width * 8, config.height * 8);
@@ -772,7 +622,7 @@ export default class MergeScreen extends Screen {
         this.particleSystem.show(toLocal, quant, customData)
         //this.particleSystem.popLabel(targetPosition, "+" + label, 0, 1, 1, LABELS.LABEL1)
     }
-    onMergeSystemUpdate(data){
+    onMergeSystemUpdate(data) {
         this.levelMeter.updateData(data)
     }
     addResourceParticles(targetPosition, customData, totalResources, quantParticles, showParticles = true) {
@@ -855,7 +705,7 @@ export default class MergeScreen extends Screen {
         utils.centerObject(this.totalCoins, this.totalCoinsContainer)
         this.totalCoins.x = 40
 
-        this.coisPerSecond.text = utils.formatPointsLabel(this.mergeSystem1.dps);
+        this.coisPerSecond.text = utils.formatPointsLabel(this.mergeSystem1.rps);
         utils.centerObject(this.coisPerSecond, this.CoinsPerSecondCounter)
         this.coisPerSecond.x = 40
 
@@ -955,7 +805,7 @@ export default class MergeScreen extends Screen {
             this.levelMeter.x = this.puzzleBackground.x + (this.puzzleBackground.usableArea.width) * this.puzzleBackground.scale.x / 2//+ this.puzzleBackground
             this.levelMeter.x -= this.levelMeter.usableArea.width * this.levelMeter.scale.x / 2
             this.levelMeter.y = this.puzzleBackground.y - (this.puzzleBackground.pivot.y) * this.puzzleBackground.scale.x - 80
-    
+
 
         } else {
             this.puzzleBackground.pivot.x = 0
@@ -977,7 +827,7 @@ export default class MergeScreen extends Screen {
             // this.spaceStation.y = this.resourcesWrapper.y + 40;
             this.statsList.x = config.width - 110
             this.statsList.y = 10
-           
+
 
             this.shopsLabel.x = this.shopButtonsList.x
             this.shopsLabel.y = this.shopButtonsList.y + 50 - this.shopsLabel.height
@@ -987,12 +837,12 @@ export default class MergeScreen extends Screen {
             this.levelMeter.scale.set(this.levelMeter.usableArea.width / (this.puzzleBackground.usableArea.width) * this.puzzleBackground.scale.x)
             this.levelMeter.x = this.puzzleBackground.x// + (this.puzzleBackground.usableArea.width) * this.puzzleBackground.scale.x / 2//+ this.puzzleBackground
             this.levelMeter.x -= this.levelMeter.usableArea.width * this.levelMeter.scale.x * 0.5
-            this.levelMeter.y = this.puzzleBackground.y - (this.puzzleBackground.pivot.y) * this.puzzleBackground.scale.x - 60
+            this.levelMeter.y = this.puzzleBackground.y - (this.puzzleBackground.pivot.y) * this.puzzleBackground.scale.x - 40
 
         }
 
 
-      
+
         this.statsList.scale.set(1.5)
         this.statsList.x = topRight.x - 110 * 1.5
         this.shopsLabel.visible = false;
@@ -1000,7 +850,7 @@ export default class MergeScreen extends Screen {
         this.helperButtonList.y = 80
         this.helperButtonList.x = toGlobalBack.x + 60
 
-        this.shopButtonsList.x = topRight.x -this.shopButtonsList.width / 2 - 20
+        this.shopButtonsList.x = topRight.x - this.shopButtonsList.width / 2 - 20
         this.shopButtonsList.y = 130
         this.shopButtonsList.scale.set(1.5)
 

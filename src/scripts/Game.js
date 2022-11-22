@@ -32,17 +32,19 @@ export default class Game {
 
         this.forceResizeTimer = 5;
 
+        this.latestWidth = 0;
+
         this.borders = {
-            topLeft:{x:0,y:0},
-            bottomLeft:{x:0,y:0},
-            topRight:{x:0,y:0},
-            bottomRight:{x:0,y:0},
+            topLeft: { x: 0, y: 0 },
+            bottomLeft: { x: 0, y: 0 },
+            topRight: { x: 0, y: 0 },
+            bottomRight: { x: 0, y: 0 },
         }
 
-       
+
         this.resize()
     }
-    initialize(){
+    initialize() {
         PIXI.ticker.shared.add(this._onTickEvent, this);
         setTimeout(() => {
             this.resize()
@@ -51,8 +53,10 @@ export default class Game {
     _onTickEvent(deltaTime) {
         this.dt = deltaTime / 60;
         this.update();
-
-        if(this.forceResizeTimer > 0){
+        if (this.latestWidth != window.innerWidth) {
+            this.resize();
+        }
+        if (this.forceResizeTimer > 0) {
             this.forceResizeTimer -= this.dt;
             //this.resize()
         }
@@ -60,6 +64,8 @@ export default class Game {
     resize() {
         var w = window.innerHeight
         var h = window.innerWidth;
+
+        this.latestWidth = window.innerWidth;
 
         window.isPortrait = w < h
 
@@ -102,7 +108,7 @@ export default class Game {
         window.renderer.view.style.width = `${this.innerResolution.width}px`;
         window.renderer.view.style.height = `${this.innerResolution.height}px`;
 
-  
+
         window.renderer.view.style.left = '0px'//`${this.innerResolution.width / 2 - (newSize.width) / 2}px`;
         window.renderer.view.style.top = '0px'//`${this.innerResolution.height / 2 - (newSize.height) / 2}px`;
         // window.renderer.view.style.width = `${this.innerResolution.width}px`;
@@ -133,15 +139,15 @@ export default class Game {
             //  let sclY = (this.innerResolution.height)/(this.desktopResolution.height) ;
             //  let min = Math.min(sclX, sclY);
             // this.screenManager.scale.set(min)
-            let newScaleX = newSize.width/this.innerResolution.width
+            let newScaleX = newSize.width / this.innerResolution.width
             this.screenManager.scale.x = newScaleX//this.ratio
-            let newScaleY = newSize.height/this.innerResolution.height
+            let newScaleY = newSize.height / this.innerResolution.height
             this.screenManager.scale.y = newScaleY//this.ratio
 
-//console.log(newScaleX)
+            //console.log(newScaleX)
             // 	// this.screenManager.pivot.x = this.innerResolution.width / 2 // this.screenManager.scale.x
-            this.screenManager.x = this.desktopResolution.width / 2- (this.desktopResolution.width / 2 *newScaleX)///- (this.innerResolution.width / 2 *newScaleX) // this.screenManager.scale.y
-            this.screenManager.pivot.y = this.innerResolution.height / 2 - (this.innerResolution.height / 2 /newScaleY) // this.screenManager.scale.y
+            this.screenManager.x = this.desktopResolution.width / 2 - (this.desktopResolution.width / 2 * newScaleX)///- (this.innerResolution.width / 2 *newScaleX) // this.screenManager.scale.y
+            this.screenManager.pivot.y = this.innerResolution.height / 2 - (this.innerResolution.height / 2 / newScaleY) // this.screenManager.scale.y
 
             // 	this.screenManager.x = 0//window.innerWidth/2 * sclX - this.desktopResolution.width/2* sclX//this.innerResolution.width / 2 // this.screenManager.scale.x
             // 	this.screenManager.y = 0// window.innerHeight/2 * sclY - this.desktopResolution.height/2* sclY // this.screenManager.scale.y
@@ -154,11 +160,11 @@ export default class Game {
             this.borders.bottomRight.x = config.width + this.screenManager.x / this.screenManager.scale.x
             this.borders.bottomRight.y = config.height
             this.borders.bottomLeft.y = config.height
-        
+
         }
     }
 
-    getBorder(type, parent){
+    getBorder(type, parent) {
         var toGlobal = this.screenManager.toGlobal(this.borders[type])
         return parent.toLocal(toGlobal)
     }
@@ -186,7 +192,7 @@ export default class Game {
      */
     update() {
         this.screenManager.update(this.dt)
-       // window.renderer.render(this.stage);
+        // window.renderer.render(this.stage);
     }
 
     start() {

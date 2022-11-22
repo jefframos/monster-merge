@@ -48,11 +48,11 @@ export default class LevelMeter extends PIXI.Container {
 
         this.progressLabel = new PIXI.Text('2', LABELS.LABEL2);
         this.progressLabel.style.stroke = 0
-        this.progressLabel.style.strokeThickness = 4
+        this.progressLabel.style.strokeThickness = 3
         this.progressLabel.style.fontSize = 24
         this.progressLabel.anchor.set(0.5)
-        this.progressLabel.x = this.baseContainer.width / 2 + this.fillBar.x
-        this.progressLabel.y = this.fillBar.y + 34
+        this.progressLabel.x = this.baseContainer.width / 2 + this.fillBar.x - 20
+        this.progressLabel.y = this.fillBar.y + 32
         this.baseContainer.addChild(this.progressLabel)
 
 

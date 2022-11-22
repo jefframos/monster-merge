@@ -58,6 +58,7 @@ export default class MergeTile extends PIXI.Container {
         this.onOver = new Signals();
         this.onGenerateResource = new Signals();
         this.onGenerateDamage = new Signals();
+        this.onReveal = new Signals();
 
         this.backSlot.buttonMode = true;
         this.backSlot.interactive = true;
@@ -355,6 +356,8 @@ export default class MergeTile extends PIXI.Container {
         }
         this.giftSprite.visible = false;
         this.showSprite()
+
+        this.onReveal.dispatch();
     }
     enterAnimation() {
 
