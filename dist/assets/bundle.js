@@ -109,7 +109,7 @@ var _extract = __webpack_require__(252);
 
 var extract = _interopRequireWildcard(_extract);
 
-var _extras = __webpack_require__(127);
+var _extras = __webpack_require__(124);
 
 var extras = _interopRequireWildcard(_extras);
 
@@ -179,7 +179,7 @@ if (typeof _deprecation2.default === 'function') {
 // Always export PixiJS globally.
 global.PIXI = exports; // eslint-disable-line
 //# sourceMappingURL=index.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
 /* 1 */
@@ -205,7 +205,7 @@ exports.default = function (instance, Constructor) {
 
 exports.__esModule = true;
 
-var _defineProperty = __webpack_require__(82);
+var _defineProperty = __webpack_require__(79);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -244,7 +244,7 @@ module.exports = { "default": __webpack_require__(325), __esModule: true };
 
 exports.__esModule = true;
 
-var _typeof2 = __webpack_require__(50);
+var _typeof2 = __webpack_require__(49);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -275,7 +275,7 @@ var _create = __webpack_require__(331);
 
 var _create2 = _interopRequireDefault(_create);
 
-var _typeof2 = __webpack_require__(50);
+var _typeof2 = __webpack_require__(49);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -340,7 +340,7 @@ Object.defineProperty(exports, 'glCore', {
   }
 });
 
-var _Bounds = __webpack_require__(69);
+var _Bounds = __webpack_require__(68);
 
 Object.defineProperty(exports, 'Bounds', {
   enumerable: true,
@@ -349,7 +349,7 @@ Object.defineProperty(exports, 'Bounds', {
   }
 });
 
-var _DisplayObject = __webpack_require__(105);
+var _DisplayObject = __webpack_require__(102);
 
 Object.defineProperty(exports, 'DisplayObject', {
   enumerable: true,
@@ -358,7 +358,7 @@ Object.defineProperty(exports, 'DisplayObject', {
   }
 });
 
-var _Container = __webpack_require__(34);
+var _Container = __webpack_require__(33);
 
 Object.defineProperty(exports, 'Container', {
   enumerable: true,
@@ -367,7 +367,7 @@ Object.defineProperty(exports, 'Container', {
   }
 });
 
-var _Transform = __webpack_require__(107);
+var _Transform = __webpack_require__(104);
 
 Object.defineProperty(exports, 'Transform', {
   enumerable: true,
@@ -376,7 +376,7 @@ Object.defineProperty(exports, 'Transform', {
   }
 });
 
-var _TransformStatic = __webpack_require__(106);
+var _TransformStatic = __webpack_require__(103);
 
 Object.defineProperty(exports, 'TransformStatic', {
   enumerable: true,
@@ -385,7 +385,7 @@ Object.defineProperty(exports, 'TransformStatic', {
   }
 });
 
-var _TransformBase = __webpack_require__(71);
+var _TransformBase = __webpack_require__(70);
 
 Object.defineProperty(exports, 'TransformBase', {
   enumerable: true,
@@ -394,7 +394,7 @@ Object.defineProperty(exports, 'TransformBase', {
   }
 });
 
-var _Sprite = __webpack_require__(72);
+var _Sprite = __webpack_require__(71);
 
 Object.defineProperty(exports, 'Sprite', {
   enumerable: true,
@@ -412,7 +412,7 @@ Object.defineProperty(exports, 'CanvasSpriteRenderer', {
   }
 });
 
-var _CanvasTinter = __webpack_require__(76);
+var _CanvasTinter = __webpack_require__(75);
 
 Object.defineProperty(exports, 'CanvasTinter', {
   enumerable: true,
@@ -439,7 +439,7 @@ Object.defineProperty(exports, 'Text', {
   }
 });
 
-var _TextStyle = __webpack_require__(120);
+var _TextStyle = __webpack_require__(117);
 
 Object.defineProperty(exports, 'TextStyle', {
   enumerable: true,
@@ -448,7 +448,7 @@ Object.defineProperty(exports, 'TextStyle', {
   }
 });
 
-var _TextMetrics = __webpack_require__(121);
+var _TextMetrics = __webpack_require__(118);
 
 Object.defineProperty(exports, 'TextMetrics', {
   enumerable: true,
@@ -466,7 +466,7 @@ Object.defineProperty(exports, 'Graphics', {
   }
 });
 
-var _GraphicsData = __webpack_require__(122);
+var _GraphicsData = __webpack_require__(119);
 
 Object.defineProperty(exports, 'GraphicsData', {
   enumerable: true,
@@ -511,7 +511,7 @@ Object.defineProperty(exports, 'Texture', {
   }
 });
 
-var _TextureMatrix = __webpack_require__(118);
+var _TextureMatrix = __webpack_require__(115);
 
 Object.defineProperty(exports, 'TextureMatrix', {
   enumerable: true,
@@ -520,7 +520,7 @@ Object.defineProperty(exports, 'TextureMatrix', {
   }
 });
 
-var _BaseTexture = __webpack_require__(30);
+var _BaseTexture = __webpack_require__(29);
 
 Object.defineProperty(exports, 'BaseTexture', {
   enumerable: true,
@@ -529,7 +529,7 @@ Object.defineProperty(exports, 'BaseTexture', {
   }
 });
 
-var _RenderTexture = __webpack_require__(75);
+var _RenderTexture = __webpack_require__(74);
 
 Object.defineProperty(exports, 'RenderTexture', {
   enumerable: true,
@@ -538,7 +538,7 @@ Object.defineProperty(exports, 'RenderTexture', {
   }
 });
 
-var _BaseRenderTexture = __webpack_require__(113);
+var _BaseRenderTexture = __webpack_require__(110);
 
 Object.defineProperty(exports, 'BaseRenderTexture', {
   enumerable: true,
@@ -547,7 +547,7 @@ Object.defineProperty(exports, 'BaseRenderTexture', {
   }
 });
 
-var _VideoBaseTexture = __webpack_require__(110);
+var _VideoBaseTexture = __webpack_require__(107);
 
 Object.defineProperty(exports, 'VideoBaseTexture', {
   enumerable: true,
@@ -556,7 +556,7 @@ Object.defineProperty(exports, 'VideoBaseTexture', {
   }
 });
 
-var _TextureUvs = __webpack_require__(111);
+var _TextureUvs = __webpack_require__(108);
 
 Object.defineProperty(exports, 'TextureUvs', {
   enumerable: true,
@@ -565,7 +565,7 @@ Object.defineProperty(exports, 'TextureUvs', {
   }
 });
 
-var _CanvasRenderTarget = __webpack_require__(114);
+var _CanvasRenderTarget = __webpack_require__(111);
 
 Object.defineProperty(exports, 'CanvasRenderTarget', {
   enumerable: true,
@@ -574,7 +574,7 @@ Object.defineProperty(exports, 'CanvasRenderTarget', {
   }
 });
 
-var _Shader = __webpack_require__(37);
+var _Shader = __webpack_require__(36);
 
 Object.defineProperty(exports, 'Shader', {
   enumerable: true,
@@ -583,7 +583,7 @@ Object.defineProperty(exports, 'Shader', {
   }
 });
 
-var _WebGLManager = __webpack_require__(36);
+var _WebGLManager = __webpack_require__(35);
 
 Object.defineProperty(exports, 'WebGLManager', {
   enumerable: true,
@@ -592,7 +592,7 @@ Object.defineProperty(exports, 'WebGLManager', {
   }
 });
 
-var _ObjectRenderer = __webpack_require__(44);
+var _ObjectRenderer = __webpack_require__(42);
 
 Object.defineProperty(exports, 'ObjectRenderer', {
   enumerable: true,
@@ -601,7 +601,7 @@ Object.defineProperty(exports, 'ObjectRenderer', {
   }
 });
 
-var _RenderTarget = __webpack_require__(46);
+var _RenderTarget = __webpack_require__(44);
 
 Object.defineProperty(exports, 'RenderTarget', {
   enumerable: true,
@@ -610,7 +610,7 @@ Object.defineProperty(exports, 'RenderTarget', {
   }
 });
 
-var _Quad = __webpack_require__(119);
+var _Quad = __webpack_require__(116);
 
 Object.defineProperty(exports, 'Quad', {
   enumerable: true,
@@ -619,7 +619,7 @@ Object.defineProperty(exports, 'Quad', {
   }
 });
 
-var _SpriteMaskFilter = __webpack_require__(116);
+var _SpriteMaskFilter = __webpack_require__(113);
 
 Object.defineProperty(exports, 'SpriteMaskFilter', {
   enumerable: true,
@@ -628,7 +628,7 @@ Object.defineProperty(exports, 'SpriteMaskFilter', {
   }
 });
 
-var _Filter = __webpack_require__(117);
+var _Filter = __webpack_require__(114);
 
 Object.defineProperty(exports, 'Filter', {
   enumerable: true,
@@ -637,7 +637,7 @@ Object.defineProperty(exports, 'Filter', {
   }
 });
 
-var _Application = __webpack_require__(124);
+var _Application = __webpack_require__(121);
 
 Object.defineProperty(exports, 'Application', {
   enumerable: true,
@@ -646,7 +646,7 @@ Object.defineProperty(exports, 'Application', {
   }
 });
 
-var _autoDetectRenderer = __webpack_require__(125);
+var _autoDetectRenderer = __webpack_require__(122);
 
 Object.defineProperty(exports, 'autoDetectRenderer', {
   enumerable: true,
@@ -659,7 +659,7 @@ var _utils = __webpack_require__(8);
 
 var utils = _interopRequireWildcard(_utils);
 
-var _ticker = __webpack_require__(74);
+var _ticker = __webpack_require__(73);
 
 var ticker = _interopRequireWildcard(_ticker);
 
@@ -667,11 +667,11 @@ var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
-var _CanvasRenderer = __webpack_require__(35);
+var _CanvasRenderer = __webpack_require__(34);
 
 var _CanvasRenderer2 = _interopRequireDefault(_CanvasRenderer);
 
-var _WebGLRenderer = __webpack_require__(45);
+var _WebGLRenderer = __webpack_require__(43);
 
 var _WebGLRenderer2 = _interopRequireDefault(_WebGLRenderer);
 
@@ -1082,7 +1082,7 @@ var _mixin = __webpack_require__(206);
 
 var mixins = _interopRequireWildcard(_mixin);
 
-var _ismobilejs = __webpack_require__(70);
+var _ismobilejs = __webpack_require__(69);
 
 var isMobile = _interopRequireWildcard(_ismobilejs);
 
@@ -2229,7 +2229,7 @@ exports.default = {
 
 exports.__esModule = true;
 
-var _Point = __webpack_require__(65);
+var _Point = __webpack_require__(64);
 
 Object.defineProperty(exports, 'Point', {
   enumerable: true,
@@ -2238,7 +2238,7 @@ Object.defineProperty(exports, 'Point', {
   }
 });
 
-var _ObservablePoint = __webpack_require__(94);
+var _ObservablePoint = __webpack_require__(91);
 
 Object.defineProperty(exports, 'ObservablePoint', {
   enumerable: true,
@@ -2247,7 +2247,7 @@ Object.defineProperty(exports, 'ObservablePoint', {
   }
 });
 
-var _Matrix = __webpack_require__(66);
+var _Matrix = __webpack_require__(65);
 
 Object.defineProperty(exports, 'Matrix', {
   enumerable: true,
@@ -2256,7 +2256,7 @@ Object.defineProperty(exports, 'Matrix', {
   }
 });
 
-var _GroupD = __webpack_require__(95);
+var _GroupD = __webpack_require__(92);
 
 Object.defineProperty(exports, 'GroupD8', {
   enumerable: true,
@@ -2292,7 +2292,7 @@ Object.defineProperty(exports, 'Polygon', {
   }
 });
 
-var _Rectangle = __webpack_require__(67);
+var _Rectangle = __webpack_require__(66);
 
 Object.defineProperty(exports, 'Rectangle', {
   enumerable: true,
@@ -2347,11 +2347,11 @@ module.exports = exports["default"];
 
 var gl = {
     createContext:          __webpack_require__(197),
-    setVertexAttribArrays:  __webpack_require__(96),
+    setVertexAttribArrays:  __webpack_require__(93),
     GLBuffer:               __webpack_require__(198),
     GLFramebuffer:          __webpack_require__(199),
     GLShader:               __webpack_require__(200),
-    GLTexture:              __webpack_require__(97),
+    GLTexture:              __webpack_require__(94),
     VertexArrayObject:      __webpack_require__(201),
     shader:                 __webpack_require__(202)
 };
@@ -2387,7 +2387,7 @@ var _defineProperty2 = __webpack_require__(156);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-var _typeof2 = __webpack_require__(50);
+var _typeof2 = __webpack_require__(49);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -11323,7 +11323,7 @@ if (_gsScope._gsDefine) { _gsScope._gsQueue.pop()(); } //necessary in case Tween
 		_tickerActive = false; //ensures that the first official animation forces a ticker.tick() to update the time when it is instantiated
 
 })((typeof(module) !== "undefined" && module.exports && typeof(global) !== "undefined") ? global : this || window, "TweenMax");
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
 /* 18 */
@@ -11348,15 +11348,15 @@ exports.__esModule = true;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _BaseTexture = __webpack_require__(30);
+var _BaseTexture = __webpack_require__(29);
 
 var _BaseTexture2 = _interopRequireDefault(_BaseTexture);
 
-var _VideoBaseTexture = __webpack_require__(110);
+var _VideoBaseTexture = __webpack_require__(107);
 
 var _VideoBaseTexture2 = _interopRequireDefault(_VideoBaseTexture);
 
-var _TextureUvs = __webpack_require__(111);
+var _TextureUvs = __webpack_require__(108);
 
 var _TextureUvs2 = _interopRequireDefault(_TextureUvs);
 
@@ -12040,8 +12040,8 @@ removeAllHandlers(Texture.WHITE.baseTexture);
 
 var global = __webpack_require__(18);
 var core = __webpack_require__(15);
-var ctx = __webpack_require__(83);
-var hide = __webpack_require__(27);
+var ctx = __webpack_require__(80);
+var hide = __webpack_require__(26);
 var PROTOTYPE = 'prototype';
 
 var $export = function (type, name, source) {
@@ -12105,9 +12105,9 @@ module.exports = $export;
 /* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(31);
-var IE8_DOM_DEFINE = __webpack_require__(84);
-var toPrimitive = __webpack_require__(49);
+var anObject = __webpack_require__(30);
+var IE8_DOM_DEFINE = __webpack_require__(81);
+var toPrimitive = __webpack_require__(48);
 var dP = Object.defineProperty;
 
 exports.f = __webpack_require__(22) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
@@ -12128,7 +12128,7 @@ exports.f = __webpack_require__(22) ? Object.defineProperty : function definePro
 /***/ (function(module, exports, __webpack_require__) {
 
 // Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(32)(function () {
+module.exports = !__webpack_require__(31)(function () {
   return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
 });
 
@@ -12149,7 +12149,7 @@ module.exports = function (it, key) {
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
 var IObject = __webpack_require__(166);
-var defined = __webpack_require__(52);
+var defined = __webpack_require__(51);
 module.exports = function (it) {
   return IObject(defined(it));
 };
@@ -12477,323 +12477,8 @@ if (true) {
 /* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _getPrototypeOf = __webpack_require__(3);
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__(1);
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(2);
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__(4);
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__(5);
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _pixi = __webpack_require__(0);
-
-var PIXI = _interopRequireWildcard(_pixi);
-
-var _signals = __webpack_require__(9);
-
-var signals = _interopRequireWildcard(_signals);
-
-var _gsap = __webpack_require__(17);
-
-var _gsap2 = _interopRequireDefault(_gsap);
-
-var _utils = __webpack_require__(14);
-
-var _utils2 = _interopRequireDefault(_utils);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var UIButton1 = function (_PIXI$Container) {
-	(0, _inherits3.default)(UIButton1, _PIXI$Container);
-
-	function UIButton1(color, icon) {
-		var iconColor = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0xFFFFFF;
-		var width = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 65;
-		var height = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 65;
-		var texture = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 'square-pattern1';
-		(0, _classCallCheck3.default)(this, UIButton1);
-
-		var _this = (0, _possibleConstructorReturn3.default)(this, (UIButton1.__proto__ || (0, _getPrototypeOf2.default)(UIButton1)).call(this));
-
-		_this.build(color, icon, iconColor, width, height, texture);
-
-		return _this;
-	}
-
-	(0, _createClass3.default)(UIButton1, [{
-		key: 'build',
-		value: function build(color, icon) {
-			var iconColor = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0xFFFFFF;
-			var width = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 65;
-			var height = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 65;
-			var texture = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 'square-pattern1';
-
-			this.w = width;
-			this.h = height;
-
-			this.mainContainer = new PIXI.Container();
-			//this.backShape = PIXI.Sprite.fromImage(
-
-			if (!icon) {
-				this.icon = new PIXI.Sprite();
-			} else {
-				//console.log(typeof (icon))
-				if (icon instanceof PIXI.RenderTexture || icon instanceof PIXI.Texture) {
-					this.icon = new PIXI.Sprite();
-					this.icon.texture = icon;
-				} else {
-
-					this.icon = PIXI.Sprite.fromFrame(icon);
-				}
-			}
-			this.icon.tint = iconColor;
-
-			this.backShape = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame(texture), 30, 30, 25, 10);
-			this.backShape.width = width;
-			this.backShape.height = height;
-			this.backShape.pivot.set(width / 2, height / 2);
-
-			this.icon.anchor.set(0.5);
-
-			this.updateIconScale();
-
-			this.mainContainer.addChild(this.backShape);
-			this.mainContainer.addChild(this.icon);
-			this.addChild(this.mainContainer);
-
-			this.onClick = new signals.Signal();
-
-			this.on('touchstart', this.touchStart.bind(this));
-			this.on('touchend', this.click.bind(this));
-			this.interactive = true;
-			this.buttonMode = true;
-		}
-	}, {
-		key: 'addBadge',
-		value: function addBadge(texture) {
-			var scale = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.3;
-
-			this.badge = PIXI.Sprite.fromFrame(texture);
-			this.badge.scale.set(0.5);
-			this.badge.anchor.set(this.badge.width * scale / this.badge.width);
-			this.badge.x = this.backShape.width / 2 - this.badge.width - 10;
-			this.badge.y = -this.backShape.height / 2 + this.badge.height;
-			this.mainContainer.addChild(this.badge);
-		}
-	}, {
-		key: 'touchStart',
-		value: function touchStart() {
-			//this.backShape.scale.set(1.1)
-		}
-	}, {
-		key: 'changePivot',
-		value: function changePivot(x, y) {
-
-			this.backShape.pivot.set(this.w * x / 2, this.h * y / 2);
-
-			this.icon.x = this.w * x + this.w / 2;
-			this.icon.y = this.h * y + this.h / 2;
-		}
-	}, {
-		key: 'disableState',
-		value: function disableState(color, texture) {
-
-			if (texture) this.backShape.texture = PIXI.Texture.fromFrame(texture);
-			this.icon.alpha = 0.5;
-			// this.backShape.tint = color;
-			//this.alpha = 0.5
-		}
-	}, {
-		key: 'enableState',
-		value: function enableState(color, texture) {
-
-			if (texture) this.backShape.texture = PIXI.Texture.fromFrame(texture);
-			this.icon.alpha = 1;
-			//this.alpha = 1
-			// this.backShape.tint = color;
-		}
-	}, {
-		key: 'addFrontShape',
-		value: function addFrontShape() {
-			this.backShape.y = -10;
-		}
-	}, {
-		key: 'resize',
-		value: function resize(width, height) {
-			if (!width || !height) {
-				return;
-			}
-
-			this.backShape.width = width;
-			this.backShape.height = height;
-			this.backShape.pivot.set(width / 2);
-
-			this.updateIconScale();
-		}
-	}, {
-		key: 'updateIconScale',
-		value: function updateIconScale() {
-			var scale = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0.7;
-
-
-			_utils2.default.resizeToFitAR({
-				width: this.backShape.width * scale,
-				height: this.backShape.height * scale
-			}, this.icon);
-		}
-	}, {
-		key: 'updateRotation',
-		value: function updateRotation(rot) {
-			var invertIcon = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-
-			this.backShape.rotation = rot;
-
-			if (invertIcon) {
-				this.icon.rotation = -rot;
-			}
-		}
-	}, {
-		key: 'setIconColor',
-		value: function setIconColor(color) {
-			this.icon.tint = color;
-		}
-	}, {
-		key: 'setColor',
-		value: function setColor(color) {
-			this.backShape.tint = color;
-		}
-	}, {
-		key: 'updateIconTexture',
-		value: function updateIconTexture(texture) {
-			this.icon.texture = texture;
-		}
-	}, {
-		key: 'click',
-		value: function click() {
-			//this.backShape.scale.set(1)
-
-			this.onClick.dispatch();
-			//window.SOUND_MANAGER.play('tap2', { volume: 0.5 })
-		}
-	}, {
-		key: 'updateTextColor',
-		value: function updateTextColor(color) {
-			if (this.buttonLabel) {
-				this.buttonLabel.style.fill = color;
-			}
-		}
-	}, {
-		key: 'replaceIcon',
-		value: function replaceIcon(icon) {
-			if (this.icon && this.icon.parent) {
-				this.icon.parent.removeChild(this.icon);
-			}
-			this.icon = icon;
-			this.mainContainer.addChild(this.icon);
-		}
-	}, {
-		key: 'updateMenuColors',
-		value: function updateMenuColors(textColor, backgroundColor) {
-
-			this.icon.tint = backgroundColor;
-
-			if (this.backLabelLeft) {
-				this.backLabelLeft.tint = backgroundColor;
-			}
-
-			if (this.buttonLabel) {
-				this.buttonLabel.style.fill = textColor;
-			}
-
-			this.backShape.tint = textColor;
-		}
-	}, {
-		key: 'addLabelRight',
-		value: function addLabelRight(label) {
-			var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0xFFFFFF;
-
-			this.buttonLabel = new PIXI.Text(label, { font: '18px', fill: color, align: 'left', fontWeight: '300', fontFamily: MAIN_FONT });
-			this.buttonLabel.pivot.x = 0; //this.buttonLabel.width;
-			this.buttonLabel.pivot.y = this.buttonLabel.height / 2;
-			this.buttonLabel.x = this.mainContainer.width * 0.5 + 5;
-			this.buttonLabel.y = this.backShape.width * 0.5;
-			this.addChild(this.buttonLabel);
-		}
-	}, {
-		key: 'addLabelLeft',
-		value: function addLabelLeft(label) {
-			var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0xFFFFFF;
-
-			this.buttonLabel = new PIXI.Text(label, { font: '18px', fill: color, align: 'right', fontWeight: '300', fontFamily: MAIN_FONT });
-			this.buttonLabel.pivot.x = this.buttonLabel.width;
-			this.buttonLabel.pivot.y = this.buttonLabel.height / 2;
-			this.buttonLabel.x = -this.mainContainer.width * 0.5 - 5;
-			this.buttonLabel.y = this.backShape.width * 0.5;
-			this.addChild(this.buttonLabel);
-		}
-	}, {
-		key: 'addLabelLeftMenu',
-		value: function addLabelLeftMenu(label) {
-			this.buttonLabel = new PIXI.Text(label, {
-				font: '32px', fill: this.backShape.tint, align: 'right', fontWeight: '800', fontFamily: MAIN_FONT
-			});
-			this.buttonLabel.pivot.x = this.buttonLabel.width;
-			this.buttonLabel.pivot.y = this.buttonLabel.height / 2;
-			this.buttonLabel.x = -this.mainContainer.width * 0.55;
-
-			if (!this.backLabelLeft) {
-				this.backLabelLeft = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('smallButton.png'), 10, 10, 10, 10);
-				this.backLabelLeft.tint = this.icon.tint;
-			}
-
-			this.backLabelLeft.width = this.buttonLabel.width - this.buttonLabel.x;
-			this.backLabelLeft.height = this.backShape.height;
-			this.backLabelLeft.x = -this.backLabelLeft.width - this.backShape.width / 2;
-			this.backLabelLeft.y = -this.backLabelLeft.height / 2; // - this.backShape.height / 2
-			this.addChildAt(this.backLabelLeft, 0);
-			this.addChild(this.buttonLabel);
-		}
-	}, {
-		key: 'updateTexture',
-		value: function updateTexture(texture) {
-			this.icon.texture = PIXI.Texture.fromFrame(texture);
-			this.updateIconScale();
-		}
-	}]);
-	return UIButton1;
-}(PIXI.Container);
-
-exports.default = UIButton1;
-module.exports = exports['default'];
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
 var dP = __webpack_require__(21);
-var createDesc = __webpack_require__(42);
+var createDesc = __webpack_require__(40);
 module.exports = __webpack_require__(22) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
@@ -12803,7 +12488,7 @@ module.exports = __webpack_require__(22) ? function (object, key, value) {
 
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports) {
 
 module.exports = function (it) {
@@ -12812,11 +12497,11 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var store = __webpack_require__(58)('wks');
-var uid = __webpack_require__(43);
+var store = __webpack_require__(57)('wks');
+var uid = __webpack_require__(41);
 var Symbol = __webpack_require__(18).Symbol;
 var USE_SYMBOL = typeof Symbol == 'function';
 
@@ -12829,7 +12514,7 @@ $exports.store = store;
 
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12847,11 +12532,11 @@ var _eventemitter = __webpack_require__(25);
 
 var _eventemitter2 = _interopRequireDefault(_eventemitter);
 
-var _determineCrossOrigin = __webpack_require__(108);
+var _determineCrossOrigin = __webpack_require__(105);
 
 var _determineCrossOrigin2 = _interopRequireDefault(_determineCrossOrigin);
 
-var _bitTwiddle = __webpack_require__(73);
+var _bitTwiddle = __webpack_require__(72);
 
 var _bitTwiddle2 = _interopRequireDefault(_bitTwiddle);
 
@@ -13680,10 +13365,10 @@ exports.default = BaseTexture;
 //# sourceMappingURL=BaseTexture.js.map
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(28);
+var isObject = __webpack_require__(27);
 module.exports = function (it) {
   if (!isObject(it)) throw TypeError(it + ' is not an object!');
   return it;
@@ -13691,7 +13376,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, exports) {
 
 module.exports = function (exec) {
@@ -13704,7 +13389,7 @@ module.exports = function (exec) {
 
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, exports) {
 
 var g;
@@ -13731,7 +13416,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13743,7 +13428,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _utils = __webpack_require__(8);
 
-var _DisplayObject2 = __webpack_require__(105);
+var _DisplayObject2 = __webpack_require__(102);
 
 var _DisplayObject3 = _interopRequireDefault(_DisplayObject2);
 
@@ -14354,7 +14039,7 @@ Container.prototype.containerUpdateTransform = Container.prototype.updateTransfo
 //# sourceMappingURL=Container.js.map
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14362,7 +14047,7 @@ Container.prototype.containerUpdateTransform = Container.prototype.updateTransfo
 
 exports.__esModule = true;
 
-var _SystemRenderer2 = __webpack_require__(112);
+var _SystemRenderer2 = __webpack_require__(109);
 
 var _SystemRenderer3 = _interopRequireDefault(_SystemRenderer2);
 
@@ -14370,7 +14055,7 @@ var _CanvasMaskManager = __webpack_require__(218);
 
 var _CanvasMaskManager2 = _interopRequireDefault(_CanvasMaskManager);
 
-var _CanvasRenderTarget = __webpack_require__(114);
+var _CanvasRenderTarget = __webpack_require__(111);
 
 var _CanvasRenderTarget2 = _interopRequireDefault(_CanvasRenderTarget);
 
@@ -14724,7 +14409,7 @@ _utils.pluginTarget.mixin(CanvasRenderer);
 //# sourceMappingURL=CanvasRenderer.js.map
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14784,7 +14469,7 @@ exports.default = WebGLManager;
 //# sourceMappingURL=WebGLManager.js.map
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14856,7 +14541,7 @@ exports.default = Shader;
 //# sourceMappingURL=Shader.js.map
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14870,9 +14555,9 @@ exports.default = Shader;
 /* eslint-disable no-undef */
 
 var Loader = __webpack_require__(272).default;
-var Resource = __webpack_require__(78).default;
-var async = __webpack_require__(140);
-var b64 = __webpack_require__(141);
+var Resource = __webpack_require__(77).default;
+var async = __webpack_require__(137);
+var b64 = __webpack_require__(138);
 
 Loader.Resource = Resource;
 Loader.async = async;
@@ -14885,7 +14570,7 @@ module.exports.default = Loader;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15259,251 +14944,14 @@ Mesh.DRAW_MODES = {
 //# sourceMappingURL=Mesh.js.map
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _getPrototypeOf = __webpack_require__(3);
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__(1);
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(2);
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__(4);
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__(5);
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _pixi = __webpack_require__(0);
-
-var PIXI = _interopRequireWildcard(_pixi);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var UIList = function (_PIXI$Container) {
-    (0, _inherits3.default)(UIList, _PIXI$Container);
-
-    function UIList() {
-        (0, _classCallCheck3.default)(this, UIList);
-
-        var _this = (0, _possibleConstructorReturn3.default)(this, (UIList.__proto__ || (0, _getPrototypeOf2.default)(UIList)).call(this));
-
-        _this.container = new PIXI.Container();
-        _this.addChild(_this.container);
-        _this.elementsList = [];
-        _this.w = 0;
-        _this.h = 0;
-        return _this;
-    }
-
-    (0, _createClass3.default)(UIList, [{
-        key: 'debug',
-        value: function debug() {
-            this.debugGr = new PIXI.Graphics().beginFill(0xFF0000).drawRect(0, 0, this.w, this.h);
-            this.container.addChild(this.debugGr);
-            this.debugGr.alpha = 0.5;
-        }
-    }, {
-        key: 'removeElement',
-        value: function removeElement(element) {
-            this.container.removeChild(element);
-
-            var toRemove = -1;
-            for (var index = 0; index < this.elementsList.length; index++) {
-                if (element == this.elementsList[index]) {
-                    toRemove = index;
-                }
-            }
-            if (toRemove >= 0) {
-
-                this.elementsList.splice(toRemove, 1);
-            }
-        }
-    }, {
-        key: 'addElement',
-        value: function addElement(element) {
-            this.container.addChild(element);
-            this.elementsList.push(element);
-        }
-    }, {
-        key: 'updateHorizontalList',
-        value: function updateHorizontalList() {
-            var debug = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-
-            var listSizes = [];
-            var sum = 0;
-            var quant = 0;
-            for (var i = 0; i < this.elementsList.length; i++) {
-
-                if (this.elementsList[i].listScl) {
-                    listSizes.push(this.elementsList[i].listScl);
-                    sum += this.elementsList[i].listScl;
-                    quant++;
-                } else {
-                    listSizes.push(0);
-                }
-            }
-            var adjust = 1 - sum;
-            var scales = adjust / (this.elementsList.length - quant);
-            var chunkSize = 0;
-            for (var i = 0; i < this.elementsList.length; i++) {
-                if (listSizes[i] == 0) {
-                    listSizes[i] = scales;
-                }
-            }
-            var plus = 0;
-            var positions = [];
-            var stdH = 1;
-            var stdW = 1;
-            var pixig = void 0;
-            for (var i = 0; i < listSizes.length; i++) {
-                if (debug) {
-
-                    pixig = new PIXI.Graphics().beginFill(0xFF0000).drawCircle(0, 0, 5);
-                    this.container.addChild(pixig);
-                }
-                plus = 0;
-                var nextX = 0;
-                chunkSize = this.w * listSizes[i];
-                if (i == 0) {
-                    nextX = 0;
-                } else {
-                    nextX = positions[i - 1] + this.w * listSizes[i - 1];
-                }
-                positions.push(nextX);
-                if (this.elementsList[i].fitHeight) {
-                    stdH = this.elementsList[i].height / this.elementsList[i].scale.y;
-                    this.elementsList[i].scale.set(this.h / stdH * this.elementsList[i].fitHeight);
-                } else if (this.elementsList[i].fitWidth) {
-                    stdW = this.elementsList[i].width / this.elementsList[i].scale.x;
-                    this.elementsList[i].scale.set(chunkSize / stdW * this.elementsList[i].fitWidth);
-                } else if (this.elementsList[i].scaleContent) {
-                    stdW = this.elementsList[i].width / this.elementsList[i].scale.x;
-                    this.elementsList[i].scale.set(chunkSize / stdW);
-                } else if (this.elementsList[i].scaleContentMax && this.elementsList[i].width > chunkSize) {
-                    stdW = this.elementsList[i].width / this.elementsList[i].scale.x;
-                    this.elementsList[i].scale.set(chunkSize / stdW);
-                }
-                var align = 0.5;
-                if (this.elementsList[i].align != undefined) {
-                    align = this.elementsList[i].align;
-                }
-
-                this.elementsList[i].x = nextX + chunkSize * align - this.elementsList[i].width * align;
-                if (debug) {
-
-                    pixig.x = this.elementsList[i].x;
-                }
-                this.elementsList[i].y = this.h / 2 - this.elementsList[i].height / 2;
-            }
-        }
-    }, {
-        key: 'removeAllElements',
-        value: function removeAllElements() {
-            while (this.container.children.length) {
-                this.container.removeChildAt(0);
-            }
-
-            this.elementsList = [];
-        }
-    }, {
-        key: 'updateVerticalList',
-        value: function updateVerticalList() {
-            var listSizes = [];
-            var sum = 0;
-            var quant = 0;
-            for (var i = 0; i < this.elementsList.length; i++) {
-
-                if (this.elementsList[i].listScl) {
-                    listSizes.push(this.elementsList[i].listScl);
-                    sum += this.elementsList[i].listScl;
-                    quant++;
-                } else {
-                    listSizes.push(0);
-                }
-            }
-            var adjust = 1 - sum;
-            var scales = adjust / (this.elementsList.length - quant);
-            var chunkSize = 0;
-            for (var i = 0; i < this.elementsList.length; i++) {
-                if (listSizes[i] == 0) {
-                    listSizes[i] = scales;
-                }
-            }
-            var plus = 0;
-            var positions = [];
-            var stdH = 1;
-            var stdW = 1;
-            for (var i = 0; i < listSizes.length; i++) {
-                // let pixig = new PIXI.Graphics().beginFill(0xFF0000).drawCircle(0, 0, 5)
-                // this.container.addChild(pixig)
-                plus = 0;
-                var nextX = 0;
-                chunkSize = this.h * listSizes[i];
-                if (i == 0) {
-                    nextX = 0;
-                } else {
-                    nextX = positions[i - 1] + this.h * listSizes[i - 1];
-                }
-                positions.push(nextX);
-                if (this.elementsList[i].fitHeight) {
-                    stdH = this.elementsList[i].height / this.elementsList[i].scale.y;
-                    this.elementsList[i].scale.set(chunkSize / stdH * this.elementsList[i].fitHeight);
-                } else if (this.elementsList[i].fitWidth) {
-                    stdW = this.elementsList[i].width / this.elementsList[i].scale.x;
-                    this.elementsList[i].scale.set(this.w / stdW * this.elementsList[i].fitWidth);
-                } else if (this.elementsList[i].scaleContent) {
-                    stdW = this.elementsList[i].height / this.elementsList[i].scale.y;
-                    this.elementsList[i].scale.set(chunkSize / stdW);
-                } else if (this.elementsList[i].scaleContentMax && this.elementsList[i].height > chunkSize) {
-                    stdW = this.elementsList[i].height / this.elementsList[i].scale.y;
-                    this.elementsList[i].scale.set(chunkSize / stdW);
-                }
-                var align = 0.5;
-                if (this.elementsList[i].align != undefined) {
-                    align = this.elementsList[i].align;
-                }
-
-                var nextY = nextX + chunkSize * align - this.elementsList[i].height * align;
-                this.elementsList[i].y = nextY;
-                // pixig.x = nextX
-
-                this.elementsList[i].x = this.w / 2 - this.elementsList[i].width / 2;
-            }
-        }
-    }]);
-    return UIList;
-}(PIXI.Container);
-
-exports.default = UIList;
-module.exports = exports['default'];
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _getPrototypeOf = __webpack_require__(3);
@@ -15538,10 +14986,6 @@ var _gsap = __webpack_require__(17);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
-var _config = __webpack_require__(12);
-
-var _config2 = _interopRequireDefault(_config);
-
 var _utils = __webpack_require__(14);
 
 var _utils2 = _interopRequireDefault(_utils);
@@ -15550,174 +14994,272 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var UILabelButton1 = function (_PIXI$Container) {
-    (0, _inherits3.default)(UILabelButton1, _PIXI$Container);
+var UIButton1 = function (_PIXI$Container) {
+	(0, _inherits3.default)(UIButton1, _PIXI$Container);
 
-    function UILabelButton1() {
-        var width = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 60;
-        var height = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 60;
-        var tex = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'small-no-pattern-green';
-        (0, _classCallCheck3.default)(this, UILabelButton1);
+	function UIButton1(color, icon) {
+		var iconColor = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0xFFFFFF;
+		var width = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 65;
+		var height = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 65;
+		var texture = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 'square-pattern1';
+		(0, _classCallCheck3.default)(this, UIButton1);
 
-        var _this = (0, _possibleConstructorReturn3.default)(this, (UILabelButton1.__proto__ || (0, _getPrototypeOf2.default)(UILabelButton1)).call(this));
+		var _this = (0, _possibleConstructorReturn3.default)(this, (UIButton1.__proto__ || (0, _getPrototypeOf2.default)(UIButton1)).call(this));
 
-        _this.mainContainer = new PIXI.Container();
+		_this.build(color, icon, iconColor, width, height, texture);
 
-        _this.padding = 8;
-        _this.backShapeBorder = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame(tex), 15, 15, 15, 15);
-        _this.backShapeBorder.width = width + _this.padding;
-        _this.backShapeBorder.height = height + _this.padding;
+		return _this;
+	}
 
-        _this.mainContainer.addChild(_this.backShapeBorder);
+	(0, _createClass3.default)(UIButton1, [{
+		key: 'build',
+		value: function build(color, icon) {
+			var iconColor = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0xFFFFFF;
+			var width = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 65;
+			var height = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 65;
+			var texture = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 'square-pattern1';
 
-        _this.addChild(_this.mainContainer);
+			this.w = width;
+			this.h = height;
 
-        _this.onClick = new signals.Signal();
+			this.mainContainer = new PIXI.Container();
+			//this.backShape = PIXI.Sprite.fromImage(
 
-        _this.on('touchstart', _this.click.bind(_this));
-        _this.interactive = true;
-        _this.buttonMode = true;
-        return _this;
-    }
+			if (!icon) {
+				this.icon = new PIXI.Sprite();
+			} else {
+				//console.log(typeof (icon))
+				if (icon instanceof PIXI.RenderTexture || icon instanceof PIXI.Texture) {
+					this.icon = new PIXI.Sprite();
+					this.icon.texture = icon;
+				} else {
 
-    (0, _createClass3.default)(UILabelButton1, [{
-        key: 'addVideoIcon',
-        value: function addVideoIcon() {
-            this.videoIcon = new PIXI.Sprite.fromFrame('video-trim');
-            this.videoIcon.anchor.set(0.5);
-            this.videoIcon.scale.set(0.65);
-            this.videoIcon.x = this.backShapeBorder.width;
-            this.mainContainer.addChild(this.videoIcon);
-        }
-    }, {
-        key: 'addFrontShape',
-        value: function addFrontShape() {
+					this.icon = PIXI.Sprite.fromFrame(icon);
+				}
+			}
+			this.icon.tint = iconColor;
 
-            this.backShapeBorder.y = 5;
-        }
-    }, {
-        key: 'resize',
-        value: function resize(width, height) {
-            if (!width || !height) {
-                return;
-            }
-            this.backShapeBorder.width = width + this.padding;
-            this.backShapeBorder.height = height + this.padding;
-            this.backShapeBorder.pivot.set((width + this.padding) / 2);
-        }
-    }, {
-        key: 'updateRotation',
-        value: function updateRotation(rot) {
-            var invertIcon = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+			this.backShape = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame(texture), 30, 30, 25, 10);
+			this.backShape.width = width;
+			this.backShape.height = height;
+			this.backShape.pivot.set(width / 2, height / 2);
 
-            this.backShapeBorder.rotation = rot;
+			this.icon.anchor.set(0.5);
 
-            if (invertIcon) {
-                this.icon.rotation = -rot;
-            }
-        }
-    }, {
-        key: 'setIconColor',
-        value: function setIconColor(color) {
-            this.icon.tint = color;
-        }
-    }, {
-        key: 'setColor',
-        value: function setColor(color) {}
-    }, {
-        key: 'click',
-        value: function click() {
-            this.onClick.dispatch();
-            //window.SOUND_MANAGER.play('tap2', { volume: 0.5 })
-        }
-    }, {
-        key: 'updateTextColor',
-        value: function updateTextColor(color) {
-            if (this.buttonLabel) {
-                this.buttonLabel.style.fill = color;
-            }
-        }
-    }, {
-        key: 'replaceIcon',
-        value: function replaceIcon(icon) {
-            if (this.icon && this.icon.parent) {
-                this.icon.parent.removeChild(this.icon);
-            }
-            this.icon = icon;
-            this.mainContainer.addChild(this.icon);
-        }
-    }, {
-        key: 'updateMenuColors',
-        value: function updateMenuColors(textColor, backgroundColor) {
-            this.backShapeBorder.tint = backgroundColor;
-            this.icon.tint = backgroundColor;
+			this.updateIconScale();
 
-            if (this.backLabelLeft) {
-                this.backLabelLeft.tint = backgroundColor;
-            }
+			this.mainContainer.addChild(this.backShape);
+			this.mainContainer.addChild(this.icon);
+			this.addChild(this.mainContainer);
 
-            if (this.buttonLabel) {
-                this.buttonLabel.style.fill = textColor;
-            }
-        }
-    }, {
-        key: 'addLabelRight',
-        value: function addLabelRight(label) {
-            var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0xFFFFFF;
+			this.onClick = new signals.Signal();
 
-            this.buttonLabel = new PIXI.Text(label, { font: '18px', fill: color, align: 'left', fontWeight: '600', fontFamily: MAIN_FONT });
-            this.buttonLabel.pivot.x = 0; //this.buttonLabel.width;
-            this.buttonLabel.pivot.y = this.buttonLabel.height / 2;
-            this.buttonLabel.x = this.mainContainer.width * 0.5 + 5;
-            this.addChild(this.buttonLabel);
-        }
-    }, {
-        key: 'addLabelLeft',
-        value: function addLabelLeft(label) {
-            var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0xFFFFFF;
+			this.on('touchstart', this.touchStart.bind(this));
+			this.on('touchend', this.click.bind(this));
+			this.interactive = true;
+			this.buttonMode = true;
+		}
+	}, {
+		key: 'addBadge',
+		value: function addBadge(texture) {
+			var scale = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.3;
 
-            this.buttonLabel = new PIXI.Text(label, { font: '18px', fill: color, align: 'right', fontWeight: '300', fontFamily: MAIN_FONT });
-            this.buttonLabel.pivot.x = this.buttonLabel.width;
-            this.buttonLabel.pivot.y = this.buttonLabel.height / 2;
-            this.buttonLabel.x = -this.mainContainer.width * 0.5 - 5;
-            this.addChild(this.buttonLabel);
-        }
-    }, {
-        key: 'addCenterLabel',
-        value: function addCenterLabel(label) {
-            var _this2 = this;
+			this.badge = PIXI.Sprite.fromFrame(texture);
+			this.badge.scale.set(0.5);
+			this.badge.anchor.set(this.badge.width * scale / this.badge.width);
+			this.badge.x = this.backShape.width / 2 - this.badge.width - 10;
+			this.badge.y = -this.backShape.height / 2 + this.badge.height;
+			this.mainContainer.addChild(this.badge);
+		}
+	}, {
+		key: 'touchStart',
+		value: function touchStart() {
+			//this.backShape.scale.set(1.1)
+		}
+	}, {
+		key: 'changePivot',
+		value: function changePivot(x, y) {
 
-            var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0xFFFFFF;
-            var fit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+			this.backShape.pivot.set(this.w * x / 2, this.h * y / 2);
 
-            this.buttonLabel = new PIXI.Text(label, LABELS.LABEL1);
-            this.buttonLabel.style.stroke = 0;
-            this.buttonLabel.style.strokeThickness = 3;
-            this.buttonLabel.style.fontSize = 24;
-            if (fit) {
-                this.buttonLabel.scale.set(this.buttonLabel.width / this.backShapeBorder.width * fit);
-            }
-            setTimeout(function () {
+			this.icon.x = this.w * x + this.w / 2;
+			this.icon.y = this.h * y + this.h / 2;
+		}
+	}, {
+		key: 'disableState',
+		value: function disableState(color, texture) {
 
-                _this2.buttonLabel.x = _this2.backShapeBorder.width / 2 - _this2.buttonLabel.width / 2;
-                _this2.buttonLabel.y = _this2.backShapeBorder.height / 2 - _this2.buttonLabel.height / 2;
-            }, 10);
-            this.addChild(this.buttonLabel);
-        }
-    }, {
-        key: 'updateTexture',
-        value: function updateTexture(texture) {
-            this.icon.texture = PIXI.Texture.fromFrame(texture);
-        }
-    }]);
-    return UILabelButton1;
+			if (texture) this.backShape.texture = PIXI.Texture.fromFrame(texture);
+			this.icon.alpha = 0.5;
+			// this.backShape.tint = color;
+			//this.alpha = 0.5
+		}
+	}, {
+		key: 'enableState',
+		value: function enableState(color, texture) {
+
+			if (texture) this.backShape.texture = PIXI.Texture.fromFrame(texture);
+			this.icon.alpha = 1;
+			//this.alpha = 1
+			// this.backShape.tint = color;
+		}
+	}, {
+		key: 'addFrontShape',
+		value: function addFrontShape() {
+			this.backShape.y = -10;
+		}
+	}, {
+		key: 'resize',
+		value: function resize(width, height) {
+			if (!width || !height) {
+				return;
+			}
+
+			this.backShape.width = width;
+			this.backShape.height = height;
+			this.backShape.pivot.set(width / 2);
+
+			this.updateIconScale();
+		}
+	}, {
+		key: 'updateIconScale',
+		value: function updateIconScale() {
+			var scale = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0.7;
+
+
+			_utils2.default.resizeToFitAR({
+				width: this.backShape.width * scale,
+				height: this.backShape.height * scale
+			}, this.icon);
+		}
+	}, {
+		key: 'updateRotation',
+		value: function updateRotation(rot) {
+			var invertIcon = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+
+			this.backShape.rotation = rot;
+
+			if (invertIcon) {
+				this.icon.rotation = -rot;
+			}
+		}
+	}, {
+		key: 'setIconColor',
+		value: function setIconColor(color) {
+			this.icon.tint = color;
+		}
+	}, {
+		key: 'setColor',
+		value: function setColor(color) {
+			this.backShape.tint = color;
+		}
+	}, {
+		key: 'updateIconTexture',
+		value: function updateIconTexture(texture) {
+			this.icon.texture = texture;
+		}
+	}, {
+		key: 'click',
+		value: function click() {
+			//this.backShape.scale.set(1)
+
+			this.onClick.dispatch();
+			//window.SOUND_MANAGER.play('tap2', { volume: 0.5 })
+		}
+	}, {
+		key: 'updateTextColor',
+		value: function updateTextColor(color) {
+			if (this.buttonLabel) {
+				this.buttonLabel.style.fill = color;
+			}
+		}
+	}, {
+		key: 'replaceIcon',
+		value: function replaceIcon(icon) {
+			if (this.icon && this.icon.parent) {
+				this.icon.parent.removeChild(this.icon);
+			}
+			this.icon = icon;
+			this.mainContainer.addChild(this.icon);
+		}
+	}, {
+		key: 'updateMenuColors',
+		value: function updateMenuColors(textColor, backgroundColor) {
+
+			this.icon.tint = backgroundColor;
+
+			if (this.backLabelLeft) {
+				this.backLabelLeft.tint = backgroundColor;
+			}
+
+			if (this.buttonLabel) {
+				this.buttonLabel.style.fill = textColor;
+			}
+
+			this.backShape.tint = textColor;
+		}
+	}, {
+		key: 'addLabelRight',
+		value: function addLabelRight(label) {
+			var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0xFFFFFF;
+
+			this.buttonLabel = new PIXI.Text(label, { font: '18px', fill: color, align: 'left', fontWeight: '300', fontFamily: MAIN_FONT });
+			this.buttonLabel.pivot.x = 0; //this.buttonLabel.width;
+			this.buttonLabel.pivot.y = this.buttonLabel.height / 2;
+			this.buttonLabel.x = this.mainContainer.width * 0.5 + 5;
+			this.buttonLabel.y = this.backShape.width * 0.5;
+			this.addChild(this.buttonLabel);
+		}
+	}, {
+		key: 'addLabelLeft',
+		value: function addLabelLeft(label) {
+			var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0xFFFFFF;
+
+			this.buttonLabel = new PIXI.Text(label, { font: '18px', fill: color, align: 'right', fontWeight: '300', fontFamily: MAIN_FONT });
+			this.buttonLabel.pivot.x = this.buttonLabel.width;
+			this.buttonLabel.pivot.y = this.buttonLabel.height / 2;
+			this.buttonLabel.x = -this.mainContainer.width * 0.5 - 5;
+			this.buttonLabel.y = this.backShape.width * 0.5;
+			this.addChild(this.buttonLabel);
+		}
+	}, {
+		key: 'addLabelLeftMenu',
+		value: function addLabelLeftMenu(label) {
+			this.buttonLabel = new PIXI.Text(label, {
+				font: '32px', fill: this.backShape.tint, align: 'right', fontWeight: '800', fontFamily: MAIN_FONT
+			});
+			this.buttonLabel.pivot.x = this.buttonLabel.width;
+			this.buttonLabel.pivot.y = this.buttonLabel.height / 2;
+			this.buttonLabel.x = -this.mainContainer.width * 0.55;
+
+			if (!this.backLabelLeft) {
+				this.backLabelLeft = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('smallButton.png'), 10, 10, 10, 10);
+				this.backLabelLeft.tint = this.icon.tint;
+			}
+
+			this.backLabelLeft.width = this.buttonLabel.width - this.buttonLabel.x;
+			this.backLabelLeft.height = this.backShape.height;
+			this.backLabelLeft.x = -this.backLabelLeft.width - this.backShape.width / 2;
+			this.backLabelLeft.y = -this.backLabelLeft.height / 2; // - this.backShape.height / 2
+			this.addChildAt(this.backLabelLeft, 0);
+			this.addChild(this.buttonLabel);
+		}
+	}, {
+		key: 'updateTexture',
+		value: function updateTexture(texture) {
+			this.icon.texture = PIXI.Texture.fromFrame(texture);
+			this.updateIconScale();
+		}
+	}]);
+	return UIButton1;
 }(PIXI.Container);
 
-exports.default = UILabelButton1;
+exports.default = UIButton1;
 module.exports = exports['default'];
 
 /***/ }),
-/* 42 */
+/* 40 */
 /***/ (function(module, exports) {
 
 module.exports = function (bitmap, value) {
@@ -15731,7 +15273,7 @@ module.exports = function (bitmap, value) {
 
 
 /***/ }),
-/* 43 */
+/* 41 */
 /***/ (function(module, exports) {
 
 var id = 0;
@@ -15742,7 +15284,7 @@ module.exports = function (key) {
 
 
 /***/ }),
-/* 44 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15750,7 +15292,7 @@ module.exports = function (key) {
 
 exports.__esModule = true;
 
-var _WebGLManager2 = __webpack_require__(36);
+var _WebGLManager2 = __webpack_require__(35);
 
 var _WebGLManager3 = _interopRequireDefault(_WebGLManager2);
 
@@ -15825,7 +15367,7 @@ exports.default = ObjectRenderer;
 //# sourceMappingURL=ObjectRenderer.js.map
 
 /***/ }),
-/* 45 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15833,7 +15375,7 @@ exports.default = ObjectRenderer;
 
 exports.__esModule = true;
 
-var _SystemRenderer2 = __webpack_require__(112);
+var _SystemRenderer2 = __webpack_require__(109);
 
 var _SystemRenderer3 = _interopRequireDefault(_SystemRenderer2);
 
@@ -15849,11 +15391,11 @@ var _FilterManager = __webpack_require__(225);
 
 var _FilterManager2 = _interopRequireDefault(_FilterManager);
 
-var _RenderTarget = __webpack_require__(46);
+var _RenderTarget = __webpack_require__(44);
 
 var _RenderTarget2 = _interopRequireDefault(_RenderTarget);
 
-var _ObjectRenderer = __webpack_require__(44);
+var _ObjectRenderer = __webpack_require__(42);
 
 var _ObjectRenderer2 = _interopRequireDefault(_ObjectRenderer);
 
@@ -15861,7 +15403,7 @@ var _TextureManager = __webpack_require__(227);
 
 var _TextureManager2 = _interopRequireDefault(_TextureManager);
 
-var _BaseTexture = __webpack_require__(30);
+var _BaseTexture = __webpack_require__(29);
 
 var _BaseTexture2 = _interopRequireDefault(_BaseTexture);
 
@@ -16647,7 +16189,7 @@ _utils.pluginTarget.mixin(WebGLRenderer);
 //# sourceMappingURL=WebGLRenderer.js.map
 
 /***/ }),
-/* 46 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16979,7 +16521,7 @@ exports.default = RenderTarget;
 //# sourceMappingURL=RenderTarget.js.map
 
 /***/ }),
-/* 47 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17254,7 +16796,7 @@ function buildNativeLine(graphicsData, webGLData) {
 //# sourceMappingURL=buildLine.js.map
 
 /***/ }),
-/* 48 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17298,11 +16840,248 @@ exports.default = function get(object, property, receiver) {
 };
 
 /***/ }),
-/* 49 */
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _getPrototypeOf = __webpack_require__(3);
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(1);
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(2);
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(4);
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(5);
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _pixi = __webpack_require__(0);
+
+var PIXI = _interopRequireWildcard(_pixi);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var UIList = function (_PIXI$Container) {
+    (0, _inherits3.default)(UIList, _PIXI$Container);
+
+    function UIList() {
+        (0, _classCallCheck3.default)(this, UIList);
+
+        var _this = (0, _possibleConstructorReturn3.default)(this, (UIList.__proto__ || (0, _getPrototypeOf2.default)(UIList)).call(this));
+
+        _this.container = new PIXI.Container();
+        _this.addChild(_this.container);
+        _this.elementsList = [];
+        _this.w = 0;
+        _this.h = 0;
+        return _this;
+    }
+
+    (0, _createClass3.default)(UIList, [{
+        key: 'debug',
+        value: function debug() {
+            this.debugGr = new PIXI.Graphics().beginFill(0xFF0000).drawRect(0, 0, this.w, this.h);
+            this.container.addChild(this.debugGr);
+            this.debugGr.alpha = 0.5;
+        }
+    }, {
+        key: 'removeElement',
+        value: function removeElement(element) {
+            this.container.removeChild(element);
+
+            var toRemove = -1;
+            for (var index = 0; index < this.elementsList.length; index++) {
+                if (element == this.elementsList[index]) {
+                    toRemove = index;
+                }
+            }
+            if (toRemove >= 0) {
+
+                this.elementsList.splice(toRemove, 1);
+            }
+        }
+    }, {
+        key: 'addElement',
+        value: function addElement(element) {
+            this.container.addChild(element);
+            this.elementsList.push(element);
+        }
+    }, {
+        key: 'updateHorizontalList',
+        value: function updateHorizontalList() {
+            var debug = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+            var listSizes = [];
+            var sum = 0;
+            var quant = 0;
+            for (var i = 0; i < this.elementsList.length; i++) {
+
+                if (this.elementsList[i].listScl) {
+                    listSizes.push(this.elementsList[i].listScl);
+                    sum += this.elementsList[i].listScl;
+                    quant++;
+                } else {
+                    listSizes.push(0);
+                }
+            }
+            var adjust = 1 - sum;
+            var scales = adjust / (this.elementsList.length - quant);
+            var chunkSize = 0;
+            for (var i = 0; i < this.elementsList.length; i++) {
+                if (listSizes[i] == 0) {
+                    listSizes[i] = scales;
+                }
+            }
+            var plus = 0;
+            var positions = [];
+            var stdH = 1;
+            var stdW = 1;
+            var pixig = void 0;
+            for (var i = 0; i < listSizes.length; i++) {
+                if (debug) {
+
+                    pixig = new PIXI.Graphics().beginFill(0xFF0000).drawCircle(0, 0, 5);
+                    this.container.addChild(pixig);
+                }
+                plus = 0;
+                var nextX = 0;
+                chunkSize = this.w * listSizes[i];
+                if (i == 0) {
+                    nextX = 0;
+                } else {
+                    nextX = positions[i - 1] + this.w * listSizes[i - 1];
+                }
+                positions.push(nextX);
+                if (this.elementsList[i].fitHeight) {
+                    stdH = this.elementsList[i].height / this.elementsList[i].scale.y;
+                    this.elementsList[i].scale.set(this.h / stdH * this.elementsList[i].fitHeight);
+                } else if (this.elementsList[i].fitWidth) {
+                    stdW = this.elementsList[i].width / this.elementsList[i].scale.x;
+                    this.elementsList[i].scale.set(chunkSize / stdW * this.elementsList[i].fitWidth);
+                } else if (this.elementsList[i].scaleContent) {
+                    stdW = this.elementsList[i].width / this.elementsList[i].scale.x;
+                    this.elementsList[i].scale.set(chunkSize / stdW);
+                } else if (this.elementsList[i].scaleContentMax && this.elementsList[i].width > chunkSize) {
+                    stdW = this.elementsList[i].width / this.elementsList[i].scale.x;
+                    this.elementsList[i].scale.set(chunkSize / stdW);
+                }
+                var align = 0.5;
+                if (this.elementsList[i].align != undefined) {
+                    align = this.elementsList[i].align;
+                }
+
+                this.elementsList[i].x = nextX + chunkSize * align - this.elementsList[i].width * align;
+                if (debug) {
+
+                    pixig.x = this.elementsList[i].x;
+                }
+                this.elementsList[i].y = this.h / 2 - this.elementsList[i].height / 2;
+            }
+        }
+    }, {
+        key: 'removeAllElements',
+        value: function removeAllElements() {
+            while (this.container.children.length) {
+                this.container.removeChildAt(0);
+            }
+
+            this.elementsList = [];
+        }
+    }, {
+        key: 'updateVerticalList',
+        value: function updateVerticalList() {
+            var listSizes = [];
+            var sum = 0;
+            var quant = 0;
+            for (var i = 0; i < this.elementsList.length; i++) {
+
+                if (this.elementsList[i].listScl) {
+                    listSizes.push(this.elementsList[i].listScl);
+                    sum += this.elementsList[i].listScl;
+                    quant++;
+                } else {
+                    listSizes.push(0);
+                }
+            }
+            var adjust = 1 - sum;
+            var scales = adjust / (this.elementsList.length - quant);
+            var chunkSize = 0;
+            for (var i = 0; i < this.elementsList.length; i++) {
+                if (listSizes[i] == 0) {
+                    listSizes[i] = scales;
+                }
+            }
+            var plus = 0;
+            var positions = [];
+            var stdH = 1;
+            var stdW = 1;
+            for (var i = 0; i < listSizes.length; i++) {
+                // let pixig = new PIXI.Graphics().beginFill(0xFF0000).drawCircle(0, 0, 5)
+                // this.container.addChild(pixig)
+                plus = 0;
+                var nextX = 0;
+                chunkSize = this.h * listSizes[i];
+                if (i == 0) {
+                    nextX = 0;
+                } else {
+                    nextX = positions[i - 1] + this.h * listSizes[i - 1];
+                }
+                positions.push(nextX);
+                if (this.elementsList[i].fitHeight) {
+                    stdH = this.elementsList[i].height / this.elementsList[i].scale.y;
+                    this.elementsList[i].scale.set(chunkSize / stdH * this.elementsList[i].fitHeight);
+                } else if (this.elementsList[i].fitWidth) {
+                    stdW = this.elementsList[i].width / this.elementsList[i].scale.x;
+                    this.elementsList[i].scale.set(this.w / stdW * this.elementsList[i].fitWidth);
+                } else if (this.elementsList[i].scaleContent) {
+                    stdW = this.elementsList[i].height / this.elementsList[i].scale.y;
+                    this.elementsList[i].scale.set(chunkSize / stdW);
+                } else if (this.elementsList[i].scaleContentMax && this.elementsList[i].height > chunkSize) {
+                    stdW = this.elementsList[i].height / this.elementsList[i].scale.y;
+                    this.elementsList[i].scale.set(chunkSize / stdW);
+                }
+                var align = 0.5;
+                if (this.elementsList[i].align != undefined) {
+                    align = this.elementsList[i].align;
+                }
+
+                var nextY = nextX + chunkSize * align - this.elementsList[i].height * align;
+                this.elementsList[i].y = nextY;
+                // pixig.x = nextX
+
+                this.elementsList[i].x = this.w / 2 - this.elementsList[i].width / 2;
+            }
+        }
+    }]);
+    return UIList;
+}(PIXI.Container);
+
+exports.default = UIList;
+module.exports = exports['default'];
+
+/***/ }),
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(28);
+var isObject = __webpack_require__(27);
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function (it, S) {
@@ -17316,7 +17095,7 @@ module.exports = function (it, S) {
 
 
 /***/ }),
-/* 50 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17343,7 +17122,7 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 };
 
 /***/ }),
-/* 51 */
+/* 50 */
 /***/ (function(module, exports) {
 
 // 7.1.4 ToInteger
@@ -17355,7 +17134,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 52 */
+/* 51 */
 /***/ (function(module, exports) {
 
 // 7.2.1 RequireObjectCoercible(argument)
@@ -17366,35 +17145,35 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, exports) {
 
 module.exports = true;
 
 
 /***/ }),
-/* 54 */
+/* 53 */
 /***/ (function(module, exports) {
 
 module.exports = {};
 
 
 /***/ }),
-/* 55 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-var anObject = __webpack_require__(31);
+var anObject = __webpack_require__(30);
 var dPs = __webpack_require__(165);
-var enumBugKeys = __webpack_require__(59);
-var IE_PROTO = __webpack_require__(57)('IE_PROTO');
+var enumBugKeys = __webpack_require__(58);
+var IE_PROTO = __webpack_require__(56)('IE_PROTO');
 var Empty = function () { /* empty */ };
 var PROTOTYPE = 'prototype';
 
 // Create object with fake `null` prototype: use iframe Object with cleared prototype
 var createDict = function () {
   // Thrash, waste and sodomy: IE GC bug
-  var iframe = __webpack_require__(85)('iframe');
+  var iframe = __webpack_require__(82)('iframe');
   var i = enumBugKeys.length;
   var lt = '<';
   var gt = '>';
@@ -17427,12 +17206,12 @@ module.exports = Object.create || function create(O, Properties) {
 
 
 /***/ }),
-/* 56 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(88);
-var enumBugKeys = __webpack_require__(59);
+var $keys = __webpack_require__(85);
+var enumBugKeys = __webpack_require__(58);
 
 module.exports = Object.keys || function keys(O) {
   return $keys(O, enumBugKeys);
@@ -17440,18 +17219,18 @@ module.exports = Object.keys || function keys(O) {
 
 
 /***/ }),
-/* 57 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var shared = __webpack_require__(58)('keys');
-var uid = __webpack_require__(43);
+var shared = __webpack_require__(57)('keys');
+var uid = __webpack_require__(41);
 module.exports = function (key) {
   return shared[key] || (shared[key] = uid(key));
 };
 
 
 /***/ }),
-/* 58 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(18);
@@ -17463,7 +17242,7 @@ module.exports = function (key) {
 
 
 /***/ }),
-/* 59 */
+/* 58 */
 /***/ (function(module, exports) {
 
 // IE 8- don't enum bug keys
@@ -17473,12 +17252,12 @@ module.exports = (
 
 
 /***/ }),
-/* 60 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var def = __webpack_require__(21).f;
 var has = __webpack_require__(23);
-var TAG = __webpack_require__(29)('toStringTag');
+var TAG = __webpack_require__(28)('toStringTag');
 
 module.exports = function (it, tag, stat) {
   if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
@@ -17486,20 +17265,20 @@ module.exports = function (it, tag, stat) {
 
 
 /***/ }),
-/* 61 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports.f = __webpack_require__(29);
+exports.f = __webpack_require__(28);
 
 
 /***/ }),
-/* 62 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(18);
 var core = __webpack_require__(15);
-var LIBRARY = __webpack_require__(53);
-var wksExt = __webpack_require__(61);
+var LIBRARY = __webpack_require__(52);
+var wksExt = __webpack_require__(60);
 var defineProperty = __webpack_require__(21).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
@@ -17508,22 +17287,22 @@ module.exports = function (name) {
 
 
 /***/ }),
-/* 63 */
+/* 62 */
 /***/ (function(module, exports) {
 
 exports.f = {}.propertyIsEnumerable;
 
 
 /***/ }),
-/* 64 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var pIE = __webpack_require__(63);
-var createDesc = __webpack_require__(42);
+var pIE = __webpack_require__(62);
+var createDesc = __webpack_require__(40);
 var toIObject = __webpack_require__(24);
-var toPrimitive = __webpack_require__(49);
+var toPrimitive = __webpack_require__(48);
 var has = __webpack_require__(23);
-var IE8_DOM_DEFINE = __webpack_require__(84);
+var IE8_DOM_DEFINE = __webpack_require__(81);
 var gOPD = Object.getOwnPropertyDescriptor;
 
 exports.f = __webpack_require__(22) ? gOPD : function getOwnPropertyDescriptor(O, P) {
@@ -17537,7 +17316,7 @@ exports.f = __webpack_require__(22) ? gOPD : function getOwnPropertyDescriptor(O
 
 
 /***/ }),
-/* 65 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17633,7 +17412,7 @@ exports.default = Point;
 //# sourceMappingURL=Point.js.map
 
 /***/ }),
-/* 66 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17643,7 +17422,7 @@ exports.__esModule = true;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Point = __webpack_require__(65);
+var _Point = __webpack_require__(64);
 
 var _Point2 = _interopRequireDefault(_Point);
 
@@ -18169,7 +17948,7 @@ exports.default = Matrix;
 //# sourceMappingURL=Matrix.js.map
 
 /***/ }),
-/* 67 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18437,7 +18216,7 @@ exports.default = Rectangle;
 //# sourceMappingURL=Rectangle.js.map
 
 /***/ }),
-/* 68 */
+/* 67 */
 /***/ (function(module, exports) {
 
 
@@ -18489,7 +18268,7 @@ module.exports = mapType;
 
 
 /***/ }),
-/* 69 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18837,7 +18616,7 @@ exports.default = Bounds;
 //# sourceMappingURL=Bounds.js.map
 
 /***/ }),
-/* 70 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -18983,7 +18762,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 71 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19075,7 +18854,7 @@ TransformBase.IDENTITY = new TransformBase();
 //# sourceMappingURL=TransformBase.js.map
 
 /***/ }),
-/* 72 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19095,7 +18874,7 @@ var _Texture = __webpack_require__(19);
 
 var _Texture2 = _interopRequireDefault(_Texture);
 
-var _Container2 = __webpack_require__(34);
+var _Container2 = __webpack_require__(33);
 
 var _Container3 = _interopRequireDefault(_Container2);
 
@@ -19703,7 +19482,7 @@ exports.default = Sprite;
 //# sourceMappingURL=Sprite.js.map
 
 /***/ }),
-/* 73 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19914,7 +19693,7 @@ exports.nextCombination = function(v) {
 
 
 /***/ }),
-/* 74 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19999,7 +19778,7 @@ exports.Ticker = _Ticker2.default;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 75 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20007,7 +19786,7 @@ exports.Ticker = _Ticker2.default;
 
 exports.__esModule = true;
 
-var _BaseRenderTexture = __webpack_require__(113);
+var _BaseRenderTexture = __webpack_require__(110);
 
 var _BaseRenderTexture2 = _interopRequireDefault(_BaseRenderTexture);
 
@@ -20158,7 +19937,7 @@ exports.default = RenderTexture;
 //# sourceMappingURL=RenderTexture.js.map
 
 /***/ }),
-/* 76 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20168,7 +19947,7 @@ exports.__esModule = true;
 
 var _utils = __webpack_require__(8);
 
-var _canUseNewCanvasBlendModes = __webpack_require__(115);
+var _canUseNewCanvasBlendModes = __webpack_require__(112);
 
 var _canUseNewCanvasBlendModes2 = _interopRequireDefault(_canUseNewCanvasBlendModes);
 
@@ -20414,7 +20193,7 @@ exports.default = CanvasTinter;
 //# sourceMappingURL=CanvasTinter.js.map
 
 /***/ }),
-/* 77 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20453,7 +20232,7 @@ function createIndicesForQuads(size) {
 //# sourceMappingURL=createIndicesForQuads.js.map
 
 /***/ }),
-/* 78 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20463,11 +20242,11 @@ exports.__esModule = true;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _parseUri = __webpack_require__(139);
+var _parseUri = __webpack_require__(136);
 
 var _parseUri2 = _interopRequireDefault(_parseUri);
 
-var _miniSignals = __webpack_require__(138);
+var _miniSignals = __webpack_require__(135);
 
 var _miniSignals2 = _interopRequireDefault(_miniSignals);
 
@@ -21614,7 +21393,7 @@ function reqType(xhr) {
 //# sourceMappingURL=Resource.js.map
 
 /***/ }),
-/* 79 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21626,7 +21405,7 @@ var _core = __webpack_require__(6);
 
 var core = _interopRequireWildcard(_core);
 
-var _CountLimiter = __webpack_require__(145);
+var _CountLimiter = __webpack_require__(142);
 
 var _CountLimiter2 = _interopRequireDefault(_CountLimiter);
 
@@ -22107,190 +21886,13 @@ function findTextStyle(item, queue) {
 //# sourceMappingURL=BasePrepare.js.map
 
 /***/ }),
-/* 80 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _getPrototypeOf = __webpack_require__(3);
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__(1);
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(2);
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__(4);
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__(5);
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _pixi = __webpack_require__(0);
-
-var PIXI = _interopRequireWildcard(_pixi);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// import * as FILTERS from 'pixi-filters';
-var TextBox = function (_PIXI$Container) {
-    (0, _inherits3.default)(TextBox, _PIXI$Container);
-
-    function TextBox() {
-        var padding = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 10;
-        var tex = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'small-no-pattern';
-        (0, _classCallCheck3.default)(this, TextBox);
-
-        var _this = (0, _possibleConstructorReturn3.default)(this, (TextBox.__proto__ || (0, _getPrototypeOf2.default)(TextBox)).call(this));
-
-        _this.padding = padding;
-        _this.background = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame(tex), 10, 10, 10, 10);
-        _this.addChild(_this.background);
-
-        _this.label = new PIXI.Text('Thanks for helping us\nChoose your prize', LABELS.LABEL1);
-        _this.label.style.fontSize = 18;
-        _this.label.x = _this.padding;
-        _this.label.y = _this.padding;
-        _this.addChild(_this.label);
-        return _this;
-    }
-
-    (0, _createClass3.default)(TextBox, [{
-        key: 'updateText',
-        value: function updateText(text) {
-            this.label.text = text;
-            this.background.width = this.label.width + this.padding * 2;
-            this.background.height = this.label.height + this.padding * 2;
-        }
-    }]);
-    return TextBox;
-}(PIXI.Container);
-
-exports.default = TextBox;
-module.exports = exports['default'];
-
-/***/ }),
-/* 81 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _getPrototypeOf = __webpack_require__(3);
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__(1);
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(2);
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__(4);
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__(5);
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _pixi = __webpack_require__(0);
-
-var PIXI = _interopRequireWildcard(_pixi);
-
-var _signals = __webpack_require__(9);
-
-var _signals2 = _interopRequireDefault(_signals);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SinglePrizeContainer = function (_PIXI$Container) {
-    (0, _inherits3.default)(SinglePrizeContainer, _PIXI$Container);
-
-    function SinglePrizeContainer() {
-        var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 40;
-        (0, _classCallCheck3.default)(this, SinglePrizeContainer);
-
-        var _this = (0, _possibleConstructorReturn3.default)(this, (SinglePrizeContainer.__proto__ || (0, _getPrototypeOf2.default)(SinglePrizeContainer)).call(this));
-
-        _this.size = size;
-        _this.iconContainer = new PIXI.Sprite.fromFrame('coin');
-        _this.addChild(_this.iconContainer);
-        _this.iconContainer.anchor.set(0.5);
-        _this.iconContainer.scale.set(size / _this.iconContainer.height);
-
-        _this.label = new PIXI.Text('Open', LABELS.LABEL_CHEST);
-        _this.addChild(_this.label);
-        _this.label.style.fontSize = 24;
-
-        return _this;
-    }
-
-    (0, _createClass3.default)(SinglePrizeContainer, [{
-        key: 'updateIcon',
-        value: function updateIcon(texture) {
-
-            this.iconContainer.texture = PIXI.Texture.fromFrame(texture);
-
-            this.iconContainer.scale.set(this.size / this.iconContainer.height * 2);
-        }
-    }, {
-        key: 'updateLabel2',
-        value: function updateLabel2(label) {
-            this.label.text = label;
-            this.label.style.stroke = 0;
-            this.label.pivot.x = this.label.width / 2;
-            this.label.pivot.y = this.label.height / 2;
-            this.label.y = this.size;
-        }
-    }, {
-        key: 'updateLabel',
-        value: function updateLabel(label) {
-            var border = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0x00ffff;
-
-            this.label.text = label;
-            this.label.style.stroke = 0;
-            this.label.style.fill = border;
-            this.label.pivot.x = this.label.width / 2;
-            this.label.pivot.y = this.label.height / 2;
-            this.label.y = this.size;
-        }
-    }]);
-    return SinglePrizeContainer;
-}(PIXI.Container);
-
-exports.default = SinglePrizeContainer;
-module.exports = exports['default'];
-
-/***/ }),
-/* 82 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = { "default": __webpack_require__(157), __esModule: true };
 
 /***/ }),
-/* 83 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // optional / simple context binding
@@ -22316,19 +21918,19 @@ module.exports = function (fn, that, length) {
 
 
 /***/ }),
-/* 84 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = !__webpack_require__(22) && !__webpack_require__(32)(function () {
-  return Object.defineProperty(__webpack_require__(85)('div'), 'a', { get: function () { return 7; } }).a != 7;
+module.exports = !__webpack_require__(22) && !__webpack_require__(31)(function () {
+  return Object.defineProperty(__webpack_require__(82)('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
 
 
 /***/ }),
-/* 85 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(28);
+var isObject = __webpack_require__(27);
 var document = __webpack_require__(18).document;
 // typeof document.createElement is 'object' in old IE
 var is = isObject(document) && isObject(document.createElement);
@@ -22338,21 +21940,21 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 86 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var LIBRARY = __webpack_require__(53);
+var LIBRARY = __webpack_require__(52);
 var $export = __webpack_require__(20);
-var redefine = __webpack_require__(87);
-var hide = __webpack_require__(27);
+var redefine = __webpack_require__(84);
+var hide = __webpack_require__(26);
 var has = __webpack_require__(23);
-var Iterators = __webpack_require__(54);
+var Iterators = __webpack_require__(53);
 var $iterCreate = __webpack_require__(164);
-var setToStringTag = __webpack_require__(60);
-var getPrototypeOf = __webpack_require__(90);
-var ITERATOR = __webpack_require__(29)('iterator');
+var setToStringTag = __webpack_require__(59);
+var getPrototypeOf = __webpack_require__(87);
+var ITERATOR = __webpack_require__(28)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
 var FF_ITERATOR = '@@iterator';
 var KEYS = 'keys';
@@ -22415,20 +22017,20 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 
 
 /***/ }),
-/* 87 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(27);
+module.exports = __webpack_require__(26);
 
 
 /***/ }),
-/* 88 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var has = __webpack_require__(23);
 var toIObject = __webpack_require__(24);
 var arrayIndexOf = __webpack_require__(167)(false);
-var IE_PROTO = __webpack_require__(57)('IE_PROTO');
+var IE_PROTO = __webpack_require__(56)('IE_PROTO');
 
 module.exports = function (object, names) {
   var O = toIObject(object);
@@ -22445,7 +22047,7 @@ module.exports = function (object, names) {
 
 
 /***/ }),
-/* 89 */
+/* 86 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -22456,13 +22058,13 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 90 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has = __webpack_require__(23);
-var toObject = __webpack_require__(91);
-var IE_PROTO = __webpack_require__(57)('IE_PROTO');
+var toObject = __webpack_require__(88);
+var IE_PROTO = __webpack_require__(56)('IE_PROTO');
 var ObjectProto = Object.prototype;
 
 module.exports = Object.getPrototypeOf || function (O) {
@@ -22475,30 +22077,30 @@ module.exports = Object.getPrototypeOf || function (O) {
 
 
 /***/ }),
-/* 91 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.13 ToObject(argument)
-var defined = __webpack_require__(52);
+var defined = __webpack_require__(51);
 module.exports = function (it) {
   return Object(defined(it));
 };
 
 
 /***/ }),
-/* 92 */
+/* 89 */
 /***/ (function(module, exports) {
 
 exports.f = Object.getOwnPropertySymbols;
 
 
 /***/ }),
-/* 93 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-var $keys = __webpack_require__(88);
-var hiddenKeys = __webpack_require__(59).concat('length', 'prototype');
+var $keys = __webpack_require__(85);
+var hiddenKeys = __webpack_require__(58).concat('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   return $keys(O, hiddenKeys);
@@ -22506,7 +22108,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 
 /***/ }),
-/* 94 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22628,7 +22230,7 @@ exports.default = ObservablePoint;
 //# sourceMappingURL=ObservablePoint.js.map
 
 /***/ }),
-/* 95 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22636,7 +22238,7 @@ exports.default = ObservablePoint;
 
 exports.__esModule = true;
 
-var _Matrix = __webpack_require__(66);
+var _Matrix = __webpack_require__(65);
 
 var _Matrix2 = _interopRequireDefault(_Matrix);
 
@@ -22826,7 +22428,7 @@ exports.default = GroupD8;
 //# sourceMappingURL=GroupD8.js.map
 
 /***/ }),
-/* 96 */
+/* 93 */
 /***/ (function(module, exports) {
 
 // var GL_MAP = {};
@@ -22887,7 +22489,7 @@ module.exports = setVertexAttribArrays;
 
 
 /***/ }),
-/* 97 */
+/* 94 */
 /***/ (function(module, exports) {
 
 
@@ -23226,7 +22828,7 @@ module.exports = Texture;
 
 
 /***/ }),
-/* 98 */
+/* 95 */
 /***/ (function(module, exports) {
 
 
@@ -23312,12 +22914,12 @@ module.exports = compileProgram;
 
 
 /***/ }),
-/* 99 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var mapType = __webpack_require__(68);
-var mapSize = __webpack_require__(100);
+var mapType = __webpack_require__(67);
+var mapSize = __webpack_require__(97);
 
 /**
  * Extracts the attributes
@@ -23359,7 +22961,7 @@ module.exports = extractAttributes;
 
 
 /***/ }),
-/* 100 */
+/* 97 */
 /***/ (function(module, exports) {
 
 /**
@@ -23401,11 +23003,11 @@ module.exports = mapSize;
 
 
 /***/ }),
-/* 101 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var mapType = __webpack_require__(68);
-var defaultValue = __webpack_require__(102);
+var mapType = __webpack_require__(67);
+var defaultValue = __webpack_require__(99);
 
 /**
  * Extracts the uniforms
@@ -23442,7 +23044,7 @@ module.exports = extractUniforms;
 
 
 /***/ }),
-/* 102 */
+/* 99 */
 /***/ (function(module, exports) {
 
 /**
@@ -23526,7 +23128,7 @@ module.exports = defaultValue;
 
 
 /***/ }),
-/* 103 */
+/* 100 */
 /***/ (function(module, exports) {
 
 /**
@@ -23550,7 +23152,7 @@ module.exports = setPrecision;
 
 
 /***/ }),
-/* 104 */
+/* 101 */
 /***/ (function(module, exports) {
 
 /**
@@ -23677,7 +23279,7 @@ module.exports = generateUniformAccessObject;
 
 
 /***/ }),
-/* 105 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23697,15 +23299,15 @@ var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
-var _TransformStatic = __webpack_require__(106);
+var _TransformStatic = __webpack_require__(103);
 
 var _TransformStatic2 = _interopRequireDefault(_TransformStatic);
 
-var _Transform = __webpack_require__(107);
+var _Transform = __webpack_require__(104);
 
 var _Transform2 = _interopRequireDefault(_Transform);
 
-var _Bounds = __webpack_require__(69);
+var _Bounds = __webpack_require__(68);
 
 var _Bounds2 = _interopRequireDefault(_Bounds);
 
@@ -24376,7 +23978,7 @@ DisplayObject.prototype.displayObjectUpdateTransform = DisplayObject.prototype.u
 //# sourceMappingURL=DisplayObject.js.map
 
 /***/ }),
-/* 106 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24388,7 +23990,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(11);
 
-var _TransformBase2 = __webpack_require__(71);
+var _TransformBase2 = __webpack_require__(70);
 
 var _TransformBase3 = _interopRequireDefault(_TransformBase2);
 
@@ -24591,7 +24193,7 @@ exports.default = TransformStatic;
 //# sourceMappingURL=TransformStatic.js.map
 
 /***/ }),
-/* 107 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24603,7 +24205,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(11);
 
-var _TransformBase2 = __webpack_require__(71);
+var _TransformBase2 = __webpack_require__(70);
 
 var _TransformBase3 = _interopRequireDefault(_TransformBase2);
 
@@ -24777,7 +24379,7 @@ exports.default = Transform;
 //# sourceMappingURL=Transform.js.map
 
 /***/ }),
-/* 108 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24786,7 +24388,7 @@ exports.default = Transform;
 exports.__esModule = true;
 exports.default = determineCrossOrigin;
 
-var _url2 = __webpack_require__(109);
+var _url2 = __webpack_require__(106);
 
 var _url3 = _interopRequireDefault(_url2);
 
@@ -24838,7 +24440,7 @@ function determineCrossOrigin(url) {
 //# sourceMappingURL=determineCrossOrigin.js.map
 
 /***/ }),
-/* 109 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25577,7 +25179,7 @@ Url.prototype.parseHost = function() {
 
 
 /***/ }),
-/* 110 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25587,17 +25189,17 @@ exports.__esModule = true;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _BaseTexture2 = __webpack_require__(30);
+var _BaseTexture2 = __webpack_require__(29);
 
 var _BaseTexture3 = _interopRequireDefault(_BaseTexture2);
 
 var _utils = __webpack_require__(8);
 
-var _ticker = __webpack_require__(74);
+var _ticker = __webpack_require__(73);
 
 var _const = __webpack_require__(7);
 
-var _determineCrossOrigin = __webpack_require__(108);
+var _determineCrossOrigin = __webpack_require__(105);
 
 var _determineCrossOrigin2 = _interopRequireDefault(_determineCrossOrigin);
 
@@ -25924,7 +25526,7 @@ function createSource(path, type) {
 //# sourceMappingURL=VideoBaseTexture.js.map
 
 /***/ }),
-/* 111 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25932,7 +25534,7 @@ function createSource(path, type) {
 
 exports.__esModule = true;
 
-var _GroupD = __webpack_require__(95);
+var _GroupD = __webpack_require__(92);
 
 var _GroupD2 = _interopRequireDefault(_GroupD);
 
@@ -26034,7 +25636,7 @@ exports.default = TextureUvs;
 //# sourceMappingURL=TextureUvs.js.map
 
 /***/ }),
-/* 112 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26054,11 +25656,11 @@ var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
-var _Container = __webpack_require__(34);
+var _Container = __webpack_require__(33);
 
 var _Container2 = _interopRequireDefault(_Container);
 
-var _RenderTexture = __webpack_require__(75);
+var _RenderTexture = __webpack_require__(74);
 
 var _RenderTexture2 = _interopRequireDefault(_RenderTexture);
 
@@ -26404,7 +26006,7 @@ exports.default = SystemRenderer;
 //# sourceMappingURL=SystemRenderer.js.map
 
 /***/ }),
-/* 113 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26412,7 +26014,7 @@ exports.default = SystemRenderer;
 
 exports.__esModule = true;
 
-var _BaseTexture2 = __webpack_require__(30);
+var _BaseTexture2 = __webpack_require__(29);
 
 var _BaseTexture3 = _interopRequireDefault(_BaseTexture2);
 
@@ -26571,7 +26173,7 @@ exports.default = BaseRenderTexture;
 //# sourceMappingURL=BaseRenderTexture.js.map
 
 /***/ }),
-/* 114 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26700,7 +26302,7 @@ exports.default = CanvasRenderTarget;
 //# sourceMappingURL=CanvasRenderTarget.js.map
 
 /***/ }),
-/* 115 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26766,7 +26368,7 @@ function canUseNewCanvasBlendModes() {
 //# sourceMappingURL=canUseNewCanvasBlendModes.js.map
 
 /***/ }),
-/* 116 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26774,7 +26376,7 @@ function canUseNewCanvasBlendModes() {
 
 exports.__esModule = true;
 
-var _Filter2 = __webpack_require__(117);
+var _Filter2 = __webpack_require__(114);
 
 var _Filter3 = _interopRequireDefault(_Filter2);
 
@@ -26782,7 +26384,7 @@ var _math = __webpack_require__(11);
 
 var _path = __webpack_require__(16);
 
-var _TextureMatrix = __webpack_require__(118);
+var _TextureMatrix = __webpack_require__(115);
 
 var _TextureMatrix2 = _interopRequireDefault(_TextureMatrix);
 
@@ -26859,7 +26461,7 @@ exports.default = SpriteMaskFilter;
 //# sourceMappingURL=SpriteMaskFilter.js.map
 
 /***/ }),
-/* 117 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27060,7 +26662,7 @@ exports.default = Filter;
 //# sourceMappingURL=Filter.js.map
 
 /***/ }),
-/* 118 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27070,7 +26672,7 @@ exports.__esModule = true;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Matrix = __webpack_require__(66);
+var _Matrix = __webpack_require__(65);
 
 var _Matrix2 = _interopRequireDefault(_Matrix);
 
@@ -27229,7 +26831,7 @@ exports.default = TextureMatrix;
 //# sourceMappingURL=TextureMatrix.js.map
 
 /***/ }),
-/* 119 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27241,7 +26843,7 @@ var _pixiGlCore = __webpack_require__(13);
 
 var _pixiGlCore2 = _interopRequireDefault(_pixiGlCore);
 
-var _createIndicesForQuads = __webpack_require__(77);
+var _createIndicesForQuads = __webpack_require__(76);
 
 var _createIndicesForQuads2 = _interopRequireDefault(_createIndicesForQuads);
 
@@ -27415,7 +27017,7 @@ exports.default = Quad;
 //# sourceMappingURL=Quad.js.map
 
 /***/ }),
-/* 120 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28222,7 +27824,7 @@ function deepCopyProperties(target, source, propertyObj) {
 //# sourceMappingURL=TextStyle.js.map
 
 /***/ }),
-/* 121 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28530,7 +28132,7 @@ TextMetrics._fonts = {};
 //# sourceMappingURL=TextMetrics.js.map
 
 /***/ }),
-/* 122 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28671,7 +28273,7 @@ exports.default = GraphicsData;
 //# sourceMappingURL=GraphicsData.js.map
 
 /***/ }),
-/* 123 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29328,7 +28930,7 @@ earcut.flatten = function (data) {
 
 
 /***/ }),
-/* 124 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29338,13 +28940,13 @@ exports.__esModule = true;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _autoDetectRenderer = __webpack_require__(125);
+var _autoDetectRenderer = __webpack_require__(122);
 
-var _Container = __webpack_require__(34);
+var _Container = __webpack_require__(33);
 
 var _Container2 = _interopRequireDefault(_Container);
 
-var _ticker = __webpack_require__(74);
+var _ticker = __webpack_require__(73);
 
 var _settings = __webpack_require__(10);
 
@@ -29556,7 +29158,7 @@ exports.default = Application;
 //# sourceMappingURL=Application.js.map
 
 /***/ }),
-/* 125 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29569,11 +29171,11 @@ var _utils = __webpack_require__(8);
 
 var utils = _interopRequireWildcard(_utils);
 
-var _CanvasRenderer = __webpack_require__(35);
+var _CanvasRenderer = __webpack_require__(34);
 
 var _CanvasRenderer2 = _interopRequireDefault(_CanvasRenderer);
 
-var _WebGLRenderer = __webpack_require__(45);
+var _WebGLRenderer = __webpack_require__(43);
 
 var _WebGLRenderer2 = _interopRequireDefault(_WebGLRenderer);
 
@@ -29630,7 +29232,7 @@ function autoDetectRenderer(options, arg1, arg2, arg3) {
 //# sourceMappingURL=autoDetectRenderer.js.map
 
 /***/ }),
-/* 126 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29693,7 +29295,7 @@ exports.default = {
 //# sourceMappingURL=accessibleTarget.js.map
 
 /***/ }),
-/* 127 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29750,7 +29352,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 128 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29764,15 +29366,15 @@ var _core = __webpack_require__(6);
 
 var core = _interopRequireWildcard(_core);
 
-var _generateBlurVertSource = __webpack_require__(129);
+var _generateBlurVertSource = __webpack_require__(126);
 
 var _generateBlurVertSource2 = _interopRequireDefault(_generateBlurVertSource);
 
-var _generateBlurFragSource = __webpack_require__(130);
+var _generateBlurFragSource = __webpack_require__(127);
 
 var _generateBlurFragSource2 = _interopRequireDefault(_generateBlurFragSource);
 
-var _getMaxBlurKernelSize = __webpack_require__(131);
+var _getMaxBlurKernelSize = __webpack_require__(128);
 
 var _getMaxBlurKernelSize2 = _interopRequireDefault(_getMaxBlurKernelSize);
 
@@ -29921,7 +29523,7 @@ exports.default = BlurXFilter;
 //# sourceMappingURL=BlurXFilter.js.map
 
 /***/ }),
-/* 129 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29970,7 +29572,7 @@ function generateVertBlurSource(kernelSize, x) {
 //# sourceMappingURL=generateBlurVertSource.js.map
 
 /***/ }),
-/* 130 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30022,7 +29624,7 @@ function generateFragBlurSource(kernelSize) {
 //# sourceMappingURL=generateBlurFragSource.js.map
 
 /***/ }),
-/* 131 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30043,7 +29645,7 @@ function getMaxKernelSize(gl) {
 //# sourceMappingURL=getMaxBlurKernelSize.js.map
 
 /***/ }),
-/* 132 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30057,15 +29659,15 @@ var _core = __webpack_require__(6);
 
 var core = _interopRequireWildcard(_core);
 
-var _generateBlurVertSource = __webpack_require__(129);
+var _generateBlurVertSource = __webpack_require__(126);
 
 var _generateBlurVertSource2 = _interopRequireDefault(_generateBlurVertSource);
 
-var _generateBlurFragSource = __webpack_require__(130);
+var _generateBlurFragSource = __webpack_require__(127);
 
 var _generateBlurFragSource2 = _interopRequireDefault(_generateBlurFragSource);
 
-var _getMaxBlurKernelSize = __webpack_require__(131);
+var _getMaxBlurKernelSize = __webpack_require__(128);
 
 var _getMaxBlurKernelSize2 = _interopRequireDefault(_getMaxBlurKernelSize);
 
@@ -30213,7 +29815,7 @@ exports.default = BlurYFilter;
 //# sourceMappingURL=BlurYFilter.js.map
 
 /***/ }),
-/* 133 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30442,7 +30044,7 @@ exports.default = InteractionData;
 //# sourceMappingURL=InteractionData.js.map
 
 /***/ }),
-/* 134 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30532,7 +30134,7 @@ exports.default = InteractionEvent;
 //# sourceMappingURL=InteractionEvent.js.map
 
 /***/ }),
-/* 135 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30713,7 +30315,7 @@ InteractionTrackingData.FLAGS = Object.freeze({
 //# sourceMappingURL=InteractionTrackingData.js.map
 
 /***/ }),
-/* 136 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30835,7 +30437,7 @@ exports.default = {
 //# sourceMappingURL=interactiveTarget.js.map
 
 /***/ }),
-/* 137 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30912,9 +30514,9 @@ var path = _interopRequireWildcard(_path);
 
 var _core = __webpack_require__(6);
 
-var _resourceLoader = __webpack_require__(38);
+var _resourceLoader = __webpack_require__(37);
 
-var _extras = __webpack_require__(127);
+var _extras = __webpack_require__(124);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -30932,7 +30534,7 @@ function parse(resource, texture) {
 //# sourceMappingURL=bitmapFontParser.js.map
 
 /***/ }),
-/* 138 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31104,7 +30706,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 139 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31141,7 +30743,7 @@ module.exports = function parseURI (str, opts) {
 
 
 /***/ }),
-/* 140 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31355,7 +30957,7 @@ function queue(worker, concurrency) {
 //# sourceMappingURL=async.js.map
 
 /***/ }),
-/* 141 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31428,7 +31030,7 @@ function encodeBinary(input) {
 //# sourceMappingURL=b64.js.map
 
 /***/ }),
-/* 142 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31476,9 +31078,9 @@ exports.default = function () {
 
 exports.getResourcePath = getResourcePath;
 
-var _resourceLoader = __webpack_require__(38);
+var _resourceLoader = __webpack_require__(37);
 
-var _url = __webpack_require__(109);
+var _url = __webpack_require__(106);
 
 var _url2 = _interopRequireDefault(_url);
 
@@ -31497,7 +31099,7 @@ function getResourcePath(resource, baseUrl) {
 //# sourceMappingURL=spritesheetParser.js.map
 
 /***/ }),
-/* 143 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31515,7 +31117,7 @@ exports.default = function () {
     };
 };
 
-var _resourceLoader = __webpack_require__(38);
+var _resourceLoader = __webpack_require__(37);
 
 var _Texture = __webpack_require__(19);
 
@@ -31525,7 +31127,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //# sourceMappingURL=textureParser.js.map
 
 /***/ }),
-/* 144 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31533,7 +31135,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.__esModule = true;
 
-var _Mesh2 = __webpack_require__(39);
+var _Mesh2 = __webpack_require__(38);
 
 var _Mesh3 = _interopRequireDefault(_Mesh2);
 
@@ -31671,7 +31273,7 @@ exports.default = Plane;
 //# sourceMappingURL=Plane.js.map
 
 /***/ }),
-/* 145 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31734,7 +31336,7 @@ exports.default = CountLimiter;
 //# sourceMappingURL=CountLimiter.js.map
 
 /***/ }),
-/* 146 */
+/* 143 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31753,19 +31355,19 @@ var vertex="attribute vec2 aVertexPosition;\nattribute vec2 aTextureCoord;\n\nun
 
 
 /***/ }),
-/* 147 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = { "default": __webpack_require__(322), __esModule: true };
 
 /***/ }),
-/* 148 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // most Object methods by ES6 should accept primitives
 var $export = __webpack_require__(20);
 var core = __webpack_require__(15);
-var fails = __webpack_require__(32);
+var fails = __webpack_require__(31);
 module.exports = function (KEY, exec) {
   var fn = (core.Object || {})[KEY] || Object[KEY];
   var exp = {};
@@ -31775,7 +31377,7 @@ module.exports = function (KEY, exec) {
 
 
 /***/ }),
-/* 149 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31833,7 +31435,7 @@ exports.default = AbstractSoundManager;
 module.exports = exports["default"];
 
 /***/ }),
-/* 150 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31961,7 +31563,7 @@ exports.default = UIBar;
 module.exports = exports['default'];
 
 /***/ }),
-/* 151 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32062,7 +31664,7 @@ exports.default = CircleCounter;
 module.exports = exports['default'];
 
 /***/ }),
-/* 152 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32100,11 +31702,11 @@ var _signals = __webpack_require__(9);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _CircleCounter = __webpack_require__(151);
+var _CircleCounter = __webpack_require__(148);
 
 var _CircleCounter2 = _interopRequireDefault(_CircleCounter);
 
-var _ProgressBar = __webpack_require__(153);
+var _ProgressBar = __webpack_require__(150);
 
 var _ProgressBar2 = _interopRequireDefault(_ProgressBar);
 
@@ -32115,7 +31717,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var MergeTile = function (_PIXI$Container) {
     (0, _inherits3.default)(MergeTile, _PIXI$Container);
 
-    function MergeTile(i, j, size, lockIcon) {
+    function MergeTile(i, j, size, lockIcon, visuals) {
         (0, _classCallCheck3.default)(this, MergeTile);
 
         var _this = (0, _possibleConstructorReturn3.default)(this, (MergeTile.__proto__ || (0, _getPrototypeOf2.default)(MergeTile)).call(this));
@@ -32127,6 +31729,7 @@ var MergeTile = function (_PIXI$Container) {
         _this.container = new PIXI.Container();
         _this.addChild(_this.container);
 
+        _this.visuals = visuals;
         _this.size = size;
 
         _this.backSlot = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('party-slot'), 10, 10, 10, 10);
@@ -32136,8 +31739,8 @@ var MergeTile = function (_PIXI$Container) {
         _this.container.addChild(_this.backSlot);
         _this.backSlot.alpha = 0;
 
-        var slotId = Math.ceil(Math.random() * 3);
-        _this.backShape = new PIXI.Sprite.fromFrame("gameSlot" + slotId);
+        var slotId = visuals.backTiles[Math.floor(Math.random() * visuals.backTiles.length)];
+        _this.backShape = new PIXI.Sprite.fromFrame(slotId);
         _this.backShape.width = size;
         _this.backShape.height = size;
         _this.backShape.alpha = 1;
@@ -32473,8 +32076,8 @@ var MergeTile = function (_PIXI$Container) {
             } else if (level < 22) {
                 coffinID = 3;
             }
-            console.log(level);
-            this.giftSprite.texture = new PIXI.Texture.from('coffin' + (coffinID + 1));
+            coffinID = Math.min(coffinID, this.visuals.locks.length - 1);
+            this.giftSprite.texture = new PIXI.Texture.from(this.visuals.locks[coffinID]);
 
             this.giftSprite.visible = true;
             this.tileSprite.visible = false;
@@ -32650,7 +32253,7 @@ exports.default = MergeTile;
 module.exports = exports['default'];
 
 /***/ }),
-/* 153 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32821,6 +32424,568 @@ var ProgressBar = function (_PIXI$Container) {
 }(PIXI.Container);
 
 exports.default = ProgressBar;
+module.exports = exports['default'];
+
+/***/ }),
+/* 151 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+        value: true
+});
+
+var _getPrototypeOf = __webpack_require__(3);
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(1);
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(2);
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(4);
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(5);
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _pixi = __webpack_require__(0);
+
+var PIXI = _interopRequireWildcard(_pixi);
+
+var _utils = __webpack_require__(14);
+
+var _utils2 = _interopRequireDefault(_utils);
+
+var _config = __webpack_require__(12);
+
+var _config2 = _interopRequireDefault(_config);
+
+var _gsap = __webpack_require__(17);
+
+var _gsap2 = _interopRequireDefault(_gsap);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PuzzleBackground = function (_PIXI$Container) {
+        (0, _inherits3.default)(PuzzleBackground, _PIXI$Container);
+
+        function PuzzleBackground() {
+                (0, _classCallCheck3.default)(this, PuzzleBackground);
+
+                var _this = (0, _possibleConstructorReturn3.default)(this, (PuzzleBackground.__proto__ || (0, _getPrototypeOf2.default)(PuzzleBackground)).call(this));
+
+                _this.baseContainer = new PIXI.Container();
+                _this.addChild(_this.baseContainer);
+
+                _this.baseTerrain = new PIXI.Sprite.fromFrame('base-terrain');
+                _this.baseTerrain.anchor.set(0.5, 0);
+                _this.baseTerrain.scale.set(1);
+                _this.baseContainer.addChild(_this.baseTerrain);
+
+                // this.bottomPatch = new PIXI.Sprite.fromFrame('bottomPatch')
+                // this.bottomPatch.x = 220
+                // this.bottomPatch.y = 550
+                // this.baseContainer.addChild(this.bottomPatch)
+
+                _this.leftDetail = new PIXI.Sprite.fromFrame('leftPatch');
+                _this.leftDetail.anchor.set(1, 0);
+                _this.leftDetail.x = -150;
+                _this.leftDetail.y = -180;
+                _this.baseContainer.addChild(_this.leftDetail);
+
+                _this.rightDetail = new PIXI.Sprite.fromFrame('rightPatch');
+                _this.rightDetail.x = 150;
+                _this.rightDetail.y = -180;
+                _this.baseContainer.addChild(_this.rightDetail);
+
+                _this.leftPines = new PIXI.Sprite.fromFrame('pineSidePatch');
+                _this.leftPines.anchor.set(1, 0);
+                _this.leftPines.x = -380;
+                _this.leftPines.y = -350;
+                _this.baseContainer.addChild(_this.leftPines);
+
+                _this.rightPines = new PIXI.Sprite.fromFrame('pineSidePatch');
+                _this.rightPines.x = 380;
+                _this.rightPines.y = -350;
+                _this.baseContainer.addChild(_this.rightPines);
+
+                _this.usableArea = new PIXI.Graphics().beginFill(0x00FF00).drawRect(0, 0, 530, 650);
+                _this.addChild(_this.usableArea);
+                _this.usableArea.alpha = 0.15;
+                _this.usableArea.x = -_this.usableArea.width / 2;
+                return _this;
+        }
+
+        (0, _createClass3.default)(PuzzleBackground, [{
+                key: 'resize',
+                value: function resize(innerResolution, scale) {
+                        if (innerResolution && innerResolution.width && innerResolution.height) {
+
+                                this.innerResolution = innerResolution;
+
+                                if (window.isPortrait) {
+                                        this.rightPines.visible = true;
+                                        this.baseTerrain.scale.set(1);
+                                        this.rightDetail.texture = new PIXI.Texture.fromFrame('rightPatch');
+                                        this.rightDetail.scale.set(1);
+                                        this.leftDetail.scale.set(1);
+                                        this.leftDetail.x = -150;
+                                        this.leftDetail.y = -180;
+                                        this.rightDetail.x = 150;
+                                        this.rightDetail.y = -158;
+                                        //this.bottomPatch.visible = false;
+                                } else {
+
+                                        this.rightPines.visible = false;
+                                        this.baseTerrain.scale.x = 0.7;
+                                        this.rightDetail.texture = new PIXI.Texture.fromFrame('rightPatchCliff');
+                                        this.rightDetail.scale.set(0.8);
+                                        this.leftDetail.scale.set(0.8);
+
+                                        this.leftDetail.x = -150;
+                                        this.leftDetail.y = -140;
+
+                                        this.rightDetail.x = 160;
+                                        this.rightDetail.y = -140;
+                                        //this.bottomPatch.visible = true;
+                                }
+                        }
+                }
+        }, {
+                key: 'update',
+                value: function update(delta) {}
+        }]);
+        return PuzzleBackground;
+}(PIXI.Container);
+
+exports.default = PuzzleBackground;
+module.exports = exports['default'];
+
+/***/ }),
+/* 152 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+        value: true
+});
+
+var _getPrototypeOf = __webpack_require__(3);
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(1);
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(2);
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(4);
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(5);
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _pixi = __webpack_require__(0);
+
+var PIXI = _interopRequireWildcard(_pixi);
+
+var _utils = __webpack_require__(14);
+
+var _utils2 = _interopRequireDefault(_utils);
+
+var _config = __webpack_require__(12);
+
+var _config2 = _interopRequireDefault(_config);
+
+var _gsap = __webpack_require__(17);
+
+var _gsap2 = _interopRequireDefault(_gsap);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var CastleBackground = function (_PIXI$Container) {
+        (0, _inherits3.default)(CastleBackground, _PIXI$Container);
+
+        function CastleBackground() {
+                (0, _classCallCheck3.default)(this, CastleBackground);
+
+                var _this = (0, _possibleConstructorReturn3.default)(this, (CastleBackground.__proto__ || (0, _getPrototypeOf2.default)(CastleBackground)).call(this));
+
+                _this.baseContainer = new PIXI.Container();
+                _this.addChild(_this.baseContainer);
+
+                _this.baseTerrain = new PIXI.Sprite.fromFrame('sky');
+                _this.baseTerrain.anchor.set(0.5, 1);
+                _this.baseTerrain.scale.set(2);
+                _this.baseContainer.addChild(_this.baseTerrain);
+                _this.baseTerrain.y = 200;
+
+                _this.baseTerrainTop = new PIXI.Sprite.fromFrame('sky');
+                _this.baseTerrainTop.anchor.set(0.5, 0);
+                _this.baseTerrainTop.scale.set(1, -1);
+                _this.baseTerrain.addChild(_this.baseTerrainTop);
+                _this.baseTerrainTop.y = -_this.baseTerrain.height / 2 + 1;
+
+                _this.baseTerrainLeft = new PIXI.Sprite.fromFrame('sky');
+                _this.baseTerrainLeft.anchor.set(0.5, 1);
+                _this.baseTerrainLeft.scale.set(-1, 1);
+                _this.baseTerrain.addChild(_this.baseTerrainLeft);
+                _this.baseTerrainLeft.x = -_this.baseTerrainTop.width + 1;
+
+                _this.baseTerrainTopLeft = new PIXI.Sprite.fromFrame('sky');
+                _this.baseTerrainTopLeft.anchor.set(0.5, 0);
+                _this.baseTerrainTopLeft.scale.set(-1, -1);
+                _this.baseTerrain.addChild(_this.baseTerrainTopLeft);
+                _this.baseTerrainTopLeft.x = -_this.baseTerrainTop.width + 1;
+                _this.baseTerrainTopLeft.y = -_this.baseTerrainTop.height + 1;
+
+                _this.baseTerrainBottomLeft = new PIXI.Sprite.fromFrame('sky');
+                _this.baseTerrainBottomLeft.anchor.set(0.5, 0);
+                _this.baseTerrainBottomLeft.scale.set(1, -1);
+                _this.baseTerrain.addChild(_this.baseTerrainBottomLeft);
+                _this.baseTerrainBottomLeft.y = _this.baseTerrainTop.height - 1;
+
+                _this.moon = new PIXI.Sprite.fromFrame('moon');
+                _this.moon.anchor.set(0.5);
+                _this.baseContainer.addChild(_this.moon);
+                _this.moon.x = 50;
+                _this.moon.y = -380;
+
+                _this.castleBase = new PIXI.Sprite.fromFrame('castleBase');
+                _this.castleBase.anchor.set(0.5, 1);
+                _this.baseContainer.addChild(_this.castleBase);
+                _this.castleBase.y = 180;
+                _this.castleBase.scale.set(650 / _this.castleBase.width);
+
+                _this.castleContainer = new PIXI.Container();
+                _this.baseContainer.addChild(_this.castleContainer);
+
+                _this.leftDetail = new PIXI.Sprite.fromFrame('backPinePatch1');
+                _this.leftDetail.scale.set(0.7);
+                _this.leftDetail.anchor.set(1, 0);
+                _this.leftDetail.x = -190;
+                _this.leftDetail.y = -135;
+                _this.baseContainer.addChild(_this.leftDetail);
+
+                _this.rightDetail = new PIXI.Sprite.fromFrame('backPinePatch2');
+                _this.rightDetail.scale.set(0.7);
+                _this.rightDetail.x = 200;
+                _this.rightDetail.y = -155;
+                _this.baseContainer.addChild(_this.rightDetail);
+
+                _this.bottomTree = new PIXI.Sprite.fromFrame('bottomTreePatch');
+                _this.bottomTree.anchor.set(0.5, 1);
+                _this.baseContainer.addChild(_this.bottomTree);
+                _this.bottomTree.x = 0;
+                _this.bottomTree.y = 280;
+                _this.bottomTree.scale.set(650 / _this.bottomTree.width);
+
+                _this.bottomTree2 = new PIXI.Sprite.fromFrame('bottomTreePatch');
+                _this.bottomTree2.anchor.set(0.5, 1);
+                _this.baseContainer.addChild(_this.bottomTree2);
+                _this.bottomTree2.x = 0;
+                _this.bottomTree2.y = 380;
+                _this.bottomTree2.scale.set(650 / _this.bottomTree2.width);
+
+                _this.castleSet = [{ src: 'stairs', order: 0, pos: { x: 299.7, y: 676.45 } }, { src: 'door1', order: 7, pos: { x: 282.35, y: 562.95 } }, { src: 'frontTower1', order: 2, pos: { x: 374.6, y: 447.3 } }, { src: 'side2', order: 1, pos: { x: 442.1, y: 532.5 } }, { src: 'side1', order: 3, pos: { x: 101.05, y: 368.55 } }, { src: 'side3', order: 4, pos: { x: 566.5, y: 506.5 } }, { src: 'side4', order: 6, pos: { x: 717.7, y: 264.9 } }, { src: 'sideTower', order: 5, pos: { x: 780.65, y: 320.35 } }, { src: 'middle1', order: 8, pos: { x: 385.35, y: 387.25 } }, { src: 'centerHouse1', order: 11, pos: { x: 274.3, y: 317.1 } }, { src: 'leftTower', order: 15, pos: { x: 123, y: 31.6 } }, { src: 'backforest', order: 20, pos: { x: -15.85, y: 348 } }, { src: 'bridgeTower', order: 16, pos: { x: 518.4, y: 49.4 } }, { src: 'sideHouse2', order: 10, pos: { x: 490.8, y: 277.15 } }, { src: 'sideHouse1', order: 9, pos: { x: 565.95, y: 308.35 } }, { src: 'side5', order: 17, pos: { x: 630.45, y: 0 } }, { src: 'thinHouse', order: 15, pos: { x: 225.05, y: 223.25 } }, { src: 'backTower', order: 19, pos: { x: 317.9, y: 0 } }, { src: 'thinMiddle', order: 15, pos: { x: 448.25, y: 91.7 } }, { src: 'mainTower', order: 13, pos: { x: 301.1, y: 133.1 } }, { src: 'statue1', order: 18, pos: { x: 355.2, y: 71.05 } }];
+
+                _this.castleSet.forEach(function (element) {
+                        var img = new PIXI.Sprite.fromFrame(element.src);
+                        element.sprite = img;
+                        img.x = element.pos.x;
+                        img.y = element.pos.y;
+                        _this.castleContainer.addChild(img);
+                });
+
+                _this.castleSet.forEach(function (element) {
+                        _this.castleContainer.addChildAt(element.sprite, _this.castleSet.lenght - element.order);
+                        element.sprite.visible = false;
+                });
+
+                _this.castleContainer.x = -250;
+                _this.castleContainer.y = -380;
+
+                _this.castleContainer.scale.set(0.55);
+
+                _this.usableArea = new PIXI.Graphics().beginFill(0x00FF00).drawRect(0, 0, 530, 500);
+                // this.addChild(this.usableArea)
+                _this.usableArea.alpha = 0.15;
+                _this.usableArea.x = -_this.usableArea.width / 2;
+                _this.usableArea.y = -450;
+
+                return _this;
+        }
+
+        (0, _createClass3.default)(CastleBackground, [{
+                key: 'updateMax',
+                value: function updateMax(value) {
+                        value = Math.min(value, this.castleSet.length - 1);
+                        for (var index = 0; index < this.castleSet.length; index++) {
+                                var element = this.castleSet[index];
+                                element.sprite.visible = false;
+                        }
+                        for (var _index = 0; _index <= value; _index++) {
+                                var _element = this.castleSet[_index];
+                                _element.sprite.visible = true;
+                        }
+                }
+        }, {
+                key: 'resize',
+                value: function resize(innerResolution, scale) {
+                        if (innerResolution && innerResolution.width && innerResolution.height) {
+
+                                this.innerResolution = innerResolution;
+                        }
+                }
+        }, {
+                key: 'update',
+                value: function update(delta) {}
+        }]);
+        return CastleBackground;
+}(PIXI.Container);
+
+exports.default = CastleBackground;
+module.exports = exports['default'];
+
+/***/ }),
+/* 153 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _getPrototypeOf = __webpack_require__(3);
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(1);
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(2);
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(4);
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(5);
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _pixi = __webpack_require__(0);
+
+var PIXI = _interopRequireWildcard(_pixi);
+
+var _signals = __webpack_require__(9);
+
+var signals = _interopRequireWildcard(_signals);
+
+var _gsap = __webpack_require__(17);
+
+var _gsap2 = _interopRequireDefault(_gsap);
+
+var _config = __webpack_require__(12);
+
+var _config2 = _interopRequireDefault(_config);
+
+var _utils = __webpack_require__(14);
+
+var _utils2 = _interopRequireDefault(_utils);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var UILabelButton1 = function (_PIXI$Container) {
+    (0, _inherits3.default)(UILabelButton1, _PIXI$Container);
+
+    function UILabelButton1() {
+        var width = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 60;
+        var height = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 60;
+        var tex = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'small-no-pattern-green';
+        (0, _classCallCheck3.default)(this, UILabelButton1);
+
+        var _this = (0, _possibleConstructorReturn3.default)(this, (UILabelButton1.__proto__ || (0, _getPrototypeOf2.default)(UILabelButton1)).call(this));
+
+        _this.mainContainer = new PIXI.Container();
+
+        _this.padding = 8;
+        _this.backShapeBorder = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame(tex), 15, 15, 15, 15);
+        _this.backShapeBorder.width = width + _this.padding;
+        _this.backShapeBorder.height = height + _this.padding;
+
+        _this.mainContainer.addChild(_this.backShapeBorder);
+
+        _this.addChild(_this.mainContainer);
+
+        _this.onClick = new signals.Signal();
+
+        _this.on('touchstart', _this.click.bind(_this));
+        _this.interactive = true;
+        _this.buttonMode = true;
+        return _this;
+    }
+
+    (0, _createClass3.default)(UILabelButton1, [{
+        key: 'addVideoIcon',
+        value: function addVideoIcon() {
+            this.videoIcon = new PIXI.Sprite.fromFrame('video-trim');
+            this.videoIcon.anchor.set(0.5);
+            this.videoIcon.scale.set(0.65);
+            this.videoIcon.x = this.backShapeBorder.width;
+            this.mainContainer.addChild(this.videoIcon);
+        }
+    }, {
+        key: 'addFrontShape',
+        value: function addFrontShape() {
+
+            this.backShapeBorder.y = 5;
+        }
+    }, {
+        key: 'resize',
+        value: function resize(width, height) {
+            if (!width || !height) {
+                return;
+            }
+            this.backShapeBorder.width = width + this.padding;
+            this.backShapeBorder.height = height + this.padding;
+            this.backShapeBorder.pivot.set((width + this.padding) / 2);
+        }
+    }, {
+        key: 'updateRotation',
+        value: function updateRotation(rot) {
+            var invertIcon = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+            this.backShapeBorder.rotation = rot;
+
+            if (invertIcon) {
+                this.icon.rotation = -rot;
+            }
+        }
+    }, {
+        key: 'setIconColor',
+        value: function setIconColor(color) {
+            this.icon.tint = color;
+        }
+    }, {
+        key: 'setColor',
+        value: function setColor(color) {}
+    }, {
+        key: 'click',
+        value: function click() {
+            this.onClick.dispatch();
+            //window.SOUND_MANAGER.play('tap2', { volume: 0.5 })
+        }
+    }, {
+        key: 'updateTextColor',
+        value: function updateTextColor(color) {
+            if (this.buttonLabel) {
+                this.buttonLabel.style.fill = color;
+            }
+        }
+    }, {
+        key: 'replaceIcon',
+        value: function replaceIcon(icon) {
+            if (this.icon && this.icon.parent) {
+                this.icon.parent.removeChild(this.icon);
+            }
+            this.icon = icon;
+            this.mainContainer.addChild(this.icon);
+        }
+    }, {
+        key: 'updateMenuColors',
+        value: function updateMenuColors(textColor, backgroundColor) {
+            this.backShapeBorder.tint = backgroundColor;
+            this.icon.tint = backgroundColor;
+
+            if (this.backLabelLeft) {
+                this.backLabelLeft.tint = backgroundColor;
+            }
+
+            if (this.buttonLabel) {
+                this.buttonLabel.style.fill = textColor;
+            }
+        }
+    }, {
+        key: 'addLabelRight',
+        value: function addLabelRight(label) {
+            var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0xFFFFFF;
+
+            this.buttonLabel = new PIXI.Text(label, { font: '18px', fill: color, align: 'left', fontWeight: '600', fontFamily: MAIN_FONT });
+            this.buttonLabel.pivot.x = 0; //this.buttonLabel.width;
+            this.buttonLabel.pivot.y = this.buttonLabel.height / 2;
+            this.buttonLabel.x = this.mainContainer.width * 0.5 + 5;
+            this.addChild(this.buttonLabel);
+        }
+    }, {
+        key: 'addLabelLeft',
+        value: function addLabelLeft(label) {
+            var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0xFFFFFF;
+
+            this.buttonLabel = new PIXI.Text(label, { font: '18px', fill: color, align: 'right', fontWeight: '300', fontFamily: MAIN_FONT });
+            this.buttonLabel.pivot.x = this.buttonLabel.width;
+            this.buttonLabel.pivot.y = this.buttonLabel.height / 2;
+            this.buttonLabel.x = -this.mainContainer.width * 0.5 - 5;
+            this.addChild(this.buttonLabel);
+        }
+    }, {
+        key: 'addCenterLabel',
+        value: function addCenterLabel(label) {
+            var _this2 = this;
+
+            var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0xFFFFFF;
+            var fit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+
+            this.buttonLabel = new PIXI.Text(label, LABELS.LABEL1);
+            this.buttonLabel.style.stroke = 0;
+            this.buttonLabel.style.strokeThickness = 3;
+            this.buttonLabel.style.fontSize = 24;
+            if (fit) {
+                this.buttonLabel.scale.set(this.buttonLabel.width / this.backShapeBorder.width * fit);
+            }
+            setTimeout(function () {
+
+                _this2.buttonLabel.x = _this2.backShapeBorder.width / 2 - _this2.buttonLabel.width / 2;
+                _this2.buttonLabel.y = _this2.backShapeBorder.height / 2 - _this2.buttonLabel.height / 2;
+            }, 10);
+            this.addChild(this.buttonLabel);
+        }
+    }, {
+        key: 'updateTexture',
+        value: function updateTexture(texture) {
+            this.icon.texture = PIXI.Texture.fromFrame(texture);
+        }
+    }]);
+    return UILabelButton1;
+}(PIXI.Container);
+
+exports.default = UILabelButton1;
 module.exports = exports['default'];
 
 /***/ }),
@@ -33227,6 +33392,25 @@ for (var index = 15; index < 309; index += 3) {
 
 //console.log(window.numberList)
 
+window.getCurrency = function (e) {
+    var a = Math.pow(2, e);
+    console.log(a);
+};
+
+window.getLevels = function (e) {
+    var a = e < 6 ? 6 * (e + 1) * (e + 1) - 6 * (e + 1) : e < 7 ? 5 * (e + 1) * (e + 1) - 5 * (e + 1) : e < 8 ? 4 * (e + 1) * (e + 1) - 4 * (e + 1) : e < 9 ? 3 * (e + 1) * (e + 1) - 3 * (e + 1) : e < 10 ? 2 * (e + 1) * (e + 1) - 2 * (e + 1) : (e + 1) * (e + 1) - (e + 1);
+    return a;
+};
+
+window.getPrices = function (e) {
+    var s = 50;
+    for (var _index = 0; _index < e; _index++) {
+        s *= 2.5;
+    }
+    s = Math.floor(s);
+    console.log(s * 10);
+};
+
 window.config = _config2.default;
 window.utils = _utils2.default;
 
@@ -33309,7 +33493,7 @@ window.isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(w
 
 exports.__esModule = true;
 
-var _defineProperty = __webpack_require__(82);
+var _defineProperty = __webpack_require__(79);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -33372,7 +33556,7 @@ module.exports = { "default": __webpack_require__(161), __esModule: true };
 
 __webpack_require__(162);
 __webpack_require__(171);
-module.exports = __webpack_require__(61).f('iterator');
+module.exports = __webpack_require__(60).f('iterator');
 
 
 /***/ }),
@@ -33384,7 +33568,7 @@ module.exports = __webpack_require__(61).f('iterator');
 var $at = __webpack_require__(163)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
-__webpack_require__(86)(String, 'String', function (iterated) {
+__webpack_require__(83)(String, 'String', function (iterated) {
   this._t = String(iterated); // target
   this._i = 0;                // next index
 // 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -33403,8 +33587,8 @@ __webpack_require__(86)(String, 'String', function (iterated) {
 /* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(51);
-var defined = __webpack_require__(52);
+var toInteger = __webpack_require__(50);
+var defined = __webpack_require__(51);
 // true  -> String#at
 // false -> String#codePointAt
 module.exports = function (TO_STRING) {
@@ -33428,13 +33612,13 @@ module.exports = function (TO_STRING) {
 
 "use strict";
 
-var create = __webpack_require__(55);
-var descriptor = __webpack_require__(42);
-var setToStringTag = __webpack_require__(60);
+var create = __webpack_require__(54);
+var descriptor = __webpack_require__(40);
+var setToStringTag = __webpack_require__(59);
 var IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-__webpack_require__(27)(IteratorPrototype, __webpack_require__(29)('iterator'), function () { return this; });
+__webpack_require__(26)(IteratorPrototype, __webpack_require__(28)('iterator'), function () { return this; });
 
 module.exports = function (Constructor, NAME, next) {
   Constructor.prototype = create(IteratorPrototype, { next: descriptor(1, next) });
@@ -33447,8 +33631,8 @@ module.exports = function (Constructor, NAME, next) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP = __webpack_require__(21);
-var anObject = __webpack_require__(31);
-var getKeys = __webpack_require__(56);
+var anObject = __webpack_require__(30);
+var getKeys = __webpack_require__(55);
 
 module.exports = __webpack_require__(22) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
@@ -33466,7 +33650,7 @@ module.exports = __webpack_require__(22) ? Object.defineProperties : function de
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(89);
+var cof = __webpack_require__(86);
 // eslint-disable-next-line no-prototype-builtins
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
   return cof(it) == 'String' ? it.split('') : Object(it);
@@ -33507,7 +33691,7 @@ module.exports = function (IS_INCLUDES) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.15 ToLength
-var toInteger = __webpack_require__(51);
+var toInteger = __webpack_require__(50);
 var min = Math.min;
 module.exports = function (it) {
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
@@ -33518,7 +33702,7 @@ module.exports = function (it) {
 /* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(51);
+var toInteger = __webpack_require__(50);
 var max = Math.max;
 var min = Math.min;
 module.exports = function (index, length) {
@@ -33541,9 +33725,9 @@ module.exports = document && document.documentElement;
 
 __webpack_require__(172);
 var global = __webpack_require__(18);
-var hide = __webpack_require__(27);
-var Iterators = __webpack_require__(54);
-var TO_STRING_TAG = __webpack_require__(29)('toStringTag');
+var hide = __webpack_require__(26);
+var Iterators = __webpack_require__(53);
+var TO_STRING_TAG = __webpack_require__(28)('toStringTag');
 
 var DOMIterables = ('CSSRuleList,CSSStyleDeclaration,CSSValueList,ClientRectList,DOMRectList,DOMStringList,' +
   'DOMTokenList,DataTransferItemList,FileList,HTMLAllCollection,HTMLCollection,HTMLFormElement,HTMLSelectElement,' +
@@ -33568,14 +33752,14 @@ for (var i = 0; i < DOMIterables.length; i++) {
 
 var addToUnscopables = __webpack_require__(173);
 var step = __webpack_require__(174);
-var Iterators = __webpack_require__(54);
+var Iterators = __webpack_require__(53);
 var toIObject = __webpack_require__(24);
 
 // 22.1.3.4 Array.prototype.entries()
 // 22.1.3.13 Array.prototype.keys()
 // 22.1.3.29 Array.prototype.values()
 // 22.1.3.30 Array.prototype[@@iterator]()
-module.exports = __webpack_require__(86)(Array, 'Array', function (iterated, kind) {
+module.exports = __webpack_require__(83)(Array, 'Array', function (iterated, kind) {
   this._t = toIObject(iterated); // target
   this._i = 0;                   // next index
   this._k = kind;                // kind
@@ -33645,27 +33829,27 @@ var global = __webpack_require__(18);
 var has = __webpack_require__(23);
 var DESCRIPTORS = __webpack_require__(22);
 var $export = __webpack_require__(20);
-var redefine = __webpack_require__(87);
+var redefine = __webpack_require__(84);
 var META = __webpack_require__(178).KEY;
-var $fails = __webpack_require__(32);
-var shared = __webpack_require__(58);
-var setToStringTag = __webpack_require__(60);
-var uid = __webpack_require__(43);
-var wks = __webpack_require__(29);
-var wksExt = __webpack_require__(61);
-var wksDefine = __webpack_require__(62);
+var $fails = __webpack_require__(31);
+var shared = __webpack_require__(57);
+var setToStringTag = __webpack_require__(59);
+var uid = __webpack_require__(41);
+var wks = __webpack_require__(28);
+var wksExt = __webpack_require__(60);
+var wksDefine = __webpack_require__(61);
 var enumKeys = __webpack_require__(179);
 var isArray = __webpack_require__(180);
-var anObject = __webpack_require__(31);
-var isObject = __webpack_require__(28);
+var anObject = __webpack_require__(30);
+var isObject = __webpack_require__(27);
 var toIObject = __webpack_require__(24);
-var toPrimitive = __webpack_require__(49);
-var createDesc = __webpack_require__(42);
-var _create = __webpack_require__(55);
+var toPrimitive = __webpack_require__(48);
+var createDesc = __webpack_require__(40);
+var _create = __webpack_require__(54);
 var gOPNExt = __webpack_require__(181);
-var $GOPD = __webpack_require__(64);
+var $GOPD = __webpack_require__(63);
 var $DP = __webpack_require__(21);
-var $keys = __webpack_require__(56);
+var $keys = __webpack_require__(55);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
 var gOPN = gOPNExt.f;
@@ -33788,11 +33972,11 @@ if (!USE_NATIVE) {
 
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f = $defineProperty;
-  __webpack_require__(93).f = gOPNExt.f = $getOwnPropertyNames;
-  __webpack_require__(63).f = $propertyIsEnumerable;
-  __webpack_require__(92).f = $getOwnPropertySymbols;
+  __webpack_require__(90).f = gOPNExt.f = $getOwnPropertyNames;
+  __webpack_require__(62).f = $propertyIsEnumerable;
+  __webpack_require__(89).f = $getOwnPropertySymbols;
 
-  if (DESCRIPTORS && !__webpack_require__(53)) {
+  if (DESCRIPTORS && !__webpack_require__(52)) {
     redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
   }
 
@@ -33866,7 +34050,7 @@ $JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function () {
 });
 
 // 19.4.3.4 Symbol.prototype[@@toPrimitive](hint)
-$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(27)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
+$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(26)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
 // 19.4.3.5 Symbol.prototype[@@toStringTag]
 setToStringTag($Symbol, 'Symbol');
 // 20.2.1.9 Math[@@toStringTag]
@@ -33879,15 +34063,15 @@ setToStringTag(global.JSON, 'JSON', true);
 /* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var META = __webpack_require__(43)('meta');
-var isObject = __webpack_require__(28);
+var META = __webpack_require__(41)('meta');
+var isObject = __webpack_require__(27);
 var has = __webpack_require__(23);
 var setDesc = __webpack_require__(21).f;
 var id = 0;
 var isExtensible = Object.isExtensible || function () {
   return true;
 };
-var FREEZE = !__webpack_require__(32)(function () {
+var FREEZE = !__webpack_require__(31)(function () {
   return isExtensible(Object.preventExtensions({}));
 });
 var setMeta = function (it) {
@@ -33939,9 +34123,9 @@ var meta = module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
-var getKeys = __webpack_require__(56);
-var gOPS = __webpack_require__(92);
-var pIE = __webpack_require__(63);
+var getKeys = __webpack_require__(55);
+var gOPS = __webpack_require__(89);
+var pIE = __webpack_require__(62);
 module.exports = function (it) {
   var result = getKeys(it);
   var getSymbols = gOPS.f;
@@ -33960,7 +34144,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.2.2 IsArray(argument)
-var cof = __webpack_require__(89);
+var cof = __webpack_require__(86);
 module.exports = Array.isArray || function isArray(arg) {
   return cof(arg) == 'Array';
 };
@@ -33972,7 +34156,7 @@ module.exports = Array.isArray || function isArray(arg) {
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
 var toIObject = __webpack_require__(24);
-var gOPN = __webpack_require__(93).f;
+var gOPN = __webpack_require__(90).f;
 var toString = {}.toString;
 
 var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNames
@@ -34001,14 +34185,14 @@ module.exports.f = function getOwnPropertyNames(it) {
 /* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(62)('asyncIterator');
+__webpack_require__(61)('asyncIterator');
 
 
 /***/ }),
 /* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(62)('observable');
+__webpack_require__(61)('observable');
 
 
 /***/ }),
@@ -34266,7 +34450,7 @@ if (!global.cancelAnimationFrame) {
     };
 }
 //# sourceMappingURL=requestAnimationFrame.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
 /* 192 */
@@ -34300,7 +34484,7 @@ if (!Math.sign) {
 
 exports.__esModule = true;
 
-var _Rectangle = __webpack_require__(67);
+var _Rectangle = __webpack_require__(66);
 
 var _Rectangle2 = _interopRequireDefault(_Rectangle);
 
@@ -34419,7 +34603,7 @@ exports.default = Circle;
 
 exports.__esModule = true;
 
-var _Rectangle = __webpack_require__(67);
+var _Rectangle = __webpack_require__(66);
 
 var _Rectangle2 = _interopRequireDefault(_Rectangle);
 
@@ -34546,7 +34730,7 @@ exports.default = Ellipse;
 
 exports.__esModule = true;
 
-var _Point = __webpack_require__(65);
+var _Point = __webpack_require__(64);
 
 var _Point2 = _interopRequireDefault(_Point);
 
@@ -34973,7 +35157,7 @@ module.exports = Buffer;
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var Texture = __webpack_require__(97);
+var Texture = __webpack_require__(94);
 
 /**
  * Helper class to create a webGL Framebuffer
@@ -35205,11 +35389,11 @@ module.exports = Framebuffer;
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var compileProgram = __webpack_require__(98),
-	extractAttributes = __webpack_require__(99),
-	extractUniforms = __webpack_require__(101),
-	setPrecision = __webpack_require__(103),
-	generateUniformAccessObject = __webpack_require__(104);
+var compileProgram = __webpack_require__(95),
+	extractAttributes = __webpack_require__(96),
+	extractUniforms = __webpack_require__(98),
+	setPrecision = __webpack_require__(100),
+	generateUniformAccessObject = __webpack_require__(101);
 
 /**
  * Helper class to create a webGL Shader
@@ -35306,7 +35490,7 @@ module.exports = Shader;
 
 
 // state object//
-var setVertexAttribArrays = __webpack_require__( 96 );
+var setVertexAttribArrays = __webpack_require__( 93 );
 
 /**
  * Helper class to work with WebGL VertexArrayObjects (vaos)
@@ -35577,14 +35761,14 @@ VertexArrayObject.prototype.getSize = function()
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = {
-    compileProgram: __webpack_require__(98),
-    defaultValue: __webpack_require__(102),
-    extractAttributes: __webpack_require__(99),
-    extractUniforms: __webpack_require__(101),
-    generateUniformAccessObject: __webpack_require__(104),
-    setPrecision: __webpack_require__(103),
-    mapSize: __webpack_require__(100),
-    mapType: __webpack_require__(68)
+    compileProgram: __webpack_require__(95),
+    defaultValue: __webpack_require__(99),
+    extractAttributes: __webpack_require__(96),
+    extractUniforms: __webpack_require__(98),
+    generateUniformAccessObject: __webpack_require__(101),
+    setPrecision: __webpack_require__(100),
+    mapSize: __webpack_require__(97),
+    mapType: __webpack_require__(67)
 };
 
 /***/ }),
@@ -35597,7 +35781,7 @@ module.exports = {
 exports.__esModule = true;
 exports.default = maxRecommendedTextures;
 
-var _ismobilejs = __webpack_require__(70);
+var _ismobilejs = __webpack_require__(69);
 
 var _ismobilejs2 = _interopRequireDefault(_ismobilejs);
 
@@ -36391,7 +36575,7 @@ function mapPremultipliedBlendModes() {
 
 }(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(210)(module), __webpack_require__(33)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(210)(module), __webpack_require__(32)))
 
 /***/ }),
 /* 210 */
@@ -37304,7 +37488,7 @@ exports.default = TickerListener;
 
 exports.__esModule = true;
 
-var _CanvasRenderer = __webpack_require__(35);
+var _CanvasRenderer = __webpack_require__(34);
 
 var _CanvasRenderer2 = _interopRequireDefault(_CanvasRenderer);
 
@@ -37312,7 +37496,7 @@ var _const = __webpack_require__(7);
 
 var _math = __webpack_require__(11);
 
-var _CanvasTinter = __webpack_require__(76);
+var _CanvasTinter = __webpack_require__(75);
 
 var _CanvasTinter2 = _interopRequireDefault(_CanvasTinter);
 
@@ -37639,7 +37823,7 @@ exports.default = mapCanvasBlendModesToPixi;
 
 var _const = __webpack_require__(7);
 
-var _canUseNewCanvasBlendModes = __webpack_require__(115);
+var _canUseNewCanvasBlendModes = __webpack_require__(112);
 
 var _canUseNewCanvasBlendModes2 = _interopRequireDefault(_canUseNewCanvasBlendModes);
 
@@ -37713,15 +37897,15 @@ function mapCanvasBlendModesToPixi() {
 
 exports.__esModule = true;
 
-var _ObjectRenderer2 = __webpack_require__(44);
+var _ObjectRenderer2 = __webpack_require__(42);
 
 var _ObjectRenderer3 = _interopRequireDefault(_ObjectRenderer2);
 
-var _WebGLRenderer = __webpack_require__(45);
+var _WebGLRenderer = __webpack_require__(43);
 
 var _WebGLRenderer2 = _interopRequireDefault(_WebGLRenderer);
 
-var _createIndicesForQuads = __webpack_require__(77);
+var _createIndicesForQuads = __webpack_require__(76);
 
 var _createIndicesForQuads2 = _interopRequireDefault(_createIndicesForQuads);
 
@@ -37747,7 +37931,7 @@ var _pixiGlCore = __webpack_require__(13);
 
 var _pixiGlCore2 = _interopRequireDefault(_pixiGlCore);
 
-var _bitTwiddle = __webpack_require__(73);
+var _bitTwiddle = __webpack_require__(72);
 
 var _bitTwiddle2 = _interopRequireDefault(_bitTwiddle);
 
@@ -38269,11 +38453,11 @@ _WebGLRenderer2.default.registerPlugin('sprite', SpriteRenderer);
 
 exports.__esModule = true;
 
-var _WebGLManager2 = __webpack_require__(36);
+var _WebGLManager2 = __webpack_require__(35);
 
 var _WebGLManager3 = _interopRequireDefault(_WebGLManager2);
 
-var _SpriteMaskFilter = __webpack_require__(116);
+var _SpriteMaskFilter = __webpack_require__(113);
 
 var _SpriteMaskFilter2 = _interopRequireDefault(_SpriteMaskFilter);
 
@@ -38741,7 +38925,7 @@ process.umask = function() { return 0; };
 
 exports.__esModule = true;
 
-var _WebGLManager2 = __webpack_require__(36);
+var _WebGLManager2 = __webpack_require__(35);
 
 var _WebGLManager3 = _interopRequireDefault(_WebGLManager2);
 
@@ -38899,21 +39083,21 @@ exports.default = StencilManager;
 
 exports.__esModule = true;
 
-var _WebGLManager2 = __webpack_require__(36);
+var _WebGLManager2 = __webpack_require__(35);
 
 var _WebGLManager3 = _interopRequireDefault(_WebGLManager2);
 
-var _RenderTarget = __webpack_require__(46);
+var _RenderTarget = __webpack_require__(44);
 
 var _RenderTarget2 = _interopRequireDefault(_RenderTarget);
 
-var _Quad = __webpack_require__(119);
+var _Quad = __webpack_require__(116);
 
 var _Quad2 = _interopRequireDefault(_Quad);
 
 var _math = __webpack_require__(11);
 
-var _Shader = __webpack_require__(37);
+var _Shader = __webpack_require__(36);
 
 var _Shader2 = _interopRequireDefault(_Shader);
 
@@ -38921,7 +39105,7 @@ var _filterTransforms = __webpack_require__(226);
 
 var filterTransforms = _interopRequireWildcard(_filterTransforms);
 
-var _bitTwiddle = __webpack_require__(73);
+var _bitTwiddle = __webpack_require__(72);
 
 var _bitTwiddle2 = _interopRequireDefault(_bitTwiddle);
 
@@ -39567,7 +39751,7 @@ var _pixiGlCore = __webpack_require__(13);
 
 var _const = __webpack_require__(7);
 
-var _RenderTarget = __webpack_require__(46);
+var _RenderTarget = __webpack_require__(44);
 
 var _RenderTarget2 = _interopRequireDefault(_RenderTarget);
 
@@ -40347,7 +40531,7 @@ function validateContext(gl) {
 exports.__esModule = true;
 exports.default = generateMultiTextureShader;
 
-var _Shader = __webpack_require__(37);
+var _Shader = __webpack_require__(36);
 
 var _Shader2 = _interopRequireDefault(_Shader);
 
@@ -40554,7 +40738,7 @@ exports.__esModule = true;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Sprite2 = __webpack_require__(72);
+var _Sprite2 = __webpack_require__(71);
 
 var _Sprite3 = _interopRequireDefault(_Sprite2);
 
@@ -40572,11 +40756,11 @@ var _settings = __webpack_require__(10);
 
 var _settings2 = _interopRequireDefault(_settings);
 
-var _TextStyle = __webpack_require__(120);
+var _TextStyle = __webpack_require__(117);
 
 var _TextStyle2 = _interopRequireDefault(_TextStyle);
 
-var _TextMetrics = __webpack_require__(121);
+var _TextMetrics = __webpack_require__(118);
 
 var _TextMetrics2 = _interopRequireDefault(_TextMetrics);
 
@@ -41293,11 +41477,11 @@ function trimCanvas(canvas) {
 
 exports.__esModule = true;
 
-var _Container2 = __webpack_require__(34);
+var _Container2 = __webpack_require__(33);
 
 var _Container3 = _interopRequireDefault(_Container2);
 
-var _RenderTexture = __webpack_require__(75);
+var _RenderTexture = __webpack_require__(74);
 
 var _RenderTexture2 = _interopRequireDefault(_RenderTexture);
 
@@ -41305,11 +41489,11 @@ var _Texture = __webpack_require__(19);
 
 var _Texture2 = _interopRequireDefault(_Texture);
 
-var _GraphicsData = __webpack_require__(122);
+var _GraphicsData = __webpack_require__(119);
 
 var _GraphicsData2 = _interopRequireDefault(_GraphicsData);
 
-var _Sprite = __webpack_require__(72);
+var _Sprite = __webpack_require__(71);
 
 var _Sprite2 = _interopRequireDefault(_Sprite);
 
@@ -41319,7 +41503,7 @@ var _utils = __webpack_require__(8);
 
 var _const = __webpack_require__(7);
 
-var _Bounds = __webpack_require__(69);
+var _Bounds = __webpack_require__(68);
 
 var _Bounds2 = _interopRequireDefault(_Bounds);
 
@@ -41327,7 +41511,7 @@ var _bezierCurveTo2 = __webpack_require__(239);
 
 var _bezierCurveTo3 = _interopRequireDefault(_bezierCurveTo2);
 
-var _CanvasRenderer = __webpack_require__(35);
+var _CanvasRenderer = __webpack_require__(34);
 
 var _CanvasRenderer2 = _interopRequireDefault(_CanvasRenderer);
 
@@ -42562,11 +42746,11 @@ var _utils = __webpack_require__(8);
 
 var _const = __webpack_require__(7);
 
-var _ObjectRenderer2 = __webpack_require__(44);
+var _ObjectRenderer2 = __webpack_require__(42);
 
 var _ObjectRenderer3 = _interopRequireDefault(_ObjectRenderer2);
 
-var _WebGLRenderer = __webpack_require__(45);
+var _WebGLRenderer = __webpack_require__(43);
 
 var _WebGLRenderer2 = _interopRequireDefault(_WebGLRenderer);
 
@@ -42976,7 +43160,7 @@ exports.default = WebGLGraphicsData;
 
 exports.__esModule = true;
 
-var _Shader2 = __webpack_require__(37);
+var _Shader2 = __webpack_require__(36);
 
 var _Shader3 = _interopRequireDefault(_Shader2);
 
@@ -43027,13 +43211,13 @@ exports.default = PrimitiveShader;
 exports.__esModule = true;
 exports.default = buildPoly;
 
-var _buildLine = __webpack_require__(47);
+var _buildLine = __webpack_require__(45);
 
 var _buildLine2 = _interopRequireDefault(_buildLine);
 
 var _utils = __webpack_require__(8);
 
-var _earcut = __webpack_require__(123);
+var _earcut = __webpack_require__(120);
 
 var _earcut2 = _interopRequireDefault(_earcut);
 
@@ -43118,7 +43302,7 @@ function buildPoly(graphicsData, webGLData, webGLDataNativeLines) {
 exports.__esModule = true;
 exports.default = buildRectangle;
 
-var _buildLine = __webpack_require__(47);
+var _buildLine = __webpack_require__(45);
 
 var _buildLine2 = _interopRequireDefault(_buildLine);
 
@@ -43199,11 +43383,11 @@ function buildRectangle(graphicsData, webGLData, webGLDataNativeLines) {
 exports.__esModule = true;
 exports.default = buildRoundedRectangle;
 
-var _earcut = __webpack_require__(123);
+var _earcut = __webpack_require__(120);
 
 var _earcut2 = _interopRequireDefault(_earcut);
 
-var _buildLine = __webpack_require__(47);
+var _buildLine = __webpack_require__(45);
 
 var _buildLine2 = _interopRequireDefault(_buildLine);
 
@@ -43360,7 +43544,7 @@ function quadraticBezierCurve(fromX, fromY, cpX, cpY, toX, toY) {
 exports.__esModule = true;
 exports.default = buildCircle;
 
-var _buildLine = __webpack_require__(47);
+var _buildLine = __webpack_require__(45);
 
 var _buildLine2 = _interopRequireDefault(_buildLine);
 
@@ -43457,7 +43641,7 @@ function buildCircle(graphicsData, webGLData, webGLDataNativeLines) {
 
 exports.__esModule = true;
 
-var _CanvasRenderer = __webpack_require__(35);
+var _CanvasRenderer = __webpack_require__(34);
 
 var _CanvasRenderer2 = _interopRequireDefault(_CanvasRenderer);
 
@@ -45150,7 +45334,7 @@ function deprecation(core) {
 
 exports.__esModule = true;
 
-var _accessibleTarget = __webpack_require__(126);
+var _accessibleTarget = __webpack_require__(123);
 
 Object.defineProperty(exports, 'accessibleTarget', {
   enumerable: true,
@@ -45184,11 +45368,11 @@ var _core = __webpack_require__(6);
 
 var core = _interopRequireWildcard(_core);
 
-var _ismobilejs = __webpack_require__(70);
+var _ismobilejs = __webpack_require__(69);
 
 var _ismobilejs2 = _interopRequireDefault(_ismobilejs);
 
-var _accessibleTarget = __webpack_require__(126);
+var _accessibleTarget = __webpack_require__(123);
 
 var _accessibleTarget2 = _interopRequireDefault(_accessibleTarget);
 
@@ -46554,7 +46738,7 @@ var _core = __webpack_require__(6);
 
 var core = _interopRequireWildcard(_core);
 
-var _CanvasTinter = __webpack_require__(76);
+var _CanvasTinter = __webpack_require__(75);
 
 var _CanvasTinter2 = _interopRequireDefault(_CanvasTinter);
 
@@ -47172,7 +47356,7 @@ var _core = __webpack_require__(6);
 
 var core = _interopRequireWildcard(_core);
 
-var _ObservablePoint = __webpack_require__(94);
+var _ObservablePoint = __webpack_require__(91);
 
 var _ObservablePoint2 = _interopRequireDefault(_ObservablePoint);
 
@@ -47768,7 +47952,7 @@ var _Texture = __webpack_require__(19);
 
 var _Texture2 = _interopRequireDefault(_Texture);
 
-var _BaseTexture = __webpack_require__(30);
+var _BaseTexture = __webpack_require__(29);
 
 var _BaseTexture2 = _interopRequireDefault(_BaseTexture);
 
@@ -48286,7 +48470,7 @@ Object.defineProperty(exports, 'BlurFilter', {
   }
 });
 
-var _BlurXFilter = __webpack_require__(128);
+var _BlurXFilter = __webpack_require__(125);
 
 Object.defineProperty(exports, 'BlurXFilter', {
   enumerable: true,
@@ -48295,7 +48479,7 @@ Object.defineProperty(exports, 'BlurXFilter', {
   }
 });
 
-var _BlurYFilter = __webpack_require__(132);
+var _BlurYFilter = __webpack_require__(129);
 
 Object.defineProperty(exports, 'BlurYFilter', {
   enumerable: true,
@@ -48614,11 +48798,11 @@ var _core = __webpack_require__(6);
 
 var core = _interopRequireWildcard(_core);
 
-var _BlurXFilter = __webpack_require__(128);
+var _BlurXFilter = __webpack_require__(125);
 
 var _BlurXFilter2 = _interopRequireDefault(_BlurXFilter);
 
-var _BlurYFilter = __webpack_require__(132);
+var _BlurYFilter = __webpack_require__(129);
 
 var _BlurYFilter2 = _interopRequireDefault(_BlurYFilter);
 
@@ -49432,7 +49616,7 @@ exports.default = AlphaFilter;
 
 exports.__esModule = true;
 
-var _InteractionData = __webpack_require__(133);
+var _InteractionData = __webpack_require__(130);
 
 Object.defineProperty(exports, 'InteractionData', {
   enumerable: true,
@@ -49450,7 +49634,7 @@ Object.defineProperty(exports, 'InteractionManager', {
   }
 });
 
-var _interactiveTarget = __webpack_require__(136);
+var _interactiveTarget = __webpack_require__(133);
 
 Object.defineProperty(exports, 'interactiveTarget', {
   enumerable: true,
@@ -49459,7 +49643,7 @@ Object.defineProperty(exports, 'interactiveTarget', {
   }
 });
 
-var _InteractionTrackingData = __webpack_require__(135);
+var _InteractionTrackingData = __webpack_require__(132);
 
 Object.defineProperty(exports, 'InteractionTrackingData', {
   enumerable: true,
@@ -49468,7 +49652,7 @@ Object.defineProperty(exports, 'InteractionTrackingData', {
   }
 });
 
-var _InteractionEvent = __webpack_require__(134);
+var _InteractionEvent = __webpack_require__(131);
 
 Object.defineProperty(exports, 'InteractionEvent', {
   enumerable: true,
@@ -49495,15 +49679,15 @@ var _core = __webpack_require__(6);
 
 var core = _interopRequireWildcard(_core);
 
-var _InteractionData = __webpack_require__(133);
+var _InteractionData = __webpack_require__(130);
 
 var _InteractionData2 = _interopRequireDefault(_InteractionData);
 
-var _InteractionEvent = __webpack_require__(134);
+var _InteractionEvent = __webpack_require__(131);
 
 var _InteractionEvent2 = _interopRequireDefault(_InteractionEvent);
 
-var _InteractionTrackingData = __webpack_require__(135);
+var _InteractionTrackingData = __webpack_require__(132);
 
 var _InteractionTrackingData2 = _interopRequireDefault(_InteractionTrackingData);
 
@@ -49511,7 +49695,7 @@ var _eventemitter = __webpack_require__(25);
 
 var _eventemitter2 = _interopRequireDefault(_eventemitter);
 
-var _interactiveTarget = __webpack_require__(136);
+var _interactiveTarget = __webpack_require__(133);
 
 var _interactiveTarget2 = _interopRequireDefault(_interactiveTarget);
 
@@ -51266,7 +51450,7 @@ core.CanvasRenderer.registerPlugin('interaction', InteractionManager);
 exports.__esModule = true;
 exports.shared = exports.Resource = exports.textureParser = exports.getResourcePath = exports.spritesheetParser = exports.parseBitmapFontData = exports.bitmapFontParser = exports.Loader = undefined;
 
-var _bitmapFontParser = __webpack_require__(137);
+var _bitmapFontParser = __webpack_require__(134);
 
 Object.defineProperty(exports, 'bitmapFontParser', {
     enumerable: true,
@@ -51281,7 +51465,7 @@ Object.defineProperty(exports, 'parseBitmapFontData', {
     }
 });
 
-var _spritesheetParser = __webpack_require__(142);
+var _spritesheetParser = __webpack_require__(139);
 
 Object.defineProperty(exports, 'spritesheetParser', {
     enumerable: true,
@@ -51296,7 +51480,7 @@ Object.defineProperty(exports, 'getResourcePath', {
     }
 });
 
-var _textureParser = __webpack_require__(143);
+var _textureParser = __webpack_require__(140);
 
 Object.defineProperty(exports, 'textureParser', {
     enumerable: true,
@@ -51305,7 +51489,7 @@ Object.defineProperty(exports, 'textureParser', {
     }
 });
 
-var _resourceLoader = __webpack_require__(38);
+var _resourceLoader = __webpack_require__(37);
 
 Object.defineProperty(exports, 'Resource', {
     enumerable: true,
@@ -51314,7 +51498,7 @@ Object.defineProperty(exports, 'Resource', {
     }
 });
 
-var _Application = __webpack_require__(124);
+var _Application = __webpack_require__(121);
 
 var _Application2 = _interopRequireDefault(_Application);
 
@@ -51402,19 +51586,19 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _miniSignals = __webpack_require__(138);
+var _miniSignals = __webpack_require__(135);
 
 var _miniSignals2 = _interopRequireDefault(_miniSignals);
 
-var _parseUri = __webpack_require__(139);
+var _parseUri = __webpack_require__(136);
 
 var _parseUri2 = _interopRequireDefault(_parseUri);
 
-var _async = __webpack_require__(140);
+var _async = __webpack_require__(137);
 
 var async = _interopRequireWildcard(_async);
 
-var _Resource = __webpack_require__(78);
+var _Resource = __webpack_require__(77);
 
 var _Resource2 = _interopRequireDefault(_Resource);
 
@@ -52056,7 +52240,7 @@ exports.default = Loader;
 
 exports.__esModule = true;
 
-var _resourceLoader = __webpack_require__(38);
+var _resourceLoader = __webpack_require__(37);
 
 var _resourceLoader2 = _interopRequireDefault(_resourceLoader);
 
@@ -52066,15 +52250,15 @@ var _eventemitter = __webpack_require__(25);
 
 var _eventemitter2 = _interopRequireDefault(_eventemitter);
 
-var _textureParser = __webpack_require__(143);
+var _textureParser = __webpack_require__(140);
 
 var _textureParser2 = _interopRequireDefault(_textureParser);
 
-var _spritesheetParser = __webpack_require__(142);
+var _spritesheetParser = __webpack_require__(139);
 
 var _spritesheetParser2 = _interopRequireDefault(_spritesheetParser);
 
-var _bitmapFontParser = __webpack_require__(137);
+var _bitmapFontParser = __webpack_require__(134);
 
 var _bitmapFontParser2 = _interopRequireDefault(_bitmapFontParser);
 
@@ -52236,11 +52420,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 exports.blobMiddlewareFactory = blobMiddlewareFactory;
 
-var _Resource = __webpack_require__(78);
+var _Resource = __webpack_require__(77);
 
 var _Resource2 = _interopRequireDefault(_Resource);
 
-var _b = __webpack_require__(141);
+var _b = __webpack_require__(138);
 
 var _b2 = _interopRequireDefault(_b);
 
@@ -52325,7 +52509,7 @@ function blobMiddlewareFactory() {
 
 exports.__esModule = true;
 
-var _Mesh = __webpack_require__(39);
+var _Mesh = __webpack_require__(38);
 
 Object.defineProperty(exports, 'Mesh', {
   enumerable: true,
@@ -52352,7 +52536,7 @@ Object.defineProperty(exports, 'CanvasMeshRenderer', {
   }
 });
 
-var _Plane = __webpack_require__(144);
+var _Plane = __webpack_require__(141);
 
 Object.defineProperty(exports, 'Plane', {
   enumerable: true,
@@ -52399,7 +52583,7 @@ var _pixiGlCore = __webpack_require__(13);
 
 var _pixiGlCore2 = _interopRequireDefault(_pixiGlCore);
 
-var _Mesh = __webpack_require__(39);
+var _Mesh = __webpack_require__(38);
 
 var _Mesh2 = _interopRequireDefault(_Mesh);
 
@@ -52551,7 +52735,7 @@ var _core = __webpack_require__(6);
 
 var core = _interopRequireWildcard(_core);
 
-var _Mesh = __webpack_require__(39);
+var _Mesh = __webpack_require__(38);
 
 var _Mesh2 = _interopRequireDefault(_Mesh);
 
@@ -52840,7 +53024,7 @@ exports.__esModule = true;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Plane2 = __webpack_require__(144);
+var _Plane2 = __webpack_require__(141);
 
 var _Plane3 = _interopRequireDefault(_Plane2);
 
@@ -53230,7 +53414,7 @@ exports.default = NineSlicePlane;
 
 exports.__esModule = true;
 
-var _Mesh2 = __webpack_require__(39);
+var _Mesh2 = __webpack_require__(38);
 
 var _Mesh3 = _interopRequireDefault(_Mesh2);
 
@@ -54367,7 +54551,7 @@ core.WebGLRenderer.registerPlugin('particle', ParticleRenderer);
 
 exports.__esModule = true;
 
-var _Shader2 = __webpack_require__(37);
+var _Shader2 = __webpack_require__(36);
 
 var _Shader3 = _interopRequireDefault(_Shader2);
 
@@ -54419,7 +54603,7 @@ var _pixiGlCore = __webpack_require__(13);
 
 var _pixiGlCore2 = _interopRequireDefault(_pixiGlCore);
 
-var _createIndicesForQuads = __webpack_require__(77);
+var _createIndicesForQuads = __webpack_require__(76);
 
 var _createIndicesForQuads2 = _interopRequireDefault(_createIndicesForQuads);
 
@@ -54685,7 +54869,7 @@ Object.defineProperty(exports, 'canvas', {
   }
 });
 
-var _BasePrepare = __webpack_require__(79);
+var _BasePrepare = __webpack_require__(78);
 
 Object.defineProperty(exports, 'BasePrepare', {
   enumerable: true,
@@ -54694,7 +54878,7 @@ Object.defineProperty(exports, 'BasePrepare', {
   }
 });
 
-var _CountLimiter = __webpack_require__(145);
+var _CountLimiter = __webpack_require__(142);
 
 Object.defineProperty(exports, 'CountLimiter', {
   enumerable: true,
@@ -54728,7 +54912,7 @@ var _core = __webpack_require__(6);
 
 var core = _interopRequireWildcard(_core);
 
-var _BasePrepare2 = __webpack_require__(79);
+var _BasePrepare2 = __webpack_require__(78);
 
 var _BasePrepare3 = _interopRequireDefault(_BasePrepare2);
 
@@ -54855,7 +55039,7 @@ var _core = __webpack_require__(6);
 
 var core = _interopRequireWildcard(_core);
 
-var _BasePrepare2 = __webpack_require__(79);
+var _BasePrepare2 = __webpack_require__(78);
 
 var _BasePrepare3 = _interopRequireDefault(_BasePrepare2);
 
@@ -55049,7 +55233,7 @@ exports.default = {
 
         //console.log(tempPoints)
         if (tempPoints < 10) {
-            tempPoints = tempPoints.toFixed(2);
+            //tempPoints = tempPoints.toFixed(2)
             return tempPoints;
         }
         if (tempPoints < 1000) {
@@ -55177,7 +55361,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "GlowFilter", function() { return __WEBPACK_IMPORTED_MODULE_13__pixi_filter_glow__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pixi_filter_godray__ = __webpack_require__(306);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "GodrayFilter", function() { return __WEBPACK_IMPORTED_MODULE_14__pixi_filter_godray__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pixi_filter_kawase_blur__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pixi_filter_kawase_blur__ = __webpack_require__(143);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "KawaseBlurFilter", function() { return __WEBPACK_IMPORTED_MODULE_15__pixi_filter_kawase_blur__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pixi_filter_motion_blur__ = __webpack_require__(307);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MotionBlurFilter", function() { return __WEBPACK_IMPORTED_MODULE_16__pixi_filter_motion_blur__["a"]; });
@@ -55246,7 +55430,7 @@ var vertex="attribute vec2 aVertexPosition;\nattribute vec2 aTextureCoord;\n\nun
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdvancedBloomFilter; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_pixi_js__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_pixi_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_pixi_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pixi_filter_kawase_blur__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pixi_filter_kawase_blur__ = __webpack_require__(143);
 /*!
  * @pixi/filter-advanced-bloom - v2.5.0
  * Compiled Wed, 10 Jan 2018 17:38:59 UTC
@@ -56005,7 +56189,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _stringify = __webpack_require__(147);
+var _stringify = __webpack_require__(144);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
@@ -56115,7 +56299,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _stringify = __webpack_require__(147);
+var _stringify = __webpack_require__(144);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
@@ -56180,21 +56364,61 @@ var CookieManager = function () {
 				shards: 0
 			}
 		};
-		this.economy = {};
-		this.stats = {};
-		this.resources = {};
-		this.progression = {};
-		this.board = {};
-		this.modifyers = {};
-		this.economy = this.sortCookieData('economy', this.defaultEconomy);
-		this.stats = this.sortCookieData('stats', this.defaultStats);
-		this.resources = this.sortCookieData('resources', this.defaultResources);
-		this.progression = this.sortCookieData('progression', this.defaultProgression);
-		this.board = this.sortCookieData('board', this.defaultBoard);
-		this.modifyers = this.sortCookieData('modifyers', this.defaultModifyers);
+
+		this.version = '0.0.11';
+		this.cookieVersion = this.getCookie('cookieVersion');
+		//alert(this.cookieVersion != this.version)
+		if (!this.cookieVersion || this.cookieVersion != this.version) {
+			this.storeObject('cookieVersion', this.version);
+			this.wipeData2();
+		}
+		this.fullData = this.getCookie('fullData');
+		if (!this.fullData) {
+			this.fullData = {};
+		}
+
+		this.storeObject('fullData', this.fullData);
 	}
 
 	(0, _createClass3.default)(CookieManager, [{
+		key: 'sortCookie',
+		value: function sortCookie(id) {
+			if (!this.fullData[id]) {
+
+				this.fullData[id] = {};
+				this.fullData[id]['board'] = this.sortCookieData('board', this.defaultBoard);
+				this.fullData[id]['progression'] = this.sortCookieData('progression', this.defaultProgression);
+				this.fullData[id]['economy'] = this.sortCookieData('economy', this.defaultEconomy);
+			}
+
+			this.storeObject('fullData', this.fullData);
+		}
+	}, {
+		key: 'generateCookieData',
+		value: function generateCookieData(nameID, defaultData) {
+			var force = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+			var cookie = this.getCookie(nameID);
+			if (force) {
+				cookie = null;
+			}
+			var target = void 0;
+			if (cookie) {
+				target = cookie;
+
+				for (var key in defaultData) {
+					var element = defaultData[key];
+					if (target[key] === undefined) {
+						target[key] = element;
+					}
+				}
+			} else {
+				target = defaultData;
+			}
+
+			return target;
+		}
+	}, {
 		key: 'sortCookieData',
 		value: function sortCookieData(nameID, defaultData) {
 			var force = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
@@ -56223,10 +56447,11 @@ var CookieManager = function () {
 		}
 	}, {
 		key: 'updateResources',
-		value: function updateResources(total) {
-			this.economy.resources = total;
-			this.economy.lastChanged = Date.now() / 1000 | 0;
-			this.storeObject('economy', this.economy);
+		value: function updateResources(total, id) {
+			this.fullData[id].economy.resources = total;
+			this.fullData[id].economy.lastChanged = Date.now() / 1000 | 0;
+			//this.storeObject('economy', this.economy)
+			this.storeObject('fullData', this.fullData);
 		}
 	}, {
 		key: 'resetAllCollects',
@@ -56278,29 +56503,29 @@ var CookieManager = function () {
 		}
 	}, {
 		key: 'addMergePiece',
-		value: function addMergePiece(mergeData, i, j) {
+		value: function addMergePiece(mergeData, i, j, id) {
 			if (mergeData == null) {
-				this.board.entities[i + ";" + j] = null;
+				this.fullData[id].board.entities[i + ";" + j] = null;
 			} else {
-				this.board.entities[i + ";" + j] = {
+				this.fullData[id].board.entities[i + ";" + j] = {
 					nameID: mergeData.rawData.nameID
 				};
 			}
-			this.storeObject('board', this.board);
+			this.storeObject('fullData', this.fullData);
 		}
 	}, {
 		key: 'addMergePieceUpgrade',
-		value: function addMergePieceUpgrade(mergeData) {
+		value: function addMergePieceUpgrade(mergeData, id) {
 
-			if (this.board.dataProgression[mergeData.rawData.nameID] == null) {
-				this.board.dataProgression[mergeData.rawData.nameID] = {
+			if (this.fullData[id].board.dataProgression[mergeData.rawData.nameID] == null) {
+				this.fullData[id].board.dataProgression[mergeData.rawData.nameID] = {
 					currentLevel: mergeData.currentLevel
 				};
 			} else {
-				this.board.dataProgression[mergeData.rawData.nameID].currentLevel = mergeData.currentLevel;
+				this.fullData[id].board.dataProgression[mergeData.rawData.nameID].currentLevel = mergeData.currentLevel;
 			}
-
-			this.storeObject('board', this.board);
+			this.storeObject('fullData', this.fullData);
+			//this.storeObject('board', this.board)
 		}
 	}, {
 		key: 'endTutorial',
@@ -56310,27 +56535,17 @@ var CookieManager = function () {
 		}
 	}, {
 		key: 'saveBoardLevel',
-		value: function saveBoardLevel(level) {
-			this.board.currentBoardLevel = level;
-			this.storeObject('board', this.board);
+		value: function saveBoardLevel(level, id) {
+			this.fullData[id].board.currentBoardLevel = level;
+			this.storeObject('fullData', this.fullData);
+			//this.storeObject('board', this.board)
 		}
 	}, {
 		key: 'saveBoardProgress',
-		value: function saveBoardProgress(boardProgress) {
-			this.board.boardLevel = boardProgress;
-			this.storeObject('board', this.board);
-		}
-	}, {
-		key: 'saveEnemyLife',
-		value: function saveEnemyLife(value) {
-			this.progression.currentEnemyLife = value;
-			this.storeObject('progression', this.progression);
-		}
-	}, {
-		key: 'saveEnemyLevel',
-		value: function saveEnemyLevel(level) {
-			this.progression.currentEnemyLevel = level;
-			this.storeObject('progression', this.progression);
+		value: function saveBoardProgress(boardProgress, id) {
+			this.fullData[id].board.boardLevel = boardProgress;
+			this.storeObject('fullData', this.fullData);
+			//this.storeObject('board', this.board)
 		}
 	}, {
 		key: 'updateModifyers',
@@ -56358,12 +56573,16 @@ var CookieManager = function () {
 		}
 	}, {
 		key: 'getEconomy',
-		value: function getEconomy() {
+		value: function getEconomy(id) {
+			return this.fullData[id].economy;
 			return this.getCookie('economy');
 		}
 	}, {
 		key: 'getResources',
-		value: function getResources() {
+		value: function getResources(id) {
+			console.log(id, this.fullData[id].resources);
+
+			return this.fullData[id].resources;
 			return this.getCookie('resources');
 		}
 	}, {
@@ -56378,8 +56597,9 @@ var CookieManager = function () {
 		}
 	}, {
 		key: 'getBoard',
-		value: function getBoard() {
-			return this.getCookie('board');
+		value: function getBoard(id) {
+			console.log('getBoard', id, this.fullData[id].board);
+			return this.fullData[id].board; //this.getCookie('board')
 		}
 	}, {
 		key: 'createCookie',
@@ -56425,6 +56645,17 @@ var CookieManager = function () {
 				window.location.reload();
 			} catch (e) {}
 		}
+	}, {
+		key: 'wipeData2',
+		value: function wipeData2() {
+			this.resetCookie();
+
+			try {
+				window.localStorage.clear();
+				this.storeObject('cookieVersion', this.version);
+				window.location.reload();
+			} catch (e) {}
+		}
 	}]);
 	return CookieManager;
 }();
@@ -56465,7 +56696,7 @@ var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _howler = __webpack_require__(334);
 
-var _AbstractSoundManager2 = __webpack_require__(149);
+var _AbstractSoundManager2 = __webpack_require__(146);
 
 var _AbstractSoundManager3 = _interopRequireDefault(_AbstractSoundManager2);
 
@@ -56715,10 +56946,10 @@ module.exports = __webpack_require__(15).Object.getPrototypeOf;
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 Object.getPrototypeOf(O)
-var toObject = __webpack_require__(91);
-var $getPrototypeOf = __webpack_require__(90);
+var toObject = __webpack_require__(88);
+var $getPrototypeOf = __webpack_require__(87);
 
-__webpack_require__(148)('getPrototypeOf', function () {
+__webpack_require__(145)('getPrototypeOf', function () {
   return function getPrototypeOf(it) {
     return $getPrototypeOf(toObject(it));
   };
@@ -56754,8 +56985,8 @@ $export($export.S, 'Object', { setPrototypeOf: __webpack_require__(330).set });
 
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
-var isObject = __webpack_require__(28);
-var anObject = __webpack_require__(31);
+var isObject = __webpack_require__(27);
+var anObject = __webpack_require__(30);
 var check = function (O, proto) {
   anObject(O);
   if (!isObject(proto) && proto !== null) throw TypeError(proto + ": can't set as prototype!");
@@ -56764,7 +56995,7 @@ module.exports = {
   set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
     function (test, buggy, set) {
       try {
-        set = __webpack_require__(83)(Function.call, __webpack_require__(64).f(Object.prototype, '__proto__').set, 2);
+        set = __webpack_require__(80)(Function.call, __webpack_require__(63).f(Object.prototype, '__proto__').set, 2);
         set(test, []);
         buggy = !(test instanceof Array);
       } catch (e) { buggy = true; }
@@ -56802,7 +57033,7 @@ module.exports = function create(P, D) {
 
 var $export = __webpack_require__(20);
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-$export($export.S, 'Object', { create: __webpack_require__(55) });
+$export($export.S, 'Object', { create: __webpack_require__(54) });
 
 
 /***/ }),
@@ -59714,7 +59945,7 @@ $export($export.S, 'Object', { create: __webpack_require__(55) });
   };
 })();
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
 /* 335 */
@@ -59747,7 +59978,7 @@ var _inherits2 = __webpack_require__(5);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _AbstractSoundManager2 = __webpack_require__(149);
+var _AbstractSoundManager2 = __webpack_require__(146);
 
 var _AbstractSoundManager3 = _interopRequireDefault(_AbstractSoundManager2);
 
@@ -59853,14 +60084,20 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 var assets = [{
-	"id": "asas",
-	"url": "assets/json\\asas"
+	"id": "baseGameConfigFairy",
+	"url": "assets/json\\baseGameConfigFairy.json"
 }, {
-	"id": "baseGameConfig",
-	"url": "assets/json\\baseGameConfig.json"
+	"id": "baseGameConfigHumans",
+	"url": "assets/json\\baseGameConfigHumans.json"
 }, {
-	"id": "entities",
-	"url": "assets/json\\entities.json"
+	"id": "baseGameConfigMonster",
+	"url": "assets/json\\baseGameConfigMonster.json"
+}, {
+	"id": "fairies",
+	"url": "assets/json\\fairies.json"
+}, {
+	"id": "humans",
+	"url": "assets/json\\humans.json"
 }, {
 	"id": "localization_DE",
 	"url": "assets/json\\localization_DE.json"
@@ -59892,11 +60129,14 @@ var assets = [{
 	"id": "localization_TR",
 	"url": "assets/json\\localization_TR.json"
 }, {
-	"id": "localization_ZH",
-	"url": "assets/json\\localization_ZH.json"
-}, {
 	"id": "modifyers",
 	"url": "assets/json\\modifyers.json"
+}, {
+	"id": "monsters",
+	"url": "assets/json\\monsters.json"
+}, {
+	"id": "localization_ZH",
+	"url": "assets/json\\localization_ZH.json"
 }, {
 	"id": "resources",
 	"url": "assets/json\\resources.json"
@@ -60191,7 +60431,7 @@ module.exports = exports["default"];
 /* 339 */
 /***/ (function(module, exports) {
 
-module.exports = {"default":["image/particles/particles.json","image/pattern2/pattern2.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
+module.exports = {"default":["image/pattern2/pattern2.json","image/particles/particles.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
 
 /***/ }),
 /* 340 */
@@ -60220,7 +60460,7 @@ var _possibleConstructorReturn2 = __webpack_require__(4);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _get2 = __webpack_require__(48);
+var _get2 = __webpack_require__(46);
 
 var _get3 = _interopRequireDefault(_get2);
 
@@ -60479,9 +60719,9 @@ module.exports = function getOwnPropertyDescriptor(it, key) {
 
 // 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
 var toIObject = __webpack_require__(24);
-var $getOwnPropertyDescriptor = __webpack_require__(64).f;
+var $getOwnPropertyDescriptor = __webpack_require__(63).f;
 
-__webpack_require__(148)('getOwnPropertyDescriptor', function () {
+__webpack_require__(145)('getOwnPropertyDescriptor', function () {
   return function getOwnPropertyDescriptor(it, key) {
     return $getOwnPropertyDescriptor(toIObject(it), key);
   };
@@ -60496,7 +60736,7 @@ __webpack_require__(148)('getOwnPropertyDescriptor', function () {
 
 
 Object.defineProperty(exports, "__esModule", {
-        value: true
+    value: true
 });
 
 var _getPrototypeOf = __webpack_require__(3);
@@ -60515,7 +60755,7 @@ var _possibleConstructorReturn2 = __webpack_require__(4);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _get2 = __webpack_require__(48);
+var _get2 = __webpack_require__(46);
 
 var _get3 = _interopRequireDefault(_get2);
 
@@ -60555,15 +60795,15 @@ var _Screen2 = __webpack_require__(360);
 
 var _Screen3 = _interopRequireDefault(_Screen2);
 
-var _PuzzleBackground = __webpack_require__(361);
+var _PuzzleBackground = __webpack_require__(151);
 
 var _PuzzleBackground2 = _interopRequireDefault(_PuzzleBackground);
 
-var _CastleBackground = __webpack_require__(362);
+var _CastleBackground = __webpack_require__(152);
 
 var _CastleBackground2 = _interopRequireDefault(_CastleBackground);
 
-var _StandardPop = __webpack_require__(363);
+var _StandardPop = __webpack_require__(361);
 
 var _StandardPop2 = _interopRequireDefault(_StandardPop);
 
@@ -60571,7 +60811,7 @@ var _gsap = __webpack_require__(17);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
-var _UIButton = __webpack_require__(26);
+var _UIButton = __webpack_require__(39);
 
 var _UIButton2 = _interopRequireDefault(_UIButton);
 
@@ -60579,898 +60819,737 @@ var _utils = __webpack_require__(14);
 
 var _utils2 = _interopRequireDefault(_utils);
 
-var _UIList = __webpack_require__(40);
+var _UIList = __webpack_require__(47);
 
 var _UIList2 = _interopRequireDefault(_UIList);
 
-var _OpenChestPopUp = __webpack_require__(364);
+var _OpenChestPopUp = __webpack_require__(363);
 
 var _OpenChestPopUp2 = _interopRequireDefault(_OpenChestPopUp);
 
-var _SellAllPopUp = __webpack_require__(365);
-
-var _SellAllPopUp2 = _interopRequireDefault(_SellAllPopUp);
-
-var _BonusConfirmation = __webpack_require__(366);
-
-var _BonusConfirmation2 = _interopRequireDefault(_BonusConfirmation);
-
-var _UILabelButton = __webpack_require__(41);
-
-var _UILabelButton2 = _interopRequireDefault(_UILabelButton);
-
-var _LevelMeter = __webpack_require__(367);
+var _LevelMeter = __webpack_require__(365);
 
 var _LevelMeter2 = _interopRequireDefault(_LevelMeter);
+
+var _MonsterBackground = __webpack_require__(366);
+
+var _MonsterBackground2 = _interopRequireDefault(_MonsterBackground);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MergeScreen = function (_Screen) {
-        (0, _inherits3.default)(MergeScreen, _Screen);
-
-        function MergeScreen(label) {
-                (0, _classCallCheck3.default)(this, MergeScreen);
-
-                // let a = ''
-                // for (let index = 1; index <= 20; index++) {
-                //     console.log(Math.pow(1.1, index * 0.5))
-
-                //     a += (Math.pow(1.1, index * 0.5) + 0.28).toFixed(3) + ',\n'
-                // }
-
-                // console.log(a)
-
-                var _this = (0, _possibleConstructorReturn3.default)(this, (MergeScreen.__proto__ || (0, _getPrototypeOf2.default)(MergeScreen)).call(this, label));
-
-                window.baseConfigGame = PIXI.loader.resources['baseGameConfig'].data.baseGame;
-                window.baseEntities = PIXI.loader.resources[window.baseConfigGame.entitiesData].data;
-                window.baseModifyers = PIXI.loader.resources[window.baseConfigGame.modifyersData].data;
-                window.gameEconomy = new _GameEconomy2.default();
-                window.gameModifyers = new _GameModifyers2.default();
-
-                _this.systemsList = [];
-
-                _this.areaConfig = window.baseConfigGame.area;
-                if (!_this.areaConfig.bottomArea) {
-                        _this.areaConfig.bottomArea = 0.2;
-                }
-                if (!_this.areaConfig.topArea) {
-                        _this.areaConfig.topArea = 0.2;
-                }
-                if (!_this.areaConfig.gameArea) {
-                        _this.areaConfig.gameArea = { w: 0.5, h: 0.5 };
-                }
-                if (!_this.areaConfig.resourcesArea) {
-                        _this.areaConfig.resourcesArea = { w: 0.5, h: 0.5 };
-                }
-
-                setTimeout(function () {
-                        _this.castleBackground = new _CastleBackground2.default();
-                        _this.puzzleBackground = new _PuzzleBackground2.default();
-                        _this.addChildAt(_this.puzzleBackground, 0);
-                        _this.addChildAt(_this.castleBackground, 0);
-                }, 10);
-                _this.container = new PIXI.Container();
-                _this.addChild(_this.container);
-                _this.frontLayer = new PIXI.Container();
-                _this.addChild(_this.frontLayer);
-                _this.uiLayer = new PIXI.Container();
-                _this.addChild(_this.uiLayer);
-
-                _this.backBlocker = new PIXI.Graphics().beginFill(0).drawRect(0, 0, config.width, config.height);
-                _this.backBlocker.alpha = 0.5;
-                _this.backBlocker.interactive = true;
-                _this.backBlocker.buttonMode = true;
-                _this.backBlocker.visible = false;
-
-                _this.frontLayer.addChild(_this.backBlocker);
-                _this.gridWrapper = new PIXI.Graphics().lineStyle(1, 0x132215).drawRect(0, 0, config.width * _this.areaConfig.gameArea.w, config.height * _this.areaConfig.gameArea.h);
-                _this.container.addChild(_this.gridWrapper);
-                _this.gridWrapper.visible = false;
-                //this.gridWrapper.alpha = 0;
-
-                _this.resourcesWrapper = new PIXI.Graphics().lineStyle(1, 0x132215).drawRect(0, 0, config.width * _this.areaConfig.resourcesArea.w, config.height * _this.areaConfig.resourcesArea.h);
-                _this.container.addChild(_this.resourcesWrapper);
-                _this.resourcesWrapper.visible = false;
-                //this.resourcesWrapper.alpha = 0;
-
-                _this.resourcesWrapperRight = new PIXI.Graphics().lineStyle(1, 0x132215).drawRect(0, 0, config.width * _this.areaConfig.resourcesArea.w, config.height * _this.areaConfig.resourcesArea.h);
-                _this.container.addChild(_this.resourcesWrapperRight);
-                _this.resourcesWrapperRight.visible = false;
-                //this.resourcesWrapperRight.alpha = 0;
-
-                _this.mergeSystemContainer = new PIXI.Container();
-                _this.container.addChild(_this.mergeSystemContainer);
-
-                _this.prizeContainer = new PIXI.Container();
-                _this.container.addChild(_this.prizeContainer);
-
-                _this.resourcesContainer = new PIXI.Container();
-                _this.container.addChild(_this.resourcesContainer);
-
-                _this.resourcesContainerRight = new PIXI.Container();
-                _this.container.addChild(_this.resourcesContainerRight);
-
-                _this.enemiesContainer = new PIXI.Container();
-                _this.container.addChild(_this.enemiesContainer);
-
-                _this.uiContainer = new PIXI.Container();
-                _this.container.addChild(_this.uiContainer);
-
-                _this.bottomContainer = new PIXI.Container();
-                _this.container.addChild(_this.bottomContainer);
-
-                _this.topContainer = new PIXI.Container();
-                _this.container.addChild(_this.topContainer);
-
-                _this.dataTiles = [];
-                _this.dataResourcesTiles = [];
-
-                _this.allMergeData = [];
-
-                _this.rawMergeDataList = [];
-                for (var index = 0; index < window.baseEntities.mergeEntities.list.length; index++) {
-                        var mergeData = new _MergerData2.default(window.baseEntities.mergeEntities.list[index], index);
-                        mergeData.type = window.baseEntities.mergeEntities.list[index].type;
-                        _this.rawMergeDataList.push(mergeData);
-                        _this.allMergeData.push(mergeData);
-                }
-
-                _this.mergeSystem1 = new _MergeSystem2.default({
-                        mainContainer: _this.mergeSystemContainer,
-                        uiContainer: _this.uiContainer,
-                        wrapper: _this.gridWrapper,
-                        topContainer: _this.topContainer
-                }, window.baseConfigGame, _this.rawMergeDataList);
-
-                _this.addSystem(_this.mergeSystem1);
-
-                _this.mergeSystem1.enemySystem = _this.enemiesSystem;
-
-                _this.mergeSystem1.onParticles.add(_this.addParticles.bind(_this));
-                _this.mergeSystem1.onDealDamage.add(_this.addDamageParticles.bind(_this));
-                _this.mergeSystem1.onPopLabel.add(_this.popLabel.bind(_this));
-                _this.mergeSystem1.onGetResources.add(_this.addResourceParticles.bind(_this));
-                _this.mergeSystem1.onBoardLevelUpdate.add(_this.onMergeSystemUpdate.bind(_this));
-                _this.mergeSystem1.updateAvailableSlots.add(function (availables) {
-                        _this.mergeItemsShop.updateLocks(availables);
-                });
-
-                _this.entityDragSprite = new PIXI.Sprite.from('');
-                _this.addChild(_this.entityDragSprite);
-                _this.entityDragSprite.visible = false;
-
-                _this.mousePosition = {
-                        x: 0,
-                        y: 0
-                };
-
-                _this.interactive = true;
-                _this.on('mousemove', _this.onMouseMove.bind(_this)).on('touchmove', _this.onMouseMove.bind(_this));
-
-                _this.statsList = new _UIList2.default();
-                _this.statsList.w = 100;
-                _this.statsList.h = 80;
-                _this.container.addChild(_this.statsList);
-
-                _this.totalCoinsContainer = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('grid1'), 20, 20, 20, 5);
-                _this.totalCoinsContainer.width = _this.statsList.w;
-                _this.totalCoinsContainer.height = 40;
-                _this.totalCoins = new PIXI.Text('', LABELS.LABEL2);
-                _this.totalCoins.style.fontSize = 14;
-                _this.totalCoinsContainer.addChild(_this.totalCoins);
-                _this.statsList.addElement(_this.totalCoinsContainer);
-
-                _this.resourcesTexture = new PIXI.Sprite.from('coin');
-                _this.resourcesTexture.scale.set(_this.totalCoinsContainer.height / _this.resourcesTexture.height * 0.5);
-                _this.resourcesTexture.x = -30;
-                _this.resourcesTexture.y = -3;
-                _this.totalCoins.addChild(_this.resourcesTexture);
-
-                _this.CoinsPerSecondCounter = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('grid1'), 20, 20, 20, 5);
-                _this.CoinsPerSecondCounter.width = _this.statsList.w;
-                _this.CoinsPerSecondCounter.height = 40;
-
-                _this.coisPerSecond = new PIXI.Text('0', LABELS.LABEL2);
-                _this.coisPerSecond.style.fontSize = 14;
-                _this.CoinsPerSecondCounter.addChild(_this.coisPerSecond);
-                _this.statsList.addElement(_this.CoinsPerSecondCounter);
-
-                _this.shardsTexture = new PIXI.Sprite.from('coin-s');
-                _this.coisPerSecond.addChild(_this.shardsTexture);
-                _this.shardsTexture.scale.set(_this.CoinsPerSecondCounter.height / _this.shardsTexture.height * 0.5);
-                _this.shardsTexture.x = -30;
-                _this.shardsTexture.y = -3;
-
-                _this.statsList.updateVerticalList();
-
-                _this.particleSystem = new _ParticleSystem2.default();
-                _this.frontLayer.addChild(_this.particleSystem);
-
-                _this.levelMeter = new _LevelMeter2.default();
-                _this.container.addChild(_this.levelMeter);
-
-                _this.helperButtonList = new _UIList2.default();
-                _this.helperButtonList.h = 350;
-                _this.helperButtonList.w = 60;
-                _this.speedUpToggle = new _UIButton2.default(0x002299, 'fast_forward_icon');
-                _this.helperButtonList.addElement(_this.speedUpToggle);
-                _this.speedUpToggle.onClick.add(function () {
-                        if (window.TIME_SCALE > 1) {
-                                window.TIME_SCALE = 1;
-                        } else {
-                                window.TIME_SCALE = 30;
-                        }
-
-                        _gsap2.default.globalTimeScale(window.TIME_SCALE);
-                });
-
-                _this.clearData = new _UIButton2.default(0x002299, 'icon_reset');
-                _this.helperButtonList.addElement(_this.clearData);
-                _this.clearData.onClick.add(function () {
-                        COOKIE_MANAGER.wipeData();
-                });
-
-                _this.addCash = new _UIButton2.default(0x002299, 'coin');
-                _this.helperButtonList.addElement(_this.addCash);
-                _this.addCash.onClick.add(function () {
-                        window.gameEconomy.addResources(80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 * 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 * 400000000000000000000000);
-                });
-
-                _this.addRandomShip = new _UIButton2.default(0x002299, 'vampire');
-                _this.helperButtonList.addElement(_this.addRandomShip);
-                _this.addRandomShip.onClick.add(function () {
-                        _this.mergeSystem1.addShipBasedOnMax();
-                });
-
-                // this.autoCollectToggle = new UIButton1(0x002299, 'shards')
-                // this.helperButtonList.addElement(this.autoCollectToggle)
-                // this.autoCollectToggle.onClick.add(() => {
-                //     window.gameModifyers.addShards(Math.max(10, window.gameModifyers.permanentBonusData.shards * 0.2));
-                //     this.refreshToggles();
-
-                // })
-
-                _this.autoMergeToggle = new _UIButton2.default(0x002299, 'auto-merge-icon');
-                _this.helperButtonList.addElement(_this.autoMergeToggle);
-                _this.autoMergeToggle.onClick.add(function () {
-                        if (window.gameModifyers.modifyersData.autoMerge >= 2) {
-                                window.gameModifyers.modifyersData.autoMerge = 1;
-                        } else {
-                                window.gameModifyers.modifyersData.autoMerge = 2;
-                                //window.gameModifyers.updateModifyer('autoMerge')
-                        }
-                });
-                _this.refreshToggles();
-
-                _this.helperButtonList.updateVerticalList();
-                _this.container.addChild(_this.helperButtonList);
-
-                _this.helperButtonList.visible = false;
-                _this.helperButtonList.scale.set(0.85);
-                var buttonSize = 70;
-                _this.shopButtonsList = new _UIList2.default();
-                _this.shopButtonsList.w = buttonSize;
-                _this.shopButtonsList.h = buttonSize * 2.5;
-                _this.container.addChild(_this.shopButtonsList);
-
-                _this.currentOpenPopUp = null;
-
-                _this.autoSpend = new _UILabelButton2.default(80, 40, 'large-square-pattern-green');
-                //this.container.addChild(this.autoSpend)
-                _this.autoSpend.addCenterLabel(window.localizationManager.getLabel('auto-buy'), 0xffffff, 0.9);
-
-                _this.shopsLabel = new PIXI.Text(window.localizationManager.getLabel('shops'), LABELS.LABEL1);
-                _this.container.addChild(_this.shopsLabel);
-                _this.shopsLabel.style.fontSize = 24;
-                _this.shopsLabel.style.stroke = 0x002299;
-                _this.shopsLabel.style.strokeThickness = 6;
-
-                window.getCurrency = function (e) {
-                        var a = Math.pow(2, e);
-                        console.log(a);
-                };
-
-                window.getLevels = function (e) {
-                        var a = e < 6 ? 6 * (e + 1) * (e + 1) - 6 * (e + 1) : e < 7 ? 5 * (e + 1) * (e + 1) - 5 * (e + 1) : e < 8 ? 4 * (e + 1) * (e + 1) - 4 * (e + 1) : e < 9 ? 3 * (e + 1) * (e + 1) - 3 * (e + 1) : e < 10 ? 2 * (e + 1) * (e + 1) - 2 * (e + 1) : (e + 1) * (e + 1) - (e + 1);
-                        return a;
-                };
-
-                window.getPrices = function (e) {
-                        var s = 50;
-                        for (var _index = 0; _index < e; _index++) {
-                                s *= 2.5;
-                        }
-                        s = Math.floor(s);
-                        console.log(s * 10);
-                };
-                _this.openMergeShop = new _UIButton2.default(0x002299, 'vampire', 0xFFFFFF, buttonSize, buttonSize);
-                _this.openMergeShop.updateIconScale(0.75);
-                _this.openMergeShop.addBadge('icon_increase');
-                _this.openMergeShop.newItem = new PIXI.Sprite.fromFrame('new_item');
-                _this.openMergeShop.newItem.scale.set(0.7);
-                _this.openMergeShop.newItem.anchor.set(0);
-                _this.openMergeShop.newItem.position.set(-buttonSize / 2);
-                _this.openMergeShop.newItem.visible = false;
-                _this.openMergeShop.addChild(_this.openMergeShop.newItem);
-                _this.shopButtonsList.addElement(_this.openMergeShop);
-                _this.openMergeShop.onClick.add(function () {
-                        _this.openPopUp(_this.mergeItemsShop);
-                });
-
-                _this.shopButtonsList.updateVerticalList();
-
-                window.TIME_SCALE = 1;
-
-                _this.uiPanels = [];
-
-                // this.entityShop = new EntityShop([this.resourceSystem, this.resourceSystemRight]);
-                // this.uiLayer.addChild(this.entityShop);
-                // this.entityShop.hide();
-
-
-                // this.entityShop.addItems(this.allRawResources)
-
-                _this.mergeItemsShop = new _MergeItemsShop2.default([_this.mergeSystem1]);
-                _this.uiLayer.addChild(_this.mergeItemsShop);
-                _this.mergeItemsShop.addItems(_this.rawMergeDataList);
-                _this.mergeItemsShop.hide();
-                _this.mergeItemsShop.onAddEntity.add(function (entity) {
-                        _this.mergeSystem1.buyEntity(entity);
-                });
-
-                _this.standardPopUp = new _StandardPop2.default('any', _this.screenManager);
-                _this.uiLayer.addChild(_this.standardPopUp);
-
-                // this.bonusPopUp = new BonusConfirmation('bonus', this.screenManager)
-                // this.uiLayer.addChild(this.bonusPopUp)
-
-                _this.openChestPopUp = new _OpenChestPopUp2.default('chest', _this.screenManager);
-                _this.uiLayer.addChild(_this.openChestPopUp);
-
-                _this.sellAllPopUp = new _SellAllPopUp2.default('sell', _this.screenManager);
-                _this.uiLayer.addChild(_this.sellAllPopUp);
-
-                //this.uiPanels.push(this.entityShop)
-                _this.uiPanels.push(_this.mergeItemsShop);
-                _this.uiPanels.push(_this.standardPopUp);
-                // this.uiPanels.push(this.bonusPopUp)
-                _this.uiPanels.push(_this.openChestPopUp);
-                _this.uiPanels.push(_this.sellAllPopUp);
-
-                _this.mergeItemsShop.onPossiblePurchase.add(function (canBuy) {
-                        _this.openMergeShop.newItem.visible = canBuy;
-                });
-
-                _this.sumStart = 0;
-                _this.savedResources = COOKIE_MANAGER.getResources();
-
-                _this.shopButtonsList.updateVerticalList();
-                _this.savedEconomy = COOKIE_MANAGER.getEconomy();
-
-                var now = Date.now() / 1000 | 0;
-                var diff = 0; //now - this.savedEconomy.lastChanged
-
-                if (_this.tutorialStep > 1 && diff > 60 && _this.sumStart > 10) {
-                        var params = {
-                                label: window.localizationManager.getLabel('offline-money'),
-                                value1: _utils2.default.formatPointsLabel(_this.sumStart),
-                                value2: _utils2.default.formatPointsLabel(_this.sumStart * 2),
-                                onConfirm: _this.collectStartAmountDouble.bind(_this),
-                                onCancel: _this.collectStartAmount.bind(_this)
-                        };
-                        _this.standardPopUpShow(params);
-                }
-
-                _this.forcePauseSystemsTimer = 0.05;
-
-                _this.resetWhiteShape = new PIXI.Graphics().beginFill(0xFFFFFF).drawRect(-config.width * 4, -config.height * 4, config.width * 8, config.height * 8);
-                _this.addChild(_this.resetWhiteShape);
-                _this.resetWhiteShape.visible = false;
-                //this.mergeItemsShop.show()
-
-                _this.tutorialStep = window.COOKIE_MANAGER.getStats().tutorialStep;
-
-                // this.gameTutorial = new GameTutorial(this)
-                // if (this.tutorialStep == 0) {
-                //     if (window.gameEconomy.currentResources > 10) {
-                //         COOKIE_MANAGER.endTutorial(2);
-                //     } else {
-
-                //         this.startTutorial();
-                //         this.addChild(this.gameTutorial);
-                //     }
-                // }
-
-
-                return _this;
+    (0, _inherits3.default)(MergeScreen, _Screen);
+
+    function MergeScreen(label) {
+        (0, _classCallCheck3.default)(this, MergeScreen);
+
+        var _this = (0, _possibleConstructorReturn3.default)(this, (MergeScreen.__proto__ || (0, _getPrototypeOf2.default)(MergeScreen)).call(this, label));
+
+        window.baseConfigGame = PIXI.loader.resources['baseGameConfigMonster'].data.baseGame;
+        window.baseConfigGameFairy = PIXI.loader.resources['baseGameConfigFairy'].data.baseGame;
+        window.baseConfigGameHumans = PIXI.loader.resources['baseGameConfigHumans'].data.baseGame;
+        window.baseMonsters = PIXI.loader.resources['monsters'].data;
+        window.baseFairies = PIXI.loader.resources['fairies'].data;
+        window.baseHumans = PIXI.loader.resources['humans'].data;
+        window.gameEconomy = new _GameEconomy2.default();
+        window.gameModifyers = new _GameModifyers2.default();
+
+        _this.systemsList = [];
+
+        _this.areaConfig = window.baseConfigGame.area;
+        if (!_this.areaConfig.bottomArea) {
+            _this.areaConfig.bottomArea = 0.2;
+        }
+        if (!_this.areaConfig.topArea) {
+            _this.areaConfig.topArea = 0.2;
+        }
+        if (!_this.areaConfig.gameArea) {
+            _this.areaConfig.gameArea = { w: 0.5, h: 0.5 };
+        }
+        if (!_this.areaConfig.resourcesArea) {
+            _this.areaConfig.resourcesArea = { w: 0.5, h: 0.5 };
         }
 
-        (0, _createClass3.default)(MergeScreen, [{
-                key: 'startTutorial',
-                value: function startTutorial() {
-                        setTimeout(function () {}, 51);
-                        this.gameTutorial.start();
+        setTimeout(function () {
+            _this.monsterBackground = new _MonsterBackground2.default();
+            _this.addChildAt(_this.monsterBackground, 0);
+        }, 10);
+        _this.container = new PIXI.Container();
+        _this.addChild(_this.container);
+        _this.frontLayer = new PIXI.Container();
+        _this.addChild(_this.frontLayer);
+        _this.uiLayer = new PIXI.Container();
+        _this.addChild(_this.uiLayer);
+
+        _this.backBlocker = new PIXI.Graphics().beginFill(0).drawRect(0, 0, config.width, config.height);
+        _this.backBlocker.alpha = 0.5;
+        _this.backBlocker.interactive = true;
+        _this.backBlocker.buttonMode = true;
+        _this.backBlocker.visible = false;
+
+        _this.frontLayer.addChild(_this.backBlocker);
+        _this.gridWrapper = new PIXI.Graphics().lineStyle(10, 0x132215).drawRect(0, 0, config.width * _this.areaConfig.gameArea.w, config.height * _this.areaConfig.gameArea.h);
+        _this.container.addChild(_this.gridWrapper);
+        _this.gridWrapper.visible = false;
+        //this.gridWrapper.alpha = 0.5;
+
+        _this.mergeSystemContainer = new PIXI.Container();
+        _this.container.addChild(_this.mergeSystemContainer);
+
+        _this.prizeContainer = new PIXI.Container();
+        _this.container.addChild(_this.prizeContainer);
+
+        _this.uiContainer = new PIXI.Container();
+        _this.container.addChild(_this.uiContainer);
+
+        _this.topContainer = new PIXI.Container();
+        _this.container.addChild(_this.topContainer);
+
+        _this.dataTiles = [];
+        _this.dataResourcesTiles = [];
+        _this.allMergeData = [];
+        _this.uiPanels = [];
+        _this.mergeSystemsList = [];
+
+        var containers = {
+            mainContainer: _this.mergeSystemContainer,
+            uiContainer: _this.uiContainer,
+            wrapper: _this.gridWrapper,
+            topContainer: _this.topContainer
+        };
+
+        _this.registerSystem(containers, window.baseConfigGame, window.baseMonsters, 'monsters', true);
+        _this.registerSystem(containers, window.baseConfigGameFairy, window.baseFairies, 'fairies', false);
+        _this.registerSystem(containers, window.baseConfigGameHumans, window.baseHumans, 'humans', false);
+
+        _this.entityDragSprite = new PIXI.Sprite.from('');
+        _this.addChild(_this.entityDragSprite);
+        _this.entityDragSprite.visible = false;
+
+        _this.mousePosition = {
+            x: 0,
+            y: 0
+        };
+
+        _this.interactive = true;
+        _this.on('mousemove', _this.onMouseMove.bind(_this)).on('touchmove', _this.onMouseMove.bind(_this));
+
+        _this.statsList = new _UIList2.default();
+        _this.statsList.w = 100;
+        _this.statsList.h = 80;
+        _this.container.addChild(_this.statsList);
+
+        _this.totalCoinsContainer = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('grid1'), 20, 20, 20, 5);
+        _this.totalCoinsContainer.width = _this.statsList.w;
+        _this.totalCoinsContainer.height = 40;
+        _this.totalCoins = new PIXI.Text('', LABELS.LABEL2);
+        _this.totalCoins.style.fontSize = 14;
+        _this.totalCoinsContainer.addChild(_this.totalCoins);
+        _this.statsList.addElement(_this.totalCoinsContainer);
+
+        _this.resourcesTexture = new PIXI.Sprite.from('coin');
+        _this.resourcesTexture.scale.set(_this.totalCoinsContainer.height / _this.resourcesTexture.height * 0.5);
+        _this.resourcesTexture.x = -30;
+        _this.resourcesTexture.y = -3;
+        _this.totalCoins.addChild(_this.resourcesTexture);
+
+        _this.coinsPerSecondCounter = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('grid1'), 20, 20, 20, 5);
+        _this.coinsPerSecondCounter.width = _this.statsList.w;
+        _this.coinsPerSecondCounter.height = 40;
+
+        _this.coisPerSecond = new PIXI.Text('0', LABELS.LABEL2);
+        _this.coisPerSecond.style.fontSize = 14;
+        _this.coinsPerSecondCounter.addChild(_this.coisPerSecond);
+        _this.statsList.addElement(_this.coinsPerSecondCounter);
+
+        _this.shardsTexture = new PIXI.Sprite.from('coin-s');
+        _this.coisPerSecond.addChild(_this.shardsTexture);
+        _this.shardsTexture.scale.set(_this.coinsPerSecondCounter.height / _this.shardsTexture.height * 0.5);
+        _this.shardsTexture.x = -30;
+        _this.shardsTexture.y = -3;
+
+        _this.statsList.updateVerticalList();
+
+        _this.particleSystem = new _ParticleSystem2.default();
+        _this.frontLayer.addChild(_this.particleSystem);
+
+        _this.levelMeter = new _LevelMeter2.default();
+        _this.container.addChild(_this.levelMeter);
+
+        _this.addHelpers();
+
+        var buttonSize = 70;
+        _this.shopButtonsList = new _UIList2.default();
+        _this.shopButtonsList.w = buttonSize;
+        _this.shopButtonsList.h = buttonSize * 2.5;
+        _this.container.addChild(_this.shopButtonsList);
+
+        _this.currentOpenPopUp = null;
+
+        _this.shopsLabel = new PIXI.Text(window.localizationManager.getLabel('shops'), LABELS.LABEL1);
+        _this.container.addChild(_this.shopsLabel);
+        _this.shopsLabel.style.fontSize = 24;
+        _this.shopsLabel.style.stroke = 0x002299;
+        _this.shopsLabel.style.strokeThickness = 6;
+
+        _this.openMergeShop = new _UIButton2.default(0x002299, 'vampire', 0xFFFFFF, buttonSize, buttonSize);
+        _this.openMergeShop.updateIconScale(0.75);
+        _this.openMergeShop.addBadge('icon_increase');
+        _this.openMergeShop.newItem = new PIXI.Sprite.fromFrame('new_item');
+        _this.openMergeShop.newItem.scale.set(0.7);
+        _this.openMergeShop.newItem.anchor.set(0);
+        _this.openMergeShop.newItem.position.set(-buttonSize / 2);
+        _this.openMergeShop.newItem.visible = false;
+        _this.openMergeShop.addChild(_this.openMergeShop.newItem);
+        _this.shopButtonsList.addElement(_this.openMergeShop);
+        _this.openMergeShop.onClick.add(function () {
+            _this.openPopUp(_this.activeMergeSystem.shop);
+        });
+
+        _this.shopButtonsList.updateVerticalList();
+
+        window.TIME_SCALE = 1;
+
+        _this.standardPopUp = new _StandardPop2.default('any', _this.screenManager);
+        _this.uiLayer.addChild(_this.standardPopUp);
+
+        // this.bonusPopUp = new BonusConfirmation('bonus', this.screenManager)
+        // this.uiLayer.addChild(this.bonusPopUp)
+
+        _this.openChestPopUp = new _OpenChestPopUp2.default('chest', _this.screenManager);
+        _this.uiLayer.addChild(_this.openChestPopUp);
+
+        _this.uiPanels.push(_this.standardPopUp);
+        _this.uiPanels.push(_this.openChestPopUp);
+
+        _this.sumStart = 0;
+        //this.savedResources = COOKIE_MANAGER.getResources('monster');
+
+
+        _this.shopButtonsList.updateVerticalList();
+
+        var now = Date.now() / 1000 | 0;
+        var diff = 0; //now - this.savedEconomy.lastChanged
+
+        if (_this.tutorialStep > 1 && diff > 60 && _this.sumStart > 10) {
+            var params = {
+                label: window.localizationManager.getLabel('offline-money'),
+                value1: _utils2.default.formatPointsLabel(_this.sumStart),
+                value2: _utils2.default.formatPointsLabel(_this.sumStart * 2),
+                onConfirm: _this.collectStartAmountDouble.bind(_this),
+                onCancel: _this.collectStartAmount.bind(_this)
+            };
+            _this.standardPopUpShow(params);
+        }
+
+        _this.forcePauseSystemsTimer = 0.05;
+
+        _this.resetWhiteShape = new PIXI.Graphics().beginFill(0xFFFFFF).drawRect(-config.width * 4, -config.height * 4, config.width * 8, config.height * 8);
+        _this.addChild(_this.resetWhiteShape);
+        _this.resetWhiteShape.visible = false;
+        //this.mergeItemsShop.show()
+
+        //this.tutorialStep = window.COOKIE_MANAGER.getStats().tutorialStep;
+
+
+        // this.gameTutorial = new GameTutorial(this)
+        // if (this.tutorialStep == 0) {
+        //     if (window.gameEconomy.currentResources > 10) {
+        //         COOKIE_MANAGER.endTutorial(2);
+        //     } else {
+
+        //         this.startTutorial();
+        //         this.addChild(this.gameTutorial);
+        //     }
+        // }
+
+        // this.mergeSystemsList.push(this.mergeSystemFairies)
+        _this.activeMergeSystemID = 0;
+        _this.activeMergeSystem = _this.mergeSystemsList[_this.activeMergeSystemID];
+
+        _this.toggleSystems = new _UIButton2.default(0x002299, 'vampire', 0xFFFFFF, buttonSize, buttonSize);
+        _this.container.addChild(_this.toggleSystems);
+        _this.toggleSystems.y = buttonSize / 2 + 10;
+        _this.toggleSystems.onClick.add(function () {
+            _this.mergeSystemsList.forEach(function (element) {
+                element.visible = false;
+            });
+
+            _this.activeMergeSystemID++;
+            _this.activeMergeSystemID %= _this.mergeSystemsList.length;
+
+            _this.mergeSystemsList[_this.activeMergeSystemID].visible = true;
+            _this.activeMergeSystem = _this.mergeSystemsList[_this.activeMergeSystemID];
+
+            _this.refreshSystemVisuals();
+        });
+        _this.refreshSystemVisuals();
+        //this.savedEconomy = COOKIE_MANAGER.getEconomy(this.activeMergeSystem.systemID);
+
+
+        return _this;
+    }
+
+    (0, _createClass3.default)(MergeScreen, [{
+        key: 'registerSystem',
+        value: function registerSystem(containers, baseData, baseMergeData, slug) {
+            var _this2 = this;
+
+            var visible = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
+
+
+            COOKIE_MANAGER.sortCookie(slug);
+            var rawMergeDataList = [];
+            for (var index = 0; index < baseMergeData.mergeEntities.list.length; index++) {
+                var mergeData = new _MergerData2.default(baseMergeData.mergeEntities.list[index], index);
+                mergeData.type = baseMergeData.mergeEntities.list[index].type;
+                rawMergeDataList.push(mergeData);
+                this.allMergeData.push(mergeData);
+            }
+
+            var mergeSystem = new _MergeSystem2.default(containers, baseData, rawMergeDataList, slug);
+            this.addSystem(mergeSystem);
+            mergeSystem.enemySystem = this.enemiesSystem;
+
+            mergeSystem.onParticles.add(this.addParticles.bind(this));
+            mergeSystem.onDealDamage.add(this.addDamageParticles.bind(this));
+            mergeSystem.onPopLabel.add(this.popLabel.bind(this));
+            mergeSystem.onGetResources.add(this.addResourceParticles.bind(this));
+            mergeSystem.onBoardLevelUpdate.add(this.onMergeSystemUpdate.bind(this));
+
+            var mergeItemsShop = new _MergeItemsShop2.default([mergeSystem]);
+            this.uiLayer.addChild(mergeItemsShop);
+            mergeItemsShop.addItems(rawMergeDataList);
+            mergeItemsShop.hide();
+            mergeItemsShop.onAddEntity.add(function (entity) {
+                mergeSystem.buyEntity(entity);
+            });
+
+            mergeSystem.updateAvailableSlots.add(function (availables) {
+                mergeItemsShop.updateLocks(availables);
+                //POPUP
+            });
+            mergeSystem.updateMaxLevel.add(function (max) {
+                _this2.monsterBackground.updateMax(max);
+                //POPUP
+            });
+
+            mergeSystem.shop = mergeItemsShop;
+            this.uiPanels.push(mergeItemsShop);
+
+            this.mergeSystemsList.push(mergeSystem);
+
+            mergeSystem.visible = visible;
+        }
+    }, {
+        key: 'refreshSystemVisuals',
+        value: function refreshSystemVisuals() {
+            var _this3 = this;
+
+            if (!this.activeMergeSystem.isLoaded) {
+                this.activeMergeSystem.loadData();
+            }
+
+            window.gameEconomy.updateBoard(this.activeMergeSystem.systemID);
+            this.resourcesTexture.texture = PIXI.Texture.fromImage(this.activeMergeSystem.baseData.visuals.coin);
+
+            setTimeout(function () {
+                _this3.activeMergeSystem.activeSystem();
+            }, 1);
+        }
+    }, {
+        key: 'startTutorial',
+        value: function startTutorial() {
+            setTimeout(function () {}, 51);
+            this.gameTutorial.start();
+        }
+    }, {
+        key: 'endTutorial',
+        value: function endTutorial() {}
+    }, {
+        key: 'onConfirmBonus',
+        value: function onConfirmBonus(target) {
+            this.openPopUp(this.bonusPopUp, {
+                texture: target.mainButton.icon.texture,
+                description: target.fullDescription,
+                shortDescription: target.shortDescription,
+                onConfirm: function onConfirm() {
+                    target.confirmBonus();
                 }
-        }, {
-                key: 'endTutorial',
-                value: function endTutorial() {}
-        }, {
-                key: 'onConfirmBonus',
-                value: function onConfirmBonus(target) {
-                        this.openPopUp(this.bonusPopUp, {
-                                texture: target.mainButton.icon.texture,
-                                description: target.fullDescription,
-                                shortDescription: target.shortDescription,
-                                onConfirm: function onConfirm() {
-                                        target.confirmBonus();
-                                }
-                        });
+            });
+        }
+    }, {
+        key: 'onPrizeCollected',
+        value: function onPrizeCollected(prizes) {
+            var _this4 = this;
+
+            if (!prizes) return;
+            if (prizes.money > 0) {
+                window.gameEconomy.addResources(prizes.money);
+                var toLocal = this.particleSystem.toLocal({ x: config.width / 2, y: config.height / 2 });
+                var customData = {};
+                customData.texture = 'coin';
+                customData.scale = 0.02;
+                customData.gravity = 500;
+                customData.alphaDecress = 0;
+                customData.ignoreMatchRotation = true;
+                var coinPosition = this.coinTexture.getGlobalPosition();
+
+                var toLocalTarget = this.particleSystem.toLocal(coinPosition);
+
+                customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.2 + Math.random() * 0.75 };
+                this.particleSystem.show(toLocal, 3, customData);
+            }
+            if (prizes.shards > 0) {
+                window.gameModifyers.addShards(prizes.shards);
+                setTimeout(function () {
+                    var toLocal = _this4.particleSystem.toLocal({ x: config.width / 2, y: config.height / 2 });
+                    var customData = {};
+                    customData.texture = 'shards';
+                    customData.scale = 0.025;
+                    customData.gravity = 200;
+                    customData.alphaDecress = 0;
+                    customData.ignoreMatchRotation = true;
+
+                    var coinPosition = _this4.shardsTexture.getGlobalPosition();
+
+                    var toLocalTarget = _this4.particleSystem.toLocal(coinPosition);
+
+                    customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.2 + Math.random() * 0.75 };
+                    _this4.particleSystem.show(toLocal, 3, customData);
+                }, 50);
+            }
+            if (prizes.ship > 0) {
+                this.mergeSystemMonsters.addShipBasedOnMax(prizes.ship);
+            }
+        }
+    }, {
+        key: 'addSystem',
+        value: function addSystem(system) {
+            if (!this.systemsList.includes(system)) {
+                this.systemsList.push(system);
+            }
+        }
+    }, {
+        key: 'collectStartAmountDouble',
+        value: function collectStartAmountDouble() {
+            window.DO_REWARD(function () {
+                //this.resourceSystem.collectCustomStartAmount(this.sumStart * 2)
+            });
+        }
+    }, {
+        key: 'collectStartAmount',
+        value: function collectStartAmount() {
+            //this.resourceSystem.collectCustomStartAmount(this.sumStart)
+        }
+    }, {
+        key: 'standardPopUpShow',
+        value: function standardPopUpShow(params) {
+            this.openPopUp(this.standardPopUp, params);
+        }
+    }, {
+        key: 'openPopUp',
+        value: function openPopUp(target, params) {
+
+            this.uiPanels.forEach(function (element) {
+                if (element.visible) {
+                    element.hide();
                 }
-        }, {
-                key: 'onPrizeCollected',
-                value: function onPrizeCollected(prizes) {
-                        var _this2 = this;
+            });
 
-                        if (!prizes) return;
-                        if (prizes.money > 0) {
-                                window.gameEconomy.addResources(prizes.money);
-                                var toLocal = this.particleSystem.toLocal({ x: config.width / 2, y: config.height / 2 });
-                                var customData = {};
-                                customData.texture = 'coin';
-                                customData.scale = 0.02;
-                                customData.gravity = 500;
-                                customData.alphaDecress = 0;
-                                customData.ignoreMatchRotation = true;
-                                var coinPosition = this.coinTexture.getGlobalPosition();
+            this.currentOpenPopUp = target;
+            target.show(params);
+        }
+    }, {
+        key: 'popLabel',
+        value: function popLabel(targetPosition, label) {
+            var toLocal = this.particleSystem.toLocal(targetPosition);
 
-                                var toLocalTarget = this.particleSystem.toLocal(coinPosition);
+            this.particleSystem.popLabel(toLocal, "+" + label, 0, 1, 1, LABELS.LABEL1);
+        }
+    }, {
+        key: 'popLabelDamage',
+        value: function popLabelDamage(targetPosition, label) {
+            var toLocal = this.particleSystem.toLocal(targetPosition);
 
-                                customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.2 + Math.random() * 0.75 };
-                                this.particleSystem.show(toLocal, 3, customData);
-                        }
-                        if (prizes.shards > 0) {
-                                window.gameModifyers.addShards(prizes.shards);
-                                setTimeout(function () {
-                                        var toLocal = _this2.particleSystem.toLocal({ x: config.width / 2, y: config.height / 2 });
-                                        var customData = {};
-                                        customData.texture = 'shards';
-                                        customData.scale = 0.025;
-                                        customData.gravity = 200;
-                                        customData.alphaDecress = 0;
-                                        customData.ignoreMatchRotation = true;
+            this.particleSystem.popLabel(toLocal, "+" + label, 0, 1, 1, LABELS.LABEL_DAMAGE);
+        }
+    }, {
+        key: 'addParticles',
+        value: function addParticles(targetPosition, customData, quant) {
+            var toLocal = this.particleSystem.toLocal(targetPosition);
+            this.particleSystem.show(toLocal, quant, customData);
+        }
+    }, {
+        key: 'addDamageParticles',
+        value: function addDamageParticles(targetPosition, customData, label, quant) {
+            var toLocal = this.particleSystem.toLocal(targetPosition);
+            this.particleSystem.show(toLocal, quant, customData);
+            //this.particleSystem.popLabel(targetPosition, "+" + label, 0, 1, 1, LABELS.LABEL1)
+        }
+    }, {
+        key: 'onMergeSystemUpdate',
+        value: function onMergeSystemUpdate(data) {
+            this.levelMeter.updateData(data);
+        }
+    }, {
+        key: 'addResourceParticles',
+        value: function addResourceParticles(targetPosition, customData, totalResources, quantParticles) {
+            var showParticles = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
 
-                                        var coinPosition = _this2.shardsTexture.getGlobalPosition();
+            window.gameEconomy.addResources(totalResources, this.activeMergeSystem.systemID);
 
-                                        var toLocalTarget = _this2.particleSystem.toLocal(coinPosition);
+            if (totalResources < 1000) {
+                this.popLabelDamage(targetPosition, totalResources);
+            } else {
+                this.popLabelDamage(targetPosition, _utils2.default.formatPointsLabel(totalResources));
+            }
+            if (quantParticles <= 0) {
+                return;
+            }
+            var toLocal = this.particleSystem.toLocal(targetPosition);
+            if (!showParticles) {
+                quantParticles = 1;
+            }
 
-                                        customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.2 + Math.random() * 0.75 };
-                                        _this2.particleSystem.show(toLocal, 3, customData);
-                                }, 50);
-                        }
-                        if (prizes.ship > 0) {
-                                this.mergeSystem1.addShipBasedOnMax(prizes.ship);
-                        }
+            for (var index = 0; index < quantParticles; index++) {
+                //customData.target = { x: coinPosition.x - frontLayer.x, y: coinPosition.y - frontLayer.y, timer: 0.2 + Math.random() * 0.75 }
+                //customData.target = { x: toLocal.x, y: toLocal.y - 50, timer: 0 }
+                customData.gravity = 0;
+                customData.ignoreMatchRotation = true;
+                this.particleSystem.show(toLocal, 1, customData);
+            }
+
+            if (showParticles) {
+                //this.particleSystem.popLabel(toLocal, "+" + utils.formatPointsLabel(totalResources), 0, 1, 1, LABELS.LABEL1)
+            }
+        }
+    }, {
+        key: 'onMouseMove',
+        value: function onMouseMove(e) {
+
+            if (this.currentOpenPopUp && this.currentOpenPopUp.visible) {
+                return;
+            }
+
+            this.systemsList.forEach(function (element) {
+                element.updateMouseSystems(e);
+            });
+            this.mousePosition = e.data.global;
+            if (!this.draggingEntity) {
+                return;
+            }
+            if (this.entityDragSprite.visible) {
+                this.entityDragSprite.x = this.mousePosition.x;
+                this.entityDragSprite.y = this.mousePosition.y;
+            }
+        }
+    }, {
+        key: 'onAdded',
+        value: function onAdded() {}
+    }, {
+        key: 'build',
+        value: function build(param) {
+            (0, _get3.default)(MergeScreen.prototype.__proto__ || (0, _getPrototypeOf2.default)(MergeScreen.prototype), 'build', this).call(this);
+            this.addEvents();
+        }
+    }, {
+        key: 'update',
+        value: function update(delta) {
+            delta *= window.TIME_SCALE * window.gameModifyers.bonusData.gameSpeed;
+
+            //this.gameTutorial.update(delta);
+
+            if (this.forcePauseSystemsTimer > 0) {
+                this.forcePauseSystemsTimer -= delta;
+            } else {
+                this.systemsList.forEach(function (element) {
+                    element.updateSystems(delta);
+                });
+                this.particleSystem.update(delta);
+            }
+
+            this.uiPanels.forEach(function (element) {
+                if (element.update) {
+                    element.update(delta);
                 }
-        }, {
-                key: 'getShardBonusValue',
-                value: function getShardBonusValue() {
-                        var progression = COOKIE_MANAGER.getProgression();
+            });
 
-                        var coef = 1.008;
-                        return Math.pow(Math.pow(coef, 7), Math.max(progression.currentEnemyLevel - 100, 1)) + window.gameModifyers.permanentBonusData.shards * 0.25;
+            this.totalCoins.text = _utils2.default.formatPointsLabel(window.gameEconomy.currentResources);
+            _utils2.default.centerObject(this.totalCoins, this.totalCoinsContainer);
+            this.totalCoins.x = 40;
+
+            this.coisPerSecond.text = _utils2.default.formatPointsLabel(this.activeMergeSystem.rps);
+            _utils2.default.centerObject(this.coisPerSecond, this.coinsPerSecondCounter);
+            this.coisPerSecond.x = 40;
+
+            this.timestamp = Date.now() / 1000 | 0;
+
+            this.monsterBackground.update(delta);
+        }
+    }, {
+        key: 'resize',
+        value: function resize(resolution, innerResolution) {
+            var _this5 = this;
+
+            if (!resolution || !resolution.width || !resolution.height || !innerResolution) {
+                return;
+            }
+
+            var newRes = { width: resolution.width * this.screenManager.scale.x };
+
+            if (this.monsterBackground) {
+
+                this.monsterBackground.resize(resolution, innerResolution);
+                this.monsterBackground.x = config.width / 2;
+                this.monsterBackground.y = config.height / 2;
+            }
+
+            var toGlobal = this.toLocal({ x: 0, y: innerResolution.height });
+
+            this.gridWrapper.x = config.width / 2 - this.gridWrapper.width / 2;
+            this.gridWrapper.y = config.height * (1 - this.areaConfig.bottomArea) - this.gridWrapper.height;
+
+            var topRight = game.getBorder('topRight', this);
+            var toGlobalBack = this.toLocal({ x: 0, y: innerResolution.height });
+
+            if (!window.isPortrait) {
+                this.statsList.scale.set(1);
+
+                console.log("HERE");
+                var scale = 1;
+                this.gridWrapper.x = toGlobalBack.x + 20;
+                this.gridWrapper.y = config.height - (this.monsterBackground.puzzleBackground.pivot.y + 25) * scale; //this.puzzleBackground.y - this.puzzleBackground.pivot.y
+
+                this.gridWrapper.width = this.monsterBackground.puzzleBackground.usableArea.width * scale;
+                this.gridWrapper.height = this.monsterBackground.puzzleBackground.usableArea.height * scale;
+
+                this.shopButtonsList.x = this.shopButtonsList.width;
+                this.shopButtonsList.y = 10;
+
+                this.shopButtonsList.scale.set(1.8);
+            } else {
+
+                this.statsList.scale.set(1.1);
+                this.mergeSystemContainer.scale.set(1);
+
+                this.levelMeter.scale.set(1);
+                this.levelMeter.x = 0;
+                this.gridWrapper.width = config.width * this.areaConfig.gameArea.w;
+                this.gridWrapper.height = config.height * this.areaConfig.gameArea.h;
+
+                this.statsList.x = config.width - 110;
+                this.statsList.y = 10;
+
+                this.shopsLabel.x = this.shopButtonsList.x;
+                this.shopsLabel.y = this.shopButtonsList.y + 50 - this.shopsLabel.height;
+                this.shopsLabel.visible = false;
+            }
+
+            this.statsList.scale.set(1.5);
+            this.statsList.x = topRight.x - 110 * 1.5;
+            this.shopsLabel.visible = false;
+            this.statsList.y = 10;
+            this.helperButtonList.y = 80;
+            this.helperButtonList.x = toGlobalBack.x + 60;
+
+            this.shopButtonsList.x = topRight.x - this.shopButtonsList.width / 2 - 20;
+            this.shopButtonsList.y = 130;
+            this.shopButtonsList.scale.set(1.5);
+
+            this.uiPanels.forEach(function (element) {
+                element.x = config.width / 2;
+                element.y = config.height / 2;
+            });
+
+            this.systemsList.forEach(function (element) {
+                element.resize(resolution, innerResolution, _this5.resourcesWrapperRight);
+            });
+        }
+    }, {
+        key: 'transitionOut',
+        value: function transitionOut(nextScreen) {
+            this.removeEvents();
+            this.nextScreen = nextScreen;
+            setTimeout(function () {
+                this.endTransitionOut();
+            }.bind(this), 0);
+        }
+    }, {
+        key: 'transitionIn',
+        value: function transitionIn() {
+            (0, _get3.default)(MergeScreen.prototype.__proto__ || (0, _getPrototypeOf2.default)(MergeScreen.prototype), 'transitionIn', this).call(this);
+        }
+    }, {
+        key: 'destroy',
+        value: function destroy() {}
+    }, {
+        key: 'removeEvents',
+        value: function removeEvents() {}
+    }, {
+        key: 'addEvents',
+        value: function addEvents() {
+            this.removeEvents();
+        }
+    }, {
+        key: 'addHelpers',
+        value: function addHelpers() {
+            var _this6 = this;
+
+            this.helperButtonList = new _UIList2.default();
+            this.helperButtonList.h = 350;
+            this.helperButtonList.w = 60;
+            this.speedUpToggle = new _UIButton2.default(0x002299, 'fast_forward_icon');
+            this.helperButtonList.addElement(this.speedUpToggle);
+            this.speedUpToggle.onClick.add(function () {
+                if (window.TIME_SCALE > 1) {
+                    window.TIME_SCALE = 1;
+                } else {
+                    window.TIME_SCALE = 30;
                 }
-        }, {
-                key: 'resetAll',
-                value: function resetAll(shardsTotal) {
-                        var _this3 = this;
 
-                        this.resetWhiteShape.visible = true;
-                        this.resetWhiteShape.alpha = 1;
-                        _gsap2.default.to(this.resetWhiteShape, 1, {
-                                delay: 0.5, alpha: 0, onComplete: function onComplete() {
-                                        _this3.resetWhiteShape.visible = false;
-                                }
-                        });
-                        var progression = COOKIE_MANAGER.getProgression();
-                        var shards = 10;
+                _gsap2.default.globalTimeScale(window.TIME_SCALE);
+            });
 
-                        var dps = Math.max(1, this.mergeSystem1.dps * 0.01) / (2000 / (progression.currentEnemyLevel + 1));
-                        var res = 1; //Math.max(1, window.gameEconomy.currentResources)
+            this.clearData = new _UIButton2.default(0x002299, 'icon_reset');
+            this.helperButtonList.addElement(this.clearData);
+            this.clearData.onClick.add(function () {
+                COOKIE_MANAGER.wipeData();
+            });
 
-                        shards = shardsTotal; //this.getShardBonusValue()
-                        shards = Math.max(shards, 10);
+            this.addCash = new _UIButton2.default(0x002299, 'coin');
+            this.helperButtonList.addElement(this.addCash);
+            this.addCash.onClick.add(function () {
+                window.gameEconomy.addResources(8000000000000);
+            });
 
-                        window.gameEconomy.resetAll();
-                        COOKIE_MANAGER.resetProgression();
-                        window.gameModifyers.resetModifyers();
+            this.addRandomShip = new _UIButton2.default(0x002299, 'vampire');
+            this.helperButtonList.addElement(this.addRandomShip);
+            this.addRandomShip.onClick.add(function () {
+                _this6.mergeSystemMonsters.addShipBasedOnMax();
+            });
 
-                        this.systemsList.forEach(function (element) {
-                                if (element.resetSystem) {
-                                        element.resetSystem();
-                                }
-                        });
-                        this.allMergeData.forEach(function (element) {
-                                element.reset();
-                        });
-                        COOKIE_MANAGER.resetProgression();
-                        window.gameEconomy.resetAll();
-
-                        window.gameEconomy.addResources(4);
-                        //window.gameModifyers.permanentBonusData.shards        
-
-                        window.gameModifyers.addShards(Math.round(shards));
-                        this.particleSystem.killAll();
-                        this.forcePauseSystemsTimer = 0.5;
-
-                        for (var index = 0; index < 8; index++) {
-                                setTimeout(function () {
-                                        var toLocal = _this3.particleSystem.toLocal({ x: config.width / 2, y: config.height / 2 });
-                                        var customData = {};
-                                        customData.texture = 'shards';
-                                        customData.scale = 0.02 + Math.random() * 0.01;
-                                        customData.gravity = 200;
-                                        customData.alphaDecress = 0;
-                                        var coinPosition = _this3.shardsTexture.parent.getGlobalPosition();
-                                        var toLocalTarget = _this3.particleSystem.toLocal(coinPosition);
-
-                                        customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.2 + Math.random() * 0.75 };
-                                        _this3.particleSystem.show(toLocal, 1, customData);
-                                }, 20 * index);
-                        }
-
-                        setTimeout(function () {
-                                _this3.systemsList.forEach(function (element) {
-                                        if (element.resetSystem) {
-                                                element.resetSystem();
-                                        }
-                                });
-                                _this3.allMergeData.forEach(function (element) {
-                                        element.reset();
-                                });
-                        }, 10);
+            this.autoMergeToggle = new _UIButton2.default(0x002299, 'auto-merge-icon');
+            this.helperButtonList.addElement(this.autoMergeToggle);
+            this.autoMergeToggle.onClick.add(function () {
+                if (window.gameModifyers.modifyersData.autoMerge >= 2) {
+                    window.gameModifyers.modifyersData.autoMerge = 1;
+                } else {
+                    window.gameModifyers.modifyersData.autoMerge = 2;
+                    //window.gameModifyers.updateModifyer('autoMerge')
                 }
-        }, {
-                key: 'refreshToggles',
-                value: function refreshToggles() {
-                        var toggleValue = window.gameModifyers.modifyersData.autoCollectResource;
+            });
 
-                        // if (toggleValue) {
-                        //     this.autoCollectToggle.enableState();
-                        // } else {
-                        //     this.autoCollectToggle.disableState();
-                        // }
-                }
-        }, {
-                key: 'addSystem',
-                value: function addSystem(system) {
-                        if (!this.systemsList.includes(system)) {
-                                this.systemsList.push(system);
-                        }
-                }
-        }, {
-                key: 'collectStartAmountDouble',
-                value: function collectStartAmountDouble() {
-                        window.DO_REWARD(function () {
-                                //this.resourceSystem.collectCustomStartAmount(this.sumStart * 2)
-                        });
-                }
-        }, {
-                key: 'collectStartAmount',
-                value: function collectStartAmount() {
-                        //this.resourceSystem.collectCustomStartAmount(this.sumStart)
-                }
-        }, {
-                key: 'standardPopUpShow',
-                value: function standardPopUpShow(params) {
-                        this.openPopUp(this.standardPopUp, params);
-                }
-        }, {
-                key: 'openPopUp',
-                value: function openPopUp(target, params) {
+            this.helperButtonList.updateVerticalList();
+            this.container.addChild(this.helperButtonList);
 
-                        this.uiPanels.forEach(function (element) {
-                                if (element.visible) {
-                                        element.hide();
-                                }
-                        });
-
-                        this.currentOpenPopUp = target;
-                        target.show(params);
-                }
-        }, {
-                key: 'popLabel',
-                value: function popLabel(targetPosition, label) {
-                        var toLocal = this.particleSystem.toLocal(targetPosition);
-
-                        this.particleSystem.popLabel(toLocal, "+" + label, 0, 1, 1, LABELS.LABEL1);
-                }
-        }, {
-                key: 'popLabelDamage',
-                value: function popLabelDamage(targetPosition, label) {
-                        var toLocal = this.particleSystem.toLocal(targetPosition);
-
-                        this.particleSystem.popLabel(toLocal, "+" + label, 0, 1, 1, LABELS.LABEL_DAMAGE);
-                }
-        }, {
-                key: 'addParticles',
-                value: function addParticles(targetPosition, customData, quant) {
-                        var toLocal = this.particleSystem.toLocal(targetPosition);
-                        this.particleSystem.show(toLocal, quant, customData);
-                }
-        }, {
-                key: 'addDamageParticles',
-                value: function addDamageParticles(targetPosition, customData, label, quant) {
-                        var toLocal = this.particleSystem.toLocal(targetPosition);
-                        this.particleSystem.show(toLocal, quant, customData);
-                        //this.particleSystem.popLabel(targetPosition, "+" + label, 0, 1, 1, LABELS.LABEL1)
-                }
-        }, {
-                key: 'onMergeSystemUpdate',
-                value: function onMergeSystemUpdate(data) {
-                        this.levelMeter.updateData(data);
-                }
-        }, {
-                key: 'addResourceParticles',
-                value: function addResourceParticles(targetPosition, customData, totalResources, quantParticles) {
-                        var showParticles = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
-
-                        window.gameEconomy.addResources(totalResources);
-
-                        if (totalResources < 1000) {
-                                this.popLabelDamage(targetPosition, totalResources);
-                        } else {
-                                this.popLabelDamage(targetPosition, _utils2.default.formatPointsLabel(totalResources));
-                        }
-                        if (quantParticles <= 0) {
-                                return;
-                        }
-                        var toLocal = this.particleSystem.toLocal(targetPosition);
-                        if (!showParticles) {
-                                quantParticles = 1;
-                        }
-
-                        for (var index = 0; index < quantParticles; index++) {
-                                //customData.target = { x: coinPosition.x - frontLayer.x, y: coinPosition.y - frontLayer.y, timer: 0.2 + Math.random() * 0.75 }
-                                //customData.target = { x: toLocal.x, y: toLocal.y - 50, timer: 0 }
-                                customData.gravity = 0;
-                                customData.ignoreMatchRotation = true;
-                                this.particleSystem.show(toLocal, 1, customData);
-                        }
-
-                        if (showParticles) {
-                                //this.particleSystem.popLabel(toLocal, "+" + utils.formatPointsLabel(totalResources), 0, 1, 1, LABELS.LABEL1)
-                        }
-                }
-        }, {
-                key: 'onMouseMove',
-                value: function onMouseMove(e) {
-
-                        if (this.currentOpenPopUp && this.currentOpenPopUp.visible) {
-                                return;
-                        }
-
-                        this.mergeSystem1.updateMouseSystems(e);
-                        this.mousePosition = e.data.global;
-                        if (!this.draggingEntity) {
-                                return;
-                        }
-                        if (this.entityDragSprite.visible) {
-                                this.entityDragSprite.x = this.mousePosition.x;
-                                this.entityDragSprite.y = this.mousePosition.y;
-                        }
-                }
-        }, {
-                key: 'onAdded',
-                value: function onAdded() {}
-        }, {
-                key: 'build',
-                value: function build(param) {
-                        (0, _get3.default)(MergeScreen.prototype.__proto__ || (0, _getPrototypeOf2.default)(MergeScreen.prototype), 'build', this).call(this);
-                        this.addEvents();
-                }
-        }, {
-                key: 'update',
-                value: function update(delta) {
-                        delta *= window.TIME_SCALE * window.gameModifyers.bonusData.gameSpeed;
-
-                        //this.gameTutorial.update(delta);
-
-                        if (this.forcePauseSystemsTimer > 0) {
-                                this.forcePauseSystemsTimer -= delta;
-                        } else {
-
-                                this.mergeSystem1.updateSystems(delta);
-                                this.particleSystem.update(delta);
-                        }
-                        // this.mergeSystem1.update(delta);
-
-                        this.uiPanels.forEach(function (element) {
-                                if (element.update) {
-                                        element.update(delta);
-                                }
-                        });
-
-                        this.totalCoins.text = _utils2.default.formatPointsLabel(window.gameEconomy.currentResources);
-                        _utils2.default.centerObject(this.totalCoins, this.totalCoinsContainer);
-                        this.totalCoins.x = 40;
-
-                        this.coisPerSecond.text = _utils2.default.formatPointsLabel(this.mergeSystem1.rps);
-                        _utils2.default.centerObject(this.coisPerSecond, this.CoinsPerSecondCounter);
-                        this.coisPerSecond.x = 40;
-
-                        this.timestamp = Date.now() / 1000 | 0;
-
-                        if (this.puzzleBackground) {
-
-                                this.puzzleBackground.update(delta);
-                        }
-                        if (this.castleBackground) {
-
-                                this.castleBackground.update(delta);
-                        }
-                }
-        }, {
-                key: 'resize',
-                value: function resize(resolution, innerResolution) {
-                        var _this4 = this;
-
-                        if (!resolution || !resolution.width || !resolution.height || !innerResolution) {
-                                return;
-                        }
-
-                        //console.log(resolution.width * this.screenManager.scale.x)
-                        var newRes = { width: resolution.width * this.screenManager.scale.x };
-                        if (this.puzzleBackground) {
-
-                                this.puzzleBackground.resize(resolution, this.screenManager.scale);
-
-                                this.puzzleBackground.x = config.width / 2;
-                                this.puzzleBackground.y = config.height / 2 - 100;
-                        }
-                        if (this.castleBackground) {
-
-                                this.castleBackground.resize(resolution, this.screenManager.scale);
-
-                                this.castleBackground.x = config.width / 2;
-                                this.castleBackground.y = config.height / 2 - 150;
-                        }
-
-                        this.levelMeter.y = this.castleBackground.y;
-                        var toGlobal = this.toLocal({ x: 0, y: innerResolution.height });
-
-                        this.gridWrapper.x = config.width / 2 - this.gridWrapper.width / 2;
-                        this.gridWrapper.y = config.height * (1 - this.areaConfig.bottomArea) - this.gridWrapper.height;
-
-                        // if (this.helperButtonList.visible) {
-
-                        //     this.statsList.y = config.height - 240
-                        // } else {
-                        //     this.statsList.y = config.height - this.statsList.h - 20
-
-                        // }
-                        // this.statsList.x = config.width - this.statsList.w
-                        // this.statsList.y = 150
-
-                        var topRight = game.getBorder('topRight', this);
-                        var toGlobalBack = this.toLocal({ x: 0, y: innerResolution.height });
-                        if (!window.isPortrait) {
-                                this.statsList.scale.set(1);
-
-                                this.puzzleBackground.pivot.x = this.puzzleBackground.usableArea.x;
-                                this.puzzleBackground.pivot.y = this.puzzleBackground.usableArea.height + this.puzzleBackground.usableArea.y;
-                                this.puzzleBackground.x = toGlobalBack.x; //toGlobalBack.x + 390
-                                this.puzzleBackground.y = config.height;
-                                var scale = Math.min(topRight.x / this.puzzleBackground.usableArea.width * 0.6, config.height / this.puzzleBackground.usableArea.height * 0.9);
-                                this.puzzleBackground.scale.set(scale);
-
-                                this.gridWrapper.x = toGlobalBack.x + 20;
-                                this.gridWrapper.y = config.height - (this.puzzleBackground.pivot.y + 25) * scale; //this.puzzleBackground.y - this.puzzleBackground.pivot.y
-
-                                this.gridWrapper.width = this.puzzleBackground.usableArea.width * scale;
-                                this.gridWrapper.height = this.puzzleBackground.usableArea.height * scale;
-
-                                this.castleBackground.x = toGlobalBack.x + (this.puzzleBackground.usableArea.width + 100) * scale;
-
-                                scale = Math.min((topRight.x - this.castleBackground.x) / this.castleBackground.usableArea.width * 0.95, config.height / this.castleBackground.usableArea.height * 0.9);
-                                scale = Math.max(0.85, scale);
-                                this.castleBackground.scale.set(scale);
-                                this.castleBackground.pivot.x = this.castleBackground.usableArea.x;
-                                this.castleBackground.pivot.y = this.castleBackground.usableArea.height + this.castleBackground.usableArea.y;
-                                this.castleBackground.y = config.height * 0.85;
-
-                                this.shopButtonsList.x = this.shopButtonsList.width;
-                                this.shopButtonsList.y = 10;
-
-                                this.shopButtonsList.scale.set(1.8);
-
-                                this.levelMeter.scale.set(this.levelMeter.usableArea.width / this.puzzleBackground.usableArea.width * this.puzzleBackground.scale.x);
-                                this.levelMeter.x = this.puzzleBackground.x + this.puzzleBackground.usableArea.width * this.puzzleBackground.scale.x / 2; //+ this.puzzleBackground
-                                this.levelMeter.x -= this.levelMeter.usableArea.width * this.levelMeter.scale.x / 2;
-                                this.levelMeter.y = this.puzzleBackground.y - this.puzzleBackground.pivot.y * this.puzzleBackground.scale.x - 80;
-                        } else {
-                                this.puzzleBackground.pivot.x = 0;
-                                this.puzzleBackground.pivot.y = 0;
-                                this.puzzleBackground.scale.set(1);
-
-                                this.statsList.scale.set(1.1);
-                                this.mergeSystemContainer.scale.set(1);
-
-                                this.castleBackground.pivot.x = 0;
-                                this.castleBackground.pivot.y = 0;
-                                this.castleBackground.scale.set(1);
-                                this.levelMeter.scale.set(1);
-                                this.levelMeter.x = 0;
-                                this.gridWrapper.width = config.width * this.areaConfig.gameArea.w;
-                                this.gridWrapper.height = config.height * this.areaConfig.gameArea.h;
-
-                                // this.spaceStation.x = this.resourcesWrapper.x + 50;
-                                // this.spaceStation.y = this.resourcesWrapper.y + 40;
-                                this.statsList.x = config.width - 110;
-                                this.statsList.y = 10;
-
-                                this.shopsLabel.x = this.shopButtonsList.x;
-                                this.shopsLabel.y = this.shopButtonsList.y + 50 - this.shopsLabel.height;
-                                this.shopsLabel.visible = false;
-
-                                this.levelMeter.scale.set(this.levelMeter.usableArea.width / this.puzzleBackground.usableArea.width * this.puzzleBackground.scale.x);
-                                this.levelMeter.x = this.puzzleBackground.x; // + (this.puzzleBackground.usableArea.width) * this.puzzleBackground.scale.x / 2//+ this.puzzleBackground
-                                this.levelMeter.x -= this.levelMeter.usableArea.width * this.levelMeter.scale.x * 0.5;
-                                this.levelMeter.y = this.puzzleBackground.y - this.puzzleBackground.pivot.y * this.puzzleBackground.scale.x - 40;
-                        }
-
-                        this.statsList.scale.set(1.5);
-                        this.statsList.x = topRight.x - 110 * 1.5;
-                        this.shopsLabel.visible = false;
-                        this.statsList.y = 10;
-                        this.helperButtonList.y = 80;
-                        this.helperButtonList.x = toGlobalBack.x + 60;
-
-                        this.shopButtonsList.x = topRight.x - this.shopButtonsList.width / 2 - 20;
-                        this.shopButtonsList.y = 130;
-                        this.shopButtonsList.scale.set(1.5);
-
-                        this.enemiesContainer.x = config.width / 2;
-                        this.enemiesContainer.y = config.height * this.areaConfig.topArea * 0.5;
-
-                        this.uiPanels.forEach(function (element) {
-                                element.x = config.width / 2;
-                                element.y = config.height / 2;
-                        });
-
-                        this.systemsList.forEach(function (element) {
-                                element.resize(resolution, innerResolution, _this4.resourcesWrapperRight);
-                        });
-                }
-        }, {
-                key: 'transitionOut',
-                value: function transitionOut(nextScreen) {
-                        this.removeEvents();
-                        this.nextScreen = nextScreen;
-                        setTimeout(function () {
-                                this.endTransitionOut();
-                        }.bind(this), 0);
-                }
-        }, {
-                key: 'transitionIn',
-                value: function transitionIn() {
-                        (0, _get3.default)(MergeScreen.prototype.__proto__ || (0, _getPrototypeOf2.default)(MergeScreen.prototype), 'transitionIn', this).call(this);
-                }
-        }, {
-                key: 'destroy',
-                value: function destroy() {}
-        }, {
-                key: 'removeEvents',
-                value: function removeEvents() {}
-        }, {
-                key: 'addEvents',
-                value: function addEvents() {
-                        this.removeEvents();
-                }
-        }]);
-        return MergeScreen;
+            this.helperButtonList.visible = false;
+            this.helperButtonList.scale.set(0.85);
+        }
+    }]);
+    return MergeScreen;
 }(_Screen3.default);
 
 exports.default = MergeScreen;
@@ -61505,17 +61584,31 @@ var GameEconomy = function () {
     function GameEconomy() {
         (0, _classCallCheck3.default)(this, GameEconomy);
 
-        this.economyData = COOKIE_MANAGER.getEconomy();
-        console.log(this.economyData);
+        //this.economyData = COOKIE_MANAGER.getEconomy();
         if (!this.economyData) {
             this.currentResources = 0;
         } else {
             this.currentResources = this.economyData.resources;
         }
         this.onMoneySpent = new _signals2.default();
+
+        this.currentSystemID = null;
     }
 
     (0, _createClass3.default)(GameEconomy, [{
+        key: 'updateBoard',
+        value: function updateBoard(id) {
+            if (id) {
+                this.currentSystemID = id;
+            }
+            this.economyData = COOKIE_MANAGER.getEconomy(this.currentSystemID);
+            if (!this.economyData) {
+                this.currentResources = 0;
+            } else {
+                this.currentResources = this.economyData.resources;
+            }
+        }
+    }, {
         key: 'resetAll',
         value: function resetAll() {
             this.currentResources = 0;
@@ -61523,9 +61616,12 @@ var GameEconomy = function () {
         }
     }, {
         key: 'addResources',
-        value: function addResources(res) {
+        value: function addResources(res, id) {
+            if (id) {
+                this.currentSystemID = id;
+            }
             this.currentResources += res;
-            this.saveResources();
+            this.saveResources(this.currentSystemID);
             this.onMoneySpent.dispatch(-res);
         }
     }, {
@@ -61536,17 +61632,23 @@ var GameEconomy = function () {
         }
     }, {
         key: 'useResources',
-        value: function useResources(cost) {
+        value: function useResources(cost, id) {
+            if (id) {
+                this.currentSystemID = id;
+            }
             this.currentResources -= cost;
             this.currentResources = Math.max(this.currentResources, 0);
-            this.saveResources();
+            this.saveResources(this.currentSystemID);
 
             this.onMoneySpent.dispatch(cost);
         }
     }, {
         key: 'saveResources',
-        value: function saveResources() {
-            COOKIE_MANAGER.updateResources(this.currentResources);
+        value: function saveResources(id) {
+            if (id) {
+                this.currentSystemID = id;
+            }
+            COOKIE_MANAGER.updateResources(this.currentResources, id);
         }
     }]);
     return GameEconomy;
@@ -61584,8 +61686,24 @@ var GameModifyers = function () {
     function GameModifyers() {
         (0, _classCallCheck3.default)(this, GameModifyers);
 
-        this.modifyersData = COOKIE_MANAGER.getModifyers();
-        this.onUpdateModifyers = new _signals2.default();
+        this.modifyersData = {
+            version: '0.0.1',
+            entities: {},
+            drillSpeed: 1,
+            resourcesMultiplier: 1,
+            damageMultiplier: 1,
+            attackSpeed: 1,
+            attackSpeedValue: 1,
+            autoMerge: 1,
+            autoCollectResource: false,
+            permanentBonusData: {
+                damageBonus: 1,
+                resourceBonus: 1,
+                damageSpeed: 1,
+                resourceSpeed: 1,
+                shards: 0
+            } //COOKIE_MANAGER.getModifyers();
+        };this.onUpdateModifyers = new _signals2.default();
         this.onActiveBonus = new _signals2.default();
 
         this.defaultModifyers = {
@@ -61622,22 +61740,23 @@ var GameModifyers = function () {
     }, {
         key: 'resetModifyers',
         value: function resetModifyers() {
-            for (var key in this.defaultModifyers) {
-                if (Object.hasOwnProperty.call(this.defaultModifyers, key)) {
-                    this.modifyersData[key] = this.defaultModifyers[key];
-                }
-            }
-            this.onUpdateModifyers.dispatch();
-            COOKIE_MANAGER.updateModifyers(this.modifyersData);
+            // for (const key in this.defaultModifyers) {
+            //     if (Object.hasOwnProperty.call(this.defaultModifyers, key)) {
+            //         this.modifyersData[key] = this.defaultModifyers[key];
+
+            //     }
+            // }
+            // this.onUpdateModifyers.dispatch();
+            // COOKIE_MANAGER.updateModifyers(this.modifyersData)
         }
     }, {
         key: 'addShards',
         value: function addShards(value) {
-            this.permanentBonusData.shards += value;
-            this.modifyersData.permanentBonusData = this.permanentBonusData;
-            //console.log(this.modifyersData.permanentBonusData)
-            this.onUpdateModifyers.dispatch();
-            COOKIE_MANAGER.updateModifyers(this.modifyersData);
+            // this.permanentBonusData.shards += value;
+            // this.modifyersData.permanentBonusData = this.permanentBonusData
+            // //console.log(this.modifyersData.permanentBonusData)
+            // this.onUpdateModifyers.dispatch();
+            // COOKIE_MANAGER.updateModifyers(this.modifyersData)
         }
     }, {
         key: 'addResources',
@@ -61648,10 +61767,10 @@ var GameModifyers = function () {
     }, {
         key: 'saveModifyers',
         value: function saveModifyers(type, level, value) {
-            this.modifyersData[type] = level;
-            this.modifyersData[type + 'Value'] = value;
-            this.onUpdateModifyers.dispatch();
-            COOKIE_MANAGER.updateModifyers(this.modifyersData);
+            // this.modifyersData[type] = level;
+            // this.modifyersData[type + 'Value'] = value;
+            // this.onUpdateModifyers.dispatch();
+            // COOKIE_MANAGER.updateModifyers(this.modifyersData)
         }
     }, {
         key: 'resetAll',
@@ -61659,18 +61778,20 @@ var GameModifyers = function () {
     }, {
         key: 'saveBoolModifyers',
         value: function saveBoolModifyers(type, value) {
-            this.modifyersData[type] = value;
-            this.onUpdateModifyers.dispatch();
-            COOKIE_MANAGER.updateModifyers(this.modifyersData);
+            // this.modifyersData[type] = value;
+            // this.onUpdateModifyers.dispatch();
+            // COOKIE_MANAGER.updateModifyers(this.modifyersData)
         }
     }, {
         key: 'getLevel',
         value: function getLevel(data) {
+            return 1;
             return this.modifyersData[data.rawData.modifyer] || 1;
         }
     }, {
         key: 'getDamageMultiplier',
         value: function getDamageMultiplier() {
+            return 1;
             var r = (this.modifyersData.damageMultiplierValue || 1) * this.permanentBonusData.damageBonus + this.permanentBonusData.shards;
             r *= this.bonusData.damageBonus;
             return r;
@@ -61688,11 +61809,13 @@ var GameModifyers = function () {
     }, {
         key: 'getDrillSpeed',
         value: function getDrillSpeed() {
+            return 1;
             return (this.modifyersData.drillSpeedValue || 1) * this.bonusData.resourceSpeed * this.permanentBonusData.resourceSpeed;
         }
     }, {
         key: 'getTotalGenerators',
         value: function getTotalGenerators() {
+            return 1;
             return this.modifyersData.totalGenerators || 1;
         }
     }]);
@@ -61763,6 +61886,7 @@ var MergeItemsShop = function (_EntityShop) {
         var _this = (0, _possibleConstructorReturn3.default)(this, (MergeItemsShop.__proto__ || (0, _getPrototypeOf2.default)(MergeItemsShop)).call(this, mainSystem, size, border = 0));
 
         _this.onAddEntity = new _signals2.default();
+        _this.systemID = 'monsters';
         return _this;
     }
 
@@ -61773,7 +61897,7 @@ var MergeItemsShop = function (_EntityShop) {
                 resourceSystem.findUpgrade(item);
             });
 
-            COOKIE_MANAGER.addMergePieceUpgrade(item);
+            COOKIE_MANAGER.addMergePieceUpgrade(item, this.systemID);
 
             this.onAddEntity.dispatch(item);
         }
@@ -61795,7 +61919,7 @@ var MergeItemsShop = function (_EntityShop) {
         value: function show() {
             this.visible = true;
             this.title.text = window.localizationManager.getLabel('spaceships');
-            var currentResources = COOKIE_MANAGER.getBoard();
+            var currentResources = COOKIE_MANAGER.getBoard(this.systemID);
             var currentEntities = [];
             for (var key in currentResources.entities) {
                 var element = currentResources.entities[key];
@@ -61806,7 +61930,7 @@ var MergeItemsShop = function (_EntityShop) {
 
             var found = false;
 
-            this.savedProgression = COOKIE_MANAGER.getBoard();
+            this.savedProgression = COOKIE_MANAGER.getBoard(this.systemID);
             this.boardProgression = this.savedProgression.boardLevel;
 
             for (var index = this.currentItens.length - 1; index >= 0; index--) {
@@ -61876,7 +62000,7 @@ var _gsap = __webpack_require__(17);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
-var _UIButton = __webpack_require__(26);
+var _UIButton = __webpack_require__(39);
 
 var _UIButton2 = _interopRequireDefault(_UIButton);
 
@@ -61903,8 +62027,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var EntityShop = function (_PIXI$Container) {
     (0, _inherits3.default)(EntityShop, _PIXI$Container);
 
-    function EntityShop(mainSystem, size) {
-        var border = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+    function EntityShop(mainSystem, systemID) {
         (0, _classCallCheck3.default)(this, EntityShop);
 
         var _this = (0, _possibleConstructorReturn3.default)(this, (EntityShop.__proto__ || (0, _getPrototypeOf2.default)(EntityShop)).call(this));
@@ -62017,6 +62140,8 @@ var EntityShop = function (_PIXI$Container) {
             }
             _this.hideFromClick();
         });
+
+        _this.systemID = systemID;
         return _this;
     }
 
@@ -62098,7 +62223,7 @@ var EntityShop = function (_PIXI$Container) {
 
             this.visible = true;
 
-            var currentResources = COOKIE_MANAGER.getResources();
+            var currentResources = COOKIE_MANAGER.getResources(this.systemID);
 
             var currentEntities = [];
             for (var key in currentResources.entities) {
@@ -62122,7 +62247,7 @@ var EntityShop = function (_PIXI$Container) {
         }
     }, {
         key: 'confirmItemShop',
-        value: function confirmItemShop(item, button, totalUpgrades) {
+        value: function confirmItemShop(item, button, totalUpgrades, id) {
 
             //console.log(totalUpgrades)
 
@@ -62131,7 +62256,7 @@ var EntityShop = function (_PIXI$Container) {
                 resourceSystem.findUpgrade(item);
             });
 
-            COOKIE_MANAGER.addResourceUpgrade(item);
+            COOKIE_MANAGER.addResourceUpgrade(item, id);
         }
     }, {
         key: 'addItems',
@@ -62153,21 +62278,21 @@ var EntityShop = function (_PIXI$Container) {
             if (skipCheck) {
                 return;
             }
-            var currentResources = COOKIE_MANAGER.getResources();
-            var currentShips = COOKIE_MANAGER.getBoard();
-
+            // let currentResources = COOKIE_MANAGER.getResources(this.systemID);
+            var currentShips = COOKIE_MANAGER.getBoard(this.systemID);
+            // console.log(currentResources)
             var currentEntities = [];
-            for (var key in currentResources.entities) {
-                var element = currentResources.entities[key];
-                if (element.currentLevel) {
-                    currentEntities.push(key);
-                }
-            }
+            // for (const key in currentResources.entities) {
+            //     const element = currentResources.entities[key];
+            //     if (element.currentLevel) {
+            //         currentEntities.push(key);
+            //     }
+            // }
 
-            for (var _key in currentShips.entities) {
-                var _element = currentShips.entities[_key];
-                if (_element && _element.nameID) {
-                    currentEntities.push(_element.nameID);
+            for (var key in currentShips.entities) {
+                var element = currentShips.entities[key];
+                if (element && element.nameID) {
+                    currentEntities.push(element.nameID);
                 }
             }
 
@@ -62233,11 +62358,11 @@ var _signals = __webpack_require__(9);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _UIBar = __webpack_require__(150);
+var _UIBar = __webpack_require__(147);
 
 var _UIBar2 = _interopRequireDefault(_UIBar);
 
-var _UIList2 = __webpack_require__(40);
+var _UIList2 = __webpack_require__(47);
 
 var _UIList3 = _interopRequireDefault(_UIList2);
 
@@ -63002,7 +63127,7 @@ var _signals = __webpack_require__(9);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _UIList = __webpack_require__(40);
+var _UIList = __webpack_require__(47);
 
 var _UIList2 = _interopRequireDefault(_UIList);
 
@@ -63479,11 +63604,11 @@ var _gsap = __webpack_require__(17);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
-var _UIButton = __webpack_require__(26);
+var _UIButton = __webpack_require__(39);
 
 var _UIButton2 = _interopRequireDefault(_UIButton);
 
-var _UIList = __webpack_require__(40);
+var _UIList = __webpack_require__(47);
 
 var _UIList2 = _interopRequireDefault(_UIList);
 
@@ -63601,7 +63726,7 @@ var _ChargerTile = __webpack_require__(356);
 
 var _ChargerTile2 = _interopRequireDefault(_ChargerTile);
 
-var _MergeTile = __webpack_require__(152);
+var _MergeTile = __webpack_require__(149);
 
 var _MergeTile2 = _interopRequireDefault(_MergeTile);
 
@@ -63622,19 +63747,22 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MergeSystem = function () {
-    function MergeSystem(containers, data, dataTiles) {
+    function MergeSystem(containers, data, dataTiles, systemID) {
         var _this = this;
 
         (0, _classCallCheck3.default)(this, MergeSystem);
 
 
+        this.baseData = data;
+
+        //console.log(this.baseData.visuals)
+        this.systemID = systemID;
         this.gameplayData = data.general;
 
         this.container = containers.mainContainer;
         this.uiContainer = containers.uiContainer;
         this.wrapper = containers.wrapper;
         this.topContainer = containers.topContainer;
-
         this.slotSize = data.slotSize;
         this.area = data.area;
         this.onGetResources = new _signals2.default();
@@ -63645,6 +63773,7 @@ var MergeSystem = function () {
         this.onEntityAdd = new _signals2.default();
         this.onBoardLevelUpdate = new _signals2.default();
         this.updateAvailableSlots = new _signals2.default();
+        this.updateMaxLevel = new _signals2.default();
 
         this.slotsContainer = new PIXI.Container();
         this.container.addChild(this.slotsContainer);
@@ -63723,7 +63852,6 @@ var MergeSystem = function () {
         this.enemySystem = null;
         this.systems = [];
 
-        this.loadData();
         setTimeout(function () {
             _this.adjustSlotsPosition();
         }, 100);
@@ -63740,6 +63868,8 @@ var MergeSystem = function () {
         });
 
         this.highestPiece = 0;
+
+        this.visible = true;
     }
 
     (0, _createClass3.default)(MergeSystem, [{
@@ -63756,7 +63886,7 @@ var MergeSystem = function () {
 
             this.updateTotalGenerators();
 
-            COOKIE_MANAGER.resetBoard();
+            COOKIE_MANAGER.resetBoard(this.systemID);
 
             this.loadData();
 
@@ -63785,7 +63915,8 @@ var MergeSystem = function () {
         value: function loadData() {
             var _this2 = this;
 
-            this.savedProgression = COOKIE_MANAGER.getBoard();
+            this.isLoaded = true;
+            this.savedProgression = COOKIE_MANAGER.getBoard(this.systemID);
             this.boardProgression = this.savedProgression.boardLevel;
             this.boardLevel = 1;
             this.levelUp(this.savedProgression.currentBoardLevel, true);
@@ -63825,7 +63956,37 @@ var MergeSystem = function () {
             setTimeout(function () {
                 _this2.onBoardLevelUpdate.dispatch(_this2.boardProgression);
                 _this2.updateAvailableSlots.dispatch(_this2.totalAvailable());
+                _this2.checkMax();
+                _this2.updateMaxLevel.dispatch(_this2.highestPiece);
             }, 1);
+        }
+    }, {
+        key: 'activeSystem',
+        value: function activeSystem() {
+            var _this3 = this;
+
+            this.onBoardLevelUpdate.dispatch(this.boardProgression);
+            this.updateAvailableSlots.dispatch(this.totalAvailable());
+            this.checkMax();
+            this.updateMaxLevel.dispatch(this.highestPiece);
+
+            setTimeout(function () {
+                _this3.updateAllData();
+            }, 1);
+        }
+    }, {
+        key: 'checkMax',
+        value: function checkMax() {
+            for (var i = 0; i < this.virtualSlots.length; i++) {
+                for (var j = 0; j < this.virtualSlots[i].length; j++) {
+                    if (this.virtualSlots[i][j] && this.virtualSlots[i][j].tileData && this.virtualSlots[i][j].visible) {
+                        if (this.virtualSlots[i][j].tileData.rawData.id > this.highestPiece) {
+                            this.highestPiece = this.virtualSlots[i][j].tileData.rawData.id;
+                        }
+                    }
+                }
+            }
+            //alert(this.highestPiece)
         }
     }, {
         key: 'findUpgrade',
@@ -63851,9 +64012,9 @@ var MergeSystem = function () {
     }, {
         key: 'addPieceGenerator',
         value: function addPieceGenerator() {
-            var _this3 = this;
+            var _this4 = this;
 
-            var piece = new _ChargerTile2.default(0, 0, this.slotSize.width * 0.85, 'coin', this.gameplayData.entityGeneratorBaseTime);
+            var piece = new _ChargerTile2.default(0, 0, this.slotSize.width * 0.85, 'coin', this.gameplayData.entityGeneratorBaseTime, this.baseData.visuals);
             piece.isGenerator = true;
             piece.onShowParticles.add(function () {
                 var customData = {};
@@ -63867,7 +64028,7 @@ var MergeSystem = function () {
                 var pos = piece.tileSprite.getGlobalPosition();
                 pos.x += Math.random() * 40 - 20;
                 pos.y -= Math.random() * 40;
-                _this3.onParticles.dispatch(pos, customData, 1);
+                _this4.onParticles.dispatch(pos, customData, 1);
             });
             var targetScale = _config2.default.height * 0.2 / piece.height;
             piece.scale.set(Math.min(targetScale, 1));
@@ -63898,22 +64059,22 @@ var MergeSystem = function () {
                 //upgrade this
                 //console.log(this.boardLevel)
                 var id = 0;
-                if (_this3.boardLevel > 4) {
-                    id = Math.min(Math.floor(Math.random() * _this3.boardLevel / 3), 5);
+                if (_this4.boardLevel > 4) {
+                    id = Math.min(Math.floor(Math.random() * _this4.boardLevel / 3), 5);
                 }
 
                 if (id > 0) {
-                    id = Math.min(Math.floor(Math.random() * _this3.boardLevel / 3), 5);
+                    id = Math.min(Math.floor(Math.random() * _this4.boardLevel / 3), 5);
                 }
                 if (id > 0) {
-                    id = Math.min(Math.floor(Math.random() * _this3.boardLevel / 3), 5);
+                    id = Math.min(Math.floor(Math.random() * _this4.boardLevel / 3), 5);
                 }
 
-                id = Math.min(_this3.dataTiles.length - 1, id);
-                piece.addEntity(_this3.dataTiles[id]);
+                id = Math.min(_this4.dataTiles.length - 1, id);
+                piece.addEntity(_this4.dataTiles[id]);
                 piece.giftState();
 
-                _this3.sortAutoMerge(piece);
+                _this4.sortAutoMerge(piece);
 
                 //piece.startCharging()
             });
@@ -63976,6 +64137,7 @@ var MergeSystem = function () {
     }, {
         key: 'updateMouseSystems',
         value: function updateMouseSystems(e) {
+            if (!this.visible) return;
             this.updateMouse(e);
 
             this.systems.forEach(function (element) {
@@ -63985,6 +64147,7 @@ var MergeSystem = function () {
     }, {
         key: 'updateMouse',
         value: function updateMouse(e) {
+            if (!this.visible) return;
             if (e) {
                 this.mousePosition = e.data.global;
             }
@@ -64011,7 +64174,7 @@ var MergeSystem = function () {
             if (this.boardLevel != nextLevel) {
                 this.boardLevel = nextLevel;
                 if (!ignoreSave) {
-                    COOKIE_MANAGER.saveBoardLevel(this.boardLevel);
+                    COOKIE_MANAGER.saveBoardLevel(this.boardLevel, this.systemID);
                 }
             } else {
                 return;
@@ -64032,6 +64195,9 @@ var MergeSystem = function () {
     }, {
         key: 'updateSystems',
         value: function updateSystems(delta) {
+
+            this.slotsContainer.visible = this.visible;
+            if (!this.visible) return;
             this.update(delta);
 
             this.systems.forEach(function (element) {
@@ -64041,6 +64207,8 @@ var MergeSystem = function () {
     }, {
         key: 'update',
         value: function update(delta) {
+
+            console.log(this.slots[0][0].scale.x, this.uiContainer.scale.x);
             this.pieceGeneratorsList.forEach(function (piece) {
                 if (piece.visible) {
                     piece.update(delta * window.gameModifyers.bonusData.generateTimerBonus);
@@ -64070,39 +64238,39 @@ var MergeSystem = function () {
     }, {
         key: 'addSlot',
         value: function addSlot(i, j) {
-            var _this4 = this;
+            var _this5 = this;
 
-            var slot = new _MergeTile2.default(i, j, this.slotSize.width, 'coin');
+            var slot = new _MergeTile2.default(i, j, this.slotSize.width, 'coin', this.baseData.visuals);
             this.slots[i][j] = slot;
 
             slot.x = (this.slotSize.width + this.slotSize.distance) * j - this.slotSize.distance;
             slot.y = (this.slotSize.height + this.slotSize.distance) * i - this.slotSize.distance;
             slot.onClick.add(function (slot) {});
             slot.onHold.add(function (slot) {
-                _this4.startDrag(slot);
+                _this5.startDrag(slot);
             });
             slot.onReveal.add(function (slot) {
-                _this4.updateAllData();
+                _this5.updateAllData();
             });
 
             slot.onEndHold.add(function (slot) {
-                _this4.endDrag(slot);
+                _this5.endDrag(slot);
             });
             slot.onUp.add(function (slot) {
-                _this4.releaseEntity(slot);
+                _this5.releaseEntity(slot);
             });
             slot.onGenerateResource.add(function (slot, data) {
-                _this4.resources += data.resources;
+                _this5.resources += data.resources;
 
                 var customData = {};
-                customData.texture = 'coin';
+                customData.texture = _this5.baseData.visuals.coin;
                 customData.scale = 0.03;
                 customData.forceX = 0;
                 customData.forceY = 50;
                 customData.alphaDecress = 1;
                 var targetPos = slot.tileSprite.getGlobalPosition();
                 //this.onGetResources.dispatch(targetPos, customData, data.getDamage(), 1)
-                _this4.onGetResources.dispatch(targetPos, customData, Math.pow(2, data.rawData.id + 1), 1);
+                _this5.onGetResources.dispatch(targetPos, customData, Math.pow(2, data.rawData.id + 1), 1);
             });
             slot.onGenerateDamage.add(function (slot, data) {
                 // let customData = {}
@@ -64161,6 +64329,7 @@ var MergeSystem = function () {
     }, {
         key: 'startDrag',
         value: function startDrag(slot) {
+            if (!this.visible) return;
             this.draggingEntity = true;
             var tex = slot.hideSprite();
             this.currentDragSlot = slot;
@@ -64178,6 +64347,7 @@ var MergeSystem = function () {
     }, {
         key: 'endDrag',
         value: function endDrag(slot) {
+            if (!this.visible) return;
             this.draggingEntity = false;
             this.entityDragSprite.visible = false;
             slot.showSprite();
@@ -64187,6 +64357,7 @@ var MergeSystem = function () {
     }, {
         key: 'removeEntity',
         value: function removeEntity(slot) {
+            if (!this.visible) return;
             if (this.currentDragSlot) {
                 //return
                 this.currentDragSlot.removeEntity();
@@ -64224,7 +64395,7 @@ var MergeSystem = function () {
 
             // this.updateAllData();
 
-            COOKIE_MANAGER.addMergePiece(data, slot.id.i, slot.id.j);
+            COOKIE_MANAGER.addMergePiece(data, slot.id.i, slot.id.j, this.systemID);
         }
     }, {
         key: 'findFirstAvailable',
@@ -64358,13 +64529,14 @@ var MergeSystem = function () {
             this.boardProgression.percent = this.boardProgression.progress / getLevels(this.boardProgression.currentLevel);
             this.onBoardLevelUpdate.dispatch(this.boardProgression);
 
-            COOKIE_MANAGER.saveBoardProgress(this.boardProgression);
+            COOKIE_MANAGER.saveBoardProgress(this.boardProgression, this.systemID);
         }
     }, {
         key: 'releaseEntity',
         value: function releaseEntity(slot) {
-            var _this5 = this;
+            var _this6 = this;
 
+            if (!this.visible) return;
             if (!this.currentDragSlot || !slot) {
                 return;
             }
@@ -64379,12 +64551,12 @@ var MergeSystem = function () {
                 if (copyDataTargetSlot.getValue() == copyData.getValue()) {
                     //only remove if they will merge
                     this.currentDragSlot.removeEntity();
-                    COOKIE_MANAGER.addMergePiece(null, this.currentDragSlot.id.i, this.currentDragSlot.id.j);
+                    COOKIE_MANAGER.addMergePiece(null, this.currentDragSlot.id.i, this.currentDragSlot.id.j, this.systemID);
                     target = this.dataTiles[Math.min(this.dataTiles.length - 1, copyDataTargetSlot.getID() + 1)];
                     slot.removeEntity();
 
                     slot.addEntity(target);
-                    COOKIE_MANAGER.addMergePiece(target, slot.id.i, slot.id.j);
+                    COOKIE_MANAGER.addMergePiece(target, slot.id.i, slot.id.j, this.systemID);
                     this.updateProgression(target.rawData.id + 1);
 
                     this.onEntityMerge.dispatch();
@@ -64396,7 +64568,7 @@ var MergeSystem = function () {
                         this.currentDragSlot.addEntity(copyDataTargetSlot);
                         slot.removeEntity();
                         slot.addEntity(copyData);
-                        COOKIE_MANAGER.addMergePiece(copyData, slot.id.i, slot.id.j);
+                        COOKIE_MANAGER.addMergePiece(copyData, slot.id.i, slot.id.j, this.systemID);
                     } else {
                         //doesnt do anything coz is coming from the generator
                         //this.currentDragSlot.addEntity(copyDataTargetSlot);   
@@ -64405,15 +64577,17 @@ var MergeSystem = function () {
                 }
             } else {
                 this.currentDragSlot.removeEntity();
-                COOKIE_MANAGER.addMergePiece(null, this.currentDragSlot.id.i, this.currentDragSlot.id.j);
+                COOKIE_MANAGER.addMergePiece(null, this.currentDragSlot.id.i, this.currentDragSlot.id.j, this.systemID);
                 slot.addEntity(copyData);
-                COOKIE_MANAGER.addMergePiece(copyData, slot.id.i, slot.id.j);
+                COOKIE_MANAGER.addMergePiece(copyData, slot.id.i, slot.id.j, this.systemID);
                 this.onEntityAdd.dispatch();
             }
 
             var tempMaxTiledPlaced = _utils2.default.findMax(this.slots);
             if (tempMaxTiledPlaced > this.highestPiece) {
                 this.highestPiece = tempMaxTiledPlaced;
+
+                this.updateMaxLevel.dispatch(this.highestPiece);
             }
 
             console.log("MAX " + this.highestPiece);
@@ -64427,7 +64601,7 @@ var MergeSystem = function () {
             this.draggingEntity = false;
             this.currentDragSlot = null;
             setTimeout(function () {
-                _this5.updateAllData();
+                _this6.updateAllData();
                 //this.rps = utils.findRPS3(this.slots);
             }, 1);
 
@@ -64486,10 +64660,11 @@ var MergeSystem = function () {
     }, {
         key: 'resize',
         value: function resize(resolution, force) {
-
+            if (!this.visible) return;
             if (!force && this.currentResolution.width == resolution.width && this.currentResolution.height == resolution.height) {
                 //return;
             }
+
             this.currentResolution.width = resolution.width;
             this.currentResolution.height = resolution.height;
 
@@ -64508,13 +64683,13 @@ var MergeSystem = function () {
     }, {
         key: 'updateBottomPosition',
         value: function updateBottomPosition() {
-            var _this6 = this;
+            var _this7 = this;
 
             var accumPiece = 0;
             var maxPos = 0;
             this.pieceGeneratorsList.forEach(function (piece) {
                 if (piece.visible) {
-                    piece.x = (piece.backShape.width + _this6.slotSize.distance) * accumPiece;
+                    piece.x = (piece.backShape.width + _this7.slotSize.distance) * accumPiece;
                     accumPiece++;
                     maxPos = piece.x + piece.backShape.width;
                 }
@@ -64561,7 +64736,7 @@ var _possibleConstructorReturn2 = __webpack_require__(4);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _get2 = __webpack_require__(48);
+var _get2 = __webpack_require__(46);
 
 var _get3 = _interopRequireDefault(_get2);
 
@@ -64573,15 +64748,15 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _CircleCounter = __webpack_require__(151);
+var _CircleCounter = __webpack_require__(148);
 
 var _CircleCounter2 = _interopRequireDefault(_CircleCounter);
 
-var _MergeTile2 = __webpack_require__(152);
+var _MergeTile2 = __webpack_require__(149);
 
 var _MergeTile3 = _interopRequireDefault(_MergeTile2);
 
-var _ProgressBar = __webpack_require__(153);
+var _ProgressBar = __webpack_require__(150);
 
 var _ProgressBar2 = _interopRequireDefault(_ProgressBar);
 
@@ -64589,7 +64764,7 @@ var _signals = __webpack_require__(9);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _UIBar = __webpack_require__(150);
+var _UIBar = __webpack_require__(147);
 
 var _UIBar2 = _interopRequireDefault(_UIBar);
 
@@ -64600,11 +64775,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var ChargerTile = function (_MergeTile) {
     (0, _inherits3.default)(ChargerTile, _MergeTile);
 
-    function ChargerTile(i, j, size, lockIcon) {
-        var standardChargeTime = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 2;
+    function ChargerTile(i, j, size, lockIcon, standardChargeTime, visuals) {
         (0, _classCallCheck3.default)(this, ChargerTile);
 
-        var _this = (0, _possibleConstructorReturn3.default)(this, (ChargerTile.__proto__ || (0, _getPrototypeOf2.default)(ChargerTile)).call(this, i, j, size, lockIcon));
+        var _this = (0, _possibleConstructorReturn3.default)(this, (ChargerTile.__proto__ || (0, _getPrototypeOf2.default)(ChargerTile)).call(this, i, j, size, lockIcon, visuals));
 
         _this.backShape.texture = PIXI.Texture.fromFrame('backTilesSquare');
 
@@ -64859,8 +65033,8 @@ var MergerData = function () {
         scaling = Math.max(1, scaling);
         rawData.initialDamage = 2 * Math.pow(1.2, scaling);
 
-        rawData.initialCost = this.calcSimplePrice(index);
         this.rawData = rawData;
+        rawData.initialCost = this.calcSimplePrice(index);
 
         this.currentLevel = 1;
         this.resourceAccum = true;
@@ -64869,9 +65043,9 @@ var MergerData = function () {
     (0, _createClass3.default)(MergerData, [{
         key: "calcSimplePrice",
         value: function calcSimplePrice(level) {
-            var s = 50;
+            var s = this.rawData.initialCost;
             for (var index = 0; index < level; index++) {
-                s *= 2.5;
+                s *= this.rawData.costCoefficient;
             }
             s = Math.floor(s);
             return s * 10;
@@ -64972,7 +65146,7 @@ var MergerData = function () {
 
             var s = this.rawData.initialCost / 10;
             for (var index = 0; index < this.currentLevel - 1; index++) {
-                s *= 1.2;
+                s *= this.rawData.upgradeCoefficient;
             }
             s = Math.floor(s);
 
@@ -65324,7 +65498,7 @@ var _possibleConstructorReturn2 = __webpack_require__(4);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _get2 = __webpack_require__(48);
+var _get2 = __webpack_require__(46);
 
 var _get3 = _interopRequireDefault(_get2);
 
@@ -65481,338 +65655,11 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _utils = __webpack_require__(14);
-
-var _utils2 = _interopRequireDefault(_utils);
-
-var _config = __webpack_require__(12);
-
-var _config2 = _interopRequireDefault(_config);
-
-var _gsap = __webpack_require__(17);
-
-var _gsap2 = _interopRequireDefault(_gsap);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var PuzzleBackground = function (_PIXI$Container) {
-        (0, _inherits3.default)(PuzzleBackground, _PIXI$Container);
-
-        function PuzzleBackground() {
-                (0, _classCallCheck3.default)(this, PuzzleBackground);
-
-                var _this = (0, _possibleConstructorReturn3.default)(this, (PuzzleBackground.__proto__ || (0, _getPrototypeOf2.default)(PuzzleBackground)).call(this));
-
-                _this.baseContainer = new PIXI.Container();
-                _this.addChild(_this.baseContainer);
-
-                _this.baseTerrain = new PIXI.Sprite.fromFrame('base-terrain');
-                _this.baseTerrain.anchor.set(0.5, 0);
-                _this.baseTerrain.scale.set(1);
-                _this.baseContainer.addChild(_this.baseTerrain);
-
-                // this.bottomPatch = new PIXI.Sprite.fromFrame('bottomPatch')
-                // this.bottomPatch.x = 220
-                // this.bottomPatch.y = 550
-                // this.baseContainer.addChild(this.bottomPatch)
-
-                _this.leftDetail = new PIXI.Sprite.fromFrame('leftPatch');
-                _this.leftDetail.anchor.set(1, 0);
-                _this.leftDetail.x = -150;
-                _this.leftDetail.y = -180;
-                _this.baseContainer.addChild(_this.leftDetail);
-
-                _this.rightDetail = new PIXI.Sprite.fromFrame('rightPatch');
-                _this.rightDetail.x = 150;
-                _this.rightDetail.y = -180;
-                _this.baseContainer.addChild(_this.rightDetail);
-
-                _this.leftPines = new PIXI.Sprite.fromFrame('pineSidePatch');
-                _this.leftPines.anchor.set(1, 0);
-                _this.leftPines.x = -400;
-                _this.leftPines.y = -350;
-                _this.baseContainer.addChild(_this.leftPines);
-
-                _this.rightPines = new PIXI.Sprite.fromFrame('pineSidePatch');
-                _this.rightPines.x = 400;
-                _this.rightPines.y = -350;
-                _this.baseContainer.addChild(_this.rightPines);
-
-                _this.usableArea = new PIXI.Graphics().beginFill(0x00FF00).drawRect(0, 0, 530, 650);
-                //this.addChild(this.usableArea)
-                _this.usableArea.alpha = 0.15;
-                _this.usableArea.x = -_this.usableArea.width / 2;
-                return _this;
-        }
-
-        (0, _createClass3.default)(PuzzleBackground, [{
-                key: 'resize',
-                value: function resize(innerResolution, scale) {
-                        if (innerResolution && innerResolution.width && innerResolution.height) {
-
-                                this.innerResolution = innerResolution;
-
-                                if (window.isPortrait) {
-                                        this.rightPines.visible = true;
-                                        this.baseTerrain.scale.set(1);
-                                        this.rightDetail.texture = new PIXI.Texture.fromFrame('rightPatch');
-                                        this.rightDetail.scale.set(1);
-                                        this.leftDetail.scale.set(1);
-                                        this.leftDetail.x = -150;
-                                        this.leftDetail.y = -180;
-                                        this.rightDetail.x = 150;
-                                        this.rightDetail.y = -158;
-                                        //this.bottomPatch.visible = false;
-                                } else {
-
-                                        this.rightPines.visible = false;
-                                        this.baseTerrain.scale.x = 0.7;
-                                        this.rightDetail.texture = new PIXI.Texture.fromFrame('rightPatchCliff');
-                                        this.rightDetail.scale.set(0.8);
-                                        this.leftDetail.scale.set(0.8);
-
-                                        this.leftDetail.x = -150;
-                                        this.leftDetail.y = -140;
-
-                                        this.rightDetail.x = 160;
-                                        this.rightDetail.y = -140;
-                                        //this.bottomPatch.visible = true;
-                                }
-                        }
-                }
-        }, {
-                key: 'update',
-                value: function update(delta) {}
-        }]);
-        return PuzzleBackground;
-}(PIXI.Container);
-
-exports.default = PuzzleBackground;
-module.exports = exports['default'];
-
-/***/ }),
-/* 362 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-        value: true
-});
-
-var _getPrototypeOf = __webpack_require__(3);
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__(1);
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(2);
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__(4);
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__(5);
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _pixi = __webpack_require__(0);
-
-var PIXI = _interopRequireWildcard(_pixi);
-
-var _utils = __webpack_require__(14);
-
-var _utils2 = _interopRequireDefault(_utils);
-
-var _config = __webpack_require__(12);
-
-var _config2 = _interopRequireDefault(_config);
-
-var _gsap = __webpack_require__(17);
-
-var _gsap2 = _interopRequireDefault(_gsap);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var CastleBackground = function (_PIXI$Container) {
-        (0, _inherits3.default)(CastleBackground, _PIXI$Container);
-
-        function CastleBackground() {
-                (0, _classCallCheck3.default)(this, CastleBackground);
-
-                var _this = (0, _possibleConstructorReturn3.default)(this, (CastleBackground.__proto__ || (0, _getPrototypeOf2.default)(CastleBackground)).call(this));
-
-                _this.baseContainer = new PIXI.Container();
-                _this.addChild(_this.baseContainer);
-
-                _this.baseTerrain = new PIXI.Sprite.fromFrame('sky');
-                _this.baseTerrain.anchor.set(0.5, 1);
-                _this.baseTerrain.scale.set(2);
-                _this.baseContainer.addChild(_this.baseTerrain);
-                _this.baseTerrain.y = 200;
-
-                _this.baseTerrainTop = new PIXI.Sprite.fromFrame('sky');
-                _this.baseTerrainTop.anchor.set(0.5, 0);
-                _this.baseTerrainTop.scale.set(1, -1);
-                _this.baseTerrain.addChild(_this.baseTerrainTop);
-                _this.baseTerrainTop.y = -_this.baseTerrain.height / 2 + 1;
-
-                _this.baseTerrainLeft = new PIXI.Sprite.fromFrame('sky');
-                _this.baseTerrainLeft.anchor.set(0.5, 1);
-                _this.baseTerrainLeft.scale.set(-1, 1);
-                _this.baseTerrain.addChild(_this.baseTerrainLeft);
-                _this.baseTerrainLeft.x = -_this.baseTerrainTop.width + 1;
-
-                _this.baseTerrainTopLeft = new PIXI.Sprite.fromFrame('sky');
-                _this.baseTerrainTopLeft.anchor.set(0.5, 0);
-                _this.baseTerrainTopLeft.scale.set(-1, -1);
-                _this.baseTerrain.addChild(_this.baseTerrainTopLeft);
-                _this.baseTerrainTopLeft.x = -_this.baseTerrainTop.width + 1;
-                _this.baseTerrainTopLeft.y = -_this.baseTerrainTop.height + 1;
-
-                _this.baseTerrainBottomLeft = new PIXI.Sprite.fromFrame('sky');
-                _this.baseTerrainBottomLeft.anchor.set(0.5, 0);
-                _this.baseTerrainBottomLeft.scale.set(1, -1);
-                _this.baseTerrain.addChild(_this.baseTerrainBottomLeft);
-                _this.baseTerrainBottomLeft.y = _this.baseTerrainTop.height - 1;
-
-                _this.moon = new PIXI.Sprite.fromFrame('moon');
-                _this.moon.anchor.set(0.5);
-                _this.baseContainer.addChild(_this.moon);
-                _this.moon.x = 50;
-                _this.moon.y = -380;
-
-                _this.castleBase = new PIXI.Sprite.fromFrame('castleBase');
-                _this.castleBase.anchor.set(0.5, 1);
-                _this.baseContainer.addChild(_this.castleBase);
-                _this.castleBase.y = 180;
-                _this.castleBase.scale.set(650 / _this.castleBase.width);
-
-                _this.castleContainer = new PIXI.Container();
-                _this.baseContainer.addChild(_this.castleContainer);
-
-                _this.leftDetail = new PIXI.Sprite.fromFrame('backPinePatch1');
-                _this.leftDetail.scale.set(0.7);
-                _this.leftDetail.anchor.set(1, 0);
-                _this.leftDetail.x = -170;
-                _this.leftDetail.y = -135;
-                _this.baseContainer.addChild(_this.leftDetail);
-
-                _this.rightDetail = new PIXI.Sprite.fromFrame('backPinePatch2');
-                _this.rightDetail.scale.set(0.7);
-                _this.rightDetail.x = 190;
-                _this.rightDetail.y = -155;
-                _this.baseContainer.addChild(_this.rightDetail);
-
-                _this.bottomTree = new PIXI.Sprite.fromFrame('bottomTreePatch');
-                _this.bottomTree.anchor.set(0.5, 1);
-                _this.baseContainer.addChild(_this.bottomTree);
-                _this.bottomTree.x = 0;
-                _this.bottomTree.y = 280;
-                _this.bottomTree.scale.set(650 / _this.bottomTree.width);
-
-                _this.bottomTree2 = new PIXI.Sprite.fromFrame('bottomTreePatch');
-                _this.bottomTree2.anchor.set(0.5, 1);
-                _this.baseContainer.addChild(_this.bottomTree2);
-                _this.bottomTree2.x = 0;
-                _this.bottomTree2.y = 380;
-                _this.bottomTree2.scale.set(650 / _this.bottomTree2.width);
-
-                _this.castleSet = [{ src: 'stairs', order: 0, pos: { x: 299.7, y: 676.45 } }, { src: 'door1', order: 7, pos: { x: 282.35, y: 562.95 } }, { src: 'frontTower1', order: 2, pos: { x: 374.6, y: 447.3 } }, { src: 'side2', order: 1, pos: { x: 442.1, y: 532.5 } }, { src: 'side1', order: 3, pos: { x: 101.05, y: 368.55 } }, { src: 'side3', order: 4, pos: { x: 566.5, y: 506.5 } }, { src: 'side4', order: 6, pos: { x: 717.7, y: 264.9 } }, { src: 'sideTower', order: 5, pos: { x: 780.65, y: 320.35 } }, { src: 'middle1', order: 8, pos: { x: 385.35, y: 387.25 } }, { src: 'centerHouse1', order: 11, pos: { x: 274.3, y: 317.1 } }, { src: 'leftTower', order: 15, pos: { x: 123, y: 31.6 } }, { src: 'backforest', order: 20, pos: { x: -15.85, y: 348 } }, { src: 'bridgeTower', order: 16, pos: { x: 518.4, y: 49.4 } }, { src: 'sideHouse2', order: 10, pos: { x: 490.8, y: 277.15 } }, { src: 'sideHouse1', order: 9, pos: { x: 565.95, y: 308.35 } }, { src: 'side5', order: 17, pos: { x: 630.45, y: 0 } }, { src: 'thinHouse', order: 15, pos: { x: 225.05, y: 223.25 } }, { src: 'backTower', order: 19, pos: { x: 317.9, y: 0 } }, { src: 'thinMiddle', order: 15, pos: { x: 448.25, y: 91.7 } }, { src: 'mainTower', order: 13, pos: { x: 301.1, y: 133.1 } }, { src: 'statue1', order: 18, pos: { x: 355.2, y: 71.05 } }];
-
-                _this.castleSet.forEach(function (element) {
-                        var img = new PIXI.Sprite.fromFrame(element.src);
-                        element.sprite = img;
-                        img.x = element.pos.x;
-                        img.y = element.pos.y;
-                        _this.castleContainer.addChild(img);
-                });
-
-                _this.castleSet.forEach(function (element) {
-                        _this.castleContainer.addChildAt(element.sprite, _this.castleSet.lenght - element.order);
-                });
-
-                _this.castleContainer.x = -250;
-                _this.castleContainer.y = -380;
-
-                _this.castleContainer.scale.set(0.55);
-
-                _this.usableArea = new PIXI.Graphics().beginFill(0x00FF00).drawRect(0, 0, 530, 500);
-                // this.addChild(this.usableArea)
-                _this.usableArea.alpha = 0.15;
-                _this.usableArea.x = -_this.usableArea.width / 2;
-                _this.usableArea.y = -450;
-
-                return _this;
-        }
-
-        (0, _createClass3.default)(CastleBackground, [{
-                key: 'resize',
-                value: function resize(innerResolution, scale) {
-                        if (innerResolution && innerResolution.width && innerResolution.height) {
-
-                                this.innerResolution = innerResolution;
-                        }
-                }
-        }, {
-                key: 'update',
-                value: function update(delta) {}
-        }]);
-        return CastleBackground;
-}(PIXI.Container);
-
-exports.default = CastleBackground;
-module.exports = exports['default'];
-
-/***/ }),
-/* 363 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-        value: true
-});
-
-var _getPrototypeOf = __webpack_require__(3);
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__(1);
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(2);
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__(4);
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__(5);
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _pixi = __webpack_require__(0);
-
-var PIXI = _interopRequireWildcard(_pixi);
-
 var _signals = __webpack_require__(9);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _UIButton = __webpack_require__(26);
+var _UIButton = __webpack_require__(39);
 
 var _UIButton2 = _interopRequireDefault(_UIButton);
 
@@ -65820,11 +65667,11 @@ var _config = __webpack_require__(12);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _TextBox = __webpack_require__(80);
+var _TextBox = __webpack_require__(362);
 
 var _TextBox2 = _interopRequireDefault(_TextBox);
 
-var _UILabelButton = __webpack_require__(41);
+var _UILabelButton = __webpack_require__(153);
 
 var _UILabelButton2 = _interopRequireDefault(_UILabelButton);
 
@@ -66037,7 +65884,83 @@ exports.default = StandardPop;
 module.exports = exports['default'];
 
 /***/ }),
-/* 364 */
+/* 362 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _getPrototypeOf = __webpack_require__(3);
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(1);
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(2);
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(4);
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(5);
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _pixi = __webpack_require__(0);
+
+var PIXI = _interopRequireWildcard(_pixi);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import * as FILTERS from 'pixi-filters';
+var TextBox = function (_PIXI$Container) {
+    (0, _inherits3.default)(TextBox, _PIXI$Container);
+
+    function TextBox() {
+        var padding = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 10;
+        var tex = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'small-no-pattern';
+        (0, _classCallCheck3.default)(this, TextBox);
+
+        var _this = (0, _possibleConstructorReturn3.default)(this, (TextBox.__proto__ || (0, _getPrototypeOf2.default)(TextBox)).call(this));
+
+        _this.padding = padding;
+        _this.background = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame(tex), 10, 10, 10, 10);
+        _this.addChild(_this.background);
+
+        _this.label = new PIXI.Text('Thanks for helping us\nChoose your prize', LABELS.LABEL1);
+        _this.label.style.fontSize = 18;
+        _this.label.x = _this.padding;
+        _this.label.y = _this.padding;
+        _this.addChild(_this.label);
+        return _this;
+    }
+
+    (0, _createClass3.default)(TextBox, [{
+        key: 'updateText',
+        value: function updateText(text) {
+            this.label.text = text;
+            this.background.width = this.label.width + this.padding * 2;
+            this.background.height = this.label.height + this.padding * 2;
+        }
+    }]);
+    return TextBox;
+}(PIXI.Container);
+
+exports.default = TextBox;
+module.exports = exports['default'];
+
+/***/ }),
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66075,11 +65998,11 @@ var _signals = __webpack_require__(9);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _UIButton = __webpack_require__(26);
+var _UIButton = __webpack_require__(39);
 
 var _UIButton2 = _interopRequireDefault(_UIButton);
 
-var _UILabelButton = __webpack_require__(41);
+var _UILabelButton = __webpack_require__(153);
 
 var _UILabelButton2 = _interopRequireDefault(_UILabelButton);
 
@@ -66087,7 +66010,7 @@ var _config = __webpack_require__(12);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _SinglePrizeContainer = __webpack_require__(81);
+var _SinglePrizeContainer = __webpack_require__(364);
 
 var _SinglePrizeContainer2 = _interopRequireDefault(_SinglePrizeContainer);
 
@@ -66469,700 +66392,108 @@ exports.default = OpenChestPopUp;
 module.exports = exports['default'];
 
 /***/ }),
+/* 364 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _getPrototypeOf = __webpack_require__(3);
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(1);
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(2);
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(4);
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(5);
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _pixi = __webpack_require__(0);
+
+var PIXI = _interopRequireWildcard(_pixi);
+
+var _signals = __webpack_require__(9);
+
+var _signals2 = _interopRequireDefault(_signals);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SinglePrizeContainer = function (_PIXI$Container) {
+    (0, _inherits3.default)(SinglePrizeContainer, _PIXI$Container);
+
+    function SinglePrizeContainer() {
+        var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 40;
+        (0, _classCallCheck3.default)(this, SinglePrizeContainer);
+
+        var _this = (0, _possibleConstructorReturn3.default)(this, (SinglePrizeContainer.__proto__ || (0, _getPrototypeOf2.default)(SinglePrizeContainer)).call(this));
+
+        _this.size = size;
+        _this.iconContainer = new PIXI.Sprite.fromFrame('coin');
+        _this.addChild(_this.iconContainer);
+        _this.iconContainer.anchor.set(0.5);
+        _this.iconContainer.scale.set(size / _this.iconContainer.height);
+
+        _this.label = new PIXI.Text('Open', LABELS.LABEL_CHEST);
+        _this.addChild(_this.label);
+        _this.label.style.fontSize = 24;
+
+        return _this;
+    }
+
+    (0, _createClass3.default)(SinglePrizeContainer, [{
+        key: 'updateIcon',
+        value: function updateIcon(texture) {
+
+            this.iconContainer.texture = PIXI.Texture.fromFrame(texture);
+
+            this.iconContainer.scale.set(this.size / this.iconContainer.height * 2);
+        }
+    }, {
+        key: 'updateLabel2',
+        value: function updateLabel2(label) {
+            this.label.text = label;
+            this.label.style.stroke = 0;
+            this.label.pivot.x = this.label.width / 2;
+            this.label.pivot.y = this.label.height / 2;
+            this.label.y = this.size;
+        }
+    }, {
+        key: 'updateLabel',
+        value: function updateLabel(label) {
+            var border = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0x00ffff;
+
+            this.label.text = label;
+            this.label.style.stroke = 0;
+            this.label.style.fill = border;
+            this.label.pivot.x = this.label.width / 2;
+            this.label.pivot.y = this.label.height / 2;
+            this.label.y = this.size;
+        }
+    }]);
+    return SinglePrizeContainer;
+}(PIXI.Container);
+
+exports.default = SinglePrizeContainer;
+module.exports = exports['default'];
+
+/***/ }),
 /* 365 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _getPrototypeOf = __webpack_require__(3);
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__(1);
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(2);
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__(4);
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__(5);
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _pixi = __webpack_require__(0);
-
-var PIXI = _interopRequireWildcard(_pixi);
-
-var _signals = __webpack_require__(9);
-
-var _signals2 = _interopRequireDefault(_signals);
-
-var _UIButton = __webpack_require__(26);
-
-var _UIButton2 = _interopRequireDefault(_UIButton);
-
-var _UILabelButton = __webpack_require__(41);
-
-var _UILabelButton2 = _interopRequireDefault(_UILabelButton);
-
-var _config = __webpack_require__(12);
-
-var _config2 = _interopRequireDefault(_config);
-
-var _SinglePrizeContainer = __webpack_require__(81);
-
-var _SinglePrizeContainer2 = _interopRequireDefault(_SinglePrizeContainer);
-
-var _TextBox = __webpack_require__(80);
-
-var _TextBox2 = _interopRequireDefault(_TextBox);
-
-var _UIList = __webpack_require__(40);
-
-var _UIList2 = _interopRequireDefault(_UIList);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SellAllPopUp = function (_PIXI$Container) {
-    (0, _inherits3.default)(SellAllPopUp, _PIXI$Container);
-
-    function SellAllPopUp(label, screenManager) {
-        (0, _classCallCheck3.default)(this, SellAllPopUp);
-
-        var _this = (0, _possibleConstructorReturn3.default)(this, (SellAllPopUp.__proto__ || (0, _getPrototypeOf2.default)(SellAllPopUp)).call(this));
-
-        _this.screenManager = screenManager;
-        _this.label = label;
-        _this.onShow = new _signals2.default();
-        _this.onHide = new _signals2.default();
-        _this.onConfirm = new _signals2.default();
-        _this.onClose = new _signals2.default();
-
-        _this.container = new PIXI.Container();
-        _this.chestContainer = new PIXI.Container();
-        _this.openChestContainer = new PIXI.Container();
-
-        _this.w = _config2.default.width * 0.75;
-        _this.h = _config2.default.height * 0.65;
-
-        _this.background = new PIXI.Graphics().beginFill(0).drawRect(-_config2.default.width * 5, -_config2.default.height * 5, _config2.default.width * 10, _config2.default.height * 10);
-        _this.addChild(_this.background);
-        _this.background.alpha = 0.5;
-
-        _this.background.interactive = true;
-        _this.background.buttonMode = true;
-        _this.background.on('mousedown', _this.close.bind(_this)).on('touchstart', _this.close.bind(_this));
-        _this.background.visible = false;
-
-        _this.popUp = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('oct-no-pattern-yellow'), 30, 30, 30, 30);
-        _this.popUp.width = _this.w;
-        _this.popUp.height = _this.h;
-
-        _this.popUp.pivot.x = _this.popUp.width / 2;
-        _this.popUp.pivot.y = _this.popUp.height / 2;
-        // this.popUp.scale.set((this.size / this.popUp.width));
-        _this.popUp.alpha = 1;
-        _this.popUp.tint = 0xFFFFFF;
-        // this.popUp.blendMode = PIXI.BLEND_MODES.ADD;
-
-        _this.container.interactive = true;
-        _this.container.addChild(_this.popUp);
-        _this.container.x = 0; //-this.container.width / 2;
-        _this.container.y = 0; //-this.container.height / 2;
-        _this.addChild(_this.container);
-        _this.container.addChild(_this.chestContainer);
-        _this.container.addChild(_this.openChestContainer);
-
-        _this.portrait = new PIXI.Sprite.fromFrame('femalePurple');
-        _this.chestContainer.addChild(_this.portrait);
-        _this.portrait.anchor.set(0.5, 1);
-        _this.portrait.y = -40;
-
-        _this.textBox = new _TextBox2.default(20);
-        _this.textBox.updateText('Thanks for helping us\nChoose your prize');
-
-        _this.textBoxPrize = new _TextBox2.default(20);
-        _this.textBoxPrize.updateText('++ Damage\n++ Resources');
-
-        _this.chestContainer.addChild(_this.textBox);
-        _this.chestContainer.addChild(_this.textBoxPrize);
-
-        _this.chestContainer.y = -100;
-
-        _this.textBoxPrize.x = 0;
-        _this.textBoxPrize.y = 50;
-
-        _this.shine = new PIXI.Sprite.fromFrame('shine');
-        _this.shine.anchor.set(0.5);
-        _this.shine.scale.set(2.2);
-        _this.shine.tint = 0xffff00;
-        _this.shine.y = 50;
-        _this.chestContainer.addChild(_this.shine);
-
-        _this.chest2 = new PIXI.Sprite.fromFrame('shards-large');
-        _this.chest2.anchor.set(0.5);
-        _this.chest2.scale.set(1.5);
-        _this.chestContainer.addChild(_this.chest2);
-        _this.chest2.x = 0;
-        _this.chest2.y = _this.h / 2 - 60;
-
-        _this.chest2.on('mouseup', _this.openVideoChest.bind(_this));
-        _this.chest2.on('touchend', _this.openVideoChest.bind(_this));
-        _this.chest2.interactive = true;
-        _this.chest2.buttonMode = true;
-
-        _this.watchToOpen = new PIXI.Text(window.localizationManager.getLabel('sell', true), LABELS.LABEL_CHEST);
-        _this.watchToOpen.style.fontSize = 14;
-        _this.watchToOpen.style.fill = 0xffffff;
-        _this.watchToOpen.pivot.x = _this.watchToOpen.width / 2 - 30;
-        _this.watchToOpen.pivot.y = _this.watchToOpen.height / 2;
-        _this.watchToOpen.y = 60;
-        _this.chest2.addChild(_this.watchToOpen);
-        _this.video = new PIXI.Sprite.fromFrame('video-purple');
-        _this.video.anchor.set(0.5);
-        _this.video.x = -_this.video.width / 2 - 5;
-        _this.video.y = _this.watchToOpen.height / 2;
-        _this.watchToOpen.addChild(_this.video);
-
-        _this.container.visible = false;
-
-        _this.readySin = 0;
-
-        _this.openShop = new _UIButton2.default(0xFFffff, window.TILE_ASSSETS_POOL['image-X'], 0xFFffff, 60, 60, 'boss-button');
-        _this.openShop.updateIconScale(0.5);
-        _this.container.addChild(_this.openShop);
-        _this.openShop.x = -_this.w / 2 + 50;
-        _this.openShop.y = -_this.h / 2 + 50;
-        _this.openShop.onClick.add(function () {
-            _this.close();
-        });
-
-        _this.plusIcons = new _UIList2.default();
-        _this.plusIcons.h = 79;
-        _this.plusIcons.w = 180;
-        _this.container.addChild(_this.plusIcons);
-        var coins = new PIXI.Sprite.fromFrame('plus-coins');
-        var damage = new PIXI.Sprite.fromFrame('plus-damage');
-        _this.plusIcons.addElement(coins);
-        _this.plusIcons.addElement(damage);
-        _this.plusIcons.updateHorizontalList();
-        _this.plusIcons.x = -_this.plusIcons.w / 2;
-        _this.plusIcons.y = -60;
-
-        _this.shinePrize = new PIXI.Sprite.fromFrame('shine');
-        _this.shinePrize.anchor.set(0.5);
-        _this.shinePrize.scale.set(2.8);
-        _this.shinePrize.tint = 0xffff00;
-        _this.shinePrize.alpha = 0.5;
-        _this.openChestContainer.addChild(_this.shinePrize);
-
-        _this.prizeShowData = {
-            distance: 130,
-            total: 1
-        };
-        _this.prizes = [];
-
-        _this.prizesData = [{
-            icon: 'shards-large',
-            color: 0xad07fb
-        }, {
-            icon: 'shipPrize',
-            color: 0x00ffff
-        }, {
-            icon: 'shards-large',
-            color: 0xad07fb
-        }];
-        for (var index = 0; index < _this.prizeShowData.total; index++) {
-            var prize = new _SinglePrizeContainer2.default();
-            _this.openChestContainer.addChild(prize);
-
-            _this.prizes.push(prize);
-            prize.updateIcon(_this.prizesData[index].icon);
-            prize.updateLabel("20AA", _this.prizesData[index].color);
-
-            prize.x = _this.prizeShowData.distance * index - (_this.prizeShowData.distance * _this.prizeShowData.total - 1 / 2);
-            prize.y = -80;
-        }
-        _this.shinePrize.y = -80;
-        _this.collectButton = new _UILabelButton2.default(130);
-        _this.collectButton.addCenterLabel(window.localizationManager.getLabel('collect'));
-        _this.openChestContainer.addChild(_this.collectButton);
-        _this.collectButton.pivot.x = _this.collectButton.width / 2;
-        _this.collectButton.y = 120;
-        _this.collectButton.onClick.add(function () {
-            _this.close();
-        });
-        _this.isShowing = false;
-        window.onSpacePressed.add(function () {
-            if (!_this.isShowing) {
-                return;
-            }
-            _this.openVideoChest();
-        });
-        window.onEscPressed.add(function () {
-            if (!_this.isShowing) {
-                return;
-            }
-            _this.close();
-        });
-
-        return _this;
-    }
-
-    (0, _createClass3.default)(SellAllPopUp, [{
-        key: 'openNormalChest',
-        value: function openNormalChest() {
-            //this.close()
-            this.chestContainer.visible = false;
-            this.openChestContainer.visible = true;
-        }
-    }, {
-        key: 'openVideoChest',
-        value: function openVideoChest() {
-            var _this2 = this;
-
-            window.DO_REWARD(function () {
-                _this2.confirmCallback(_this2.totalShards);
-                _this2.close();
-            });
-            // this.chestContainer.visible = false;
-            // this.openChestContainer.visible = true;
-            // this.updatePrizes(0)
-        }
-    }, {
-        key: 'updatePrizes',
-        value: function updatePrizes(total) {
-            for (var index = 0; index < this.prizes.length; index++) {
-                var prize = this.prizes[index];
-                prize.visible = false;
-            }
-            for (var _index = 0; _index < total + 1; _index++) {
-                var _prize = this.prizes[_index];
-                _prize.visible = true;
-                _prize.x = this.prizeShowData.distance * _index - this.prizeShowData.distance * total / 2;
-                _prize.y = -80;
-                _prize.alpha = 0;
-                TweenLite.to(_prize, 0.3, { delay: _index * 0.2 + 0.1, alpha: 1 });
-                TweenLite.from(_prize, 0.5, { delay: _index * 0.2 + 0.1, x: 0, y: 40, ease: Back.easeOut });
-            }
-        }
-    }, {
-        key: 'update',
-        value: function update(delta) {
-            this.readySin += delta * 8;
-            this.chest2.scale.set(Math.sin(this.readySin) * 0.05 + 0.95 + 0.8);
-
-            this.shine.x = this.chest2.x;
-            this.shine.y = this.chest2.y;
-            this.shine.rotation += delta * 5;
-            this.shine.rotation %= Math.PI * 2;
-
-            this.shinePrize.rotation = this.shine.rotation;
-        }
-    }, {
-        key: 'show',
-        value: function show(param) {
-            this.totalShards = param.shards;
-            this.visible = true;
-            this.textBox.updateText(window.localizationManager.getLabel('sell-popup') + '\n' + utils.formatPointsLabel(param.shards) + " Shards");
-            this.textBoxPrize.label.style.fontSize = 22;
-            this.textBoxPrize.label.style.fill = 0xffffff;
-            this.textBoxPrize.label.style.stroke = 0xad07fb;
-            this.textBoxPrize.label.style.strokeThickness = 6;
-            this.textBoxPrize.updateText('+' + utils.formatPointsLabel(param.shards) + ' x ' + window.localizationManager.getLabel('sell-popup-damage') + '\n' + '+' + utils.formatPointsLabel(param.shards) + ' x ' + window.localizationManager.getLabel('sell-popup-damage'));
-
-            //this.textBoxPrize.label.style.align = 'left'
-            this.textBoxPrize.background.alpha = 0;
-            this.textBoxPrize.x = -this.textBoxPrize.width / 2;
-            this.textBoxPrize.y = this.plusIcons.y + 80 + this.textBoxPrize.height;
-            this.isShowing = true;
-            this.textBox.x = -this.textBox.width / 2;
-            this.textBox.y = -this.textBox.height / 2 - 10;
-            this.container.visible = true;
-            this.background.visible = true;
-            this.chestContainer.visible = true;
-            this.openChestContainer.visible = false;
-            this.toRemove = false;
-            this.onShow.dispatch(this);
-
-            if (param) {
-                this.confirmCallback = param.onConfirm;
-                this.cancelCallback = param.onCancel;
-            } else {
-                this.confirmCallback = null;
-                this.cancelCallback = null;
-            }
-
-            this.background.alpha = 0.5;
-            this.container.alpha = 1;
-            this.popUp.scale.x = 1;
-            this.popUp.scale.y = 1;
-        }
-    }, {
-        key: 'afterHide',
-        value: function afterHide() {}
-    }, {
-        key: 'hide',
-        value: function hide() {
-            var _this3 = this;
-
-            var dispatch = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
-            var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-            if (!this.isShowing) {
-                return;
-            }
-
-            this.isShowing = false;
-
-            TweenLite.to(this.background, 0.25, { alpha: 0 });
-            TweenLite.to(this.container, 0.25, { alpha: 0 });
-            TweenLite.to(this.popUp.scale, 0.25, {
-                x: 0,
-                y: 1.5,
-                ease: Back.easeIn,
-                onComplete: function onComplete() {
-                    if (dispatch) {
-                        _this3.onHide.dispatch(_this3);
-                    }
-                    if (callback) {
-                        callback();
-                    }
-                    _this3.afterHide();
-                    _this3.toRemove = true;
-
-                    _this3.visible = false;
-                }
-            });
-        }
-    }, {
-        key: 'confirm',
-        value: function confirm() {
-            this.onConfirm.dispatch(this);
-            // this.hide();
-        }
-    }, {
-        key: 'close',
-        value: function close() {
-            this.onClose.dispatch(this);
-            this.hide();
-        }
-    }]);
-    return SellAllPopUp;
-}(PIXI.Container);
-
-exports.default = SellAllPopUp;
-module.exports = exports['default'];
-
-/***/ }),
-/* 366 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _getPrototypeOf = __webpack_require__(3);
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__(1);
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(2);
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__(4);
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__(5);
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _pixi = __webpack_require__(0);
-
-var PIXI = _interopRequireWildcard(_pixi);
-
-var _signals = __webpack_require__(9);
-
-var _signals2 = _interopRequireDefault(_signals);
-
-var _UIButton = __webpack_require__(26);
-
-var _UIButton2 = _interopRequireDefault(_UIButton);
-
-var _UILabelButton = __webpack_require__(41);
-
-var _UILabelButton2 = _interopRequireDefault(_UILabelButton);
-
-var _config = __webpack_require__(12);
-
-var _config2 = _interopRequireDefault(_config);
-
-var _SinglePrizeContainer = __webpack_require__(81);
-
-var _SinglePrizeContainer2 = _interopRequireDefault(_SinglePrizeContainer);
-
-var _TextBox = __webpack_require__(80);
-
-var _TextBox2 = _interopRequireDefault(_TextBox);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var BonusConfirmation = function (_PIXI$Container) {
-    (0, _inherits3.default)(BonusConfirmation, _PIXI$Container);
-
-    function BonusConfirmation(label, screenManager) {
-        (0, _classCallCheck3.default)(this, BonusConfirmation);
-
-        var _this = (0, _possibleConstructorReturn3.default)(this, (BonusConfirmation.__proto__ || (0, _getPrototypeOf2.default)(BonusConfirmation)).call(this));
-
-        _this.screenManager = screenManager;
-        _this.label = label;
-        _this.onShow = new _signals2.default();
-        _this.onHide = new _signals2.default();
-        _this.onConfirm = new _signals2.default();
-        _this.onClose = new _signals2.default();
-
-        _this.container = new PIXI.Container();
-        _this.chestContainer = new PIXI.Container();
-
-        _this.w = _config2.default.width * 0.85;
-        _this.h = 300;
-
-        _this.background = new PIXI.Graphics().beginFill(0).drawRect(-_config2.default.width * 5, -_config2.default.height * 5, _config2.default.width * 10, _config2.default.height * 10);
-        _this.addChild(_this.background);
-        _this.background.alpha = 0.5;
-
-        _this.background.interactive = true;
-        _this.background.buttonMode = true;
-        _this.background.on('mousedown', _this.close.bind(_this)).on('touchstart', _this.close.bind(_this));
-        _this.background.visible = false;
-
-        _this.popUp = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('oct-no-pattern-cyan'), 30, 30, 30, 30);
-        _this.popUp.width = _this.w;
-        _this.popUp.height = _this.h;
-
-        _this.popUp.pivot.x = _this.popUp.width / 2;
-        _this.popUp.pivot.y = _this.popUp.height / 2;
-        // this.popUp.scale.set((this.size / this.popUp.width));
-        _this.popUp.alpha = 1;
-        _this.popUp.tint = 0xFFFFFF;
-        // this.popUp.blendMode = PIXI.BLEND_MODES.ADD;
-
-        _this.container.interactive = true;
-        _this.container.addChild(_this.popUp);
-        _this.container.x = 0; //-this.container.width / 2;
-        _this.container.y = 0; //-this.container.height / 2;
-        _this.addChild(_this.container);
-        _this.container.addChild(_this.chestContainer);
-
-        _this.textBox = new _TextBox2.default(20);
-        _this.textBox.updateText('Thanks for helping us\nChoose your prize');
-        _this.textBox.interactive = true;
-        _this.textBox.buttonMode = true;
-        _this.textBox.on('mousedown', _this.close.bind(_this)).on('touchstart', _this.close.bind(_this));
-
-        _this.chestContainer.addChild(_this.textBox);
-
-        _this.icon = new PIXI.Sprite.fromFrame('drill');
-        _this.icon.anchor.set(1, 0);
-        _this.icon.x = _this.w / 2 - 20;
-        _this.icon.y = -_this.h / 2 + 20;
-        _this.icon.scale.set(_this.h / _this.icon.height * _this.icon.scale.x);
-        _this.chestContainer.addChild(_this.icon);
-
-        _this.container.visible = false;
-
-        _this.readySin = 0;
-
-        _this.collectButton = new _UILabelButton2.default(130, 60);
-        _this.collectButton.addVideoIcon();
-        _this.collectButton.addCenterLabel(window.localizationManager.getLabel('activate'), true);
-        _this.chestContainer.addChild(_this.collectButton);
-        _this.collectButton.pivot.x = _this.collectButton.width / 2;
-        _this.collectButton.y = 60;
-        _this.collectButton.onClick.add(function () {
-            _this.confirmCallback();
-            _this.close();
-        });
-
-        _this.openShop = new _UIButton2.default(0xFFffff, window.TILE_ASSSETS_POOL['image-X'], 0xFFffff, 60, 60, 'boss-button');
-        _this.openShop.updateIconScale(0.5);
-        _this.chestContainer.addChild(_this.openShop);
-        _this.openShop.x = -_this.w / 2 + 50;
-        _this.openShop.y = -_this.h / 2 + 50;
-        _this.openShop.onClick.add(function () {
-            _this.close();
-        });
-
-        _this.labelTitle = new PIXI.Text('Video Reward', LABELS.LABEL1);
-        _this.labelTitle.style.fontSize = 32;
-        _this.labelTitle.style.stroke = 0;
-        _this.labelTitle.style.strokeThickness = 6;
-        _this.labelTitle.x = -_this.labelTitle.width / 2;
-        _this.labelTitle.y = -_this.h / 2 + 30;
-        _this.chestContainer.addChild(_this.labelTitle);
-
-        _this.isShowing = false;
-        window.onSpacePressed.add(function () {
-            if (!_this.isShowing) {
-                return;
-            }
-            if (_this.chestContainer.visible) {
-
-                _this.openVideoChest();
-            }
-        });
-
-        window.onEscPressed.add(function () {
-            if (!_this.isShowing) {
-                return;
-            }
-            if (_this.chestContainer.visible) {
-
-                _this.close();
-            }
-        });
-        return _this;
-    }
-
-    (0, _createClass3.default)(BonusConfirmation, [{
-        key: 'openNormalChest',
-        value: function openNormalChest() {
-            //this.close()
-            this.chestContainer.visible = false;
-            this.openChestContainer.visible = true;
-        }
-    }, {
-        key: 'openVideoChest',
-        value: function openVideoChest() {
-            var _this2 = this;
-
-            window.DO_REWARD(function () {
-                _this2.confirmCallback();
-                _this2.close();
-            });
-            // this.chestContainer.visible = false;
-            // this.openChestContainer.visible = true;
-            // this.updatePrizes(0)
-        }
-    }, {
-        key: 'update',
-        value: function update(delta) {
-            this.readySin += delta * 8;
-        }
-    }, {
-        key: 'show',
-        value: function show(param) {
-
-            this.labelTitle.text = param.shortDescription + ' ' + window.localizationManager.getLabel('bonus');
-            this.labelTitle.x = -this.labelTitle.width / 2;
-            this.visible = true;
-            this.textBox.updateText(param.description);
-            this.icon.texture = param.texture;
-            this.icon.scale.set(60 / this.icon.height * this.icon.scale.x);
-
-            this.isShowing = true;
-            this.textBox.x = -this.textBox.width / 2;
-            this.textBox.y = -this.textBox.height / 2;
-            this.container.visible = true;
-            this.background.visible = true;
-
-            this.toRemove = false;
-            this.onShow.dispatch(this);
-
-            if (param) {
-                this.confirmCallback = param.onConfirm;
-                this.cancelCallback = param.onCancel;
-            } else {
-                this.confirmCallback = null;
-                this.cancelCallback = null;
-            }
-
-            this.background.alpha = 0.5;
-            this.container.alpha = 1;
-            this.popUp.scale.x = 1;
-            this.popUp.scale.y = 1;
-        }
-    }, {
-        key: 'afterHide',
-        value: function afterHide() {}
-    }, {
-        key: 'hide',
-        value: function hide() {
-            var _this3 = this;
-
-            var dispatch = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
-            var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-            if (!this.isShowing) {
-                return;
-            }
-
-            this.isShowing = false;
-
-            TweenLite.to(this.background, 0.25, { alpha: 0 });
-            TweenLite.to(this.container, 0.25, { alpha: 0 });
-            TweenLite.to(this.popUp.scale, 0.25, {
-                x: 0,
-                y: 1.5,
-                ease: Back.easeIn,
-                onComplete: function onComplete() {
-                    if (dispatch) {
-                        _this3.onHide.dispatch(_this3);
-                    }
-                    if (callback) {
-                        callback();
-                    }
-                    _this3.afterHide();
-                    _this3.toRemove = true;
-
-                    _this3.visible = false;
-                }
-            });
-        }
-    }, {
-        key: 'confirm',
-        value: function confirm() {
-            this.onConfirm.dispatch(this);
-            // this.hide();
-        }
-    }, {
-        key: 'close',
-        value: function close() {
-            this.onClose.dispatch(this);
-            this.hide();
-        }
-    }]);
-    return BonusConfirmation;
-}(PIXI.Container);
-
-exports.default = BonusConfirmation;
-module.exports = exports['default'];
-
-/***/ }),
-/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67291,6 +66622,189 @@ var LevelMeter = function (_PIXI$Container) {
 
 exports.default = LevelMeter;
 module.exports = exports['default'];
+
+/***/ }),
+/* 366 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _getPrototypeOf = __webpack_require__(3);
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(1);
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(2);
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(4);
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(5);
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _CastleBackground = __webpack_require__(152);
+
+var _CastleBackground2 = _interopRequireDefault(_CastleBackground);
+
+var _InteractiveBackgrounds = __webpack_require__(367);
+
+var _InteractiveBackgrounds2 = _interopRequireDefault(_InteractiveBackgrounds);
+
+var _PuzzleBackground = __webpack_require__(151);
+
+var _PuzzleBackground2 = _interopRequireDefault(_PuzzleBackground);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var MonsterBackground = function (_InteractiveBackgroun) {
+    (0, _inherits3.default)(MonsterBackground, _InteractiveBackgroun);
+
+    function MonsterBackground() {
+        (0, _classCallCheck3.default)(this, MonsterBackground);
+
+        var _this = (0, _possibleConstructorReturn3.default)(this, (MonsterBackground.__proto__ || (0, _getPrototypeOf2.default)(MonsterBackground)).call(this));
+
+        _this.castleBackground = new _CastleBackground2.default();
+        _this.puzzleBackground = new _PuzzleBackground2.default();
+        _this.addChildAt(_this.puzzleBackground, 0);
+        _this.addChildAt(_this.castleBackground, 0);
+
+        _this.zero = new PIXI.Graphics().beginFill(0x00FF00).drawCircle(0, 0, 50);
+        //this.addChild(this.zero)
+        _this.zero.alpha = 0.5;
+        return _this;
+    }
+
+    (0, _createClass3.default)(MonsterBackground, [{
+        key: "update",
+        value: function update(delta) {
+            if (this.puzzleBackground) {
+
+                this.puzzleBackground.update(delta);
+            }
+            if (this.castleBackground) {
+
+                this.castleBackground.update(delta);
+            }
+        }
+    }, {
+        key: "resize",
+        value: function resize(resolution, innerResolution) {
+            var topRight = game.getBorder('topRight', this.parent);
+            var toGlobalBack = this.toLocal({ x: 0, y: innerResolution.height });
+
+            this.puzzleBackground.resize(resolution, innerResolution);
+            this.castleBackground.resize(resolution, innerResolution);
+            if (!window.isPortrait) {
+
+                this.puzzleBackground.pivot.x = this.puzzleBackground.usableArea.x;
+                this.puzzleBackground.pivot.y = this.puzzleBackground.usableArea.height + this.puzzleBackground.usableArea.y;
+                this.puzzleBackground.x = toGlobalBack.x + 20; //toGlobalBack.x + 390
+                this.puzzleBackground.y = config.height / 2 + 20;
+                var scale = Math.min(topRight.x / this.puzzleBackground.usableArea.width * 0.6, config.height / this.puzzleBackground.usableArea.height * 0.9);
+                this.puzzleBackground.scale.set(scale);
+
+                this.castleBackground.x = toGlobalBack.x + (this.puzzleBackground.usableArea.width + 100) * scale;
+
+                scale = Math.min((topRight.x - this.castleBackground.x) / this.castleBackground.usableArea.width * 0.95, config.height / this.castleBackground.usableArea.height * 0.9);
+                scale = Math.max(0.85, scale);
+                this.castleBackground.scale.set(scale);
+                this.castleBackground.pivot.x = this.castleBackground.usableArea.x;
+                this.castleBackground.pivot.y = this.castleBackground.usableArea.height + this.castleBackground.usableArea.y;
+                this.castleBackground.y = config.height * 0.85 * 0.5;
+            } else {
+                this.puzzleBackground.pivot.x = 0;
+                this.puzzleBackground.pivot.y = 0;
+                this.puzzleBackground.scale.set(1);
+                this.puzzleBackground.x = 0;
+                this.puzzleBackground.y = -100;
+
+                this.castleBackground.pivot.x = 0;
+                this.castleBackground.pivot.y = 0;
+                this.castleBackground.x = 0;
+                this.castleBackground.y = -100;
+                this.castleBackground.scale.set(1);
+            }
+        }
+    }]);
+    return MonsterBackground;
+}(_InteractiveBackgrounds2.default);
+
+exports.default = MonsterBackground;
+module.exports = exports["default"];
+
+/***/ }),
+/* 367 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _getPrototypeOf = __webpack_require__(3);
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(1);
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(2);
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(4);
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(5);
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var InteractiveBackgrounds = function (_PIXI$Container) {
+    (0, _inherits3.default)(InteractiveBackgrounds, _PIXI$Container);
+
+    function InteractiveBackgrounds() {
+        (0, _classCallCheck3.default)(this, InteractiveBackgrounds);
+        return (0, _possibleConstructorReturn3.default)(this, (InteractiveBackgrounds.__proto__ || (0, _getPrototypeOf2.default)(InteractiveBackgrounds)).call(this));
+    }
+
+    (0, _createClass3.default)(InteractiveBackgrounds, [{
+        key: "updateMax",
+        value: function updateMax(max) {}
+    }, {
+        key: "update",
+        value: function update(delta) {}
+    }, {
+        key: "resize",
+        value: function resize(resolution, innerResolution) {
+            if (!resolution || !resolution.width || !resolution.height || !innerResolution) {
+                return;
+            }
+        }
+    }]);
+    return InteractiveBackgrounds;
+}(PIXI.Container);
+
+exports.default = InteractiveBackgrounds;
+module.exports = exports["default"];
 
 /***/ }),
 /* 368 */

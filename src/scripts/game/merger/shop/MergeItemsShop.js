@@ -7,6 +7,7 @@ export default class MergeItemsShop extends EntityShop {
     constructor(mainSystem, size, border = 0) {
         super(mainSystem, size, border = 0)
         this.onAddEntity = new Signals();
+        this.systemID = 'monsters'; 
     }
 
     confirmItemShop(item) {
@@ -14,7 +15,7 @@ export default class MergeItemsShop extends EntityShop {
             resourceSystem.findUpgrade(item)
         });
 
-        COOKIE_MANAGER.addMergePieceUpgrade(item);
+        COOKIE_MANAGER.addMergePieceUpgrade(item,this.systemID);
 
         this.onAddEntity.dispatch(item);
 
@@ -34,7 +35,7 @@ export default class MergeItemsShop extends EntityShop {
     show() {
         this.visible = true;
         this.title.text = window.localizationManager.getLabel('spaceships')
-        let currentResources = COOKIE_MANAGER.getBoard();
+        let currentResources = COOKIE_MANAGER.getBoard(this.systemID);
         let currentEntities = []
         for (const key in currentResources.entities) {
             const element = currentResources.entities[key];
@@ -45,7 +46,7 @@ export default class MergeItemsShop extends EntityShop {
 
         let found = false;
 
-        this.savedProgression = COOKIE_MANAGER.getBoard();
+        this.savedProgression = COOKIE_MANAGER.getBoard(this.systemID);
         this.boardProgression = this.savedProgression.boardLevel;
 
         for (let index = this.currentItens.length-1; index >=0 ; index--) {

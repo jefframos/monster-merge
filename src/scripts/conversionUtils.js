@@ -7,7 +7,7 @@ export default
 
             //console.log(tempPoints)
             if (tempPoints < 10) {
-                tempPoints = tempPoints.toFixed(2)
+                //tempPoints = tempPoints.toFixed(2)
                 return tempPoints
             }
             if (tempPoints < 1000) {

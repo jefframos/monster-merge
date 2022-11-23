@@ -1,15 +1,23 @@
 const assets = [
 	{
-	"id":"asas",
-	"url":"assets/json\\asas"
+	"id":"baseGameConfigFairy",
+	"url":"assets/json\\baseGameConfigFairy.json"
 	},
 	{
-	"id":"baseGameConfig",
-	"url":"assets/json\\baseGameConfig.json"
+	"id":"baseGameConfigHumans",
+	"url":"assets/json\\baseGameConfigHumans.json"
 	},
 	{
-	"id":"entities",
-	"url":"assets/json\\entities.json"
+	"id":"baseGameConfigMonster",
+	"url":"assets/json\\baseGameConfigMonster.json"
+	},
+	{
+	"id":"fairies",
+	"url":"assets/json\\fairies.json"
+	},
+	{
+	"id":"humans",
+	"url":"assets/json\\humans.json"
 	},
 	{
 	"id":"localization_DE",
@@ -52,12 +60,16 @@ const assets = [
 	"url":"assets/json\\localization_TR.json"
 	},
 	{
-	"id":"localization_ZH",
-	"url":"assets/json\\localization_ZH.json"
-	},
-	{
 	"id":"modifyers",
 	"url":"assets/json\\modifyers.json"
+	},
+	{
+	"id":"monsters",
+	"url":"assets/json\\monsters.json"
+	},
+	{
+	"id":"localization_ZH",
+	"url":"assets/json\\localization_ZH.json"
 	},
 	{
 	"id":"resources",

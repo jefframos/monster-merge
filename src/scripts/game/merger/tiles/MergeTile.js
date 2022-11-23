@@ -3,7 +3,7 @@ import Signals from 'signals';
 import CircleCounter from '../../ui/hudElements/CircleCounter';
 import ProgressBar from '../ProgressBar';
 export default class MergeTile extends PIXI.Container {
-    constructor(i, j, size, lockIcon) {
+    constructor(i, j, size, lockIcon, visuals) {
         super();
 
         this.id = {
@@ -13,6 +13,7 @@ export default class MergeTile extends PIXI.Container {
         this.container = new PIXI.Container();
         this.addChild(this.container);
 
+        this.visuals = visuals;
         this.size = size;
 
 
@@ -25,8 +26,8 @@ export default class MergeTile extends PIXI.Container {
         this.backSlot.alpha = 0
 
 
-        let slotId = Math.ceil(Math.random() * 3)
-        this.backShape = new PIXI.Sprite.fromFrame("gameSlot" + slotId)
+        let slotId = visuals.backTiles[Math.floor(Math.random() * visuals.backTiles.length)]
+        this.backShape = new PIXI.Sprite.fromFrame(slotId)
         this.backShape.width = size
         this.backShape.height = size
         this.backShape.alpha = 1
@@ -340,8 +341,8 @@ export default class MergeTile extends PIXI.Container {
         } else if (level < 22) {
             coffinID = 3
         }
-        console.log(level);
-        this.giftSprite.texture = new PIXI.Texture.from('coffin' + (coffinID + 1));
+        coffinID = Math.min(coffinID, this.visuals.locks.length - 1)
+        this.giftSprite.texture = new PIXI.Texture.from(this.visuals.locks[coffinID]);
 
         this.giftSprite.visible = true;
         this.tileSprite.visible = false;

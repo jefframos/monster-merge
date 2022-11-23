@@ -47,21 +47,55 @@ export default class CookieManager {
 				shards: 0
 			}
 		}
-		this.economy = {}
-		this.stats = {}
-		this.resources = {}
-		this.progression = {}
-		this.board = {}
-		this.modifyers = {}
-		this.economy = this.sortCookieData('economy', this.defaultEconomy);
-		this.stats = this.sortCookieData('stats', this.defaultStats);
-		this.resources = this.sortCookieData('resources', this.defaultResources);
-		this.progression = this.sortCookieData('progression', this.defaultProgression);
-		this.board = this.sortCookieData('board', this.defaultBoard);
-		this.modifyers = this.sortCookieData('modifyers', this.defaultModifyers);
+
+		this.version = '0.0.11'
+		this.cookieVersion = this.getCookie('cookieVersion')
+		//alert(this.cookieVersion != this.version)
+		if(!this.cookieVersion || this.cookieVersion != this.version){
+			this.storeObject('cookieVersion', this.version)
+			this.wipeData2();
+		}
+		this.fullData = this.getCookie('fullData')
+		if(!this.fullData){
+			this.fullData = {}
+		}	
+	
+		this.storeObject('fullData', this.fullData)
 
 	}
+	sortCookie(id){
+		if(!this.fullData[id]){
 
+			this.fullData[id] = {}
+			this.fullData[id]['board'] = this.sortCookieData('board', this.defaultBoard);
+			this.fullData[id]['progression'] = this.sortCookieData('progression', this.defaultProgression);
+			this.fullData[id]['economy'] = this.sortCookieData('economy', this.defaultEconomy);
+		}
+
+		this.storeObject('fullData', this.fullData)
+
+	}
+	generateCookieData(nameID, defaultData, force = false) {
+		let cookie = this.getCookie(nameID);
+		if (force) {
+			cookie = null;
+		}
+		let target
+		if (cookie) {
+			target = cookie;
+
+			for (const key in defaultData) {
+				const element = defaultData[key];
+				if (target[key] === undefined) {
+					target[key] = element;
+				}
+			}
+		} else {
+			target = defaultData
+		}
+
+		return target
+	}
 	sortCookieData(nameID, defaultData, force = false) {
 		let cookie = this.getCookie(nameID);
 		if (force) {
@@ -85,10 +119,11 @@ export default class CookieManager {
 
 		return target
 	}
-	updateResources(total) {
-		this.economy.resources = total;
-		this.economy.lastChanged = Date.now() / 1000 | 0
-		this.storeObject('economy', this.economy)
+	updateResources(total, id) {
+		this.fullData[id].economy.resources = total;
+		this.fullData[id].economy.lastChanged = Date.now() / 1000 | 0
+		//this.storeObject('economy', this.economy)
+		this.storeObject('fullData', this.fullData)
 	}
 	resetAllCollects() {
 		for (const key in this.resources) {
@@ -130,52 +165,45 @@ export default class CookieManager {
 		this.storeObject('resources', this.resources)
 	}
 
-	addMergePiece(mergeData, i, j) {
+	addMergePiece(mergeData, i, j,id) {
 		if (mergeData == null) {
-			this.board.entities[i + ";" + j] = null
+			this.fullData[id].board.entities[i + ";" + j] = null
 		} else {
-			this.board.entities[i + ";" + j] = {
+			this.fullData[id].board.entities[i + ";" + j] = {
 				nameID: mergeData.rawData.nameID
 			}
 		}
-		this.storeObject('board', this.board)
+		this.storeObject('fullData', this.fullData)
 	}
-	addMergePieceUpgrade(mergeData) {
+	addMergePieceUpgrade(mergeData, id) {
 
-		if (this.board.dataProgression[mergeData.rawData.nameID] == null) {
-			this.board.dataProgression[mergeData.rawData.nameID] = {
+		if (this.fullData[id].board.dataProgression[mergeData.rawData.nameID] == null) {
+			this.fullData[id].board.dataProgression[mergeData.rawData.nameID] = {
 				currentLevel: mergeData.currentLevel
 			}
 		} else {
-			this.board.dataProgression[mergeData.rawData.nameID].currentLevel = mergeData.currentLevel
+			this.fullData[id].board.dataProgression[mergeData.rawData.nameID].currentLevel = mergeData.currentLevel
 		}
-
-		this.storeObject('board', this.board)
+		this.storeObject('fullData', this.fullData)
+		//this.storeObject('board', this.board)
 	}
 	endTutorial(step){
 		this.stats.tutorialStep = step;
 		this.storeObject('stats', this.stats)
+		
+	}
+	saveBoardLevel(level, id) {
+		this.fullData[id].board.currentBoardLevel = level;
+		this.storeObject('fullData', this.fullData)
+		//this.storeObject('board', this.board)
+		
+	}
+	saveBoardProgress(boardProgress, id) {
+		this.fullData[id].board.boardLevel = boardProgress;
+		this.storeObject('fullData', this.fullData)
+		//this.storeObject('board', this.board)
 
 	}
-	saveBoardLevel(level) {
-		this.board.currentBoardLevel = level;
-		this.storeObject('board', this.board)
-
-	}
-	saveBoardProgress(boardProgress) {
-		this.board.boardLevel = boardProgress;
-		this.storeObject('board', this.board)
-
-	}
-	saveEnemyLife(value) {
-		this.progression.currentEnemyLife = value;
-		this.storeObject('progression', this.progression)
-	}
-	saveEnemyLevel(level) {
-		this.progression.currentEnemyLevel = level;
-		this.storeObject('progression', this.progression)
-	}
-
 
 	updateModifyers(data) {
 		this.modifyers = data;
@@ -193,10 +221,14 @@ export default class CookieManager {
 	getModifyers() {
 		return this.getCookie('modifyers')
 	}
-	getEconomy() {
+	getEconomy(id) {
+		return this.fullData[id].economy
 		return this.getCookie('economy')
 	}
-	getResources() {
+	getResources(id) {
+		console.log(id,this.fullData[id].resources)
+
+		return this.fullData[id].resources
 		return this.getCookie('resources')
 	}
 	getProgression() {
@@ -205,8 +237,9 @@ export default class CookieManager {
 	resetBoard() {
 		this.sortCookieData('board', this.defaultBoard, true)
 	}
-	getBoard() {
-		return this.getCookie('board')
+	getBoard(id) {
+		console.log('getBoard',id,this.fullData[id].board)
+		return this.fullData[id].board//this.getCookie('board')
 	}
 
 	createCookie(name, value, days) {
@@ -243,6 +276,17 @@ export default class CookieManager {
 
 		try {
 			window.localStorage.clear();
+			window.location.reload();
+		} catch (e) {
+		}
+	}
+
+	wipeData2() {
+		this.resetCookie();
+
+		try {
+			window.localStorage.clear();
+			this.storeObject('cookieVersion', this.version)
 			window.location.reload();
 		} catch (e) {
 		}

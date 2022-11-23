@@ -27,6 +27,25 @@ for (let index = 15; index < 309; index+=3) {
 
 //console.log(window.numberList)
 
+window.getCurrency = function (e) {
+    let a = Math.pow(2, e)
+    console.log(a)
+}
+
+window.getLevels = function (e) {
+    let a = e < 6 ? 6 * (e + 1) * (e + 1) - 6 * (e + 1) : e < 7 ? 5 * (e + 1) * (e + 1) - 5 * (e + 1) : e < 8 ? 4 * (e + 1) * (e + 1) - 4 * (e + 1) : e < 9 ? 3 * (e + 1) * (e + 1) - 3 * (e + 1) : e < 10 ? 2 * (e + 1) * (e + 1) - 2 * (e + 1) : (e + 1) * (e + 1) - (e + 1)
+    return a
+}
+
+window.getPrices = function (e) {
+    let s = 50;
+    for (let index = 0; index < e; index++) {
+        s *= 2.5
+    }
+    s = Math.floor(s)
+    console.log(s * 10)
+}
+
 window.config = config;
 window.utils = utils;
 

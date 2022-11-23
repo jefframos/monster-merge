@@ -7,8 +7,8 @@ import Signals from 'signals';
 import UIBar from '../../ui/uiElements/UIBar';
 
 export default class ChargerTile extends MergeTile {
-    constructor(i, j, size, lockIcon, standardChargeTime = 2) {
-        super(i, j, size, lockIcon);
+    constructor(i, j, size, lockIcon, standardChargeTime, visuals) {
+        super(i, j, size, lockIcon, visuals);
         this.backShape.texture = PIXI.Texture.fromFrame('backTilesSquare')
 
         this.defaultChargeTime = standardChargeTime;

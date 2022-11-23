@@ -10,7 +10,7 @@ import utils from '../../../utils';
 import Signals from 'signals';
 
 export default class EntityShop extends PIXI.Container {
-    constructor(mainSystem, size, border = 0) {
+    constructor(mainSystem, systemID) {
         super()
         this.mainSystem = mainSystem;
         this.size = {
@@ -124,6 +124,8 @@ export default class EntityShop extends PIXI.Container {
             }
            this.hideFromClick();
         })
+
+        this.systemID = systemID;
     }
     showBlock() {
 
@@ -180,7 +182,7 @@ export default class EntityShop extends PIXI.Container {
     show() {
         this.visible = true;
 
-        let currentResources = COOKIE_MANAGER.getResources();
+        let currentResources = COOKIE_MANAGER.getResources(this.systemID);
 
 
         let currentEntities = []
@@ -205,7 +207,7 @@ export default class EntityShop extends PIXI.Container {
 
 
     }
-    confirmItemShop(item, button, totalUpgrades) {
+    confirmItemShop(item, button, totalUpgrades, id) {
 
         //console.log(totalUpgrades)
 
@@ -214,10 +216,10 @@ export default class EntityShop extends PIXI.Container {
             resourceSystem.findUpgrade(item)
         });
 
-        COOKIE_MANAGER.addResourceUpgrade(item);
+        COOKIE_MANAGER.addResourceUpgrade(item, id);
 
     }
-    addItems(items, skipCheck = false) {
+    addItems(items,  skipCheck = false) {
 
         this.currentItens = []
         for (let index = 0; index < items.length; index++) {
@@ -234,16 +236,16 @@ export default class EntityShop extends PIXI.Container {
         if (skipCheck) {
             return;
         }
-        let currentResources = COOKIE_MANAGER.getResources();
-        let currentShips = COOKIE_MANAGER.getBoard();
-
+        // let currentResources = COOKIE_MANAGER.getResources(this.systemID);
+        let currentShips = COOKIE_MANAGER.getBoard(this.systemID);
+// console.log(currentResources)
         let currentEntities = []
-        for (const key in currentResources.entities) {
-            const element = currentResources.entities[key];
-            if (element.currentLevel) {
-                currentEntities.push(key);
-            }
-        }
+        // for (const key in currentResources.entities) {
+        //     const element = currentResources.entities[key];
+        //     if (element.currentLevel) {
+        //         currentEntities.push(key);
+        //     }
+        // }
 
         for (const key in currentShips.entities) {
             const element = currentShips.entities[key];

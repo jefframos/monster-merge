@@ -10,17 +10,17 @@ export default class MergerData {
         scaling = Math.max(1, scaling)
         rawData.initialDamage = 2 * Math.pow(1.2, scaling)
 
-        rawData.initialCost = this.calcSimplePrice(index)
         this.rawData = rawData;
+        rawData.initialCost = this.calcSimplePrice(index)
 
         this.currentLevel = 1;
         this.resourceAccum = true;
 
     }
     calcSimplePrice(level) {
-        let s = 50;
+        let s = this.rawData.initialCost;
         for (let index = 0; index < level; index++) {
-            s *= 2.5
+            s *= this.rawData.costCoefficient
         }
         s = Math.floor(s)
         return (s * 10)
@@ -77,7 +77,7 @@ export default class MergerData {
 
         let s = (this.rawData.initialCost / 10);
         for (let index = 0; index < this.currentLevel - 1; index++) {
-            s *= 1.2
+            s *= this.rawData.upgradeCoefficient
         }
         s = Math.floor(s)
 
