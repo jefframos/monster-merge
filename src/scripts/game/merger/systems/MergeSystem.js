@@ -429,7 +429,7 @@ export default class MergeSystem {
     }
     update(delta) {
 
-        console.log(this.slots[0][0].scale.x, this.uiContainer.scale.x)
+        //console.log(this.slots[0][0].scale.x, this.uiContainer.scale.x)
         this.pieceGeneratorsList.forEach(piece => {
             if (piece.visible) {
                 piece.update(delta * window.gameModifyers.bonusData.generateTimerBonus);

@@ -48,7 +48,7 @@ export default class PuzzleBackground extends PIXI.Container {
         this.baseContainer.addChild(this.rightPines) 
 
        this.usableArea = new PIXI.Graphics().beginFill(0x00FF00).drawRect(0,0,530,650)
-       this.addChild(this.usableArea)
+       //this.addChild(this.usableArea)
        this.usableArea.alpha = 0.15
        this.usableArea.x = - this.usableArea.width / 2
     }

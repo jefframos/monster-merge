@@ -31,7 +31,7 @@ export default class ShopItem extends UIList {
 
         this.backgroundContainer.addChildAt(this.backShapeGeneral, 0);
 
-        this.itemIcon = new PIXI.Sprite.from('ship01');
+        this.itemIcon = new PIXI.Sprite();
         this.itemIcon.listScl = 0.5;
         //this.itemIcon.anchor.set(0,0.5)
         // this.itemIcon.fitHeight = 0.7;

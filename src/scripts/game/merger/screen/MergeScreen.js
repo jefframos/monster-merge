@@ -97,9 +97,18 @@ export default class MergeScreen extends Screen {
             topContainer: this.topContainer
         }
 
-        this.registerSystem(containers, window.baseConfigGame,window.baseMonsters, 'monsters', true)
-        this.registerSystem(containers, window.baseConfigGameFairy,window.baseFairies, 'fairies', false)
-        this.registerSystem(containers, window.baseConfigGameHumans,window.baseHumans, 'humans', false)
+
+
+
+        this.systemButtonList = new UIList()
+        this.systemButtonList.w = 100
+        this.systemButtonList.h = 80
+        this.container.addChild(this.systemButtonList)
+
+
+        this.registerSystem(containers, window.baseConfigGame, window.baseMonsters, 'monsters', true)
+        this.registerSystem(containers, window.baseConfigGameFairy, window.baseFairies, 'fairies', false)
+        this.registerSystem(containers, window.baseConfigGameHumans, window.baseHumans, 'humans', false)
 
 
         this.entityDragSprite = new PIXI.Sprite.from('');
@@ -161,7 +170,7 @@ export default class MergeScreen extends Screen {
         this.levelMeter = new LevelMeter();
         this.container.addChild(this.levelMeter)
 
-       this.addHelpers();
+        this.addHelpers();
 
         let buttonSize = 70
         this.shopButtonsList = new UIList();
@@ -256,32 +265,13 @@ export default class MergeScreen extends Screen {
         // this.mergeSystemsList.push(this.mergeSystemFairies)
         this.activeMergeSystemID = 0
         this.activeMergeSystem = this.mergeSystemsList[this.activeMergeSystemID]
-
-        this.toggleSystems = new UIButton1(0x002299, 'vampire', 0xFFFFFF, buttonSize, buttonSize)
-        this.container.addChild(this.toggleSystems)
-        this.toggleSystems.y = buttonSize / 2 + 10
-        this.toggleSystems.onClick.add(() => {
-            this.mergeSystemsList.forEach(element => {
-                element.visible = false;
-            });
-
-            this.activeMergeSystemID++
-            this.activeMergeSystemID %= this.mergeSystemsList.length
-
-            this.mergeSystemsList[this.activeMergeSystemID].visible = true;
-            this.activeMergeSystem = this.mergeSystemsList[this.activeMergeSystemID]
-
-
-            this.refreshSystemVisuals();
-
-        })
         this.refreshSystemVisuals();
         //this.savedEconomy = COOKIE_MANAGER.getEconomy(this.activeMergeSystem.systemID);
 
 
     }
 
-    registerSystem(containers, baseData,baseMergeData, slug, visible = true) {
+    registerSystem(containers, baseData, baseMergeData, slug, visible = true) {
 
         COOKIE_MANAGER.sortCookie(slug)
         let rawMergeDataList = []
@@ -303,7 +293,7 @@ export default class MergeScreen extends Screen {
         mergeSystem.onPopLabel.add(this.popLabel.bind(this));
         mergeSystem.onGetResources.add(this.addResourceParticles.bind(this));
         mergeSystem.onBoardLevelUpdate.add(this.onMergeSystemUpdate.bind(this));
-       
+
         let mergeItemsShop = new MergeItemsShop([mergeSystem])
         this.uiLayer.addChild(mergeItemsShop);
         mergeItemsShop.addItems(rawMergeDataList)
@@ -325,13 +315,34 @@ export default class MergeScreen extends Screen {
         mergeSystem.shop = mergeItemsShop
         this.uiPanels.push(mergeItemsShop)
 
-        this.mergeSystemsList.push(mergeSystem)
-
+        mergeSystem.systemArrayID = this.mergeSystemsList.length;
         mergeSystem.visible = visible;
 
+        let buttonSize = 60
 
+        let toggleSystems = new UIButton1(0x002299, rawMergeDataList[0].rawData.imageSrc, 0xFFFFFF, buttonSize, buttonSize)
+
+        toggleSystems.systemArrayID = this.mergeSystemsList.length;
+        toggleSystems.onClick.add(() => {
+            this.showSystem(toggleSystems.systemArrayID)
+        })
+
+        this.mergeSystemsList.push(mergeSystem)
+        this.systemButtonList.addElement(toggleSystems);
     }
+    showSystem(id) {
+        this.mergeSystemsList.forEach(element => {
+            element.visible = false;
+        });
 
+        this.activeMergeSystemID = id;
+        this.activeMergeSystemID %= this.mergeSystemsList.length
+
+        this.mergeSystemsList[this.activeMergeSystemID].visible = true;
+        this.activeMergeSystem = this.mergeSystemsList[this.activeMergeSystemID]
+
+        this.refreshSystemVisuals();
+    }
     refreshSystemVisuals() {
         if (!this.activeMergeSystem.isLoaded) {
             this.activeMergeSystem.loadData();
@@ -342,7 +353,7 @@ export default class MergeScreen extends Screen {
 
         setTimeout(() => {
             this.activeMergeSystem.activeSystem()
-            
+
         }, 1);
 
     }
@@ -485,6 +496,20 @@ export default class MergeScreen extends Screen {
             this.particleSystem.show(toLocal, 1, customData)
         }
 
+
+        let coinPosition = this.resourcesTexture.getGlobalPosition()
+        let toLocalCoin = this.particleSystem.toLocal(coinPosition)
+        for (let index = 0; index < 1; index++) {
+            customData.target = { x: toLocalCoin.x, y: toLocalCoin.y, timer: 0.2 + Math.random() * 0.75 }
+            customData.scale = 0.01
+            customData.forceX = Math.random() * 1000 - 500
+            customData.forceY = 500
+            customData.gravity = 1200
+            customData.alphaDecress = 0.1
+            customData.ignoreMatchRotation = true;
+            this.particleSystem.show(toLocal, 1, customData)
+        }
+
         if (showParticles) {
             //this.particleSystem.popLabel(toLocal, "+" + utils.formatPointsLabel(totalResources), 0, 1, 1, LABELS.LABEL1)
         }
@@ -551,12 +576,13 @@ export default class MergeScreen extends Screen {
 
 
         this.monsterBackground.update(delta);
-        
+
 
     }
     resize(resolution, innerResolution) {
+        if (!innerResolution || !innerResolution.height) return
         if (!resolution || !resolution.width || !resolution.height || !innerResolution) {
-            return;
+            //return;
         }
 
         var newRes = { width: resolution.width * this.screenManager.scale.x }
@@ -568,7 +594,7 @@ export default class MergeScreen extends Screen {
             this.monsterBackground.y = config.height / 2
         }
 
-       
+
 
         var toGlobal = this.toLocal({ x: 0, y: innerResolution.height })
 
@@ -580,53 +606,85 @@ export default class MergeScreen extends Screen {
         var topRight = game.getBorder('topRight', this)
         var toGlobalBack = this.toLocal({ x: 0, y: innerResolution.height })
 
-        
+
         if (!window.isPortrait) {
-            this.statsList.scale.set(1)
 
-            console.log("HERE")
-            let scale = 1
             this.gridWrapper.x = toGlobalBack.x + 20
-            this.gridWrapper.y = config.height - (this.monsterBackground.puzzleBackground.pivot.y + 25) * scale//this.puzzleBackground.y - this.puzzleBackground.pivot.y
+            this.gridWrapper.y = config.height - (this.monsterBackground.puzzleBackground.pivot.y + 25) * this.monsterBackground.puzzleBackground.scale.y//this.puzzleBackground.y - this.puzzleBackground.pivot.y
 
-            this.gridWrapper.width = this.monsterBackground.puzzleBackground.usableArea.width * scale
-            this.gridWrapper.height = this.monsterBackground.puzzleBackground.usableArea.height * scale
+            this.gridWrapper.width = this.monsterBackground.puzzleBackground.usableArea.width * this.monsterBackground.puzzleBackground.scale.x
+            this.gridWrapper.height = this.monsterBackground.puzzleBackground.usableArea.height * this.monsterBackground.puzzleBackground.scale.y
 
 
             this.shopButtonsList.x = this.shopButtonsList.width
             this.shopButtonsList.y = 10
 
             this.shopButtonsList.scale.set(1.8)
+            this.levelMeter.scale.set(1.3)
+
+            // this.systemButtonList.w = 65 * this.systemsList.length
+            // this.systemButtonList.h = 60
+            // this.systemButtonList.updateHorizontalList()
+            this.systemButtonList.w = 80
+            this.systemButtonList.h = 65 * this.systemsList.length
+            this.systemButtonList.updateVerticalList()
 
         } else {
 
-            this.statsList.scale.set(1.1)
             this.mergeSystemContainer.scale.set(1)
 
-            this.levelMeter.scale.set(1)
-            this.levelMeter.x = 0
+            this.levelMeter.scale.set(0.7)
             this.gridWrapper.width = config.width * this.areaConfig.gameArea.w
             this.gridWrapper.height = config.height * this.areaConfig.gameArea.h
-
-            this.statsList.x = config.width - 110
-            this.statsList.y = 10
 
             this.shopsLabel.x = this.shopButtonsList.x
             this.shopsLabel.y = this.shopButtonsList.y + 50 - this.shopsLabel.height
             this.shopsLabel.visible = false;
+
+            this.systemButtonList.w = 80
+            this.systemButtonList.h = 65 * this.systemsList.length
+            this.systemButtonList.updateVerticalList()
         }
 
 
-        this.statsList.scale.set(1.5)
-        this.statsList.x = topRight.x - 110 * 1.5
         this.shopsLabel.visible = false;
         this.statsList.y = 10
+        this.statsList.x = toGlobalBack.x + 10
+
         this.helperButtonList.y = 80
         this.helperButtonList.x = toGlobalBack.x + 60
 
-        this.shopButtonsList.x = topRight.x - this.shopButtonsList.width / 2 - 20
-        this.shopButtonsList.y = 130
-        this.shopButtonsList.scale.set(1.5)
+
+        if (!window.isPortrait) {
+
+            this.statsList.scale.set(1.5)
+            this.shopButtonsList.x = topRight.x - this.shopButtonsList.width / 2 - 20
+            this.shopButtonsList.y = config.height - this.shopButtonsList.height - 20
+            this.shopButtonsList.scale.set(1.5)
+
+            this.systemButtonList.scale.set(1.5)
+            this.systemButtonList.x = topRight.x - this.systemButtonList.width - 10
+            this.systemButtonList.y = 70
+
+            this.levelMeter.x = this.statsList.x + this.statsList.width + 20
+            this.levelMeter.y = 20
+
+        } else {
+
+
+            this.levelMeter.x = this.gridWrapper.x - this.levelMeter.width / 2 + this.gridWrapper.width / 2
+            this.levelMeter.y = 10//this.gridWrapper.y - this.levelMeter.height
+
+            this.statsList.scale.set(1.25)
+
+            this.systemButtonList.scale.set(1.1)
+            this.systemButtonList.x = topRight.x - this.systemButtonList.width
+            this.systemButtonList.y = 80
+
+            this.shopButtonsList.x = topRight.x - this.shopButtonsList.width * 0.5 - 20
+            this.shopButtonsList.y = this.systemButtonList.y + this.systemButtonList.height// this.shopButtonsList.height * 1.25
+            this.shopButtonsList.scale.set(1)
+        }
 
 
         this.uiPanels.forEach(element => {
@@ -661,7 +719,7 @@ export default class MergeScreen extends Screen {
 
     }
 
-    addHelpers(){
+    addHelpers() {
         this.helperButtonList = new UIList();
         this.helperButtonList.h = 350;
         this.helperButtonList.w = 60;

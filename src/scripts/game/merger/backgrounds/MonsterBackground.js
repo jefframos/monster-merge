@@ -25,7 +25,11 @@ export default class MonsterBackground extends InteractiveBackgrounds {
             this.castleBackground.update(delta)
         }
     }
+    updateMax(max){
+        this.castleBackground.updateMax(max)
+    }
     resize(resolution, innerResolution) {
+        if(!innerResolution || !innerResolution.height) return
         var topRight = game.getBorder('topRight', this.parent)
         var toGlobalBack = this.toLocal({ x: 0, y: innerResolution.height })
 
@@ -45,8 +49,8 @@ export default class MonsterBackground extends InteractiveBackgrounds {
 
             this.castleBackground.x = toGlobalBack.x + (this.puzzleBackground.usableArea.width + 100) * scale
 
-            scale = Math.min((topRight.x - this.castleBackground.x) / this.castleBackground.usableArea.width * 0.95, config.height / this.castleBackground.usableArea.height * 0.9)
-            scale = Math.max(0.85, scale)
+            scale = Math.min((topRight.x - this.castleBackground.x) / this.castleBackground.usableArea.width * 0.75, config.height / this.castleBackground.usableArea.height * 0.9)
+            scale = Math.max(0.55, scale)
             this.castleBackground.scale.set(scale)
             this.castleBackground.pivot.x = this.castleBackground.usableArea.x
             this.castleBackground.pivot.y = this.castleBackground.usableArea.height + this.castleBackground.usableArea.y
@@ -65,8 +69,8 @@ export default class MonsterBackground extends InteractiveBackgrounds {
             this.castleBackground.pivot.x = 0
             this.castleBackground.pivot.y = 0
             this.castleBackground.x = 0
-            this.castleBackground.y = -100
-            this.castleBackground.scale.set(1)
+            this.castleBackground.y = -130
+            this.castleBackground.scale.set(0.9)
             
 
         }

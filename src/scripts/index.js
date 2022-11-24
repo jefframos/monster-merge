@@ -249,7 +249,9 @@ function configGame(evt) {
     window.GAMEPLAY_START(true)
     window.addEventListener("focus", myFocusFunction, true);
     window.addEventListener("blur", myBlurFunction, true);
-
+    setTimeout(() => {        
+        game.resize();
+    }, 100);
 }
 
 window.onresize = function (event) {

@@ -48,7 +48,7 @@ export default class CookieManager {
 			}
 		}
 
-		this.version = '0.0.11'
+		this.version = '0.0.12'
 		this.cookieVersion = this.getCookie('cookieVersion')
 		//alert(this.cookieVersion != this.version)
 		if(!this.cookieVersion || this.cookieVersion != this.version){
