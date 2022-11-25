@@ -32,7 +32,7 @@ export default class MergeItemsShop extends EntityShop {
             
         }
     }
-    show() {
+    show(id) {
         this.visible = true;
         this.title.text = window.localizationManager.getLabel('spaceships')
         let currentResources = COOKIE_MANAGER.getBoard(this.systemID);
@@ -45,7 +45,6 @@ export default class MergeItemsShop extends EntityShop {
         }
 
         let found = false;
-
         this.savedProgression = COOKIE_MANAGER.getBoard(this.systemID);
         this.boardProgression = this.savedProgression.boardLevel;
 

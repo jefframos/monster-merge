@@ -302,7 +302,7 @@ export default class MergeScreen extends Screen {
             mergeSystem.buyEntity(entity)
         })
 
-
+        mergeItemsShop.systemID = slug;
         mergeSystem.updateAvailableSlots.add((availables) => {
             mergeItemsShop.updateLocks(availables)
             //POPUP
@@ -416,7 +416,7 @@ export default class MergeScreen extends Screen {
 
         }
         if (prizes.ship > 0) {
-            this.mergeSystemMonsters.addShipBasedOnMax(prizes.ship)
+            this.activeMergeSystem.addShipBasedOnMax(prizes.ship)
         }
     }
 
@@ -496,7 +496,7 @@ export default class MergeScreen extends Screen {
             this.particleSystem.show(toLocal, 1, customData)
         }
 
-
+        return
         let coinPosition = this.resourcesTexture.getGlobalPosition()
         let toLocalCoin = this.particleSystem.toLocal(coinPosition)
         for (let index = 0; index < 1; index++) {
@@ -510,9 +510,6 @@ export default class MergeScreen extends Screen {
             this.particleSystem.show(toLocal, 1, customData)
         }
 
-        if (showParticles) {
-            //this.particleSystem.popLabel(toLocal, "+" + utils.formatPointsLabel(totalResources), 0, 1, 1, LABELS.LABEL1)
-        }
     }
     onMouseMove(e) {
 
@@ -598,9 +595,6 @@ export default class MergeScreen extends Screen {
 
         var toGlobal = this.toLocal({ x: 0, y: innerResolution.height })
 
-        this.gridWrapper.x = config.width / 2 - this.gridWrapper.width / 2
-        this.gridWrapper.y = config.height * (1 - this.areaConfig.bottomArea) - this.gridWrapper.height
-
 
 
         var topRight = game.getBorder('topRight', this)
@@ -636,6 +630,8 @@ export default class MergeScreen extends Screen {
             this.levelMeter.scale.set(0.7)
             this.gridWrapper.width = config.width * this.areaConfig.gameArea.w
             this.gridWrapper.height = config.height * this.areaConfig.gameArea.h
+            this.gridWrapper.x = 0
+            this.gridWrapper.y = this.monsterBackground.puzzleBackground.usableArea.y - this.monsterBackground.puzzleBackground.pivot.y + this.monsterBackground.puzzleBackground.y + this.monsterBackground.y - 20
 
             this.shopsLabel.x = this.shopButtonsList.x
             this.shopsLabel.y = this.shopButtonsList.y + 50 - this.shopsLabel.height
@@ -752,7 +748,7 @@ export default class MergeScreen extends Screen {
         this.addRandomShip = new UIButton1(0x002299, 'vampire')
         this.helperButtonList.addElement(this.addRandomShip)
         this.addRandomShip.onClick.add(() => {
-            this.mergeSystemMonsters.addShipBasedOnMax()
+            this.activeMergeSystem.addShipBasedOnMax()
         })
 
 

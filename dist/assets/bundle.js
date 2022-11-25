@@ -32230,8 +32230,8 @@ var MergeTile = function (_PIXI$Container) {
     }, {
         key: 'overState',
         value: function overState() {
-            this.backSlot.tint = 0x00FFFF;
-            this.backShape.tint = 0x00FFFF;
+            this.backSlot.tint = 0xFFFFFF;
+            this.backShape.tint = 0xFFFFFF;
         }
     }, {
         key: 'outState',
@@ -32242,8 +32242,8 @@ var MergeTile = function (_PIXI$Container) {
     }, {
         key: 'blockState',
         value: function blockState() {
-            this.backSlot.tint = 0xFF0000;
-            this.backShape.tint = 0xFF0000;
+            this.backSlot.tint = 0xFFFFFF;
+            this.backShape.tint = 0xFFFFFF;
         }
     }]);
     return MergeTile;
@@ -32260,7 +32260,7 @@ module.exports = exports['default'];
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+        value: true
 });
 
 var _getPrototypeOf = __webpack_require__(3);
@@ -32296,131 +32296,137 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ProgressBar = function (_PIXI$Container) {
-    (0, _inherits3.default)(ProgressBar, _PIXI$Container);
+        (0, _inherits3.default)(ProgressBar, _PIXI$Container);
 
-    function ProgressBar(size) {
-        var border = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-        var padding = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-        (0, _classCallCheck3.default)(this, ProgressBar);
+        function ProgressBar(size) {
+                var border = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+                var padding = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+                (0, _classCallCheck3.default)(this, ProgressBar);
 
-        var _this = (0, _possibleConstructorReturn3.default)(this, (ProgressBar.__proto__ || (0, _getPrototypeOf2.default)(ProgressBar)).call(this));
+                var _this = (0, _possibleConstructorReturn3.default)(this, (ProgressBar.__proto__ || (0, _getPrototypeOf2.default)(ProgressBar)).call(this));
 
-        _this.barContainer = new PIXI.Container();
+                _this.barContainer = new PIXI.Container();
 
-        _this.addChild(_this.barContainer);
-        _this.infoLabel = new PIXI.Text('COMPLETE', { font: '16px', fill: 0xFF0000 });
-        _this.infoLabel.pivot.x = _this.infoLabel.width / 2;
-        _this.infoLabel.pivot.y = _this.infoLabel.height / 2;
-        _this.barContainer.addChild(_this.infoLabel);
+                _this.addChild(_this.barContainer);
+                _this.infoLabel = new PIXI.Text('COMPLETE', { font: '16px', fill: 0xFF0000 });
+                _this.infoLabel.pivot.x = _this.infoLabel.width / 2;
+                _this.infoLabel.pivot.y = _this.infoLabel.height / 2;
+                _this.barContainer.addChild(_this.infoLabel);
 
-        _this.infoLabel.x = 125;
-        _this.infoLabel.y = 19;
+                _this.infoLabel.x = 125;
+                _this.infoLabel.y = 19;
 
-        _this.border = border ? border : size.height / 2;
-        _this.padding = padding;
-        _this.sizeHeight = size.height;
-        _this.sizeWidth = size.width;
+                _this.border = border ? border : size.height / 2;
+                _this.padding = padding;
+                _this.sizeHeight = size.height;
+                _this.sizeWidth = size.width;
 
-        _this.loadingBar = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('simple-bar'), 4, 4, 4, 4);
-        _this.loadingBar.width = _this.sizeWidth;
-        _this.loadingBar.height = _this.sizeHeight;
+                _this.loadingBar = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('simple-bar'), 4, 4, 4, 4);
+                _this.loadingBar.width = _this.sizeWidth;
+                _this.loadingBar.height = _this.sizeHeight;
 
-        _this.loadingBarFillBack = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('simple-bar'), 4, 4, 4, 4);
-        _this.loadingBarFillBack.width = _this.sizeWidth - _this.border;
-        _this.loadingBarFillBack.height = _this.sizeHeight - _this.border;
-        _this.loadingBarFillBack.tint = 0;
+                _this.loadingBarFillBack = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('simple-bar'), 4, 4, 4, 4);
+                _this.loadingBarFillBack.width = _this.sizeWidth - _this.border;
+                _this.loadingBarFillBack.height = _this.sizeHeight - _this.border;
+                _this.loadingBarFillBack.tint = 0;
 
-        _this.loadingBarFillBack.x = _this.border / 2;
-        _this.loadingBarFillBack.y = _this.border / 2;
-        _this.loadingBarFillBack.cacheAsBitmap = true;
+                _this.loadingBarFillBack.x = _this.border / 2;
+                _this.loadingBarFillBack.y = _this.border / 2;
+                _this.loadingBarFillBack.cacheAsBitmap = true;
 
-        //this.loadingBarFill = new PIXI.Sprite.fromFrame('simple-bar')
-        _this.loadingBarFill = new PIXI.Sprite.fromFrame('simple-bar');
-        // new PIXI.mesh.NineSlicePlane(
-        //     PIXI.Texture.fromFrame('simple-bar'), 4,4,4,4)
-        _this.loadingBarFill.width = 0;
-        _this.loadingBarFill.height = _this.sizeHeight - _this.border - _this.padding; //- (this.border - padding  ) 
-        _this.loadingBarFill.tint = 0xFF0011;
-        _this.loadingBarFill.x = (_this.border + padding) / 2;
-        _this.loadingBarFill.y = (_this.border + padding) / 2;
+                //this.loadingBarFill = new PIXI.Sprite.fromFrame('simple-bar')
+                _this.loadingBarFill = new PIXI.Sprite.fromFrame('simple-bar');
+                // new PIXI.mesh.NineSlicePlane(
+                //     PIXI.Texture.fromFrame('simple-bar'), 4,4,4,4)
+                _this.loadingBarFill.width = 0;
+                _this.loadingBarFill.height = _this.sizeHeight - _this.border - _this.padding; //- (this.border - padding  ) 
+                _this.loadingBarFill.tint = 0xFF0011;
+                _this.loadingBarFill.x = (_this.border + padding) / 2;
+                _this.loadingBarFill.y = (_this.border + padding) / 2;
 
-        _this.loadingBarFill.visible = false;
-        //this.loadingBarFill.scale.x = 0;
+                _this.loadingBarFill.visible = false;
+                //this.loadingBarFill.scale.x = 0;
 
-        _this.infoLabel.visible = false;
+                _this.infoLabel.visible = false;
 
-        _this.barContainer.addChild(_this.loadingBar);
-        _this.barContainer.addChild(_this.loadingBarFillBack);
-        _this.barContainer.addChild(_this.loadingBarFill);
+                _this.barContainer.addChild(_this.loadingBar);
+                _this.barContainer.addChild(_this.loadingBarFillBack);
+                _this.barContainer.addChild(_this.loadingBarFill);
 
-        _this.currentValue = 0;
-        _this.state = 0;
+                _this.currentValue = 0;
+                _this.state = 0;
 
-        return _this;
-    }
-
-    (0, _createClass3.default)(ProgressBar, [{
-        key: 'updateBackgroundColor',
-        value: function updateBackgroundColor(color) {
-            var alpha = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-
-            this.loadingBarFillBack.tint = color;
-            this.loadingBarFillBack.alpha = alpha;
+                return _this;
         }
-    }, {
-        key: 'updateBackgroundFront',
-        value: function updateBackgroundFront(color) {
-            this.currentColor = color;
-            this.loadingBarFill.tint = color;
-        }
-    }, {
-        key: 'resizeBar',
-        value: function resizeBar(width) {
-            var height = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 30;
-            var hideBorder = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
-            if (width == this.sizeWidth) {
-                return;
-            }
-            this.sizeHeight = height;
-            this.sizeWidth = width;
-            this.loadingBar.width = this.sizeWidth;
-            this.loadingBar.height = this.sizeHeight;
+        (0, _createClass3.default)(ProgressBar, [{
+                key: 'setBarOnly',
+                value: function setBarOnly() {
+                        this.barContainer.removeChild(this.loadingBar);
+                        this.barContainer.removeChild(this.loadingBarFillBack);
+                }
+        }, {
+                key: 'updateBackgroundColor',
+                value: function updateBackgroundColor(color) {
+                        var alpha = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
-            var add = this.border / 2;
-            if (hideBorder) {
-                add = 0;
-                this.loadingBarFillBack.position.set(0);
-                this.loadingBarFill.position.set(0);
-            }
-            this.loadingBarFillBack.width = this.sizeWidth - add;
-            this.loadingBarFillBack.height = this.sizeHeight - add;
-            this.loadingBarFill.width = this.sizeWidth - add;
-            this.loadingBarFill.height = this.sizeHeight - add;
+                        this.loadingBarFillBack.tint = color;
+                        this.loadingBarFillBack.alpha = alpha;
+                }
+        }, {
+                key: 'updateBackgroundFront',
+                value: function updateBackgroundFront(color) {
+                        this.currentColor = color;
+                        this.loadingBarFill.tint = color;
+                }
+        }, {
+                key: 'resizeBar',
+                value: function resizeBar(width) {
+                        var height = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 30;
+                        var hideBorder = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
-            this.loadingBar.visible = !hideBorder;
-            this.setProgressBar(this.currentValue);
-        }
-    }, {
-        key: 'setProgressBar',
-        value: function setProgressBar() {
-            var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-            var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+                        if (width == this.sizeWidth) {
+                                return;
+                        }
+                        this.sizeHeight = height;
+                        this.sizeWidth = width;
+                        this.loadingBar.width = this.sizeWidth;
+                        this.loadingBar.height = this.sizeHeight;
 
-            if (value <= 0) {
-                return;
-            }
+                        var add = this.border / 2;
+                        if (hideBorder) {
+                                add = 0;
+                                this.loadingBarFillBack.position.set(0);
+                                this.loadingBarFill.position.set(0);
+                        }
+                        this.loadingBarFillBack.width = this.sizeWidth - add;
+                        this.loadingBarFillBack.height = this.sizeHeight - add;
+                        this.loadingBarFill.width = this.sizeWidth - add;
+                        this.loadingBarFill.height = this.sizeHeight - add;
 
-            this.loadingBarFill.visible = true;
-            value = Math.max(value, 0);
-            value = Math.min(value, 1);
-            //this.loadingBarFill.visible = value > 0.075
-            this.currentValue = value;
-            this.loadingBarFill.tint = this.currentColor;
-            this.loadingBarFill.width = (this.sizeWidth - this.border * 2 - this.padding) * value + this.border;
-        }
-    }]);
-    return ProgressBar;
+                        this.loadingBar.visible = !hideBorder;
+                        this.setProgressBar(this.currentValue);
+                }
+        }, {
+                key: 'setProgressBar',
+                value: function setProgressBar() {
+                        var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+                        var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+                        if (value <= 0) {
+                                return;
+                        }
+
+                        this.loadingBarFill.visible = true;
+                        value = Math.max(value, 0);
+                        value = Math.min(value, 1);
+                        //this.loadingBarFill.visible = value > 0.075
+                        this.currentValue = value;
+                        this.loadingBarFill.tint = this.currentColor;
+                        this.loadingBarFill.width = (this.sizeWidth - this.border * 2 - this.padding) * value + this.border;
+                }
+        }]);
+        return ProgressBar;
 }(PIXI.Container);
 
 exports.default = ProgressBar;
@@ -60087,17 +60093,20 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 var assets = [{
-	"id": "baseGameConfigHumans",
-	"url": "assets/json\\baseGameConfigHumans.json"
-}, {
 	"id": "baseGameConfigFairy",
 	"url": "assets/json\\baseGameConfigFairy.json"
 }, {
-	"id": "fairies",
-	"url": "assets/json\\fairies.json"
+	"id": "baseGameConfigHumans",
+	"url": "assets/json\\baseGameConfigHumans.json"
 }, {
 	"id": "baseGameConfigMonster",
 	"url": "assets/json\\baseGameConfigMonster.json"
+}, {
+	"id": "localization_DE",
+	"url": "assets/json\\localization_DE.json"
+}, {
+	"id": "fairies",
+	"url": "assets/json\\fairies.json"
 }, {
 	"id": "humans",
 	"url": "assets/json\\humans.json"
@@ -60111,17 +60120,14 @@ var assets = [{
 	"id": "localization_FR",
 	"url": "assets/json\\localization_FR.json"
 }, {
-	"id": "localization_JA",
-	"url": "assets/json\\localization_JA.json"
-}, {
-	"id": "localization_DE",
-	"url": "assets/json\\localization_DE.json"
+	"id": "localization_IT",
+	"url": "assets/json\\localization_IT.json"
 }, {
 	"id": "localization_KO",
 	"url": "assets/json\\localization_KO.json"
 }, {
-	"id": "localization_IT",
-	"url": "assets/json\\localization_IT.json"
+	"id": "localization_JA",
+	"url": "assets/json\\localization_JA.json"
 }, {
 	"id": "localization_PT",
 	"url": "assets/json\\localization_PT.json"
@@ -61118,6 +61124,7 @@ var MergeScreen = function (_Screen) {
                                 mergeSystem.buyEntity(entity);
                         });
 
+                        mergeItemsShop.systemID = slug;
                         mergeSystem.updateAvailableSlots.add(function (availables) {
                                 mergeItemsShop.updateLocks(availables);
                                 //POPUP
@@ -61239,7 +61246,7 @@ var MergeScreen = function (_Screen) {
                                 }, 50);
                         }
                         if (prizes.ship > 0) {
-                                this.mergeSystemMonsters.addShipBasedOnMax(prizes.ship);
+                                this.activeMergeSystem.addShipBasedOnMax(prizes.ship);
                         }
                 }
         }, {
@@ -61339,6 +61346,7 @@ var MergeScreen = function (_Screen) {
                                 this.particleSystem.show(toLocal, 1, customData);
                         }
 
+                        return;
                         var coinPosition = this.resourcesTexture.getGlobalPosition();
                         var toLocalCoin = this.particleSystem.toLocal(coinPosition);
                         for (var _index = 0; _index < 1; _index++) {
@@ -61350,10 +61358,6 @@ var MergeScreen = function (_Screen) {
                                 customData.alphaDecress = 0.1;
                                 customData.ignoreMatchRotation = true;
                                 this.particleSystem.show(toLocal, 1, customData);
-                        }
-
-                        if (showParticles) {
-                                //this.particleSystem.popLabel(toLocal, "+" + utils.formatPointsLabel(totalResources), 0, 1, 1, LABELS.LABEL1)
                         }
                 }
         }, {
@@ -61440,9 +61444,6 @@ var MergeScreen = function (_Screen) {
 
                         var toGlobal = this.toLocal({ x: 0, y: innerResolution.height });
 
-                        this.gridWrapper.x = config.width / 2 - this.gridWrapper.width / 2;
-                        this.gridWrapper.y = config.height * (1 - this.areaConfig.bottomArea) - this.gridWrapper.height;
-
                         var topRight = game.getBorder('topRight', this);
                         var toGlobalBack = this.toLocal({ x: 0, y: innerResolution.height });
 
@@ -61473,6 +61474,8 @@ var MergeScreen = function (_Screen) {
                                 this.levelMeter.scale.set(0.7);
                                 this.gridWrapper.width = config.width * this.areaConfig.gameArea.w;
                                 this.gridWrapper.height = config.height * this.areaConfig.gameArea.h;
+                                this.gridWrapper.x = 0;
+                                this.gridWrapper.y = this.monsterBackground.puzzleBackground.usableArea.y - this.monsterBackground.puzzleBackground.pivot.y + this.monsterBackground.puzzleBackground.y + this.monsterBackground.y - 20;
 
                                 this.shopsLabel.x = this.shopButtonsList.x;
                                 this.shopsLabel.y = this.shopButtonsList.y + 50 - this.shopsLabel.height;
@@ -61588,7 +61591,7 @@ var MergeScreen = function (_Screen) {
                         this.addRandomShip = new _UIButton2.default(0x002299, 'vampire');
                         this.helperButtonList.addElement(this.addRandomShip);
                         this.addRandomShip.onClick.add(function () {
-                                _this6.mergeSystemMonsters.addShipBasedOnMax();
+                                _this6.activeMergeSystem.addShipBasedOnMax();
                         });
 
                         this.autoMergeToggle = new _UIButton2.default(0x002299, 'auto-merge-icon');
@@ -61976,7 +61979,7 @@ var MergeItemsShop = function (_EntityShop) {
         }
     }, {
         key: 'show',
-        value: function show() {
+        value: function show(id) {
             this.visible = true;
             this.title.text = window.localizationManager.getLabel('spaceships');
             var currentResources = COOKIE_MANAGER.getBoard(this.systemID);
@@ -61989,7 +61992,6 @@ var MergeItemsShop = function (_EntityShop) {
             }
 
             var found = false;
-
             this.savedProgression = COOKIE_MANAGER.getBoard(this.systemID);
             this.boardProgression = this.savedProgression.boardLevel;
 
@@ -63897,10 +63899,12 @@ var MergeSystem = function () {
 
         this.mainGenerator = this.addPieceGenerator();
 
+        this.uiContainer.addChild(this.mainGenerator);
+        this.mainGenerator.y = this.mainGenerator.height / 2 - 5;
         this.adjustSlotsPosition();
 
         this.entityDragSprite = new PIXI.Sprite.from('');
-        this.uiContainer.addChild(this.entityDragSprite);
+        this.topContainer.addChild(this.entityDragSprite);
         this.entityDragSprite.visible = false;
 
         this.shootColor = 0x00FFFF;
@@ -64090,8 +64094,8 @@ var MergeSystem = function () {
                 pos.y -= Math.random() * 40;
                 _this4.onParticles.dispatch(pos, customData, 1);
             });
-            var targetScale = _config2.default.height * 0.2 / piece.height;
-            piece.scale.set(Math.min(targetScale, 1));
+            var targetScale = _config2.default.height * 0.25 / piece.height;
+            piece.scale.set(Math.min(targetScale, 1.5));
             //piece.addEntity(this.dataTiles[0])
             //this.uiContainer.addChild(piece);
 
@@ -64140,7 +64144,7 @@ var MergeSystem = function () {
             });
             this.pieceGeneratorsList.push(piece);
             if (this.pieceGeneratorsList.length > 1) {
-                piece.visible = false;
+                //piece.visible = false;
             }
 
             return piece;
@@ -64257,6 +64261,7 @@ var MergeSystem = function () {
         value: function updateSystems(delta) {
 
             this.slotsContainer.visible = this.visible;
+            this.mainGenerator.visible = this.visible;
             if (!this.visible) return;
             this.update(delta);
 
@@ -64267,9 +64272,15 @@ var MergeSystem = function () {
     }, {
         key: 'update',
         value: function update(delta) {
+            var _this5 = this;
 
             //console.log(this.slots[0][0].scale.x, this.uiContainer.scale.x)
             this.pieceGeneratorsList.forEach(function (piece) {
+                if (_this5.totalAvailable() > 0) {
+                    piece.standardState();
+                } else {
+                    piece.blockState();
+                }
                 if (piece.visible) {
                     piece.update(delta * window.gameModifyers.bonusData.generateTimerBonus);
                 }
@@ -64298,7 +64309,7 @@ var MergeSystem = function () {
     }, {
         key: 'addSlot',
         value: function addSlot(i, j) {
-            var _this5 = this;
+            var _this6 = this;
 
             var slot = new _MergeTile2.default(i, j, this.slotSize.width, 'coin', this.baseData.visuals);
             this.slots[i][j] = slot;
@@ -64307,30 +64318,30 @@ var MergeSystem = function () {
             slot.y = (this.slotSize.height + this.slotSize.distance) * i - this.slotSize.distance;
             slot.onClick.add(function (slot) {});
             slot.onHold.add(function (slot) {
-                _this5.startDrag(slot);
+                _this6.startDrag(slot);
             });
             slot.onReveal.add(function (slot) {
-                _this5.updateAllData();
+                _this6.updateAllData();
             });
 
             slot.onEndHold.add(function (slot) {
-                _this5.endDrag(slot);
+                _this6.endDrag(slot);
             });
             slot.onUp.add(function (slot) {
-                _this5.releaseEntity(slot);
+                _this6.releaseEntity(slot);
             });
             slot.onGenerateResource.add(function (slot, data) {
-                _this5.resources += data.resources;
+                _this6.resources += data.resources;
 
                 var customData = {};
-                customData.texture = _this5.baseData.visuals.coin;
+                customData.texture = _this6.baseData.visuals.coin;
                 customData.scale = 0.03;
                 customData.forceX = 0;
                 customData.forceY = 50;
                 customData.alphaDecress = 1;
                 var targetPos = slot.tileSprite.getGlobalPosition();
                 //this.onGetResources.dispatch(targetPos, customData, data.getDamage(), 1)
-                _this5.onGetResources.dispatch(targetPos, customData, Math.pow(2, data.rawData.id + 1), 1);
+                _this6.onGetResources.dispatch(targetPos, customData, Math.pow(2, data.rawData.id + 1), 1);
             });
             slot.onGenerateDamage.add(function (slot, data) {
                 // let customData = {}
@@ -64395,7 +64406,7 @@ var MergeSystem = function () {
             this.currentDragSlot = slot;
             this.entityDragSprite.texture = tex;
             this.entityDragSprite.visible = true;
-            this.entityDragSprite.scale.set(slot.tileSprite.scale.y * 3);
+            this.entityDragSprite.scale.set(slot.tileSprite.scale.y * 1.5);
             if (window.isMobile) {
                 this.entityDragSprite.anchor.set(0.5, 1);
             } else {
@@ -64594,7 +64605,7 @@ var MergeSystem = function () {
     }, {
         key: 'releaseEntity',
         value: function releaseEntity(slot) {
-            var _this6 = this;
+            var _this7 = this;
 
             if (!this.visible) return;
             if (!this.currentDragSlot || !slot) {
@@ -64661,13 +64672,13 @@ var MergeSystem = function () {
             this.draggingEntity = false;
             this.currentDragSlot = null;
             setTimeout(function () {
-                _this6.updateAllData();
+                _this7.updateAllData();
                 //this.rps = utils.findRPS3(this.slots);
             }, 1);
 
             this.updateAvailableSlots.dispatch(this.totalAvailable());
             if (this.totalAvailable() > 0) {
-                this.mainGenerator.startCharging();
+                if (this.mainGenerator.isCharged) this.mainGenerator.startCharging();
             }
         }
     }, {
@@ -64743,24 +64754,31 @@ var MergeSystem = function () {
     }, {
         key: 'updateBottomPosition',
         value: function updateBottomPosition() {
-            var _this7 = this;
+            var _this8 = this;
 
             var accumPiece = 0;
             var maxPos = 0;
             this.pieceGeneratorsList.forEach(function (piece) {
                 if (piece.visible) {
-                    piece.x = (piece.backShape.width + _this7.slotSize.distance) * accumPiece;
+                    piece.x = (piece.backShape.width + _this8.slotSize.distance) * accumPiece;
                     accumPiece++;
-                    maxPos = piece.x + piece.backShape.width;
+                    maxPos = piece.x + piece.backShape.width * piece.scale.x;
                 }
             });
-            this.uiContainer.x = this.wrapper.x + this.wrapper.width / 2 - maxPos * this.uiContainer.scale.x / 2;
             var bottomWrapperDiff = this.wrapper.y + this.wrapper.height;
             var bottomDiff = _config2.default.height - bottomWrapperDiff;
             var targetScale = bottomDiff / this.slotSize.height * 0.55;
             targetScale = Math.min(1, targetScale);
             this.uiContainer.scale.set(targetScale);
-            this.uiContainer.y = bottomWrapperDiff + bottomDiff / 2 - this.slotSize.height * this.uiContainer.scale.y / 2 - 25; // - this.wrapper.y + this.wrapper.height //- (this.slotSize.height * this.uiContainer.scale.y) - config.height * 0.05
+            this.uiContainer.y = bottomWrapperDiff + bottomDiff / 2 - this.slotSize.height * this.uiContainer.scale.y / 2 - 45; // - this.wrapper.y + this.wrapper.height //- (this.slotSize.height * this.uiContainer.scale.y) - config.height * 0.05
+            this.uiContainer.x = this.wrapper.x + this.wrapper.width / 2 - maxPos * this.uiContainer.scale.x / 2;
+            if (!window.isPortrait) {
+                this.uiContainer.y -= this.slotSize.height * 1.5;
+                this.uiContainer.scale.set(1);
+                this.uiContainer.x = this.wrapper.x + this.wrapper.width;
+            }
+
+            // this.mainGenerator.y = this.container.height + 
         }
     }]);
     return MergeSystem;
@@ -64777,7 +64795,7 @@ module.exports = exports['default'];
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+        value: true
 });
 
 var _getPrototypeOf = __webpack_require__(3);
@@ -64833,119 +64851,167 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ChargerTile = function (_MergeTile) {
-    (0, _inherits3.default)(ChargerTile, _MergeTile);
+        (0, _inherits3.default)(ChargerTile, _MergeTile);
 
-    function ChargerTile(i, j, size, lockIcon, standardChargeTime, visuals) {
-        (0, _classCallCheck3.default)(this, ChargerTile);
+        function ChargerTile(i, j, size, lockIcon, standardChargeTime, visuals) {
+                (0, _classCallCheck3.default)(this, ChargerTile);
 
-        var _this = (0, _possibleConstructorReturn3.default)(this, (ChargerTile.__proto__ || (0, _getPrototypeOf2.default)(ChargerTile)).call(this, i, j, size, lockIcon, visuals));
+                //this.backShape.texture = PIXI.Texture.fromFrame(Math.floor(Math.random() * visuals.backTiles.length))
 
-        _this.backShape.texture = PIXI.Texture.fromFrame('backTilesSquare');
+                var _this = (0, _possibleConstructorReturn3.default)(this, (ChargerTile.__proto__ || (0, _getPrototypeOf2.default)(ChargerTile)).call(this, i, j, size, lockIcon, visuals));
 
-        _this.defaultChargeTime = standardChargeTime;
-        _this.currentChargeTime = _this.defaultChargeTime * Math.random();
+                _this.defaultChargeTime = standardChargeTime;
+                _this.currentChargeTime = _this.defaultChargeTime * Math.random();
 
-        _this.onCompleteCharge = new _signals2.default();
+                _this.onCompleteCharge = new _signals2.default();
 
-        _this.levelBar = new _ProgressBar2.default({ width: size / 2, height: 10 }, 3, 3);
-        _this.levelBar.updateBackgroundColor(0x20516c);
-        _this.levelBar.updateBackgroundFront(0x00ffff);
-        _this.levelBar.x = size / 4;
-        _this.levelBar.y = size - 10;
-        _this.container.addChild(_this.levelBar);
+                _this.container.addChild(_this.backShape);
 
-        //this.levelBar.rotation = Math.PI * 0.5
+                _this.backShapeMasked = new PIXI.Sprite.fromFrame(visuals.locks[0]);
 
+                var scale = Math.min(size / _this.backShapeMasked.width, size / _this.backShapeMasked.height);
+                _this.backShapeMasked.scale.set(scale * 0.9);
+                _this.backShapeMasked.anchor.set(0.5);
+                _this.backShapeMasked.alpha = 1;
+                _this.backShapeMasked.x = size / 2;
+                _this.backShapeMasked.y = size / 2;
+                _this.container.addChild(_this.backShapeMasked);
 
-        _this.container.removeChild(_this.damageTimerView);
+                _this.frontShapeSprite = new PIXI.Sprite.fromFrame(visuals.locks[0]);
 
-        _this.isCharged = false;
+                _this.frontShapeSprite.scale.set(scale * 0.9);
+                _this.frontShapeSprite.anchor.set(0.5);
+                _this.frontShapeSprite.alpha = 0.25;
+                _this.frontShapeSprite.x = size / 2;
+                _this.frontShapeSprite.y = size / 2;
+                _this.container.addChild(_this.frontShapeSprite);
 
-        _this.outState();
+                _this.levelBar = new _ProgressBar2.default({ width: size, height: size }, 3, 3);
+                _this.levelBar.updateBackgroundColor(0x20516c);
+                _this.levelBar.updateBackgroundFront(0x00ffff);
+                _this.levelBar.setBarOnly();
+                //this.container.addChild(this.levelBar)
 
-        return _this;
-    }
+                _this.maskSquare = new PIXI.Graphics().beginFill(0xFF0000).drawRect(0, 0, size, size);
+                _this.container.addChild(_this.maskSquare);
 
-    (0, _createClass3.default)(ChargerTile, [{
-        key: 'onMouseDown',
-        value: function onMouseDown(e) {
-            (0, _get3.default)(ChargerTile.prototype.__proto__ || (0, _getPrototypeOf2.default)(ChargerTile.prototype), 'onMouseDown', this).call(this, e);
-            this.currentChargeTime -= 0.2;
-            if (this.currentChargeTime <= 0) {
-                this.completeCharge();
-            } else {
+                _this.backShapeMasked.mask = _this.maskSquare;
 
-                this.onShowParticles.dispatch();
-            }
+                _this.maskSquare.rotation = -Math.PI;
+                _this.maskSquare.x = size;
+                _this.maskSquare.y = size;
+
+                _this.container.removeChild(_this.damageTimerView);
+
+                _this.isCharged = false;
+
+                _this.outState();
+
+                return _this;
         }
-    }, {
-        key: 'update',
-        value: function update(delta, timeStamp) {
-            //return
-            // if(COOKIE_MANAGER.getStats().tutorialStep <= 0){
-            //     this.currentChargeTime = delta
-            // }
-            //console.log(this.currentChargeTime)
-            (0, _get3.default)(ChargerTile.prototype.__proto__ || (0, _getPrototypeOf2.default)(ChargerTile.prototype), 'update', this).call(this, delta, timeStamp);
-            if (this.currentChargeTime > 0) {
-                this.currentChargeTime -= delta;
-                if (this.currentChargeTime <= 0) {
-                    this.completeCharge();
-                } else {
-                    this.tileSprite.visible = false;
+
+        (0, _createClass3.default)(ChargerTile, [{
+                key: 'onMouseDown',
+                value: function onMouseDown(e) {
+                        if (this.isBlocked) return;
+                        (0, _get3.default)(ChargerTile.prototype.__proto__ || (0, _getPrototypeOf2.default)(ChargerTile.prototype), 'onMouseDown', this).call(this, e);
+                        this.currentChargeTime -= 0.2;
+                        if (this.currentChargeTime <= 0) {
+                                this.completeCharge();
+                        } else {
+
+                                this.onShowParticles.dispatch();
+                        }
                 }
-                this.levelBar.setProgressBar(1 - this.currentChargeTime / this.defaultChargeTime);
-                this.levelBar.visible = true;
+        }, {
+                key: 'giftState',
+                value: function giftState() {}
+        }, {
+                key: 'enterAnimation',
+                value: function enterAnimation() {}
+        }, {
+                key: 'reveal',
+                value: function reveal() {}
+        }, {
+                key: 'blockState',
+                value: function blockState() {
+                        this.isBlocked = true;
+                }
+        }, {
+                key: 'standardState',
+                value: function standardState() {
+                        this.isBlocked = false;
+                }
+        }, {
+                key: 'update',
+                value: function update(delta, timeStamp) {
+                        this.tileSprite.visible = false;
+                        this.backShape.tint = 0xFFFFFF;
 
-                //this.circleCounter.update(1-(this.currentChargeTime / this.defaultChargeTime))
+                        this.backShapeMasked.visible = !this.isBlocked;
+                        //return
+                        // if(COOKIE_MANAGER.getStats().tutorialStep <= 0){
+                        //     this.currentChargeTime = delta
+                        // }
+                        //console.log(this.currentChargeTime)
+                        if (!this.isBlocked) {
+                                (0, _get3.default)(ChargerTile.prototype.__proto__ || (0, _getPrototypeOf2.default)(ChargerTile.prototype), 'update', this).call(this, delta, timeStamp);
 
+                                if (this.currentChargeTime > 0) {
+                                        this.currentChargeTime -= delta;
+                                        if (this.currentChargeTime <= 0) {
+                                                this.completeCharge();
+                                        } else {
+                                                //this.tileSprite.visible = false;
+                                        }
 
-                this.backSlot.tint = 0x999999;
-                this.backShape.tint = 0x999999;
-            } else {
-                this.backSlot.tint = 0x00FFFF;
-                this.backShape.tint = 0x00FFFF;
-            }
-            //this.levelBar.visible = false;
+                                        this.maskSquare.scale.y = 1 - this.currentChargeTime / this.defaultChargeTime;
+                                        this.levelBar.setProgressBar(1 - this.currentChargeTime / this.defaultChargeTime);
+                                        //this.levelBar.visible = true;
 
-            this.label.visible = this.tileSprite.visible;
-        }
-    }, {
-        key: 'startCharging',
-        value: function startCharging() {
-            this.isCharged = false;
-            this.tileData = null;
-            this.currentChargeTime = this.defaultChargeTime;
-            this.levelBar.visible = false;
-            this.levelBar.setProgressBar(0, 0, true);
-        }
-    }, {
-        key: 'completeCharge',
-        value: function completeCharge() {
-            this.isCharged = true;
-            this.levelBar.visible = false;
-            this.tileSprite.visible = true;
-            this.onCompleteCharge.dispatch();
-        }
-    }, {
-        key: 'lookAt',
-        value: function lookAt(target) {}
-    }, {
-        key: 'overState',
-        value: function overState() {
-            // this.backSlot.tint = 0x00FFFF
-            // this.backShape.tint = 0x00FFFF
+                                        //this.circleCounter.update(1-(this.currentChargeTime / this.defaultChargeTime))
+                                }
+                        }
+                        //this.levelBar.visible = false;
+                        this.levelBar.visible = true;
+                        this.label.visible = this.tileSprite.visible;
+                }
+        }, {
+                key: 'startCharging',
+                value: function startCharging() {
+                        this.isCharged = false;
+                        this.tileData = null;
+                        this.currentChargeTime = this.defaultChargeTime;
+                        this.levelBar.visible = false;
+                        this.levelBar.setProgressBar(0, 0, true);
+                }
+        }, {
+                key: 'completeCharge',
+                value: function completeCharge() {
+                        this.isCharged = true;
+                        this.levelBar.visible = false;
+                        //this.tileSprite.visible = true;
+                        this.onCompleteCharge.dispatch();
+                }
+        }, {
+                key: 'lookAt',
+                value: function lookAt(target) {}
+        }, {
+                key: 'overState',
+                value: function overState() {
+                        // this.backSlot.tint = 0x00FFFF
+                        // this.backShape.tint = 0x00FFFF
 
-        }
-    }, {
-        key: 'outState',
-        value: function outState() {
-            // this.backSlot.tint = 0x00FFFF
-            // this.backShape.tint = 0x00FFFF
+                }
+        }, {
+                key: 'outState',
+                value: function outState() {
+                        // this.backSlot.tint = 0x00FFFF
+                        // this.backShape.tint = 0x00FFFF
 
-        }
-    }]);
-    return ChargerTile;
+                }
+        }]);
+        return ChargerTile;
 }(_MergeTile3.default);
 
 exports.default = ChargerTile;
@@ -66792,7 +66858,7 @@ var MonsterBackground = function (_InteractiveBackgroun) {
                 this.castleBackground.y = config.height * 0.85 * 0.5;
             } else {
                 this.puzzleBackground.pivot.x = 0;
-                this.puzzleBackground.pivot.y = 0;
+                this.puzzleBackground.pivot.y = 80;
                 this.puzzleBackground.scale.set(1);
                 this.puzzleBackground.x = 0;
                 this.puzzleBackground.y = -100;
@@ -66800,8 +66866,8 @@ var MonsterBackground = function (_InteractiveBackgroun) {
                 this.castleBackground.pivot.x = 0;
                 this.castleBackground.pivot.y = 0;
                 this.castleBackground.x = 0;
-                this.castleBackground.y = -130;
-                this.castleBackground.scale.set(0.9);
+                this.castleBackground.y = -200;
+                this.castleBackground.scale.set(0.8);
             }
         }
     }]);

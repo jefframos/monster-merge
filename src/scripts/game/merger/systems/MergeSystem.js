@@ -94,10 +94,12 @@ export default class MergeSystem {
 
         this.mainGenerator = this.addPieceGenerator();
 
+        this.uiContainer.addChild(this.mainGenerator)
+        this.mainGenerator.y = this.mainGenerator.height / 2 - 5
         this.adjustSlotsPosition();
 
         this.entityDragSprite = new PIXI.Sprite.from('');
-        this.uiContainer.addChild(this.entityDragSprite);
+        this.topContainer.addChild(this.entityDragSprite);
         this.entityDragSprite.visible = false;
 
         this.shootColor = 0x00FFFF
@@ -268,8 +270,8 @@ export default class MergeSystem {
             pos.y -= Math.random() * 40
             this.onParticles.dispatch(pos, customData, 1)
         })
-        let targetScale = config.height * 0.2 / piece.height
-        piece.scale.set(Math.min(targetScale, 1))
+        let targetScale = config.height * 0.25 / piece.height
+        piece.scale.set(Math.min(targetScale, 1.5))
         //piece.addEntity(this.dataTiles[0])
         //this.uiContainer.addChild(piece);
 
@@ -318,7 +320,7 @@ export default class MergeSystem {
         });
         this.pieceGeneratorsList.push(piece);
         if (this.pieceGeneratorsList.length > 1) {
-            piece.visible = false;
+            //piece.visible = false;
         }
 
         return piece;
@@ -420,6 +422,7 @@ export default class MergeSystem {
     updateSystems(delta) {
 
         this.slotsContainer.visible = this.visible;
+        this.mainGenerator.visible = this.visible;
         if (!this.visible) return
         this.update(delta);
 
@@ -431,6 +434,11 @@ export default class MergeSystem {
 
         //console.log(this.slots[0][0].scale.x, this.uiContainer.scale.x)
         this.pieceGeneratorsList.forEach(piece => {
+            if (this.totalAvailable() > 0) {
+                piece.standardState();
+            } else {
+                piece.blockState();
+            }
             if (piece.visible) {
                 piece.update(delta * window.gameModifyers.bonusData.generateTimerBonus);
             }
@@ -550,7 +558,7 @@ export default class MergeSystem {
         this.currentDragSlot = slot;
         this.entityDragSprite.texture = tex;
         this.entityDragSprite.visible = true;
-        this.entityDragSprite.scale.set(slot.tileSprite.scale.y * 3);
+        this.entityDragSprite.scale.set(slot.tileSprite.scale.y * 1.5);
         if (window.isMobile) {
             this.entityDragSprite.anchor.set(0.5, 1);
         } else {
@@ -812,6 +820,7 @@ export default class MergeSystem {
 
         this.updateAvailableSlots.dispatch(this.totalAvailable())
         if (this.totalAvailable() > 0) {
+            if(this.mainGenerator.isCharged)
             this.mainGenerator.startCharging()
         }
 
@@ -894,17 +903,24 @@ export default class MergeSystem {
             if (piece.visible) {
                 piece.x = (piece.backShape.width + this.slotSize.distance) * accumPiece
                 accumPiece++
-                maxPos = piece.x + piece.backShape.width
+                maxPos = piece.x + piece.backShape.width * piece.scale.x
             }
         });
-        this.uiContainer.x = this.wrapper.x + this.wrapper.width / 2 - (maxPos * this.uiContainer.scale.x) / 2
         let bottomWrapperDiff = this.wrapper.y + this.wrapper.height
         let bottomDiff = config.height - bottomWrapperDiff
         let targetScale = bottomDiff / this.slotSize.height * 0.55
         targetScale = Math.min(1, targetScale)
         this.uiContainer.scale.set(targetScale)
-        this.uiContainer.y = bottomWrapperDiff + (bottomDiff) / 2 - (this.slotSize.height * this.uiContainer.scale.y) / 2 - 25// - this.wrapper.y + this.wrapper.height //- (this.slotSize.height * this.uiContainer.scale.y) - config.height * 0.05
+        this.uiContainer.y = bottomWrapperDiff + (bottomDiff) / 2 - (this.slotSize.height * this.uiContainer.scale.y) / 2 - 45// - this.wrapper.y + this.wrapper.height //- (this.slotSize.height * this.uiContainer.scale.y) - config.height * 0.05
+        this.uiContainer.x = this.wrapper.x + this.wrapper.width / 2 - (maxPos * this.uiContainer.scale.x) / 2
+        if (!window.isPortrait){
+            this.uiContainer.y  -= this.slotSize.height * 1.5
+            this.uiContainer.scale.set(1)
+            this.uiContainer.x = this.wrapper.x + this.wrapper.width
+        }
 
+
+        // this.mainGenerator.y = this.container.height + 
     }
 
 }

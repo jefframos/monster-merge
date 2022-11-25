@@ -145,7 +145,7 @@ export default class MergeTile extends PIXI.Container {
             this.label.visible = false;
             return;
         }
-        if(this.tileData){
+        if (this.tileData) {
             this.tileSprite.visible = true
         }
         this.label.visible = true;
@@ -320,7 +320,7 @@ export default class MergeTile extends PIXI.Container {
         this.label.y = this.backSlot.height - this.label.height - 10;
         this.giftSprite.visible = false;
         this.tileSprite.visible = true;
-        
+
         this.enterAnimation()
         this.generateDamage = 1000
     }
@@ -362,14 +362,14 @@ export default class MergeTile extends PIXI.Container {
     }
     enterAnimation() {
 
-    this.tileSprite.alpha = 1
+        this.tileSprite.alpha = 1
         this.tileSprite.scale.set(0, 2);
         this.giftSprite.scale.set(0, 2);
         TweenLite.killTweensOf(this.tileSprite.scale)
         TweenLite.killTweensOf(this.giftSprite.scale)
         TweenLite.killTweensOf(this.positionGiftOffset)
         this.positionGiftOffset.y = -250;
-        
+
 
         TweenLite.to(this.positionGiftOffset, 0.5, {
             y: 0,
@@ -480,8 +480,8 @@ export default class MergeTile extends PIXI.Container {
         return this.tileSprite.getGlobalPosition()
     }
     overState() {
-        this.backSlot.tint = 0x00FFFF
-        this.backShape.tint = 0x00FFFF
+        this.backSlot.tint = 0xFFFFFF
+        this.backShape.tint = 0xFFFFFF
 
     }
     outState() {
@@ -490,8 +490,8 @@ export default class MergeTile extends PIXI.Container {
 
     }
     blockState() {
-        this.backSlot.tint = 0xFF0000
-        this.backShape.tint = 0xFF0000
+        this.backSlot.tint = 0xFFFFFF
+        this.backShape.tint = 0xFFFFFF
 
     }
 }
