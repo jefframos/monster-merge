@@ -2,15 +2,14 @@ import * as PIXI from 'pixi.js';
 import utils from '../../../utils';
 import config from '../../../config';
 import TweenLite from 'gsap';
+import CastleBackgroundBase from './CastleBackgroundBase';
 
-export default class CastleBackground extends PIXI.Container {
+export default class CastleBackground extends CastleBackgroundBase {
     constructor() {
-
         super();
+    }
 
-        this.baseContainer = new PIXI.Container()
-        this.addChild(this.baseContainer)
-
+    build() {
         this.baseTerrain = new PIXI.Sprite.fromFrame('sky')
         this.baseTerrain.anchor.set(0.5, 1)
         this.baseTerrain.scale.set(2)
@@ -43,7 +42,6 @@ export default class CastleBackground extends PIXI.Container {
         this.baseTerrain.addChild(this.baseTerrainBottomLeft)
         this.baseTerrainBottomLeft.y = this.baseTerrainTop.height - 1
 
-
         this.moon = new PIXI.Sprite.fromFrame('moon')
         this.moon.anchor.set(0.5)
         this.baseContainer.addChild(this.moon)
@@ -55,8 +53,6 @@ export default class CastleBackground extends PIXI.Container {
         this.baseContainer.addChild(this.castleBase)
         this.castleBase.y = 180
         this.castleBase.scale.set(650 / this.castleBase.width)
-
-
 
         this.castleContainer = new PIXI.Container();
         this.baseContainer.addChild(this.castleContainer)
@@ -89,6 +85,7 @@ export default class CastleBackground extends PIXI.Container {
         this.bottomTree2.y = 380
         this.bottomTree2.scale.set(650 / this.bottomTree2.width)
 
+
         this.castleSet = [
             { src: 'stairs', order: 0, pos: { x: 299.7, y: 676.45 } },
             { src: 'door1', order: 7, pos: { x: 282.35, y: 562.95 } },
@@ -114,45 +111,12 @@ export default class CastleBackground extends PIXI.Container {
         ]
 
 
-        this.castleSet.forEach(element => {
-            let img = new PIXI.Sprite.fromFrame(element.src)
-            element.sprite = img;
-            img.x = element.pos.x
-            img.y = element.pos.y
-            this.castleContainer.addChild(img)
-
-        });
-
-        this.castleSet.forEach(element => {
-            this.castleContainer.addChildAt(element.sprite, this.castleSet.lenght - element.order)
-            element.sprite.visible = false
-        });
-
-
-
         this.castleContainer.x = -250
         this.castleContainer.y = -380
-
         this.castleContainer.scale.set(0.55)
 
-        this.usableArea = new PIXI.Graphics().beginFill(0x00FF00).drawRect(0, 0, 530, 500)
-        // this.addChild(this.usableArea)
-        this.usableArea.alpha = 0.15
-        this.usableArea.x = - this.usableArea.width / 2
-        this.usableArea.y = - 450
-
     }
-    updateMax(value) {
-        value = Math.min(value, this.castleSet.length - 1)
-        for (let index = 0; index < this.castleSet.length; index++) {
-            const element = this.castleSet[index];
-            element.sprite.visible = false
-        }
-        for (let index = 0; index <= value; index++) {
-            const element = this.castleSet[index];
-            element.sprite.visible = true
-        }
-    }
+    
     resize(innerResolution, scale) {
         if (innerResolution && innerResolution.width && innerResolution.height) {
 

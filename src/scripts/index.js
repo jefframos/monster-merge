@@ -255,6 +255,7 @@ function configGame(evt) {
 }
 
 window.onresize = function (event) {
+    if(! window.game) return;
     window.game.resize();
 };
 function myFocusFunction() {

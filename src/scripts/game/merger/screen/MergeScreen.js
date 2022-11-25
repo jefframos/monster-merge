@@ -17,6 +17,7 @@ import UIList from '../../ui/uiElements/UIList';
 import OpenChestPopUp from '../../popup/OpenChestPopUp';
 import LevelMeter from '../ui/shop/LevelMeter';
 import MonsterBackground from '../backgrounds/MonsterBackground';
+import FairyBackground from '../backgrounds/FairyBackground';
 
 export default class MergeScreen extends Screen {
     constructor(label) {
@@ -47,10 +48,10 @@ export default class MergeScreen extends Screen {
             this.areaConfig.resourcesArea = { w: 0.5, h: 0.5 }
         }
 
-        setTimeout(() => {
-            this.monsterBackground = new MonsterBackground();
-            this.addChildAt(this.monsterBackground, 0);
-        }, 10);
+        // setTimeout(() => {
+        //     this.activeMergeSystem.interactiveBackground = new FairyBackground();
+        //     this.addChildAt(this.activeMergeSystem.interactiveBackground, 0);
+        // }, 10);
         this.container = new PIXI.Container()
         this.addChild(this.container);
         this.frontLayer = new PIXI.Container()
@@ -106,9 +107,9 @@ export default class MergeScreen extends Screen {
         this.container.addChild(this.systemButtonList)
 
 
-        this.registerSystem(containers, window.baseConfigGame, window.baseMonsters, 'monsters', true)
-        this.registerSystem(containers, window.baseConfigGameFairy, window.baseFairies, 'fairies', false)
-        this.registerSystem(containers, window.baseConfigGameHumans, window.baseHumans, 'humans', false)
+        this.registerSystem(containers, window.baseConfigGame, window.baseMonsters, 'monsters', true, new MonsterBackground())
+        this.registerSystem(containers, window.baseConfigGameFairy, window.baseFairies, 'fairies', false, new FairyBackground())
+        this.registerSystem(containers, window.baseConfigGameHumans, window.baseHumans, 'humans', false, new MonsterBackground())
 
 
         this.entityDragSprite = new PIXI.Sprite.from('');
@@ -271,8 +272,10 @@ export default class MergeScreen extends Screen {
 
     }
 
-    registerSystem(containers, baseData, baseMergeData, slug, visible = true) {
+    registerSystem(containers, baseData, baseMergeData, slug, visible = true, interactiveBackground = null) {
 
+        this.addChildAt(interactiveBackground, 0);
+        interactiveBackground.visible = visible;
         COOKIE_MANAGER.sortCookie(slug)
         let rawMergeDataList = []
         for (let index = 0; index < baseMergeData.mergeEntities.list.length; index++) {
@@ -308,11 +311,12 @@ export default class MergeScreen extends Screen {
             //POPUP
         });
         mergeSystem.updateMaxLevel.add((max) => {
-            this.monsterBackground.updateMax(max)
+            this.activeMergeSystem.interactiveBackground.updateMax(max)
             //POPUP
         });
 
         mergeSystem.shop = mergeItemsShop
+        mergeSystem.interactiveBackground = interactiveBackground
         this.uiPanels.push(mergeItemsShop)
 
         mergeSystem.systemArrayID = this.mergeSystemsList.length;
@@ -333,12 +337,14 @@ export default class MergeScreen extends Screen {
     showSystem(id) {
         this.mergeSystemsList.forEach(element => {
             element.visible = false;
+            element.interactiveBackground.visible = false;
         });
 
         this.activeMergeSystemID = id;
         this.activeMergeSystemID %= this.mergeSystemsList.length
 
         this.mergeSystemsList[this.activeMergeSystemID].visible = true;
+        this.mergeSystemsList[this.activeMergeSystemID].interactiveBackground.visible = true;
         this.activeMergeSystem = this.mergeSystemsList[this.activeMergeSystemID]
 
         this.refreshSystemVisuals();
@@ -351,6 +357,8 @@ export default class MergeScreen extends Screen {
         window.gameEconomy.updateBoard(this.activeMergeSystem.systemID)
         this.resourcesTexture.texture = PIXI.Texture.fromImage(this.activeMergeSystem.baseData.visuals.coin)
 
+
+        this.resize(this.latestInner, this.latestInner);
         setTimeout(() => {
             this.activeMergeSystem.activeSystem()
 
@@ -572,23 +580,25 @@ export default class MergeScreen extends Screen {
         this.timestamp = (Date.now() / 1000 | 0);
 
 
-        this.monsterBackground.update(delta);
+        this.activeMergeSystem.interactiveBackground.update(delta);
 
 
     }
     resize(resolution, innerResolution) {
         if (!innerResolution || !innerResolution.height) return
+
+        this.latestInner = innerResolution;
         if (!resolution || !resolution.width || !resolution.height || !innerResolution) {
             //return;
         }
 
         var newRes = { width: resolution.width * this.screenManager.scale.x }
 
-        if (this.monsterBackground) {
+        if (this.activeMergeSystem.interactiveBackground) {
 
-            this.monsterBackground.resize(resolution, innerResolution);
-            this.monsterBackground.x = config.width / 2
-            this.monsterBackground.y = config.height / 2
+            this.activeMergeSystem.interactiveBackground.resize(resolution, innerResolution);
+            this.activeMergeSystem.interactiveBackground.x = config.width / 2
+            this.activeMergeSystem.interactiveBackground.y = config.height / 2
         }
 
 
@@ -604,10 +614,10 @@ export default class MergeScreen extends Screen {
         if (!window.isPortrait) {
 
             this.gridWrapper.x = toGlobalBack.x + 20
-            this.gridWrapper.y = config.height - (this.monsterBackground.puzzleBackground.pivot.y + 25) * this.monsterBackground.puzzleBackground.scale.y//this.puzzleBackground.y - this.puzzleBackground.pivot.y
+            this.gridWrapper.y = config.height - (this.activeMergeSystem.interactiveBackground.puzzleBackground.pivot.y + 25) * this.activeMergeSystem.interactiveBackground.puzzleBackground.scale.y//this.puzzleBackground.y - this.puzzleBackground.pivot.y
 
-            this.gridWrapper.width = this.monsterBackground.puzzleBackground.usableArea.width * this.monsterBackground.puzzleBackground.scale.x
-            this.gridWrapper.height = this.monsterBackground.puzzleBackground.usableArea.height * this.monsterBackground.puzzleBackground.scale.y
+            this.gridWrapper.width = this.activeMergeSystem.interactiveBackground.puzzleBackground.usableArea.width * this.activeMergeSystem.interactiveBackground.puzzleBackground.scale.x
+            this.gridWrapper.height = this.activeMergeSystem.interactiveBackground.puzzleBackground.usableArea.height * this.activeMergeSystem.interactiveBackground.puzzleBackground.scale.y
 
 
             this.shopButtonsList.x = this.shopButtonsList.width
@@ -631,7 +641,7 @@ export default class MergeScreen extends Screen {
             this.gridWrapper.width = config.width * this.areaConfig.gameArea.w
             this.gridWrapper.height = config.height * this.areaConfig.gameArea.h
             this.gridWrapper.x = 0
-            this.gridWrapper.y = this.monsterBackground.puzzleBackground.usableArea.y - this.monsterBackground.puzzleBackground.pivot.y + this.monsterBackground.puzzleBackground.y + this.monsterBackground.y - 20
+            this.gridWrapper.y = this.activeMergeSystem.interactiveBackground.puzzleBackground.usableArea.y - this.activeMergeSystem.interactiveBackground.puzzleBackground.pivot.y + this.activeMergeSystem.interactiveBackground.puzzleBackground.y + this.activeMergeSystem.interactiveBackground.y - 20
 
             this.shopsLabel.x = this.shopButtonsList.x
             this.shopsLabel.y = this.shopButtonsList.y + 50 - this.shopsLabel.height
