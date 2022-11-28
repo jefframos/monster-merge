@@ -19,7 +19,7 @@ export default class ShopButton extends PIXI.Container
             this.backButton.height = 60 
 
             // this.grey = new PIXI.mesh.NineSlicePlane(
-            //     PIXI.Texture.fromFrame('small-no-pattern-grey'), 20, 20, 20, 20)
+            //     PIXI.Texture.fromFrame('Button23grey'), 20, 20, 20, 20)
             // this.grey.width = 110
             // this.grey.height = 40 
 
@@ -35,7 +35,7 @@ export default class ShopButton extends PIXI.Container
 
             //GAME_DATA.moneyData.softIcon
             this.sprite = new PIXI.Sprite.from('coin');
-            this.container.addChild(this.sprite);
+            //this.container.addChild(this.sprite);
             this.sprite.anchor.set(0, 0.5)
             this.defaultSpriteScale = this.h / this.sprite.height * 0.5;
             this.sprite.scale.set(this.defaultSpriteScale)
@@ -51,9 +51,10 @@ export default class ShopButton extends PIXI.Container
                 .on('pointerupoutside', this.mouseUp.bind(this))
                 .on('mouseupoutside', this.mouseUp.bind(this));
 
-            this.priceLabel = new PIXI.Text('100k',LABELS.LABEL1);
+            this.priceLabel = new PIXI.Text('',LABELS.LABEL1);
             this.priceLabel.style.fill = 0xff5566
             this.priceLabel.style.fontSize = 18
+            this.priceLabel.anchor.set(0.5)
             this.container.addChild(this.priceLabel);
             this.container.pivot.x = this.container.width / 2
             this.container.pivot.y = this.container.height / 2
@@ -117,8 +118,8 @@ export default class ShopButton extends PIXI.Container
     updateCoast(value)
     {
         this.priceLabel.text = value
-        this.priceLabel.x = this.backButton.width / 2 - this.sprite.width * 0.7
-        this.priceLabel.y = this.h / 2 - this.priceLabel.height / 2
+        this.priceLabel.x = this.backButton.width / 2
+        this.priceLabel.y = this.h / 2
     }
     deactiveMax()
     {
@@ -127,9 +128,10 @@ export default class ShopButton extends PIXI.Container
         this.backButton.tint = 0xFFFFFF;
         this.priceLabel.style.fill = 0xe5519b;
         this.priceLabel.text = 'MAX'
-        this.priceLabel.x = this.backButton.width / 2 - this.priceLabel.width / 2;
+        this.priceLabel.x = this.backButton.width / 2
+        this.priceLabel.y = this.h / 2
         this.backButton.alpha = 1;
-        this.backButton.texture = PIXI.Texture.fromFrame('small-no-pattern-grey')
+        this.backButton.texture = PIXI.Texture.fromFrame('Button23grey')
         this.sprite.visible = false;
 
         clearInterval(this.timeoutHold);
@@ -142,7 +144,7 @@ export default class ShopButton extends PIXI.Container
         this.backButton.tint = 0xFFFFFF;
         this.priceLabel.style.fill = 0x666666;
         this.backButton.alpha = 1;
-        this.backButton.texture = PIXI.Texture.fromFrame('small-no-pattern-grey')
+        this.backButton.texture = PIXI.Texture.fromFrame('Button23grey')
 
 
     }
@@ -154,7 +156,7 @@ export default class ShopButton extends PIXI.Container
         //this.backButton.tint = 0x6250e5;
         this.backButton.alpha = 1;
         this.priceLabel.style.fill = 0xFFFFFF;
-        this.backButton.texture = PIXI.Texture.fromFrame('small-no-pattern-green')
+        this.backButton.texture = PIXI.Texture.fromFrame('Button23')
 
 
     }

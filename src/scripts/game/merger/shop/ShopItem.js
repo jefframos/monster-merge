@@ -25,7 +25,7 @@ export default class ShopItem extends UIList {
         this.addChildAt(this.backgroundContainer, 0);
 
         this.backShapeGeneral = new PIXI.mesh.NineSlicePlane(
-            PIXI.Texture.fromFrame('small-no-pattern'), 10, 10, 10, 10)
+            PIXI.Texture.fromFrame('Button21'), 10, 10, 10, 10)
         this.backShapeGeneral.width = this.w
         this.backShapeGeneral.height = this.h
 
@@ -118,6 +118,15 @@ export default class ShopItem extends UIList {
         this.lockStateContainer.interactive = true;
 
 
+
+        this.noSlotAvailable = new PIXI.Container();
+        this.addChild(this.noSlotAvailable);
+
+        this.noSlotLabel = new PIXI.Text('No slot available', LABELS.LABEL1);
+        this.noSlotAvailable.addChild(this.noSlotLabel);
+
+
+
         this.currentColor = 0;
         this.realCost = 0
         this.previewValue = 1;
@@ -130,9 +139,19 @@ export default class ShopItem extends UIList {
     block() {
         this.isBlocked = true;
         this.shopButton.deactive();
+
+        if(this.isLocked){
+            this.noSlotLabel.visible = false;
+            return
+        }
+        this.noSlotLabel.visible = true;
+        this.noSlotLabel.anchor.set(1, 0)
+        this.noSlotLabel.x = this.shopButton.x + this.shopButton.width
+        this.noSlotLabel.y = this.shopButton.y + this.shopButton.height - 2
     }
     unblock() {
         this.isBlocked = false;
+        this.noSlotLabel.visible = false;
     }
     lockItem() {
         if (this.itemData) {
@@ -153,6 +172,8 @@ export default class ShopItem extends UIList {
         this.lockStateContainer.visible = true;
         this.container.visible = false;
         this.isLocked = true;
+
+        this.noSlotLabel.visible = false
 
     }
     unlockItem() {
@@ -299,6 +320,8 @@ export default class ShopItem extends UIList {
 
         this.infoUpgrade.text = '+' + this.previewValue;
         this.updateData()
+
+
     }
     updateData() {
         let next = 1//this.previewValue
@@ -330,6 +353,8 @@ export default class ShopItem extends UIList {
         //this.attributesList['value'].text = '+ ' + utils.formatPointsLabel(nextRPS - currentRPS)
 
         //console.log(this.realCost)
+
+
         if (this.realCost < 1000) {
 
             this.shopButton.updateCoast(this.realCost)
@@ -338,7 +363,9 @@ export default class ShopItem extends UIList {
             this.shopButton.updateCoast(utils.formatPointsLabel(this.realCost))
         }
 
+
         if (this.realCost <= window.gameEconomy.currentResources && !this.isBlocked) {
+            console.log(this.realCost)
             this.shopButton.enable()
         } else {
             this.shopButton.deactive()

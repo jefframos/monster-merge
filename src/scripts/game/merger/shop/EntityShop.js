@@ -14,8 +14,8 @@ export default class EntityShop extends PIXI.Container {
         super()
         this.mainSystem = mainSystem;
         this.size = {
-            w: config.width *0.75,
-            h: config.height *0.8
+            w: config.width * 0.75,
+            h: config.height * 0.8
         }
 
         this.currentItens = [];
@@ -32,18 +32,18 @@ export default class EntityShop extends PIXI.Container {
         this.container.pivot.x = this.size.w / 2
         this.container.pivot.y = this.size.h / 2
         this.backContainer = new PIXI.mesh.NineSlicePlane(
-            PIXI.Texture.fromFrame('small-no-pattern'), 10, 10, 10, 10)
+            PIXI.Texture.fromFrame('Msg06'), 50, 50, 50, 50)
         this.backContainer.width = this.size.w
         this.backContainer.height = this.size.h
         this.container.addChild(this.backContainer);
 
-        this.tiledBackground2 = new PIXI.TilingSprite(PIXI.Texture.fromFrame('patter-square', 64, 64))
-        this.container.addChild(this.tiledBackground2);
-        this.tiledBackground2.width = this.size.w
-        this.tiledBackground2.height = this.size.h
-        // this.tiledBackground2.anchor.set(0.5)
-        this.tiledBackground2.tileScale.set(0.2)
-        this.tiledBackground2.alpha = 0.1
+        // this.tiledBackground2 = new PIXI.TilingSprite(PIXI.Texture.fromFrame('patter-square', 64, 64))
+        // this.container.addChild(this.tiledBackground2);
+        // this.tiledBackground2.width = this.size.w
+        // this.tiledBackground2.height = this.size.h
+        // // this.tiledBackground2.anchor.set(0.5)
+        // this.tiledBackground2.tileScale.set(0.2)
+        // this.tiledBackground2.alpha = 0.1
 
         this.title = new PIXI.Text(window.localizationManager.getLabel('resources'), LABELS.LABEL1);
         this.title.style.fontSize = 38
@@ -59,7 +59,7 @@ export default class EntityShop extends PIXI.Container {
 
 
         this.currencyContainer = new PIXI.Sprite.fromFrame('grid1');
-        this.container.addChild(this.currencyContainer);
+        //this.container.addChild(this.currencyContainer);
         this.currencyContainer.anchor.set(1, 0.5)
         this.currencyContainer.x = this.size.w - 25
         this.currencyContainer.y = 60
@@ -81,7 +81,7 @@ export default class EntityShop extends PIXI.Container {
 
         this.container.addChild(this.title);
 
-        this.shopList = new ShopList({ w: this.size.w, h: this.size.h * 0.8 }, 6)
+        this.shopList = new ShopList({ w: this.size.w, h: this.size.h * 0.8 / 6 * 5 }, 5)
         this.shopList.y = 100
         this.container.addChild(this.shopList);
 
@@ -89,7 +89,7 @@ export default class EntityShop extends PIXI.Container {
         this.shopList.onItemShop.add(this.confirmItemShop.bind(this))
         this.shopList.onShowBlock.add(this.showBlock.bind(this))
 
-        this.openShop = new UIButton1(0xFFffff, window.TILE_ASSSETS_POOL['image-X'], 0xFFffff, 60, 60, 'boss-button')
+        this.openShop = new UIButton1(0xFFffff, window.TILE_ASSSETS_POOL['image-X'], 0xFFffff, 60, 60, 'Btn04')
         this.openShop.updateIconScale(0.5)
         this.container.addChild(this.openShop)
         this.openShop.x = this.size.w - this.openShop.width
@@ -98,11 +98,11 @@ export default class EntityShop extends PIXI.Container {
             this.hideFromClick()
         })
 
-        this.toggles = new UpgradesToggles({ w: this.size.w * 0.7, h: 60 })
-        //this.container.addChild(this.toggles);
-        this.toggles.x = this.size.w / 2 - this.size.w * 0.35 - 30
-        this.toggles.y = this.size.h - this.toggles.height - 30
-        this.toggles.onUpdateValue.add(this.updateToggleValue.bind(this))
+        // this.toggles = new UpgradesToggles({ w: this.size.w * 0.7, h: 60 })
+        // //this.container.addChild(this.toggles);
+        // this.toggles.x = this.size.w / 2 - this.size.w * 0.35 - 30
+        // this.toggles.y = this.size.h - this.toggles.height - 30
+        // this.toggles.onUpdateValue.add(this.updateToggleValue.bind(this))
 
         window.gameEconomy.onMoneySpent.add(this.moneySpent.bind(this))
 
@@ -122,10 +122,30 @@ export default class EntityShop extends PIXI.Container {
             if (!this.visible) {
                 return;
             }
-           this.hideFromClick();
+            this.hideFromClick();
         })
 
         this.systemID = systemID;
+
+
+        this.giftItem = new ShopItem({ w: this.size.w - this.size.w * 0.2, h: this.size.h * 0.8 / 6 })
+        this.giftItem.backShapeGeneral.texture = PIXI.Texture.from('Button22')
+        this.giftItem.itemIcon.texture = PIXI.Texture.from('Btn04')
+        this.container.addChild(this.giftItem)
+        this.giftItem.x = this.size.w * 0.1
+        this.giftItem.y = 80
+        this.giftItem.updateHorizontalList();
+        this.giftItem.shopButton.updateCoast('Free Gift')
+        this.giftItem.unblock()
+        this.giftItem.shopButton.enable();
+        this.giftItem.shopButton.onClickItem.removeAll()
+        this.giftItem.shopButton.onClickItem.add(()=>{
+            console.log("GIFT")
+        });       
+    }
+    setGiftIcon(icon) {
+        this.giftItem.itemIcon.texture = PIXI.Texture.from(icon)
+        this.giftItem.updateHorizontalList();
     }
     showBlock() {
 
@@ -163,7 +183,7 @@ export default class EntityShop extends PIXI.Container {
     updateToggleValue() {
         this.isPossibleBuy = false;
         this.currentItens.forEach(element => {
-            element.updatePreviewValue(this.toggles.currentActiveValue)
+            element.updatePreviewValue(1)
 
             //console.log(element.itemData.type, element.isLocked)
             if (!this.isPossibleBuy && !element.isLocked) {
@@ -177,7 +197,13 @@ export default class EntityShop extends PIXI.Container {
     posShow() {
         utils.centerObject(this.title, this.container)
         //this.title.x = 140
-        this.title.y = 25
+        this.title.y = 8
+
+
+        this.currentItens.forEach(element => {
+            element.updatePreviewValue(1)
+        });
+
     }
     show() {
         this.visible = true;
@@ -200,11 +226,10 @@ export default class EntityShop extends PIXI.Container {
             }
             //element.unlockItem();
             element.show();
-            element.updatePreviewValue(this.toggles.currentActiveValue)
+            element.updatePreviewValue(1)
         });
 
         this.posShow();
-
 
     }
     confirmItemShop(item, button, totalUpgrades, id) {
@@ -219,26 +244,26 @@ export default class EntityShop extends PIXI.Container {
         COOKIE_MANAGER.addResourceUpgrade(item, id);
 
     }
-    addItems(items,  skipCheck = false) {
+    addItems(items, skipCheck = false) {
 
         this.currentItens = []
         for (let index = 0; index < items.length; index++) {
-            let shopItem = new ShopItem({ w: this.size.w - this.size.w * 0.05, h: this.size.h * 0.8 / 6 })
+            let shopItem = new ShopItem({ w: this.size.w - this.size.w * 0.2, h: this.size.h * 0.8 / 6 })
             shopItem.setData(items[index])
             shopItem.nameID = items[index].rawData.nameID;
             this.currentItens.push(shopItem)
         }
 
         this.shopList.addItens(this.currentItens)
-        this.shopList.x = this.size.w * 0.025
-
+        this.shopList.x = this.size.w * 0.1
+        this.shopList.y = 80 + this.size.h * 0.8 / 6
 
         if (skipCheck) {
             return;
         }
         // let currentResources = COOKIE_MANAGER.getResources(this.systemID);
         let currentShips = COOKIE_MANAGER.getBoard(this.systemID);
-// console.log(currentResources)
+        // console.log(currentResources)
         let currentEntities = []
         // for (const key in currentResources.entities) {
         //     const element = currentResources.entities[key];
@@ -249,7 +274,7 @@ export default class EntityShop extends PIXI.Container {
 
         for (const key in currentShips.entities) {
             const element = currentShips.entities[key];
-            if (element&& element.nameID) {
+            if (element && element.nameID) {
                 currentEntities.push(element.nameID);
             }
         }

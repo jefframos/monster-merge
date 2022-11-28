@@ -32,7 +32,7 @@
             "backTiles":["square-pattern1"],
             "locks":["chest1","coffin2","coffin3","coffin4"],
             "gift":["coffinGift"],
-            "coin":"coin"
+            "coin":"heart"
         } 
     }
 }

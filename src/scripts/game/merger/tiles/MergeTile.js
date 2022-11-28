@@ -18,7 +18,7 @@ export default class MergeTile extends PIXI.Container {
 
 
         this.backSlot = new PIXI.mesh.NineSlicePlane(
-            PIXI.Texture.fromFrame('party-slot'), 10, 10, 10, 10)
+            PIXI.Texture.fromFrame('coffin1'), 10, 10, 10, 10)
         this.backSlot.width = size
         this.backSlot.height = size
 

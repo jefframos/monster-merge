@@ -32,7 +32,7 @@
             "backTiles":["backTilesSquare-old"],
             "locks":["coffin1","coffin2","coffin3","coffin4"],
             "gift":["coffinGift"],
-            "coin":"coinOld"
+            "coin":"star"
         } 
     }
 }

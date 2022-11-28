@@ -32,7 +32,7 @@
             "backTiles":["gameSlot1","gameSlot2","gameSlot3"],
             "locks":["coffin1","coffin2","coffin3","coffin4"],
             "gift":["coffinGift"],
-            "coin":"coin"
+            "coin":"ray"
         } 
     }
 }

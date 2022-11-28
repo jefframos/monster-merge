@@ -16,7 +16,7 @@ export default class UIButton1 extends PIXI.Container {
 
 		this.mainContainer = new PIXI.Container();
 		//this.backShape = PIXI.Sprite.fromImage(
-
+		this.mainTexture = texture;
 		if (!icon) {
 			this.icon = new PIXI.Sprite();
 
@@ -32,10 +32,10 @@ export default class UIButton1 extends PIXI.Container {
 			}
 		}
 		this.icon.tint = iconColor;
-
+		this.enabled = true;
 		
 		this.backShape = new PIXI.mesh.NineSlicePlane(
-			PIXI.Texture.fromFrame(texture), 30, 30, 25, 10)
+			PIXI.Texture.fromFrame(texture), 0, 0, 0, 0)
 		this.backShape.width = width
 		this.backShape.height = height
 		this.backShape.pivot.set(width / 2, height / 2)
@@ -136,7 +136,21 @@ export default class UIButton1 extends PIXI.Container {
 	updateIconTexture(texture) {
 		this.icon.texture = texture;
 	}
+	disable(){
+		this.enabled = false;
+		this.icon.tint = 0;
+
+		this.backShape.texture = new PIXI.Texture.fromFrame('BtnGrey');
+
+	}
+	enable(){
+		this.enabled = true;
+		this.icon.tint = 0xFFFFFF;
+
+		this.backShape.texture = new PIXI.Texture.fromFrame(this.mainTexture);
+	}
 	click() {
+		if(!this.enabled) return
 		//this.backShape.scale.set(1)
 
 		this.onClick.dispatch();

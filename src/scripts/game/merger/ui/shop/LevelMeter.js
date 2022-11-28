@@ -11,7 +11,7 @@ export default class LevelMeter extends PIXI.Container {
 
 
         this.baseBar = new PIXI.mesh.NineSlicePlane(
-            PIXI.Texture.fromFrame('backBar2'), 10, 10, 10, 10)
+            PIXI.Texture.fromFrame('SliderBar_ProgressBar'), 10, 10, 10, 10)
 
         this.baseContainer.addChild(this.baseBar)
         this.baseBar.width = 400
@@ -21,7 +21,7 @@ export default class LevelMeter extends PIXI.Container {
         this.baseBar.y = 0
 
         this.fillBar = new PIXI.mesh.NineSlicePlane(
-            PIXI.Texture.fromFrame('fullBar'), 10, 10, 10, 10)
+            PIXI.Texture.fromFrame('Progress01'), 15, 0, 15, 0)
         this.fillBar.width = 250 //468
         this.fillBar.height = 26
         this.fillBar.x = 12
@@ -29,7 +29,7 @@ export default class LevelMeter extends PIXI.Container {
 
         this.baseBar.addChild(this.fillBar)
         
-        this.baseLevelLabel = new PIXI.Sprite.fromFrame('backLevel')
+        this.baseLevelLabel = new PIXI.Sprite.fromFrame('CheckBox06')
         this.baseContainer.addChild(this.baseLevelLabel)
         this.baseLevelLabel.anchor.set(0, 0.5)
 
@@ -38,11 +38,11 @@ export default class LevelMeter extends PIXI.Container {
 
         this.levelLabel = new PIXI.Text('2', LABELS.LABEL1);
         this.levelLabel.style.stroke = 0
-        this.levelLabel.style.strokeThickness = 4
-        this.levelLabel.style.fontSize = 32
+        this.levelLabel.style.strokeThickness = 8
+        this.levelLabel.style.fontSize = 42
         this.levelLabel.anchor.set(0.5)
         this.levelLabel.x = this.baseLevelLabel.width / 2
-        this.levelLabel.y = -3
+        this.levelLabel.y = 0
         this.baseLevelLabel.addChild(this.levelLabel)
 
 
@@ -52,7 +52,7 @@ export default class LevelMeter extends PIXI.Container {
         this.progressLabel.style.fontSize = 24
         this.progressLabel.anchor.set(0.5)
         this.progressLabel.x = this.baseContainer.width / 2 + this.fillBar.x - 20
-        this.progressLabel.y = this.fillBar.y + 32
+        this.progressLabel.y = this.fillBar.y + 22
         this.baseContainer.addChild(this.progressLabel)
 
 
@@ -61,7 +61,7 @@ export default class LevelMeter extends PIXI.Container {
         this.usableArea.alpha = 0.15
 
         this.baseLevelLabel.scale.set(this.usableArea.height / this.baseLevelLabel.height)
-        this.baseLevelLabel.y = this.baseLevelLabel.height / 2
+        this.baseLevelLabel.y = this.baseLevelLabel.height / 2-5
 
         this.baseBar.x = this.baseLevelLabel.width
         this.baseBar.y = this.usableArea.height / 2 - this.baseBar.height / 2
@@ -72,7 +72,7 @@ export default class LevelMeter extends PIXI.Container {
 
         this.levelLabel.text = data.currentLevel
         this.progressLabel.text = data.progress+'/'+getLevels(data.currentLevel)
-        let targetBar = Math.max((this.baseBar.width-24) * data.percent, 20);
+        let targetBar = Math.max((this.baseBar.width-24) * data.percent, 30);
 
         console.log(data)
         if(targetBar < this.fillBar.width){

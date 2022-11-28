@@ -7,7 +7,7 @@ export default class ShopLockState extends PIXI.Container {
     constructor(width, height) {
         super()
         this.backShape = new PIXI.mesh.NineSlicePlane(
-            PIXI.Texture.fromFrame('small-no-pattern-grey'), 10, 10, 10, 10)
+            PIXI.Texture.fromFrame('StatBack'), 10, 10, 10, 10)
         this.backShape.width = width
         this.backShape.height = height
         this.addChild(this.backShape)

@@ -1,7 +1,5 @@
-import CastleBackground from "./CastleBackground";
 import FairyCastleBackground from "./FairyCastleBackground";
 import InteractiveBackgrounds from "./InteractiveBackgrounds";
-import PuzzleBackground from "./PuzzleBackground";
 import PuzzleFairyBackground from "./PuzzleFairyBackground";
 
 export default class FairyBackground extends InteractiveBackgrounds {

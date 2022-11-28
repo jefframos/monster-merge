@@ -2,27 +2,27 @@
 
 "bottomTreePatch.png":
 {
-	"frame": {"x":1,"y":1,"w":984,"h":492},
-	"rotated": false,
+	"frame": {"x":1532,"y":1,"w":984,"h":492},
+	"rotated": true,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":984,"h":492},
 	"sourceSize": {"w":984,"h":492}
 },
 "sky.png":
 {
-	"frame": {"x":987,"y":1,"w":739,"h":489},
+	"frame": {"x":1,"y":1,"w":1529,"h":1012},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":739,"h":489},
-	"sourceSize": {"w":739,"h":489}
+	"spriteSourceSize": {"x":0,"y":0,"w":1529,"h":1012},
+	"sourceSize": {"w":1529,"h":1012}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "background2.png",
 	"format": "RGBA8888",
-	"size": {"w":1727,"h":494},
+	"size": {"w":2025,"h":1014},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:de866bf651e5aa995e2a62138a268beb:938f1acb836b8d17a503105e19b9cf24:5cceb5aa1fc53de943b35965712e21ef$"
+	"smartupdate": "$TexturePacker:SmartUpdate:00745544c2bcd1085aaf0d9ac728aee7:e4ec1587d283bc430bc7b00908ed9ef2:5cceb5aa1fc53de943b35965712e21ef$"
 }
 }
