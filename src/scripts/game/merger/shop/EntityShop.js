@@ -32,7 +32,7 @@ export default class EntityShop extends PIXI.Container {
         this.container.pivot.x = this.size.w / 2
         this.container.pivot.y = this.size.h / 2
         this.backContainer = new PIXI.mesh.NineSlicePlane(
-            PIXI.Texture.fromFrame('Msg06'), 50, 50, 50, 50)
+            PIXI.Texture.fromFrame('Msg11'), 50, 100, 50, 50)
         this.backContainer.width = this.size.w
         this.backContainer.height = this.size.h
         this.container.addChild(this.backContainer);

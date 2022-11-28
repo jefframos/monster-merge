@@ -6,12 +6,13 @@ export default class TextBox extends PIXI.Container {
         this.padding = padding
         this.background = new PIXI.mesh.NineSlicePlane(
             PIXI.Texture.fromFrame(tex), 10, 10, 10, 10)
-        this.addChild(this.background)
+        //this.addChild(this.background)
 
         this.label = new PIXI.Text('Thanks for helping us\nChoose your prize', LABELS.LABEL1);
         this.label.style.fontSize = 18
-        this.label.x = this.padding
-        this.label.y = this.padding
+        // this.label.x = this.padding
+        // this.label.y = this.padding
+        this.label.anchor.set(0.5)
         this.addChild(this.label)
     }
 

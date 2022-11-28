@@ -108,19 +108,20 @@ export default class MergeScreen extends Screen {
         this.bonusesList = new UIList()
         this.bonusesList.w = 80
         this.bonusesList.h = this.bonusesList.w * 2 + 20
-        //this.container.addChild(this.bonusesList)
+        this.container.addChild(this.bonusesList)
 
-        
+
         this.registerSystem(containers, window.baseConfigGame, window.baseMonsters, 'monsters', true, new MonsterBackground())
         this.registerSystem(containers, window.baseConfigGameFairy, window.baseFairies, 'fairies', false, new FairyBackground())
         this.registerSystem(containers, window.baseConfigGameHumans, window.baseHumans, 'humans', false, new MonsterBackground())
 
         this.activeMergeSystemID = 0
         this.activeMergeSystem = this.mergeSystemsList[this.activeMergeSystemID]
-        
+
         this.extraMoneyBonus = new UIButton1(0x002299, this.activeMergeSystem.baseData.visuals.coin, 0xFFFFFF, this.bonusesList.w, this.bonusesList.w, 'Btn05')
         this.extraMoneyBonus.updateIconScale(0.7)
         this.extraMoneyBonus.onClick.add(() => {
+            this.openHourCoinPopUp();
             //this.showSystem(this.extraMoneyBonus.systemArrayID)
         })
 
@@ -132,11 +133,11 @@ export default class MergeScreen extends Screen {
             //this.showSystem(this.extraMoneyBonus2.systemArrayID)
         })
 
-        this.bonusesList.addElement(this.extraMoneyBonus2);
+        //this.bonusesList.addElement(this.extraMoneyBonus2);
 
 
         this.bonusesList.updateVerticalList();
-        
+
         this.entityDragSprite = new PIXI.Sprite.from('');
         this.addChild(this.entityDragSprite);
         this.entityDragSprite.visible = false;
@@ -155,7 +156,7 @@ export default class MergeScreen extends Screen {
         this.container.addChild(this.statsList)
 
         this.totalCoinsContainer = new PIXI.mesh.NineSlicePlane(
-            PIXI.Texture.fromFrame('StatBack'), 20,20,20,20)
+            PIXI.Texture.fromFrame('StatBack'), 20, 20, 20, 20)
         this.totalCoinsContainer.width = this.statsList.w
         this.totalCoinsContainer.height = 40
         this.totalCoins = new PIXI.Text('', LABELS.LABEL2);
@@ -171,7 +172,7 @@ export default class MergeScreen extends Screen {
 
 
         this.coinsPerSecondCounter = new PIXI.mesh.NineSlicePlane(
-            PIXI.Texture.fromFrame('StatBack'), 20,20,20,20)
+            PIXI.Texture.fromFrame('StatBack'), 20, 20, 20, 20)
         this.coinsPerSecondCounter.width = this.statsList.w
         this.coinsPerSecondCounter.height = 40
 
@@ -184,8 +185,8 @@ export default class MergeScreen extends Screen {
         this.coisPerSecond.addChild(this.shardsTexture)
         this.shardsTexture.scale.set(this.coinsPerSecondCounter.height / this.shardsTexture.height * 0.5)
         this.shardsTexture.x = -30
-        this.shardsTexture.y = -3        
-        
+        this.shardsTexture.y = -3
+
 
         this.statsList.updateVerticalList();
 
@@ -292,7 +293,7 @@ export default class MergeScreen extends Screen {
 
         this.refreshSystemVisuals();
         //this.savedEconomy = COOKIE_MANAGER.getEconomy(this.activeMergeSystem.systemID); this.systemButtonLis
-      
+        //this.startGamePopUp()
 
     }
 
@@ -379,6 +380,50 @@ export default class MergeScreen extends Screen {
 
         this.refreshSystemVisuals();
     }
+    startGamePopUp() {
+
+        let target = this.activeMergeSystem.rps * 60
+        let target2 = this.activeMergeSystem.rps * 600
+        this.openPopUp(this.standardPopUp, {
+            value1: utils.formatPointsLabel(target),
+            value2: utils.formatPointsLabel(target2),
+            title: 'Free Coins',
+            confirmLabel: 'Collect',
+            cancelLabel: 'Cancel',
+            onConfirm: () => {
+                window.DO_REWARD(() => {
+                    window.gameEconomy.addResources(target2, this.activeMergeSystem.systemID)
+                    this.moneyFromCenter()
+                })
+
+            },
+            onCancel: () => {
+                window.gameEconomy.addResources(target, this.activeMergeSystem.systemID)
+                    this.moneyFromCenter()
+            }
+        })
+
+    }
+    openHourCoinPopUp() {
+
+        let target = this.activeMergeSystem.rps * 600
+        this.openPopUp(this.standardPopUp, {
+            value1: 0,
+            value2: utils.formatPointsLabel(target),
+            title: 'Free Coins',
+            confirmLabel: 'Collect',
+            cancelLabel: 'Cancel',
+            onConfirm: () => {
+                window.DO_REWARD(() => {
+                    window.gameEconomy.addResources(target, this.activeMergeSystem.systemID)
+                    this.moneyFromCenter()
+                })
+
+            },
+            onCancel: () => { }
+        })
+
+    }
     refreshSystemVisuals() {
         if (!this.activeMergeSystem.isLoaded) {
             this.activeMergeSystem.loadData();
@@ -389,7 +434,7 @@ export default class MergeScreen extends Screen {
         this.resourcesTexture.scale.set(40 / this.resourcesTexture.height * 0.5 * this.resourcesTexture.scale.y)
 
         this.shardsTexture.texture = PIXI.Texture.fromImage(this.activeMergeSystem.baseData.visuals.coin)
-        this.shardsTexture.scale.set(40 / this.shardsTexture.height * 0.5 *this.shardsTexture.scale.y)
+        this.shardsTexture.scale.set(40 / this.shardsTexture.height * 0.5 * this.shardsTexture.scale.y)
 
         this.openMergeShop.icon.texture = PIXI.Texture.fromImage(this.activeMergeSystem.dataTiles[0].rawData.imageSrc)
         this.openMergeShop.updateIconScale(0.8)
@@ -422,6 +467,24 @@ export default class MergeScreen extends Screen {
                 target.confirmBonus();
             }
         })
+    }
+    moneyFromCenter() {
+        let toLocal = this.particleSystem.toLocal({ x: config.width / 2, y: config.height / 2 })
+        let customData = {};
+        customData.texture = this.activeMergeSystem.baseData.visuals.coin
+        customData.scale = 0.035
+        customData.gravity = 1000
+        customData.alphaDecress = 0
+        customData.forceX = Math.random() * 1200 - 600
+        customData.forceY = 400 * Math.random()  + 300
+        customData.ignoreMatchRotation = true
+
+        let coinPosition = this.shardsTexture.getGlobalPosition();
+
+        let toLocalTarget = this.particleSystem.toLocal(coinPosition)
+
+        customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.5 + Math.random() * 0.75 }
+        this.particleSystem.show(toLocal, 8, customData)
     }
     onPrizeCollected(prizes) {
         if (!prizes) return;
@@ -491,7 +554,7 @@ export default class MergeScreen extends Screen {
         });
 
         this.currentOpenPopUp = target;
-        target.show(params)
+        target.show(params, this.activeMergeSystem.baseData.visuals)
     }
     popLabel(targetPosition, label) {
         let toLocal = this.particleSystem.toLocal(targetPosition)
@@ -519,15 +582,15 @@ export default class MergeScreen extends Screen {
         this.levelMeter.updateData(data)
 
 
-        
+
         for (let index = 1; index < this.systemsList.length; index++) {
-           // if(!this.systemButtonList[index]) break
+            // if(!this.systemButtonList[index]) break
             const element = this.systemsList[index];
             const prev = this.systemsList[index - 1];
-            
-            if(!prev.boardProgression || prev.boardProgression.currentLevel < 6){
+
+            if (!prev.boardProgression || prev.boardProgression.currentLevel < 6) {
                 element.toggle.disable()
-            }else{
+            } else {
                 element.toggle.enable()
             }
         }
@@ -708,8 +771,8 @@ export default class MergeScreen extends Screen {
         this.statsList.x = toGlobalBack.x + 10
 
         this.bonusesList.y = this.statsList.y + this.statsList.height + this.bonusesList.w * 0.5;
-        this.bonusesList.x =  this.statsList.x + + this.bonusesList.w * 0.5
-        
+        this.bonusesList.x = this.statsList.x + + this.bonusesList.w * 0.5
+
         this.helperButtonList.y = 80
         this.helperButtonList.x = toGlobalBack.x + 180
 

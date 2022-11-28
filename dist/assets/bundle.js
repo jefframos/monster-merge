@@ -32620,7 +32620,8 @@ var UILabelButton1 = function (_PIXI$Container) {
         value: function addLabelRight(label) {
             var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0xFFFFFF;
 
-            this.buttonLabel = new PIXI.Text(label, { font: '18px', fill: color, align: 'left', fontWeight: '600', fontFamily: MAIN_FONT });
+            if (!this.buttonLabel) this.buttonLabel = new PIXI.Text(label, { font: '18px', fill: color, align: 'left', fontWeight: '600', fontFamily: MAIN_FONT });
+            this.buttonLabel.text = label;
             this.buttonLabel.pivot.x = 0; //this.buttonLabel.width;
             this.buttonLabel.pivot.y = this.buttonLabel.height / 2;
             this.buttonLabel.x = this.mainContainer.width * 0.5 + 5;
@@ -32631,7 +32632,8 @@ var UILabelButton1 = function (_PIXI$Container) {
         value: function addLabelLeft(label) {
             var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0xFFFFFF;
 
-            this.buttonLabel = new PIXI.Text(label, { font: '18px', fill: color, align: 'right', fontWeight: '300', fontFamily: MAIN_FONT });
+            if (!this.buttonLabel) this.buttonLabel = new PIXI.Text(label, { font: '18px', fill: color, align: 'right', fontWeight: '300', fontFamily: MAIN_FONT });
+            this.buttonLabel.text = label;
             this.buttonLabel.pivot.x = this.buttonLabel.width;
             this.buttonLabel.pivot.y = this.buttonLabel.height / 2;
             this.buttonLabel.x = -this.mainContainer.width * 0.5 - 5;
@@ -32645,7 +32647,8 @@ var UILabelButton1 = function (_PIXI$Container) {
             var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0xFFFFFF;
             var fit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
 
-            this.buttonLabel = new PIXI.Text(label, LABELS.LABEL1);
+            if (!this.buttonLabel) this.buttonLabel = new PIXI.Text(label, LABELS.LABEL1);
+            this.buttonLabel.text = label;
             this.buttonLabel.style.stroke = 0;
             this.buttonLabel.style.strokeThickness = 3;
             this.buttonLabel.style.fontSize = 24;
@@ -60071,11 +60074,11 @@ var assets = [{
 	"id": "localization_ES",
 	"url": "assets/json\\localization_ES.json"
 }, {
-	"id": "localization_FR",
-	"url": "assets/json\\localization_FR.json"
-}, {
 	"id": "localization_IT",
 	"url": "assets/json\\localization_IT.json"
+}, {
+	"id": "localization_FR",
+	"url": "assets/json\\localization_FR.json"
 }, {
 	"id": "localization_JA",
 	"url": "assets/json\\localization_JA.json"
@@ -60086,11 +60089,11 @@ var assets = [{
 	"id": "localization_PT",
 	"url": "assets/json\\localization_PT.json"
 }, {
-	"id": "localization_RU",
-	"url": "assets/json\\localization_RU.json"
-}, {
 	"id": "localization_TR",
 	"url": "assets/json\\localization_TR.json"
+}, {
+	"id": "localization_RU",
+	"url": "assets/json\\localization_RU.json"
 }, {
 	"id": "localization_ZH",
 	"url": "assets/json\\localization_ZH.json"
@@ -60394,7 +60397,7 @@ module.exports = exports["default"];
 /* 340 */
 /***/ (function(module, exports) {
 
-module.exports = {"default":["image/pattern2/pattern2.json","image/particles/particles.json","image/pattern/pattern.json","image/parts/parts.json","image/background2/background2.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
+module.exports = {"default":["image/pattern2/pattern2.json","image/particles/particles.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
 
 /***/ }),
 /* 341 */
@@ -60887,8 +60890,7 @@ var MergeScreen = function (_Screen) {
                 _this.bonusesList = new _UIList2.default();
                 _this.bonusesList.w = 80;
                 _this.bonusesList.h = _this.bonusesList.w * 2 + 20;
-                //this.container.addChild(this.bonusesList)
-
+                _this.container.addChild(_this.bonusesList);
 
                 _this.registerSystem(containers, window.baseConfigGame, window.baseMonsters, 'monsters', true, new _MonsterBackground2.default());
                 _this.registerSystem(containers, window.baseConfigGameFairy, window.baseFairies, 'fairies', false, new _FairyBackground2.default());
@@ -60900,6 +60902,7 @@ var MergeScreen = function (_Screen) {
                 _this.extraMoneyBonus = new _UIButton2.default(0x002299, _this.activeMergeSystem.baseData.visuals.coin, 0xFFFFFF, _this.bonusesList.w, _this.bonusesList.w, 'Btn05');
                 _this.extraMoneyBonus.updateIconScale(0.7);
                 _this.extraMoneyBonus.onClick.add(function () {
+                        _this.openHourCoinPopUp();
                         //this.showSystem(this.extraMoneyBonus.systemArrayID)
                 });
 
@@ -60911,7 +60914,8 @@ var MergeScreen = function (_Screen) {
                         //this.showSystem(this.extraMoneyBonus2.systemArrayID)
                 });
 
-                _this.bonusesList.addElement(_this.extraMoneyBonus2);
+                //this.bonusesList.addElement(this.extraMoneyBonus2);
+
 
                 _this.bonusesList.updateVerticalList();
 
@@ -61060,7 +61064,7 @@ var MergeScreen = function (_Screen) {
 
                 _this.refreshSystemVisuals();
                 //this.savedEconomy = COOKIE_MANAGER.getEconomy(this.activeMergeSystem.systemID); this.systemButtonLis
-
+                //this.startGamePopUp()
 
                 return _this;
         }
@@ -61156,9 +61160,55 @@ var MergeScreen = function (_Screen) {
                         this.refreshSystemVisuals();
                 }
         }, {
+                key: 'startGamePopUp',
+                value: function startGamePopUp() {
+                        var _this3 = this;
+
+                        var target = this.activeMergeSystem.rps * 60;
+                        var target2 = this.activeMergeSystem.rps * 600;
+                        this.openPopUp(this.standardPopUp, {
+                                value1: _utils2.default.formatPointsLabel(target),
+                                value2: _utils2.default.formatPointsLabel(target2),
+                                title: 'Free Coins',
+                                confirmLabel: 'Collect',
+                                cancelLabel: 'Cancel',
+                                onConfirm: function onConfirm() {
+                                        window.DO_REWARD(function () {
+                                                window.gameEconomy.addResources(target2, _this3.activeMergeSystem.systemID);
+                                                _this3.moneyFromCenter();
+                                        });
+                                },
+                                onCancel: function onCancel() {
+                                        window.gameEconomy.addResources(target, _this3.activeMergeSystem.systemID);
+                                        _this3.moneyFromCenter();
+                                }
+                        });
+                }
+        }, {
+                key: 'openHourCoinPopUp',
+                value: function openHourCoinPopUp() {
+                        var _this4 = this;
+
+                        var target = this.activeMergeSystem.rps * 600;
+                        this.openPopUp(this.standardPopUp, {
+                                value1: 0,
+                                value2: _utils2.default.formatPointsLabel(target),
+                                title: 'Free Coins',
+                                confirmLabel: 'Collect',
+                                cancelLabel: 'Cancel',
+                                onConfirm: function onConfirm() {
+                                        window.DO_REWARD(function () {
+                                                window.gameEconomy.addResources(target, _this4.activeMergeSystem.systemID);
+                                                _this4.moneyFromCenter();
+                                        });
+                                },
+                                onCancel: function onCancel() {}
+                        });
+                }
+        }, {
                 key: 'refreshSystemVisuals',
                 value: function refreshSystemVisuals() {
-                        var _this3 = this;
+                        var _this5 = this;
 
                         if (!this.activeMergeSystem.isLoaded) {
                                 this.activeMergeSystem.loadData();
@@ -61176,9 +61226,9 @@ var MergeScreen = function (_Screen) {
 
                         this.resize(this.latestInner, this.latestInner);
                         setTimeout(function () {
-                                _this3.activeMergeSystem.activeSystem();
+                                _this5.activeMergeSystem.activeSystem();
 
-                                _this3.resize(_this3.latestInner, _this3.latestInner);
+                                _this5.resize(_this5.latestInner, _this5.latestInner);
                         }, 1);
                 }
         }, {
@@ -61203,9 +61253,29 @@ var MergeScreen = function (_Screen) {
                         });
                 }
         }, {
+                key: 'moneyFromCenter',
+                value: function moneyFromCenter() {
+                        var toLocal = this.particleSystem.toLocal({ x: config.width / 2, y: config.height / 2 });
+                        var customData = {};
+                        customData.texture = this.activeMergeSystem.baseData.visuals.coin;
+                        customData.scale = 0.035;
+                        customData.gravity = 1000;
+                        customData.alphaDecress = 0;
+                        customData.forceX = Math.random() * 1200 - 600;
+                        customData.forceY = 400 * Math.random() + 300;
+                        customData.ignoreMatchRotation = true;
+
+                        var coinPosition = this.shardsTexture.getGlobalPosition();
+
+                        var toLocalTarget = this.particleSystem.toLocal(coinPosition);
+
+                        customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.5 + Math.random() * 0.75 };
+                        this.particleSystem.show(toLocal, 8, customData);
+                }
+        }, {
                 key: 'onPrizeCollected',
                 value: function onPrizeCollected(prizes) {
-                        var _this4 = this;
+                        var _this6 = this;
 
                         if (!prizes) return;
                         if (prizes.money > 0) {
@@ -61227,7 +61297,7 @@ var MergeScreen = function (_Screen) {
                         if (prizes.shards > 0) {
                                 window.gameModifyers.addShards(prizes.shards);
                                 setTimeout(function () {
-                                        var toLocal = _this4.particleSystem.toLocal({ x: config.width / 2, y: config.height / 2 });
+                                        var toLocal = _this6.particleSystem.toLocal({ x: config.width / 2, y: config.height / 2 });
                                         var customData = {};
                                         customData.texture = 'shards';
                                         customData.scale = 0.025;
@@ -61235,12 +61305,12 @@ var MergeScreen = function (_Screen) {
                                         customData.alphaDecress = 0;
                                         customData.ignoreMatchRotation = true;
 
-                                        var coinPosition = _this4.shardsTexture.getGlobalPosition();
+                                        var coinPosition = _this6.shardsTexture.getGlobalPosition();
 
-                                        var toLocalTarget = _this4.particleSystem.toLocal(coinPosition);
+                                        var toLocalTarget = _this6.particleSystem.toLocal(coinPosition);
 
                                         customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.2 + Math.random() * 0.75 };
-                                        _this4.particleSystem.show(toLocal, 3, customData);
+                                        _this6.particleSystem.show(toLocal, 3, customData);
                                 }, 50);
                         }
                         if (prizes.ship > 0) {
@@ -61282,7 +61352,7 @@ var MergeScreen = function (_Screen) {
                         });
 
                         this.currentOpenPopUp = target;
-                        target.show(params);
+                        target.show(params, this.activeMergeSystem.baseData.visuals);
                 }
         }, {
                 key: 'popLabel',
@@ -61436,7 +61506,7 @@ var MergeScreen = function (_Screen) {
         }, {
                 key: 'resize',
                 value: function resize(resolution, innerResolution) {
-                        var _this5 = this;
+                        var _this7 = this;
 
                         if (!innerResolution || !innerResolution.height) return;
 
@@ -61540,7 +61610,7 @@ var MergeScreen = function (_Screen) {
                         });
 
                         this.systemsList.forEach(function (element) {
-                                element.resize(resolution, innerResolution, _this5.resourcesWrapperRight);
+                                element.resize(resolution, innerResolution, _this7.resourcesWrapperRight);
                         });
                 }
         }, {
@@ -61571,7 +61641,7 @@ var MergeScreen = function (_Screen) {
         }, {
                 key: 'addHelpers',
                 value: function addHelpers() {
-                        var _this6 = this;
+                        var _this8 = this;
 
                         this.helperButtonList = new _UIList2.default();
                         this.helperButtonList.h = 350;
@@ -61603,7 +61673,7 @@ var MergeScreen = function (_Screen) {
                         this.addRandomShip = new _UIButton2.default(0x002299, 'vampire');
                         this.helperButtonList.addElement(this.addRandomShip);
                         this.addRandomShip.onClick.add(function () {
-                                _this6.activeMergeSystem.addShipBasedOnMax();
+                                _this8.activeMergeSystem.addShipBasedOnMax();
                         });
 
                         this.autoMergeToggle = new _UIButton2.default(0x002299, 'auto-merge-icon');
@@ -62125,7 +62195,7 @@ var EntityShop = function (_PIXI$Container) {
         _this.addChild(_this.container);
         _this.container.pivot.x = _this.size.w / 2;
         _this.container.pivot.y = _this.size.h / 2;
-        _this.backContainer = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('Msg06'), 50, 50, 50, 50);
+        _this.backContainer = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('Msg11'), 50, 100, 50, 50);
         _this.backContainer.width = _this.size.w;
         _this.backContainer.height = _this.size.h;
         _this.container.addChild(_this.backContainer);
@@ -65893,7 +65963,7 @@ var StandardPop = function (_PIXI$Container) {
                 _this.background.on('mousedown', _this.confirm.bind(_this)).on('touchstart', _this.confirm.bind(_this));
                 _this.background.visible = false;
 
-                _this.popUp = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('small-no-pattern'), 15, 15, 15, 15);
+                _this.popUp = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('Msg12'), 50, 100, 50, 50);
                 _this.popUp.width = _this.w;
                 _this.popUp.height = _this.h;
 
@@ -65913,8 +65983,8 @@ var StandardPop = function (_PIXI$Container) {
                 _this.label1 = new PIXI.Text('!', LABELS.LABEL1);
                 _this.label2 = new PIXI.Text('!', LABELS.LABEL1);
 
-                _this.coin1 = new PIXI.Sprite.fromFrame('coin-large');
-                _this.coin2 = new PIXI.Sprite.fromFrame('plus-coins');
+                _this.coin1 = new PIXI.Sprite();
+                _this.coin2 = new PIXI.Sprite();
                 _this.coin1.anchor.set(0.5);
                 _this.coin2.anchor.set(0.5);
                 _this.container.addChild(_this.coin1);
@@ -65924,13 +65994,11 @@ var StandardPop = function (_PIXI$Container) {
                 _this.coin2.addChild(_this.label2);
                 _this.label2.style.fontSize = 24;
 
-                _this.readyLabel = new _TextBox2.default(40, 'small-no-pattern-purple');
+                _this.readyLabel = new _TextBox2.default(40, 'StatBack');
                 _this.readyLabel.label.style.fontSize = 32;
-                // this.readyLabel.style.fill = 0xffffff
-                _this.readyLabel.pivot.x = _this.readyLabel.width / 2;
-                _this.readyLabel.pivot.y = _this.readyLabel.height / 2;
+
                 _this.container.addChild(_this.readyLabel);
-                _this.confirmButton = new _UILabelButton2.default(150, 80, 'small-no-pattern-green');
+                _this.confirmButton = new _UILabelButton2.default(150, 80, 'Button23');
                 _this.confirmButton.addCenterLabel(window.localizationManager.getLabel('collect') + ' x2');
                 _this.confirmButton.addVideoIcon();
                 _this.confirmButton.pivot.x = 75;
@@ -65944,7 +66012,7 @@ var StandardPop = function (_PIXI$Container) {
                                 _this.confirm();
                         }
                 });
-                _this.cancelButton = new _UILabelButton2.default(130, 70, 'small-no-pattern-grey');
+                _this.cancelButton = new _UILabelButton2.default(130, 70, 'Button23grey');
                 _this.cancelButton.pivot.x = 130 / 2;
                 _this.cancelButton.addCenterLabel(window.localizationManager.getLabel('collect'));
 
@@ -65963,14 +66031,21 @@ var StandardPop = function (_PIXI$Container) {
 
                 _this.coin1.x = _this.cancelButton.x;
                 _this.coin2.x = _this.confirmButton.x;
-
                 _this.coin1.y = _this.cancelButton.y - 130;
-                _this.coin2.y = _this.coin1.y;
+                _this.coin2.y = _this.coin1.y - 30;
 
                 _this.container.visible = false;
 
                 _this.readySin = 0;
 
+                _this.closePopUp = new _UIButton2.default(0xFFffff, window.TILE_ASSSETS_POOL['image-X'], 0xFFffff, 60, 60, 'Btn04');
+                _this.closePopUp.updateIconScale(0.5);
+                _this.container.addChild(_this.closePopUp);
+                _this.closePopUp.x = _this.w / 2 - 30;
+                _this.closePopUp.y = -_this.h / 2 + 30;
+                _this.closePopUp.onClick.add(function () {
+                        _this.close();
+                });
                 return _this;
         }
 
@@ -65982,8 +66057,11 @@ var StandardPop = function (_PIXI$Container) {
                 }
         }, {
                 key: 'show',
-                value: function show(param) {
+                value: function show(param, visuals) {
                         this.visible = true;
+                        this.popUp.scale.set(1);
+                        this.container.alpha = 1;
+                        this.background.alpha = 0.25;
 
                         this.isShowing = true;
                         this.container.visible = true;
@@ -65999,6 +66077,30 @@ var StandardPop = function (_PIXI$Container) {
                                 this.cancelCallback = null;
                         }
 
+                        if (param.value1 == 0) {
+                                this.cancelButton.visible = false;
+                                this.coin1.visible = false;
+                                this.closePopUp.visible = true;
+                                this.coin2.x = 0;
+                                this.confirmButton.x = 0;
+                        } else {
+
+                                this.cancelButton.visible = true;
+                                this.coin1.visible = true;
+                                this.closePopUp.visible = false;
+
+                                this.confirmButton.x = 90;
+                                this.cancelButton.x = -90;
+
+                                this.coin1.x = this.cancelButton.x;
+                                this.coin2.x = this.confirmButton.x;
+                                this.coin1.y = this.cancelButton.y - 130;
+                                this.coin2.y = this.coin1.y - 30;
+                        }
+
+                        this.confirmButton.addCenterLabel(param.confirmLabel);
+                        this.cancelButton.addCenterLabel(param.cancelLabel);
+
                         this.label1.text = param.value1;
                         this.label1.pivot.x = this.label1.width / 2;
                         this.label1.y = 40;
@@ -66007,11 +66109,17 @@ var StandardPop = function (_PIXI$Container) {
                         this.label2.pivot.x = this.label2.width / 2;
                         this.label2.y = 40;
 
-                        this.readyLabel.updateText(param ? param.label : '');
-                        this.readyLabel.pivot.x = this.readyLabel.width / 2;
-                        this.readyLabel.pivot.y = this.readyLabel.height / 2;
+                        this.readyLabel.updateText(param ? param.title : '');
 
-                        this.readyLabel.y = -this.h / 2;
+                        this.readyLabel.x = 0;
+                        this.readyLabel.y = -this.h / 2 + this.readyLabel.height / 2 + 8;
+
+                        if (visuals) {
+                                this.coin1.texture = new PIXI.Texture.fromFrame(visuals.coin);
+                                this.coin2.texture = new PIXI.Texture.fromFrame(visuals.coin);
+
+                                this.coin2.scale.set(this.coin1.scale.x * 1.5);
+                        }
                 }
         }, {
                 key: 'afterHide',
@@ -66043,7 +66151,7 @@ var StandardPop = function (_PIXI$Container) {
                                                 callback();
                                         }
                                         _this2.afterHide();
-                                        _this2.toRemove = true;
+                                        //this.toRemove = true
 
                                         _this2.visible = false;
                                 }
@@ -66120,12 +66228,13 @@ var TextBox = function (_PIXI$Container) {
 
         _this.padding = padding;
         _this.background = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame(tex), 10, 10, 10, 10);
-        _this.addChild(_this.background);
+        //this.addChild(this.background)
 
         _this.label = new PIXI.Text('Thanks for helping us\nChoose your prize', LABELS.LABEL1);
         _this.label.style.fontSize = 18;
-        _this.label.x = _this.padding;
-        _this.label.y = _this.padding;
+        // this.label.x = this.padding
+        // this.label.y = this.padding
+        _this.label.anchor.set(0.5);
         _this.addChild(_this.label);
         return _this;
     }

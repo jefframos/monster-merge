@@ -9,7 +9,7 @@ export default class UILabelButton1 extends PIXI.Container {
         super();
 
         this.mainContainer = new PIXI.Container();
-    
+
 
         this.padding = 8;
         this.backShapeBorder = new PIXI.mesh.NineSlicePlane(
@@ -32,7 +32,7 @@ export default class UILabelButton1 extends PIXI.Container {
         this.interactive = true;
         this.buttonMode = true;
     }
-    addVideoIcon(){
+    addVideoIcon() {
         this.videoIcon = new PIXI.Sprite.fromFrame('video-trim');
         this.videoIcon.anchor.set(0.5)
         this.videoIcon.scale.set(0.65)
@@ -99,31 +99,34 @@ export default class UILabelButton1 extends PIXI.Container {
 
     }
     addLabelRight(label, color = 0xFFFFFF) {
-        this.buttonLabel = new PIXI.Text(label, { font: '18px', fill: color, align: 'left', fontWeight: '600', fontFamily: MAIN_FONT });
+        if (!this.buttonLabel) this.buttonLabel = new PIXI.Text(label, { font: '18px', fill: color, align: 'left', fontWeight: '600', fontFamily: MAIN_FONT });
+        this.buttonLabel.text = label
         this.buttonLabel.pivot.x = 0//this.buttonLabel.width;
         this.buttonLabel.pivot.y = this.buttonLabel.height / 2;
         this.buttonLabel.x = this.mainContainer.width * 0.5 + 5;
         this.addChild(this.buttonLabel);
     }
     addLabelLeft(label, color = 0xFFFFFF) {
-        this.buttonLabel = new PIXI.Text(label, { font: '18px', fill: color, align: 'right', fontWeight: '300', fontFamily: MAIN_FONT });
+        if (!this.buttonLabel) this.buttonLabel = new PIXI.Text(label, { font: '18px', fill: color, align: 'right', fontWeight: '300', fontFamily: MAIN_FONT });
+        this.buttonLabel.text = label
         this.buttonLabel.pivot.x = this.buttonLabel.width;
         this.buttonLabel.pivot.y = this.buttonLabel.height / 2;
         this.buttonLabel.x = -this.mainContainer.width * 0.5 - 5;
         this.addChild(this.buttonLabel);
     }
     addCenterLabel(label, color = 0xFFFFFF, fit = 0) {
-        this.buttonLabel = new PIXI.Text(label, LABELS.LABEL1);
+        if (!this.buttonLabel) this.buttonLabel = new PIXI.Text(label, LABELS.LABEL1);
+        this.buttonLabel.text = label
         this.buttonLabel.style.stroke = 0
         this.buttonLabel.style.strokeThickness = 3
         this.buttonLabel.style.fontSize = 24
-        if(fit){
-            this.buttonLabel.scale.set(this.buttonLabel.width/this.backShapeBorder.width  * fit)
+        if (fit) {
+            this.buttonLabel.scale.set(this.buttonLabel.width / this.backShapeBorder.width * fit)
         }
         setTimeout(() => {
-            
-            this.buttonLabel.x = this.backShapeBorder.width / 2 -this.buttonLabel.width/2;
-            this.buttonLabel.y = this.backShapeBorder.height / 2 -this.buttonLabel.height/2;
+
+            this.buttonLabel.x = this.backShapeBorder.width / 2 - this.buttonLabel.width / 2;
+            this.buttonLabel.y = this.backShapeBorder.height / 2 - this.buttonLabel.height / 2;
         }, 10);
         this.addChild(this.buttonLabel);
     }
