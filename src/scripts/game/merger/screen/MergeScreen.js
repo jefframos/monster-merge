@@ -406,7 +406,7 @@ export default class MergeScreen extends Screen {
     }
     openHourCoinPopUp() {
 
-        let target = this.activeMergeSystem.rps * 600
+        let target = this.activeMergeSystem.rps * 300
         this.openPopUp(this.standardPopUp, {
             value1: 0,
             value2: utils.formatPointsLabel(target),
