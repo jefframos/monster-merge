@@ -28,6 +28,7 @@ export default class MergeSystem {
         this.onEntityMerge = new Signals();
         this.onEntityAdd = new Signals();
         this.onBoardLevelUpdate = new Signals();
+        this.onNextLevel = new Signals();
         this.updateAvailableSlots = new Signals();
         this.updateMaxLevel = new Signals();
 
@@ -737,6 +738,8 @@ export default class MergeSystem {
         if (target <= this.boardProgression.progress) {
             this.boardProgression.progress = this.boardProgression.progress % target
             this.boardProgression.currentLevel++
+
+            this.onNextLevel.dispatch(this.boardProgression)
         }
         this.boardProgression.percent = this.boardProgression.progress / getLevels(this.boardProgression.currentLevel)
         this.onBoardLevelUpdate.dispatch(this.boardProgression)

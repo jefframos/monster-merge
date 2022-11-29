@@ -1,21 +1,21 @@
 import * as PIXI from 'pixi.js';
 
+import FairyBackground from '../backgrounds/FairyBackground';
 import GameEconomy from '../GameEconomy';
 import GameModifyers from '../GameModifyers';
+import LevelMeter from '../ui/shop/LevelMeter';
 import MergeItemsShop from '../shop/MergeItemsShop';
 import MergeSystem from '../systems/MergeSystem';
 import MergerData from '../data/MergerData';
+import MonsterBackground from '../backgrounds/monster/MonsterBackground';
+import OpenChestPopUp from '../../popup/OpenChestPopUp';
 import ParticleSystem from '../../effects/ParticleSystem';
 import Screen from '../../../screenManager/Screen';
 import StandardPop from '../../popup/StandardPop';
 import TweenMax from 'gsap';
 import UIButton1 from '../../ui/UIButton1';
-import utils from '../../../utils';
 import UIList from '../../ui/uiElements/UIList';
-import OpenChestPopUp from '../../popup/OpenChestPopUp';
-import LevelMeter from '../ui/shop/LevelMeter';
-import MonsterBackground from '../backgrounds/monster/MonsterBackground';
-import FairyBackground from '../backgrounds/FairyBackground';
+import utils from '../../../utils';
 
 export default class MergeScreen extends Screen {
     constructor(label) {
@@ -294,6 +294,7 @@ export default class MergeScreen extends Screen {
         this.refreshSystemVisuals();
         //this.savedEconomy = COOKIE_MANAGER.getEconomy(this.activeMergeSystem.systemID); this.systemButtonLis
         //this.startGamePopUp()
+        //this.newPiecePopup('vampire')
 
     }
 
@@ -320,6 +321,7 @@ export default class MergeScreen extends Screen {
         mergeSystem.onDealDamage.add(this.addDamageParticles.bind(this));
         mergeSystem.onPopLabel.add(this.popLabel.bind(this));
         mergeSystem.onGetResources.add(this.addResourceParticles.bind(this));
+        mergeSystem.onNextLevel.add(this.onNextLevel.bind(this));
         mergeSystem.onBoardLevelUpdate.add(this.onMergeSystemUpdate.bind(this));
 
         let mergeItemsShop = new MergeItemsShop([mergeSystem])
@@ -341,6 +343,12 @@ export default class MergeScreen extends Screen {
         }, 120);
         mergeSystem.updateMaxLevel.add((max) => {
             this.activeMergeSystem.interactiveBackground.updateMax(max)
+            if(max == 0) return;
+
+            console.log(this.activeMergeSystem.dataTiles.length - 1 , max)
+            if(this.activeMergeSystem.dataTiles.length > max){
+                this.newPiecePopup(this.activeMergeSystem.dataTiles[max].rawData.imageSrc,this.activeMergeSystem.dataTiles[max].rawData.displayName)
+            }
             //POPUP
         });
         mergeItemsShop.setGiftIcon(baseData.visuals.gift[0])
@@ -390,6 +398,7 @@ export default class MergeScreen extends Screen {
             title: 'Free Coins',
             confirmLabel: 'Collect',
             cancelLabel: 'Cancel',
+            video:true,
             onConfirm: () => {
                 window.DO_REWARD(() => {
                     window.gameEconomy.addResources(target2, this.activeMergeSystem.systemID)
@@ -404,6 +413,36 @@ export default class MergeScreen extends Screen {
         })
 
     }
+
+    levelUpPopUp(data) {
+
+        let target = this.activeMergeSystem.rps * 60
+        let target2 = this.activeMergeSystem.rps * 600
+        this.openPopUp(this.standardPopUp, {
+            value1: 0,
+            value2: utils.formatPointsLabel(target2),
+            title: 'Level ' + data.currentLevel,
+            confirmLabel: 'Collect',
+            cancelLabel: 'OK',
+            mainLabel:this.activeMergeSystem.dataTiles[data.currentLevel - 1].rawData.displayName + ' Was unlocked on the shop',
+            video:false,
+            popUpType:2,
+            mainIcon:this.activeMergeSystem.dataTiles[data.currentLevel - 1].rawData.imageSrc,
+            onConfirm: () => {
+                // window.DO_REWARD(() => {
+                //     window.gameEconomy.addResources(target2, this.activeMergeSystem.systemID)
+                //     this.moneyFromCenter()
+                // })
+
+            },
+            onCancel: () => {
+                window.gameEconomy.addResources(target, this.activeMergeSystem.systemID)
+                    this.moneyFromCenter()
+            }
+        })
+
+    }
+
     openHourCoinPopUp() {
 
         let target = this.activeMergeSystem.rps * 300
@@ -413,6 +452,7 @@ export default class MergeScreen extends Screen {
             title: 'Free Coins',
             confirmLabel: 'Collect',
             cancelLabel: 'Cancel',
+            video:true,
             onConfirm: () => {
                 window.DO_REWARD(() => {
                     window.gameEconomy.addResources(target, this.activeMergeSystem.systemID)
@@ -424,6 +464,29 @@ export default class MergeScreen extends Screen {
         })
 
     }
+
+    newPiecePopup(imagesrc, name) {
+
+        let target = this.activeMergeSystem.rps * 60
+        let target2 = this.activeMergeSystem.rps * 600
+        this.openPopUp(this.standardPopUp, {
+            value1: 0,
+            value2: '',
+            title: 'New Character',
+            confirmLabel: 'Ok',
+            cancelLabel: 'Cancel',
+            mainIcon:imagesrc,
+            mainLabel:name,
+            popUpType:1,
+            video:false,
+            onConfirm: () => {
+            },
+            onCancel: () => {
+            }
+        })
+
+    }
+
     refreshSystemVisuals() {
         if (!this.activeMergeSystem.isLoaded) {
             this.activeMergeSystem.loadData();
@@ -578,10 +641,12 @@ export default class MergeScreen extends Screen {
         this.particleSystem.show(toLocal, quant, customData)
         //this.particleSystem.popLabel(targetPosition, "+" + label, 0, 1, 1, LABELS.LABEL1)
     }
+    onNextLevel(data){
+        this.levelUpPopUp(data)
+    }
     onMergeSystemUpdate(data) {
+        console.log(data)
         this.levelMeter.updateData(data)
-
-
 
         for (let index = 1; index < this.systemsList.length; index++) {
             // if(!this.systemButtonList[index]) break
