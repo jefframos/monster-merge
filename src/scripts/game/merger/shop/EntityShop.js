@@ -108,6 +108,7 @@ export default class EntityShop extends PIXI.Container {
 
         this.onPurchase = new Signals();
         this.onPossiblePurchase = new Signals();
+        this.onClaimGift = new Signals();
 
 
         this.isPossibleBuy = false;
@@ -139,13 +140,35 @@ export default class EntityShop extends PIXI.Container {
         this.giftItem.unblock()
         this.giftItem.shopButton.enable();
         this.giftItem.shopButton.onClickItem.removeAll()
-        this.giftItem.shopButton.onClickItem.add(()=>{
-            console.log("GIFT")
-        });       
+        this.giftItem.shopButton.onClickItem.add(
+            () => {
+                this.onClaimGift.dispatch()
+            });
+
+        this.standardGiftTime = 5 * 60;
     }
     setGiftIcon(icon) {
         this.giftItem.itemIcon.texture = PIXI.Texture.from(icon)
         this.giftItem.updateHorizontalList();
+    }
+    update(delta) {
+        let latest = COOKIE_MANAGER.getLatestGiftClaim(this.systemID);
+
+        if (latest > 0) {
+            let diff = Date.now() - latest;
+
+            let diffTime = this.standardGiftTime - diff / 1000
+            this.giftItem.shopButton.updateCoast(utils.convertNumToTime(Math.ceil(diffTime)))
+            this.giftItem.block(true)
+            if (diffTime <= 0) {
+                COOKIE_MANAGER.claimGift(this.systemID, -1);
+            }
+
+        } else {
+            this.giftItem.shopButton.updateCoast('Free Gift')
+            this.giftItem.shopButton.enable();
+        }
+        //console.log(latest);
     }
     showBlock() {
 

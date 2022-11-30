@@ -102,7 +102,7 @@ export default
             if (Number.isNaN(max)) {
                 return 0
             }
-            return max* window.gameModifyers.getResourcesMultiplier()
+            return max * window.gameModifyers.getResourcesMultiplier()
         },
         findRPS3(target) {
             let max = 0;
@@ -118,6 +118,15 @@ export default
                 return 0
             }
             return max//* window.gameModifyers.getResourcesMultiplier()
+        },
+        convertNumToTime(number) {
+            // Check sign of given number
+            var hours = Math.floor(number / 60);
+            var minutes = number % 60;
+            if(minutes == 0){
+                minutes += '0'
+            }
+            return hours + ":" + minutes;
         },
         generateTextureFromContainer(id, content, list) {
             if (list[id]) {

@@ -8,6 +8,7 @@ export default class MergeItemsShop extends EntityShop {
         super(mainSystem, size, border = 0)
         this.onAddEntity = new Signals();
         this.systemID = 'monsters'; 
+
     }
 
     confirmItemShop(item) {
@@ -26,8 +27,11 @@ export default class MergeItemsShop extends EntityShop {
 
             if (total <= 0) {
                 element.block();
+                this.giftItem.block()
             }else {
                 element.unblock();
+                this.giftItem.unblock()
+                //this.giftItem.shopButton.enable();
             }
             
         }

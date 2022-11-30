@@ -31,6 +31,7 @@ export default class MergeSystem {
         this.onNextLevel = new Signals();
         this.updateAvailableSlots = new Signals();
         this.updateMaxLevel = new Signals();
+        this.specialTileReveal = new Signals();
 
         this.slotsContainer = new PIXI.Container();
         this.container.addChild(this.slotsContainer)
@@ -130,6 +131,8 @@ export default class MergeSystem {
         this.highestPiece = 0;
 
         this.visible = true;
+
+        this.slotSpawned = Math.floor(Math.random() * 20)
     }
 
     resetSystem() {
@@ -172,9 +175,14 @@ export default class MergeSystem {
     loadData() {
         this.isLoaded = true;
         this.savedProgression = COOKIE_MANAGER.getBoard(this.systemID);
+
+        this.savedGifts = COOKIE_MANAGER.getGifts(this.systemID);
+
         this.boardProgression = this.savedProgression.boardLevel;
         this.boardLevel = 1
         this.levelUp(this.savedProgression.currentBoardLevel, true)
+
+
 
         for (const key in this.savedProgression.entities) {
             const element = this.savedProgression.entities[key];
@@ -207,6 +215,33 @@ export default class MergeSystem {
             }
         }
 
+
+        for (const key in this.savedGifts.entities) {
+            const element = this.savedGifts.entities[key];
+            if (element) {
+                let split = key.split(";")
+
+                if (element && element > 0) {
+                    if (element == 1) {
+                        var slot = this.virtualSlots[split[0]][split[1]]
+                        slot.addEntity(this.dataTiles[this.calcNormalNextCard()])
+                        slot.giftState();
+                        COOKIE_MANAGER.addMergePiece(null, slot.id.i, slot.id.j, this.systemID, 1)
+                    } else if (element == 2) {
+                        var slot = this.virtualSlots[split[0]][split[1]]
+                        slot.addEntity(this.dataTiles[this.calcNormalNextCard()])
+                        slot.specialState();
+                        COOKIE_MANAGER.addMergePiece(null, slot.id.i, slot.id.j, this.systemID, 2)
+                    }
+                }
+            }
+        }
+
+
+
+        this.checkMax();
+        this.boardLevel = -1
+        this.levelUp(this.highestPiece - 3, true)
         this.updateAllData();
 
         setTimeout(() => {
@@ -313,7 +348,9 @@ export default class MergeSystem {
 
             id = Math.min(this.dataTiles.length - 1, id)
             piece.addEntity(this.dataTiles[id]);
-            piece.giftState();
+            //piece.giftState();
+
+
 
             this.sortAutoMerge(piece)
 
@@ -325,6 +362,23 @@ export default class MergeSystem {
         }
 
         return piece;
+    }
+    calcNormalNextCard() {
+        let id = 0;
+        if (this.boardLevel > 4) {
+            id = Math.min(Math.floor(Math.random() * this.boardLevel / 3), 5);
+        }
+
+        if (id > 0) {
+            id = Math.min(Math.floor(Math.random() * this.boardLevel / 3), 5);
+        }
+        if (id > 0) {
+            id = Math.min(Math.floor(Math.random() * this.boardLevel / 3), 5);
+        }
+
+        id = Math.min(this.dataTiles.length - 1, id)
+
+        return id
     }
     findAllAutomerges() {
         // if (window.gameModifyers.modifyersData.autoMerge > 1 || window.gameModifyers.bonusData.autoMerge > 1) {
@@ -465,6 +519,11 @@ export default class MergeSystem {
 
         this.updateBottomPosition();
     }
+    addDataTo(slot, id) {
+        slot.removeEntity()
+        slot.addEntity(this.dataTiles[id]);
+        slot.reveal()
+    }
     addSlot(i, j) {
         let slot = new MergeTile(i, j, this.slotSize.width, 'coin', this.baseData.visuals);
         this.slots[i][j] = slot;
@@ -477,6 +536,9 @@ export default class MergeSystem {
             this.startDrag(slot)
         });
         slot.onReveal.add((slot) => {
+
+            COOKIE_MANAGER.addMergePiece(slot.tileData, slot.id.i, slot.id.j, this.systemID, 0)
+            console.log(slot.tileData)
             this.updateAllData();
         });
 
@@ -487,6 +549,14 @@ export default class MergeSystem {
         slot.onUp.add((slot) => {
             this.releaseEntity(slot)
         });
+        slot.onSpecialReveal.add((slot) => {
+            this.checkMax();
+
+            var gift = this.highestPiece - 3;
+            gift = Math.max(gift, 0);
+            let target = Math.round(gift * Math.random());
+            this.specialTileReveal.dispatch(slot, target);
+        })
         slot.onGenerateResource.add((slot, data) => {
             this.resources += data.resources
 
@@ -600,8 +670,9 @@ export default class MergeSystem {
 
         //slot.removeEntity();
         slot.addEntity(data);
-        slot.giftState();
-
+        //slot.giftState();
+        //slot.specialState();
+        //COOKIE_MANAGER.addMergePiece(null, slot.id.i, slot.id.j, this.systemID, 2)
 
         let customData = {}
         customData.forceX = 0
@@ -614,7 +685,9 @@ export default class MergeSystem {
 
         // this.updateAllData();
 
-        COOKIE_MANAGER.addMergePiece(data, slot.id.i, slot.id.j, this.systemID)
+        //COOKIE_MANAGER.addMergePiece(data, slot.id.i, slot.id.j, this.systemID, 0)
+
+        return slot;
     }
     findFirstAvailable() {
         for (var i = 0; i < this.slots.length; i++) {
@@ -698,7 +771,7 @@ export default class MergeSystem {
             }
         }
 
-        this.currentDragSlot = piece;
+        //this.currentDragSlot = piece;
 
         // if (piece.isGenerator) {
 
@@ -716,10 +789,22 @@ export default class MergeSystem {
         }
 
         let slot = allAvailables[Math.floor(Math.random() * allAvailables.length)]
-        this.releaseEntity(slot)
+        this.releaseEntity(slot,piece, false)
 
         if (slot) {
-            slot.giftState()
+            //slot.giftState()
+            if (this.boardLevel > 3) {
+                this.slotSpawned--
+            }
+
+            if (this.slotSpawned <= 0) {
+                this.slotSpawned += Math.floor(Math.random() * 10 + 8)
+                slot.specialState()
+                COOKIE_MANAGER.addMergePiece(null, slot.id.i, slot.id.j, this.systemID, 2)
+            } else {
+                slot.giftState()
+                COOKIE_MANAGER.addMergePiece(null, slot.id.i, slot.id.j, this.systemID, 1)
+            }
         }
 
         //console.log(this.totalAvailable())
@@ -747,12 +832,20 @@ export default class MergeSystem {
 
         COOKIE_MANAGER.saveBoardProgress(this.boardProgression, this.systemID)
     }
-    releaseEntity(slot) {
+    addSpecialPiece() {
+        let slot = this.addShipBasedOnMax();
+        slot.giftState()
+        slot.specialState()
+        COOKIE_MANAGER.addMergePiece(null, slot.id.i, slot.id.j, this.systemID, 2)
+        this.updateAvailableSlots.dispatch(this.totalAvailable())
+    }
+    releaseEntity(slot, customDrag, update = true) {
         if (!this.visible) return
-        if (!this.currentDragSlot || !slot) {
+        if ((!this.currentDragSlot && !customDrag) || !slot) {
             return;
         }
-        let copyData = this.currentDragSlot.tileData
+        let currentDrag = customDrag ? customDrag : this.currentDragSlot
+        let copyData = currentDrag.tileData
         let copyDataTargetSlot = null;
         if (slot.tileData) {
             copyDataTargetSlot = slot.tileData;
@@ -762,60 +855,60 @@ export default class MergeSystem {
             let target = copyDataTargetSlot
             if (copyDataTargetSlot.getValue() == copyData.getValue()) {
                 //only remove if they will merge
-                this.currentDragSlot.removeEntity();
-                COOKIE_MANAGER.addMergePiece(null, this.currentDragSlot.id.i, this.currentDragSlot.id.j, this.systemID)
+                currentDrag.removeEntity();
+                COOKIE_MANAGER.addMergePiece(null, currentDrag.id.i, currentDrag.id.j, this.systemID, 0)
                 target = this.dataTiles[Math.min(this.dataTiles.length - 1, copyDataTargetSlot.getID() + 1)]
                 slot.removeEntity();
 
                 slot.addEntity(target);
-                COOKIE_MANAGER.addMergePiece(target, slot.id.i, slot.id.j, this.systemID)
+                COOKIE_MANAGER.addMergePiece(target, slot.id.i, slot.id.j, this.systemID, 0)
                 this.updateProgression(target.rawData.id + 1)
 
                 this.onEntityMerge.dispatch()
 
             } else {
 
-                if (!this.currentDragSlot.isGenerator) {
+                if (!currentDrag.isGenerator) {
                     //swap
-                    this.currentDragSlot.removeEntity();
-                    this.currentDragSlot.addEntity(copyDataTargetSlot);
+                    currentDrag.removeEntity();
+                    currentDrag.addEntity(copyDataTargetSlot);
                     slot.removeEntity();
                     slot.addEntity(copyData);
-                    COOKIE_MANAGER.addMergePiece(copyData, slot.id.i, slot.id.j, this.systemID)
+                    COOKIE_MANAGER.addMergePiece(copyData, slot.id.i, slot.id.j, this.systemID, 0)
                 } else {
                     //doesnt do anything coz is coming from the generator
-                    //this.currentDragSlot.addEntity(copyDataTargetSlot);   
+                    //currentDrag.addEntity(copyDataTargetSlot);   
                     this.onEntityAdd.dispatch()
 
                 }
             }
         } else {
-            this.currentDragSlot.removeEntity();
-            COOKIE_MANAGER.addMergePiece(null, this.currentDragSlot.id.i, this.currentDragSlot.id.j, this.systemID)
+            currentDrag.removeEntity();
+            COOKIE_MANAGER.addMergePiece(null, currentDrag.id.i, currentDrag.id.j, this.systemID, 0)
             slot.addEntity(copyData);
-            COOKIE_MANAGER.addMergePiece(copyData, slot.id.i, slot.id.j, this.systemID)
+            COOKIE_MANAGER.addMergePiece(copyData, slot.id.i, slot.id.j, this.systemID, 0)
             this.onEntityAdd.dispatch()
         }
 
 
+        if (update) {
+            let tempMaxTiledPlaced = utils.findMax(this.slots);
+            if (tempMaxTiledPlaced > this.highestPiece) {
+                this.highestPiece = tempMaxTiledPlaced;
 
-        let tempMaxTiledPlaced = utils.findMax(this.slots);
-        if (tempMaxTiledPlaced > this.highestPiece) {
-            this.highestPiece = tempMaxTiledPlaced;
+                this.updateMaxLevel.dispatch(this.highestPiece);
+            }
 
-            this.updateMaxLevel.dispatch(this.highestPiece);
-        }
-
-        console.log("MAX " + this.highestPiece)
-        if (tempMaxTiledPlaced > this.maxTilePlaced) {
-            this.maxTilePlaced = tempMaxTiledPlaced;
-            let nextLevel = Math.max(0, this.maxTilePlaced - 3);
-            this.levelUp(nextLevel)
+            if (tempMaxTiledPlaced > this.maxTilePlaced) {
+                this.maxTilePlaced = tempMaxTiledPlaced;
+                let nextLevel = Math.max(0, this.maxTilePlaced - 3);
+                this.levelUp(nextLevel)
+            }
+            this.draggingEntity = false;
+            this.currentDragSlot = null;
         }
         //this.levelUp()
 
-        this.draggingEntity = false;
-        this.currentDragSlot = null;
         setTimeout(() => {
             this.updateAllData();
             //this.rps = utils.findRPS3(this.slots);
@@ -823,8 +916,8 @@ export default class MergeSystem {
 
         this.updateAvailableSlots.dispatch(this.totalAvailable())
         if (this.totalAvailable() > 0) {
-            if(this.mainGenerator.isCharged)
-            this.mainGenerator.startCharging()
+            if (this.mainGenerator.isCharged)
+                this.mainGenerator.startCharging()
         }
 
 
@@ -916,8 +1009,8 @@ export default class MergeSystem {
         this.uiContainer.scale.set(targetScale)
         this.uiContainer.y = bottomWrapperDiff + (bottomDiff) / 2 - (this.slotSize.height * this.uiContainer.scale.y) / 2 - 45// - this.wrapper.y + this.wrapper.height //- (this.slotSize.height * this.uiContainer.scale.y) - config.height * 0.05
         this.uiContainer.x = this.wrapper.x + this.wrapper.width / 2 - (maxPos * this.uiContainer.scale.x) / 2
-        if (!window.isPortrait){
-            this.uiContainer.y  -= this.slotSize.height * 1.5
+        if (!window.isPortrait) {
+            this.uiContainer.y -= this.slotSize.height * 1.5
             this.uiContainer.scale.set(1)
             this.uiContainer.x = this.wrapper.x + this.wrapper.width
         }

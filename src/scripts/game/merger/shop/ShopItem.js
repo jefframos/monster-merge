@@ -136,11 +136,11 @@ export default class ShopItem extends UIList {
         this.isBlocked = false;
 
     }
-    block() {
+    block(ignoreLabel = false) {
         this.isBlocked = true;
         this.shopButton.deactive();
 
-        if(this.isLocked){
+        if(this.isLocked || ignoreLabel){
             this.noSlotLabel.visible = false;
             return
         }
@@ -365,7 +365,7 @@ export default class ShopItem extends UIList {
 
 
         if (this.realCost <= window.gameEconomy.currentResources && !this.isBlocked) {
-            console.log(this.realCost)
+            //console.log(this.realCost)
             this.shopButton.enable()
         } else {
             this.shopButton.deactive()

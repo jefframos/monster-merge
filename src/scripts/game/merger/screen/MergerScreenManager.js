@@ -26,11 +26,6 @@ export default class MergerScreenManager extends ScreenManager {
 
 
 
-        let vignette = new PIXI.Sprite(PIXI.Texture.from('vignette'));
-        this.backgroundContainer.addChild(vignette)
-        vignette.width = config.width;
-        vignette.height = config.height;
-
         this.timeScale = 1;
 
 
@@ -46,43 +41,6 @@ export default class MergerScreenManager extends ScreenManager {
         this.prevPopUp = null;
 
 
-        // this.startPopUp = new StandardPopUp('init', this);
-        // this.startPopUp.onConfirm.add(() => {
-        //     this.gameScreen.resetGame();
-        // });
-
-
-        // this.popUpList.push(this.startPopUp);
-
-        // this.gameScreen.onGameOver.add(() => {
-        //     setTimeout(() => {
-        //         this.change('PartyScreen');
-        //     }, 1000);
-
-        // })
-
-        // this.startPopUp.hide();
-
-
-        // this.showPopUp('init')
-
-
-
-        // const urlParams = new URLSearchParams(window.location.search);
-        // let levelRedirectParameters = urlParams.get('quickstart')
-        // window.SPEED_UP = 1
-        // if (levelRedirectParameters) {
-        //     levelRedirectParameters = levelRedirectParameters.split(',');
-        //     if (levelRedirectParameters[1]) {
-        //         window.SPEED_UP = levelRedirectParameters[1]
-        //     }
-        //     if (levelRedirectParameters) {
-        //         setTimeout(() => {
-        //             this.change('GameScreen');
-        //             this.gameScreen.resetGame();
-        //         }, 1);
-        //     }
-        // }
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams) {
             if (urlParams.get('debug')) {
@@ -151,8 +109,6 @@ export default class MergerScreenManager extends ScreenManager {
             this.prevPopUp.parent.removeChild(this.prevPopUp);
             this.prevPopUp = null;
         }
-
-
     }
 
     toGame() {

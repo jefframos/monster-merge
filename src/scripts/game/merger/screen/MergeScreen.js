@@ -57,6 +57,9 @@ export default class MergeScreen extends Screen {
         this.uiLayer = new PIXI.Container()
         this.addChild(this.uiLayer);
 
+        this.popUpLayer = new PIXI.Container()
+        this.addChild(this.popUpLayer);
+
         this.backBlocker = new PIXI.Graphics().beginFill(0).drawRect(0, 0, config.width, config.height);
         this.backBlocker.alpha = 0.5;
         this.backBlocker.interactive = true;
@@ -234,13 +237,13 @@ export default class MergeScreen extends Screen {
         window.TIME_SCALE = 1
 
         this.standardPopUp = new StandardPop('any', this.screenManager)
-        this.uiLayer.addChild(this.standardPopUp)
+        this.popUpLayer.addChild(this.standardPopUp)
 
         // this.bonusPopUp = new BonusConfirmation('bonus', this.screenManager)
-        // this.uiLayer.addChild(this.bonusPopUp)
+        // this.popUpLayer.addChild(this.bonusPopUp)
 
         this.openChestPopUp = new OpenChestPopUp('chest', this.screenManager)
-        this.uiLayer.addChild(this.openChestPopUp)
+        this.popUpLayer.addChild(this.openChestPopUp)
 
         this.uiPanels.push(this.standardPopUp)
         this.uiPanels.push(this.openChestPopUp)
@@ -292,6 +295,12 @@ export default class MergeScreen extends Screen {
         // this.mergeSystemsList.push(this.mergeSystemFairies)
 
         this.refreshSystemVisuals();
+
+        this.popUpLayer.visible = false;
+
+        setTimeout(() => {
+            this.popUpLayer.visible = true;
+        }, 500);
         //this.savedEconomy = COOKIE_MANAGER.getEconomy(this.activeMergeSystem.systemID); this.systemButtonLis
         //this.startGamePopUp()
         //this.newPiecePopup('vampire')
@@ -323,6 +332,7 @@ export default class MergeScreen extends Screen {
         mergeSystem.onGetResources.add(this.addResourceParticles.bind(this));
         mergeSystem.onNextLevel.add(this.onNextLevel.bind(this));
         mergeSystem.onBoardLevelUpdate.add(this.onMergeSystemUpdate.bind(this));
+        mergeSystem.specialTileReveal.add(this.onSpecialTileReveal.bind(this));
 
         let mergeItemsShop = new MergeItemsShop([mergeSystem])
         this.uiLayer.addChild(mergeItemsShop);
@@ -331,7 +341,10 @@ export default class MergeScreen extends Screen {
         mergeItemsShop.onAddEntity.add((entity) => {
             mergeSystem.buyEntity(entity)
         })
-
+        mergeItemsShop.onClaimGift.add((entity) => {
+            mergeSystem.addSpecialPiece();
+            COOKIE_MANAGER.claimGift(slug)
+        })
         mergeItemsShop.systemID = slug;
         mergeSystem.updateAvailableSlots.add((availables) => {
             mergeItemsShop.updateLocks(availables)
@@ -342,12 +355,10 @@ export default class MergeScreen extends Screen {
             mergeItemsShop.updateLocks(mergeSystem.totalAvailable())
         }, 120);
         mergeSystem.updateMaxLevel.add((max) => {
-            this.activeMergeSystem.interactiveBackground.updateMax(max)
+            this.activeMergeSystem.interactiveBackground.updateMax(max, true)
             if(max == 0) return;
-
-            console.log(this.activeMergeSystem.dataTiles.length - 1 , max)
             if(this.activeMergeSystem.dataTiles.length > max){
-                this.newPiecePopup(this.activeMergeSystem.dataTiles[max].rawData.imageSrc,this.activeMergeSystem.dataTiles[max].rawData.displayName)
+                this.newPiecePopup(max)
             }
             //POPUP
         });
@@ -419,25 +430,21 @@ export default class MergeScreen extends Screen {
         let target = this.activeMergeSystem.rps * 60
         let target2 = this.activeMergeSystem.rps * 600
         this.openPopUp(this.standardPopUp, {
-            value1: 0,
+            value1: '-',
             value2: utils.formatPointsLabel(target2),
             title: 'Level ' + data.currentLevel,
-            confirmLabel: 'Collect',
+            confirmLabel: 'Open Shop',
             cancelLabel: 'OK',
-            mainLabel:this.activeMergeSystem.dataTiles[data.currentLevel - 1].rawData.displayName + ' Was unlocked on the shop',
+            mainLabel:this.activeMergeSystem.dataTiles[data.currentLevel - 1].rawData.displayName + '\nWas unlocked on the shop',
             video:false,
             popUpType:2,
+            hideAll:true,
             mainIcon:this.activeMergeSystem.dataTiles[data.currentLevel - 1].rawData.imageSrc,
             onConfirm: () => {
-                // window.DO_REWARD(() => {
-                //     window.gameEconomy.addResources(target2, this.activeMergeSystem.systemID)
-                //     this.moneyFromCenter()
-                // })
-
+                this.openPopUp(this.activeMergeSystem.shop);
             },
             onCancel: () => {
-                window.gameEconomy.addResources(target, this.activeMergeSystem.systemID)
-                    this.moneyFromCenter()
+                
             }
         })
 
@@ -452,6 +459,7 @@ export default class MergeScreen extends Screen {
             title: 'Free Coins',
             confirmLabel: 'Collect',
             cancelLabel: 'Cancel',
+            mainLabel2:'Watch a video earn 10 minutes\nworth of money',
             video:true,
             onConfirm: () => {
                 window.DO_REWARD(() => {
@@ -465,23 +473,71 @@ export default class MergeScreen extends Screen {
 
     }
 
-    newPiecePopup(imagesrc, name) {
+    newPiecePopup(pieceId) {
+
+        let imagesrc = this.activeMergeSystem.dataTiles[pieceId].rawData.imageSrc
+        let name = this.activeMergeSystem.dataTiles[pieceId].rawData.displayName
+        let castlePiece = this.activeMergeSystem.interactiveBackground.getPiece(pieceId).src
+
 
         let target = this.activeMergeSystem.rps * 60
-        let target2 = this.activeMergeSystem.rps * 600
+        target = Math.max(target, 120);
         this.openPopUp(this.standardPopUp, {
-            value1: 0,
+            value1: name,
             value2: '',
+            value1Icon: imagesrc,
+            value2Icon: castlePiece,
             title: 'New Character',
-            confirmLabel: 'Ok',
-            cancelLabel: 'Cancel',
-            mainIcon:imagesrc,
-            mainLabel:name,
+            confirmLabel: 'Gain ' + utils.formatPointsLabel(target),
+            cancelLabel: 'Ok',
+            mainIcon:'results_arrow_right',
+            mainLabel2:'You unlock another piece of the castle',
+            mainLabel:'',
+            mainIconHeight:20,
+            value2IconHeight:150,
             popUpType:1,
-            video:false,
+            video:true,
             onConfirm: () => {
+                window.DO_REWARD(() => {
+                    window.gameEconomy.addResources(target, this.activeMergeSystem.systemID)
+                    this.moneyFromCenter()
+
+                    this.activeMergeSystem.interactiveBackground.showAnimation(pieceId)
+                })
             },
             onCancel: () => {
+
+                this.activeMergeSystem.interactiveBackground.showAnimation(pieceId)
+            }
+        })
+
+    }
+
+
+    upgradePiecePopUp(slot, level) {
+
+
+        let piece1 = this.activeMergeSystem.dataTiles[level]
+        let piece2 = this.activeMergeSystem.dataTiles[level+1]
+
+        this.openPopUp(this.standardPopUp, {
+            value1: piece1.rawData.displayName,
+            value2: piece2.rawData.displayName,
+            value1Icon: piece1.rawData.imageSrc,
+            value2Icon: piece2.rawData.imageSrc,
+            title: 'Upgrade',
+            confirmLabel: 'Upgrade',
+            cancelLabel: 'Cancel',
+            mainLabel2:'Watch a video to upgrade this slot',
+            popUpType:1,
+            mainIcon:'results_arrow_right',
+            mainIconHeight:20,
+            video:true,
+            onConfirm: () => {
+                this.activeMergeSystem.addDataTo(slot, level+1)
+            },
+            onCancel: () => {
+                this.activeMergeSystem.addDataTo(slot, level)
             }
         })
 
@@ -644,6 +700,10 @@ export default class MergeScreen extends Screen {
     onNextLevel(data){
         this.levelUpPopUp(data)
     }
+    onSpecialTileReveal(slot, level){
+
+        this.upgradePiecePopUp(slot, level)
+    }
     onMergeSystemUpdate(data) {
         console.log(data)
         this.levelMeter.updateData(data)
@@ -762,8 +822,7 @@ export default class MergeScreen extends Screen {
 
 
         this.activeMergeSystem.interactiveBackground.update(delta);
-
-
+        this.activeMergeSystem.shop.update(delta);
     }
     resize(resolution, innerResolution) {
         if (!innerResolution || !innerResolution.height) return

@@ -19,7 +19,7 @@ export default class StandardPop extends PIXI.Container {
         this.container = new PIXI.Container();
 
         this.w = config.width * 0.75;
-        this.h = config.height * 0.45;
+        this.h = config.height * 0.5;
 
         this.background = new PIXI.Graphics().beginFill(0).drawRect(-config.width * 5, -config.height * 5, config.width * 10, config.height * 10)
         this.addChild(this.background)
@@ -54,12 +54,17 @@ export default class StandardPop extends PIXI.Container {
         this.label3 = new PIXI.Text('', LABELS.LABEL1);
         this.label3.anchor.set(0.5)
         this.label3.y = 80
+
+        this.label4 = new TextBox(15);
+        this.label4.y = 80
+
         this.coin1 = new PIXI.Sprite()
         this.coin2 = new PIXI.Sprite()
         this.coin1.anchor.set(0.5)
         this.coin2.anchor.set(0.5)
         this.container.addChild(this.coin1)
         this.container.addChild(this.coin2)
+        this.container.addChild(this.label4)
 
         this.centerIcon = new PIXI.Sprite()
         this.centerIcon.anchor.set(0.5)
@@ -71,8 +76,9 @@ export default class StandardPop extends PIXI.Container {
         this.centerIcon.addChild(this.label3)
         this.label2.style.fontSize = 24
 
-        this.readyLabel = new TextBox(40, 'StatBack')
-        this.readyLabel.label.style.fontSize = 28
+        this.readyLabel = new PIXI.Text('!', LABELS.LABEL1);
+        this.readyLabel.style.fontSize = 28
+        this.readyLabel.anchor.set(0.5)
 
         this.container.addChild(this.readyLabel)
         this.confirmButton = new UILabelButton1(150, 80, 'Button23')
@@ -109,7 +115,7 @@ export default class StandardPop extends PIXI.Container {
 
         this.coin1.x = this.cancelButton.x
         this.coin2.x = this.confirmButton.x
-        this.coin1.y = this.cancelButton.y - 180
+        this.coin1.y = this.cancelButton.y - 230
         this.coin2.y = this.coin1.y - 30
 
         this.container.visible = false;
@@ -159,6 +165,7 @@ export default class StandardPop extends PIXI.Container {
             this.coin2.visible = true
             this.closePopUp.visible = true
             this.coin2.x = 0
+            this.coin2.y = this.coin1.y - 40
             this.confirmButton.x = 0
         } else {
 
@@ -173,31 +180,53 @@ export default class StandardPop extends PIXI.Container {
 
             this.coin1.x = this.cancelButton.x
             this.coin2.x = this.confirmButton.x
-            this.coin1.y = this.cancelButton.y - 180
+            this.coin1.y = this.cancelButton.y - 240
             this.coin2.y = this.coin1.y - 30
+        }
+        if (param.hideAll) {
+            this.coin1.visible = false
+            this.coin2.visible = false
         }
         if (param.popUpType) {
             this.popUp.texture = PIXI.Texture.fromFrame('Msg12')
             if (param.popUpType == 1) {
                 this.popUp.texture = PIXI.Texture.fromFrame('Msg13')
-            }else if (param.popUpType == 2) {
+            } else if (param.popUpType == 2) {
                 this.popUp.texture = PIXI.Texture.fromFrame('Msg14')
             }
         } else {
             this.popUp.texture = PIXI.Texture.fromFrame('Msg12')
         }
+
+        this.label4.visible = false;
         if (param.mainIcon) {
 
             this.label3.text = param.mainLabel
             this.centerIcon.texture = PIXI.Texture.fromFrame(param.mainIcon)
             this.centerIcon.visible = true;
-
-            this.centerIcon.scale.set(this.h / this.centerIcon.height * this.centerIcon.scale.y * 0.3)
+            if (param.mainIconHeight) {
+                this.centerIcon.scale.set(param.mainIconHeight / this.centerIcon.height * this.centerIcon.scale.y)
+            } else {
+                this.centerIcon.scale.set(this.h / this.centerIcon.height * this.centerIcon.scale.y * 0.3)
+            }
             this.centerIcon.y = -30
-            this.coin1.visible = false;
-            this.coin2.visible = false;
+
+            if (!param.onConfirm) {
+                this.coin1.visible = false;
+            }
+            if (!param.onCancel) {
+                this.coin2.visible = false;
+            }
         } else {
             this.centerIcon.visible = false;
+        }
+        if (param.mainLabel2) {
+            this.label4.updateText(param.mainLabel2)
+            this.label4.visible = true;
+            this.label3.video = false;
+        } else {
+            this.label4.updateText('')
+            this.label4.visible = false;
         }
 
         this.confirmButton.addCenterLabel(param.confirmLabel)
@@ -205,23 +234,41 @@ export default class StandardPop extends PIXI.Container {
 
         this.label1.text = param.value1
         this.label1.pivot.x = this.label1.width / 2
-        this.label1.y = 40
+        this.label1.y = 50
 
         this.label2.text = param.value2
         this.label2.pivot.x = this.label2.width / 2
-        this.label2.y = 40
+        this.label2.y = 50
 
 
-        this.readyLabel.updateText(param ? param.title : '')
+        this.readyLabel.text = (param ? param.title : '')
 
         this.readyLabel.x = 0
         this.readyLabel.y = -this.h / 2 + this.readyLabel.height / 2 + 14
 
         if (visuals) {
-            this.coin1.texture = new PIXI.Texture.fromFrame(visuals.coin)
+
             this.coin2.texture = new PIXI.Texture.fromFrame(visuals.coin)
 
-            this.coin2.scale.set(this.coin1.scale.x * 1.5)
+            if (param.value1Icon) {
+                this.coin1.texture = PIXI.Texture.fromFrame(param.value1Icon)
+            } else {
+                this.coin1.texture = new PIXI.Texture.fromFrame(visuals.coin)
+            }
+
+            if (param.value2Icon) {
+                this.coin2.texture = PIXI.Texture.fromFrame(param.value2Icon)
+            } else {
+                this.coin2.texture = new PIXI.Texture.fromFrame(visuals.coin)
+            }
+
+            if(param.value2IconHeight){
+                let scl = Math.min(param.value2IconHeight / this.coin2.height, param.value2IconHeight / this.coin2.width)
+                this.coin2.scale.set(scl)
+                this.coin2.y = this.coin1.y + 15
+            }else{
+                this.coin2.scale.set(this.coin1.scale.x * 1.3)
+            }
         }
 
     }

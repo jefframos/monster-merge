@@ -18,8 +18,14 @@ export default class InteractiveBackgrounds extends PIXI.Container {
             this.castleBackground.update(delta)
         }
     }
-    updateMax(max){
-        this.castleBackground.updateMax(max)
+    showAnimation(value){
+        this.castleBackground.showAnimation(value)
+    }
+    getPiece(id){
+        return this.castleBackground.getPiece(id)
+    }
+    updateMax(max, hide){
+        this.castleBackground.updateMax(max, hide)
     }
     resize(resolution, innerResolution){
         if (!resolution || !resolution.width || !resolution.height || !innerResolution) {

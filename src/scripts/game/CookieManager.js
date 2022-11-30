@@ -2,7 +2,7 @@ export default class CookieManager {
 	constructor() {
 		this.defaultStats = {
 			test: 0,
-			tutorialStep:0
+			tutorialStep: 0
 		}
 		this.defaultEconomy = {
 			resources: 0,
@@ -17,17 +17,23 @@ export default class CookieManager {
 			version: '0.0.1',
 			currentEnemyLevel: 1,
 			currentEnemyLife: 0,
+			latestClaim: -1
 		}
 		this.defaultBoard = {
 			version: '0.0.1',
 			currentBoardLevel: 0,
 			entities: {},
 			dataProgression: {},
-			boardLevel:{
-				currentLevel:1,
-				progress:0,
-				percent:0,
+			boardLevel: {
+				currentLevel: 1,
+				progress: 0,
+				percent: 0,
 			}
+		}
+
+		this.defaultGifts = {
+			version: '0.0.1',
+			entities: {},
 		}
 		this.defaultModifyers = {
 			version: '0.0.1',
@@ -51,23 +57,24 @@ export default class CookieManager {
 		this.version = '0.0.12'
 		this.cookieVersion = this.getCookie('cookieVersion')
 		//alert(this.cookieVersion != this.version)
-		if(!this.cookieVersion || this.cookieVersion != this.version){
+		if (!this.cookieVersion || this.cookieVersion != this.version) {
 			this.storeObject('cookieVersion', this.version)
 			this.wipeData2();
 		}
 		this.fullData = this.getCookie('fullData')
-		if(!this.fullData){
+		if (!this.fullData) {
 			this.fullData = {}
-		}	
-	
+		}
+
 		this.storeObject('fullData', this.fullData)
 
 	}
-	sortCookie(id){
-		if(!this.fullData[id]){
+	sortCookie(id) {
+		if (!this.fullData[id]) {
 
 			this.fullData[id] = {}
 			this.fullData[id]['board'] = this.sortCookieData('board', this.defaultBoard);
+			this.fullData[id]['gifts'] = this.sortCookieData('gifts', this.defaultGifts);
 			this.fullData[id]['progression'] = this.sortCookieData('progression', this.defaultProgression);
 			this.fullData[id]['economy'] = this.sortCookieData('economy', this.defaultEconomy);
 		}
@@ -165,12 +172,18 @@ export default class CookieManager {
 		this.storeObject('resources', this.resources)
 	}
 
-	addMergePiece(mergeData, i, j,id) {
+	addMergePiece(mergeData, i, j, id, blocked) {
+		if (blocked > 0) {
+			this.fullData[id].gifts.entities[i + ";" + j] = blocked
+			this.fullData[id].board.entities[i + ";" + j] = null
+		}
 		if (mergeData == null) {
 			this.fullData[id].board.entities[i + ";" + j] = null
+			console.log('null')
 		} else {
+			this.fullData[id].gifts.entities[i + ";" + j] = null
 			this.fullData[id].board.entities[i + ";" + j] = {
-				nameID: mergeData.rawData.nameID
+				nameID: mergeData.rawData.nameID,
 			}
 		}
 		this.storeObject('fullData', this.fullData)
@@ -187,17 +200,27 @@ export default class CookieManager {
 		this.storeObject('fullData', this.fullData)
 		//this.storeObject('board', this.board)
 	}
-	endTutorial(step){
+	endTutorial(step) {
 		this.stats.tutorialStep = step;
 		this.storeObject('stats', this.stats)
-		
+
 	}
 	saveBoardLevel(level, id) {
 		this.fullData[id].board.currentBoardLevel = level;
 		this.storeObject('fullData', this.fullData)
 		//this.storeObject('board', this.board)
-		
+
 	}
+
+	claimGift(id, override = 0) {
+		this.fullData[id].progression.latestClaim = override?override:Date.now();
+		this.storeObject('fullData', this.fullData)
+	}
+
+	getLatestGiftClaim(id) {
+		return this.fullData[id].progression.latestClaim;
+	}
+
 	saveBoardProgress(boardProgress, id) {
 		this.fullData[id].board.boardLevel = boardProgress;
 		this.storeObject('fullData', this.fullData)
@@ -226,7 +249,7 @@ export default class CookieManager {
 		return this.getCookie('economy')
 	}
 	getResources(id) {
-		console.log(id,this.fullData[id].resources)
+		console.log(id, this.fullData[id].resources)
 
 		return this.fullData[id].resources
 		return this.getCookie('resources')
@@ -237,8 +260,10 @@ export default class CookieManager {
 	resetBoard() {
 		this.sortCookieData('board', this.defaultBoard, true)
 	}
+	getGifts(id) {
+		return this.fullData[id].gifts//this.getCookie('board')
+	}
 	getBoard(id) {
-		console.log('getBoard',id,this.fullData[id].board)
 		return this.fullData[id].board//this.getCookie('board')
 	}
 

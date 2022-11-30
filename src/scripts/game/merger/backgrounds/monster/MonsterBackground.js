@@ -25,9 +25,7 @@ export default class MonsterBackground extends InteractiveBackgrounds {
             this.castleBackground.update(delta)
         }
     }
-    updateMax(max){
-        this.castleBackground.updateMax(max)
-    }
+  
     resize(resolution, innerResolution) {
         if(!innerResolution || !innerResolution.height) return
         var topRight = game.getBorder('topRight', this.parent)
