@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js';
 import Signals from 'signals';
+import config from '../../../config';
 export default class ShopButton extends PIXI.Container
 {
     constructor(catData, price)
@@ -14,10 +15,11 @@ export default class ShopButton extends PIXI.Container
             // this.background = new PIXI.Graphics().beginFill(0xFFFFFF).drawRect(0, 0, 120, 40);
 
             this.backButton = new PIXI.mesh.NineSlicePlane(
-                PIXI.Texture.fromFrame('small-no-pattern'), 20, 20, 20, 20)
+                PIXI.Texture.fromFrame(config.assets.button.primaryLong), 20, 20, 20, 20)
             this.backButton.width = 110
             this.backButton.height = 60 
 
+            config.addPaddingLongButton(this.backButton)
             // this.grey = new PIXI.mesh.NineSlicePlane(
             //     PIXI.Texture.fromFrame('Button23grey'), 20, 20, 20, 20)
             // this.grey.width = 110
@@ -131,7 +133,7 @@ export default class ShopButton extends PIXI.Container
         this.priceLabel.x = this.backButton.width / 2
         this.priceLabel.y = this.h / 2
         this.backButton.alpha = 1;
-        this.backButton.texture = PIXI.Texture.fromFrame('Button23grey')
+        this.backButton.texture = PIXI.Texture.fromFrame(config.assets.button.greyLong)
         this.sprite.visible = false;
 
         clearInterval(this.timeoutHold);
@@ -144,7 +146,7 @@ export default class ShopButton extends PIXI.Container
         this.backButton.tint = 0xFFFFFF;
         this.priceLabel.style.fill = 0x666666;
         this.backButton.alpha = 1;
-        this.backButton.texture = PIXI.Texture.fromFrame('Button23grey')
+        this.backButton.texture = PIXI.Texture.fromFrame(config.assets.button.greyLong)
 
 
     }
@@ -156,7 +158,7 @@ export default class ShopButton extends PIXI.Container
         //this.backButton.tint = 0x6250e5;
         this.backButton.alpha = 1;
         this.priceLabel.style.fill = 0xFFFFFF;
-        this.backButton.texture = PIXI.Texture.fromFrame('Button23')
+        this.backButton.texture = PIXI.Texture.fromFrame(config.assets.button.primaryLong)
 
 
     }

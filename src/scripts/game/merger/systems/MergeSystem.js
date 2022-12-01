@@ -173,9 +173,10 @@ export default class MergeSystem {
         this.updateAllData();
     }
     loadData() {
+        this.isInitialized = false;
         this.isLoaded = true;
         this.savedProgression = COOKIE_MANAGER.getBoard(this.systemID);
-
+        this.isInitialized = COOKIE_MANAGER.isInitialized(this.systemID);
         this.savedGifts = COOKIE_MANAGER.getGifts(this.systemID);
 
         this.boardProgression = this.savedProgression.boardLevel;
@@ -248,14 +249,14 @@ export default class MergeSystem {
             this.onBoardLevelUpdate.dispatch(this.boardProgression)
             this.updateAvailableSlots.dispatch(this.totalAvailable())
             this.checkMax();
-            this.updateMaxLevel.dispatch(this.highestPiece);
+            this.updateMaxLevel.dispatch(this.highestPiece, true);
         }, 1);
     }
     activeSystem() {
         this.onBoardLevelUpdate.dispatch(this.boardProgression)
         this.updateAvailableSlots.dispatch(this.totalAvailable())
         this.checkMax();
-        this.updateMaxLevel.dispatch(this.highestPiece);
+        this.updateMaxLevel.dispatch(this.highestPiece, true);
 
         setTimeout(() => {
             this.updateAllData();

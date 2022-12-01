@@ -32,11 +32,11 @@ export default class EntityShop extends PIXI.Container {
         this.container.pivot.x = this.size.w / 2
         this.container.pivot.y = this.size.h / 2
         this.backContainer = new PIXI.mesh.NineSlicePlane(
-            PIXI.Texture.fromFrame('Msg11'), 50, 100, 50, 50)
+            PIXI.Texture.fromFrame(config.assets.popup.primary), 50, 100, 50, 50)
         this.backContainer.width = this.size.w
         this.backContainer.height = this.size.h
         this.container.addChild(this.backContainer);
-
+        config.addPaddingPopup(this.backContainer)
         // this.tiledBackground2 = new PIXI.TilingSprite(PIXI.Texture.fromFrame('patter-square', 64, 64))
         // this.container.addChild(this.tiledBackground2);
         // this.tiledBackground2.width = this.size.w
@@ -49,34 +49,13 @@ export default class EntityShop extends PIXI.Container {
         this.title.style.fontSize = 38
         this.title.style.stroke = 0
         this.title.style.strokeThickness = 6
-
+        this.title.anchor.set(0.5,0)
         // this.portrait = new PIXI.Sprite.fromFrame('skull');
         // this.container.addChild(this.portrait);
         // this.portrait.scale.set(0.65)
         // this.portrait.anchor.set(0, 1)
         // this.portrait.x = 20
         // this.portrait.y = 104
-
-
-        this.currencyContainer = new PIXI.Sprite.fromFrame('grid1');
-        //this.container.addChild(this.currencyContainer);
-        this.currencyContainer.anchor.set(1, 0.5)
-        this.currencyContainer.x = this.size.w - 25
-        this.currencyContainer.y = 60
-
-        this.currentResourcesLabel = new PIXI.Text('10AA', LABELS.LABEL1);
-        this.currentResourcesLabel.style.fontSize = 22
-        this.currentResourcesLabel.style.stroke = 0
-        this.currentResourcesLabel.style.strokeThickness = 2
-        this.currentResourcesLabel.style.align = 'center'
-        this.currentResourcesLabel.pivot.y = this.currentResourcesLabel.height / 2
-        this.currentResourcesLabel.x = -this.currencyContainer.width / 2 / this.currencyContainer.scale.x - 5
-        this.currencyContainer.addChild(this.currentResourcesLabel);
-
-        this.currentCoin = new PIXI.Sprite.fromFrame('coin-large');
-        this.currencyContainer.addChild(this.currentCoin);
-        this.currentCoin.scale.set(0.65)
-        this.currentCoin.anchor.set(0.5)
 
 
         this.container.addChild(this.title);
@@ -89,15 +68,14 @@ export default class EntityShop extends PIXI.Container {
         this.shopList.onItemShop.add(this.confirmItemShop.bind(this))
         this.shopList.onShowBlock.add(this.showBlock.bind(this))
 
-        this.openShop = new UIButton1(0xFFffff, window.TILE_ASSSETS_POOL['image-X'], 0xFFffff, 60, 60, 'Btn04')
+        this.openShop = new UIButton1(0xFFffff, window.TILE_ASSSETS_POOL['image-X'], 0xFFffff, 60, 60, config.assets.button.warningSquare)
         this.openShop.updateIconScale(0.5)
         this.container.addChild(this.openShop)
         this.openShop.x = this.size.w - this.openShop.width
-        this.openShop.y = this.size.h - this.openShop.height / 2 - 30
+        this.openShop.y = this.size.h - this.openShop.height / 2 - 20
         this.openShop.onClick.add(() => {
             this.hideFromClick()
         })
-
         // this.toggles = new UpgradesToggles({ w: this.size.w * 0.7, h: 60 })
         // //this.container.addChild(this.toggles);
         // this.toggles.x = this.size.w / 2 - this.size.w * 0.35 - 30
@@ -130,8 +108,8 @@ export default class EntityShop extends PIXI.Container {
 
 
         this.giftItem = new ShopItem({ w: this.size.w - this.size.w * 0.2, h: this.size.h * 0.8 / 6 })
-        this.giftItem.backShapeGeneral.texture = PIXI.Texture.from('Button22')
-        this.giftItem.itemIcon.texture = PIXI.Texture.from('Btn04')
+        this.giftItem.backShapeGeneral.texture = PIXI.Texture.from(config.assets.panel.tertiary)
+        //this.giftItem.itemIcon.texture = PIXI.Texture.from('Btn04')
         this.container.addChild(this.giftItem)
         this.giftItem.x = this.size.w * 0.1
         this.giftItem.y = 80
@@ -164,7 +142,7 @@ export default class EntityShop extends PIXI.Container {
                 COOKIE_MANAGER.claimGift(this.systemID, -1);
             }
 
-        } else {
+        } else if (!this.giftItem.isBlocked) {
             this.giftItem.shopButton.updateCoast('Free Gift')
             this.giftItem.shopButton.enable();
         }
@@ -195,8 +173,8 @@ export default class EntityShop extends PIXI.Container {
     }
     updateCurrentResources() {
 
-        this.currentResourcesLabel.text = utils.formatPointsLabel(window.gameEconomy.currentResources)
-        this.currentResourcesLabel.pivot.x = this.currentResourcesLabel.width / 2
+        // this.currentResourcesLabel.text = utils.formatPointsLabel(window.gameEconomy.currentResources)
+        // // this.currentResourcesLabel.pivot.x = this.currentResourcesLabel.width / 2
     }
     moneySpent() {
         this.updateToggleValue();
@@ -218,8 +196,7 @@ export default class EntityShop extends PIXI.Container {
         this.onPossiblePurchase.dispatch(this.isPossibleBuy);
     }
     posShow() {
-        utils.centerObject(this.title, this.container)
-        //this.title.x = 140
+        this.title.x = this.size.w / 2
         this.title.y = 8
 
 

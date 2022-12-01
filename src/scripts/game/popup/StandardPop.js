@@ -31,9 +31,11 @@ export default class StandardPop extends PIXI.Container {
         this.background.visible = false
 
         this.popUp = new PIXI.mesh.NineSlicePlane(
-            PIXI.Texture.fromFrame('Msg12'), 50, 100, 50, 50)
+            PIXI.Texture.fromFrame(config.assets.popup.primary), 50, 100, 50, 50)
         this.popUp.width = this.w
         this.popUp.height = this.h
+
+        config.addPaddingPopup(this.popUp)
 
         this.popUp.pivot.x = this.popUp.width / 2
         this.popUp.pivot.y = this.popUp.height / 2
@@ -55,8 +57,10 @@ export default class StandardPop extends PIXI.Container {
         this.label3.anchor.set(0.5)
         this.label3.y = 80
 
-        this.label4 = new TextBox(15);
+        this.label4 = new TextBox(15, config.assets.panel.tertiary);
         this.label4.y = 80
+
+        config.addPaddingPanel(this.label4.background)
 
         this.coin1 = new PIXI.Sprite()
         this.coin2 = new PIXI.Sprite()
@@ -81,7 +85,7 @@ export default class StandardPop extends PIXI.Container {
         this.readyLabel.anchor.set(0.5)
 
         this.container.addChild(this.readyLabel)
-        this.confirmButton = new UILabelButton1(150, 80, 'Button23')
+        this.confirmButton = new UILabelButton1(150, 80, config.assets.button.primaryLong)
         this.confirmButton.addCenterLabel(window.localizationManager.getLabel('collect') + ' x2')
         this.confirmButton.addVideoIcon()
         this.confirmButton.pivot.x = 75
@@ -95,7 +99,7 @@ export default class StandardPop extends PIXI.Container {
                 this.confirm()
             }
         })
-        this.cancelButton = new UILabelButton1(130, 70, 'Button23grey')
+        this.cancelButton = new UILabelButton1(130, 70, config.assets.button.greyLong)
         this.cancelButton.pivot.x = 130 / 2
         this.cancelButton.addCenterLabel(window.localizationManager.getLabel('collect'))
 
@@ -115,7 +119,7 @@ export default class StandardPop extends PIXI.Container {
 
         this.coin1.x = this.cancelButton.x
         this.coin2.x = this.confirmButton.x
-        this.coin1.y = this.cancelButton.y - 230
+        this.coin1.y = this.cancelButton.y - 260
         this.coin2.y = this.coin1.y - 30
 
         this.container.visible = false;
@@ -123,7 +127,7 @@ export default class StandardPop extends PIXI.Container {
         this.readySin = 0;
 
 
-        this.closePopUp = new UIButton1(0xFFffff, window.TILE_ASSSETS_POOL['image-X'], 0xFFffff, 60, 60, 'Btn04')
+        this.closePopUp = new UIButton1(0xFFffff, window.TILE_ASSSETS_POOL['image-X'], 0xFFffff, 70, 70, config.assets.button.warningSquare)
         this.closePopUp.updateIconScale(0.5)
         this.container.addChild(this.closePopUp)
         this.closePopUp.x = this.w / 2 - 30
@@ -180,7 +184,7 @@ export default class StandardPop extends PIXI.Container {
 
             this.coin1.x = this.cancelButton.x
             this.coin2.x = this.confirmButton.x
-            this.coin1.y = this.cancelButton.y - 240
+            this.coin1.y = this.cancelButton.y - 260
             this.coin2.y = this.coin1.y - 30
         }
         if (param.hideAll) {
@@ -188,20 +192,19 @@ export default class StandardPop extends PIXI.Container {
             this.coin2.visible = false
         }
         if (param.popUpType) {
-            this.popUp.texture = PIXI.Texture.fromFrame('Msg12')
-            if (param.popUpType == 1) {
-                this.popUp.texture = PIXI.Texture.fromFrame('Msg13')
-            } else if (param.popUpType == 2) {
-                this.popUp.texture = PIXI.Texture.fromFrame('Msg14')
-            }
+            this.popUp.texture = PIXI.Texture.fromFrame(param.popUpType)           
         } else {
-            this.popUp.texture = PIXI.Texture.fromFrame('Msg12')
+            this.popUp.texture = PIXI.Texture.fromFrame(config.assets.popup.primary)
         }
 
         this.label4.visible = false;
         if (param.mainIcon) {
 
-            this.label3.text = param.mainLabel
+            this.label3.text = ''//param.mainLabel
+
+            this.label4.updateText(param.mainLabel)
+            this.label4.visible = true;
+
             this.centerIcon.texture = PIXI.Texture.fromFrame(param.mainIcon)
             this.centerIcon.visible = true;
             if (param.mainIconHeight) {
@@ -209,7 +212,7 @@ export default class StandardPop extends PIXI.Container {
             } else {
                 this.centerIcon.scale.set(this.h / this.centerIcon.height * this.centerIcon.scale.y * 0.3)
             }
-            this.centerIcon.y = -30
+            this.centerIcon.y = -60
 
             if (!param.onConfirm) {
                 this.coin1.visible = false;

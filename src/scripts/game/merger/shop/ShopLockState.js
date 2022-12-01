@@ -1,18 +1,19 @@
 import * as PIXI from 'pixi.js';
 
 import Signals from 'signals';
+import config from '../../../config';
 import UIList from '../../ui/uiElements/UIList';
 
 export default class ShopLockState extends PIXI.Container {
     constructor(width, height) {
         super()
         this.backShape = new PIXI.mesh.NineSlicePlane(
-            PIXI.Texture.fromFrame('StatBack'), 10, 10, 10, 10)
+            PIXI.Texture.fromFrame(config.assets.panel.grey), 10, 10, 10, 10)
         this.backShape.width = width
         this.backShape.height = height
         this.addChild(this.backShape)
 
-
+        config.addPaddingPanel(this.backShape)
         this.lockList = new UIList()
         this.lockList.w = width;
         this.lockList.h = height;

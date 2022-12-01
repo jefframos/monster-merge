@@ -17,7 +17,7 @@ export default class UILabelButton1 extends PIXI.Container {
         this.backShapeBorder.width = width + this.padding
         this.backShapeBorder.height = height + this.padding
 
-
+        config.addPaddingLongButton(this.backShapeBorder)
 
 
         this.mainContainer.addChild(this.backShapeBorder);

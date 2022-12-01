@@ -3,14 +3,15 @@ import * as signals from 'signals';
 
 import TweenLite from 'gsap';
 import utils from '../../utils';
+import config from '../../config';
 
 export default class UIButton1 extends PIXI.Container {
-	constructor(color, icon, iconColor = 0xFFFFFF, width = 65, height = 65, texture = 'square-pattern1') {
+	constructor(color, icon, iconColor = 0xFFFFFF, width = 65, height = 65, texture = config.assets.button.primarySquare) {
 		super();
 		this.build(color, icon, iconColor, width, height, texture)
 
 	}
-	build(color, icon, iconColor = 0xFFFFFF, width = 65, height = 65, texture = 'square-pattern1') {
+	build(color, icon, iconColor = 0xFFFFFF, width = 65, height = 65, texture = config.assets.button.primarySquare) {
 		this.w = width;
 		this.h = height;
 
@@ -40,6 +41,7 @@ export default class UIButton1 extends PIXI.Container {
 		this.backShape.height = height
 		this.backShape.pivot.set(width / 2, height / 2)
 		
+		config.addPaddingSquareButton(this.backShape)
 
 		this.icon.anchor.set(0.5);
 
@@ -140,7 +142,7 @@ export default class UIButton1 extends PIXI.Container {
 		this.enabled = false;
 		this.icon.tint = 0;
 
-		this.backShape.texture = new PIXI.Texture.fromFrame('BtnGrey');
+		this.backShape.texture = new PIXI.Texture.fromFrame(config.assets.button.greySquare);
 
 	}
 	enable(){

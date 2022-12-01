@@ -100,7 +100,7 @@ export default class ParticleSystem extends PIXI.Container {
         this.particles = []
     }
 
-    popLabel(pos, label, delay = 0, dir = 1, scale = 1, style = {}, ease = Back.easeOut, time = 0.5) {
+    popLabel(pos, label, delay = 0, dir = 1, scale = 1, style = {}, ease = Back.easeOut, time = 0.5, delayRemove = 0) {
         let tempLabel = null;
         if (window.LABEL_POOL.length > 0) {
             tempLabel = window.LABEL_POOL[0];
@@ -128,7 +128,7 @@ export default class ParticleSystem extends PIXI.Container {
             }
         })
         TweenMax.to(tempLabel, time, {
-            delay: time + delay, alpha: 0, onCompleteParams: [tempLabel], onComplete: function (temp) {
+            delay: time + delay + delayRemove, alpha: 0, onCompleteParams: [tempLabel], onComplete: function (temp) {
                 temp.parent.removeChild(temp);
                 window.LABEL_POOL.push(temp);
             }

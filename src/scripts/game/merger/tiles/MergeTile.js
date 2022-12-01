@@ -378,7 +378,7 @@ export default class MergeTile extends PIXI.Container {
         this.backSlot.interactive = false;
         setTimeout(() => {
             this.backSlot.interactive = true;
-        }, 500);
+        }, 200);
         TweenLite.killTweensOf(this.tileSprite.scale)
         TweenLite.killTweensOf(this.giftSprite.scale)
         TweenLite.killTweensOf(this.positionGiftOffset)

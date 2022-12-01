@@ -20,20 +20,27 @@ export default class CastleBackgroundBase extends PIXI.Container {
     }
     initCastle() {
 
-
+        let copy = []
         this.castleSet.forEach(element => {
+            copy.push(element)
+        });
+
+        copy.sort(function(a, b){return b.order-a.order});
+
+        copy.forEach(element => {
             let img = new PIXI.Sprite.fromFrame(element.src)
-            element.sprite = img;
             img.x = element.pos.x
             img.y = element.pos.y
             this.castleContainer.addChild(img)
 
-        });
+            this.castleSet.forEach(element2 => {
+                if(element2.src == element.src){
+                    element2.sprite = img;
+                }
+            });
+        })
 
-        this.castleSet.forEach(element => {
-            this.castleContainer.addChildAt(element.sprite, this.castleSet.lenght - element.order)
-            element.sprite.visible = false
-        });
+
 
     }
     getPiece(id) {
@@ -60,6 +67,10 @@ export default class CastleBackgroundBase extends PIXI.Container {
         }
     }
     showAnimation(value){
+
+
+        this.castleSet[0].sprite.visible = true
+        this.castleSet[0].sprite.alpha = 1
 
         this.castleSet.forEach(element => {
             element.sprite.x = element.pos.x

@@ -29,7 +29,7 @@
             "perspective": 0
         },    
         "visuals":{
-            "backTiles":["backTilesSquare-old"],
+            "backTiles":["gameSlot1"],
             "locks":["coffin1","coffin2","coffin3","coffin4"],
             "gift":["coffinGift"],
             "coin":"star"

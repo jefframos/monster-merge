@@ -27,7 +27,8 @@ export default class CastleBackground extends CastleBackgroundBase {
         this.moon.anchor.set(0.5)
         this.baseContainer.addChild(this.moon)
         this.moon.x = 50
-        this.moon.y = -380
+        this.moon.y = -220
+        this.moon.scale.set(1.8)
 
         this.castleBase = new PIXI.Sprite.fromFrame('castleBase')
         this.castleBase.anchor.set(0.5, 1)
@@ -68,7 +69,7 @@ export default class CastleBackground extends CastleBackgroundBase {
 
 
         this.castleSet = [
-            { src: 'stairs', order: 0, pos: { x: 299.7, y: 676.45 } },
+            { src: 'stairs', order: 0, pos: { x: 305.7, y: 696.45 } },
             { src: 'door1', order: 7, pos: { x: 282.35, y: 562.95 } },
             { src: 'frontTower1', order: 2, pos: { x: 374.6, y: 447.3 } },
             { src: 'side2', order: 1, pos: { x: 442.1, y: 532.5 } },
@@ -86,7 +87,7 @@ export default class CastleBackground extends CastleBackgroundBase {
             { src: 'side5', order: 17, pos: { x: 630.45, y: 0 } },
             { src: 'thinHouse', order: 15, pos: { x: 225.05, y: 223.25 } },
             { src: 'backTower', order: 19, pos: { x: 317.9, y: 0 } },
-            { src: 'thinMiddle', order: 15, pos: { x: 448.25, y: 91.7 } },
+            { src: 'tower6', order: 15, pos: { x: 448.25, y: 91.7 } },
             { src: 'mainTower', order: 13, pos: { x: 301.1, y: 133.1 } },
             { src: 'statue1', order: 18, pos: { x: 355.2, y: 71.05 } }
         ]

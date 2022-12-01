@@ -15,9 +15,8 @@ export default class CookieManager {
 		}
 		this.defaultProgression = {
 			version: '0.0.1',
-			currentEnemyLevel: 1,
-			currentEnemyLife: 0,
-			latestClaim: -1
+			latestClaim: -1,
+			initialized: false
 		}
 		this.defaultBoard = {
 			version: '0.0.1',
@@ -54,7 +53,7 @@ export default class CookieManager {
 			}
 		}
 
-		this.version = '0.0.13'
+		this.version = '0.0.15'
 		this.cookieVersion = this.getCookie('cookieVersion')
 		//alert(this.cookieVersion != this.version)
 		if (!this.cookieVersion || this.cookieVersion != this.version) {
@@ -220,7 +219,15 @@ export default class CookieManager {
 	getLatestGiftClaim(id) {
 		return this.fullData[id].progression.latestClaim;
 	}
+	initBoard(id) {
+		this.fullData[id].progression.initialized = true;
+		this.storeObject('fullData', this.fullData)
+		//this.storeObject('board', this.board)
 
+	}
+	isInitialized(id) {
+		return this.fullData[id].progression.initialized;
+	}
 	saveBoardProgress(boardProgress, id) {
 		this.fullData[id].board.boardLevel = boardProgress;
 		this.storeObject('fullData', this.fullData)

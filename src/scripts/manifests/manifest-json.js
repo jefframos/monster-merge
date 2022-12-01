@@ -16,6 +16,10 @@ const assets = [
 	"url":"assets/json\\fairies.json"
 	},
 	{
+	"id":"humans",
+	"url":"assets/json\\humans.json"
+	},
+	{
 	"id":"localization_DE",
 	"url":"assets/json\\localization_DE.json"
 	},
@@ -44,16 +48,12 @@ const assets = [
 	"url":"assets/json\\localization_KO.json"
 	},
 	{
-	"id":"humans",
-	"url":"assets/json\\humans.json"
+	"id":"localization_PT",
+	"url":"assets/json\\localization_PT.json"
 	},
 	{
 	"id":"localization_RU",
 	"url":"assets/json\\localization_RU.json"
-	},
-	{
-	"id":"localization_PT",
-	"url":"assets/json\\localization_PT.json"
 	},
 	{
 	"id":"localization_TR",
@@ -68,12 +68,12 @@ const assets = [
 	"url":"assets/json\\modifyers.json"
 	},
 	{
-	"id":"resources",
-	"url":"assets/json\\resources.json"
-	},
-	{
 	"id":"monsters",
 	"url":"assets/json\\monsters.json"
+	},
+	{
+	"id":"resources",
+	"url":"assets/json\\resources.json"
 	}
 ];
 

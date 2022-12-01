@@ -6,6 +6,7 @@ import Signals from 'signals';
 import UIBar from '../../ui/uiElements/UIBar';
 import UIList from '../../ui/uiElements/UIList';
 import utils from '../../../utils';
+import config from '../../../config';
 
 export default class ShopItem extends UIList {
     constructor(rect = {
@@ -25,10 +26,11 @@ export default class ShopItem extends UIList {
         this.addChildAt(this.backgroundContainer, 0);
 
         this.backShapeGeneral = new PIXI.mesh.NineSlicePlane(
-            PIXI.Texture.fromFrame('Button21'), 10, 10, 10, 10)
+            PIXI.Texture.fromFrame(config.assets.panel.secondary), 10, 10, 10, 10)
         this.backShapeGeneral.width = this.w
         this.backShapeGeneral.height = this.h
 
+        config.addPaddingPanel(this.backShapeGeneral)
         this.backgroundContainer.addChildAt(this.backShapeGeneral, 0);
 
         this.itemIcon = new PIXI.Sprite();
@@ -124,7 +126,7 @@ export default class ShopItem extends UIList {
 
         this.noSlotLabel = new PIXI.Text('No slot available', LABELS.LABEL1);
         this.noSlotAvailable.addChild(this.noSlotLabel);
-
+        this.noSlotLabel.style.fontSize = 14
 
 
         this.currentColor = 0;

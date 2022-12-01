@@ -35,7 +35,7 @@ export default class FairyCastleBackground extends CastleBackgroundBase {
             { src: 'side5', order: 17, pos: { x: 630.45, y: 0 } },
             { src: 'thinHouse', order: 15, pos: { x: 225.05, y: 223.25 } },
             { src: 'backTower', order: 19, pos: { x: 317.9, y: 0 } },
-            { src: 'thinMiddle', order: 15, pos: { x: 448.25, y: 91.7 } },
+            { src: 'tower6', order: 15, pos: { x: 448.25, y: 91.7 } },
             { src: 'mainTower', order: 13, pos: { x: 301.1, y: 133.1 } },
             { src: 'statue1', order: 18, pos: { x: 355.2, y: 71.05 } }
         ]
