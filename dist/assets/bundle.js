@@ -56410,7 +56410,7 @@ var CookieManager = function () {
 			}
 		};
 
-		this.version = '0.0.12';
+		this.version = '0.0.13';
 		this.cookieVersion = this.getCookie('cookieVersion');
 		//alert(this.cookieVersion != this.version)
 		if (!this.cookieVersion || this.cookieVersion != this.version) {
@@ -60165,9 +60165,6 @@ var assets = [{
 	"id": "fairies",
 	"url": "assets/json\\fairies.json"
 }, {
-	"id": "humans",
-	"url": "assets/json\\humans.json"
-}, {
 	"id": "localization_DE",
 	"url": "assets/json\\localization_DE.json"
 }, {
@@ -60189,11 +60186,14 @@ var assets = [{
 	"id": "localization_KO",
 	"url": "assets/json\\localization_KO.json"
 }, {
-	"id": "localization_PT",
-	"url": "assets/json\\localization_PT.json"
+	"id": "humans",
+	"url": "assets/json\\humans.json"
 }, {
 	"id": "localization_RU",
 	"url": "assets/json\\localization_RU.json"
+}, {
+	"id": "localization_PT",
+	"url": "assets/json\\localization_PT.json"
 }, {
 	"id": "localization_TR",
 	"url": "assets/json\\localization_TR.json"
@@ -60204,11 +60204,11 @@ var assets = [{
 	"id": "modifyers",
 	"url": "assets/json\\modifyers.json"
 }, {
-	"id": "monsters",
-	"url": "assets/json\\monsters.json"
-}, {
 	"id": "resources",
 	"url": "assets/json\\resources.json"
+}, {
+	"id": "monsters",
+	"url": "assets/json\\monsters.json"
 }];
 
 exports.default = assets;
@@ -60500,7 +60500,7 @@ module.exports = exports["default"];
 /* 340 */
 /***/ (function(module, exports) {
 
-module.exports = {"default":["image/particles/particles.json","image/pattern2/pattern2.json","image/pattern/pattern.json","image/parts/parts.json","image/background2/background2.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
+module.exports = {"default":["image/pattern2/pattern2.json","image/particles/particles.json","image/pattern/pattern.json","image/parts/parts.json","image/background2/background2.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
 
 /***/ }),
 /* 341 */
