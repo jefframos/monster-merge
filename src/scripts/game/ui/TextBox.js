@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js';
 // import * as FILTERS from 'pixi-filters';
 export default class TextBox extends PIXI.Container {
-    constructor(padding = 10, tex = 'Progress02') {
+    constructor(padding = 10, tex = config.assets.panel.tertiary) {
         super();
         this.padding = padding
         this.background = new PIXI.mesh.NineSlicePlane(

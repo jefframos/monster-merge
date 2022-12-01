@@ -17,6 +17,7 @@ import UIButton1 from '../../ui/UIButton1';
 import UIList from '../../ui/uiElements/UIList';
 import utils from '../../../utils';
 import config from '../../../config';
+import TextBox from '../../ui/TextBox';
 
 export default class MergeScreen extends Screen {
     constructor(label) {
@@ -382,6 +383,13 @@ export default class MergeScreen extends Screen {
             this.showSystem(toggleSystems.systemArrayID)
         })
 
+        let unlockTextbox = new TextBox(20)
+        unlockTextbox.updateText("You unlock a new level")
+        toggleSystems.addChild(unlockTextbox)
+        unlockTextbox.x = - unlockTextbox.width / 2 - 50
+        unlockTextbox.alpha = 0;
+
+        toggleSystems.unlockTextbox = unlockTextbox;
         mergeSystem.toggle = toggleSystems;
 
         this.mergeSystemsList.push(mergeSystem)
@@ -399,7 +407,7 @@ export default class MergeScreen extends Screen {
         this.mergeSystemsList[this.activeMergeSystemID].visible = true;
         this.mergeSystemsList[this.activeMergeSystemID].interactiveBackground.visible = true;
         this.activeMergeSystem = this.mergeSystemsList[this.activeMergeSystemID]
-
+        this.activeMergeSystem.toggle.unlockTextbox.alpha = 0;
         this.refreshSystemVisuals();
     }
     startGamePopUp() {
@@ -719,12 +727,14 @@ export default class MergeScreen extends Screen {
             const prev = this.systemsList[index - 1];
 
             let isInit = COOKIE_MANAGER.isInitialized(this.systemsList[index].systemID)
-            if (!prev.boardProgression || prev.boardProgression.currentLevel < 2) {
+            if (!prev.boardProgression || prev.boardProgression.currentLevel < 6) {
 
                 element.toggle.disable()
             } else {
                 if (!isInit) {
-                    console.log(this.systemsList[index].toggle)
+                    //console.log(this.systemsList[index].toggle.unlockTextbox)
+
+                    this.systemsList[index].toggle.unlockTextbox.alpha = 1;
                     COOKIE_MANAGER.initBoard(this.systemsList[index].systemID)
                 }
                 element.toggle.enable()
@@ -891,7 +901,7 @@ export default class MergeScreen extends Screen {
 
         }
 
-        this.systemButtonList.w = 80
+        this.systemButtonList.w = this.systemButtonList.elementsList[0].width
         this.systemButtonList.h = 70 * this.systemsList.length + this.systemsList.length * 2
         this.systemButtonList.updateVerticalList()
 
@@ -928,13 +938,17 @@ export default class MergeScreen extends Screen {
             this.statsList.scale.set(1.25)
 
             this.systemButtonList.scale.set(1.1)
-            this.systemButtonList.x = topRight.x - this.systemButtonList.width / 2 - 20
-            this.systemButtonList.y = 35 * this.systemButtonList.scale.y + 20
+
 
             this.shopButtonsList.x = topRight.x - this.shopButtonsList.width * 0.5 - 20
             this.shopButtonsList.y = this.systemButtonList.y + this.systemButtonList.height// this.shopButtonsList.height * 1.25
             this.shopButtonsList.scale.set(1)
         }
+
+
+        this.systemButtonList.x = topRight.x - (60 * this.systemButtonList.scale.x) / 2 - 20
+        this.systemButtonList.y = 35 * this.systemButtonList.scale.y + 20
+
 
         this.shopsLabel.x = this.shopButtonsList.x
         this.shopsLabel.y = this.shopButtonsList.y
