@@ -192,7 +192,7 @@ export default class StandardPop extends PIXI.Container {
             this.coin2.visible = false
         }
         if (param.popUpType) {
-            this.popUp.texture = PIXI.Texture.fromFrame(param.popUpType)           
+            this.popUp.texture = PIXI.Texture.fromFrame(param.popUpType)
         } else {
             this.popUp.texture = PIXI.Texture.fromFrame(config.assets.popup.primary)
         }
@@ -265,11 +265,11 @@ export default class StandardPop extends PIXI.Container {
                 this.coin2.texture = new PIXI.Texture.fromFrame(visuals.coin)
             }
 
-            if(param.value2IconHeight){
-                let scl = Math.min((param.value2IconHeight + 20) / this.coin2.height, param.value2IconHeight / this.coin2.width)
+            if (param.value2IconHeight) {
+                let scl = Math.min((param.value2IconHeight + 20) / this.coin2.height / this.coin2.scale.x, param.value2IconHeight / this.coin2.width / this.coin2.scale.x)
                 this.coin2.scale.set(scl)
                 this.coin2.y = this.coin1.y + 15
-            }else{
+            } else {
                 this.coin2.scale.set(this.coin1.scale.x * 1.3)
             }
         }

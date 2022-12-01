@@ -60065,14 +60065,14 @@ var assets = [{
 	"id": "fairies",
 	"url": "assets/json\\fairies.json"
 }, {
+	"id": "baseGameConfigMonster",
+	"url": "assets/json\\baseGameConfigMonster.json"
+}, {
 	"id": "humans",
 	"url": "assets/json\\humans.json"
 }, {
 	"id": "localization_DE",
 	"url": "assets/json\\localization_DE.json"
-}, {
-	"id": "baseGameConfigMonster",
-	"url": "assets/json\\baseGameConfigMonster.json"
 }, {
 	"id": "localization_EN",
 	"url": "assets/json\\localization_EN.json"
@@ -60080,11 +60080,11 @@ var assets = [{
 	"id": "localization_ES",
 	"url": "assets/json\\localization_ES.json"
 }, {
-	"id": "localization_FR",
-	"url": "assets/json\\localization_FR.json"
-}, {
 	"id": "localization_IT",
 	"url": "assets/json\\localization_IT.json"
+}, {
+	"id": "localization_FR",
+	"url": "assets/json\\localization_FR.json"
 }, {
 	"id": "localization_JA",
 	"url": "assets/json\\localization_JA.json"
@@ -60095,17 +60095,17 @@ var assets = [{
 	"id": "localization_PT",
 	"url": "assets/json\\localization_PT.json"
 }, {
-	"id": "localization_RU",
-	"url": "assets/json\\localization_RU.json"
+	"id": "localization_TR",
+	"url": "assets/json\\localization_TR.json"
 }, {
 	"id": "localization_ZH",
 	"url": "assets/json\\localization_ZH.json"
 }, {
+	"id": "localization_RU",
+	"url": "assets/json\\localization_RU.json"
+}, {
 	"id": "modifyers",
 	"url": "assets/json\\modifyers.json"
-}, {
-	"id": "localization_TR",
-	"url": "assets/json\\localization_TR.json"
 }, {
 	"id": "monsters",
 	"url": "assets/json\\monsters.json"
@@ -64977,7 +64977,7 @@ var MergeSystem = function () {
         value: function levelUp(nextLevel) {
             var ignoreSave = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
-
+            this.currentDragSlot = null;
             if (this.boardLevel != nextLevel) {
                 this.boardLevel = nextLevel;
                 if (!ignoreSave) {
@@ -65422,6 +65422,7 @@ var MergeSystem = function () {
                     this.updateProgression(target.rawData.id + 1);
 
                     this.onEntityMerge.dispatch();
+                    this.currentDragSlot = null;
                 } else {
 
                     if (!currentDrag.isGenerator) {
@@ -67258,7 +67259,7 @@ var StandardPop = function (_PIXI$Container) {
                 }
 
                 if (param.value2IconHeight) {
-                    var scl = Math.min((param.value2IconHeight + 20) / this.coin2.height, param.value2IconHeight / this.coin2.width);
+                    var scl = Math.min((param.value2IconHeight + 20) / this.coin2.height / this.coin2.scale.x, param.value2IconHeight / this.coin2.width / this.coin2.scale.x);
                     this.coin2.scale.set(scl);
                     this.coin2.y = this.coin1.y + 15;
                 } else {

@@ -263,7 +263,7 @@ export default class MergeSystem {
 
         let totalToSpawn = Math.min(Math.floor(timeDiff % 5) - 1, this.totalAvailable())
 
-        console.log('totalToSpawn',totalToSpawn)
+        console.log('totalToSpawn', totalToSpawn)
 
         setTimeout(() => {
             this.updateAllData();
@@ -464,7 +464,7 @@ export default class MergeSystem {
         this.updateAllData()
     }
     levelUp(nextLevel, ignoreSave = false) {
-
+        this.currentDragSlot = null
         if (this.boardLevel != nextLevel) {
             this.boardLevel = nextLevel;
             if (!ignoreSave) {
@@ -879,6 +879,7 @@ export default class MergeSystem {
                 this.updateProgression(target.rawData.id + 1)
 
                 this.onEntityMerge.dispatch()
+                this.currentDragSlot = null;
 
             } else {
 
