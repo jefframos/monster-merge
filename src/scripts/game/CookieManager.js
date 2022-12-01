@@ -6,7 +6,8 @@ export default class CookieManager {
 		}
 		this.defaultEconomy = {
 			resources: 0,
-			lastChanged: 0
+			lastChanged: 0,
+			lastOpen:0
 		}
 		this.defaultResources = {
 			version: '0.0.1',
@@ -151,6 +152,10 @@ export default class CookieManager {
 		this.storeObject('resources', this.resources)
 
 	}
+	openSystem(id){
+		this.fullData[id].economy.lastOpen =  Date.now() / 1000 | 0
+		this.storeObject('fullData', this.fullData)
+	}
 	addResourceUpgrade(mergeData) {
 		this.resources.entities[mergeData.rawData.nameID].currentLevel = mergeData.currentLevel
 		this.storeObject('resources', this.resources)
@@ -178,13 +183,15 @@ export default class CookieManager {
 		}
 		if (mergeData == null) {
 			this.fullData[id].board.entities[i + ";" + j] = null
-			console.log('null')
 		} else {
 			this.fullData[id].gifts.entities[i + ";" + j] = null
 			this.fullData[id].board.entities[i + ";" + j] = {
 				nameID: mergeData.rawData.nameID,
 			}
 		}
+
+		this.fullData[id].economy.lastChanged = Date.now() / 1000 | 0
+
 		this.storeObject('fullData', this.fullData)
 	}
 	addMergePieceUpgrade(mergeData, id) {

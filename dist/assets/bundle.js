@@ -56245,7 +56245,8 @@ var CookieManager = function () {
 		};
 		this.defaultEconomy = {
 			resources: 0,
-			lastChanged: 0
+			lastChanged: 0,
+			lastOpen: 0
 		};
 		this.defaultResources = {
 			version: '0.0.1',
@@ -56405,6 +56406,12 @@ var CookieManager = function () {
 			this.storeObject('resources', this.resources);
 		}
 	}, {
+		key: 'openSystem',
+		value: function openSystem(id) {
+			this.fullData[id].economy.lastOpen = Date.now() / 1000 | 0;
+			this.storeObject('fullData', this.fullData);
+		}
+	}, {
 		key: 'addResourceUpgrade',
 		value: function addResourceUpgrade(mergeData) {
 			this.resources.entities[mergeData.rawData.nameID].currentLevel = mergeData.currentLevel;
@@ -56438,13 +56445,15 @@ var CookieManager = function () {
 			}
 			if (mergeData == null) {
 				this.fullData[id].board.entities[i + ";" + j] = null;
-				console.log('null');
 			} else {
 				this.fullData[id].gifts.entities[i + ";" + j] = null;
 				this.fullData[id].board.entities[i + ";" + j] = {
 					nameID: mergeData.rawData.nameID
 				};
 			}
+
+			this.fullData[id].economy.lastChanged = Date.now() / 1000 | 0;
+
 			this.storeObject('fullData', this.fullData);
 		}
 	}, {
@@ -60053,9 +60062,6 @@ var assets = [{
 	"id": "baseGameConfigHumans",
 	"url": "assets/json\\baseGameConfigHumans.json"
 }, {
-	"id": "baseGameConfigMonster",
-	"url": "assets/json\\baseGameConfigMonster.json"
-}, {
 	"id": "fairies",
 	"url": "assets/json\\fairies.json"
 }, {
@@ -60064,6 +60070,9 @@ var assets = [{
 }, {
 	"id": "localization_DE",
 	"url": "assets/json\\localization_DE.json"
+}, {
+	"id": "baseGameConfigMonster",
+	"url": "assets/json\\baseGameConfigMonster.json"
 }, {
 	"id": "localization_EN",
 	"url": "assets/json\\localization_EN.json"
@@ -60089,14 +60098,14 @@ var assets = [{
 	"id": "localization_RU",
 	"url": "assets/json\\localization_RU.json"
 }, {
-	"id": "localization_TR",
-	"url": "assets/json\\localization_TR.json"
-}, {
 	"id": "localization_ZH",
 	"url": "assets/json\\localization_ZH.json"
 }, {
 	"id": "modifyers",
 	"url": "assets/json\\modifyers.json"
+}, {
+	"id": "localization_TR",
+	"url": "assets/json\\localization_TR.json"
 }, {
 	"id": "monsters",
 	"url": "assets/json\\monsters.json"
@@ -60394,7 +60403,7 @@ module.exports = exports["default"];
 /* 339 */
 /***/ (function(module, exports) {
 
-module.exports = {"default":["image/particles/particles.json","image/pattern2/pattern2.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
+module.exports = {"default":["image/pattern2/pattern2.json","image/particles/particles.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
 
 /***/ }),
 /* 340 */
@@ -60658,7 +60667,7 @@ __webpack_require__(145)('getOwnPropertyDescriptor', function () {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+        value: true
 });
 
 var _getPrototypeOf = __webpack_require__(3);
@@ -60758,1030 +60767,1033 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MergeScreen = function (_Screen) {
-    (0, _inherits3.default)(MergeScreen, _Screen);
-
-    function MergeScreen(label) {
-        (0, _classCallCheck3.default)(this, MergeScreen);
-
-        var _this = (0, _possibleConstructorReturn3.default)(this, (MergeScreen.__proto__ || (0, _getPrototypeOf2.default)(MergeScreen)).call(this, label));
-
-        window.baseConfigGame = PIXI.loader.resources['baseGameConfigMonster'].data.baseGame;
-        window.baseConfigGameFairy = PIXI.loader.resources['baseGameConfigFairy'].data.baseGame;
-        window.baseConfigGameHumans = PIXI.loader.resources['baseGameConfigHumans'].data.baseGame;
-        window.baseMonsters = PIXI.loader.resources['monsters'].data;
-        window.baseFairies = PIXI.loader.resources['fairies'].data;
-        window.baseHumans = PIXI.loader.resources['humans'].data;
-        window.gameEconomy = new _GameEconomy2.default();
-        window.gameModifyers = new _GameModifyers2.default();
-
-        _this.systemsList = [];
-
-        _this.areaConfig = window.baseConfigGame.area;
-        if (!_this.areaConfig.bottomArea) {
-            _this.areaConfig.bottomArea = 0.2;
-        }
-        if (!_this.areaConfig.topArea) {
-            _this.areaConfig.topArea = 0.2;
-        }
-        if (!_this.areaConfig.gameArea) {
-            _this.areaConfig.gameArea = { w: 0.5, h: 0.5 };
-        }
-        if (!_this.areaConfig.resourcesArea) {
-            _this.areaConfig.resourcesArea = { w: 0.5, h: 0.5 };
-        }
-
-        // setTimeout(() => {
-        //     this.activeMergeSystem.interactiveBackground = new FairyBackground();
-        //     this.addChildAt(this.activeMergeSystem.interactiveBackground, 0);
-        // }, 10);
-        _this.container = new PIXI.Container();
-        _this.addChild(_this.container);
-        _this.frontLayer = new PIXI.Container();
-        _this.addChild(_this.frontLayer);
-        _this.uiLayer = new PIXI.Container();
-        _this.addChild(_this.uiLayer);
-
-        _this.popUpLayer = new PIXI.Container();
-        _this.addChild(_this.popUpLayer);
-
-        _this.backBlocker = new PIXI.Graphics().beginFill(0).drawRect(0, 0, _config2.default.width, _config2.default.height);
-        _this.backBlocker.alpha = 0.5;
-        _this.backBlocker.interactive = true;
-        _this.backBlocker.buttonMode = true;
-        _this.backBlocker.visible = false;
-
-        _this.frontLayer.addChild(_this.backBlocker);
-        _this.gridWrapper = new PIXI.Graphics().lineStyle(10, 0x132215).drawRect(0, 0, _config2.default.width * _this.areaConfig.gameArea.w, _config2.default.height * _this.areaConfig.gameArea.h);
-        _this.container.addChild(_this.gridWrapper);
-        _this.gridWrapper.visible = false;
-        //this.gridWrapper.alpha = 0.5;
-
-        _this.mergeSystemContainer = new PIXI.Container();
-        _this.container.addChild(_this.mergeSystemContainer);
-
-        _this.prizeContainer = new PIXI.Container();
-        _this.container.addChild(_this.prizeContainer);
-
-        _this.uiContainer = new PIXI.Container();
-        _this.container.addChild(_this.uiContainer);
-
-        _this.topContainer = new PIXI.Container();
-        _this.container.addChild(_this.topContainer);
-
-        _this.dataTiles = [];
-        _this.dataResourcesTiles = [];
-        _this.allMergeData = [];
-        _this.uiPanels = [];
-        _this.mergeSystemsList = [];
-
-        var containers = {
-            mainContainer: _this.mergeSystemContainer,
-            uiContainer: _this.uiContainer,
-            wrapper: _this.gridWrapper,
-            topContainer: _this.topContainer
-        };
-
-        _this.systemButtonList = new _UIList2.default();
-        _this.systemButtonList.w = 100;
-        _this.systemButtonList.h = 80;
-        _this.container.addChild(_this.systemButtonList);
-
-        _this.bonusesList = new _UIList2.default();
-        _this.bonusesList.w = 80;
-        _this.bonusesList.h = _this.bonusesList.w * 2 + 20;
-        _this.container.addChild(_this.bonusesList);
-
-        _this.registerSystem(containers, window.baseConfigGame, window.baseMonsters, 'monsters', true, new _MonsterBackground2.default());
-        _this.registerSystem(containers, window.baseConfigGameFairy, window.baseFairies, 'fairies', false, new _FairyBackground2.default());
-        _this.registerSystem(containers, window.baseConfigGameHumans, window.baseHumans, 'humans', false, new _MonsterBackground2.default());
-
-        _this.activeMergeSystemID = 0;
-        _this.activeMergeSystem = _this.mergeSystemsList[_this.activeMergeSystemID];
-
-        _this.extraMoneyBonus = new _UIButton2.default(0x002299, _this.activeMergeSystem.baseData.visuals.coin, 0xFFFFFF, _this.bonusesList.w, _this.bonusesList.w, _config2.default.assets.button.tertiarySquare);
-        _this.extraMoneyBonus.updateIconScale(0.7);
-        _this.extraMoneyBonus.onClick.add(function () {
-            _this.openHourCoinPopUp();
-            //this.showSystem(this.extraMoneyBonus.systemArrayID)
-        });
-
-        _this.bonusesList.addElement(_this.extraMoneyBonus);
-
-        _this.extraMoneyBonus2 = new _UIButton2.default(0x002299, _this.activeMergeSystem.baseData.visuals.coin, 0xFFFFFF, _this.bonusesList.w, _this.bonusesList.w, _config2.default.assets.button.tertiarySquare);
-        _this.extraMoneyBonus2.updateIconScale(0.7);
-        _this.extraMoneyBonus2.onClick.add(function () {
-            //this.showSystem(this.extraMoneyBonus2.systemArrayID)
-        });
-
-        //this.bonusesList.addElement(this.extraMoneyBonus2);
-
-
-        _this.bonusesList.updateVerticalList();
-
-        _this.entityDragSprite = new PIXI.Sprite.from('');
-        _this.addChild(_this.entityDragSprite);
-        _this.entityDragSprite.visible = false;
-
-        _this.mousePosition = {
-            x: 0,
-            y: 0
-        };
-
-        _this.interactive = true;
-        _this.on('mousemove', _this.onMouseMove.bind(_this)).on('touchmove', _this.onMouseMove.bind(_this));
-
-        _this.statsList = new _UIList2.default();
-        _this.statsList.w = 80;
-        _this.statsList.h = 80;
-        _this.container.addChild(_this.statsList);
-
-        _this.totalCoinsContainer = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame(_config2.default.assets.box.squareSmall), 20, 20, 20, 20);
-        _config2.default.addPaddingBoxSmall(_this.totalCoinsContainer);
-        _this.totalCoinsContainer.width = _this.statsList.w;
-        _this.totalCoinsContainer.height = 35;
-
-        _this.totalCoins = new PIXI.Text('', LABELS.LABEL2);
-        _this.totalCoins.style.fontSize = 14;
-        _this.totalCoins.style.stroke = 0;
-        _this.totalCoins.style.strokeThickness = 3;
-        _this.totalCoinsContainer.addChild(_this.totalCoins);
-        _this.statsList.addElement(_this.totalCoinsContainer);
-
-        _this.resourcesTexture = new PIXI.Sprite.from('coin');
-        _this.resourcesTexture.scale.set(_this.totalCoinsContainer.height / _this.resourcesTexture.height * 0.5);
-        _this.resourcesTexture.x = -20;
-        _this.resourcesTexture.y = -3;
-        _this.totalCoins.addChild(_this.resourcesTexture);
-
-        _this.coinsPerSecondCounter = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame(_config2.default.assets.box.squareSmall), 20, 20, 20, 20);
-        _config2.default.addPaddingBoxSmall(_this.coinsPerSecondCounter);
-        _this.coinsPerSecondCounter.width = _this.statsList.w;
-        _this.coinsPerSecondCounter.height = 35;
-
-        _this.coisPerSecond = new PIXI.Text('0', LABELS.LABEL2);
-        _this.coisPerSecond.style.fontSize = 14;
-        _this.coisPerSecond.style.stroke = 0;
-        _this.coisPerSecond.style.strokeThickness = 3;
-        _this.coinsPerSecondCounter.addChild(_this.coisPerSecond);
-        _this.statsList.addElement(_this.coinsPerSecondCounter);
-
-        _this.shardsTexture = new PIXI.Sprite.from('coin-s');
-        _this.coisPerSecond.addChild(_this.shardsTexture);
-        _this.shardsTexture.scale.set(_this.coinsPerSecondCounter.height / _this.shardsTexture.height * 0.5);
-        _this.shardsTexture.x = -20;
-        _this.shardsTexture.y = -3;
-
-        _this.statsList.updateVerticalList();
-
-        _this.particleSystem = new _ParticleSystem2.default();
-        _this.frontLayer.addChild(_this.particleSystem);
-
-        _this.levelMeter = new _LevelMeter2.default();
-        _this.container.addChild(_this.levelMeter);
-
-        _this.addHelpers();
-
-        var buttonSize = 70;
-        _this.shopButtonsList = new _UIList2.default();
-        _this.shopButtonsList.w = buttonSize;
-        _this.shopButtonsList.h = buttonSize * 2.5;
-        _this.container.addChild(_this.shopButtonsList);
-
-        _this.currentOpenPopUp = null;
-
-        _this.shopsLabel = new PIXI.Text(window.localizationManager.getLabel('shops'), LABELS.LABEL1);
-        _this.container.addChild(_this.shopsLabel);
-        _this.shopsLabel.style.fontSize = 24;
-        _this.shopsLabel.style.stroke = 0;
-        _this.shopsLabel.style.strokeThickness = 6;
-        _this.shopsLabel.anchor.set(0.5);
-
-        _this.openMergeShop = new _UIButton2.default(0x002299, 'vampire', 0xFFFFFF, buttonSize, buttonSize, _config2.default.assets.button.secondarySquare);
-        _this.openMergeShop.updateIconScale(0.75);
-        _this.openMergeShop.addBadge('icon_increase');
-        _this.openMergeShop.newItem = new PIXI.Sprite.fromFrame('new_item');
-        _this.openMergeShop.newItem.scale.set(0.7);
-        _this.openMergeShop.newItem.anchor.set(0);
-        _this.openMergeShop.newItem.position.set(-buttonSize / 2);
-        _this.openMergeShop.newItem.visible = false;
-        _this.openMergeShop.addChild(_this.openMergeShop.newItem);
-        _this.shopButtonsList.addElement(_this.openMergeShop);
-        _this.openMergeShop.onClick.add(function () {
-            _this.openPopUp(_this.activeMergeSystem.shop);
-        });
-
-        _this.shopButtonsList.updateVerticalList();
-
-        window.TIME_SCALE = 1;
-
-        _this.standardPopUp = new _StandardPop2.default('any', _this.screenManager);
-        _this.popUpLayer.addChild(_this.standardPopUp);
-
-        // this.bonusPopUp = new BonusConfirmation('bonus', this.screenManager)
-        // this.popUpLayer.addChild(this.bonusPopUp)
-
-
-        _this.uiPanels.push(_this.standardPopUp);
-
-        _this.sumStart = 0;
-        //this.savedResources = COOKIE_MANAGER.getResources('monster');
-
-
-        _this.shopButtonsList.updateVerticalList();
-
-        var now = Date.now() / 1000 | 0;
-        var diff = 0; //now - this.savedEconomy.lastChanged
-
-        if (_this.tutorialStep > 1 && diff > 60 && _this.sumStart > 10) {
-            var params = {
-                label: window.localizationManager.getLabel('offline-money'),
-                value1: _utils2.default.formatPointsLabel(_this.sumStart),
-                value2: _utils2.default.formatPointsLabel(_this.sumStart * 2),
-                onConfirm: _this.collectStartAmountDouble.bind(_this),
-                onCancel: _this.collectStartAmount.bind(_this)
-            };
-            _this.standardPopUpShow(params);
-        }
-
-        _this.forcePauseSystemsTimer = 0.05;
-
-        _this.resetWhiteShape = new PIXI.Graphics().beginFill(0xFFFFFF).drawRect(-_config2.default.width * 4, -_config2.default.height * 4, _config2.default.width * 8, _config2.default.height * 8);
-        _this.addChild(_this.resetWhiteShape);
-        _this.resetWhiteShape.visible = false;
-        //this.mergeItemsShop.show()
-
-        //this.tutorialStep = window.COOKIE_MANAGER.getStats().tutorialStep;
-
-
-        // this.gameTutorial = new GameTutorial(this)
-        // if (this.tutorialStep == 0) {
-        //     if (window.gameEconomy.currentResources > 10) {
-        //         COOKIE_MANAGER.endTutorial(2);
-        //     } else {
-
-        //         this.startTutorial();
-        //         this.addChild(this.gameTutorial);
-        //     }
-        // }
-
-        // this.mergeSystemsList.push(this.mergeSystemFairies)
-
-        _this.refreshSystemVisuals();
-
-        _this.popUpLayer.visible = true;
-
-        COOKIE_MANAGER.initBoard(_this.activeMergeSystem.systemID);
-
-        return _this;
-    }
-
-    (0, _createClass3.default)(MergeScreen, [{
-        key: 'registerSystem',
-        value: function registerSystem(containers, baseData, baseMergeData, slug) {
-            var _this2 = this;
-
-            var visible = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
-            var interactiveBackground = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : null;
-
-
-            this.addChildAt(interactiveBackground, 0);
-            interactiveBackground.visible = visible;
-            COOKIE_MANAGER.sortCookie(slug);
-            var rawMergeDataList = [];
-            for (var index = 0; index < baseMergeData.mergeEntities.list.length; index++) {
-                var mergeData = new _MergerData2.default(baseMergeData.mergeEntities.list[index], index);
-                mergeData.type = baseMergeData.mergeEntities.list[index].type;
-                rawMergeDataList.push(mergeData);
-                this.allMergeData.push(mergeData);
-            }
-
-            var mergeSystem = new _MergeSystem2.default(containers, baseData, rawMergeDataList, slug);
-            this.addSystem(mergeSystem);
-            mergeSystem.enemySystem = this.enemiesSystem;
-
-            mergeSystem.onParticles.add(this.addParticles.bind(this));
-            mergeSystem.onDealDamage.add(this.addDamageParticles.bind(this));
-            mergeSystem.onPopLabel.add(this.popLabel.bind(this));
-            mergeSystem.onGetResources.add(this.addResourceParticles.bind(this));
-            mergeSystem.onNextLevel.add(this.onNextLevel.bind(this));
-            mergeSystem.onBoardLevelUpdate.add(this.onMergeSystemUpdate.bind(this));
-            mergeSystem.specialTileReveal.add(this.onSpecialTileReveal.bind(this));
-
-            var mergeItemsShop = new _MergeItemsShop2.default([mergeSystem]);
-            this.uiLayer.addChild(mergeItemsShop);
-            mergeItemsShop.addItems(rawMergeDataList);
-            mergeItemsShop.hide();
-            mergeItemsShop.onAddEntity.add(function (entity) {
-                mergeSystem.buyEntity(entity);
-            });
-            mergeItemsShop.onClaimGift.add(function (entity) {
-                mergeSystem.addSpecialPiece();
-                COOKIE_MANAGER.claimGift(slug);
-            });
-            mergeItemsShop.systemID = slug;
-            mergeSystem.updateAvailableSlots.add(function (availables) {
-                mergeItemsShop.updateLocks(availables);
-                //POPUP
-            });
-
-            setTimeout(function () {
-                mergeItemsShop.updateLocks(mergeSystem.totalAvailable());
-            }, 120);
-            mergeSystem.updateMaxLevel.add(function (max, skipPopup) {
-                _this2.activeMergeSystem.interactiveBackground.updateMax(max, true);
-                if (max == 0 || skipPopup) {
-                    _this2.activeMergeSystem.interactiveBackground.showAnimation(max);
-                    return;
+        (0, _inherits3.default)(MergeScreen, _Screen);
+
+        function MergeScreen(label) {
+                (0, _classCallCheck3.default)(this, MergeScreen);
+
+                var _this = (0, _possibleConstructorReturn3.default)(this, (MergeScreen.__proto__ || (0, _getPrototypeOf2.default)(MergeScreen)).call(this, label));
+
+                window.baseConfigGame = PIXI.loader.resources['baseGameConfigMonster'].data.baseGame;
+                window.baseConfigGameFairy = PIXI.loader.resources['baseGameConfigFairy'].data.baseGame;
+                window.baseConfigGameHumans = PIXI.loader.resources['baseGameConfigHumans'].data.baseGame;
+                window.baseMonsters = PIXI.loader.resources['monsters'].data;
+                window.baseFairies = PIXI.loader.resources['fairies'].data;
+                window.baseHumans = PIXI.loader.resources['humans'].data;
+                window.gameEconomy = new _GameEconomy2.default();
+                window.gameModifyers = new _GameModifyers2.default();
+
+                _this.systemsList = [];
+
+                _this.areaConfig = window.baseConfigGame.area;
+                if (!_this.areaConfig.bottomArea) {
+                        _this.areaConfig.bottomArea = 0.2;
                 }
-                if (_this2.activeMergeSystem.dataTiles.length > max) {
-                    _this2.newPiecePopup(max);
+                if (!_this.areaConfig.topArea) {
+                        _this.areaConfig.topArea = 0.2;
                 }
-                //POPUP
-            });
-            mergeItemsShop.setGiftIcon(baseData.visuals.gift[0]);
-            mergeSystem.shop = mergeItemsShop;
-            mergeSystem.interactiveBackground = interactiveBackground;
-            this.uiPanels.push(mergeItemsShop);
-
-            mergeSystem.systemArrayID = this.mergeSystemsList.length;
-            mergeSystem.visible = visible;
-
-            var buttonSize = 70;
-
-            var toggleSystems = new _UIButton2.default(0x002299, rawMergeDataList[0].rawData.imageSrc, 0xFFFFFF, buttonSize, buttonSize, _config2.default.assets.button.primarySquare);
-            toggleSystems.updateIconScale(0.9);
-            toggleSystems.systemArrayID = this.mergeSystemsList.length;
-            toggleSystems.onClick.add(function () {
-                _this2.showSystem(toggleSystems.systemArrayID);
-            });
-
-            mergeSystem.toggle = toggleSystems;
-
-            this.mergeSystemsList.push(mergeSystem);
-            this.systemButtonList.addElement(toggleSystems);
-        }
-    }, {
-        key: 'showSystem',
-        value: function showSystem(id) {
-            this.mergeSystemsList.forEach(function (element) {
-                element.visible = false;
-                element.interactiveBackground.visible = false;
-            });
-
-            this.activeMergeSystemID = id;
-            this.activeMergeSystemID %= this.mergeSystemsList.length;
-
-            this.mergeSystemsList[this.activeMergeSystemID].visible = true;
-            this.mergeSystemsList[this.activeMergeSystemID].interactiveBackground.visible = true;
-            this.activeMergeSystem = this.mergeSystemsList[this.activeMergeSystemID];
-
-            this.refreshSystemVisuals();
-        }
-    }, {
-        key: 'startGamePopUp',
-        value: function startGamePopUp() {
-            var _this3 = this;
-
-            var target = this.activeMergeSystem.rps * 60;
-            var target2 = this.activeMergeSystem.rps * 600;
-            this.openPopUp(this.standardPopUp, {
-                value1: _utils2.default.formatPointsLabel(target),
-                value2: _utils2.default.formatPointsLabel(target2),
-                title: 'Free Coins',
-                confirmLabel: 'Collect',
-                cancelLabel: 'Cancel',
-                video: true,
-                onConfirm: function onConfirm() {
-                    window.DO_REWARD(function () {
-                        window.gameEconomy.addResources(target2, _this3.activeMergeSystem.systemID);
-                        _this3.moneyFromCenter();
-                    });
-                },
-                onCancel: function onCancel() {
-                    window.gameEconomy.addResources(target, _this3.activeMergeSystem.systemID);
-                    _this3.moneyFromCenter();
+                if (!_this.areaConfig.gameArea) {
+                        _this.areaConfig.gameArea = { w: 0.5, h: 0.5 };
                 }
-            });
-        }
-    }, {
-        key: 'levelUpPopUp',
-        value: function levelUpPopUp(data) {
-            var _this4 = this;
-
-            var target = this.activeMergeSystem.rps * 60;
-            var target2 = this.activeMergeSystem.rps * 600;
-            this.openPopUp(this.standardPopUp, {
-                value1: '-',
-                value2: _utils2.default.formatPointsLabel(target2),
-                title: 'Level ' + data.currentLevel,
-                confirmLabel: 'Open Shop',
-                cancelLabel: 'OK',
-                mainLabel2: this.activeMergeSystem.dataTiles[data.currentLevel - 1].rawData.displayName + '\nWas unlocked on the shop',
-                video: false,
-                popUpType: _config2.default.assets.popup.extra,
-                hideAll: true,
-                mainIcon: this.activeMergeSystem.dataTiles[data.currentLevel - 1].rawData.imageSrc,
-                onConfirm: function onConfirm() {
-
-                    _this4.openPopUp(_this4.activeMergeSystem.shop);
-                },
-                onCancel: function onCancel() {}
-            });
-        }
-    }, {
-        key: 'openHourCoinPopUp',
-        value: function openHourCoinPopUp() {
-            var _this5 = this;
-
-            var target = this.activeMergeSystem.rps * 300;
-            this.openPopUp(this.standardPopUp, {
-                value1: 0,
-                value2: _utils2.default.formatPointsLabel(target),
-                title: 'Free Coins',
-                confirmLabel: 'Collect',
-                cancelLabel: 'Cancel',
-                mainLabel2: 'Watch a video earn 10 minutes\nworth of money',
-                video: true,
-                popUpType: _config2.default.assets.popup.secondary,
-                onConfirm: function onConfirm() {
-                    window.DO_REWARD(function () {
-                        window.gameEconomy.addResources(target, _this5.activeMergeSystem.systemID);
-                        _this5.moneyFromCenter();
-                    });
-                },
-                onCancel: function onCancel() {}
-            });
-        }
-    }, {
-        key: 'newPiecePopup',
-        value: function newPiecePopup(pieceId) {
-            var _this6 = this;
-
-            var imagesrc = this.activeMergeSystem.dataTiles[pieceId].rawData.imageSrc;
-            var name = this.activeMergeSystem.dataTiles[pieceId].rawData.displayName;
-            var castlePiece = this.activeMergeSystem.interactiveBackground.getPiece(pieceId).src;
-
-            var target = this.activeMergeSystem.rps * 60;
-            target = Math.max(target, 120);
-            this.openPopUp(this.standardPopUp, {
-                value1: name,
-                value2: '',
-                value1Icon: imagesrc,
-                value2Icon: castlePiece,
-                title: 'New Character',
-                confirmLabel: 'Gain ' + _utils2.default.formatPointsLabel(target),
-                cancelLabel: 'Ok',
-                mainIcon: 'results_arrow_right',
-                mainLabel2: 'You unlock another piece of the castle',
-                mainLabel: '',
-                mainIconHeight: 20,
-                value2IconHeight: 150,
-                popUpType: _config2.default.assets.popup.secondary,
-                video: true,
-                onConfirm: function onConfirm() {
-                    window.DO_REWARD(function () {
-                        window.gameEconomy.addResources(target, _this6.activeMergeSystem.systemID);
-                        _this6.moneyFromCenter();
-
-                        _this6.activeMergeSystem.interactiveBackground.showAnimation(pieceId);
-                    });
-                },
-                onCancel: function onCancel() {
-
-                    _this6.activeMergeSystem.interactiveBackground.showAnimation(pieceId);
+                if (!_this.areaConfig.resourcesArea) {
+                        _this.areaConfig.resourcesArea = { w: 0.5, h: 0.5 };
                 }
-            });
-        }
-    }, {
-        key: 'upgradePiecePopUp',
-        value: function upgradePiecePopUp(slot, level) {
-            var _this7 = this;
 
-            var piece1 = this.activeMergeSystem.dataTiles[level];
-            var piece2 = this.activeMergeSystem.dataTiles[level + 1];
+                // setTimeout(() => {
+                //     this.activeMergeSystem.interactiveBackground = new FairyBackground();
+                //     this.addChildAt(this.activeMergeSystem.interactiveBackground, 0);
+                // }, 10);
+                _this.container = new PIXI.Container();
+                _this.addChild(_this.container);
+                _this.frontLayer = new PIXI.Container();
+                _this.addChild(_this.frontLayer);
+                _this.uiLayer = new PIXI.Container();
+                _this.addChild(_this.uiLayer);
 
-            this.openPopUp(this.standardPopUp, {
-                value1: piece1.rawData.displayName,
-                value2: piece2.rawData.displayName,
-                value1Icon: piece1.rawData.imageSrc,
-                value2Icon: piece2.rawData.imageSrc,
-                title: 'Upgrade',
-                confirmLabel: 'Upgrade',
-                cancelLabel: 'Cancel',
-                mainLabel2: 'Watch a video to upgrade this slot',
-                popUpType: _config2.default.assets.popup.secondary,
-                mainIcon: 'results_arrow_right',
-                mainIconHeight: 20,
-                video: true,
-                onConfirm: function onConfirm() {
-                    _this7.activeMergeSystem.addDataTo(slot, level + 1);
-                },
-                onCancel: function onCancel() {
-                    _this7.activeMergeSystem.addDataTo(slot, level);
-                }
-            });
-        }
-    }, {
-        key: 'refreshSystemVisuals',
-        value: function refreshSystemVisuals() {
-            var _this8 = this;
+                _this.popUpLayer = new PIXI.Container();
+                _this.addChild(_this.popUpLayer);
 
-            if (!this.activeMergeSystem.isLoaded) {
-                this.activeMergeSystem.loadData();
-            }
+                _this.backBlocker = new PIXI.Graphics().beginFill(0).drawRect(0, 0, _config2.default.width, _config2.default.height);
+                _this.backBlocker.alpha = 0.5;
+                _this.backBlocker.interactive = true;
+                _this.backBlocker.buttonMode = true;
+                _this.backBlocker.visible = false;
 
-            window.gameEconomy.updateBoard(this.activeMergeSystem.systemID);
-            this.resourcesTexture.texture = PIXI.Texture.fromImage(this.activeMergeSystem.baseData.visuals.coin);
-            this.resourcesTexture.scale.set(40 / this.resourcesTexture.height * 0.5 * this.resourcesTexture.scale.y);
+                _this.frontLayer.addChild(_this.backBlocker);
+                _this.gridWrapper = new PIXI.Graphics().lineStyle(10, 0x132215).drawRect(0, 0, _config2.default.width * _this.areaConfig.gameArea.w, _config2.default.height * _this.areaConfig.gameArea.h);
+                _this.container.addChild(_this.gridWrapper);
+                _this.gridWrapper.visible = false;
+                //this.gridWrapper.alpha = 0.5;
 
-            this.shardsTexture.texture = PIXI.Texture.fromImage(this.activeMergeSystem.baseData.visuals.coin);
-            this.shardsTexture.scale.set(40 / this.shardsTexture.height * 0.5 * this.shardsTexture.scale.y);
+                _this.mergeSystemContainer = new PIXI.Container();
+                _this.container.addChild(_this.mergeSystemContainer);
 
-            this.openMergeShop.icon.texture = PIXI.Texture.fromImage(this.activeMergeSystem.dataTiles[0].rawData.imageSrc);
-            this.openMergeShop.updateIconScale(0.8);
+                _this.prizeContainer = new PIXI.Container();
+                _this.container.addChild(_this.prizeContainer);
 
-            this.resize(this.latestInner, this.latestInner);
-            setTimeout(function () {
-                _this8.activeMergeSystem.activeSystem();
+                _this.uiContainer = new PIXI.Container();
+                _this.container.addChild(_this.uiContainer);
 
-                _this8.resize(_this8.latestInner, _this8.latestInner);
-            }, 1);
-        }
-    }, {
-        key: 'startTutorial',
-        value: function startTutorial() {
-            setTimeout(function () {}, 51);
-            this.gameTutorial.start();
-        }
-    }, {
-        key: 'endTutorial',
-        value: function endTutorial() {}
-    }, {
-        key: 'onConfirmBonus',
-        value: function onConfirmBonus(target) {
-            this.openPopUp(this.bonusPopUp, {
-                texture: target.mainButton.icon.texture,
-                description: target.fullDescription,
-                shortDescription: target.shortDescription,
-                onConfirm: function onConfirm() {
-                    target.confirmBonus();
-                }
-            });
-        }
-    }, {
-        key: 'moneyFromCenter',
-        value: function moneyFromCenter() {
-            var toLocal = this.particleSystem.toLocal({ x: _config2.default.width / 2, y: _config2.default.height / 2 });
-            var customData = {};
-            customData.texture = this.activeMergeSystem.baseData.visuals.coin;
-            customData.scale = 0.035;
-            customData.gravity = 1000;
-            customData.alphaDecress = 0;
-            customData.forceX = Math.random() * 1200 - 600;
-            customData.forceY = 400 * Math.random() + 300;
-            customData.ignoreMatchRotation = true;
+                _this.topContainer = new PIXI.Container();
+                _this.container.addChild(_this.topContainer);
 
-            var coinPosition = this.shardsTexture.getGlobalPosition();
+                _this.dataTiles = [];
+                _this.dataResourcesTiles = [];
+                _this.allMergeData = [];
+                _this.uiPanels = [];
+                _this.mergeSystemsList = [];
 
-            var toLocalTarget = this.particleSystem.toLocal(coinPosition);
+                var containers = {
+                        mainContainer: _this.mergeSystemContainer,
+                        uiContainer: _this.uiContainer,
+                        wrapper: _this.gridWrapper,
+                        topContainer: _this.topContainer
+                };
 
-            customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.25 + Math.random() * 0.5 };
-            this.particleSystem.show(toLocal, 8, customData);
-        }
-    }, {
-        key: 'onPrizeCollected',
-        value: function onPrizeCollected(prizes) {
-            var _this9 = this;
+                _this.systemButtonList = new _UIList2.default();
+                _this.systemButtonList.w = 100;
+                _this.systemButtonList.h = 80;
+                _this.container.addChild(_this.systemButtonList);
 
-            if (!prizes) return;
-            if (prizes.money > 0) {
-                window.gameEconomy.addResources(prizes.money);
-                var toLocal = this.particleSystem.toLocal({ x: _config2.default.width / 2, y: _config2.default.height / 2 });
-                var customData = {};
-                customData.texture = 'coin';
-                customData.scale = 0.02;
-                customData.gravity = 500;
-                customData.alphaDecress = 0;
-                customData.ignoreMatchRotation = true;
-                var coinPosition = this.coinTexture.getGlobalPosition();
+                _this.bonusesList = new _UIList2.default();
+                _this.bonusesList.w = 80;
+                _this.bonusesList.h = _this.bonusesList.w * 2 + 20;
+                _this.container.addChild(_this.bonusesList);
 
-                var toLocalTarget = this.particleSystem.toLocal(coinPosition);
+                _this.registerSystem(containers, window.baseConfigGame, window.baseMonsters, 'monsters', true, new _MonsterBackground2.default());
+                _this.registerSystem(containers, window.baseConfigGameFairy, window.baseFairies, 'fairies', false, new _FairyBackground2.default());
+                _this.registerSystem(containers, window.baseConfigGameHumans, window.baseHumans, 'humans', false, new _MonsterBackground2.default());
 
-                customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.2 + Math.random() * 0.75 };
-                this.particleSystem.show(toLocal, 3, customData);
-            }
-            if (prizes.shards > 0) {
-                window.gameModifyers.addShards(prizes.shards);
-                setTimeout(function () {
-                    var toLocal = _this9.particleSystem.toLocal({ x: _config2.default.width / 2, y: _config2.default.height / 2 });
-                    var customData = {};
-                    customData.texture = 'shards';
-                    customData.scale = 0.025;
-                    customData.gravity = 200;
-                    customData.alphaDecress = 0;
-                    customData.ignoreMatchRotation = true;
+                _this.activeMergeSystemID = 0;
+                _this.activeMergeSystem = _this.mergeSystemsList[_this.activeMergeSystemID];
 
-                    var coinPosition = _this9.shardsTexture.getGlobalPosition();
-
-                    var toLocalTarget = _this9.particleSystem.toLocal(coinPosition);
-
-                    customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.2 + Math.random() * 0.75 };
-                    _this9.particleSystem.show(toLocal, 3, customData);
-                }, 50);
-            }
-            if (prizes.ship > 0) {
-                this.activeMergeSystem.addShipBasedOnMax(prizes.ship);
-            }
-        }
-    }, {
-        key: 'addSystem',
-        value: function addSystem(system) {
-            if (!this.systemsList.includes(system)) {
-                this.systemsList.push(system);
-            }
-        }
-    }, {
-        key: 'collectStartAmountDouble',
-        value: function collectStartAmountDouble() {
-            window.DO_REWARD(function () {
-                //this.resourceSystem.collectCustomStartAmount(this.sumStart * 2)
-            });
-        }
-    }, {
-        key: 'collectStartAmount',
-        value: function collectStartAmount() {
-            //this.resourceSystem.collectCustomStartAmount(this.sumStart)
-        }
-    }, {
-        key: 'standardPopUpShow',
-        value: function standardPopUpShow(params) {
-            this.openPopUp(this.standardPopUp, params);
-        }
-    }, {
-        key: 'openPopUp',
-        value: function openPopUp(target, params) {
-
-            this.uiPanels.forEach(function (element) {
-                if (element.visible) {
-                    //element.hide();
-                }
-            });
-
-            this.currentOpenPopUp = target;
-            target.show(params, this.activeMergeSystem.baseData.visuals);
-        }
-    }, {
-        key: 'popLabel',
-        value: function popLabel(targetPosition, label) {
-            var toLocal = this.particleSystem.toLocal(targetPosition);
-
-            this.particleSystem.popLabel(toLocal, "+" + label, 0, 1, 1, LABELS.LABEL1, Back.easeOut, 0.5, 1);
-        }
-    }, {
-        key: 'popLabelDamage',
-        value: function popLabelDamage(targetPosition, label) {
-            var toLocal = this.particleSystem.toLocal(targetPosition);
-
-            this.particleSystem.popLabel(toLocal, "+" + label, 0, 1, 1.5, LABELS.LABEL_DAMAGE, Back.easeOut, 0.5, 1);
-        }
-    }, {
-        key: 'addParticles',
-        value: function addParticles(targetPosition, customData, quant) {
-            var toLocal = this.particleSystem.toLocal(targetPosition);
-            this.particleSystem.show(toLocal, quant, customData);
-        }
-    }, {
-        key: 'addDamageParticles',
-        value: function addDamageParticles(targetPosition, customData, label, quant) {
-            var toLocal = this.particleSystem.toLocal(targetPosition);
-            this.particleSystem.show(toLocal, quant, customData);
-            //this.particleSystem.popLabel(targetPosition, "+" + label, 0, 1, 1, LABELS.LABEL1)
-        }
-    }, {
-        key: 'onNextLevel',
-        value: function onNextLevel(data) {
-            this.levelUpPopUp(data);
-        }
-    }, {
-        key: 'onSpecialTileReveal',
-        value: function onSpecialTileReveal(slot, level) {
-
-            this.upgradePiecePopUp(slot, level);
-        }
-    }, {
-        key: 'onMergeSystemUpdate',
-        value: function onMergeSystemUpdate(data) {
-            this.levelMeter.updateData(data);
-
-            for (var index = 1; index < this.systemsList.length; index++) {
-                // if(!this.systemButtonList[index]) break
-                var element = this.systemsList[index];
-                var prev = this.systemsList[index - 1];
-
-                var isInit = COOKIE_MANAGER.isInitialized(this.systemsList[index].systemID);
-                if (!prev.boardProgression || prev.boardProgression.currentLevel < 2) {
-
-                    element.toggle.disable();
-                } else {
-                    if (!isInit) {
-                        COOKIE_MANAGER.initBoard(this.systemsList[index].systemID);
-                    }
-                    element.toggle.enable();
-                }
-            }
-        }
-    }, {
-        key: 'addResourceParticles',
-        value: function addResourceParticles(targetPosition, customData, totalResources, quantParticles) {
-            var showParticles = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
-
-            window.gameEconomy.addResources(totalResources, this.activeMergeSystem.systemID);
-
-            if (totalResources < 1000) {
-                this.popLabelDamage(targetPosition, totalResources);
-            } else {
-                this.popLabelDamage(targetPosition, _utils2.default.formatPointsLabel(totalResources));
-            }
-            if (quantParticles <= 0) {
-                return;
-            }
-            var toLocal = this.particleSystem.toLocal(targetPosition);
-            if (!showParticles) {
-                quantParticles = 1;
-            }
-
-            for (var index = 0; index < quantParticles; index++) {
-                //customData.target = { x: coinPosition.x - frontLayer.x, y: coinPosition.y - frontLayer.y, timer: 0.2 + Math.random() * 0.75 }
-                //customData.target = { x: toLocal.x, y: toLocal.y - 50, timer: 0 }
-                customData.gravity = 0;
-                customData.alphaDecress = 0.7;
-                customData.ignoreMatchRotation = true;
-                this.particleSystem.show(toLocal, 1, customData);
-            }
-
-            return;
-            var coinPosition = this.resourcesTexture.getGlobalPosition();
-            var toLocalCoin = this.particleSystem.toLocal(coinPosition);
-            for (var _index = 0; _index < 1; _index++) {
-                customData.target = { x: toLocalCoin.x, y: toLocalCoin.y, timer: 0.2 + Math.random() * 0.75 };
-                customData.scale = 0.01;
-                customData.forceX = Math.random() * 1000 - 500;
-                customData.forceY = 500;
-                customData.gravity = 1200;
-                customData.alphaDecress = 0.1;
-                customData.ignoreMatchRotation = true;
-                this.particleSystem.show(toLocal, 1, customData);
-            }
-        }
-    }, {
-        key: 'onMouseMove',
-        value: function onMouseMove(e) {
-
-            if (this.currentOpenPopUp && this.currentOpenPopUp.visible) {
-                return;
-            }
-
-            this.systemsList.forEach(function (element) {
-                element.updateMouseSystems(e);
-            });
-            this.mousePosition = e.data.global;
-            if (!this.draggingEntity) {
-                return;
-            }
-            if (this.entityDragSprite.visible) {
-                this.entityDragSprite.x = this.mousePosition.x;
-                this.entityDragSprite.y = this.mousePosition.y;
-            }
-        }
-    }, {
-        key: 'onAdded',
-        value: function onAdded() {}
-    }, {
-        key: 'build',
-        value: function build(param) {
-            (0, _get3.default)(MergeScreen.prototype.__proto__ || (0, _getPrototypeOf2.default)(MergeScreen.prototype), 'build', this).call(this);
-            this.addEvents();
-        }
-    }, {
-        key: 'update',
-        value: function update(delta) {
-            delta *= window.TIME_SCALE * window.gameModifyers.bonusData.gameSpeed;
-
-            //this.gameTutorial.update(delta);
-
-            if (this.forcePauseSystemsTimer > 0) {
-                this.forcePauseSystemsTimer -= delta;
-            } else {
-                this.systemsList.forEach(function (element) {
-                    element.updateSystems(delta);
+                _this.extraMoneyBonus = new _UIButton2.default(0x002299, _this.activeMergeSystem.baseData.visuals.coin, 0xFFFFFF, _this.bonusesList.w, _this.bonusesList.w, _config2.default.assets.button.tertiarySquare);
+                _this.extraMoneyBonus.updateIconScale(0.7);
+                _this.extraMoneyBonus.onClick.add(function () {
+                        _this.openHourCoinPopUp();
+                        //this.showSystem(this.extraMoneyBonus.systemArrayID)
                 });
-                this.particleSystem.update(delta);
-            }
 
-            this.uiPanels.forEach(function (element) {
-                if (element.update) {
-                    element.update(delta);
-                }
-            });
+                _this.bonusesList.addElement(_this.extraMoneyBonus);
 
-            this.totalCoins.text = _utils2.default.formatPointsLabel(window.gameEconomy.currentResources);
-            _utils2.default.centerObject(this.totalCoins, this.totalCoinsContainer);
-            this.totalCoins.x = 30;
+                _this.extraMoneyBonus2 = new _UIButton2.default(0x002299, _this.activeMergeSystem.baseData.visuals.coin, 0xFFFFFF, _this.bonusesList.w, _this.bonusesList.w, _config2.default.assets.button.tertiarySquare);
+                _this.extraMoneyBonus2.updateIconScale(0.7);
+                _this.extraMoneyBonus2.onClick.add(function () {
+                        //this.showSystem(this.extraMoneyBonus2.systemArrayID)
+                });
 
-            this.coisPerSecond.text = _utils2.default.formatPointsLabel(this.activeMergeSystem.rps) + '/s';
-            _utils2.default.centerObject(this.coisPerSecond, this.coinsPerSecondCounter);
-            this.coisPerSecond.x = 30;
+                //this.bonusesList.addElement(this.extraMoneyBonus2);
 
-            this.timestamp = Date.now() / 1000 | 0;
 
-            this.activeMergeSystem.interactiveBackground.update(delta);
-            this.activeMergeSystem.shop.update(delta);
-        }
-    }, {
-        key: 'resize',
-        value: function resize(resolution, innerResolution) {
-            var _this10 = this;
+                _this.bonusesList.updateVerticalList();
 
-            if (!innerResolution || !innerResolution.height) return;
+                _this.entityDragSprite = new PIXI.Sprite.from('');
+                _this.addChild(_this.entityDragSprite);
+                _this.entityDragSprite.visible = false;
 
-            this.latestInner = innerResolution;
-            if (!resolution || !resolution.width || !resolution.height || !innerResolution) {
-                //return;
-            }
+                _this.mousePosition = {
+                        x: 0,
+                        y: 0
+                };
 
-            var newRes = { width: resolution.width * this.screenManager.scale.x };
+                _this.interactive = true;
+                _this.on('mousemove', _this.onMouseMove.bind(_this)).on('touchmove', _this.onMouseMove.bind(_this));
 
-            if (this.activeMergeSystem.interactiveBackground) {
+                _this.statsList = new _UIList2.default();
+                _this.statsList.w = 80;
+                _this.statsList.h = 80;
+                _this.container.addChild(_this.statsList);
 
-                this.activeMergeSystem.interactiveBackground.resize(resolution, innerResolution);
-                this.activeMergeSystem.interactiveBackground.x = _config2.default.width / 2;
-                this.activeMergeSystem.interactiveBackground.y = _config2.default.height / 2;
-            }
+                _this.totalCoinsContainer = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame(_config2.default.assets.box.squareSmall), 20, 20, 20, 20);
+                _config2.default.addPaddingBoxSmall(_this.totalCoinsContainer);
+                _this.totalCoinsContainer.width = _this.statsList.w;
+                _this.totalCoinsContainer.height = 35;
 
-            var toGlobal = this.toLocal({ x: 0, y: innerResolution.height });
+                _this.totalCoins = new PIXI.Text('', LABELS.LABEL2);
+                _this.totalCoins.style.fontSize = 14;
+                _this.totalCoins.style.stroke = 0;
+                _this.totalCoins.style.strokeThickness = 3;
+                _this.totalCoinsContainer.addChild(_this.totalCoins);
+                _this.statsList.addElement(_this.totalCoinsContainer);
 
-            var topRight = game.getBorder('topRight', this);
-            var toGlobalBack = this.toLocal({ x: 0, y: innerResolution.height });
+                _this.resourcesTexture = new PIXI.Sprite.from('coin');
+                _this.resourcesTexture.scale.set(_this.totalCoinsContainer.height / _this.resourcesTexture.height * 0.5);
+                _this.resourcesTexture.x = -20;
+                _this.resourcesTexture.y = -3;
+                _this.totalCoins.addChild(_this.resourcesTexture);
 
-            if (!window.isPortrait) {
+                _this.coinsPerSecondCounter = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame(_config2.default.assets.box.squareSmall), 20, 20, 20, 20);
+                _config2.default.addPaddingBoxSmall(_this.coinsPerSecondCounter);
+                _this.coinsPerSecondCounter.width = _this.statsList.w;
+                _this.coinsPerSecondCounter.height = 35;
 
-                this.gridWrapper.x = toGlobalBack.x + 20;
-                this.gridWrapper.y = _config2.default.height - (this.activeMergeSystem.interactiveBackground.puzzleBackground.pivot.y + 25) * this.activeMergeSystem.interactiveBackground.puzzleBackground.scale.y; //this.puzzleBackground.y - this.puzzleBackground.pivot.y
+                _this.coisPerSecond = new PIXI.Text('0', LABELS.LABEL2);
+                _this.coisPerSecond.style.fontSize = 14;
+                _this.coisPerSecond.style.stroke = 0;
+                _this.coisPerSecond.style.strokeThickness = 3;
+                _this.coinsPerSecondCounter.addChild(_this.coisPerSecond);
+                _this.statsList.addElement(_this.coinsPerSecondCounter);
 
-                this.gridWrapper.width = this.activeMergeSystem.interactiveBackground.puzzleBackground.usableArea.width * this.activeMergeSystem.interactiveBackground.puzzleBackground.scale.x;
-                this.gridWrapper.height = this.activeMergeSystem.interactiveBackground.puzzleBackground.usableArea.height * this.activeMergeSystem.interactiveBackground.puzzleBackground.scale.y;
+                _this.shardsTexture = new PIXI.Sprite.from('coin');
+                _this.coisPerSecond.addChild(_this.shardsTexture);
+                _this.shardsTexture.scale.set(_this.coinsPerSecondCounter.height / _this.shardsTexture.height * 0.5);
+                _this.shardsTexture.x = -20;
+                _this.shardsTexture.y = -3;
 
-                this.shopButtonsList.x = this.shopButtonsList.width;
-                this.shopButtonsList.y = 10;
+                _this.statsList.updateVerticalList();
 
-                this.shopButtonsList.scale.set(1.8);
-                this.levelMeter.scale.set(1.3);
-            } else {
+                _this.particleSystem = new _ParticleSystem2.default();
+                _this.frontLayer.addChild(_this.particleSystem);
 
-                this.mergeSystemContainer.scale.set(1);
+                _this.levelMeter = new _LevelMeter2.default();
+                _this.container.addChild(_this.levelMeter);
 
-                this.levelMeter.scale.set(0.7);
-                this.gridWrapper.width = _config2.default.width * this.areaConfig.gameArea.w;
-                this.gridWrapper.height = _config2.default.height * this.areaConfig.gameArea.h;
-                this.gridWrapper.x = 0;
-                this.gridWrapper.y = this.activeMergeSystem.interactiveBackground.puzzleBackground.usableArea.y - this.activeMergeSystem.interactiveBackground.puzzleBackground.pivot.y + this.activeMergeSystem.interactiveBackground.puzzleBackground.y + this.activeMergeSystem.interactiveBackground.y - 20;
-            }
+                _this.addHelpers();
 
-            this.systemButtonList.w = 80;
-            this.systemButtonList.h = 70 * this.systemsList.length + this.systemsList.length * 2;
-            this.systemButtonList.updateVerticalList();
+                var buttonSize = 70;
+                _this.shopButtonsList = new _UIList2.default();
+                _this.shopButtonsList.w = buttonSize;
+                _this.shopButtonsList.h = buttonSize * 2.5;
+                _this.container.addChild(_this.shopButtonsList);
 
-            this.statsList.y = 10;
-            this.statsList.x = toGlobalBack.x + 10;
+                _this.currentOpenPopUp = null;
 
-            this.bonusesList.y = this.statsList.y + this.statsList.height;
-            this.bonusesList.x = this.statsList.x + +this.bonusesList.w * 0.5;
+                _this.shopsLabel = new PIXI.Text(window.localizationManager.getLabel('shops'), LABELS.LABEL1);
+                _this.container.addChild(_this.shopsLabel);
+                _this.shopsLabel.style.fontSize = 24;
+                _this.shopsLabel.style.stroke = 0;
+                _this.shopsLabel.style.strokeThickness = 6;
+                _this.shopsLabel.anchor.set(0.5);
 
-            this.helperButtonList.y = 80;
-            this.helperButtonList.x = toGlobalBack.x + 180;
+                _this.openMergeShop = new _UIButton2.default(0x002299, 'vampire', 0xFFFFFF, buttonSize, buttonSize, _config2.default.assets.button.secondarySquare);
+                _this.openMergeShop.updateIconScale(0.75);
+                _this.openMergeShop.addBadge('icon_increase');
+                _this.openMergeShop.newItem = new PIXI.Sprite.fromFrame('new_item');
+                _this.openMergeShop.newItem.scale.set(0.7);
+                _this.openMergeShop.newItem.anchor.set(0);
+                _this.openMergeShop.newItem.position.set(-buttonSize / 2);
+                _this.openMergeShop.newItem.visible = false;
+                _this.openMergeShop.addChild(_this.openMergeShop.newItem);
+                _this.shopButtonsList.addElement(_this.openMergeShop);
+                _this.openMergeShop.onClick.add(function () {
+                        _this.openPopUp(_this.activeMergeSystem.shop);
+                });
 
-            if (!window.isPortrait) {
+                _this.shopButtonsList.updateVerticalList();
 
-                this.statsList.scale.set(1.5);
-                this.shopButtonsList.x = topRight.x - this.shopButtonsList.width / 2 - 20;
-                this.shopButtonsList.y = _config2.default.height - this.shopButtonsList.height - 20;
-                this.shopButtonsList.scale.set(1.5);
+                window.TIME_SCALE = 1;
 
-                this.systemButtonList.scale.set(1.5);
-                this.systemButtonList.x = topRight.x - this.systemButtonList.width / 2 - 20;
-                this.systemButtonList.y = 35 * this.systemButtonList.scale.y + 20;
+                _this.standardPopUp = new _StandardPop2.default('any', _this.screenManager);
+                _this.popUpLayer.addChild(_this.standardPopUp);
 
-                this.levelMeter.x = this.statsList.x + this.statsList.width + 20;
-                this.levelMeter.y = 20;
-            } else {
+                // this.bonusPopUp = new BonusConfirmation('bonus', this.screenManager)
+                // this.popUpLayer.addChild(this.bonusPopUp)
 
-                this.levelMeter.x = this.gridWrapper.x - this.levelMeter.width / 2 + this.gridWrapper.width / 2;
-                this.levelMeter.y = 10; //this.gridWrapper.y - this.levelMeter.height
 
-                this.statsList.scale.set(1.25);
+                _this.uiPanels.push(_this.standardPopUp);
 
-                this.systemButtonList.scale.set(1.1);
-                this.systemButtonList.x = topRight.x - this.systemButtonList.width / 2 - 20;
-                this.systemButtonList.y = 35 * this.systemButtonList.scale.y + 20;
+                _this.sumStart = 0;
+                //this.savedResources = COOKIE_MANAGER.getResources('monster');
 
-                this.shopButtonsList.x = topRight.x - this.shopButtonsList.width * 0.5 - 20;
-                this.shopButtonsList.y = this.systemButtonList.y + this.systemButtonList.height; // this.shopButtonsList.height * 1.25
-                this.shopButtonsList.scale.set(1);
-            }
 
-            this.shopsLabel.x = this.shopButtonsList.x;
-            this.shopsLabel.y = this.shopButtonsList.y;
-            this.uiPanels.forEach(function (element) {
-                element.x = _config2.default.width / 2;
-                element.y = _config2.default.height / 2;
-            });
+                _this.shopButtonsList.updateVerticalList();
 
-            this.systemsList.forEach(function (element) {
-                element.resize(resolution, innerResolution, _this10.resourcesWrapperRight);
-            });
-        }
-    }, {
-        key: 'transitionOut',
-        value: function transitionOut(nextScreen) {
-            this.removeEvents();
-            this.nextScreen = nextScreen;
-            setTimeout(function () {
-                this.endTransitionOut();
-            }.bind(this), 0);
-        }
-    }, {
-        key: 'transitionIn',
-        value: function transitionIn() {
-            (0, _get3.default)(MergeScreen.prototype.__proto__ || (0, _getPrototypeOf2.default)(MergeScreen.prototype), 'transitionIn', this).call(this);
-        }
-    }, {
-        key: 'destroy',
-        value: function destroy() {}
-    }, {
-        key: 'removeEvents',
-        value: function removeEvents() {}
-    }, {
-        key: 'addEvents',
-        value: function addEvents() {
-            this.removeEvents();
-        }
-    }, {
-        key: 'addHelpers',
-        value: function addHelpers() {
-            var _this11 = this;
+                var now = Date.now() / 1000 | 0;
+                var diff = 0; //now - this.savedEconomy.lastChanged
 
-            this.helperButtonList = new _UIList2.default();
-            this.helperButtonList.h = 350;
-            this.helperButtonList.w = 60;
-            this.speedUpToggle = new _UIButton2.default(0x002299, 'fast_forward_icon');
-            this.helperButtonList.addElement(this.speedUpToggle);
-            this.speedUpToggle.onClick.add(function () {
-                if (window.TIME_SCALE > 1) {
-                    window.TIME_SCALE = 1;
-                } else {
-                    window.TIME_SCALE = 30;
+                if (_this.tutorialStep > 1 && diff > 60 && _this.sumStart > 10) {
+                        var params = {
+                                label: window.localizationManager.getLabel('offline-money'),
+                                value1: _utils2.default.formatPointsLabel(_this.sumStart),
+                                value2: _utils2.default.formatPointsLabel(_this.sumStart * 2),
+                                onConfirm: _this.collectStartAmountDouble.bind(_this),
+                                onCancel: _this.collectStartAmount.bind(_this)
+                        };
+                        _this.standardPopUpShow(params);
                 }
 
-                _gsap2.default.globalTimeScale(window.TIME_SCALE);
-            });
+                _this.forcePauseSystemsTimer = 0.05;
 
-            this.clearData = new _UIButton2.default(0x002299, 'icon_reset');
-            this.helperButtonList.addElement(this.clearData);
-            this.clearData.onClick.add(function () {
-                COOKIE_MANAGER.wipeData();
-            });
+                _this.resetWhiteShape = new PIXI.Graphics().beginFill(0xFFFFFF).drawRect(-_config2.default.width * 4, -_config2.default.height * 4, _config2.default.width * 8, _config2.default.height * 8);
+                _this.addChild(_this.resetWhiteShape);
+                _this.resetWhiteShape.visible = false;
+                //this.mergeItemsShop.show()
 
-            this.addCash = new _UIButton2.default(0x002299, 'coin');
-            this.helperButtonList.addElement(this.addCash);
-            this.addCash.onClick.add(function () {
-                window.gameEconomy.addResources(8000000000000);
-            });
+                //this.tutorialStep = window.COOKIE_MANAGER.getStats().tutorialStep;
 
-            this.addRandomShip = new _UIButton2.default(0x002299, 'vampire');
-            this.helperButtonList.addElement(this.addRandomShip);
-            this.addRandomShip.onClick.add(function () {
-                _this11.activeMergeSystem.addShipBasedOnMax();
-            });
 
-            this.autoMergeToggle = new _UIButton2.default(0x002299, 'hand');
-            this.helperButtonList.addElement(this.autoMergeToggle);
-            this.autoMergeToggle.onClick.add(function () {
-                if (window.gameModifyers.modifyersData.autoMerge >= 2) {
-                    window.gameModifyers.modifyersData.autoMerge = 1;
-                } else {
-                    window.gameModifyers.modifyersData.autoMerge = 2;
-                    //window.gameModifyers.updateModifyer('autoMerge')
-                }
-            });
+                // this.gameTutorial = new GameTutorial(this)
+                // if (this.tutorialStep == 0) {
+                //     if (window.gameEconomy.currentResources > 10) {
+                //         COOKIE_MANAGER.endTutorial(2);
+                //     } else {
 
-            this.helperButtonList.updateVerticalList();
-            this.container.addChild(this.helperButtonList);
+                //         this.startTutorial();
+                //         this.addChild(this.gameTutorial);
+                //     }
+                // }
 
-            this.helperButtonList.visible = false;
-            this.helperButtonList.scale.set(0.85);
+                // this.mergeSystemsList.push(this.mergeSystemFairies)
+
+                _this.refreshSystemVisuals();
+
+                _this.popUpLayer.visible = true;
+
+                COOKIE_MANAGER.initBoard(_this.activeMergeSystem.systemID);
+
+                return _this;
         }
-    }]);
-    return MergeScreen;
+
+        (0, _createClass3.default)(MergeScreen, [{
+                key: 'registerSystem',
+                value: function registerSystem(containers, baseData, baseMergeData, slug) {
+                        var _this2 = this;
+
+                        var visible = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
+                        var interactiveBackground = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : null;
+
+
+                        this.addChildAt(interactiveBackground, 0);
+                        interactiveBackground.visible = visible;
+                        COOKIE_MANAGER.sortCookie(slug);
+                        var rawMergeDataList = [];
+                        for (var index = 0; index < baseMergeData.mergeEntities.list.length; index++) {
+                                var mergeData = new _MergerData2.default(baseMergeData.mergeEntities.list[index], index);
+                                mergeData.type = baseMergeData.mergeEntities.list[index].type;
+                                rawMergeDataList.push(mergeData);
+                                this.allMergeData.push(mergeData);
+                        }
+
+                        var mergeSystem = new _MergeSystem2.default(containers, baseData, rawMergeDataList, slug);
+                        this.addSystem(mergeSystem);
+                        mergeSystem.enemySystem = this.enemiesSystem;
+
+                        mergeSystem.onParticles.add(this.addParticles.bind(this));
+                        mergeSystem.onDealDamage.add(this.addDamageParticles.bind(this));
+                        mergeSystem.onPopLabel.add(this.popLabel.bind(this));
+                        mergeSystem.onGetResources.add(this.addResourceParticles.bind(this));
+                        mergeSystem.onNextLevel.add(this.onNextLevel.bind(this));
+                        mergeSystem.onBoardLevelUpdate.add(this.onMergeSystemUpdate.bind(this));
+                        mergeSystem.specialTileReveal.add(this.onSpecialTileReveal.bind(this));
+
+                        var mergeItemsShop = new _MergeItemsShop2.default([mergeSystem]);
+                        this.uiLayer.addChild(mergeItemsShop);
+                        mergeItemsShop.addItems(rawMergeDataList);
+                        mergeItemsShop.hide();
+                        mergeItemsShop.onAddEntity.add(function (entity) {
+                                mergeSystem.buyEntity(entity);
+                        });
+                        mergeItemsShop.onClaimGift.add(function (entity) {
+                                mergeSystem.addSpecialPiece();
+                                COOKIE_MANAGER.claimGift(slug);
+                        });
+                        mergeItemsShop.systemID = slug;
+                        mergeSystem.updateAvailableSlots.add(function (availables) {
+                                mergeItemsShop.updateLocks(availables);
+                                //POPUP
+                        });
+
+                        setTimeout(function () {
+                                mergeItemsShop.updateLocks(mergeSystem.totalAvailable());
+                        }, 120);
+                        mergeSystem.updateMaxLevel.add(function (max, skipPopup) {
+                                _this2.activeMergeSystem.interactiveBackground.updateMax(max, true);
+                                if (max == 0 || skipPopup) {
+                                        _this2.activeMergeSystem.interactiveBackground.showAnimation(max);
+                                        return;
+                                }
+                                if (_this2.activeMergeSystem.dataTiles.length > max) {
+                                        _this2.newPiecePopup(max);
+                                }
+                                //POPUP
+                        });
+                        mergeItemsShop.setGiftIcon(baseData.visuals.gift[0]);
+                        mergeSystem.shop = mergeItemsShop;
+                        mergeSystem.interactiveBackground = interactiveBackground;
+                        this.uiPanels.push(mergeItemsShop);
+
+                        mergeSystem.systemArrayID = this.mergeSystemsList.length;
+                        mergeSystem.visible = visible;
+
+                        var buttonSize = 70;
+
+                        var toggleSystems = new _UIButton2.default(0x002299, rawMergeDataList[0].rawData.imageSrc, 0xFFFFFF, buttonSize, buttonSize, _config2.default.assets.button.primarySquare);
+                        toggleSystems.updateIconScale(0.9);
+                        toggleSystems.systemArrayID = this.mergeSystemsList.length;
+                        toggleSystems.onClick.add(function () {
+                                _this2.showSystem(toggleSystems.systemArrayID);
+                        });
+
+                        mergeSystem.toggle = toggleSystems;
+
+                        this.mergeSystemsList.push(mergeSystem);
+                        this.systemButtonList.addElement(toggleSystems);
+                }
+        }, {
+                key: 'showSystem',
+                value: function showSystem(id) {
+                        this.mergeSystemsList.forEach(function (element) {
+                                element.visible = false;
+                                element.interactiveBackground.visible = false;
+                        });
+
+                        this.activeMergeSystemID = id;
+                        this.activeMergeSystemID %= this.mergeSystemsList.length;
+
+                        this.mergeSystemsList[this.activeMergeSystemID].visible = true;
+                        this.mergeSystemsList[this.activeMergeSystemID].interactiveBackground.visible = true;
+                        this.activeMergeSystem = this.mergeSystemsList[this.activeMergeSystemID];
+
+                        this.refreshSystemVisuals();
+                }
+        }, {
+                key: 'startGamePopUp',
+                value: function startGamePopUp() {
+                        var _this3 = this;
+
+                        var target = this.activeMergeSystem.rps * 60;
+                        var target2 = this.activeMergeSystem.rps * 600;
+                        this.openPopUp(this.standardPopUp, {
+                                value1: _utils2.default.formatPointsLabel(target),
+                                value2: _utils2.default.formatPointsLabel(target2),
+                                title: 'Free Coins',
+                                confirmLabel: 'Collect',
+                                cancelLabel: 'Cancel',
+                                video: true,
+                                onConfirm: function onConfirm() {
+                                        window.DO_REWARD(function () {
+                                                window.gameEconomy.addResources(target2, _this3.activeMergeSystem.systemID);
+                                                _this3.moneyFromCenter();
+                                        });
+                                },
+                                onCancel: function onCancel() {
+                                        window.gameEconomy.addResources(target, _this3.activeMergeSystem.systemID);
+                                        _this3.moneyFromCenter();
+                                }
+                        });
+                }
+        }, {
+                key: 'levelUpPopUp',
+                value: function levelUpPopUp(data) {
+                        var _this4 = this;
+
+                        var target = this.activeMergeSystem.rps * 60;
+                        var target2 = this.activeMergeSystem.rps * 600;
+                        this.openPopUp(this.standardPopUp, {
+                                value1: '-',
+                                value2: _utils2.default.formatPointsLabel(target2),
+                                title: 'Level ' + data.currentLevel,
+                                confirmLabel: 'Open Shop',
+                                cancelLabel: 'OK',
+                                mainLabel2: this.activeMergeSystem.dataTiles[data.currentLevel - 1].rawData.displayName + '\nWas unlocked on the shop',
+                                video: false,
+                                popUpType: _config2.default.assets.popup.extra,
+                                hideAll: true,
+                                mainIcon: this.activeMergeSystem.dataTiles[data.currentLevel - 1].rawData.imageSrc,
+                                onConfirm: function onConfirm() {
+
+                                        _this4.openPopUp(_this4.activeMergeSystem.shop);
+                                },
+                                onCancel: function onCancel() {}
+                        });
+                }
+        }, {
+                key: 'openHourCoinPopUp',
+                value: function openHourCoinPopUp() {
+                        var _this5 = this;
+
+                        var target = this.activeMergeSystem.rps * 300;
+                        this.openPopUp(this.standardPopUp, {
+                                value1: 0,
+                                value2: _utils2.default.formatPointsLabel(target),
+                                title: 'Free Coins',
+                                confirmLabel: 'Collect',
+                                cancelLabel: 'Cancel',
+                                mainLabel2: 'Watch a video earn 10 minutes\nworth of money',
+                                video: true,
+                                popUpType: _config2.default.assets.popup.secondary,
+                                onConfirm: function onConfirm() {
+                                        window.DO_REWARD(function () {
+                                                window.gameEconomy.addResources(target, _this5.activeMergeSystem.systemID);
+                                                _this5.moneyFromCenter();
+                                        });
+                                },
+                                onCancel: function onCancel() {}
+                        });
+                }
+        }, {
+                key: 'newPiecePopup',
+                value: function newPiecePopup(pieceId) {
+                        var _this6 = this;
+
+                        var imagesrc = this.activeMergeSystem.dataTiles[pieceId].rawData.imageSrc;
+                        var name = this.activeMergeSystem.dataTiles[pieceId].rawData.displayName;
+                        var castlePiece = this.activeMergeSystem.interactiveBackground.getPiece(pieceId).src;
+
+                        var target = this.activeMergeSystem.rps * 60;
+                        target = Math.max(target, 120);
+                        this.openPopUp(this.standardPopUp, {
+                                value1: name,
+                                value2: '',
+                                value1Icon: imagesrc,
+                                value2Icon: castlePiece,
+                                title: 'New Character',
+                                confirmLabel: 'Gain ' + _utils2.default.formatPointsLabel(target),
+                                cancelLabel: 'Ok',
+                                mainIcon: 'results_arrow_right',
+                                mainLabel2: 'You unlock another piece of the castle',
+                                mainLabel: '',
+                                mainIconHeight: 20,
+                                value2IconHeight: 150,
+                                popUpType: _config2.default.assets.popup.secondary,
+                                video: true,
+                                onConfirm: function onConfirm() {
+                                        window.DO_REWARD(function () {
+                                                window.gameEconomy.addResources(target, _this6.activeMergeSystem.systemID);
+                                                _this6.moneyFromCenter();
+
+                                                _this6.activeMergeSystem.interactiveBackground.showAnimation(pieceId);
+                                        });
+                                },
+                                onCancel: function onCancel() {
+
+                                        _this6.activeMergeSystem.interactiveBackground.showAnimation(pieceId);
+                                }
+                        });
+                }
+        }, {
+                key: 'upgradePiecePopUp',
+                value: function upgradePiecePopUp(slot, level) {
+                        var _this7 = this;
+
+                        var piece1 = this.activeMergeSystem.dataTiles[level];
+                        var piece2 = this.activeMergeSystem.dataTiles[level + 1];
+
+                        this.openPopUp(this.standardPopUp, {
+                                value1: piece1.rawData.displayName,
+                                value2: piece2.rawData.displayName,
+                                value1Icon: piece1.rawData.imageSrc,
+                                value2Icon: piece2.rawData.imageSrc,
+                                title: 'Upgrade',
+                                confirmLabel: 'Upgrade',
+                                cancelLabel: 'Cancel',
+                                mainLabel2: 'Watch a video to upgrade this slot',
+                                popUpType: _config2.default.assets.popup.secondary,
+                                mainIcon: 'results_arrow_right',
+                                mainIconHeight: 20,
+                                video: true,
+                                onConfirm: function onConfirm() {
+                                        _this7.activeMergeSystem.addDataTo(slot, level + 1);
+                                },
+                                onCancel: function onCancel() {
+                                        _this7.activeMergeSystem.addDataTo(slot, level);
+                                }
+                        });
+                }
+        }, {
+                key: 'refreshSystemVisuals',
+                value: function refreshSystemVisuals() {
+                        var _this8 = this;
+
+                        if (!this.activeMergeSystem.isLoaded) {
+                                this.activeMergeSystem.loadData();
+                        }
+
+                        window.gameEconomy.updateBoard(this.activeMergeSystem.systemID);
+                        this.resourcesTexture.texture = PIXI.Texture.fromImage(this.activeMergeSystem.baseData.visuals.coin);
+                        this.resourcesTexture.scale.set(40 / this.resourcesTexture.height * 0.5 * this.resourcesTexture.scale.y);
+
+                        this.shardsTexture.texture = PIXI.Texture.fromImage(this.activeMergeSystem.baseData.visuals.coin);
+                        this.shardsTexture.scale.set(40 / this.shardsTexture.height * 0.5 * this.shardsTexture.scale.y);
+
+                        this.openMergeShop.icon.texture = PIXI.Texture.fromImage(this.activeMergeSystem.dataTiles[0].rawData.imageSrc);
+                        this.openMergeShop.updateIconScale(0.8);
+
+                        this.extraMoneyBonus.icon.texture = PIXI.Texture.fromImage(this.activeMergeSystem.baseData.visuals.coin);
+
+                        this.resize(this.latestInner, this.latestInner);
+                        setTimeout(function () {
+                                _this8.activeMergeSystem.activeSystem();
+
+                                _this8.resize(_this8.latestInner, _this8.latestInner);
+                        }, 1);
+                }
+        }, {
+                key: 'startTutorial',
+                value: function startTutorial() {
+                        setTimeout(function () {}, 51);
+                        this.gameTutorial.start();
+                }
+        }, {
+                key: 'endTutorial',
+                value: function endTutorial() {}
+        }, {
+                key: 'onConfirmBonus',
+                value: function onConfirmBonus(target) {
+                        this.openPopUp(this.bonusPopUp, {
+                                texture: target.mainButton.icon.texture,
+                                description: target.fullDescription,
+                                shortDescription: target.shortDescription,
+                                onConfirm: function onConfirm() {
+                                        target.confirmBonus();
+                                }
+                        });
+                }
+        }, {
+                key: 'moneyFromCenter',
+                value: function moneyFromCenter() {
+                        var toLocal = this.particleSystem.toLocal({ x: _config2.default.width / 2, y: _config2.default.height / 2 });
+                        var customData = {};
+                        customData.texture = this.activeMergeSystem.baseData.visuals.coin;
+                        customData.scale = 0.035;
+                        customData.gravity = 1000;
+                        customData.alphaDecress = 0;
+                        customData.forceX = Math.random() * 1200 - 600;
+                        customData.forceY = 400 * Math.random() + 300;
+                        customData.ignoreMatchRotation = true;
+
+                        var coinPosition = this.shardsTexture.getGlobalPosition();
+
+                        var toLocalTarget = this.particleSystem.toLocal(coinPosition);
+
+                        customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.25 + Math.random() * 0.5 };
+                        this.particleSystem.show(toLocal, 8, customData);
+                }
+        }, {
+                key: 'onPrizeCollected',
+                value: function onPrizeCollected(prizes) {
+                        var _this9 = this;
+
+                        if (!prizes) return;
+                        if (prizes.money > 0) {
+                                window.gameEconomy.addResources(prizes.money);
+                                var toLocal = this.particleSystem.toLocal({ x: _config2.default.width / 2, y: _config2.default.height / 2 });
+                                var customData = {};
+                                customData.texture = 'coin';
+                                customData.scale = 0.02;
+                                customData.gravity = 500;
+                                customData.alphaDecress = 0;
+                                customData.ignoreMatchRotation = true;
+                                var coinPosition = this.coinTexture.getGlobalPosition();
+
+                                var toLocalTarget = this.particleSystem.toLocal(coinPosition);
+
+                                customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.2 + Math.random() * 0.75 };
+                                this.particleSystem.show(toLocal, 3, customData);
+                        }
+                        if (prizes.shards > 0) {
+                                window.gameModifyers.addShards(prizes.shards);
+                                setTimeout(function () {
+                                        var toLocal = _this9.particleSystem.toLocal({ x: _config2.default.width / 2, y: _config2.default.height / 2 });
+                                        var customData = {};
+                                        customData.texture = 'shards';
+                                        customData.scale = 0.025;
+                                        customData.gravity = 200;
+                                        customData.alphaDecress = 0;
+                                        customData.ignoreMatchRotation = true;
+
+                                        var coinPosition = _this9.shardsTexture.getGlobalPosition();
+
+                                        var toLocalTarget = _this9.particleSystem.toLocal(coinPosition);
+
+                                        customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.2 + Math.random() * 0.75 };
+                                        _this9.particleSystem.show(toLocal, 3, customData);
+                                }, 50);
+                        }
+                        if (prizes.ship > 0) {
+                                this.activeMergeSystem.addShipBasedOnMax(prizes.ship);
+                        }
+                }
+        }, {
+                key: 'addSystem',
+                value: function addSystem(system) {
+                        if (!this.systemsList.includes(system)) {
+                                this.systemsList.push(system);
+                        }
+                }
+        }, {
+                key: 'collectStartAmountDouble',
+                value: function collectStartAmountDouble() {
+                        window.DO_REWARD(function () {
+                                //this.resourceSystem.collectCustomStartAmount(this.sumStart * 2)
+                        });
+                }
+        }, {
+                key: 'collectStartAmount',
+                value: function collectStartAmount() {
+                        //this.resourceSystem.collectCustomStartAmount(this.sumStart)
+                }
+        }, {
+                key: 'standardPopUpShow',
+                value: function standardPopUpShow(params) {
+                        this.openPopUp(this.standardPopUp, params);
+                }
+        }, {
+                key: 'openPopUp',
+                value: function openPopUp(target, params) {
+
+                        this.uiPanels.forEach(function (element) {
+                                if (element.visible) {
+                                        //element.hide();
+                                }
+                        });
+
+                        this.currentOpenPopUp = target;
+                        target.show(params, this.activeMergeSystem.baseData.visuals);
+                }
+        }, {
+                key: 'popLabel',
+                value: function popLabel(targetPosition, label) {
+                        var toLocal = this.particleSystem.toLocal(targetPosition);
+
+                        this.particleSystem.popLabel(toLocal, "+" + label, 0, 1, 1, LABELS.LABEL1, Back.easeOut, 0.5, 1);
+                }
+        }, {
+                key: 'popLabelDamage',
+                value: function popLabelDamage(targetPosition, label) {
+                        var toLocal = this.particleSystem.toLocal(targetPosition);
+
+                        this.particleSystem.popLabel(toLocal, "+" + label, 0, 1, 1.5, LABELS.LABEL_DAMAGE, Back.easeOut, 0.5, 1);
+                }
+        }, {
+                key: 'addParticles',
+                value: function addParticles(targetPosition, customData, quant) {
+                        var toLocal = this.particleSystem.toLocal(targetPosition);
+                        this.particleSystem.show(toLocal, quant, customData);
+                }
+        }, {
+                key: 'addDamageParticles',
+                value: function addDamageParticles(targetPosition, customData, label, quant) {
+                        var toLocal = this.particleSystem.toLocal(targetPosition);
+                        this.particleSystem.show(toLocal, quant, customData);
+                        //this.particleSystem.popLabel(targetPosition, "+" + label, 0, 1, 1, LABELS.LABEL1)
+                }
+        }, {
+                key: 'onNextLevel',
+                value: function onNextLevel(data) {
+                        this.levelUpPopUp(data);
+                }
+        }, {
+                key: 'onSpecialTileReveal',
+                value: function onSpecialTileReveal(slot, level) {
+
+                        this.upgradePiecePopUp(slot, level);
+                }
+        }, {
+                key: 'onMergeSystemUpdate',
+                value: function onMergeSystemUpdate(data) {
+                        this.levelMeter.updateData(data);
+
+                        for (var index = 1; index < this.systemsList.length; index++) {
+                                // if(!this.systemButtonList[index]) break
+                                var element = this.systemsList[index];
+                                var prev = this.systemsList[index - 1];
+
+                                var isInit = COOKIE_MANAGER.isInitialized(this.systemsList[index].systemID);
+                                if (!prev.boardProgression || prev.boardProgression.currentLevel < 2) {
+
+                                        element.toggle.disable();
+                                } else {
+                                        if (!isInit) {
+                                                console.log(this.systemsList[index].toggle);
+                                                COOKIE_MANAGER.initBoard(this.systemsList[index].systemID);
+                                        }
+                                        element.toggle.enable();
+                                }
+                        }
+                }
+        }, {
+                key: 'addResourceParticles',
+                value: function addResourceParticles(targetPosition, customData, totalResources, quantParticles) {
+                        var showParticles = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
+
+                        window.gameEconomy.addResources(totalResources, this.activeMergeSystem.systemID);
+
+                        if (totalResources < 1000) {
+                                this.popLabelDamage(targetPosition, totalResources);
+                        } else {
+                                this.popLabelDamage(targetPosition, _utils2.default.formatPointsLabel(totalResources));
+                        }
+                        if (quantParticles <= 0) {
+                                return;
+                        }
+                        var toLocal = this.particleSystem.toLocal(targetPosition);
+                        if (!showParticles) {
+                                quantParticles = 1;
+                        }
+
+                        for (var index = 0; index < quantParticles; index++) {
+                                //customData.target = { x: coinPosition.x - frontLayer.x, y: coinPosition.y - frontLayer.y, timer: 0.2 + Math.random() * 0.75 }
+                                //customData.target = { x: toLocal.x, y: toLocal.y - 50, timer: 0 }
+                                customData.gravity = 0;
+                                customData.alphaDecress = 0.7;
+                                customData.ignoreMatchRotation = true;
+                                this.particleSystem.show(toLocal, 1, customData);
+                        }
+
+                        return;
+                        var coinPosition = this.resourcesTexture.getGlobalPosition();
+                        var toLocalCoin = this.particleSystem.toLocal(coinPosition);
+                        for (var _index = 0; _index < 1; _index++) {
+                                customData.target = { x: toLocalCoin.x, y: toLocalCoin.y, timer: 0.2 + Math.random() * 0.75 };
+                                customData.scale = 0.01;
+                                customData.forceX = Math.random() * 1000 - 500;
+                                customData.forceY = 500;
+                                customData.gravity = 1200;
+                                customData.alphaDecress = 0.1;
+                                customData.ignoreMatchRotation = true;
+                                this.particleSystem.show(toLocal, 1, customData);
+                        }
+                }
+        }, {
+                key: 'onMouseMove',
+                value: function onMouseMove(e) {
+
+                        if (this.currentOpenPopUp && this.currentOpenPopUp.visible) {
+                                return;
+                        }
+
+                        this.systemsList.forEach(function (element) {
+                                element.updateMouseSystems(e);
+                        });
+                        this.mousePosition = e.data.global;
+                        if (!this.draggingEntity) {
+                                return;
+                        }
+                        if (this.entityDragSprite.visible) {
+                                this.entityDragSprite.x = this.mousePosition.x;
+                                this.entityDragSprite.y = this.mousePosition.y;
+                        }
+                }
+        }, {
+                key: 'onAdded',
+                value: function onAdded() {}
+        }, {
+                key: 'build',
+                value: function build(param) {
+                        (0, _get3.default)(MergeScreen.prototype.__proto__ || (0, _getPrototypeOf2.default)(MergeScreen.prototype), 'build', this).call(this);
+                        this.addEvents();
+                }
+        }, {
+                key: 'update',
+                value: function update(delta) {
+                        delta *= window.TIME_SCALE * window.gameModifyers.bonusData.gameSpeed;
+
+                        //this.gameTutorial.update(delta);
+
+                        if (this.forcePauseSystemsTimer > 0) {
+                                this.forcePauseSystemsTimer -= delta;
+                        } else {
+                                this.systemsList.forEach(function (element) {
+                                        element.updateSystems(delta);
+                                });
+                                this.particleSystem.update(delta);
+                        }
+
+                        this.uiPanels.forEach(function (element) {
+                                if (element.update) {
+                                        element.update(delta);
+                                }
+                        });
+
+                        this.totalCoins.text = _utils2.default.formatPointsLabel(window.gameEconomy.currentResources);
+                        _utils2.default.centerObject(this.totalCoins, this.totalCoinsContainer);
+                        this.totalCoins.x = 30;
+
+                        this.coisPerSecond.text = _utils2.default.formatPointsLabel(this.activeMergeSystem.rps) + '/s';
+                        _utils2.default.centerObject(this.coisPerSecond, this.coinsPerSecondCounter);
+                        this.coisPerSecond.x = 30;
+
+                        this.timestamp = Date.now() / 1000 | 0;
+
+                        this.activeMergeSystem.interactiveBackground.update(delta);
+                        this.activeMergeSystem.shop.update(delta);
+                }
+        }, {
+                key: 'resize',
+                value: function resize(resolution, innerResolution) {
+                        var _this10 = this;
+
+                        if (!innerResolution || !innerResolution.height) return;
+
+                        this.latestInner = innerResolution;
+                        if (!resolution || !resolution.width || !resolution.height || !innerResolution) {
+                                //return;
+                        }
+
+                        var newRes = { width: resolution.width * this.screenManager.scale.x };
+
+                        if (this.activeMergeSystem.interactiveBackground) {
+
+                                this.activeMergeSystem.interactiveBackground.resize(resolution, innerResolution);
+                                this.activeMergeSystem.interactiveBackground.x = _config2.default.width / 2;
+                                this.activeMergeSystem.interactiveBackground.y = _config2.default.height / 2;
+                        }
+
+                        var toGlobal = this.toLocal({ x: 0, y: innerResolution.height });
+
+                        var topRight = game.getBorder('topRight', this);
+                        var toGlobalBack = this.toLocal({ x: 0, y: innerResolution.height });
+
+                        if (!window.isPortrait) {
+
+                                this.gridWrapper.x = toGlobalBack.x + 20;
+                                this.gridWrapper.y = _config2.default.height - (this.activeMergeSystem.interactiveBackground.puzzleBackground.pivot.y + 25) * this.activeMergeSystem.interactiveBackground.puzzleBackground.scale.y; //this.puzzleBackground.y - this.puzzleBackground.pivot.y
+
+                                this.gridWrapper.width = this.activeMergeSystem.interactiveBackground.puzzleBackground.usableArea.width * this.activeMergeSystem.interactiveBackground.puzzleBackground.scale.x;
+                                this.gridWrapper.height = this.activeMergeSystem.interactiveBackground.puzzleBackground.usableArea.height * this.activeMergeSystem.interactiveBackground.puzzleBackground.scale.y;
+
+                                this.shopButtonsList.x = this.shopButtonsList.width;
+                                this.shopButtonsList.y = 10;
+
+                                this.shopButtonsList.scale.set(1.8);
+                                this.levelMeter.scale.set(1.3);
+                        } else {
+
+                                this.mergeSystemContainer.scale.set(1);
+
+                                this.levelMeter.scale.set(0.7);
+                                this.gridWrapper.width = _config2.default.width * this.areaConfig.gameArea.w;
+                                this.gridWrapper.height = _config2.default.height * this.areaConfig.gameArea.h;
+                                this.gridWrapper.x = 0;
+                                this.gridWrapper.y = this.activeMergeSystem.interactiveBackground.puzzleBackground.usableArea.y - this.activeMergeSystem.interactiveBackground.puzzleBackground.pivot.y + this.activeMergeSystem.interactiveBackground.puzzleBackground.y + this.activeMergeSystem.interactiveBackground.y - 20;
+                        }
+
+                        this.systemButtonList.w = 80;
+                        this.systemButtonList.h = 70 * this.systemsList.length + this.systemsList.length * 2;
+                        this.systemButtonList.updateVerticalList();
+
+                        this.statsList.y = 10;
+                        this.statsList.x = toGlobalBack.x + 10;
+
+                        this.bonusesList.y = this.statsList.y + this.statsList.height;
+                        this.bonusesList.x = this.statsList.x + +this.bonusesList.w * 0.5;
+
+                        this.helperButtonList.y = 80;
+                        this.helperButtonList.x = toGlobalBack.x + 180;
+
+                        if (!window.isPortrait) {
+
+                                this.statsList.scale.set(1.5);
+                                this.shopButtonsList.x = topRight.x - this.shopButtonsList.width / 2 - 20;
+                                this.shopButtonsList.y = _config2.default.height - this.shopButtonsList.height - 20;
+                                this.shopButtonsList.scale.set(1.5);
+
+                                this.systemButtonList.scale.set(1.5);
+                                this.systemButtonList.x = topRight.x - this.systemButtonList.width / 2 - 20;
+                                this.systemButtonList.y = 35 * this.systemButtonList.scale.y + 20;
+
+                                this.levelMeter.x = this.statsList.x + this.statsList.width + 20;
+                                this.levelMeter.y = 20;
+                        } else {
+
+                                this.levelMeter.x = this.gridWrapper.x - this.levelMeter.width / 2 + this.gridWrapper.width / 2;
+                                this.levelMeter.y = 10; //this.gridWrapper.y - this.levelMeter.height
+
+                                this.statsList.scale.set(1.25);
+
+                                this.systemButtonList.scale.set(1.1);
+                                this.systemButtonList.x = topRight.x - this.systemButtonList.width / 2 - 20;
+                                this.systemButtonList.y = 35 * this.systemButtonList.scale.y + 20;
+
+                                this.shopButtonsList.x = topRight.x - this.shopButtonsList.width * 0.5 - 20;
+                                this.shopButtonsList.y = this.systemButtonList.y + this.systemButtonList.height; // this.shopButtonsList.height * 1.25
+                                this.shopButtonsList.scale.set(1);
+                        }
+
+                        this.shopsLabel.x = this.shopButtonsList.x;
+                        this.shopsLabel.y = this.shopButtonsList.y;
+                        this.uiPanels.forEach(function (element) {
+                                element.x = _config2.default.width / 2;
+                                element.y = _config2.default.height / 2;
+                        });
+
+                        this.systemsList.forEach(function (element) {
+                                element.resize(resolution, innerResolution, _this10.resourcesWrapperRight);
+                        });
+                }
+        }, {
+                key: 'transitionOut',
+                value: function transitionOut(nextScreen) {
+                        this.removeEvents();
+                        this.nextScreen = nextScreen;
+                        setTimeout(function () {
+                                this.endTransitionOut();
+                        }.bind(this), 0);
+                }
+        }, {
+                key: 'transitionIn',
+                value: function transitionIn() {
+                        (0, _get3.default)(MergeScreen.prototype.__proto__ || (0, _getPrototypeOf2.default)(MergeScreen.prototype), 'transitionIn', this).call(this);
+                }
+        }, {
+                key: 'destroy',
+                value: function destroy() {}
+        }, {
+                key: 'removeEvents',
+                value: function removeEvents() {}
+        }, {
+                key: 'addEvents',
+                value: function addEvents() {
+                        this.removeEvents();
+                }
+        }, {
+                key: 'addHelpers',
+                value: function addHelpers() {
+                        var _this11 = this;
+
+                        this.helperButtonList = new _UIList2.default();
+                        this.helperButtonList.h = 350;
+                        this.helperButtonList.w = 60;
+                        this.speedUpToggle = new _UIButton2.default(0x002299, 'fast_forward_icon');
+                        this.helperButtonList.addElement(this.speedUpToggle);
+                        this.speedUpToggle.onClick.add(function () {
+                                if (window.TIME_SCALE > 1) {
+                                        window.TIME_SCALE = 1;
+                                } else {
+                                        window.TIME_SCALE = 30;
+                                }
+
+                                _gsap2.default.globalTimeScale(window.TIME_SCALE);
+                        });
+
+                        this.clearData = new _UIButton2.default(0x002299, 'icon_reset');
+                        this.helperButtonList.addElement(this.clearData);
+                        this.clearData.onClick.add(function () {
+                                COOKIE_MANAGER.wipeData();
+                        });
+
+                        this.addCash = new _UIButton2.default(0x002299, 'coin');
+                        this.helperButtonList.addElement(this.addCash);
+                        this.addCash.onClick.add(function () {
+                                window.gameEconomy.addResources(8000000000000);
+                        });
+
+                        this.addRandomShip = new _UIButton2.default(0x002299, 'vampire');
+                        this.helperButtonList.addElement(this.addRandomShip);
+                        this.addRandomShip.onClick.add(function () {
+                                _this11.activeMergeSystem.addShipBasedOnMax();
+                        });
+
+                        this.autoMergeToggle = new _UIButton2.default(0x002299, 'hand');
+                        this.helperButtonList.addElement(this.autoMergeToggle);
+                        this.autoMergeToggle.onClick.add(function () {
+                                if (window.gameModifyers.modifyersData.autoMerge >= 2) {
+                                        window.gameModifyers.modifyersData.autoMerge = 1;
+                                } else {
+                                        window.gameModifyers.modifyersData.autoMerge = 2;
+                                        //window.gameModifyers.updateModifyer('autoMerge')
+                                }
+                        });
+
+                        this.helperButtonList.updateVerticalList();
+                        this.container.addChild(this.helperButtonList);
+
+                        this.helperButtonList.visible = false;
+                        this.helperButtonList.scale.set(0.85);
+                }
+        }]);
+        return MergeScreen;
 }(_Screen3.default);
 
 exports.default = MergeScreen;
@@ -64732,9 +64744,22 @@ var MergeSystem = function () {
             this.checkMax();
             this.updateMaxLevel.dispatch(this.highestPiece, true);
 
+            var latest = COOKIE_MANAGER.getEconomy(this.systemID);
+            var timeDiff = Date.now() / 1000 - latest.lastOpen;
+
+            var totalToSpawn = Math.min(Math.floor(timeDiff % 5) - 1, this.totalAvailable());
+
+            console.log('totalToSpawn', totalToSpawn);
+
             setTimeout(function () {
                 _this3.updateAllData();
+                for (var index = 0; index < totalToSpawn; index++) {
+                    _this3.mainGenerator.addEntity(_this3.dataTiles[_this3.calcNormalNextCard()]);
+                    _this3.sortAutoMerge(_this3.mainGenerator);
+                }
             }, 1);
+
+            COOKIE_MANAGER.openSystem(this.systemID);
         }
     }, {
         key: 'checkMax',
@@ -64783,9 +64808,9 @@ var MergeSystem = function () {
                 customData.forceX = 0;
                 customData.forceY = 100;
                 customData.gravity = 0;
-                customData.scale = 0.03;
+                customData.scale = 0.02;
                 customData.alphaDecress = 1;
-                customData.texture = 'plus';
+                customData.texture = 'smallButton';
 
                 var pos = piece.tileSprite.getGlobalPosition();
                 pos.x += Math.random() * 40 - 20;
@@ -65406,6 +65431,7 @@ var MergeSystem = function () {
                         slot.removeEntity();
                         slot.addEntity(copyData);
                         COOKIE_MANAGER.addMergePiece(copyData, slot.id.i, slot.id.j, this.systemID, 0);
+                        this.currentDragSlot = null;
                     } else {
                         //doesnt do anything coz is coming from the generator
                         //currentDrag.addEntity(copyDataTargetSlot);   
@@ -65418,6 +65444,7 @@ var MergeSystem = function () {
                 slot.addEntity(copyData);
                 COOKIE_MANAGER.addMergePiece(copyData, slot.id.i, slot.id.j, this.systemID, 0);
                 this.onEntityAdd.dispatch();
+                this.currentDragSlot = null;
             }
 
             if (update) {
@@ -67231,7 +67258,7 @@ var StandardPop = function (_PIXI$Container) {
                 }
 
                 if (param.value2IconHeight) {
-                    var scl = Math.min(param.value2IconHeight / this.coin2.height, param.value2IconHeight / this.coin2.width);
+                    var scl = Math.min((param.value2IconHeight + 20) / this.coin2.height, param.value2IconHeight / this.coin2.width);
                     this.coin2.scale.set(scl);
                     this.coin2.y = this.coin1.y + 15;
                 } else {

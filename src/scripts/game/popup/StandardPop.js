@@ -266,7 +266,7 @@ export default class StandardPop extends PIXI.Container {
             }
 
             if(param.value2IconHeight){
-                let scl = Math.min(param.value2IconHeight / this.coin2.height, param.value2IconHeight / this.coin2.width)
+                let scl = Math.min((param.value2IconHeight + 20) / this.coin2.height, param.value2IconHeight / this.coin2.width)
                 this.coin2.scale.set(scl)
                 this.coin2.y = this.coin1.y + 15
             }else{

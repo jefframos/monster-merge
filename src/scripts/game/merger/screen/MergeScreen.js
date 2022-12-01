@@ -192,7 +192,7 @@ export default class MergeScreen extends Screen {
         this.coinsPerSecondCounter.addChild(this.coisPerSecond)
         this.statsList.addElement(this.coinsPerSecondCounter)
 
-        this.shardsTexture = new PIXI.Sprite.from('coin-s')
+        this.shardsTexture = new PIXI.Sprite.from('coin')
         this.coisPerSecond.addChild(this.shardsTexture)
         this.shardsTexture.scale.set(this.coinsPerSecondCounter.height / this.shardsTexture.height * 0.5)
         this.shardsTexture.x = -20
@@ -562,6 +562,9 @@ export default class MergeScreen extends Screen {
         this.openMergeShop.updateIconScale(0.8)
 
 
+        this.extraMoneyBonus.icon.texture = PIXI.Texture.fromImage(this.activeMergeSystem.baseData.visuals.coin);
+
+
         this.resize(this.latestInner, this.latestInner);
         setTimeout(() => {
             this.activeMergeSystem.activeSystem()
@@ -721,6 +724,7 @@ export default class MergeScreen extends Screen {
                 element.toggle.disable()
             } else {
                 if (!isInit) {
+                    console.log(this.systemsList[index].toggle)
                     COOKIE_MANAGER.initBoard(this.systemsList[index].systemID)
                 }
                 element.toggle.enable()
