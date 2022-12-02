@@ -18,6 +18,8 @@ import UIList from '../../ui/uiElements/UIList';
 import utils from '../../../utils';
 import config from '../../../config';
 import TextBox from '../../ui/TextBox';
+import NotificationPanel from '../../popup/NotificationPanel';
+import AchievmentsWindow from '../shop/AchievmentsWindow';
 
 export default class MergeScreen extends Screen {
     constructor(label) {
@@ -29,6 +31,7 @@ export default class MergeScreen extends Screen {
         window.baseMonsters = PIXI.loader.resources['monsters'].data;
         window.baseFairies = PIXI.loader.resources['fairies'].data;
         window.baseHumans = PIXI.loader.resources['humans'].data;
+        window.baseAchievments = PIXI.loader.resources['achievments'].data;
         window.gameEconomy = new GameEconomy()
         window.gameModifyers = new GameModifyers()
 
@@ -54,21 +57,32 @@ export default class MergeScreen extends Screen {
         // }, 10);
         this.container = new PIXI.Container()
         this.addChild(this.container);
+
+
+        this.notificationContainer = new PIXI.Container()
+        this.addChild(this.notificationContainer);
+
+        this.notificationPanel = new NotificationPanel();
+        this.notificationContainer.addChild(this.notificationPanel)
+
+
         this.frontLayer = new PIXI.Container()
         this.addChild(this.frontLayer);
+        this.particleSystem = new ParticleSystem();
+        this.frontLayer.addChild(this.particleSystem)
+
+
         this.uiLayer = new PIXI.Container()
         this.addChild(this.uiLayer);
+
+
+
 
         this.popUpLayer = new PIXI.Container()
         this.addChild(this.popUpLayer);
 
-        this.backBlocker = new PIXI.Graphics().beginFill(0).drawRect(0, 0, config.width, config.height);
-        this.backBlocker.alpha = 0.5;
-        this.backBlocker.interactive = true;
-        this.backBlocker.buttonMode = true;
-        this.backBlocker.visible = false;
 
-        this.frontLayer.addChild(this.backBlocker);
+
         this.gridWrapper = new PIXI.Graphics().lineStyle(10, 0x132215).drawRect(0, 0, config.width * this.areaConfig.gameArea.w, config.height * this.areaConfig.gameArea.h);
         this.container.addChild(this.gridWrapper);
         this.gridWrapper.visible = false;
@@ -103,7 +117,6 @@ export default class MergeScreen extends Screen {
 
 
 
-
         this.systemButtonList = new UIList()
         this.systemButtonList.w = 100
         this.systemButtonList.h = 80
@@ -132,14 +145,18 @@ export default class MergeScreen extends Screen {
 
         this.bonusesList.addElement(this.extraMoneyBonus);
 
-        this.extraMoneyBonus2 = new UIButton1(0x002299, this.activeMergeSystem.baseData.visuals.coin, 0xFFFFFF, this.bonusesList.w, this.bonusesList.w, config.assets.button.tertiarySquare)
-        this.extraMoneyBonus2.updateIconScale(0.7)
-        this.extraMoneyBonus2.onClick.add(() => {
-            //this.showSystem(this.extraMoneyBonus2.systemArrayID)
+        this.openAchievments = new UIButton1(0x002299, 'achievment', 0xFFFFFF, this.bonusesList.w, this.bonusesList.w, config.assets.button.tertiarySquare)
+        this.openAchievments.updateIconScale(0.75)
+        this.openAchievments.newItem = new PIXI.Sprite.fromFrame('new_item')
+        this.openAchievments.newItem.scale.set(0.7)
+        this.openAchievments.newItem.anchor.set(0)
+        this.openAchievments.newItem.position.set(-buttonSize / 2)
+        this.openAchievments.newItem.visible = false;
+        this.openAchievments.addChild(this.openAchievments.newItem)
+        this.bonusesList.addElement(this.openAchievments)
+        this.openAchievments.onClick.add(() => {
+            this.openPopUp(this.activeMergeSystem.achievments)
         })
-
-        //this.bonusesList.addElement(this.extraMoneyBonus2);
-
 
         this.bonusesList.updateVerticalList();
 
@@ -202,8 +219,6 @@ export default class MergeScreen extends Screen {
 
         this.statsList.updateVerticalList();
 
-        this.particleSystem = new ParticleSystem();
-        this.frontLayer.addChild(this.particleSystem)
 
 
         this.levelMeter = new LevelMeter();
@@ -229,7 +244,7 @@ export default class MergeScreen extends Screen {
 
         this.openMergeShop = new UIButton1(0x002299, 'vampire', 0xFFFFFF, buttonSize, buttonSize, config.assets.button.secondarySquare)
         this.openMergeShop.updateIconScale(0.75)
-        this.openMergeShop.addBadge('icon_increase')
+        this.openMergeShop.addBadge('new_item')
         this.openMergeShop.newItem = new PIXI.Sprite.fromFrame('new_item')
         this.openMergeShop.newItem.scale.set(0.7)
         this.openMergeShop.newItem.anchor.set(0)
@@ -240,6 +255,9 @@ export default class MergeScreen extends Screen {
         this.openMergeShop.onClick.add(() => {
             this.openPopUp(this.activeMergeSystem.shop)
         })
+
+
+
 
         this.shopButtonsList.updateVerticalList();
 
@@ -306,6 +324,9 @@ export default class MergeScreen extends Screen {
 
         COOKIE_MANAGER.initBoard(this.activeMergeSystem.systemID)
 
+
+
+
     }
 
     registerSystem(containers, baseData, baseMergeData, slug, visible = true, interactiveBackground = null) {
@@ -352,10 +373,46 @@ export default class MergeScreen extends Screen {
             //POPUP
         });
 
+        console.log("THE ACHIEVEMENTS ARE CHECKING GLOBALLY")
+        let achievmentsWindow = new AchievmentsWindow([mergeSystem])
+        achievmentsWindow.systemID = slug;
+        achievmentsWindow.addItems(window.baseAchievments.achievments)
+        achievmentsWindow.onAchievmentPending.add((slug) => {
+            if (slug != this.activeMergeSystem.systemID) return;
+            if (this.openAchievments.badge) {
+                this.openAchievments.badge.visible = true;
+            } else {
+                this.openAchievments.addBadge('new_item')
+            }
+        })
+        achievmentsWindow.onNoAchievmentPending.add((slug) => {
+            if (slug != this.activeMergeSystem.systemID) return;
+            if (this.openAchievments.badge) {
+                this.openAchievments.badge.visible = false;
+            }
+        })
+        achievmentsWindow.onClaimGift.add((entity) => {
+            COOKIE_MANAGER.claimFreeMoney(slug)
+            let target = this.activeMergeSystem.rps * 350
+            target = Math.max(500, target)
+            window.gameEconomy.addResources(target, this.activeMergeSystem.systemID)
+            this.moneyFromCenter(target)
+        })
+
+        this.uiLayer.addChild(achievmentsWindow);
+        achievmentsWindow.hide();
+        achievmentsWindow.setGiftTexture(baseData.visuals.coin)
         setTimeout(() => {
             mergeItemsShop.updateLocks(mergeSystem.totalAvailable())
+
+            achievmentsWindow.checkAll();
+
         }, 120);
         mergeSystem.updateMaxLevel.add((max, skipPopup) => {
+
+
+            COOKIE_MANAGER.addAchievment(this.activeMergeSystem.systemID, 'discovery', max + 1, true)
+
             this.activeMergeSystem.interactiveBackground.updateMax(max, true)
             if (max == 0 || skipPopup) {
                 this.activeMergeSystem.interactiveBackground.showAnimation(max)
@@ -368,8 +425,10 @@ export default class MergeScreen extends Screen {
         });
         mergeItemsShop.setGiftIcon(baseData.visuals.gift[0])
         mergeSystem.shop = mergeItemsShop
+        mergeSystem.achievments = achievmentsWindow
         mergeSystem.interactiveBackground = interactiveBackground
         this.uiPanels.push(mergeItemsShop)
+        this.uiPanels.push(achievmentsWindow)
 
         mergeSystem.systemArrayID = this.mergeSystemsList.length;
         mergeSystem.visible = visible;
@@ -384,7 +443,7 @@ export default class MergeScreen extends Screen {
         })
 
         let unlockTextbox = new TextBox(20)
-        unlockTextbox.updateText("You unlock a new level")
+        unlockTextbox.updateText("New Level")
         toggleSystems.addChild(unlockTextbox)
         unlockTextbox.x = - unlockTextbox.width / 2 - 50
         unlockTextbox.alpha = 0;
@@ -394,6 +453,7 @@ export default class MergeScreen extends Screen {
 
         this.mergeSystemsList.push(mergeSystem)
         this.systemButtonList.addElement(toggleSystems);
+
     }
     showSystem(id) {
         this.mergeSystemsList.forEach(element => {
@@ -408,6 +468,9 @@ export default class MergeScreen extends Screen {
         this.mergeSystemsList[this.activeMergeSystemID].interactiveBackground.visible = true;
         this.activeMergeSystem = this.mergeSystemsList[this.activeMergeSystemID]
         this.activeMergeSystem.toggle.unlockTextbox.alpha = 0;
+
+        this.activeMergeSystem.achievments.checkAll();
+
         this.refreshSystemVisuals();
     }
     startGamePopUp() {
@@ -424,13 +487,13 @@ export default class MergeScreen extends Screen {
             onConfirm: () => {
                 window.DO_REWARD(() => {
                     window.gameEconomy.addResources(target2, this.activeMergeSystem.systemID)
-                    this.moneyFromCenter()
+                    this.moneyFromCenter(target2)
                 })
 
             },
             onCancel: () => {
                 window.gameEconomy.addResources(target, this.activeMergeSystem.systemID)
-                this.moneyFromCenter()
+                this.moneyFromCenter(target)
             }
         })
 
@@ -466,6 +529,7 @@ export default class MergeScreen extends Screen {
     openHourCoinPopUp() {
 
         let target = this.activeMergeSystem.rps * 300
+        target = Math.max(500, target)
         this.openPopUp(this.standardPopUp, {
             value1: 0,
             value2: utils.formatPointsLabel(target),
@@ -478,7 +542,7 @@ export default class MergeScreen extends Screen {
             onConfirm: () => {
                 window.DO_REWARD(() => {
                     window.gameEconomy.addResources(target, this.activeMergeSystem.systemID)
-                    this.moneyFromCenter()
+                    this.moneyFromCenter(target)
                 })
 
             },
@@ -493,37 +557,13 @@ export default class MergeScreen extends Screen {
         let name = this.activeMergeSystem.dataTiles[pieceId].rawData.displayName
         let castlePiece = this.activeMergeSystem.interactiveBackground.getPiece(pieceId).src
 
+        this.notificationPanel.buildNewPieceNotification(imagesrc, 'You discovered ' + name, null, config.assets.popup.secondary)
+        setTimeout(() => {
 
-        let target = this.activeMergeSystem.rps * 60
-        target = Math.max(target, 120);
-        this.openPopUp(this.standardPopUp, {
-            value1: name,
-            value2: '',
-            value1Icon: imagesrc,
-            value2Icon: castlePiece,
-            title: 'New Character',
-            confirmLabel: 'Gain ' + utils.formatPointsLabel(target),
-            cancelLabel: 'Ok',
-            mainIcon: 'results_arrow_right',
-            mainLabel2: 'You unlock another piece of the castle',
-            mainLabel: '',
-            mainIconHeight: 20,
-            value2IconHeight: 150,
-            popUpType: config.assets.popup.secondary,
-            video: true,
-            onConfirm: () => {
-                window.DO_REWARD(() => {
-                    window.gameEconomy.addResources(target, this.activeMergeSystem.systemID)
-                    this.moneyFromCenter()
+            this.notificationPanel.buildNewPieceNotification(castlePiece, 'You unlock another piece of the castle', null, config.assets.popup.extra)
+            this.activeMergeSystem.interactiveBackground.showAnimation(pieceId)
+        }, 2000);
 
-                    this.activeMergeSystem.interactiveBackground.showAnimation(pieceId)
-                })
-            },
-            onCancel: () => {
-
-                this.activeMergeSystem.interactiveBackground.showAnimation(pieceId)
-            }
-        })
 
     }
 
@@ -601,7 +641,7 @@ export default class MergeScreen extends Screen {
             }
         })
     }
-    moneyFromCenter() {
+    moneyFromCenter(value) {
         let toLocal = this.particleSystem.toLocal({ x: config.width / 2, y: config.height / 2 })
         let customData = {};
         customData.texture = this.activeMergeSystem.baseData.visuals.coin
@@ -618,6 +658,10 @@ export default class MergeScreen extends Screen {
 
         customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.25 + Math.random() * 0.5 }
         this.particleSystem.show(toLocal, 8, customData)
+
+
+        this.popLabel({ x: config.width / 2, y: config.height / 2 }, value, 2);
+
     }
     onPrizeCollected(prizes) {
         if (!prizes) return;
@@ -689,11 +733,11 @@ export default class MergeScreen extends Screen {
         this.currentOpenPopUp = target;
         target.show(params, this.activeMergeSystem.baseData.visuals)
     }
-    popLabel(targetPosition, label) {
+    popLabel(targetPosition, label, scale = 1) {
         let toLocal = this.particleSystem.toLocal(targetPosition)
 
 
-        this.particleSystem.popLabel(toLocal, "+" + label, 0, 1, 1, LABELS.LABEL1, Back.easeOut, 0.5, 1)
+        this.particleSystem.popLabel(toLocal, "+" + label, 0, 1, scale, LABELS.LABEL1, Back.easeOut, 0.5, 1)
     }
     popLabelDamage(targetPosition, label) {
         let toLocal = this.particleSystem.toLocal(targetPosition)
@@ -721,20 +765,26 @@ export default class MergeScreen extends Screen {
     onMergeSystemUpdate(data) {
         this.levelMeter.updateData(data)
 
+
+
+        COOKIE_MANAGER.addAchievment(this.activeMergeSystem.systemID, 'level', data.currentLevel, true)
         for (let index = 1; index < this.systemsList.length; index++) {
             // if(!this.systemButtonList[index]) break
             const element = this.systemsList[index];
             const prev = this.systemsList[index - 1];
 
             let isInit = COOKIE_MANAGER.isInitialized(this.systemsList[index].systemID)
-            if (!prev.boardProgression || prev.boardProgression.currentLevel < 6) {
+            if (!prev.boardProgression || prev.boardProgression.currentLevel < 2) {
 
                 element.toggle.disable()
             } else {
                 if (!isInit) {
                     //console.log(this.systemsList[index].toggle.unlockTextbox)
 
-                    this.systemsList[index].toggle.unlockTextbox.alpha = 1;
+
+                    this.notificationPanel.buildNewPieceNotification(this.systemsList[index].dataTiles[0].rawData.imageSrc, 'You unlock a new level', null, config.assets.popup.tertiary)
+                    TweenMax.to(this.systemsList[index].toggle.unlockTextbox, 0.5, { alpha: 1, delay: 4 })
+                    //.alpha = 1;
                     COOKIE_MANAGER.initBoard(this.systemsList[index].systemID)
                 }
                 element.toggle.enable()
@@ -845,6 +895,8 @@ export default class MergeScreen extends Screen {
 
         this.activeMergeSystem.interactiveBackground.update(delta);
         this.activeMergeSystem.shop.update(delta);
+
+        this.notificationPanel.update(delta);
     }
     resize(resolution, innerResolution) {
         if (!innerResolution || !innerResolution.height) return
@@ -908,7 +960,7 @@ export default class MergeScreen extends Screen {
         this.statsList.y = 10
         this.statsList.x = toGlobalBack.x + 10
 
-        this.bonusesList.y = this.statsList.y + this.statsList.height;
+        this.bonusesList.y = this.statsList.y + this.statsList.height + this.statsList.w / 2 + 10;
         this.bonusesList.x = this.statsList.x + + this.bonusesList.w * 0.5
 
         this.helperButtonList.y = 80
@@ -957,6 +1009,9 @@ export default class MergeScreen extends Screen {
             element.y = config.height / 2
         });
 
+
+        this.notificationPanel.x = config.width / 2
+        this.notificationPanel.y = this.levelMeter.y + this.levelMeter.height + this.notificationPanel.notificationHeight / 2
         this.systemsList.forEach(element => {
             element.resize(resolution, innerResolution, this.resourcesWrapperRight);
         });

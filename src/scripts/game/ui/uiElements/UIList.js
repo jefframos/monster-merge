@@ -9,7 +9,12 @@ export default class UIList extends PIXI.Container {
         this.w = 0;
         this.h = 0;
     }
-
+    // listScl
+    // fitHeight
+    // fitWidth
+    // scaleContent
+    // scaleContentMax
+    // align
     debug() {
         this.debugGr = new PIXI.Graphics().beginFill(0xFF0000).drawRect(0, 0, this.w, this.h)
         this.container.addChild(this.debugGr)
@@ -76,7 +81,7 @@ export default class UIList extends PIXI.Container {
             }
             else {
                 nextX = positions[i - 1] + this.w * listSizes[i - 1]
-            }
+            }            
             positions.push(nextX);
             if (this.elementsList[i].fitHeight) {
                 stdH = (this.elementsList[i].height / this.elementsList[i].scale.y)

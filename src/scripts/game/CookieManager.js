@@ -1,5 +1,8 @@
+import Signals from 'signals';
+
 export default class CookieManager {
 	constructor() {
+		this.onUpdateAchievments = new Signals();
 		this.defaultStats = {
 			test: 0,
 			tutorialStep: 0
@@ -7,7 +10,7 @@ export default class CookieManager {
 		this.defaultEconomy = {
 			resources: 0,
 			lastChanged: 0,
-			lastOpen:0
+			lastOpen: 0
 		}
 		this.defaultResources = {
 			version: '0.0.1',
@@ -17,6 +20,7 @@ export default class CookieManager {
 		this.defaultProgression = {
 			version: '0.0.1',
 			latestClaim: -1,
+			latestClaimFreeMoney: -1,
 			initialized: false
 		}
 		this.defaultBoard = {
@@ -35,6 +39,25 @@ export default class CookieManager {
 			version: '0.0.1',
 			entities: {},
 		}
+		this.defaultAchievments = {
+			version: '0.0.1',
+			discovery: { progress: 0, claimed: 0 },
+			level: { progress: 0, claimed: 0 },
+			buy: { progress: 0, claimed: 0 },
+			merge: { progress: 0, claimed: 0 },
+			tap: { progress: 0, claimed: 0 },
+			reveal: { progress: 0, claimed: 0 },
+			revealMystery: { progress: 0, claimed: 0 },
+		}
+
+		//discore 10 / 15/ 20
+		//reach level 10 / 15 / 20
+		//buy 50 /500 /1500 250k-375k
+		//merge 500/1500/2500
+		//tap crate 700/1500/3000
+		//open crates 300
+		//open mystery 40
+
 		this.defaultModifyers = {
 			version: '0.0.1',
 			entities: {},
@@ -54,7 +77,7 @@ export default class CookieManager {
 			}
 		}
 
-		this.version = '0.0.15'
+		this.version = '0.0.172'
 		this.cookieVersion = this.getCookie('cookieVersion')
 		//alert(this.cookieVersion != this.version)
 		if (!this.cookieVersion || this.cookieVersion != this.version) {
@@ -69,6 +92,37 @@ export default class CookieManager {
 		this.storeObject('fullData', this.fullData)
 
 	}
+	claimAchievment(id, type){
+		if (this.fullData[id].achievments[type] !== undefined) {
+			this.fullData[id].achievments[type].claimed ++;
+			this.storeObject('fullData', this.fullData)
+
+		} else {
+			console.log('achievment ', type, ' not found')
+		}
+	}
+	getAchievment(id, type) {
+		if (this.fullData[id].achievments[type] !== undefined) {
+			return this.fullData[id].achievments[type];
+
+		} else {
+			console.log('achievment ', type, ' from ', id, ' not found')
+		}
+	}
+	addAchievment(id, type, quant = 1, hard = false) {
+		if (this.fullData[id].achievments[type] !== undefined) {
+			if(hard){
+				this.fullData[id].achievments[type].progress = quant;
+			}else{
+				this.fullData[id].achievments[type].progress += quant;
+			}
+			this.onUpdateAchievments.dispatch(type);
+			this.storeObject('fullData', this.fullData)
+
+		} else {
+			console.log('achievment ', type, ' not found')
+		}
+	}
 	sortCookie(id) {
 		if (!this.fullData[id]) {
 
@@ -77,6 +131,7 @@ export default class CookieManager {
 			this.fullData[id]['gifts'] = this.sortCookieData('gifts', this.defaultGifts);
 			this.fullData[id]['progression'] = this.sortCookieData('progression', this.defaultProgression);
 			this.fullData[id]['economy'] = this.sortCookieData('economy', this.defaultEconomy);
+			this.fullData[id]['achievments'] = this.sortCookieData('achievments', this.defaultAchievments);
 		}
 
 		this.storeObject('fullData', this.fullData)
@@ -116,12 +171,12 @@ export default class CookieManager {
 				const element = defaultData[key];
 				if (target[key] === undefined) {
 					target[key] = element;
-					this.storeObject(nameID, target)
+					//this.storeObject(nameID, target)
 				}
 			}
 		} else {
 			target = defaultData
-			this.storeObject(nameID, target)
+			//this.storeObject(nameID, target)
 		}
 
 		return target
@@ -152,8 +207,8 @@ export default class CookieManager {
 		this.storeObject('resources', this.resources)
 
 	}
-	openSystem(id){
-		this.fullData[id].economy.lastOpen =  Date.now() / 1000 | 0
+	openSystem(id) {
+		this.fullData[id].economy.lastOpen = Date.now() / 1000 | 0
 		this.storeObject('fullData', this.fullData)
 	}
 	addResourceUpgrade(mergeData) {
@@ -219,10 +274,17 @@ export default class CookieManager {
 	}
 
 	claimGift(id, override = 0) {
-		this.fullData[id].progression.latestClaim = override?override:Date.now();
+		this.fullData[id].progression.latestClaim = override ? override : Date.now();
 		this.storeObject('fullData', this.fullData)
 	}
 
+	claimFreeMoney(id, override = 0) {
+		this.fullData[id].progression.latestClaimFreeMoney = override ? override : Date.now();
+		this.storeObject('fullData', this.fullData)
+	}
+	getLatestGiftClaimFreeMoney(id) {
+		return this.fullData[id].progression.latestClaimFreeMoney;
+	}
 	getLatestGiftClaim(id) {
 		return this.fullData[id].progression.latestClaim;
 	}

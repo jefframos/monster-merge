@@ -64,11 +64,12 @@ export default class EntityShop extends PIXI.Container {
         this.shopList.y = 100
         this.container.addChild(this.shopList);
 
+        this.itemWidth = this.size.w - this.size.w * 0.2;
 
         this.shopList.onItemShop.add(this.confirmItemShop.bind(this))
         this.shopList.onShowBlock.add(this.showBlock.bind(this))
 
-        this.openShop = new UIButton1(0xFFffff, window.TILE_ASSSETS_POOL['image-X'], 0xFFffff, 60, 60, config.assets.button.warningSquare)
+        this.openShop = new UIButton1(0xFFffff, window.TILE_ASSSETS_POOL['image-X'], 0xFFffff, 70, 70, config.assets.button.warningSquare)
         this.openShop.updateIconScale(0.5)
         this.container.addChild(this.openShop)
         this.openShop.x = this.size.w - this.openShop.width
@@ -107,47 +108,9 @@ export default class EntityShop extends PIXI.Container {
         this.systemID = systemID;
 
 
-        this.giftItem = new ShopItem({ w: this.size.w - this.size.w * 0.2, h: this.size.h * 0.8 / 6 })
-        this.giftItem.backShapeGeneral.texture = PIXI.Texture.from(config.assets.panel.tertiary)
-        //this.giftItem.itemIcon.texture = PIXI.Texture.from('Btn04')
-        this.container.addChild(this.giftItem)
-        this.giftItem.x = this.size.w * 0.1
-        this.giftItem.y = 80
-        this.giftItem.updateHorizontalList();
-        this.giftItem.shopButton.updateCoast('Free Gift')
-        this.giftItem.unblock()
-        this.giftItem.shopButton.enable();
-        this.giftItem.shopButton.onClickItem.removeAll()
-        this.giftItem.shopButton.onClickItem.add(
-            () => {
-                this.onClaimGift.dispatch()
-            });
-
-        this.standardGiftTime = 5 * 60;
+       
     }
-    setGiftIcon(icon) {
-        this.giftItem.itemIcon.texture = PIXI.Texture.from(icon)
-        this.giftItem.updateHorizontalList();
-    }
-    update(delta) {
-        let latest = COOKIE_MANAGER.getLatestGiftClaim(this.systemID);
-
-        if (latest > 0) {
-            let diff = Date.now() - latest;
-
-            let diffTime = this.standardGiftTime - diff / 1000
-            this.giftItem.shopButton.updateCoast(utils.convertNumToTime(Math.ceil(diffTime)))
-            this.giftItem.block(true)
-            if (diffTime <= 0) {
-                COOKIE_MANAGER.claimGift(this.systemID, -1);
-            }
-
-        } else if (!this.giftItem.isBlocked) {
-            this.giftItem.shopButton.updateCoast('Free Gift')
-            this.giftItem.shopButton.enable();
-        }
-        //console.log(latest);
-    }
+    update(delta) {}
     showBlock() {
 
     }
@@ -184,7 +147,10 @@ export default class EntityShop extends PIXI.Container {
     updateToggleValue() {
         this.isPossibleBuy = false;
         this.currentItens.forEach(element => {
-            element.updatePreviewValue(1)
+            if(element.updatePreviewValue){
+
+                element.updatePreviewValue(1)
+            }
 
             //console.log(element.itemData.type, element.isLocked)
             if (!this.isPossibleBuy && !element.isLocked) {
@@ -201,7 +167,11 @@ export default class EntityShop extends PIXI.Container {
 
 
         this.currentItens.forEach(element => {
-            element.updatePreviewValue(1)
+            if(element.updatePreviewValue){
+
+                element.updatePreviewValue(1)
+            }
+            
         });
 
     }
@@ -248,7 +218,7 @@ export default class EntityShop extends PIXI.Container {
 
         this.currentItens = []
         for (let index = 0; index < items.length; index++) {
-            let shopItem = new ShopItem({ w: this.size.w - this.size.w * 0.2, h: this.size.h * 0.8 / 6 })
+            let shopItem = new ShopItem({ w: this.itemWidth, h: this.size.h * 0.8 / 6 })
             shopItem.setData(items[index])
             shopItem.nameID = items[index].rawData.nameID;
             this.currentItens.push(shopItem)

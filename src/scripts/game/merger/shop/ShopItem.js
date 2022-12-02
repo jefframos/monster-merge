@@ -138,6 +138,7 @@ export default class ShopItem extends UIList {
         this.isBlocked = false;
 
     }
+
     block(ignoreLabel = false) {
         this.isBlocked = true;
         this.shopButton.deactive();

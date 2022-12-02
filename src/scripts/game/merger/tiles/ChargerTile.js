@@ -61,6 +61,7 @@ export default class ChargerTile extends MergeTile {
 
         this.isCharged = false;
 
+        this.systemID = '';
         this.outState()
 
     }
@@ -68,6 +69,7 @@ export default class ChargerTile extends MergeTile {
         if (this.isBlocked) return
         super.onMouseDown(e);
         this.currentChargeTime -= 0.2
+        COOKIE_MANAGER.addAchievment(this.systemID, 'tap', 1)
         if (this.currentChargeTime <= 0) {
             this.completeCharge();
         } else {

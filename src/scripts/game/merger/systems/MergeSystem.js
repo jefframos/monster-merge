@@ -305,6 +305,7 @@ export default class MergeSystem {
     }
     addPieceGenerator() {
         let piece = new ChargerTile(0, 0, this.slotSize.width * 0.85, 'coin', this.gameplayData.entityGeneratorBaseTime, this.baseData.visuals);
+        piece.systemID = this.systemID;
         piece.isGenerator = true;
         piece.onShowParticles.add(() => {
             let customData = {}
@@ -404,6 +405,8 @@ export default class MergeSystem {
         // }
     }
     buyEntity(data) {
+
+        COOKIE_MANAGER.addAchievment(this.systemID, 'buy', 1)
         let allAvailables = []
         let firstAvailable = null;
         for (var i = 0; i < this.slots.length; i++) {
@@ -552,7 +555,7 @@ export default class MergeSystem {
         slot.onReveal.add((slot) => {
 
             COOKIE_MANAGER.addMergePiece(slot.tileData, slot.id.i, slot.id.j, this.systemID, 0)
-            console.log(slot.tileData)
+            COOKIE_MANAGER.addAchievment(this.systemID, 'reveal', 1)
             this.updateAllData();
         });
 
@@ -569,6 +572,8 @@ export default class MergeSystem {
             var gift = this.highestPiece - 3;
             gift = Math.max(gift, 0);
             let target = Math.round(gift * Math.random());
+
+            COOKIE_MANAGER.addAchievment(this.systemID, 'revealMystery', 1)
             this.specialTileReveal.dispatch(slot, target);
         })
         slot.onGenerateResource.add((slot, data) => {
@@ -643,9 +648,9 @@ export default class MergeSystem {
         this.currentDragSlot = slot;
         this.entityDragSprite.texture = tex;
         this.entityDragSprite.visible = true;
-        this.entityDragSprite.scale.set(slot.tileSprite.scale.y * 1.5);
+        this.entityDragSprite.scale.set(slot.tileSprite.scale.y * 1.25);
         if (window.isMobile) {
-            this.entityDragSprite.anchor.set(0.5, 1);
+            this.entityDragSprite.anchor.set(0.5, 0.5);
         } else {
             this.entityDragSprite.anchor.set(0.5, 0.5);
         }
@@ -880,6 +885,9 @@ export default class MergeSystem {
 
                 this.onEntityMerge.dispatch()
                 this.currentDragSlot = null;
+
+                COOKIE_MANAGER.addAchievment(this.systemID, 'merge', 1)
+
 
             } else {
 
