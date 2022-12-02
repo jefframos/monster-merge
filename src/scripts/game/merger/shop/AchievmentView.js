@@ -1,10 +1,11 @@
 import * as PIXI from 'pixi.js';
-import config from '../../../config';
-import UIList from '../../ui/uiElements/UIList';
-import Signals from 'signals';
-import TweenMax from 'gsap';
+
 import ProgressBar from '../ProgressBar';
 import ShopButton from './ShopButton';
+import Signals from 'signals';
+import TweenMax from 'gsap';
+import UIList from '../../ui/uiElements/UIList';
+import config from '../../../config';
 import utils from '../../../utils';
 
 export default class AchievmentView extends PIXI.Container {
@@ -37,14 +38,13 @@ export default class AchievmentView extends PIXI.Container {
 
         this.claimContainer.addChild(this.claimButton)
 
-
-
-
-
         this.claimButton.onClickItem.removeAll()
         this.claimButton.onClickItem.add(
             () => {
-                this.onClaim.dispatch(this)
+                //console.log(this.data.prizes)
+                this.notificationDispatched = false;
+                let prog = COOKIE_MANAGER.getAchievment(this.systemID, this.data.variable)
+                this.onClaim.dispatch(this.data.prizes[prog.claimed])
 
                 COOKIE_MANAGER.claimAchievment(this.systemID, this.data.variable);
 
@@ -52,6 +52,7 @@ export default class AchievmentView extends PIXI.Container {
             });
         this.systemID = ''
         this.data = {}
+        this.notificationDispatched = false;
     }
     setData(data, systemID) {
         this.systemID = systemID;
@@ -70,8 +71,6 @@ export default class AchievmentView extends PIXI.Container {
         this.addElement(this.descriptionContainer)
         this.addElement(this.claimContainer)
 
-
-        console.log(COOKIE_MANAGER.getAchievment(this.systemID, data.variable))
     }
     cleatList() {
         this.contentList.removeAllElements();
@@ -99,8 +98,6 @@ export default class AchievmentView extends PIXI.Container {
         return sprite
     }
     updateCurrentData(){
-
-
         let achieveData = COOKIE_MANAGER.getAchievment(this.systemID, this.data.variable);
         if(achieveData.claimed >= this.data.values.length){
             this.claimButton.deactiveMax();
@@ -126,7 +123,10 @@ export default class AchievmentView extends PIXI.Container {
         this.progressBar.setProgressBar(bar)
         if(bar >= 1){
             this.claimButton.enable();
-            return true
+            if(!this.notificationDispatched){
+                this.notificationDispatched = true;
+                return true
+            }
         }else{
             this.claimButton.deactive();
         }

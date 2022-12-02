@@ -222,7 +222,7 @@ export default class MergeSystem {
             if (element) {
                 let split = key.split(";")
 
-                if (element && element > 0) {
+                if (element && element > 0 && !this.virtualSlots[split[0]][split[1]].tileData) {
                     if (element == 1) {
                         var slot = this.virtualSlots[split[0]][split[1]]
                         slot.addEntity(this.dataTiles[this.calcNormalNextCard()])
@@ -455,6 +455,7 @@ export default class MergeSystem {
             this.mousePosition = e.data.global;
         }
         if (!this.draggingEntity) {
+            this.entityDragSprite.visible = false
             return;
         }
         if (this.entityDragSprite.visible) {
@@ -884,6 +885,8 @@ export default class MergeSystem {
                 this.updateProgression(target.rawData.id + 1)
 
                 this.onEntityMerge.dispatch()
+                this.draggingEntity = false;
+
                 this.currentDragSlot = null;
 
                 COOKIE_MANAGER.addAchievment(this.systemID, 'merge', 1)
@@ -898,10 +901,13 @@ export default class MergeSystem {
                     slot.removeEntity();
                     slot.addEntity(copyData);
                     COOKIE_MANAGER.addMergePiece(copyData, slot.id.i, slot.id.j, this.systemID, 0)
+                    this.draggingEntity = false;
                     this.currentDragSlot = null;
                 } else {
                     //doesnt do anything coz is coming from the generator
                     //currentDrag.addEntity(copyDataTargetSlot);   
+                    his.draggingEntity = false;
+                    this.currentDragSlot = null;
                     this.onEntityAdd.dispatch()
 
                 }
@@ -912,6 +918,7 @@ export default class MergeSystem {
             slot.addEntity(copyData);
             COOKIE_MANAGER.addMergePiece(copyData, slot.id.i, slot.id.j, this.systemID, 0)
             this.onEntityAdd.dispatch()
+            this.draggingEntity = false;
             this.currentDragSlot = null;
         }
 

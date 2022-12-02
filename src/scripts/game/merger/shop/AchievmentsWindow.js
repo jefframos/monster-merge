@@ -1,16 +1,18 @@
-import TweenMax from 'gsap';
 import * as PIXI from 'pixi.js';
-import EntityShop from './EntityShop';
-import Signals from 'signals';
+
 import AchievmentView from './AchievmentView';
+import EntityShop from './EntityShop';
 import ShopItem from './ShopItem';
+import Signals from 'signals';
+import TweenMax from 'gsap';
 
 export default class AchievmentsWindow extends EntityShop {
-    constructor(mainSystem, size, border = 0) {
-        super(mainSystem, size, border = 0)
+    constructor(mainSystem, sistemID, border = 0) {
+        super(mainSystem, sistemID, 5)
         this.onAddEntity = new Signals();
         this.onAchievmentPending = new Signals();
         this.onNoAchievmentPending = new Signals();
+        this.onClaimAchievment = new Signals();
         this.systemID = 'monsters';
 
         this.shopList.addBaseGradient('base-gradient', this.itemWidth, 0x26DA73)
@@ -28,8 +30,9 @@ export default class AchievmentsWindow extends EntityShop {
         this.giftItem.shopButton.onClickItem.removeAll()
         this.giftItem.shopButton.onClickItem.add(
             () => {
-                this.hide()
+                //this.hide()
                 this.onClaimGift.dispatch()
+                this.checkAll();
             });
 
         this.standardGiftTime = 5 * 60;
@@ -54,7 +57,7 @@ export default class AchievmentsWindow extends EntityShop {
     checkItem(type) {
         if (!this.currentItensByType) return;
         if (this.currentItensByType[type].updateCurrentData()) {
-            this.onAchievmentPending.dispatch(this.systemID);
+            this.onAchievmentPending.dispatch(this.systemID, true);
         }
     }
     update(delta) {
@@ -115,15 +118,18 @@ export default class AchievmentsWindow extends EntityShop {
         this.currentItens = []
         this.currentItensByType = {}
         for (let index = 0; index < items.length; index++) {
-            let shopItem = new AchievmentView(this.size.w - this.size.w * 0.2, this.size.h * 0.8 / 6, 40)
+            let shopItem = new AchievmentView(this.size.w - this.size.w * 0.2, this.itemHeight, 40)
 
             this.currentItensByType[items[index].variable] = shopItem;
 
             shopItem.setData(items[index], this.systemID)
             //shopItem.nameID = items[index].rawData.nameID;
 
-            shopItem.onClaim.add(()=>{
-                this.checkAll()
+            shopItem.onClaim.add((value)=>{
+                this.onClaimAchievment.dispatch(value)
+                setTimeout(() => {                    
+                    this.checkAll()
+                }, 1);
             })
             this.currentItens.push(shopItem)
         }

@@ -21,7 +21,7 @@ export default class CookieManager {
 			version: '0.0.1',
 			latestClaim: -1,
 			latestClaimFreeMoney: -1,
-			initialized: false
+			isInitialized: false
 		}
 		this.defaultBoard = {
 			version: '0.0.1',
@@ -77,7 +77,7 @@ export default class CookieManager {
 			}
 		}
 
-		this.version = '0.0.172'
+		this.version = '0.0.18'
 		this.cookieVersion = this.getCookie('cookieVersion')
 		//alert(this.cookieVersion != this.version)
 		if (!this.cookieVersion || this.cookieVersion != this.version) {
@@ -130,6 +130,7 @@ export default class CookieManager {
 			this.fullData[id]['board'] = this.sortCookieData('board', this.defaultBoard);
 			this.fullData[id]['gifts'] = this.sortCookieData('gifts', this.defaultGifts);
 			this.fullData[id]['progression'] = this.sortCookieData('progression', this.defaultProgression);
+			console.log(this.fullData[id]['progression'])
 			this.fullData[id]['economy'] = this.sortCookieData('economy', this.defaultEconomy);
 			this.fullData[id]['achievments'] = this.sortCookieData('achievments', this.defaultAchievments);
 		}
@@ -171,12 +172,12 @@ export default class CookieManager {
 				const element = defaultData[key];
 				if (target[key] === undefined) {
 					target[key] = element;
-					//this.storeObject(nameID, target)
+					this.storeObject(nameID, target)
 				}
 			}
 		} else {
 			target = defaultData
-			//this.storeObject(nameID, target)
+			this.storeObject(nameID, target)
 		}
 
 		return target
@@ -289,13 +290,11 @@ export default class CookieManager {
 		return this.fullData[id].progression.latestClaim;
 	}
 	initBoard(id) {
-		this.fullData[id].progression.initialized = true;
+		this.fullData[id].progression.isInitialized = true;
 		this.storeObject('fullData', this.fullData)
-		//this.storeObject('board', this.board)
-
 	}
 	isInitialized(id) {
-		return this.fullData[id].progression.initialized;
+		return this.fullData[id].progression.isInitialized;
 	}
 	saveBoardProgress(boardProgress, id) {
 		this.fullData[id].board.boardLevel = boardProgress;

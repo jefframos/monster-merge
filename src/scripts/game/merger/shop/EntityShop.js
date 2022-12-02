@@ -2,15 +2,15 @@ import * as PIXI from 'pixi.js';
 
 import ShopItem from './ShopItem';
 import ShopList from './ShopList';
+import Signals from 'signals';
 import TweenMax from 'gsap';
 import UIButton1 from '../../ui/UIButton1';
 import UpgradesToggles from './UpgradesToggles';
 import config from '../../../config';
 import utils from '../../../utils';
-import Signals from 'signals';
 
 export default class EntityShop extends PIXI.Container {
-    constructor(mainSystem, systemID) {
+    constructor(mainSystem, systemID, itemsPerPage = 5) {
         super()
         this.mainSystem = mainSystem;
         this.size = {
@@ -57,14 +57,15 @@ export default class EntityShop extends PIXI.Container {
         // this.portrait.x = 20
         // this.portrait.y = 104
 
+        this.itemWidth = this.size.w - this.size.w * 0.2;
+        this.itemHeight = this.size.h * 0.8 / (itemsPerPage+1);
 
         this.container.addChild(this.title);
 
-        this.shopList = new ShopList({ w: this.size.w, h: this.size.h * 0.8 / 6 * 5 }, 5)
+        this.shopList = new ShopList({ w: this.size.w, h: this.itemHeight  * itemsPerPage}, itemsPerPage)
         this.shopList.y = 100
         this.container.addChild(this.shopList);
 
-        this.itemWidth = this.size.w - this.size.w * 0.2;
 
         this.shopList.onItemShop.add(this.confirmItemShop.bind(this))
         this.shopList.onShowBlock.add(this.showBlock.bind(this))
@@ -173,6 +174,8 @@ export default class EntityShop extends PIXI.Container {
             }
             
         });
+
+        this.shopList.resetPosition()
 
     }
     show() {

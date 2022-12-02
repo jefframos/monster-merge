@@ -58,7 +58,7 @@ export default class StandardPop extends PIXI.Container {
         this.label3.y = 80
 
         this.label4 = new TextBox(15, config.assets.panel.tertiary);
-        this.label4.y = 80
+        this.label4.y = 70
 
         config.addPaddingPanel(this.label4.background)
 

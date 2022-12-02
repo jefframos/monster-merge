@@ -1,12 +1,13 @@
-import TweenMax from 'gsap';
 import * as PIXI from 'pixi.js';
+
 import EntityShop from './EntityShop';
-import Signals from 'signals';
 import ShopItem from './ShopItem';
+import Signals from 'signals';
+import TweenMax from 'gsap';
 
 export default class MergeItemsShop extends EntityShop {
     constructor(mainSystem, size, border = 0) {
-        super(mainSystem, size, border = 0)
+        super(mainSystem, size, 5)
         this.onAddEntity = new Signals();
         this.systemID = 'monsters';
 

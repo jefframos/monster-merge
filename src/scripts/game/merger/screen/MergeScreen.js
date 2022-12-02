@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js';
 
+import AchievmentsWindow from '../shop/AchievmentsWindow';
 import FairyBackground from '../backgrounds/FairyBackground';
 import GameEconomy from '../GameEconomy';
 import GameModifyers from '../GameModifyers';
@@ -8,18 +9,16 @@ import MergeItemsShop from '../shop/MergeItemsShop';
 import MergeSystem from '../systems/MergeSystem';
 import MergerData from '../data/MergerData';
 import MonsterBackground from '../backgrounds/monster/MonsterBackground';
-
+import NotificationPanel from '../../popup/NotificationPanel';
 import ParticleSystem from '../../effects/ParticleSystem';
 import Screen from '../../../screenManager/Screen';
 import StandardPop from '../../popup/StandardPop';
+import TextBox from '../../ui/TextBox';
 import TweenMax from 'gsap';
 import UIButton1 from '../../ui/UIButton1';
 import UIList from '../../ui/uiElements/UIList';
-import utils from '../../../utils';
 import config from '../../../config';
-import TextBox from '../../ui/TextBox';
-import NotificationPanel from '../../popup/NotificationPanel';
-import AchievmentsWindow from '../shop/AchievmentsWindow';
+import utils from '../../../utils';
 
 export default class MergeScreen extends Screen {
     constructor(label) {
@@ -266,6 +265,13 @@ export default class MergeScreen extends Screen {
         this.standardPopUp = new StandardPop('any', this.screenManager)
         this.popUpLayer.addChild(this.standardPopUp)
 
+        this.standardPopUp.onHide.add(() => {
+            if (this.pendingNotification) {
+                this.pendingNotification()
+                this.pendingNotification = null;
+            }
+        })
+
         // this.bonusPopUp = new BonusConfirmation('bonus', this.screenManager)
         // this.popUpLayer.addChild(this.bonusPopUp)
 
@@ -325,7 +331,8 @@ export default class MergeScreen extends Screen {
         COOKIE_MANAGER.initBoard(this.activeMergeSystem.systemID)
 
 
-
+        this.particleSystemFront = new ParticleSystem();
+        this.addChild(this.particleSystemFront)
 
     }
 
@@ -373,12 +380,17 @@ export default class MergeScreen extends Screen {
             //POPUP
         });
 
-        console.log("THE ACHIEVEMENTS ARE CHECKING GLOBALLY")
-        let achievmentsWindow = new AchievmentsWindow([mergeSystem])
+
+        let achievmentsWindow = new AchievmentsWindow(mergeSystem, slug)
         achievmentsWindow.systemID = slug;
         achievmentsWindow.addItems(window.baseAchievments.achievments)
-        achievmentsWindow.onAchievmentPending.add((slug) => {
+        achievmentsWindow.onAchievmentPending.add((slug, notification = false) => {
             if (slug != this.activeMergeSystem.systemID) return;
+
+            if (notification) {
+                this.notificationPanel.buildNewPieceNotification('achievment', 'You unlock a new achievement ', null, config.assets.popup.primary)
+
+            }
             if (this.openAchievments.badge) {
                 this.openAchievments.badge.visible = true;
             } else {
@@ -391,6 +403,11 @@ export default class MergeScreen extends Screen {
                 this.openAchievments.badge.visible = false;
             }
         })
+        achievmentsWindow.onClaimAchievment.add((value) => {
+            window.gameEconomy.addResources(value, this.activeMergeSystem.systemID)
+            this.moneyFromCenter(value)
+        })
+
         achievmentsWindow.onClaimGift.add((entity) => {
             COOKIE_MANAGER.claimFreeMoney(slug)
             let target = this.activeMergeSystem.rps * 350
@@ -456,6 +473,8 @@ export default class MergeScreen extends Screen {
 
     }
     showSystem(id) {
+        if(this.activeMergeSystemID == id) return;
+        
         this.mergeSystemsList.forEach(element => {
             element.visible = false;
             element.interactiveBackground.visible = false;
@@ -642,7 +661,7 @@ export default class MergeScreen extends Screen {
         })
     }
     moneyFromCenter(value) {
-        let toLocal = this.particleSystem.toLocal({ x: config.width / 2, y: config.height / 2 })
+        let toLocal = this.particleSystemFront.toLocal({ x: config.width / 2, y: config.height / 2 })
         let customData = {};
         customData.texture = this.activeMergeSystem.baseData.visuals.coin
         customData.scale = 0.035
@@ -654,58 +673,15 @@ export default class MergeScreen extends Screen {
 
         let coinPosition = this.shardsTexture.getGlobalPosition();
 
-        let toLocalTarget = this.particleSystem.toLocal(coinPosition)
+        let toLocalTarget = this.particleSystemFront.toLocal(coinPosition)
 
         customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.25 + Math.random() * 0.5 }
-        this.particleSystem.show(toLocal, 8, customData)
+        this.particleSystemFront.show(toLocal, 8, customData)
 
 
-        this.popLabel({ x: config.width / 2, y: config.height / 2 }, value, 2);
+        this.popLabelFront({ x: config.width / 2, y: config.height / 2 }, value, 2);
 
     }
-    onPrizeCollected(prizes) {
-        if (!prizes) return;
-        if (prizes.money > 0) {
-            window.gameEconomy.addResources(prizes.money)
-            let toLocal = this.particleSystem.toLocal({ x: config.width / 2, y: config.height / 2 })
-            let customData = {};
-            customData.texture = 'coin'
-            customData.scale = 0.02
-            customData.gravity = 500
-            customData.alphaDecress = 0
-            customData.ignoreMatchRotation = true
-            let coinPosition = this.coinTexture.getGlobalPosition();
-
-            let toLocalTarget = this.particleSystem.toLocal(coinPosition)
-
-            customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.2 + Math.random() * 0.75 }
-            this.particleSystem.show(toLocal, 3, customData)
-        }
-        if (prizes.shards > 0) {
-            window.gameModifyers.addShards(prizes.shards)
-            setTimeout(() => {
-                let toLocal = this.particleSystem.toLocal({ x: config.width / 2, y: config.height / 2 })
-                let customData = {};
-                customData.texture = 'shards'
-                customData.scale = 0.025
-                customData.gravity = 200
-                customData.alphaDecress = 0
-                customData.ignoreMatchRotation = true
-
-                let coinPosition = this.shardsTexture.getGlobalPosition();
-
-                let toLocalTarget = this.particleSystem.toLocal(coinPosition)
-
-                customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.2 + Math.random() * 0.75 }
-                this.particleSystem.show(toLocal, 3, customData)
-            }, 50);
-
-        }
-        if (prizes.ship > 0) {
-            this.activeMergeSystem.addShipBasedOnMax(prizes.ship)
-        }
-    }
-
     addSystem(system) {
         if (!this.systemsList.includes(system)) {
             this.systemsList.push(system)
@@ -738,6 +714,12 @@ export default class MergeScreen extends Screen {
 
 
         this.particleSystem.popLabel(toLocal, "+" + label, 0, 1, scale, LABELS.LABEL1, Back.easeOut, 0.5, 1)
+    }
+    popLabelFront(targetPosition, label, scale = 1) {
+        let toLocal = this.particleSystemFront.toLocal(targetPosition)
+
+
+        this.particleSystemFront.popLabel(toLocal, "+" + label, 0, 1, scale, LABELS.LABEL1, Back.easeOut, 0.5, 1)
     }
     popLabelDamage(targetPosition, label) {
         let toLocal = this.particleSystem.toLocal(targetPosition)
@@ -774,16 +756,16 @@ export default class MergeScreen extends Screen {
             const prev = this.systemsList[index - 1];
 
             let isInit = COOKIE_MANAGER.isInitialized(this.systemsList[index].systemID)
-            if (!prev.boardProgression || prev.boardProgression.currentLevel < 2) {
-
+            //console.log('isInit',isInit,this.systemsList[index].systemID)
+            if (!prev.boardProgression || prev.boardProgression.currentLevel < 6) {
                 element.toggle.disable()
             } else {
                 if (!isInit) {
-                    //console.log(this.systemsList[index].toggle.unlockTextbox)
 
-
-                    this.notificationPanel.buildNewPieceNotification(this.systemsList[index].dataTiles[0].rawData.imageSrc, 'You unlock a new level', null, config.assets.popup.tertiary)
-                    TweenMax.to(this.systemsList[index].toggle.unlockTextbox, 0.5, { alpha: 1, delay: 4 })
+                    this.pendingNotification = () => {
+                        this.notificationPanel.buildNewPieceNotification(this.systemsList[index].dataTiles[0].rawData.imageSrc, 'You unlock a new level', null, config.assets.popup.tertiary)
+                        TweenMax.to(this.systemsList[index].toggle.unlockTextbox, 0.5, { alpha: 1, delay: 4 })
+                    }
                     //.alpha = 1;
                     COOKIE_MANAGER.initBoard(this.systemsList[index].systemID)
                 }
@@ -873,6 +855,7 @@ export default class MergeScreen extends Screen {
                 element.updateSystems(delta)
             });
             this.particleSystem.update(delta)
+            this.particleSystemFront.update(delta)
         }
 
         this.uiPanels.forEach(element => {
