@@ -61618,17 +61618,17 @@ var assets = [{
 	"id": "achievments",
 	"url": "assets/json\\achievments.json"
 }, {
-	"id": "baseGameConfigFairy",
-	"url": "assets/json\\baseGameConfigFairy.json"
-}, {
-	"id": "baseGameConfigHumans",
-	"url": "assets/json\\baseGameConfigHumans.json"
-}, {
 	"id": "baseGameConfigMonster",
 	"url": "assets/json\\baseGameConfigMonster.json"
 }, {
 	"id": "fairies",
 	"url": "assets/json\\fairies.json"
+}, {
+	"id": "baseGameConfigFairy",
+	"url": "assets/json\\baseGameConfigFairy.json"
+}, {
+	"id": "baseGameConfigHumans",
+	"url": "assets/json\\baseGameConfigHumans.json"
 }, {
 	"id": "humans",
 	"url": "assets/json\\humans.json"
@@ -61651,6 +61651,9 @@ var assets = [{
 	"id": "localization_JA",
 	"url": "assets/json\\localization_JA.json"
 }, {
+	"id": "localization_TR",
+	"url": "assets/json\\localization_TR.json"
+}, {
 	"id": "localization_KO",
 	"url": "assets/json\\localization_KO.json"
 }, {
@@ -61660,17 +61663,14 @@ var assets = [{
 	"id": "localization_RU",
 	"url": "assets/json\\localization_RU.json"
 }, {
-	"id": "localization_TR",
-	"url": "assets/json\\localization_TR.json"
+	"id": "monsters",
+	"url": "assets/json\\monsters.json"
 }, {
 	"id": "localization_ZH",
 	"url": "assets/json\\localization_ZH.json"
 }, {
 	"id": "modifyers",
 	"url": "assets/json\\modifyers.json"
-}, {
-	"id": "monsters",
-	"url": "assets/json\\monsters.json"
 }, {
 	"id": "resources",
 	"url": "assets/json\\resources.json"
@@ -61965,7 +61965,7 @@ module.exports = exports["default"];
 /* 344 */
 /***/ (function(module, exports) {
 
-module.exports = {"default":["image/particles/particles.json","image/pattern2/pattern2.json","image/pattern/pattern.json","image/parts/parts.json","image/background2/background2.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
+module.exports = {"default":["image/pattern2/pattern2.json","image/pattern/pattern.json","image/particles/particles.json","image/parts/parts.json","image/background2/background2.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
 
 /***/ }),
 /* 345 */
@@ -62529,7 +62529,7 @@ var MergeScreen = function (_Screen) {
 
                 _this.addHelpers();
 
-                var buttonSize = 70;
+                var buttonSize = 80;
                 _this.shopButtonsList = new _UIList2.default();
                 _this.shopButtonsList.w = buttonSize;
                 _this.shopButtonsList.h = buttonSize * 2.5;
@@ -62750,7 +62750,7 @@ var MergeScreen = function (_Screen) {
                         mergeSystem.systemArrayID = this.mergeSystemsList.length;
                         mergeSystem.visible = visible;
 
-                        var buttonSize = 70;
+                        var buttonSize = 80;
 
                         var toggleSystems = new _UIButton2.default(0x002299, rawMergeDataList[0].rawData.imageSrc, 0xFFFFFF, buttonSize, buttonSize, _config2.default.assets.button.primarySquare);
                         toggleSystems.updateIconScale(0.9);
@@ -63268,7 +63268,7 @@ var MergeScreen = function (_Screen) {
                         }
 
                         this.systemButtonList.w = this.systemButtonList.elementsList[0].width;
-                        this.systemButtonList.h = 70 * this.systemsList.length + this.systemsList.length * 2;
+                        this.systemButtonList.h = 80 * this.systemsList.length + this.systemsList.length * 2;
                         this.systemButtonList.updateVerticalList();
 
                         this.statsList.y = 10;
@@ -63300,14 +63300,14 @@ var MergeScreen = function (_Screen) {
 
                                 this.statsList.scale.set(1.25);
 
-                                this.systemButtonList.scale.set(1.1);
+                                this.systemButtonList.scale.set(1);
 
                                 this.shopButtonsList.x = topRight.x - this.shopButtonsList.width * 0.5 - 20;
                                 this.shopButtonsList.y = this.systemButtonList.y + this.systemButtonList.height; // this.shopButtonsList.height * 1.25
                                 this.shopButtonsList.scale.set(1);
                         }
 
-                        this.systemButtonList.x = topRight.x - 60 * this.systemButtonList.scale.x / 2 - 20;
+                        this.systemButtonList.x = topRight.x - 80 * this.systemButtonList.scale.x / 2 - 20;
                         this.systemButtonList.y = 35 * this.systemButtonList.scale.y + 20;
 
                         this.shopsLabel.x = this.shopButtonsList.x;

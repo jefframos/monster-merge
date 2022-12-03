@@ -225,7 +225,7 @@ export default class MergeScreen extends Screen {
 
         this.addHelpers();
 
-        let buttonSize = 70
+        let buttonSize = 80
         this.shopButtonsList = new UIList();
         this.shopButtonsList.w = buttonSize;
         this.shopButtonsList.h = buttonSize * 2.5;
@@ -450,7 +450,7 @@ export default class MergeScreen extends Screen {
         mergeSystem.systemArrayID = this.mergeSystemsList.length;
         mergeSystem.visible = visible;
 
-        let buttonSize = 70
+        let buttonSize = 80
 
         let toggleSystems = new UIButton1(0x002299, rawMergeDataList[0].rawData.imageSrc, 0xFFFFFF, buttonSize, buttonSize, config.assets.button.primarySquare)
         toggleSystems.updateIconScale(0.9)
@@ -937,7 +937,7 @@ export default class MergeScreen extends Screen {
         }
 
         this.systemButtonList.w = this.systemButtonList.elementsList[0].width
-        this.systemButtonList.h = 70 * this.systemsList.length + this.systemsList.length * 2
+        this.systemButtonList.h = 80 * this.systemsList.length + this.systemsList.length * 2
         this.systemButtonList.updateVerticalList()
 
         this.statsList.y = 10
@@ -972,7 +972,7 @@ export default class MergeScreen extends Screen {
 
             this.statsList.scale.set(1.25)
 
-            this.systemButtonList.scale.set(1.1)
+            this.systemButtonList.scale.set(1)
 
 
             this.shopButtonsList.x = topRight.x - this.shopButtonsList.width * 0.5 - 20
@@ -981,7 +981,7 @@ export default class MergeScreen extends Screen {
         }
 
 
-        this.systemButtonList.x = topRight.x - (60 * this.systemButtonList.scale.x) / 2 - 20
+        this.systemButtonList.x = topRight.x - (80 * this.systemButtonList.scale.x) / 2 - 20
         this.systemButtonList.y = 35 * this.systemButtonList.scale.y + 20
 
 
