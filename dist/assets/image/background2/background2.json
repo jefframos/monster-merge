@@ -2,15 +2,15 @@
 
 "bottomTreePatch.png":
 {
-	"frame": {"x":1532,"y":1,"w":984,"h":492},
+	"frame": {"x":1,"y":1,"w":1019,"h":510},
 	"rotated": true,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":984,"h":492},
-	"sourceSize": {"w":984,"h":492}
+	"spriteSourceSize": {"x":0,"y":0,"w":1019,"h":510},
+	"sourceSize": {"w":1019,"h":510}
 },
 "sky.png":
 {
-	"frame": {"x":1,"y":1,"w":1529,"h":1012},
+	"frame": {"x":513,"y":1,"w":1529,"h":1012},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1529,"h":1012},
@@ -21,8 +21,8 @@
 	"version": "1.0",
 	"image": "background2.png",
 	"format": "RGBA8888",
-	"size": {"w":2025,"h":1014},
+	"size": {"w":2043,"h":1021},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:00745544c2bcd1085aaf0d9ac728aee7:e4ec1587d283bc430bc7b00908ed9ef2:5cceb5aa1fc53de943b35965712e21ef$"
+	"smartupdate": "$TexturePacker:SmartUpdate:32acdeff1c41f3b21618f2fcab917e0c:9c3338cfa96ff61892891bedffffdb2a:5cceb5aa1fc53de943b35965712e21ef$"
 }
 }

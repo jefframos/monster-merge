@@ -61663,9 +61663,6 @@ var assets = [{
 	"id": "localization_EN",
 	"url": "assets/json\\localization_EN.json"
 }, {
-	"id": "localization_FR",
-	"url": "assets/json\\localization_FR.json"
-}, {
 	"id": "localization_ES",
 	"url": "assets/json\\localization_ES.json"
 }, {
@@ -61674,6 +61671,9 @@ var assets = [{
 }, {
 	"id": "localization_JA",
 	"url": "assets/json\\localization_JA.json"
+}, {
+	"id": "localization_FR",
+	"url": "assets/json\\localization_FR.json"
 }, {
 	"id": "localization_KO",
 	"url": "assets/json\\localization_KO.json"
@@ -61684,11 +61684,11 @@ var assets = [{
 	"id": "localization_RU",
 	"url": "assets/json\\localization_RU.json"
 }, {
-	"id": "localization_TR",
-	"url": "assets/json\\localization_TR.json"
-}, {
 	"id": "localization_ZH",
 	"url": "assets/json\\localization_ZH.json"
+}, {
+	"id": "localization_TR",
+	"url": "assets/json\\localization_TR.json"
 }, {
 	"id": "modifyers",
 	"url": "assets/json\\modifyers.json"
@@ -61989,7 +61989,7 @@ module.exports = exports["default"];
 /* 344 */
 /***/ (function(module, exports) {
 
-module.exports = {"default":["image/pattern2/pattern2.json","image/particles/particles.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
+module.exports = {"default":["image/particles/particles.json","image/pattern2/pattern2.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
 
 /***/ }),
 /* 345 */
@@ -67285,7 +67285,7 @@ var CastleBackground = function (_CastleBackgroundBase) {
                 key: 'build',
                 value: function build() {
 
-                        this.baseColor = new PIXI.Graphics().beginFill(0x151530).drawRect(-5000, -5000, 10000, 10000);
+                        this.baseColor = new PIXI.Graphics().beginFill(0x402A77).drawRect(-5000, -5000, 10000, 10000);
                         this.baseContainer.addChild(this.baseColor);
 
                         this.baseSky = new PIXI.Sprite.fromFrame('sky');

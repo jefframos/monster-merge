@@ -8,7 +8,7 @@ export default class CastleBackground extends CastleBackgroundBase {
 
     build() {
 
-        this.baseColor = new PIXI.Graphics().beginFill(0x151530).drawRect(-5000,-5000,10000,10000)
+        this.baseColor = new PIXI.Graphics().beginFill(0x402A77).drawRect(-5000,-5000,10000,10000)
         this.baseContainer.addChild(this.baseColor)
 
         this.baseSky = new PIXI.Sprite.fromFrame('sky')
