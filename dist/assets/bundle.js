@@ -33978,7 +33978,7 @@ var MergeTile = function (_PIXI$Container) {
             this.positionOffset.y = this.entityScale + Math.cos(this.sin) * 4;
 
             this.tileSprite.x = this.backSlot.width / 2 + this.positionOffset.x;
-            this.tileSprite.y = this.backSlot.height / 2 + this.positionOffset.y;
+            this.tileSprite.y = this.backSlot.height / 2 + this.positionOffset.y - 10;
 
             this.giftSprite.x = this.tileSprite.x;
             this.giftSprite.y = this.tileSprite.y + this.positionGiftOffset.y;
@@ -61639,11 +61639,11 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 var assets = [{
-	"id": "baseGameConfigFairy",
-	"url": "assets/json\\baseGameConfigFairy.json"
-}, {
 	"id": "achievments",
 	"url": "assets/json\\achievments.json"
+}, {
+	"id": "baseGameConfigFairy",
+	"url": "assets/json\\baseGameConfigFairy.json"
 }, {
 	"id": "baseGameConfigHumans",
 	"url": "assets/json\\baseGameConfigHumans.json"
@@ -61657,17 +61657,17 @@ var assets = [{
 	"id": "humans",
 	"url": "assets/json\\humans.json"
 }, {
-	"id": "localization_EN",
-	"url": "assets/json\\localization_EN.json"
-}, {
 	"id": "localization_DE",
 	"url": "assets/json\\localization_DE.json"
 }, {
-	"id": "localization_ES",
-	"url": "assets/json\\localization_ES.json"
+	"id": "localization_EN",
+	"url": "assets/json\\localization_EN.json"
 }, {
 	"id": "localization_FR",
 	"url": "assets/json\\localization_FR.json"
+}, {
+	"id": "localization_ES",
+	"url": "assets/json\\localization_ES.json"
 }, {
 	"id": "localization_IT",
 	"url": "assets/json\\localization_IT.json"
@@ -61684,17 +61684,17 @@ var assets = [{
 	"id": "localization_RU",
 	"url": "assets/json\\localization_RU.json"
 }, {
-	"id": "localization_ZH",
-	"url": "assets/json\\localization_ZH.json"
-}, {
 	"id": "localization_TR",
 	"url": "assets/json\\localization_TR.json"
 }, {
-	"id": "monsters",
-	"url": "assets/json\\monsters.json"
+	"id": "localization_ZH",
+	"url": "assets/json\\localization_ZH.json"
 }, {
 	"id": "modifyers",
 	"url": "assets/json\\modifyers.json"
+}, {
+	"id": "monsters",
+	"url": "assets/json\\monsters.json"
 }, {
 	"id": "resources",
 	"url": "assets/json\\resources.json"
@@ -61989,7 +61989,7 @@ module.exports = exports["default"];
 /* 344 */
 /***/ (function(module, exports) {
 
-module.exports = {"default":["image/particles/particles.json","image/pattern2/pattern2.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
+module.exports = {"default":["image/pattern2/pattern2.json","image/particles/particles.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
 
 /***/ }),
 /* 345 */

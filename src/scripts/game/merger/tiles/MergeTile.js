@@ -125,7 +125,7 @@ export default class MergeTile extends PIXI.Container {
         this.positionOffset.y = this.entityScale + Math.cos(this.sin) * 4
 
         this.tileSprite.x = this.backSlot.width / 2 + this.positionOffset.x;
-        this.tileSprite.y = this.backSlot.height / 2 + this.positionOffset.y;
+        this.tileSprite.y = this.backSlot.height / 2 + this.positionOffset.y -10;
 
 
         this.giftSprite.x = this.tileSprite.x
