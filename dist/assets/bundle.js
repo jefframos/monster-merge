@@ -2016,7 +2016,7 @@ exports.default = {
 			longPadding: [35, 35, 35, 35]
 		},
 		box: {
-			square: 'square_0007s',
+			square: 'square_0006s',
 			squareExtra: 'square_0005',
 			squareWarning: 'square_0004',
 			padding: [20, 20, 20, 20],
@@ -2024,7 +2024,7 @@ exports.default = {
 			paddingSmall: [35 / 2, 35 / 2, 35 / 2, 35 / 2]
 		},
 		bars: {
-			background: 'square_0007s',
+			background: 'square_0006s',
 			backgroundPadding: [35 / 2, 35 / 2, 35 / 2, 35 / 2],
 			primary: 'square_0001s',
 			secondary: 'square_0002s',
@@ -22223,7 +22223,7 @@ var ShopItem = function (_UIList) {
         // this.itemIcon.fitHeight = 0.7;
         _this.itemIcon.scaleContent = true;
         _this.itemIcon.scaleContentMax = true;
-        _this.itemIcon.fitHeight = 0.75;
+        _this.itemIcon.fitHeight = 0.85;
 
         _this.elementsList.push(_this.itemIcon);
         _this.container.addChild(_this.itemIcon);
@@ -61639,11 +61639,11 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 var assets = [{
-	"id": "achievments",
-	"url": "assets/json\\achievments.json"
-}, {
 	"id": "baseGameConfigFairy",
 	"url": "assets/json\\baseGameConfigFairy.json"
+}, {
+	"id": "achievments",
+	"url": "assets/json\\achievments.json"
 }, {
 	"id": "baseGameConfigHumans",
 	"url": "assets/json\\baseGameConfigHumans.json"
@@ -61657,11 +61657,11 @@ var assets = [{
 	"id": "humans",
 	"url": "assets/json\\humans.json"
 }, {
-	"id": "localization_DE",
-	"url": "assets/json\\localization_DE.json"
-}, {
 	"id": "localization_EN",
 	"url": "assets/json\\localization_EN.json"
+}, {
+	"id": "localization_DE",
+	"url": "assets/json\\localization_DE.json"
 }, {
 	"id": "localization_ES",
 	"url": "assets/json\\localization_ES.json"
@@ -61684,17 +61684,17 @@ var assets = [{
 	"id": "localization_RU",
 	"url": "assets/json\\localization_RU.json"
 }, {
-	"id": "localization_TR",
-	"url": "assets/json\\localization_TR.json"
-}, {
 	"id": "localization_ZH",
 	"url": "assets/json\\localization_ZH.json"
 }, {
-	"id": "modifyers",
-	"url": "assets/json\\modifyers.json"
+	"id": "localization_TR",
+	"url": "assets/json\\localization_TR.json"
 }, {
 	"id": "monsters",
 	"url": "assets/json\\monsters.json"
+}, {
+	"id": "modifyers",
+	"url": "assets/json\\modifyers.json"
 }, {
 	"id": "resources",
 	"url": "assets/json\\resources.json"
@@ -61989,7 +61989,7 @@ module.exports = exports["default"];
 /* 344 */
 /***/ (function(module, exports) {
 
-module.exports = {"default":["image/pattern2/pattern2.json","image/particles/particles.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
+module.exports = {"default":["image/particles/particles.json","image/pattern2/pattern2.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
 
 /***/ }),
 /* 345 */

@@ -39,7 +39,7 @@ export default class ShopItem extends UIList {
         // this.itemIcon.fitHeight = 0.7;
         this.itemIcon.scaleContent = true;
         this.itemIcon.scaleContentMax = true;
-        this.itemIcon.fitHeight = 0.75;
+        this.itemIcon.fitHeight = 0.85;
 
         this.elementsList.push(this.itemIcon);
         this.container.addChild(this.itemIcon);

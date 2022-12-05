@@ -289,7 +289,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_monster_20",
-                "imageSrc": "gargoyle",
+                "imageSrc": "gorgoyle",
                 "displayName": "Gargoyle",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,

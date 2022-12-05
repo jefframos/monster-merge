@@ -1,11 +1,11 @@
 const assets = [
 	{
-	"id":"achievments",
-	"url":"assets/json\\achievments.json"
-	},
-	{
 	"id":"baseGameConfigFairy",
 	"url":"assets/json\\baseGameConfigFairy.json"
+	},
+	{
+	"id":"achievments",
+	"url":"assets/json\\achievments.json"
 	},
 	{
 	"id":"baseGameConfigHumans",
@@ -24,12 +24,12 @@ const assets = [
 	"url":"assets/json\\humans.json"
 	},
 	{
-	"id":"localization_DE",
-	"url":"assets/json\\localization_DE.json"
-	},
-	{
 	"id":"localization_EN",
 	"url":"assets/json\\localization_EN.json"
+	},
+	{
+	"id":"localization_DE",
+	"url":"assets/json\\localization_DE.json"
 	},
 	{
 	"id":"localization_ES",
@@ -60,20 +60,20 @@ const assets = [
 	"url":"assets/json\\localization_RU.json"
 	},
 	{
-	"id":"localization_TR",
-	"url":"assets/json\\localization_TR.json"
-	},
-	{
 	"id":"localization_ZH",
 	"url":"assets/json\\localization_ZH.json"
 	},
 	{
-	"id":"modifyers",
-	"url":"assets/json\\modifyers.json"
+	"id":"localization_TR",
+	"url":"assets/json\\localization_TR.json"
 	},
 	{
 	"id":"monsters",
 	"url":"assets/json\\monsters.json"
+	},
+	{
+	"id":"modifyers",
+	"url":"assets/json\\modifyers.json"
 	},
 	{
 	"id":"resources",

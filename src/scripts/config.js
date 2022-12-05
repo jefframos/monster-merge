@@ -34,7 +34,7 @@ export default {
 			longPadding: [35, 35, 35, 35],
 		},
 		box: {
-			square: 'square_0007s',
+			square: 'square_0006s',
 			squareExtra: 'square_0005',
 			squareWarning: 'square_0004',
 			padding: [20, 20, 20, 20],
@@ -42,7 +42,7 @@ export default {
 			paddingSmall: [35/2, 35/2, 35/2, 35/2],
 		},
 		bars: {
-			background: 'square_0007s',
+			background: 'square_0006s',
 			backgroundPadding: [35/2, 35/2, 35/2, 35/2],
 			primary: 'square_0001s',
 			secondary: 'square_0002s',
