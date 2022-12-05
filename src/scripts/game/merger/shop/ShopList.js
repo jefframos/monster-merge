@@ -21,14 +21,14 @@ export default class ShopList extends ListScroller
 
     }
     addBaseGradient(texture, width, color){
+        this.extraHeight = 30
         this.baseGradient = new PIXI.Sprite.fromFrame(texture);
         this.baseGradient.tint = color;
         this.baseGradient.width = width;
-        this.baseGradient.height = 50;
+        this.baseGradient.height = this.extraHeight;
         this.baseGradient.anchor.set(0,1);
         this.baseGradient.y = this.rect.h + 2
         this.addChild(this.baseGradient)
-        this.extraHeight = 50
     }
     addItens(itens)
     {

@@ -57,7 +57,7 @@ export default class StandardPop extends PIXI.Container {
         this.label3.anchor.set(0.5)
         this.label3.y = 80
 
-        this.label4 = new TextBox(15, config.assets.panel.tertiary);
+        this.label4 = new TextBox(15, config.assets.panel.tertiary, 24);
         this.label4.y = 80
 
         config.addPaddingPanel(this.label4.background)
@@ -80,11 +80,9 @@ export default class StandardPop extends PIXI.Container {
         this.centerIcon.addChild(this.label3)
         this.label2.style.fontSize = 24
 
-        this.readyLabel = new PIXI.Text('!', LABELS.LABEL1);
-        this.readyLabel.style.fontSize = 28
-        this.readyLabel.anchor.set(0.5)
+        this.titleTextBox = new TextBox(20, config.assets.panel.tertiary, 28)
 
-        this.container.addChild(this.readyLabel)
+        this.container.addChild(this.titleTextBox)
         this.confirmButton = new UILabelButton1(150, 80, config.assets.button.primaryLong)
         this.confirmButton.addCenterLabel(window.localizationManager.getLabel('collect') + ' x2')
         this.confirmButton.addVideoIcon()
@@ -92,7 +90,7 @@ export default class StandardPop extends PIXI.Container {
         this.confirmButton.pivot.y = 40
         this.container.addChild(this.confirmButton)
         this.confirmButton.x = 90
-        this.confirmButton.y = this.h / 2 - 100
+        this.confirmButton.y = this.h / 2 - 80
         this.confirmButton.onClick.add(() => {
             if (this.confirmCallback) {
                 this.confirmCallback()
@@ -106,7 +104,7 @@ export default class StandardPop extends PIXI.Container {
         this.cancelButton.pivot.y = 35
         this.container.addChild(this.cancelButton)
         this.cancelButton.x = -90
-        this.cancelButton.y = this.h / 2 - 100
+        this.cancelButton.y = this.h / 2 - 80
 
         this.cancelButton.onClick.add(() => {
             if (this.cancelCallback) {
@@ -130,8 +128,8 @@ export default class StandardPop extends PIXI.Container {
         this.closePopUp = new UIButton1(0xFFffff, window.TILE_ASSSETS_POOL['image-X'], 0xFFffff, 70, 70, config.assets.button.warningSquare)
         this.closePopUp.updateIconScale(0.5)
         this.container.addChild(this.closePopUp)
-        this.closePopUp.x = this.w / 2 - 30
-        this.closePopUp.y = -this.h / 2 + 30
+        this.closePopUp.x = this.w / 2 
+        this.closePopUp.y = -this.h / 2 
         this.closePopUp.onClick.add(() => {
             this.close()
         })
@@ -196,6 +194,7 @@ export default class StandardPop extends PIXI.Container {
         } else {
             this.popUp.texture = PIXI.Texture.fromFrame(config.assets.popup.primary)
         }
+        this.titleTextBox.background.texture = this.popUp.texture
 
         this.label4.visible = false;
         if (param.mainIcon) {
@@ -244,10 +243,15 @@ export default class StandardPop extends PIXI.Container {
         this.label2.y = 50
 
 
-        this.readyLabel.text = (param ? param.title : '')
+        if (param.title) {
+            this.titleTextBox.updateText(param.title)
+            this.titleTextBox.visible = true
+        } else {
+            this.titleTextBox.visible = false
+        }
 
-        this.readyLabel.x = 0
-        this.readyLabel.y = -this.h / 2 + this.readyLabel.height / 2 + 14
+        this.titleTextBox.x = 0
+        this.titleTextBox.y = -this.h / 2
 
         if (visuals) {
 

@@ -128,7 +128,7 @@ export default class ShopButton extends PIXI.Container
         this.enabled = false;
         this.deactived = true;
         this.backButton.tint = 0xFFFFFF;
-        this.priceLabel.style.fill = 0xe5519b;
+        this.priceLabel.style.fill = 0xFFFFFF;
         this.priceLabel.text = 'MAX'
         this.priceLabel.x = this.backButton.width / 2
         this.priceLabel.y = this.h / 2
@@ -144,7 +144,7 @@ export default class ShopButton extends PIXI.Container
         this.deactived = true;
         this.sprite.visible = true;
         this.backButton.tint = 0xFFFFFF;
-        this.priceLabel.style.fill = 0x666666;
+        this.priceLabel.style.fill = 0xFFFFFF;
         this.backButton.alpha = 1;
         this.backButton.texture = PIXI.Texture.fromFrame(config.assets.button.greyLong)
 

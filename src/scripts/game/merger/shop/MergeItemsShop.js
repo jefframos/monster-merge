@@ -11,7 +11,7 @@ export default class MergeItemsShop extends EntityShop {
         this.systemID = 'monsters';
 
         this.giftItem = new ShopItem({ w: this.itemWidth, h: this.size.h * 0.8 / 6 })
-        this.giftItem.backShapeGeneral.texture = PIXI.Texture.from(config.assets.panel.tertiary)
+        this.giftItem.backShapeGeneral.texture = PIXI.Texture.from(config.assets.panel.extra)
         //this.giftItem.itemIcon.texture = PIXI.Texture.from('Btn04')
         this.container.addChild(this.giftItem)
         this.giftItem.x = this.size.w * 0.1
@@ -28,7 +28,7 @@ export default class MergeItemsShop extends EntityShop {
 
         this.standardGiftTime = 5 * 60;
 
-        this.shopList.addBaseGradient('base-gradient',this.itemWidth, 0x26DA73)
+        this.shopList.addBaseGradient('base-gradient',this.itemWidth, 0x575B64)
     }
     setGiftIcon(icon) {
         this.giftItem.itemIcon.texture = PIXI.Texture.from(icon)

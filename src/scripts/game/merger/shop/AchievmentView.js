@@ -32,12 +32,13 @@ export default class AchievmentView extends PIXI.Container {
 
         this.descriptionContainer = new PIXI.Container();
         this.claimContainer = new PIXI.Container();
-        this.claimContainer.align = 1
+        this.claimContainer.align = 0.5
         this.claimButton = new ShopButton()
 
         this.claimContainer.addChild(this.claimButton)
 
-
+        //this.claimButton.x = 10
+        
 
 
 
@@ -59,14 +60,18 @@ export default class AchievmentView extends PIXI.Container {
         this.data = data;
         //let desc = data.title+'\n'+data.description
         let desc = data.description
-        this.descriptionLabel = this.addLabelToNotification(desc, this.popUp.width / 2)
+        this.descriptionLabel = this.addLabelToNotification(desc, this.popUp.width / 2.5)
         this.descriptionLabel.style.align = 'left'
 
         this.descriptionContainer.addChild(this.descriptionLabel)
 
-        this.progressBar = new ProgressBar({ width: this.popUp.width / 2, height: 30 }, 2)
+        this.progressBar = new ProgressBar({ width: this.popUp.width / 2.5, height: 30 }, 2)
         this.descriptionContainer.addChild(this.progressBar)
         this.progressBar.y = 60
+
+        this.descriptionContainer.listScl = 0.6
+        this.claimContainer.listScl = 0.4
+        this.descriptionContainer.align = 0
         this.addElement(this.descriptionContainer)
         this.addElement(this.claimContainer)
 

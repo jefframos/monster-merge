@@ -13,7 +13,8 @@ export default class AchievmentsWindow extends EntityShop {
         this.onNoAchievmentPending = new Signals();
         this.systemID = 'monsters';
 
-        this.shopList.addBaseGradient('base-gradient', this.itemWidth, 0x26DA73)
+        this.backContainer.texture = PIXI.Texture.fromFrame(config.assets.popup.extra)
+        this.shopList.addBaseGradient('base-gradient', this.itemWidth, 0xFEF72B)
 
         this.giftItem = new ShopItem({ w: this.itemWidth, h: this.size.h * 0.8 / 6 })
         this.giftItem.backShapeGeneral.texture = PIXI.Texture.from(config.assets.panel.tertiary)
@@ -115,7 +116,7 @@ export default class AchievmentsWindow extends EntityShop {
         this.currentItens = []
         this.currentItensByType = {}
         for (let index = 0; index < items.length; index++) {
-            let shopItem = new AchievmentView(this.size.w - this.size.w * 0.2, this.size.h * 0.8 / 6, 40)
+            let shopItem = new AchievmentView(this.size.w - this.size.w * 0.2, this.size.h * 0.8 / 6, 20)
 
             this.currentItensByType[items[index].variable] = shopItem;
 
@@ -130,7 +131,7 @@ export default class AchievmentsWindow extends EntityShop {
 
         this.shopList.addItens(this.currentItens)
         this.shopList.x = this.size.w * 0.1
-        this.shopList.y = 80 + this.size.h * 0.8 / 6
+        this.shopList.y = 80 + this.size.h * 0.8 / 6 + 8
 
         if (skipCheck) {
             return;
