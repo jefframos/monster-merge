@@ -85,11 +85,12 @@ export default class CastleBackground extends CastleBackgroundBase {
             { src: 'sideHouse2', order: 10, pos: { x: 490.8, y: 277.15 } },
             { src: 'sideHouse1', order: 9, pos: { x: 565.95, y: 308.35 } },
             { src: 'side5', order: 17, pos: { x: 630.45, y: 0 } },
-            { src: 'thinHouse', order: 15, pos: { x: 225.05, y: 223.25 } },
+            { src: 'thinHouse', order: 12, pos: { x: 230.05, y: 223.25 } },
             { src: 'backTower', order: 19, pos: { x: 317.9, y: 0 } },
             { src: 'tower6', order: 15, pos: { x: 448.25, y: 91.7 } },
             { src: 'mainTower', order: 13, pos: { x: 301.1, y: 133.1 } },
-            { src: 'statue1', order: 18, pos: { x: 355.2, y: 71.05 } }
+            { src: 'statue1', order: 18, pos: { x: 325.2, y: 50.05 } },
+            { src: 'spare', order: 8, pos: { x: 185.2, y: 360.05 } }
         ]
 
 

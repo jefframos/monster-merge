@@ -5,6 +5,7 @@ import ShopList from './ShopList';
 import Signals from 'signals';
 import TweenMax from 'gsap';
 import UIButton1 from '../../ui/UIButton1';
+import TextBox from '../../ui/TextBox';
 import UpgradesToggles from './UpgradesToggles';
 import config from '../../../config';
 import utils from '../../../utils';
@@ -32,7 +33,7 @@ export default class EntityShop extends PIXI.Container {
         this.container.pivot.x = this.size.w / 2
         this.container.pivot.y = this.size.h / 2
         this.backContainer = new PIXI.mesh.NineSlicePlane(
-            PIXI.Texture.fromFrame(config.assets.popup.primary), 50, 100, 50, 50)
+            PIXI.Texture.fromFrame(config.assets.popup.darkGrey), 50, 100, 50, 50)
         this.backContainer.width = this.size.w
         this.backContainer.height = this.size.h
         this.container.addChild(this.backContainer);
@@ -45,11 +46,8 @@ export default class EntityShop extends PIXI.Container {
         // this.tiledBackground2.tileScale.set(0.2)
         // this.tiledBackground2.alpha = 0.1
 
-        this.title = new PIXI.Text(window.localizationManager.getLabel('resources'), LABELS.LABEL1);
-        this.title.style.fontSize = 38
-        this.title.style.stroke = 0
-        this.title.style.strokeThickness = 6
-        this.title.anchor.set(0.5,0)
+        this.title = new TextBox(20,config.assets.panel.secondary, 32)//new PIXI.Text(window.localizationManager.getLabel('resources'), LABELS.LABEL1);
+        this.title.updateText(window.localizationManager.getLabel('shop'))
         // this.portrait = new PIXI.Sprite.fromFrame('skull');
         // this.container.addChild(this.portrait);
         // this.portrait.scale.set(0.65)
@@ -62,8 +60,8 @@ export default class EntityShop extends PIXI.Container {
 
         this.container.addChild(this.title);
 
-        this.shopList = new ShopList({ w: this.size.w, h: this.itemHeight  * itemsPerPage}, itemsPerPage)
-        this.shopList.y = 100
+        this.shopList = new ShopList({ w: this.size.w, h: this.itemHeight  * itemsPerPage + itemsPerPage*5}, itemsPerPage)
+        this.shopList.y = 110
         this.container.addChild(this.shopList);
 
 
@@ -73,8 +71,8 @@ export default class EntityShop extends PIXI.Container {
         this.openShop = new UIButton1(0xFFffff, window.TILE_ASSSETS_POOL['image-X'], 0xFFffff, 70, 70, config.assets.button.warningSquare)
         this.openShop.updateIconScale(0.5)
         this.container.addChild(this.openShop)
-        this.openShop.x = this.size.w - this.openShop.width
-        this.openShop.y = this.size.h - this.openShop.height / 2 - 20
+        this.openShop.x = this.size.w 
+        this.openShop.y = 0
         this.openShop.onClick.add(() => {
             this.hideFromClick()
         })
@@ -164,8 +162,6 @@ export default class EntityShop extends PIXI.Container {
     }
     posShow() {
         this.title.x = this.size.w / 2
-        this.title.y = 8
-
 
         this.currentItens.forEach(element => {
             if(element.updatePreviewValue){
@@ -229,7 +225,7 @@ export default class EntityShop extends PIXI.Container {
 
         this.shopList.addItens(this.currentItens)
         this.shopList.x = this.size.w * 0.1
-        this.shopList.y = 80 + this.size.h * 0.8 / 6
+        this.shopList.y = 80 + this.size.h * 0.8 / 6 + 5
 
         if (skipCheck) {
             return;

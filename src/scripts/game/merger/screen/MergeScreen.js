@@ -135,8 +135,9 @@ export default class MergeScreen extends Screen {
         this.activeMergeSystemID = 0
         this.activeMergeSystem = this.mergeSystemsList[this.activeMergeSystemID]
 
-        this.extraMoneyBonus = new UIButton1(0x002299, this.activeMergeSystem.baseData.visuals.coin, 0xFFFFFF, this.bonusesList.w, this.bonusesList.w, config.assets.button.tertiarySquare)
-        this.extraMoneyBonus.updateIconScale(0.7)
+        this.extraMoneyBonus = new UIButton1(0x002299, this.activeMergeSystem.baseData.visuals.coin, 0xFFFFFF, this.bonusesList.w, this.bonusesList.w, config.assets.button.extraSquare)
+        this.extraMoneyBonus.updateIconScale(0.6)
+        this.extraMoneyBonus.addBadge('plusBadge')
         this.extraMoneyBonus.onClick.add(() => {
             this.openHourCoinPopUp();
             //this.showSystem(this.extraMoneyBonus.systemArrayID)
@@ -144,10 +145,10 @@ export default class MergeScreen extends Screen {
 
         this.bonusesList.addElement(this.extraMoneyBonus);
 
-        this.openAchievments = new UIButton1(0x002299, 'achievment', 0xFFFFFF, this.bonusesList.w, this.bonusesList.w, config.assets.button.tertiarySquare)
+        this.openAchievments = new UIButton1(0x002299, 'achievment', 0xFFFFFF, this.bonusesList.w, this.bonusesList.w, config.assets.button.extraSquare)
         this.openAchievments.updateIconScale(0.75)
         this.openAchievments.newItem = new PIXI.Sprite.fromFrame('new_item')
-        this.openAchievments.newItem.scale.set(0.7)
+        this.openAchievments.newItem.scale.set(0.6)
         this.openAchievments.newItem.anchor.set(0)
         this.openAchievments.newItem.position.set(-buttonSize / 2)
         this.openAchievments.newItem.visible = false;
@@ -243,7 +244,6 @@ export default class MergeScreen extends Screen {
 
         this.openMergeShop = new UIButton1(0x002299, 'vampire', 0xFFFFFF, buttonSize, buttonSize, config.assets.button.secondarySquare)
         this.openMergeShop.updateIconScale(0.75)
-        this.openMergeShop.addBadge('new_item')
         this.openMergeShop.newItem = new PIXI.Sprite.fromFrame('new_item')
         this.openMergeShop.newItem.scale.set(0.7)
         this.openMergeShop.newItem.anchor.set(0)
@@ -388,13 +388,13 @@ export default class MergeScreen extends Screen {
             if (slug != this.activeMergeSystem.systemID) return;
 
             if (notification) {
-                this.notificationPanel.buildNewPieceNotification('achievment', 'You unlock a new achievement ', null, config.assets.popup.primary)
+                this.notificationPanel.buildNewPieceNotification('achievmentl', 'You unlock a new achievement ', null, config.assets.popup.primary)
 
             }
             if (this.openAchievments.badge) {
                 this.openAchievments.badge.visible = true;
             } else {
-                this.openAchievments.addBadge('new_item')
+                this.openAchievments.addBadge('warning')
             }
         })
         achievmentsWindow.onNoAchievmentPending.add((slug) => {
@@ -418,7 +418,7 @@ export default class MergeScreen extends Screen {
 
         this.uiLayer.addChild(achievmentsWindow);
         achievmentsWindow.hide();
-        achievmentsWindow.setGiftTexture(baseData.visuals.coin)
+        achievmentsWindow.setGiftTexture('moneyl')
         setTimeout(() => {
             mergeItemsShop.updateLocks(mergeSystem.totalAvailable())
 
@@ -473,8 +473,8 @@ export default class MergeScreen extends Screen {
 
     }
     showSystem(id) {
-        if(this.activeMergeSystemID == id) return;
-        
+        if (this.activeMergeSystemID == id) return;
+
         this.mergeSystemsList.forEach(element => {
             element.visible = false;
             element.interactiveBackground.visible = false;
@@ -601,7 +601,7 @@ export default class MergeScreen extends Screen {
             mainLabel2: 'Watch a video to upgrade this slot',
             popUpType: config.assets.popup.secondary,
             mainIcon: 'results_arrow_right',
-            mainIconHeight: 20,
+            mainIconHeight: 30,
             video: true,
             onConfirm: () => {
                 this.activeMergeSystem.addDataTo(slot, level + 1)
@@ -625,11 +625,12 @@ export default class MergeScreen extends Screen {
         this.shardsTexture.texture = PIXI.Texture.fromImage(this.activeMergeSystem.baseData.visuals.coin)
         this.shardsTexture.scale.set(40 / this.shardsTexture.height * 0.5 * this.shardsTexture.scale.y)
 
-        this.openMergeShop.icon.texture = PIXI.Texture.fromImage(this.activeMergeSystem.dataTiles[0].rawData.imageSrc)
+        this.openMergeShop.icon.texture = PIXI.Texture.fromImage('shop')
+        //this.openMergeShop.icon.texture = PIXI.Texture.fromImage(this.activeMergeSystem.dataTiles[0].rawData.imageSrc)
         this.openMergeShop.updateIconScale(0.8)
 
 
-        this.extraMoneyBonus.icon.texture = PIXI.Texture.fromImage(this.activeMergeSystem.baseData.visuals.coin);
+        this.extraMoneyBonus.icon.texture = PIXI.Texture.fromImage('money');
 
 
         this.resize(this.latestInner, this.latestInner);
@@ -662,24 +663,27 @@ export default class MergeScreen extends Screen {
     }
     moneyFromCenter(value) {
         let toLocal = this.particleSystemFront.toLocal({ x: config.width / 2, y: config.height / 2 })
-        let customData = {};
-        customData.texture = this.activeMergeSystem.baseData.visuals.coin
-        customData.scale = 0.035
-        customData.gravity = 1000
-        customData.alphaDecress = 0
-        customData.forceX = Math.random() * 1200 - 600
-        customData.forceY = 400 * Math.random() + 300
-        customData.ignoreMatchRotation = true
+        for (let index = 1; index <= 10; index++) {
+            let angle = ( Math.PI * 2 / 10) * index
+            let customData = {};
+            customData.texture = this.activeMergeSystem.baseData.visuals.coin
+            customData.scale = 0.035
+            customData.gravity = 20//1000
+            customData.alphaDecress = 0
+            customData.forceX = Math.sin(angle) * 800
+            customData.forceY = Math.cos(angle) * 500
+            customData.ignoreMatchRotation = true
 
-        let coinPosition = this.shardsTexture.getGlobalPosition();
+            let coinPosition = this.shardsTexture.getGlobalPosition();
 
-        let toLocalTarget = this.particleSystemFront.toLocal(coinPosition)
+            let toLocalTarget = this.particleSystemFront.toLocal(coinPosition)
 
-        customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.25 + Math.random() * 0.5 }
-        this.particleSystemFront.show(toLocal, 8, customData)
+            customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.25 + Math.random() * 0.5 }
+            this.particleSystemFront.show(toLocal, 1, customData)
 
 
-        this.popLabelFront({ x: config.width / 2, y: config.height / 2 }, value, 2);
+        }
+        this.popLabelFront({ x: config.width / 2, y: config.height / 2 }, utils.formatPointsLabel(value), 2);
 
     }
     addSystem(system) {
@@ -943,7 +947,7 @@ export default class MergeScreen extends Screen {
         this.statsList.y = 10
         this.statsList.x = toGlobalBack.x + 10
 
-        this.bonusesList.y = this.statsList.y + this.statsList.height + this.statsList.w / 2 + 10;
+        this.bonusesList.y = this.statsList.y + this.statsList.height + this.statsList.w / 2 + 20;
         this.bonusesList.x = this.statsList.x + + this.bonusesList.w * 0.5
 
         this.helperButtonList.y = 80

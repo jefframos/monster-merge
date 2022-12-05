@@ -60,6 +60,12 @@ export default class ChargerTile extends MergeTile {
         this.systemID = '';
         this.outState()
 
+        this.fullLabel =new PIXI.Text('Full', LABELS.LABEL1)
+        this.fullLabel.anchor.set(0.5)
+        this.fullLabel.style.fontSize = 32
+        this.container.addChild(this.fullLabel)
+        this.fullLabel.x = size / 2
+        this.fullLabel.y = size / 2
     }
     onMouseDown(e) {
         if (this.isBlocked) return
@@ -111,6 +117,9 @@ export default class ChargerTile extends MergeTile {
                 //this.circleCounter.update(1-(this.currentChargeTime / this.defaultChargeTime))
 
             }
+            this.fullLabel.visible = false
+        }else{
+            this.fullLabel.visible = true
         }
         //this.levelBar.visible = false;
         this.levelBar.visible = true;

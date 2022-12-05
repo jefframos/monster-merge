@@ -6,15 +6,19 @@ import AchievmentView from './AchievmentView';
 import ShopItem from './ShopItem';
 
 export default class AchievmentsWindow extends EntityShop {
-    constructor(mainSystem, size, border = 0) {
-        super(mainSystem, size, border = 0)
+    constructor(mainSystem, size, ) {
+        super(mainSystem, size, 5)
         this.onAddEntity = new Signals();
         this.onAchievmentPending = new Signals();
         this.onNoAchievmentPending = new Signals();
+        this.onClaimGift = new Signals();
+        this.onClaimAchievment = new Signals();
         this.systemID = 'monsters';
 
         this.backContainer.texture = PIXI.Texture.fromFrame(config.assets.popup.extra)
         this.shopList.addBaseGradient('base-gradient', this.itemWidth, 0xFEF72B)
+
+        this.title.updateText(window.localizationManager.getLabel('achievment'))
 
         this.giftItem = new ShopItem({ w: this.itemWidth, h: this.size.h * 0.8 / 6 })
         this.giftItem.backShapeGeneral.texture = PIXI.Texture.from(config.assets.panel.tertiary)
@@ -29,8 +33,9 @@ export default class AchievmentsWindow extends EntityShop {
         this.giftItem.shopButton.onClickItem.removeAll()
         this.giftItem.shopButton.onClickItem.add(
             () => {
-                this.hide()
+                //this.hide()
                 this.onClaimGift.dispatch()
+                this.checkAll();
             });
 
         this.standardGiftTime = 5 * 60;
@@ -38,6 +43,8 @@ export default class AchievmentsWindow extends EntityShop {
         COOKIE_MANAGER.onUpdateAchievments.add((type) => {
             this.checkItem(type)
         })
+
+        this.title.addIcon('achievmentl')
 
     }
     checkAll() {
@@ -55,7 +62,7 @@ export default class AchievmentsWindow extends EntityShop {
     checkItem(type) {
         if (!this.currentItensByType) return;
         if (this.currentItensByType[type].updateCurrentData()) {
-            this.onAchievmentPending.dispatch(this.systemID);
+            this.onAchievmentPending.dispatch(this.systemID, true);
         }
     }
     update(delta) {
@@ -84,6 +91,7 @@ export default class AchievmentsWindow extends EntityShop {
         COOKIE_MANAGER.addMergePieceUpgrade(item, this.systemID);
 
         this.onAddEntity.dispatch(item);
+        this.onClaimAchievment.dispatch(item);
 
     }
     updateLocks(total) {
@@ -116,22 +124,28 @@ export default class AchievmentsWindow extends EntityShop {
         this.currentItens = []
         this.currentItensByType = {}
         for (let index = 0; index < items.length; index++) {
-            let shopItem = new AchievmentView(this.size.w - this.size.w * 0.2, this.size.h * 0.8 / 6, 20)
+            let shopItem = new AchievmentView(this.size.w - this.size.w * 0.2, this.size.h * 0.8 / 6, 28)
 
             this.currentItensByType[items[index].variable] = shopItem;
 
             shopItem.setData(items[index], this.systemID)
             //shopItem.nameID = items[index].rawData.nameID;
 
-            shopItem.onClaim.add(()=>{
-                this.checkAll()
+            shopItem.onClaim.add((value)=>{
+                this.onClaimAchievment.dispatch(value)
+                setTimeout(() => {                    
+                    this.checkAll()
+                }, 1);
+                setTimeout(() => {                    
+                    this.checkAll()
+                }, 100);
             })
             this.currentItens.push(shopItem)
         }
 
         this.shopList.addItens(this.currentItens)
         this.shopList.x = this.size.w * 0.1
-        this.shopList.y = 80 + this.size.h * 0.8 / 6 + 8
+        this.shopList.y = 80 + this.size.h * 0.8 / 6 + 5
 
         if (skipCheck) {
             return;

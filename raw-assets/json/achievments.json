@@ -43,7 +43,7 @@
         {
             "name":"tap",
             "variable":"tap",
-            "values":[500, 2000, 10000],
+            "values":[2, 5, 10000],
             "prizes":[10000,100000,1000000],
             "stageMultiplier":1.2,
             "icon":"",

@@ -11,6 +11,8 @@ export default class MergeItemsShop extends EntityShop {
         this.onAddEntity = new Signals();
         this.systemID = 'monsters';
 
+
+        this.title.addIcon('shopl')
         this.giftItem = new ShopItem({ w: this.itemWidth, h: this.size.h * 0.8 / 6 })
         this.giftItem.backShapeGeneral.texture = PIXI.Texture.from(config.assets.panel.extra)
         //this.giftItem.itemIcon.texture = PIXI.Texture.from('Btn04')
@@ -108,7 +110,6 @@ export default class MergeItemsShop extends EntityShop {
         }
         this.currentItens[0].unlockItem();
         this.posShow();
-
 
 
     }

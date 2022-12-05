@@ -16,7 +16,7 @@ export default class LevelMeter extends PIXI.Container {
 
         this.baseContainer.addChild(this.baseBar)
         this.baseBar.width = 400
-        this.baseBar.height = 35
+        this.baseBar.height = 50
 
         config.addPaddingBackBar(this.baseBar)
         //this.baseBar.anchor.set(0, 0.5)
@@ -25,16 +25,16 @@ export default class LevelMeter extends PIXI.Container {
         this.baseBar.y = 0
 
         this.fillBar = new PIXI.mesh.NineSlicePlane(
-            PIXI.Texture.fromFrame(config.assets.bars.extra), 15, 0, 15, 0)
+            PIXI.Texture.fromFrame(config.assets.bars.warning), 15, 0, 15, 0)
         this.fillBar.width = 250 //468
-        this.fillBar.height = 26
+        this.fillBar.height = 42
         this.fillBar.x = 4
         this.fillBar.y = 4
         config.addPaddingBar(this.fillBar)
 
         this.baseBar.addChild(this.fillBar)
         
-        this.baseLevelLabel = new PIXI.Sprite.fromFrame(config.assets.box.squareExtra)
+        this.baseLevelLabel = new PIXI.Sprite.fromFrame(config.assets.box.squareWarning)
         this.baseContainer.addChild(this.baseLevelLabel)
         this.baseLevelLabel.anchor.set(0, 0.5)
 
@@ -43,7 +43,7 @@ export default class LevelMeter extends PIXI.Container {
 
         this.levelLabel = new PIXI.Text('2', LABELS.LABEL1);
         this.levelLabel.style.stroke = 0
-        this.levelLabel.style.strokeThickness = 4
+        this.levelLabel.style.strokeThickness = 8
         this.levelLabel.style.fontSize = 42
         this.levelLabel.anchor.set(0.5)
         this.levelLabel.x = this.baseLevelLabel.width / 2
@@ -66,7 +66,7 @@ export default class LevelMeter extends PIXI.Container {
         this.usableArea.alpha = 0.15
 
         this.baseLevelLabel.scale.set(this.usableArea.height / this.baseLevelLabel.height)
-        this.baseLevelLabel.y = this.baseLevelLabel.height / 2-5
+        this.baseLevelLabel.y = this.baseLevelLabel.height / 2
 
         this.baseBar.x = this.baseLevelLabel.width
         this.baseBar.y = this.usableArea.height / 2 - this.baseBar.height / 2

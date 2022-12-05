@@ -312,12 +312,12 @@ export default class MergeSystem {
             customData.forceX = 0
             customData.forceY = 100
             customData.gravity = 0
-            customData.scale = 0.02
+            customData.scale = 0.05
             customData.alphaDecress = 1
             customData.texture = 'smallButton'
 
             let pos = piece.tileSprite.getGlobalPosition()
-            pos.x += Math.random() * 40 - 20
+            pos.x += Math.random() * 40 //- 20
             pos.y -= Math.random() * 40
             this.onParticles.dispatch(pos, customData, 1)
         })

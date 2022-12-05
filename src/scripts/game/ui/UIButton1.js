@@ -59,12 +59,12 @@ export default class UIButton1 extends PIXI.Container {
 		this.interactive = true;
 		this.buttonMode = true;
 	}
-	addBadge(texture, scale = 0.3){
+	addBadge(texture, scale = 0.8){
 		this.badge = PIXI.Sprite.fromFrame(texture);
-		this.badge.scale.set(0.5);
+		this.badge.scale.set(scale);
 		this.badge.anchor.set(this.badge.width * scale / this.badge.width);
-		this.badge.x = this.backShape.width / 2 - this.badge.width - 10
-		this.badge.y = -this.backShape.height / 2 + this.badge.height
+		this.badge.x = this.backShape.width / 2 -4//- this.badge.width
+		this.badge.y = -this.backShape.height / 2 + this.badge.height/2+8
 		this.mainContainer.addChild(this.badge);
 
 	}

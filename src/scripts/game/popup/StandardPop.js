@@ -37,6 +37,8 @@ export default class StandardPop extends PIXI.Container {
 
         config.addPaddingPopup(this.popUp)
 
+       
+
         this.popUp.pivot.x = this.popUp.width / 2
         this.popUp.pivot.y = this.popUp.height / 2
         // this.popUp.scale.set((this.size / this.popUp.width));
@@ -61,6 +63,15 @@ export default class StandardPop extends PIXI.Container {
         this.label4.y = 80
 
         config.addPaddingPanel(this.label4.background)
+
+
+
+        this.glow = new PIXI.Sprite.fromFrame('shine')
+        this.container.addChild(this.glow)
+        this.glow.anchor.set(0.5)
+        this.glow.scale.set(3.5)
+        this.glow.y = -30
+        this.glow.alpha = 0.3
 
         this.coin1 = new PIXI.Sprite()
         this.coin2 = new PIXI.Sprite()
@@ -133,10 +144,15 @@ export default class StandardPop extends PIXI.Container {
         this.closePopUp.onClick.add(() => {
             this.close()
         })
+
+       
     }
     update(delta) {
         this.readySin += delta * 8
         this.confirmButton.scale.set(Math.sin(this.readySin) * 0.05 + 0.95)
+
+        this.glow.rotation += delta * 2
+        this.glow.rotation %= Math.PI * 2
     }
     show(param, visuals) {
         this.visible = true;
