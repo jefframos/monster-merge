@@ -26,7 +26,7 @@ export default class EntityShop extends PIXI.Container {
 
         this.background.interactive = true;
         this.background.buttonMode = true;
-        //this.background.on('mousedown', this.confirm.bind(this)).on('touchstart', this.confirm.bind(this));
+        this.background.on('mousedown', this.confirm.bind(this)).on('touchstart', this.confirm.bind(this));
 
         this.container = new PIXI.Container();
         this.addChild(this.container)

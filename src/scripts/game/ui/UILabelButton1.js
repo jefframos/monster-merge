@@ -118,16 +118,16 @@ export default class UILabelButton1 extends PIXI.Container {
         if (!this.buttonLabel) this.buttonLabel = new PIXI.Text(label, LABELS.LABEL1);
         this.buttonLabel.text = label
         this.buttonLabel.style.stroke = 0
-        this.buttonLabel.style.strokeThickness = 3
+        this.buttonLabel.style.wordWrap = true
+        this.buttonLabel.style.wordWrapWidth = this.buttonLabel.width-10
+        this.buttonLabel.style.strokeThickness = 6
         this.buttonLabel.style.fontSize = 24
+        this.buttonLabel.anchor.set(0.5)
         if (fit) {
-            this.buttonLabel.scale.set(this.buttonLabel.width / this.backShapeBorder.width * fit)
+            this.buttonLabel.scale.set(this.buttonLabel.width / this.backShapeBorder.width * fit / this.buttonLabel.scale.x)
         }
-        setTimeout(() => {
-
-            this.buttonLabel.x = this.backShapeBorder.width / 2 - this.buttonLabel.width / 2;
-            this.buttonLabel.y = this.backShapeBorder.height / 2 - this.buttonLabel.height / 2;
-        }, 10);
+        this.buttonLabel.x = this.backShapeBorder.width/2
+        this.buttonLabel.y = this.backShapeBorder.height/2
         this.addChild(this.buttonLabel);
     }
     updateTexture(texture) {

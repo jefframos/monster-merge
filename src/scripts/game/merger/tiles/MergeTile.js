@@ -247,8 +247,6 @@ export default class MergeTile extends PIXI.Container {
         return this.tileSprite.texture;
     }
     removeEntity() {
-        console.log('remove')
-        //console.trace()
 
         this.tileData = null;
         this.tileSprite.visible = false;
@@ -268,8 +266,6 @@ export default class MergeTile extends PIXI.Container {
         if (!this.tileData) {
             return;
         }
-        console.log('hide')
-        //console.trace()
 
         this.tileSprite.alpha = 0//.5
         this.tileSprite.visible = false;

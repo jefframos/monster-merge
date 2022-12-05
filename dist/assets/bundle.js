@@ -23071,24 +23071,22 @@ var UILabelButton1 = function (_PIXI$Container) {
     }, {
         key: 'addCenterLabel',
         value: function addCenterLabel(label) {
-            var _this2 = this;
-
             var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0xFFFFFF;
             var fit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
 
             if (!this.buttonLabel) this.buttonLabel = new PIXI.Text(label, LABELS.LABEL1);
             this.buttonLabel.text = label;
             this.buttonLabel.style.stroke = 0;
-            this.buttonLabel.style.strokeThickness = 3;
+            this.buttonLabel.style.wordWrap = true;
+            this.buttonLabel.style.wordWrapWidth = this.buttonLabel.width - 10;
+            this.buttonLabel.style.strokeThickness = 6;
             this.buttonLabel.style.fontSize = 24;
+            this.buttonLabel.anchor.set(0.5);
             if (fit) {
-                this.buttonLabel.scale.set(this.buttonLabel.width / this.backShapeBorder.width * fit);
+                this.buttonLabel.scale.set(this.buttonLabel.width / this.backShapeBorder.width * fit / this.buttonLabel.scale.x);
             }
-            setTimeout(function () {
-
-                _this2.buttonLabel.x = _this2.backShapeBorder.width / 2 - _this2.buttonLabel.width / 2;
-                _this2.buttonLabel.y = _this2.backShapeBorder.height / 2 - _this2.buttonLabel.height / 2;
-            }, 10);
+            this.buttonLabel.x = this.backShapeBorder.width / 2;
+            this.buttonLabel.y = this.backShapeBorder.height / 2;
             this.addChild(this.buttonLabel);
         }
     }, {
@@ -32749,7 +32747,7 @@ var EntityShop = function (_PIXI$Container) {
 
         _this.background.interactive = true;
         _this.background.buttonMode = true;
-        //this.background.on('mousedown', this.confirm.bind(this)).on('touchstart', this.confirm.bind(this));
+        _this.background.on('mousedown', _this.confirm.bind(_this)).on('touchstart', _this.confirm.bind(_this));
 
         _this.container = new PIXI.Container();
         _this.addChild(_this.container);
@@ -34118,8 +34116,6 @@ var MergeTile = function (_PIXI$Container) {
     }, {
         key: 'removeEntity',
         value: function removeEntity() {
-            console.log('remove');
-            //console.trace()
 
             this.tileData = null;
             this.tileSprite.visible = false;
@@ -34143,8 +34139,6 @@ var MergeTile = function (_PIXI$Container) {
             if (!this.tileData) {
                 return;
             }
-            console.log('hide');
-            //console.trace()
 
             this.tileSprite.alpha = 0; //.5
             this.tileSprite.visible = false;
@@ -61654,11 +61648,11 @@ var assets = [{
 	"id": "baseGameConfigHumans",
 	"url": "assets/json\\baseGameConfigHumans.json"
 }, {
-	"id": "fairies",
-	"url": "assets/json\\fairies.json"
-}, {
 	"id": "baseGameConfigMonster",
 	"url": "assets/json\\baseGameConfigMonster.json"
+}, {
+	"id": "fairies",
+	"url": "assets/json\\fairies.json"
 }, {
 	"id": "humans",
 	"url": "assets/json\\humans.json"
@@ -61690,14 +61684,14 @@ var assets = [{
 	"id": "localization_RU",
 	"url": "assets/json\\localization_RU.json"
 }, {
+	"id": "localization_TR",
+	"url": "assets/json\\localization_TR.json"
+}, {
 	"id": "localization_ZH",
 	"url": "assets/json\\localization_ZH.json"
 }, {
 	"id": "modifyers",
 	"url": "assets/json\\modifyers.json"
-}, {
-	"id": "localization_TR",
-	"url": "assets/json\\localization_TR.json"
 }, {
 	"id": "monsters",
 	"url": "assets/json\\monsters.json"
@@ -61995,7 +61989,7 @@ module.exports = exports["default"];
 /* 344 */
 /***/ (function(module, exports) {
 
-module.exports = {"default":["image/particles/particles.json","image/pattern2/pattern2.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
+module.exports = {"default":["image/pattern2/pattern2.json","image/particles/particles.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
 
 /***/ }),
 /* 345 */
@@ -62720,6 +62714,8 @@ var MergeScreen = function (_Screen) {
 
                                 if (slug != _this2.activeMergeSystem.systemID) return;
 
+                                console.log("ACHIEVMENTS", notification);
+
                                 if (notification) {
                                         _this2.notificationPanel.buildNewPieceNotification('achievmentl', 'You unlock a new achievement ', null, _config2.default.assets.popup.primary);
                                 }
@@ -62730,6 +62726,7 @@ var MergeScreen = function (_Screen) {
                                 }
                         });
                         achievmentsWindow.onNoAchievmentPending.add(function (slug) {
+                                console.log("NO ACHIEVMENTS", slug);
                                 if (slug != _this2.activeMergeSystem.systemID) return;
                                 if (_this2.openAchievments.badge) {
                                         _this2.openAchievments.badge.visible = false;
@@ -63556,8 +63553,13 @@ var AchievmentsWindow = function (_EntityShop) {
             for (var key in this.currentItensByType) {
                 if (Object.hasOwnProperty.call(this.currentItensByType, key)) {
                     var element = this.currentItensByType[key];
-                    if (element.updateCurrentData()) {
-                        this.onAchievmentPending.dispatch(this.systemID);
+                    var res = element.updateCurrentData();
+                    if (res == 1) {
+                        this.onAchievmentPending.dispatch(this.systemID, false);
+                        return;
+                    }
+                    if (res == 2) {
+                        this.onAchievmentPending.dispatch(this.systemID, false);
                         return;
                     }
                 }
@@ -63568,8 +63570,17 @@ var AchievmentsWindow = function (_EntityShop) {
         key: 'checkItem',
         value: function checkItem(type) {
             if (!this.currentItensByType) return;
-            if (this.currentItensByType[type].updateCurrentData()) {
-                this.onAchievmentPending.dispatch(this.systemID, true);
+
+            var res = this.currentItensByType[type].updateCurrentData();
+            if (res) {
+                if (res == 1) {
+                    this.onAchievmentPending.dispatch(this.systemID, true);
+                    return;
+                }
+                if (res == 2) {
+                    this.onAchievmentPending.dispatch(this.systemID, false);
+                    return;
+                }
             }
         }
     }, {
@@ -64501,7 +64512,7 @@ var AchievmentView = function (_PIXI$Container) {
                 this.progressBar.visible = false;
                 this.descriptionLabel.text = this.data.title;
                 this.contentList.updateHorizontalList();
-                return false;
+                return 0;
             }
             var currentValue = achieveData.progress;
             var nextUnclaimed = this.data.values[achieveData.claimed];
@@ -64512,23 +64523,25 @@ var AchievmentView = function (_PIXI$Container) {
             if (currentValue == 0) {
                 this.progressBar.setProgressBar(0);
                 this.claimButton.deactive();
-                return false;
+                return 0;
             }
 
             var bar = currentValue / nextUnclaimed;
             bar = Math.min(bar, 1);
+
             this.progressBar.setProgressBar(bar);
             if (bar >= 1) {
                 this.claimButton.enable();
                 if (!this.notificationDispatched) {
                     this.notificationDispatched = true;
-                    return true;
+                    return 1;
                 }
+                return 2;
             } else {
                 this.claimButton.deactive();
             }
 
-            return false;
+            return 0;
         }
     }, {
         key: 'show',
@@ -65807,32 +65820,7 @@ var MergeSystem = function () {
             });
             var targetScale = _config2.default.height * 0.25 / piece.height;
             piece.scale.set(Math.min(targetScale, 1.5));
-            //piece.addEntity(this.dataTiles[0])
-            //this.uiContainer.addChild(piece);
-
-            // piece.onHold.add((slot) => {
-            //     if (!slot.tileData) {
-            //         return;
-            //     }
-            //     this.startDrag(slot)
-            // });
-            // piece.onEndHold.add((slot) => {
-            //     if (!slot.tileData) {
-            //         return;
-            //     }
-            //     this.endDrag(slot)
-            //     setTimeout(() => {
-            //         if (!slot.tileData) {
-            //             slot.startCharging()
-            //         }
-            //     }, 10);
-
-            // });
             piece.onCompleteCharge.add(function (slot) {
-
-                //alert()
-                //upgrade this
-                //console.log(this.boardLevel)
                 var id = 0;
                 if (_this4.boardLevel > 4) {
                     id = Math.min(Math.floor(Math.random() * _this4.boardLevel / 3), 5);
@@ -65847,9 +65835,6 @@ var MergeSystem = function () {
 
                 id = Math.min(_this4.dataTiles.length - 1, id);
                 piece.addEntity(_this4.dataTiles[id]);
-                //piece.giftState();
-
-
                 _this4.sortAutoMerge(piece);
 
                 //piece.startCharging()
@@ -66415,9 +66400,6 @@ var MergeSystem = function () {
                     this.updateProgression(target.rawData.id + 1);
 
                     this.onEntityMerge.dispatch();
-                    this.draggingEntity = false;
-
-                    this.currentDragSlot = null;
 
                     COOKIE_MANAGER.addAchievment(this.systemID, 'merge', 1);
                 } else {
@@ -66429,13 +66411,9 @@ var MergeSystem = function () {
                         slot.removeEntity();
                         slot.addEntity(copyData);
                         COOKIE_MANAGER.addMergePiece(copyData, slot.id.i, slot.id.j, this.systemID, 0);
-                        this.draggingEntity = false;
-                        this.currentDragSlot = null;
                     } else {
                         //doesnt do anything coz is coming from the generator
-                        //currentDrag.addEntity(copyDataTargetSlot);   
-                        his.draggingEntity = false;
-                        this.currentDragSlot = null;
+                        //currentDrag.addEntity(copyDataTargetSlot); 
                         this.onEntityAdd.dispatch();
                     }
                 }
@@ -66445,8 +66423,6 @@ var MergeSystem = function () {
                 slot.addEntity(copyData);
                 COOKIE_MANAGER.addMergePiece(copyData, slot.id.i, slot.id.j, this.systemID, 0);
                 this.onEntityAdd.dispatch();
-                this.draggingEntity = false;
-                this.currentDragSlot = null;
             }
 
             if (update) {
@@ -68386,6 +68362,7 @@ var StandardPop = function (_PIXI$Container) {
         _this.confirmButton.addVideoIcon();
         _this.confirmButton.pivot.x = 75;
         _this.confirmButton.pivot.y = 40;
+
         _this.container.addChild(_this.confirmButton);
         _this.confirmButton.x = 90;
         _this.confirmButton.y = _this.h / 2 - 80;
@@ -68536,9 +68513,8 @@ var StandardPop = function (_PIXI$Container) {
                 this.label4.visible = false;
             }
 
-            this.confirmButton.addCenterLabel(param.confirmLabel);
+            this.confirmButton.addCenterLabel(param.confirmLabel, 0xFFFFFF, 2);
             this.cancelButton.addCenterLabel(param.cancelLabel);
-
             this.label1.text = param.value1;
             this.label1.pivot.x = this.label1.width / 2;
             this.label1.y = 50;
@@ -68559,18 +68535,18 @@ var StandardPop = function (_PIXI$Container) {
 
             if (visuals) {
 
-                this.coin2.texture = new PIXI.Texture.fromFrame(visuals.coin);
+                this.coin2.texture = new PIXI.Texture.fromFrame(visuals.coin + 'l');
 
                 if (param.value1Icon) {
                     this.coin1.texture = PIXI.Texture.fromFrame(param.value1Icon);
                 } else {
-                    this.coin1.texture = new PIXI.Texture.fromFrame(visuals.coin);
+                    this.coin1.texture = new PIXI.Texture.fromFrame(visuals.coin + 'l');
                 }
 
                 if (param.value2Icon) {
                     this.coin2.texture = PIXI.Texture.fromFrame(param.value2Icon);
                 } else {
-                    this.coin2.texture = new PIXI.Texture.fromFrame(visuals.coin);
+                    this.coin2.texture = new PIXI.Texture.fromFrame(visuals.coin + 'l');
                 }
 
                 if (param.value2IconHeight) {

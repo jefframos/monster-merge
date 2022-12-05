@@ -104,7 +104,7 @@ export default class AchievmentView extends PIXI.Container {
             this.progressBar.visible = false;
             this.descriptionLabel.text = this.data.title
             this.contentList.updateHorizontalList();
-            return false
+            return 0
         }
         let currentValue = achieveData.progress;
         let nextUnclaimed = this.data.values[achieveData.claimed]
@@ -115,23 +115,25 @@ export default class AchievmentView extends PIXI.Container {
         if (currentValue == 0) {
             this.progressBar.setProgressBar(0)
             this.claimButton.deactive();
-            return false
+            return 0
         }
 
         let bar = currentValue / nextUnclaimed;
         bar = Math.min(bar, 1)
+
         this.progressBar.setProgressBar(bar)
         if(bar >= 1){
             this.claimButton.enable();
             if(!this.notificationDispatched){
                 this.notificationDispatched = true;
-                return true
+                return 1
             }
+            return 2
         }else{
             this.claimButton.deactive();
         }
 
-        return false
+        return 0
     }
     show() {
         this.visible = true;

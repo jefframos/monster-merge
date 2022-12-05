@@ -387,6 +387,9 @@ export default class MergeScreen extends Screen {
         achievmentsWindow.onAchievmentPending.add((slug, notification = false) => {
             if (slug != this.activeMergeSystem.systemID) return;
 
+
+            console.log("ACHIEVMENTS",notification)
+
             if (notification) {
                 this.notificationPanel.buildNewPieceNotification('achievmentl', 'You unlock a new achievement ', null, config.assets.popup.primary)
 
@@ -398,6 +401,7 @@ export default class MergeScreen extends Screen {
             }
         })
         achievmentsWindow.onNoAchievmentPending.add((slug) => {
+            console.log("NO ACHIEVMENTS",slug)
             if (slug != this.activeMergeSystem.systemID) return;
             if (this.openAchievments.badge) {
                 this.openAchievments.badge.visible = false;

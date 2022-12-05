@@ -323,32 +323,7 @@ export default class MergeSystem {
         })
         let targetScale = config.height * 0.25 / piece.height
         piece.scale.set(Math.min(targetScale, 1.5))
-        //piece.addEntity(this.dataTiles[0])
-        //this.uiContainer.addChild(piece);
-
-        // piece.onHold.add((slot) => {
-        //     if (!slot.tileData) {
-        //         return;
-        //     }
-        //     this.startDrag(slot)
-        // });
-        // piece.onEndHold.add((slot) => {
-        //     if (!slot.tileData) {
-        //         return;
-        //     }
-        //     this.endDrag(slot)
-        //     setTimeout(() => {
-        //         if (!slot.tileData) {
-        //             slot.startCharging()
-        //         }
-        //     }, 10);
-
-        // });
         piece.onCompleteCharge.add((slot) => {
-
-            //alert()
-            //upgrade this
-            //console.log(this.boardLevel)
             let id = 0;
             if (this.boardLevel > 4) {
                 id = Math.min(Math.floor(Math.random() * this.boardLevel / 3), 5);
@@ -363,10 +338,6 @@ export default class MergeSystem {
 
             id = Math.min(this.dataTiles.length - 1, id)
             piece.addEntity(this.dataTiles[id]);
-            //piece.giftState();
-
-
-
             this.sortAutoMerge(piece)
 
             //piece.startCharging()
@@ -885,9 +856,7 @@ export default class MergeSystem {
                 this.updateProgression(target.rawData.id + 1)
 
                 this.onEntityMerge.dispatch()
-                this.draggingEntity = false;
-
-                this.currentDragSlot = null;
+                
 
                 COOKIE_MANAGER.addAchievment(this.systemID, 'merge', 1)
 
@@ -901,13 +870,9 @@ export default class MergeSystem {
                     slot.removeEntity();
                     slot.addEntity(copyData);
                     COOKIE_MANAGER.addMergePiece(copyData, slot.id.i, slot.id.j, this.systemID, 0)
-                    this.draggingEntity = false;
-                    this.currentDragSlot = null;
                 } else {
                     //doesnt do anything coz is coming from the generator
-                    //currentDrag.addEntity(copyDataTargetSlot);   
-                    his.draggingEntity = false;
-                    this.currentDragSlot = null;
+                    //currentDrag.addEntity(copyDataTargetSlot); 
                     this.onEntityAdd.dispatch()
 
                 }
@@ -918,8 +883,7 @@ export default class MergeSystem {
             slot.addEntity(copyData);
             COOKIE_MANAGER.addMergePiece(copyData, slot.id.i, slot.id.j, this.systemID, 0)
             this.onEntityAdd.dispatch()
-            this.draggingEntity = false;
-            this.currentDragSlot = null;
+            
         }
 
 

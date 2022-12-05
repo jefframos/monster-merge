@@ -51,8 +51,13 @@ export default class AchievmentsWindow extends EntityShop {
         for (const key in this.currentItensByType) {
             if (Object.hasOwnProperty.call(this.currentItensByType, key)) {
                 const element = this.currentItensByType[key];
-                if (element.updateCurrentData()) {
-                    this.onAchievmentPending.dispatch(this.systemID);
+                let res = element.updateCurrentData()
+                if (res == 1) {
+                    this.onAchievmentPending.dispatch(this.systemID, false);
+                    return
+                }
+                if (res == 2) {
+                    this.onAchievmentPending.dispatch(this.systemID, false);
                     return
                 }
             }
@@ -61,8 +66,17 @@ export default class AchievmentsWindow extends EntityShop {
     }
     checkItem(type) {
         if (!this.currentItensByType) return;
-        if (this.currentItensByType[type].updateCurrentData()) {
-            this.onAchievmentPending.dispatch(this.systemID, true);
+
+        let res = this.currentItensByType[type].updateCurrentData()
+        if (res) {
+            if (res == 1) {
+                this.onAchievmentPending.dispatch(this.systemID, true);
+                return
+            }
+            if (res == 2) {
+                this.onAchievmentPending.dispatch(this.systemID, false);
+                return
+            }
         }
     }
     update(delta) {

@@ -99,6 +99,7 @@ export default class StandardPop extends PIXI.Container {
         this.confirmButton.addVideoIcon()
         this.confirmButton.pivot.x = 75
         this.confirmButton.pivot.y = 40
+        
         this.container.addChild(this.confirmButton)
         this.confirmButton.x = 90
         this.confirmButton.y = this.h / 2 - 80
@@ -247,9 +248,8 @@ export default class StandardPop extends PIXI.Container {
             this.label4.visible = false;
         }
 
-        this.confirmButton.addCenterLabel(param.confirmLabel)
+        this.confirmButton.addCenterLabel(param.confirmLabel, 0xFFFFFF, 2)
         this.cancelButton.addCenterLabel(param.cancelLabel)
-
         this.label1.text = param.value1
         this.label1.pivot.x = this.label1.width / 2
         this.label1.y = 50
@@ -271,18 +271,18 @@ export default class StandardPop extends PIXI.Container {
 
         if (visuals) {
 
-            this.coin2.texture = new PIXI.Texture.fromFrame(visuals.coin)
+            this.coin2.texture = new PIXI.Texture.fromFrame(visuals.coin+'l')
 
             if (param.value1Icon) {
                 this.coin1.texture = PIXI.Texture.fromFrame(param.value1Icon)
             } else {
-                this.coin1.texture = new PIXI.Texture.fromFrame(visuals.coin)
+                this.coin1.texture = new PIXI.Texture.fromFrame(visuals.coin+'l')
             }
 
             if (param.value2Icon) {
                 this.coin2.texture = PIXI.Texture.fromFrame(param.value2Icon)
             } else {
-                this.coin2.texture = new PIXI.Texture.fromFrame(visuals.coin)
+                this.coin2.texture = new PIXI.Texture.fromFrame(visuals.coin+'l')
             }
 
             if (param.value2IconHeight) {
