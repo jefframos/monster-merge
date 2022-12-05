@@ -1,10 +1,11 @@
 import * as PIXI from 'pixi.js';
-import config from '../../../config';
-import UIList from '../../ui/uiElements/UIList';
-import Signals from 'signals';
-import TweenMax from 'gsap';
+
 import ProgressBar from '../ProgressBar';
 import ShopButton from './ShopButton';
+import Signals from 'signals';
+import TweenMax from 'gsap';
+import UIList from '../../ui/uiElements/UIList';
+import config from '../../../config';
 import utils from '../../../utils';
 
 export default class AchievmentView extends PIXI.Container {
@@ -32,20 +33,18 @@ export default class AchievmentView extends PIXI.Container {
 
         this.descriptionContainer = new PIXI.Container();
         this.claimContainer = new PIXI.Container();
-        this.claimContainer.align = 0.5
+        this.claimContainer.align = 1
         this.claimButton = new ShopButton()
 
         this.claimContainer.addChild(this.claimButton)
 
-        //this.claimButton.x = 10
-        
-
-
-
         this.claimButton.onClickItem.removeAll()
         this.claimButton.onClickItem.add(
             () => {
-                this.onClaim.dispatch(this)
+                //console.log(this.data.prizes)
+                this.notificationDispatched = false;
+                let prog = COOKIE_MANAGER.getAchievment(this.systemID, this.data.variable)
+                this.onClaim.dispatch(this.data.prizes[prog.claimed])
 
                 COOKIE_MANAGER.claimAchievment(this.systemID, this.data.variable);
 
@@ -53,6 +52,7 @@ export default class AchievmentView extends PIXI.Container {
             });
         this.systemID = ''
         this.data = {}
+        this.notificationDispatched = false;
     }
     setData(data, systemID) {
         this.systemID = systemID;
@@ -60,23 +60,17 @@ export default class AchievmentView extends PIXI.Container {
         this.data = data;
         //let desc = data.title+'\n'+data.description
         let desc = data.description
-        this.descriptionLabel = this.addLabelToNotification(desc, this.popUp.width / 2.5)
+        this.descriptionLabel = this.addLabelToNotification(desc, this.popUp.width / 2)
         this.descriptionLabel.style.align = 'left'
 
         this.descriptionContainer.addChild(this.descriptionLabel)
 
-        this.progressBar = new ProgressBar({ width: this.popUp.width / 2.5, height: 30 }, 2)
+        this.progressBar = new ProgressBar({ width: this.popUp.width / 2, height: 30 }, 2)
         this.descriptionContainer.addChild(this.progressBar)
         this.progressBar.y = 60
-
-        this.descriptionContainer.listScl = 0.6
-        this.claimContainer.listScl = 0.4
-        this.descriptionContainer.align = 0
         this.addElement(this.descriptionContainer)
         this.addElement(this.claimContainer)
 
-
-        console.log(COOKIE_MANAGER.getAchievment(this.systemID, data.variable))
     }
     cleatList() {
         this.contentList.removeAllElements();
@@ -104,8 +98,6 @@ export default class AchievmentView extends PIXI.Container {
         return sprite
     }
     updateCurrentData(){
-
-
         let achieveData = COOKIE_MANAGER.getAchievment(this.systemID, this.data.variable);
         if(achieveData.claimed >= this.data.values.length){
             this.claimButton.deactiveMax();
@@ -131,7 +123,10 @@ export default class AchievmentView extends PIXI.Container {
         this.progressBar.setProgressBar(bar)
         if(bar >= 1){
             this.claimButton.enable();
-            return true
+            if(!this.notificationDispatched){
+                this.notificationDispatched = true;
+                return true
+            }
         }else{
             this.claimButton.deactive();
         }

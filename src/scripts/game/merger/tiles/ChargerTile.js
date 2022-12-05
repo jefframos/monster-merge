@@ -12,14 +12,10 @@ export default class ChargerTile extends MergeTile {
         //this.backShape.texture = PIXI.Texture.fromFrame(Math.floor(Math.random() * visuals.backTiles.length))
 
         this.defaultChargeTime = standardChargeTime;
-        this.currentChargeTime = this.defaultChargeTime * Math.random();
+        this.currentChargeTime = this.defaultChargeTime;
 
         this.onCompleteCharge = new Signals();
-
-
         this.container.addChild(this.backShape)
-
-
 
         this.backShapeMasked = new PIXI.Sprite.fromFrame(visuals.locks[0])
 

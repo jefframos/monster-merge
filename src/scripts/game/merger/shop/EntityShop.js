@@ -2,16 +2,15 @@ import * as PIXI from 'pixi.js';
 
 import ShopItem from './ShopItem';
 import ShopList from './ShopList';
+import Signals from 'signals';
 import TweenMax from 'gsap';
 import UIButton1 from '../../ui/UIButton1';
 import UpgradesToggles from './UpgradesToggles';
 import config from '../../../config';
 import utils from '../../../utils';
-import Signals from 'signals';
-import TextBox from '../../ui/TextBox';
 
 export default class EntityShop extends PIXI.Container {
-    constructor(mainSystem, systemID) {
+    constructor(mainSystem, systemID, itemsPerPage = 5) {
         super()
         this.mainSystem = mainSystem;
         this.size = {
@@ -33,7 +32,7 @@ export default class EntityShop extends PIXI.Container {
         this.container.pivot.x = this.size.w / 2
         this.container.pivot.y = this.size.h / 2
         this.backContainer = new PIXI.mesh.NineSlicePlane(
-            PIXI.Texture.fromFrame(config.assets.popup.darkGrey), 50, 100, 50, 50)
+            PIXI.Texture.fromFrame(config.assets.popup.primary), 50, 100, 50, 50)
         this.backContainer.width = this.size.w
         this.backContainer.height = this.size.h
         this.container.addChild(this.backContainer);
@@ -46,8 +45,11 @@ export default class EntityShop extends PIXI.Container {
         // this.tiledBackground2.tileScale.set(0.2)
         // this.tiledBackground2.alpha = 0.1
 
-        this.title = new TextBox(15, config.assets.panel.secondary, 32);//PIXI.Text(window.localizationManager.getLabel('resources'), LABELS.LABEL1);
-        this.title.updateText(window.localizationManager.getLabel('resources'))
+        this.title = new PIXI.Text(window.localizationManager.getLabel('resources'), LABELS.LABEL1);
+        this.title.style.fontSize = 38
+        this.title.style.stroke = 0
+        this.title.style.strokeThickness = 6
+        this.title.anchor.set(0.5,0)
         // this.portrait = new PIXI.Sprite.fromFrame('skull');
         // this.container.addChild(this.portrait);
         // this.portrait.scale.set(0.65)
@@ -55,14 +57,15 @@ export default class EntityShop extends PIXI.Container {
         // this.portrait.x = 20
         // this.portrait.y = 104
 
+        this.itemWidth = this.size.w - this.size.w * 0.2;
+        this.itemHeight = this.size.h * 0.8 / (itemsPerPage+1);
 
         this.container.addChild(this.title);
 
-        this.shopList = new ShopList({ w: this.size.w, h: this.size.h * 0.85 / 6 * 5 }, 5)
+        this.shopList = new ShopList({ w: this.size.w, h: this.itemHeight  * itemsPerPage}, itemsPerPage)
         this.shopList.y = 100
         this.container.addChild(this.shopList);
 
-        this.itemWidth = this.size.w - this.size.w * 0.2;
 
         this.shopList.onItemShop.add(this.confirmItemShop.bind(this))
         this.shopList.onShowBlock.add(this.showBlock.bind(this))
@@ -70,8 +73,8 @@ export default class EntityShop extends PIXI.Container {
         this.openShop = new UIButton1(0xFFffff, window.TILE_ASSSETS_POOL['image-X'], 0xFFffff, 70, 70, config.assets.button.warningSquare)
         this.openShop.updateIconScale(0.5)
         this.container.addChild(this.openShop)
-        this.openShop.x = this.size.w// - this.openShop.width
-        this.openShop.y = 0//this.size.h - this.openShop.height / 2 - 20
+        this.openShop.x = this.size.w - this.openShop.width
+        this.openShop.y = this.size.h - this.openShop.height / 2 - 20
         this.openShop.onClick.add(() => {
             this.hideFromClick()
         })
@@ -161,7 +164,7 @@ export default class EntityShop extends PIXI.Container {
     }
     posShow() {
         this.title.x = this.size.w / 2
-        
+        this.title.y = 8
 
 
         this.currentItens.forEach(element => {
@@ -171,6 +174,8 @@ export default class EntityShop extends PIXI.Container {
             }
             
         });
+
+        this.shopList.resetPosition()
 
     }
     show() {
@@ -224,7 +229,7 @@ export default class EntityShop extends PIXI.Container {
 
         this.shopList.addItens(this.currentItens)
         this.shopList.x = this.size.w * 0.1
-        this.shopList.y = 80 + this.size.h * 0.8 / 6 + 8
+        this.shopList.y = 80 + this.size.h * 0.8 / 6
 
         if (skipCheck) {
             return;
