@@ -156,6 +156,9 @@ export default class StandardPop extends PIXI.Container {
         this.glow.rotation %= Math.PI * 2
     }
     show(param, visuals) {
+
+        SOUND_MANAGER.play('Synth-Appear-01', 0.1)
+
         this.visible = true;
         this.popUp.scale.set(1)
         this.container.alpha = 1

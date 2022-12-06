@@ -172,6 +172,7 @@ export default class EntityShop extends PIXI.Container {
         });
 
         this.shopList.resetPosition()
+        SOUND_MANAGER.play('shoosh', 0.1)
 
     }
     show() {

@@ -11,25 +11,31 @@ export default class LevelMeter extends PIXI.Container {
         this.addChild(this.baseContainer)
 
 
+        this.logo = new PIXI.Sprite.fromFrame('topLogo')
+        this.baseContainer.addChild(this.logo)
+        this.logo.anchor.set(0.5)
+        this.logo.scale.set(0.65)
+        this.logo.x = 270
+        this.logo.y = 20
         this.baseBar = new PIXI.mesh.NineSlicePlane(
             PIXI.Texture.fromFrame(config.assets.bars.background), 10, 10, 10, 10)
 
         this.baseContainer.addChild(this.baseBar)
         this.baseBar.width = 400
-        this.baseBar.height = 50
+        this.baseBar.height = 35
 
         config.addPaddingBackBar(this.baseBar)
         //this.baseBar.anchor.set(0, 0.5)
         //this.baseBar.scale.set(280 / this.baseBar.width)
         this.baseBar.x = 195
-        this.baseBar.y = 0
+        this.baseBar.y = 80
 
         this.fillBar = new PIXI.mesh.NineSlicePlane(
             PIXI.Texture.fromFrame(config.assets.bars.warning), 15, 0, 15, 0)
         this.fillBar.width = 250 //468
-        this.fillBar.height = 42
-        this.fillBar.x = 4
-        this.fillBar.y = 4
+        this.fillBar.height = this.baseBar.height-12
+        this.fillBar.x = 6
+        this.fillBar.y = 6
         config.addPaddingBar(this.fillBar)
 
         this.baseBar.addChild(this.fillBar)
@@ -66,10 +72,11 @@ export default class LevelMeter extends PIXI.Container {
         this.usableArea.alpha = 0.15
 
         this.baseLevelLabel.scale.set(this.usableArea.height / this.baseLevelLabel.height)
-        this.baseLevelLabel.y = this.baseLevelLabel.height / 2
-
+        this.baseLevelLabel.y = this.baseLevelLabel.height / 2 + 10
+        
         this.baseBar.x = this.baseLevelLabel.width
-        this.baseBar.y = this.usableArea.height / 2 - this.baseBar.height / 2
+        this.baseBar.y = this.usableArea.height / 2 - this.baseBar.height / 2 + 30
+        this.progressLabel.y = 70
 
     }
 
@@ -77,7 +84,7 @@ export default class LevelMeter extends PIXI.Container {
 
         this.levelLabel.text = data.currentLevel
         this.progressLabel.text = data.progress+'/'+getLevels(data.currentLevel)
-        let targetBar = Math.max((this.baseBar.width-8) * data.percent, 30);
+        let targetBar = Math.max((this.baseBar.width-12) * data.percent, 30);
 
         console.log(data)
         if(targetBar < this.fillBar.width){

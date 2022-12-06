@@ -12,7 +12,7 @@ export default class CastleBackgroundBase extends PIXI.Container {
         this.castleContainer = new PIXI.Container();
         this.build();
         this.initCastle();
-        this.usableArea = new PIXI.Graphics().beginFill(0x00FF00).drawRect(0, 0, 600, 550)
+        this.usableArea = new PIXI.Graphics().beginFill(0x00FF00).drawRect(0, 0, 550, 550)
         //this.addChild(this.usableArea)
         this.usableArea.alpha = 0.15
         this.usableArea.x = - this.usableArea.width / 2

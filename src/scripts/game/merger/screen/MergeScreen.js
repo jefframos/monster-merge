@@ -123,6 +123,23 @@ export default class MergeScreen extends Screen {
         this.container.addChild(this.systemButtonList)
 
 
+        this.soundButton = new UIButton1(0x002299, 'soundon', 0xFFFFFF, 60, 60, config.assets.box.squareWarning)
+        this.soundButton.updateIconScale(0.6)
+        this.soundButton.onClick.add(() => {
+            
+            if (COOKIE_MANAGER.getSettings().isMute) {
+                SOUND_MANAGER.unmute()
+            } else {
+                SOUND_MANAGER.mute()
+            }
+            COOKIE_MANAGER.setSettings('isMute', SOUND_MANAGER.isMute);
+
+            this.soundButton.icon.texture =  PIXI.Texture.from(SOUND_MANAGER.isMute ? 'soundoff' : 'soundon')
+        })
+        this.soundButton.icon.texture = PIXI.Texture.from(COOKIE_MANAGER.getSettings().isMute ? 'soundoff' : 'soundon')
+        this.container.addChild(this.soundButton)
+
+
         this.bonusesList = new UIList()
         this.bonusesList.w = 80
         this.bonusesList.h = this.bonusesList.w * 2 + 20
@@ -355,7 +372,7 @@ export default class MergeScreen extends Screen {
             slug);
         this.addSystem(mergeSystem)
         mergeSystem.enemySystem = this.enemiesSystem;
-
+        mergeSystem.soundtrack = baseData.soundtrack;
         mergeSystem.onParticles.add(this.addParticles.bind(this));
         mergeSystem.onDealDamage.add(this.addDamageParticles.bind(this));
         mergeSystem.onPopLabel.add(this.popLabel.bind(this));
@@ -369,10 +386,14 @@ export default class MergeScreen extends Screen {
         mergeItemsShop.addItems(rawMergeDataList)
         mergeItemsShop.hide();
         mergeItemsShop.onAddEntity.add((entity) => {
+            SOUND_MANAGER.play('getstar', 0.5)
             mergeSystem.buyEntity(entity)
         })
         mergeItemsShop.onClaimGift.add((entity) => {
             mergeSystem.addSpecialPiece();
+
+            SOUND_MANAGER.play('magic', 0.5)
+
             COOKIE_MANAGER.claimGift(slug)
         })
         mergeItemsShop.systemID = slug;
@@ -389,9 +410,10 @@ export default class MergeScreen extends Screen {
             if (slug != this.activeMergeSystem.systemID) return;
 
 
-            console.log("ACHIEVMENTS", notification)
 
             if (notification) {
+                SOUND_MANAGER.play('coins_04', 0.5)
+
                 this.notificationPanel.buildNewPieceNotification('achievmentl', 'You unlock a new achievement ', null, config.assets.popup.primary)
 
             }
@@ -402,7 +424,6 @@ export default class MergeScreen extends Screen {
             }
         })
         achievmentsWindow.onNoAchievmentPending.add((slug) => {
-            console.log("NO ACHIEVMENTS", slug)
             if (slug != this.activeMergeSystem.systemID) return;
             if (this.openAchievments.badge) {
                 this.openAchievments.badge.visible = false;
@@ -512,12 +533,16 @@ export default class MergeScreen extends Screen {
                 window.DO_REWARD(() => {
                     window.gameEconomy.addResources(target2, this.activeMergeSystem.systemID)
                     this.moneyFromCenter(target2)
+
+
                 })
 
             },
             onCancel: () => {
                 window.gameEconomy.addResources(target, this.activeMergeSystem.systemID)
                 this.moneyFromCenter(target)
+                SOUND_MANAGER.play('place2', 0.4)
+
             }
         })
 
@@ -541,9 +566,11 @@ export default class MergeScreen extends Screen {
             onConfirm: () => {
 
                 this.openPopUp(this.activeMergeSystem.shop);
+                SOUND_MANAGER.play('getThemAll', 0.4)
 
             },
             onCancel: () => {
+                SOUND_MANAGER.play('place2', 0.4)
 
             }
         })
@@ -567,10 +594,14 @@ export default class MergeScreen extends Screen {
                 window.DO_REWARD(() => {
                     window.gameEconomy.addResources(target, this.activeMergeSystem.systemID)
                     this.moneyFromCenter(target)
+
                 })
 
             },
-            onCancel: () => { }
+            onCancel: () => {
+                SOUND_MANAGER.play('place2', 0.4)
+
+            }
         })
 
     }
@@ -582,8 +613,12 @@ export default class MergeScreen extends Screen {
         let castlePiece = this.activeMergeSystem.interactiveBackground.getPiece(pieceId).src
 
         this.notificationPanel.buildNewPieceNotification(imagesrc, 'You discovered ' + name, null, config.assets.popup.secondary)
+
+        SOUND_MANAGER.play('coins_04', 0.4)
+
         setTimeout(() => {
 
+            SOUND_MANAGER.play('coins_04', 0.4, 1.1)
             this.notificationPanel.buildNewPieceNotification(castlePiece, 'You unlock another piece of the castle', null, config.assets.popup.extra)
             this.activeMergeSystem.interactiveBackground.showAnimation(pieceId)
         }, 2000);
@@ -610,8 +645,11 @@ export default class MergeScreen extends Screen {
             video: true,
             onConfirm: () => {
                 this.activeMergeSystem.addDataTo(slot, level + 1)
+                SOUND_MANAGER.play('getThemAll', 0.4)
             },
             onCancel: () => {
+                SOUND_MANAGER.play('place2', 0.4)
+
                 this.activeMergeSystem.addDataTo(slot, level)
             }
         })
@@ -637,7 +675,8 @@ export default class MergeScreen extends Screen {
 
         this.extraMoneyBonus.icon.texture = PIXI.Texture.fromImage('money');
 
-
+        //SOUND_MANAGER.stopLoop()
+        SOUND_MANAGER.playLoop(this.activeMergeSystem.soundtrack, 0.1)
         this.resize(this.latestInner, this.latestInner);
         setTimeout(() => {
             this.activeMergeSystem.activeSystem()
@@ -663,11 +702,16 @@ export default class MergeScreen extends Screen {
             shortDescription: target.shortDescription,
             onConfirm: () => {
                 target.confirmBonus();
+                SOUND_MANAGER.play('getThemAll', 0.4)
             }
         })
     }
     moneyFromCenter(value) {
         let toLocal = this.particleSystemFront.toLocal({ x: config.width / 2, y: config.height / 2 })
+
+        SOUND_MANAGER.play('getThemAll', 0.5)
+
+
         for (let index = 1; index <= 10; index++) {
             let angle = (Math.PI * 2 / 10) * index
             let customData = {};
@@ -773,6 +817,7 @@ export default class MergeScreen extends Screen {
                 if (!isInit) {
 
                     this.pendingNotification = () => {
+                        SOUND_MANAGER.play('Musical-Beep-Loop-02', 0.5)
                         this.notificationPanel.buildNewPieceNotification(this.systemsList[index].dataTiles[0].rawData.imageSrc, 'You unlock a new level', null, config.assets.popup.tertiary)
                         TweenMax.to(this.systemsList[index].toggle.unlockTextbox, 0.5, { alpha: 1, delay: 4 })
                     }
@@ -947,7 +992,7 @@ export default class MergeScreen extends Screen {
         }
 
         this.systemButtonList.w = this.systemButtonList.elementsList[0].width
-        this.systemButtonList.h = 80 * this.systemsList.length + this.systemsList.length * 2
+        this.systemButtonList.h = 85 * this.systemsList.length + this.systemsList.length * 2
         this.systemButtonList.updateVerticalList()
 
         this.statsList.y = 10
@@ -991,8 +1036,12 @@ export default class MergeScreen extends Screen {
         }
 
 
+        this.soundButton.scale.set(this.systemButtonList.scale.x)
+        this.soundButton.x = topRight.x - this.soundButton.width / 2 - 20
+        this.soundButton.y = 40
+
         this.systemButtonList.x = topRight.x - (80 * this.systemButtonList.scale.x) / 2 - 20
-        this.systemButtonList.y = 35 * this.systemButtonList.scale.y + 20
+        this.systemButtonList.y = this.soundButton.y + 20 + 35 * this.systemButtonList.scale.y + 20
 
 
         this.shopsLabel.x = this.shopButtonsList.x

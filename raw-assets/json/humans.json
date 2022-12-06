@@ -289,7 +289,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_human_20",
-                "imageSrc": "g0rgoyle",
+                "imageSrc": "gorgoyle",
                 "displayName": "Human - 20",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,

@@ -429,7 +429,7 @@ export default class MergeSystem {
             this.entityDragSprite.visible = false
             return;
         }
-        
+
         if (this.entityDragSprite.visible) {
             let toLocal = this.entityDragSprite.parent.toLocal(this.mousePosition)
             this.entityDragSprite.x = toLocal.x;
@@ -529,15 +529,23 @@ export default class MergeSystem {
 
             COOKIE_MANAGER.addMergePiece(slot.tileData, slot.id.i, slot.id.j, this.systemID, 0)
             COOKIE_MANAGER.addAchievment(this.systemID, 'reveal', 1)
+
+            SOUND_MANAGER.play('Pop-Tone', 0.3)
+
+
             this.updateAllData();
         });
 
 
         slot.onEndHold.add((slot) => {
             this.endDrag(slot)
+
         });
         slot.onUp.add((slot) => {
             this.releaseEntity(slot)
+
+            this.currentDragSlot = null;
+            this.draggingEntity = false;
         });
         slot.onSpecialReveal.add((slot) => {
             this.checkMax();
@@ -619,6 +627,9 @@ export default class MergeSystem {
         this.draggingEntity = true;
         let tex = slot.hideSprite();
         this.currentDragSlot = slot;
+
+        SOUND_MANAGER.play('pop2',0.5, Math.random() * 0.1 + 0.9)
+
         this.entityDragSprite.texture = tex;
         this.entityDragSprite.visible = true;
         this.entityDragSprite.scale.set(slot.tileSprite.scale.y * 1.25);
@@ -632,6 +643,11 @@ export default class MergeSystem {
     }
     endDrag(slot) {
         if (!this.visible) return
+
+        if (!this.draggingEntity) {
+
+        }
+
         this.draggingEntity = false;
         this.entityDragSprite.visible = false;
         slot.showSprite();
@@ -642,6 +658,8 @@ export default class MergeSystem {
         if (!this.visible) return
         if (this.currentDragSlot) {
             //return
+            //SOUND_MANAGER.play('place2')
+
             this.currentDragSlot.removeEntity();
             slot = this.currentDragSlot
         } else {
@@ -787,7 +805,7 @@ export default class MergeSystem {
             //slot.giftState()
             if (this.boardLevel > 3) {
                 this.slotSpawned--
-            }else{
+            } else {
                 this.slotSpawned = 3
             }
 
@@ -859,8 +877,8 @@ export default class MergeSystem {
                 this.updateProgression(target.rawData.id + 1)
 
                 this.onEntityMerge.dispatch()
-                
 
+                SOUND_MANAGER.play('pop', 0.4, Math.random() * 0.1 + 0.9)
                 COOKIE_MANAGER.addAchievment(this.systemID, 'merge', 1)
 
 
@@ -886,7 +904,9 @@ export default class MergeSystem {
             slot.addEntity(copyData);
             COOKIE_MANAGER.addMergePiece(copyData, slot.id.i, slot.id.j, this.systemID, 0)
             this.onEntityAdd.dispatch()
-            
+
+
+
         }
 
 

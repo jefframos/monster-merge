@@ -154,7 +154,7 @@ export default class UIButton1 extends PIXI.Container {
 	click() {
 		if(!this.enabled) return
 		//this.backShape.scale.set(1)
-
+		SOUND_MANAGER.play('Tap-01', 0.1)
 		this.onClick.dispatch();
 		//window.SOUND_MANAGER.play('tap2', { volume: 0.5 })
 	}

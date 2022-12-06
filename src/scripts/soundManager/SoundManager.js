@@ -1,38 +1,32 @@
-import
-{
-    Howl,
-    Howler
+import {
+Howl,
+Howler
 }
-from 'howler';
+    from 'howler';
 import AbstractSoundManager from './AbstractSoundManager'
-export default class SoundManager extends AbstractSoundManager
-{
-    constructor()
-    {
+export default class SoundManager extends AbstractSoundManager {
+    constructor() {
         super();
         this.audioList = [];
         this.playingList = [];
+
+        this.currentLoop = null;
         Howler.volume(0.5);
     }
-    getFileName(path)
-    {
+    getFileName(path) {
         let tempSplit = path.split('/')
         let fileName = tempSplit[tempSplit.length - 1]
         return fileName.substr(0, fileName.length - 4)
     }
-    load(list)
-    {
+    load(list) {
         // alert(list)
-        for (var i = list.length - 1; i >= 0; i--)
-        {
+        for (var i = list.length - 1; i >= 0; i--) {
             let url = list[i].url.substr(0, list[i].url.length - 4)
 
-            if (window.iOS)
-            {
+            if (window.iOS) {
                 url += '.mp3'
             }
-            else
-            {
+            else {
                 url += '.ogg'
             }
 
@@ -41,181 +35,150 @@ export default class SoundManager extends AbstractSoundManager
             // }
 
             let sound = new Howl(
-            {
-                src: [url],
-                // src: [url+'.ogg', url+'.mp3'],
-                // src: [list[i].url],
-                autoplay: false,
-                loop: false,
-                volume: 1,
-                onend: (e) =>
                 {
-                    this.removeFromPlayListSoundId(e)
-                }
-            });
+                    src: [url],
+                    // src: [url+'.ogg', url+'.mp3'],
+                    // src: [list[i].url],
+                    autoplay: false,
+                    loop: false,
+                    volume: 1,
+                    onend: (e) => {
+                        this.removeFromPlayListSoundId(e)
+                    }
+                });
             this.audioList[this.getFileName(list[i].url)] = sound;
         }
 
     }
-    setRateOnLoops(rate)
-    {
-        console.log(rate);
+    setRateOnLoops(rate) {
         rate = Math.max(0.5, rate)
         rate = Math.min(4, rate)
-        for (let audio_id in this.audioList)
-        {
-            if (this.isPlaying(audio_id))
-            {
-                if (this.audioList[audio_id].loop)
-                {
+        for (let audio_id in this.audioList) {
+            if (this.isPlaying(audio_id)) {
+                if (this.audioList[audio_id].loop) {
                     this.audioList[audio_id].rate(rate) //rate;
                 }
             }
         }
     }
-    playLoopOnce(id, volume = 1)
-    {
-        if (this.isPlaying(id))
-        {
+    playLoopOnce(id, volume = 1) {
+        if (this.isPlaying(id)) {
             return
         }
         this.playLoop(id, volume)
     }
-    playLoop(id, volume = 1)
-    {
+    playLoop(id, volume = 1) {
+        if (this.currentLoop) {
+            this.currentLoop.stop();
+        }
         this.audioList[id].loop(true);
         this.audioList[id].volume(volume);
         let hid = this.audioList[id].play();
+
+        this.currentLoop = this.audioList[id]
         this.playingList.push(
-        {
-            sound: this.audioList[id],
-            hID: hid
-        });
+            {
+                sound: this.audioList[id],
+                hID: hid
+            });
     }
-    playOnce(id, volume = 1)
-    {
+    playOnce(id, volume = 1) {
         this.audioList[id].stop();
         this.play(id, volume);
     }
-    play(id, volume = 1)
-    {
+    play(id, volume = 1, rate = 1) {
         this.audioList[id].loop(false);
         this.audioList[id].volume(volume);
-        let hid = this.audioList[id].play();
+        let hid = this.audioList[id].play();        
+        this.audioList[id].rate(rate)
         this.playingList.push(
-        {
-            sound: this.audioList[id],
-            hID: hid
-        });
+            {
+                sound: this.audioList[id],
+                hID: hid
+            });
     }
-    stop(id)
-    {
+    stop(id) {
         this.audioList[id].stop();
         this.removeFromPlayList(id);
     }
-    fadeIn(id, volume = 1, time = 1000)
-    {
+    fadeIn(id, volume = 1, time = 1000) {
         this.audioList[id].stop();
         this.removeFromPlayList(id);
         let hid = this.audioList[id].play();
         this.playingList.push(
-        {
-            sound: this.audioList[id],
-            hID: hid
-        });
+            {
+                sound: this.audioList[id],
+                hID: hid
+            });
         this.audioList[id].fade(this.audioList[id].volume, volume, time);
     }
-    fadeOutAll(time = 1000)
-    {
+    fadeOutAll(time = 1000) {
 
-        for (var audio_id in this.audioList)
-        {
-            if (this.isPlaying(audio_id))
-            {
+        for (var audio_id in this.audioList) {
+            if (this.isPlaying(audio_id)) {
                 this.fadeOut(audio_id, time)
             }
         }
 
-        for (var i = this.playingList.length - 1; i >= 0; i--)
-        {
+        for (var i = this.playingList.length - 1; i >= 0; i--) {
             this.playingList[i].sound.stop();
             this.playingList.splice(i, 1);
         }
     }
-    fadeOut(id, time = 1000)
-    {
+    fadeOut(id, time = 1000) {
         let vol = this.audioList[id].volume
         this.audioList[id].fade(vol, 0, time);
-        setTimeout(() =>
-        {
+        setTimeout(() => {
             this.removeFromPlayList(id);
         }, time);
     }
-    stopAll()
-    {
-        for (var i = this.playingList.length - 1; i >= 0; i--)
-        {
+    stopAll() {
+        for (var i = this.playingList.length - 1; i >= 0; i--) {
             this.playingList[i].sound.stop();
             this.playingList.splice(i, 1);
         }
     }
-    removeFromPlayListSoundId(hID)
-    {
-        for (var i = this.playingList.length - 1; i >= 0; i--)
-        {
-            if (this.playingList[i].hID == hID)
-            {
+    removeFromPlayListSoundId(hID) {
+        for (var i = this.playingList.length - 1; i >= 0; i--) {
+            if (this.playingList[i].hID == hID) {
                 this.playingList.splice(i, 1);
             }
         }
     }
 
-    removeFromPlayList(id)
-    {
-        for (var i = this.playingList.length - 1; i >= 0; i--)
-        {
-            if (this.playingList[i].sound == this.audioList[id])
-            {
+    removeFromPlayList(id) {
+        for (var i = this.playingList.length - 1; i >= 0; i--) {
+            if (this.playingList[i].sound == this.audioList[id]) {
                 this.playingList.splice(i, 1);
             }
         }
     }
 
-    isPlaying(id)
-    {
+    isPlaying(id) {
 
-        for (var i = this.playingList.length - 1; i >= 0; i--)
-        {
-            if (this.playingList[i].sound == this.audioList[id])
-            {
+        for (var i = this.playingList.length - 1; i >= 0; i--) {
+            if (this.playingList[i].sound == this.audioList[id]) {
                 return true;
             }
         }
         return false;
     }
-    mute()
-    {
+    mute() {
         Howler.volume(0);
         this.isMute = true;
 
-        console.log(this.isMute, ' mute');
     }
 
-    unmute()
-    {
+    unmute() {
         Howler.volume(0.5);
         this.isMute = false;
-        console.log(this.isMute, 'un mute');
     }
 
-    toggleMute()
-    {
-        if (this.isMute)
-        {
+    toggleMute() {
+        if (this.isMute) {
             this.unmute();
         }
-        else
-        {
+        else {
             this.mute();
         }
     }

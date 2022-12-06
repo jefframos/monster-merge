@@ -158,7 +158,7 @@ function afterLoadManifests(evt) {
 
 window.game = new Game(config);
 
-
+window.SOUND_MANAGER
 function startLoader() {
 
     for (var i = 0; i < jsonManifest.length; i++) {
@@ -257,6 +257,8 @@ function configGame(evt) {
     window.GAMEPLAY_START(true)
     window.addEventListener("focus", myFocusFunction, true);
     window.addEventListener("blur", myBlurFunction, true);
+
+    //SOUND_MANAGER.playLoop('dream1')
     setTimeout(() => {        
         game.resize();
     }, 100);
@@ -274,7 +276,9 @@ function myFocusFunction() {
     // if (GAME_DATA.mute) {
     //     return
     // }
-    // SOUND_MANAGER.unmute();
+    if(!COOKIE_MANAGER.getSettings().isMute){
+        SOUND_MANAGER.unmute();
+    }
 }
 
 function myBlurFunction() {
@@ -283,7 +287,7 @@ function myBlurFunction() {
     //     timeScale: 0
     // })
 
-    // SOUND_MANAGER.mute();
+    SOUND_MANAGER.mute(false);
 }
 
 

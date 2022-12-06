@@ -7,6 +7,9 @@ export default class CookieManager {
 			test: 0,
 			tutorialStep: 0
 		}
+		this.defaultSettings = {
+			isMute: false
+		}
 		this.defaultEconomy = {
 			resources: 0,
 			lastChanged: 0,
@@ -90,6 +93,13 @@ export default class CookieManager {
 		}
 
 		this.storeObject('fullData', this.fullData)
+
+		this.settings= this.getCookie('settings')
+		if(!this.settings){
+			this.storeObject('settings', this.defaultSettings)
+
+			this.settings = this.defaultSettings;
+		}
 
 	}
 	claimAchievment(id, type){
@@ -313,6 +323,15 @@ export default class CookieManager {
 		this.sortCookieData('resources', this.defaultResources, true)
 		this.sortCookieData('economy', this.defaultEconomy, true)
 	}
+	getSettings() {
+		return this.getCookie('settings')
+	}
+	setSettings(param, value) {
+		if(this.settings[param] !== undefined){
+			this.settings[param] = value;
+		}
+		return this.storeObject('settings', this.settings)
+	}
 	getStats() {
 		return this.getCookie('stats')
 	}
@@ -324,8 +343,6 @@ export default class CookieManager {
 		return this.getCookie('economy')
 	}
 	getResources(id) {
-		console.log(id, this.fullData[id].resources)
-
 		return this.fullData[id].resources
 		return this.getCookie('resources')
 	}

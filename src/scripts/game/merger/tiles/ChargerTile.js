@@ -72,6 +72,7 @@ export default class ChargerTile extends MergeTile {
         super.onMouseDown(e);
         this.currentChargeTime -= 0.2
         COOKIE_MANAGER.addAchievment(this.systemID, 'tap', 1)
+        SOUND_MANAGER.play('Pop-Low-Pitch-Up-02', 0.1, Math.random() * 0.1 + 0.9)
         if (this.currentChargeTime <= 0) {
             this.completeCharge();
         } else {
