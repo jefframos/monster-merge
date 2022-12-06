@@ -27,6 +27,7 @@ export default class MergeItemsShop extends EntityShop {
         this.giftItem.shopButton.onClickItem.add(
             () => {
                 this.onClaimGift.dispatch()
+                this.hide()
             });
 
         this.standardGiftTime = 5 * 60;

@@ -13,6 +13,7 @@ export default class PuzzleBackground extends PuzzleBackgroundBase {
 		this.baseTerrain = new PIXI.Sprite.fromFrame('base-terrain')
 		this.baseTerrain.anchor.set(0.5, 0)
 		this.baseTerrain.scale.set(1)
+		this.baseTerrain.tint = 0x1FD18B
 		this.baseContainer.addChild(this.baseTerrain)
 
 		// this.bottomPatch = new PIXI.Sprite.fromFrame('bottomPatch')

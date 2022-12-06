@@ -18,15 +18,15 @@
 },
 "base-terrain.png":
 {
-	"frame": {"x":1,"y":1,"w":1114,"h":799},
+	"frame": {"x":1,"y":1,"w":1113,"h":799},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":0,"w":1114,"h":799},
-	"sourceSize": {"w":1117,"h":802}
+	"spriteSourceSize": {"x":0,"y":0,"w":1113,"h":799},
+	"sourceSize": {"w":1116,"h":802}
 },
 "bottomPatch.png":
 {
-	"frame": {"x":1644,"y":913,"w":171,"h":201},
+	"frame": {"x":1643,"y":913,"w":171,"h":201},
 	"rotated": true,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":171,"h":201},
@@ -58,7 +58,7 @@
 },
 "pineSidePatch.png":
 {
-	"frame": {"x":1117,"y":1,"w":525,"h":1084},
+	"frame": {"x":1116,"y":1,"w":525,"h":1084},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":525,"h":1084},
@@ -74,7 +74,7 @@
 },
 "rightPatchCliff.png":
 {
-	"frame": {"x":1644,"y":1,"w":249,"h":910},
+	"frame": {"x":1643,"y":1,"w":249,"h":910},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":67,"y":115,"w":249,"h":910},
@@ -107,6 +107,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1905,"h":1829},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:521eea5fef299a7e23c01c97c5f71886:0cf05f715f14fb2909a4a89078ec4bae:2ba65c328dea799e4d80739630892abf$"
+	"smartupdate": "$TexturePacker:SmartUpdate:d3ae8a2338d210d310fb7c466cd8a098:cdde854f26c8c61bcea68d59e7c3857e:2ba65c328dea799e4d80739630892abf$"
 }
 }

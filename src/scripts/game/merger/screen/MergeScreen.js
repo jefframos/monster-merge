@@ -1,7 +1,8 @@
 import * as PIXI from 'pixi.js';
 
 import AchievmentsWindow from '../shop/AchievmentsWindow';
-import FairyBackground from '../backgrounds/FairyBackground';
+import FairyBackground from '../backgrounds/fairy/FairyBackground';
+import HumanBackground from '../backgrounds/human/HumanBackground';
 import GameEconomy from '../GameEconomy';
 import GameModifyers from '../GameModifyers';
 import LevelMeter from '../ui/shop/LevelMeter';
@@ -130,7 +131,7 @@ export default class MergeScreen extends Screen {
 
         this.registerSystem(containers, window.baseConfigGame, window.baseMonsters, 'monsters', true, new MonsterBackground())
         this.registerSystem(containers, window.baseConfigGameFairy, window.baseFairies, 'fairies', false, new FairyBackground())
-        this.registerSystem(containers, window.baseConfigGameHumans, window.baseHumans, 'humans', false, new MonsterBackground())
+        this.registerSystem(containers, window.baseConfigGameHumans, window.baseHumans, 'humans', false, new HumanBackground())
 
         this.activeMergeSystemID = 0
         this.activeMergeSystem = this.mergeSystemsList[this.activeMergeSystemID]
@@ -388,7 +389,7 @@ export default class MergeScreen extends Screen {
             if (slug != this.activeMergeSystem.systemID) return;
 
 
-            console.log("ACHIEVMENTS",notification)
+            console.log("ACHIEVMENTS", notification)
 
             if (notification) {
                 this.notificationPanel.buildNewPieceNotification('achievmentl', 'You unlock a new achievement ', null, config.assets.popup.primary)
@@ -401,7 +402,7 @@ export default class MergeScreen extends Screen {
             }
         })
         achievmentsWindow.onNoAchievmentPending.add((slug) => {
-            console.log("NO ACHIEVMENTS",slug)
+            console.log("NO ACHIEVMENTS", slug)
             if (slug != this.activeMergeSystem.systemID) return;
             if (this.openAchievments.badge) {
                 this.openAchievments.badge.visible = false;
@@ -668,7 +669,7 @@ export default class MergeScreen extends Screen {
     moneyFromCenter(value) {
         let toLocal = this.particleSystemFront.toLocal({ x: config.width / 2, y: config.height / 2 })
         for (let index = 1; index <= 10; index++) {
-            let angle = ( Math.PI * 2 / 10) * index
+            let angle = (Math.PI * 2 / 10) * index
             let customData = {};
             customData.texture = this.activeMergeSystem.baseData.visuals.coin
             customData.scale = 0.035
@@ -753,11 +754,12 @@ export default class MergeScreen extends Screen {
         this.upgradePiecePopUp(slot, level)
     }
     onMergeSystemUpdate(data) {
-        this.levelMeter.updateData(data)
 
+        if (data) {
+            this.levelMeter.updateData(data)
+            COOKIE_MANAGER.addAchievment(this.activeMergeSystem.systemID, 'level', data.currentLevel, true)
+        }
 
-
-        COOKIE_MANAGER.addAchievment(this.activeMergeSystem.systemID, 'level', data.currentLevel, true)
         for (let index = 1; index < this.systemsList.length; index++) {
             // if(!this.systemButtonList[index]) break
             const element = this.systemsList[index];
@@ -765,7 +767,7 @@ export default class MergeScreen extends Screen {
 
             let isInit = COOKIE_MANAGER.isInitialized(this.systemsList[index].systemID)
             //console.log('isInit',isInit,this.systemsList[index].systemID)
-            if (!prev.boardProgression || prev.boardProgression.currentLevel < 6) {
+            if ((!prev.boardProgression || prev.boardProgression.currentLevel < 6) && !window.allUnlock) {
                 element.toggle.disable()
             } else {
                 if (!isInit) {
@@ -954,8 +956,8 @@ export default class MergeScreen extends Screen {
         this.bonusesList.y = this.statsList.y + this.statsList.height + this.statsList.w / 2 + 20;
         this.bonusesList.x = this.statsList.x + + this.bonusesList.w * 0.5
 
-        this.helperButtonList.y = 80
-        this.helperButtonList.x = toGlobalBack.x + 180
+        this.helperButtonList.y = 95
+        this.helperButtonList.x = toGlobalBack.x + 158
 
 
         if (!window.isPortrait) {
@@ -1079,6 +1081,18 @@ export default class MergeScreen extends Screen {
                 //window.gameModifyers.updateModifyer('autoMerge')
 
             }
+        })
+
+        this.unlockAll = new UIButton1(0x002299, 'upArrow')
+        this.helperButtonList.addElement(this.unlockAll)
+        this.unlockAll.onClick.add(() => {
+            if (window.allUnlock) {
+                window.allUnlock = false
+            } else {
+                window.allUnlock = true;
+            }
+
+            this.onMergeSystemUpdate()
         })
 
         this.helperButtonList.updateVerticalList();

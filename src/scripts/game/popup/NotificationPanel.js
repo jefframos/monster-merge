@@ -19,13 +19,13 @@ export default class NotificationPanel extends PIXI.Container {
         this.container = new PIXI.Container();
         this.addChild(this.container)
 
-        this.w = config.width * 0.5;
+        this.w = config.width * 0.75;
         this.h = config.height * 0.5;
 
 
         this.notificationList = [];
 
-        this.notificationHeight = 90
+        this.notificationHeight = 100
     }
 
     buildNewPieceNotification(character, label, lastPiece, texture) {
@@ -56,6 +56,7 @@ export default class NotificationPanel extends PIXI.Container {
 
     addLabelToNotification(text, wrap = 0) {
         let label = new PIXI.Text(text, LABELS.LABEL1);
+        label.style.fontSize = 28
         label.scaleContentMax = true;
         if(wrap){
             label.style.wordWrap = true

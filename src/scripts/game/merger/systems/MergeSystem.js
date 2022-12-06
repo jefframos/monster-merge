@@ -425,10 +425,11 @@ export default class MergeSystem {
         if (e) {
             this.mousePosition = e.data.global;
         }
-        if (!this.draggingEntity) {
+        if (!this.draggingEntity || !this.currentDragSlot) {
             this.entityDragSprite.visible = false
             return;
         }
+        
         if (this.entityDragSprite.visible) {
             let toLocal = this.entityDragSprite.parent.toLocal(this.mousePosition)
             this.entityDragSprite.x = toLocal.x;
@@ -786,6 +787,8 @@ export default class MergeSystem {
             //slot.giftState()
             if (this.boardLevel > 3) {
                 this.slotSpawned--
+            }else{
+                this.slotSpawned = 3
             }
 
             if (this.slotSpawned <= 0) {
