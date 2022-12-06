@@ -34642,7 +34642,6 @@ function startLoader() {
 
 window.COOKIE_MANAGER = new _CookieManager2.default();
 function configGame(evt) {
-
     window.localizationManager = new _LocalizationManager2.default('');
 
     SOUND_MANAGER.load(_manifestAudio2.default);
@@ -57397,6 +57396,10 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
+var _config = __webpack_require__(10);
+
+var _config2 = _interopRequireDefault(_config);
+
 var _utils = __webpack_require__(13);
 
 var _utils2 = _interopRequireDefault(_utils);
@@ -57525,8 +57528,8 @@ var Game = function () {
                         window.renderer.view.style.width = this.innerResolution.width + 'px';
                         window.renderer.view.style.height = this.innerResolution.height + 'px';
 
-                        var sclX = this.innerResolution.width / config.width;
-                        var sclY = this.innerResolution.height / config.height;
+                        var sclX = this.innerResolution.width / _config2.default.width;
+                        var sclY = this.innerResolution.height / _config2.default.height;
 
                         var scl = Math.min(sclX, sclY);
                         var newSize = {
@@ -57568,8 +57571,8 @@ var Game = function () {
                                 var newScaleY = newSize.height / this.innerResolution.height;
                                 this.loaderContainer.scale.y = newScaleY; //this.ratio
 
-                                this.loaderContainer.x = newSize.width / 2 - this.loaderContainer.width / 2;
-                                this.loaderContainer.y = this.innerResolution.height / 2 + 50;
+                                this.loaderContainer.x = _config2.default.width / 2 - 150;
+                                this.loaderContainer.y = _config2.default.height / 2 + 50;
                         }
 
                         if (this.screenManager) {
@@ -57594,10 +57597,10 @@ var Game = function () {
                                 window.isPortrait = this.innerResolution.width < this.innerResolution.height * 1.2;
 
                                 this.screenManager.resize(this.resolution, this.innerResolution);
-                                this.borders.topRight.x = config.width + this.screenManager.x / this.screenManager.scale.x;
-                                this.borders.bottomRight.x = config.width + this.screenManager.x / this.screenManager.scale.x;
-                                this.borders.bottomRight.y = config.height;
-                                this.borders.bottomLeft.y = config.height;
+                                this.borders.topRight.x = _config2.default.width + this.screenManager.x / this.screenManager.scale.x;
+                                this.borders.bottomRight.x = _config2.default.width + this.screenManager.x / this.screenManager.scale.x;
+                                this.borders.bottomRight.y = _config2.default.height;
+                                this.borders.bottomLeft.y = _config2.default.height;
                         }
                 }
         }, {
@@ -61688,11 +61691,11 @@ var assets = [{
 	"id": "baseGameConfigHumans",
 	"url": "assets/json\\baseGameConfigHumans.json"
 }, {
-	"id": "baseGameConfigMonster",
-	"url": "assets/json\\baseGameConfigMonster.json"
-}, {
 	"id": "fairies",
 	"url": "assets/json\\fairies.json"
+}, {
+	"id": "baseGameConfigMonster",
+	"url": "assets/json\\baseGameConfigMonster.json"
 }, {
 	"id": "humans",
 	"url": "assets/json\\humans.json"
@@ -61724,14 +61727,14 @@ var assets = [{
 	"id": "localization_RU",
 	"url": "assets/json\\localization_RU.json"
 }, {
-	"id": "localization_TR",
-	"url": "assets/json\\localization_TR.json"
-}, {
 	"id": "localization_ZH",
 	"url": "assets/json\\localization_ZH.json"
 }, {
 	"id": "modifyers",
 	"url": "assets/json\\modifyers.json"
+}, {
+	"id": "localization_TR",
+	"url": "assets/json\\localization_TR.json"
 }, {
 	"id": "monsters",
 	"url": "assets/json\\monsters.json"
@@ -62029,7 +62032,7 @@ module.exports = exports["default"];
 /* 344 */
 /***/ (function(module, exports) {
 
-module.exports = {"default":["image/particles/particles.json","image/pattern2/pattern2.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
+module.exports = {"default":["image/pattern2/pattern2.json","image/particles/particles.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
 
 /***/ }),
 /* 345 */

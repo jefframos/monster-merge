@@ -1,4 +1,5 @@
 import * as PIXI from 'pixi.js';
+import config from './config';
 import utils from './utils';
 
 export default class Game {
@@ -162,8 +163,8 @@ export default class Game {
             let newScaleY = newSize.height / this.innerResolution.height
             this.loaderContainer.scale.y = newScaleY//this.ratio
 
-            this.loaderContainer.x = newSize.width/2 - this.loaderContainer.width/2
-            this.loaderContainer.y = this.innerResolution.height/2 + 50
+            this.loaderContainer.x = config.width/2 - 150
+            this.loaderContainer.y = config.height/2 + 50
 
 
         }
