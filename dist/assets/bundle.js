@@ -33078,7 +33078,7 @@ var EntityShop = function (_PIXI$Container) {
 
         _this.mainSystem = mainSystem;
         _this.size = {
-            w: _config2.default.width * 0.75,
+            w: _config2.default.width * 0.9,
             h: _config2.default.height * 0.8
         };
 
@@ -33411,7 +33411,7 @@ var ShopButton = function (_PIXI$Container) {
         // this.background = new PIXI.Graphics().beginFill(0xFFFFFF).drawRect(0, 0, 120, 40);
 
         _this.backButton = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame(_config2.default.assets.button.primaryLong), 20, 20, 20, 20);
-        _this.backButton.width = 110;
+        _this.backButton.width = 130;
         _this.backButton.height = 60;
 
         _config2.default.addPaddingLongButton(_this.backButton);
@@ -61739,9 +61739,6 @@ var assets = [{
 	"id": "localization_PT",
 	"url": "assets/json\\localization_PT.json"
 }, {
-	"id": "localization_RU",
-	"url": "assets/json\\localization_RU.json"
-}, {
 	"id": "localization_TR",
 	"url": "assets/json\\localization_TR.json"
 }, {
@@ -61751,11 +61748,14 @@ var assets = [{
 	"id": "modifyers",
 	"url": "assets/json\\modifyers.json"
 }, {
-	"id": "monsters",
-	"url": "assets/json\\monsters.json"
+	"id": "localization_RU",
+	"url": "assets/json\\localization_RU.json"
 }, {
 	"id": "resources",
 	"url": "assets/json\\resources.json"
+}, {
+	"id": "monsters",
+	"url": "assets/json\\monsters.json"
 }];
 
 exports.default = assets;
@@ -62047,7 +62047,7 @@ module.exports = exports["default"];
 /* 344 */
 /***/ (function(module, exports) {
 
-module.exports = {"default":["image/particles/particles.json","image/pattern2/pattern2.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
+module.exports = {"default":["image/particles/particles.json","image/pattern/pattern.json","image/pattern2/pattern2.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
 
 /***/ }),
 /* 345 */
@@ -68633,7 +68633,7 @@ var StandardPop = function (_PIXI$Container) {
 
         _this.container = new PIXI.Container();
 
-        _this.w = _config2.default.width * 0.75;
+        _this.w = _config2.default.width * 0.9;
         _this.h = _config2.default.height * 0.5;
 
         _this.background = new PIXI.Graphics().beginFill(0).drawRect(-_config2.default.width * 5, -_config2.default.height * 5, _config2.default.width * 10, _config2.default.height * 10);
@@ -68670,7 +68670,7 @@ var StandardPop = function (_PIXI$Container) {
         _this.label3.anchor.set(0.5);
         _this.label3.y = 80;
 
-        _this.label4 = new _TextBox2.default(15, _config2.default.assets.panel.tertiary, 24);
+        _this.label4 = new _TextBox2.default(15, _config2.default.assets.panel.tertiary, 28);
         _this.label4.y = 80;
 
         _config2.default.addPaddingPanel(_this.label4.background);
@@ -68699,7 +68699,7 @@ var StandardPop = function (_PIXI$Container) {
         _this.centerIcon.addChild(_this.label3);
         _this.label2.style.fontSize = 24;
 
-        _this.titleTextBox = new _TextBox2.default(20, _config2.default.assets.panel.tertiary, 28);
+        _this.titleTextBox = new _TextBox2.default(20, _config2.default.assets.panel.tertiary, 32);
 
         _this.container.addChild(_this.titleTextBox);
         _this.confirmButton = new _UILabelButton2.default(150, 80, _config2.default.assets.button.primaryLong);

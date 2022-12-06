@@ -16,7 +16,7 @@ export default class ShopButton extends PIXI.Container
 
             this.backButton = new PIXI.mesh.NineSlicePlane(
                 PIXI.Texture.fromFrame(config.assets.button.primaryLong), 20, 20, 20, 20)
-            this.backButton.width = 110
+            this.backButton.width = 130
             this.backButton.height = 60 
 
             config.addPaddingLongButton(this.backButton)

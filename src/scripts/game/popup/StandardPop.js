@@ -18,7 +18,7 @@ export default class StandardPop extends PIXI.Container {
 
         this.container = new PIXI.Container();
 
-        this.w = config.width * 0.75;
+        this.w = config.width * 0.9;
         this.h = config.height * 0.5;
 
         this.background = new PIXI.Graphics().beginFill(0).drawRect(-config.width * 5, -config.height * 5, config.width * 10, config.height * 10)
@@ -59,7 +59,7 @@ export default class StandardPop extends PIXI.Container {
         this.label3.anchor.set(0.5)
         this.label3.y = 80
 
-        this.label4 = new TextBox(15, config.assets.panel.tertiary, 24);
+        this.label4 = new TextBox(15, config.assets.panel.tertiary, 28);
         this.label4.y = 80
 
         config.addPaddingPanel(this.label4.background)
@@ -91,7 +91,7 @@ export default class StandardPop extends PIXI.Container {
         this.centerIcon.addChild(this.label3)
         this.label2.style.fontSize = 24
 
-        this.titleTextBox = new TextBox(20, config.assets.panel.tertiary, 28)
+        this.titleTextBox = new TextBox(20, config.assets.panel.tertiary, 32)
 
         this.container.addChild(this.titleTextBox)
         this.confirmButton = new UILabelButton1(150, 80, config.assets.button.primaryLong)

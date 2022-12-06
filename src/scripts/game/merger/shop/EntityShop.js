@@ -15,7 +15,7 @@ export default class EntityShop extends PIXI.Container {
         super()
         this.mainSystem = mainSystem;
         this.size = {
-            w: config.width * 0.75,
+            w: config.width * 0.9,
             h: config.height * 0.8
         }
 
