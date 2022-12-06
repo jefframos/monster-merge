@@ -57469,6 +57469,7 @@ var Game = function () {
                 key: 'updateLoader',
                 value: function updateLoader(progress) {
                         this.fillLoader.scale.x = progress / 100;
+                        this.resize();
                 }
         }, {
                 key: 'initialize',

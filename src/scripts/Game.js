@@ -62,6 +62,7 @@ export default class Game {
     }
     updateLoader(progress){
         this.fillLoader.scale.x = progress / 100
+        this.resize()
     }
     initialize() {
 
