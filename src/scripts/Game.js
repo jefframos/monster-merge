@@ -6,6 +6,11 @@ export default class Game {
     constructor(config, screenManager) {
         this.screenManager = screenManager;
 
+        if(!window.isMobile){
+            config.width *=1.1
+            config.height *=1.1
+        }
+
         const Renderer = (config.webgl) ? PIXI.autoDetectRenderer : PIXI.CanvasRenderer;
 
         this.desktopResolution = {

@@ -95,8 +95,8 @@ export default class CastleBackground extends CastleBackgroundBase {
 
 
         this.castleContainer.x = -250
-        this.castleContainer.y = -380
-        this.castleContainer.scale.set(0.55)
+        this.castleContainer.y = -400
+        this.castleContainer.scale.set(0.6)
 
     }
     
