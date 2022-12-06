@@ -34642,6 +34642,7 @@ function startLoader() {
 
 window.COOKIE_MANAGER = new _CookieManager2.default();
 function configGame(evt) {
+
     window.localizationManager = new _LocalizationManager2.default('');
 
     SOUND_MANAGER.load(_manifestAudio2.default);
@@ -57571,7 +57572,8 @@ var Game = function () {
                                 var newScaleY = newSize.height / this.innerResolution.height;
                                 this.loaderContainer.scale.y = newScaleY; //this.ratio
 
-                                this.loaderContainer.x = _config2.default.width / 2 - 150;
+
+                                this.loaderContainer.x = this.desktopResolution.width / 2 - this.desktopResolution.width / 2 * newScaleX + 150 * newScaleX;
                                 this.loaderContainer.y = _config2.default.height / 2 + 50;
                         }
 
@@ -61691,11 +61693,11 @@ var assets = [{
 	"id": "baseGameConfigHumans",
 	"url": "assets/json\\baseGameConfigHumans.json"
 }, {
-	"id": "fairies",
-	"url": "assets/json\\fairies.json"
-}, {
 	"id": "baseGameConfigMonster",
 	"url": "assets/json\\baseGameConfigMonster.json"
+}, {
+	"id": "fairies",
+	"url": "assets/json\\fairies.json"
 }, {
 	"id": "humans",
 	"url": "assets/json\\humans.json"
@@ -61712,11 +61714,11 @@ var assets = [{
 	"id": "localization_FR",
 	"url": "assets/json\\localization_FR.json"
 }, {
-	"id": "localization_JA",
-	"url": "assets/json\\localization_JA.json"
-}, {
 	"id": "localization_IT",
 	"url": "assets/json\\localization_IT.json"
+}, {
+	"id": "localization_JA",
+	"url": "assets/json\\localization_JA.json"
 }, {
 	"id": "localization_KO",
 	"url": "assets/json\\localization_KO.json"
@@ -61724,17 +61726,17 @@ var assets = [{
 	"id": "localization_PT",
 	"url": "assets/json\\localization_PT.json"
 }, {
-	"id": "localization_RU",
-	"url": "assets/json\\localization_RU.json"
+	"id": "localization_TR",
+	"url": "assets/json\\localization_TR.json"
 }, {
 	"id": "localization_ZH",
 	"url": "assets/json\\localization_ZH.json"
 }, {
+	"id": "localization_RU",
+	"url": "assets/json\\localization_RU.json"
+}, {
 	"id": "modifyers",
 	"url": "assets/json\\modifyers.json"
-}, {
-	"id": "localization_TR",
-	"url": "assets/json\\localization_TR.json"
 }, {
 	"id": "monsters",
 	"url": "assets/json\\monsters.json"

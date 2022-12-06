@@ -163,7 +163,8 @@ export default class Game {
             let newScaleY = newSize.height / this.innerResolution.height
             this.loaderContainer.scale.y = newScaleY//this.ratio
 
-            this.loaderContainer.x = config.width/2 - 150
+        
+            this.loaderContainer.x =  this.desktopResolution.width / 2 - (this.desktopResolution.width / 2 * newScaleX) + 150* newScaleX
             this.loaderContainer.y = config.height/2 + 50
 
 
