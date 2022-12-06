@@ -34601,6 +34601,8 @@ function afterLoadManifests(evt) {
     startLoader();
 }
 
+window.game = new _Game2.default(config);
+
 function startLoader() {
 
     for (var i = 0; i < _manifestJson2.default.length; i++) {
@@ -34623,6 +34625,10 @@ function startLoader() {
     }
     PIXI.loader.add('./assets/fonts/stylesheet.css').load(configGame);
 
+    PIXI.loader.onProgress.add(function (e) {
+        game.updateLoader(e.progress);
+        console.log('loading', e.progress);
+    });
     // FbManager.connect().then(() =>
     //     {
     //         FbManager.trackLoader(PIXI.loader);
@@ -34640,7 +34646,6 @@ function configGame(evt) {
     window.localizationManager = new _LocalizationManager2.default('');
 
     SOUND_MANAGER.load(_manifestAudio2.default);
-    window.game = new _Game2.default(config);
     // FbManager.start()
     // console.log(CAT_LIST);
     var sotrageData = STORAGE.getObject('space-cats-game-data');
@@ -57418,7 +57423,8 @@ var Game = function () {
                         width: config.width,
                         height: config.height,
                         resolution: Math.max(window.devicePixelRatio, 2),
-                        antialias: false
+                        antialias: false,
+                        backgroundColor: 0x3B296D
                 });
                 document.body.appendChild(window.renderer.view);
 
@@ -57439,14 +57445,37 @@ var Game = function () {
                         bottomRight: { x: 0, y: 0 }
                 };
 
+                this.makeLoader();
                 this.resize();
         }
 
         (0, _createClass3.default)(Game, [{
+                key: 'makeLoader',
+                value: function makeLoader() {
+                        this.loaderContainer = new PIXI.Container();
+                        var backLoader = new PIXI.Graphics().beginFill(0).drawRect(0, 0, 300, 30);
+                        this.fillLoader = new PIXI.Graphics().beginFill(0xff296D).drawRect(0, 0, 300, 30);
+                        this.loaderContainer.addChild(backLoader);
+                        this.loaderContainer.addChild(this.fillLoader);
+                        this.logo = new PIXI.Sprite.from('logoTransparent.png');
+                        this.logo.anchor.set(0.5);
+                        this.fillLoader.scale.x = 0;
+                        this.logo.x = 150;
+                        this.logo.y = -200;
+                        this.loaderContainer.addChild(this.logo);
+                        this.stage.addChild(this.loaderContainer);
+                }
+        }, {
+                key: 'updateLoader',
+                value: function updateLoader(progress) {
+                        this.fillLoader.scale.x = progress / 100;
+                }
+        }, {
                 key: 'initialize',
                 value: function initialize() {
                         var _this = this;
 
+                        this.stage.removeChild(this.loaderContainer);
                         PIXI.ticker.shared.add(this._onTickEvent, this);
                         setTimeout(function () {
                                 _this.resize();
@@ -57532,20 +57561,30 @@ var Game = function () {
 
                         //element.scale.set(min)
 
+                        if (this.loaderContainer && this.loaderContainer.parent) {
+                                var newScaleX = newSize.width / this.innerResolution.width;
+                                this.loaderContainer.scale.x = newScaleX; //this.ratio
+                                var newScaleY = newSize.height / this.innerResolution.height;
+                                this.loaderContainer.scale.y = newScaleY; //this.ratio
+
+                                this.loaderContainer.x = newSize.width / 2 - this.loaderContainer.width / 2;
+                                this.loaderContainer.y = this.innerResolution.height / 2 + 50;
+                        }
+
                         if (this.screenManager) {
                                 //  let sclX = (this.innerResolution.width)/(this.desktopResolution.width) ;
                                 //  let sclY = (this.innerResolution.height)/(this.desktopResolution.height) ;
                                 //  let min = Math.min(sclX, sclY);
                                 // this.screenManager.scale.set(min)
-                                var newScaleX = newSize.width / this.innerResolution.width;
-                                this.screenManager.scale.x = newScaleX; //this.ratio
-                                var newScaleY = newSize.height / this.innerResolution.height;
-                                this.screenManager.scale.y = newScaleY; //this.ratio
+                                var _newScaleX = newSize.width / this.innerResolution.width;
+                                this.screenManager.scale.x = _newScaleX; //this.ratio
+                                var _newScaleY = newSize.height / this.innerResolution.height;
+                                this.screenManager.scale.y = _newScaleY; //this.ratio
 
                                 //console.log(newScaleX)
                                 // 	// this.screenManager.pivot.x = this.innerResolution.width / 2 // this.screenManager.scale.x
-                                this.screenManager.x = this.desktopResolution.width / 2 - this.desktopResolution.width / 2 * newScaleX; ///- (this.innerResolution.width / 2 *newScaleX) // this.screenManager.scale.y
-                                this.screenManager.pivot.y = this.innerResolution.height / 2 - this.innerResolution.height / 2 / newScaleY; // this.screenManager.scale.y
+                                this.screenManager.x = this.desktopResolution.width / 2 - this.desktopResolution.width / 2 * _newScaleX; ///- (this.innerResolution.width / 2 *newScaleX) // this.screenManager.scale.y
+                                this.screenManager.pivot.y = this.innerResolution.height / 2 - this.innerResolution.height / 2 / _newScaleY; // this.screenManager.scale.y
 
                                 // 	this.screenManager.x = 0//window.innerWidth/2 * sclX - this.desktopResolution.width/2* sclX//this.innerResolution.width / 2 // this.screenManager.scale.x
                                 // 	this.screenManager.y = 0// window.innerHeight/2 * sclY - this.desktopResolution.height/2* sclY // this.screenManager.scale.y
@@ -61669,23 +61708,23 @@ var assets = [{
 	"id": "localization_FR",
 	"url": "assets/json\\localization_FR.json"
 }, {
-	"id": "localization_IT",
-	"url": "assets/json\\localization_IT.json"
-}, {
 	"id": "localization_JA",
 	"url": "assets/json\\localization_JA.json"
 }, {
+	"id": "localization_IT",
+	"url": "assets/json\\localization_IT.json"
+}, {
 	"id": "localization_KO",
 	"url": "assets/json\\localization_KO.json"
+}, {
+	"id": "localization_PT",
+	"url": "assets/json\\localization_PT.json"
 }, {
 	"id": "localization_RU",
 	"url": "assets/json\\localization_RU.json"
 }, {
 	"id": "localization_TR",
 	"url": "assets/json\\localization_TR.json"
-}, {
-	"id": "localization_PT",
-	"url": "assets/json\\localization_PT.json"
 }, {
 	"id": "localization_ZH",
 	"url": "assets/json\\localization_ZH.json"
@@ -61989,7 +62028,7 @@ module.exports = exports["default"];
 /* 344 */
 /***/ (function(module, exports) {
 
-module.exports = {"default":["image/pattern2/pattern2.json","image/particles/particles.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
+module.exports = {"default":["image/particles/particles.json","image/pattern2/pattern2.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
 
 /***/ }),
 /* 345 */

@@ -19,6 +19,7 @@ export default class Game {
             height: config.height,
             resolution: Math.max(window.devicePixelRatio, 2),
             antialias: false,
+            backgroundColor:0x3B296D
         });
         document.body.appendChild(window.renderer.view);
 
@@ -41,10 +42,30 @@ export default class Game {
             bottomRight: { x: 0, y: 0 },
         }
 
-
+       
+        this.makeLoader();
         this.resize()
     }
+    makeLoader(){
+        this.loaderContainer = new PIXI.Container()
+        let backLoader = new PIXI.Graphics().beginFill(0).drawRect(0,0,300,30)
+        this.fillLoader = new PIXI.Graphics().beginFill(0xff296D).drawRect(0,0,300,30)
+        this.loaderContainer.addChild(backLoader)
+        this.loaderContainer.addChild(this.fillLoader)
+        this.logo = new PIXI.Sprite.from('logoTransparent.png')
+        this.logo.anchor.set(0.5)
+        this.fillLoader.scale.x = 0
+        this.logo.x = 150
+        this.logo.y = -200
+        this.loaderContainer.addChild(this.logo)
+        this.stage.addChild(this.loaderContainer);
+    }
+    updateLoader(progress){
+        this.fillLoader.scale.x = progress / 100
+    }
     initialize() {
+
+        this.stage.removeChild(this.loaderContainer);
         PIXI.ticker.shared.add(this._onTickEvent, this);
         setTimeout(() => {
             this.resize()
@@ -133,6 +154,18 @@ export default class Game {
 
 
         //element.scale.set(min)
+
+        if(this.loaderContainer && this.loaderContainer.parent){
+            let newScaleX = newSize.width / this.innerResolution.width
+            this.loaderContainer.scale.x = newScaleX//this.ratio
+            let newScaleY = newSize.height / this.innerResolution.height
+            this.loaderContainer.scale.y = newScaleY//this.ratio
+
+            this.loaderContainer.x = newSize.width/2 - this.loaderContainer.width/2
+            this.loaderContainer.y = this.innerResolution.height/2 + 50
+
+
+        }
 
         if (this.screenManager) {
             //  let sclX = (this.innerResolution.width)/(this.desktopResolution.width) ;

@@ -155,6 +155,10 @@ function afterLoadManifests(evt) {
 
 }
 
+
+window.game = new Game(config);
+
+
 function startLoader() {
 
     for (var i = 0; i < jsonManifest.length; i++) {
@@ -179,6 +183,11 @@ function startLoader() {
         .add('./assets/fonts/stylesheet.css')
         .load(configGame);
 
+
+        PIXI.loader.onProgress.add((e)=>{
+            game.updateLoader(e.progress)
+            console.log('loading',e.progress)
+        })
     // FbManager.connect().then(() =>
     //     {
     //         FbManager.trackLoader(PIXI.loader);
@@ -192,11 +201,10 @@ function startLoader() {
 
 window.COOKIE_MANAGER = new CookieManager();
 function configGame(evt) {
-
+    
     window.localizationManager = new LocalizationManager('');
 
     SOUND_MANAGER.load(audioManifest);
-    window.game = new Game(config);
     // FbManager.start()
     // console.log(CAT_LIST);
     let sotrageData = STORAGE.getObject('space-cats-game-data')
