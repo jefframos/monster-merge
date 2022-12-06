@@ -39,9 +39,12 @@ export default class CastleBackgroundBase extends PIXI.Container {
                 }
             });
         })
-
-
-
+    }
+    showAll(){
+        for (let index = 0; index < this.castleSet.length; index++) {
+            const element = this.castleSet[index];
+            element.sprite.visible = true
+        }
     }
     getPiece(id) {
         return this.castleSet[id];

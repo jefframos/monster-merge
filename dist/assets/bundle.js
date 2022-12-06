@@ -22977,6 +22977,14 @@ var CastleBackgroundBase = function (_PIXI$Container) {
             });
         }
     }, {
+        key: 'showAll',
+        value: function showAll() {
+            for (var index = 0; index < this.castleSet.length; index++) {
+                var element = this.castleSet[index];
+                element.sprite.visible = true;
+            }
+        }
+    }, {
         key: 'getPiece',
         value: function getPiece(id) {
             return this.castleSet[id];
@@ -23100,6 +23108,11 @@ var InteractiveBackgrounds = function (_PIXI$Container) {
         key: "showAnimation",
         value: function showAnimation(value) {
             this.castleBackground.showAnimation(value);
+        }
+    }, {
+        key: "showAll",
+        value: function showAll() {
+            this.castleBackground.showAll();
         }
     }, {
         key: "getPiece",
@@ -61726,14 +61739,14 @@ var assets = [{
 	"id": "localization_PT",
 	"url": "assets/json\\localization_PT.json"
 }, {
+	"id": "localization_RU",
+	"url": "assets/json\\localization_RU.json"
+}, {
 	"id": "localization_TR",
 	"url": "assets/json\\localization_TR.json"
 }, {
 	"id": "localization_ZH",
 	"url": "assets/json\\localization_ZH.json"
-}, {
-	"id": "localization_RU",
-	"url": "assets/json\\localization_RU.json"
 }, {
 	"id": "modifyers",
 	"url": "assets/json\\modifyers.json"
@@ -62034,7 +62047,7 @@ module.exports = exports["default"];
 /* 344 */
 /***/ (function(module, exports) {
 
-module.exports = {"default":["image/pattern2/pattern2.json","image/particles/particles.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
+module.exports = {"default":["image/particles/particles.json","image/pattern2/pattern2.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
 
 /***/ }),
 /* 345 */
@@ -63434,7 +63447,7 @@ var MergeScreen = function (_Screen) {
                         var _this11 = this;
 
                         this.helperButtonList = new _UIList2.default();
-                        this.helperButtonList.h = 350;
+                        this.helperButtonList.h = 400;
                         this.helperButtonList.w = 60;
                         this.speedUpToggle = new _UIButton2.default(0x002299, 'fast_forward_icon');
                         this.helperButtonList.addElement(this.speedUpToggle);
@@ -63488,7 +63501,11 @@ var MergeScreen = function (_Screen) {
 
                                 _this11.onMergeSystemUpdate();
                         });
-
+                        this.showCastle = new _UIButton2.default(0x002299, 'upArrow');
+                        this.helperButtonList.addElement(this.showCastle);
+                        this.showCastle.onClick.add(function () {
+                                _this11.activeMergeSystem.interactiveBackground.showAll();
+                        });
                         this.helperButtonList.updateVerticalList();
                         this.container.addChild(this.helperButtonList);
 
@@ -67775,12 +67792,12 @@ var PuzzleBackground = function (_PuzzleBackgroundBase) {
 						this.leftPines = new PIXI.Sprite.fromFrame('pineSidePatch');
 						this.leftPines.anchor.set(1, 0);
 						this.leftPines.x = -380;
-						this.leftPines.y = -350;
+						this.leftPines.y = -250;
 						this.baseContainer.addChild(this.leftPines);
 
 						this.rightPines = new PIXI.Sprite.fromFrame('pineSidePatch');
 						this.rightPines.x = 380;
-						this.rightPines.y = -350;
+						this.rightPines.y = -250;
 						this.baseContainer.addChild(this.rightPines);
 				}
 		}, {

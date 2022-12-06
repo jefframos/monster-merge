@@ -1034,7 +1034,7 @@ export default class MergeScreen extends Screen {
 
     addHelpers() {
         this.helperButtonList = new UIList();
-        this.helperButtonList.h = 350;
+        this.helperButtonList.h = 400;
         this.helperButtonList.w = 60;
         this.speedUpToggle = new UIButton1(0x002299, 'fast_forward_icon')
         this.helperButtonList.addElement(this.speedUpToggle)
@@ -1094,7 +1094,11 @@ export default class MergeScreen extends Screen {
 
             this.onMergeSystemUpdate()
         })
-
+        this.showCastle = new UIButton1(0x002299, 'upArrow')
+        this.helperButtonList.addElement(this.showCastle)
+        this.showCastle.onClick.add(() => {
+            this.activeMergeSystem.interactiveBackground.showAll()
+        })
         this.helperButtonList.updateVerticalList();
         this.container.addChild(this.helperButtonList)
 

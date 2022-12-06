@@ -36,13 +36,13 @@ export default class PuzzleBackground extends PuzzleBackgroundBase {
 		this.leftPines = new PIXI.Sprite.fromFrame('pineSidePatch')
 		this.leftPines.anchor.set(1, 0)
 		this.leftPines.x = -380
-		this.leftPines.y = -350
+		this.leftPines.y = -250
 		this.baseContainer.addChild(this.leftPines)
 
 
 		this.rightPines = new PIXI.Sprite.fromFrame('pineSidePatch')
 		this.rightPines.x = 380
-		this.rightPines.y = -350
+		this.rightPines.y = -250
 		this.baseContainer.addChild(this.rightPines)
 	}
 	resize(innerResolution, scale) {

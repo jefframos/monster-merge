@@ -21,6 +21,9 @@ export default class InteractiveBackgrounds extends PIXI.Container {
     showAnimation(value){
         this.castleBackground.showAnimation(value)
     }
+    showAll(){
+        this.castleBackground.showAll()
+    }
     getPiece(id){
         return this.castleBackground.getPiece(id)
     }
