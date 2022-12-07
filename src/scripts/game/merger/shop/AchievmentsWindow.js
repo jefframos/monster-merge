@@ -4,10 +4,14 @@ import EntityShop from './EntityShop';
 import Signals from 'signals';
 import AchievmentView from './AchievmentView';
 import ShopItem from './ShopItem';
+import config from '../../../config';
 
 export default class AchievmentsWindow extends EntityShop {
-    constructor(mainSystem, size, ) {
-        super(mainSystem, size, 5)
+    constructor(mainSystem, systemID, ) {
+        super(mainSystem, systemID, 7, {
+            w: config.width * 0.9,
+            h: config.height * 0.9
+        })
         this.onAddEntity = new Signals();
         this.onAchievmentPending = new Signals();
         this.onNoAchievmentPending = new Signals();
@@ -16,7 +20,7 @@ export default class AchievmentsWindow extends EntityShop {
         this.systemID = 'monsters';
 
         this.backContainer.texture = PIXI.Texture.fromFrame(config.assets.popup.extra)
-        this.shopList.addBaseGradient('base-gradient', this.itemWidth, 0xFEF72B)
+        //this.shopList.addBaseGradient('base-gradient', this.itemWidth, 0xFEF72B)
 
         this.title.updateText(window.localizationManager.getLabel('achievment'))
 
@@ -138,7 +142,7 @@ export default class AchievmentsWindow extends EntityShop {
         this.currentItens = []
         this.currentItensByType = {}
         for (let index = 0; index < items.length; index++) {
-            let shopItem = new AchievmentView(this.size.w - this.size.w * 0.2, this.size.h * 0.8 / 6, 28)
+            let shopItem = new AchievmentView(this.size.w - this.size.w * 0.2, this.size.h * 0.8 / 8, 28)
 
             this.currentItensByType[items[index].variable] = shopItem;
 

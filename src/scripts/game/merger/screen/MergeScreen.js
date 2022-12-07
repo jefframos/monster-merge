@@ -1038,10 +1038,10 @@ export default class MergeScreen extends Screen {
 
         this.soundButton.scale.set(this.systemButtonList.scale.x)
         this.soundButton.x = topRight.x - this.soundButton.width / 2 - 20
-        this.soundButton.y = 40
+        this.soundButton.y = 40 * this.systemButtonList.scale.x
 
         this.systemButtonList.x = topRight.x - (80 * this.systemButtonList.scale.x) / 2 - 20
-        this.systemButtonList.y = this.soundButton.y + 20 + 35 * this.systemButtonList.scale.y + 20
+        this.systemButtonList.y = this.soundButton.y + (20*this.systemButtonList.scale.x) + 35 * this.systemButtonList.scale.y + 20
 
 
         this.shopsLabel.x = this.shopButtonsList.x

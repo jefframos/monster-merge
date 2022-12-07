@@ -33072,12 +33072,13 @@ var EntityShop = function (_PIXI$Container) {
 
     function EntityShop(mainSystem, systemID) {
         var itemsPerPage = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 5;
+        var size = arguments[3];
         (0, _classCallCheck3.default)(this, EntityShop);
 
         var _this = (0, _possibleConstructorReturn3.default)(this, (EntityShop.__proto__ || (0, _getPrototypeOf2.default)(EntityShop)).call(this));
 
         _this.mainSystem = mainSystem;
-        _this.size = {
+        _this.size = size ? size : {
             w: _config2.default.width * 0.9,
             h: _config2.default.height * 0.8
         };
@@ -61737,14 +61738,14 @@ var assets = [{
 	"id": "achievments",
 	"url": "assets/json\\achievments.json"
 }, {
-	"id": "baseGameConfigFairy",
-	"url": "assets/json\\baseGameConfigFairy.json"
+	"id": "baseGameConfigMonster",
+	"url": "assets/json\\baseGameConfigMonster.json"
 }, {
 	"id": "baseGameConfigHumans",
 	"url": "assets/json\\baseGameConfigHumans.json"
 }, {
-	"id": "baseGameConfigMonster",
-	"url": "assets/json\\baseGameConfigMonster.json"
+	"id": "baseGameConfigFairy",
+	"url": "assets/json\\baseGameConfigFairy.json"
 }, {
 	"id": "fairies",
 	"url": "assets/json\\fairies.json"
@@ -61761,11 +61762,11 @@ var assets = [{
 	"id": "localization_ES",
 	"url": "assets/json\\localization_ES.json"
 }, {
-	"id": "localization_IT",
-	"url": "assets/json\\localization_IT.json"
-}, {
 	"id": "localization_FR",
 	"url": "assets/json\\localization_FR.json"
+}, {
+	"id": "localization_IT",
+	"url": "assets/json\\localization_IT.json"
 }, {
 	"id": "localization_JA",
 	"url": "assets/json\\localization_JA.json"
@@ -61773,20 +61774,20 @@ var assets = [{
 	"id": "localization_KO",
 	"url": "assets/json\\localization_KO.json"
 }, {
-	"id": "localization_PT",
-	"url": "assets/json\\localization_PT.json"
-}, {
 	"id": "localization_RU",
 	"url": "assets/json\\localization_RU.json"
+}, {
+	"id": "localization_PT",
+	"url": "assets/json\\localization_PT.json"
 }, {
 	"id": "localization_ZH",
 	"url": "assets/json\\localization_ZH.json"
 }, {
-	"id": "modifyers",
-	"url": "assets/json\\modifyers.json"
-}, {
 	"id": "localization_TR",
 	"url": "assets/json\\localization_TR.json"
+}, {
+	"id": "modifyers",
+	"url": "assets/json\\modifyers.json"
 }, {
 	"id": "resources",
 	"url": "assets/json\\resources.json"
@@ -62094,11 +62095,11 @@ var assets = [{
 	"id": "Cartoon-Mouth-Sound-18",
 	"url": "assets/audio\\Cartoon-Mouth-Sound-18.mp3"
 }, {
-	"id": "coins_04",
-	"url": "assets/audio\\coins_04.mp3"
-}, {
 	"id": "Cartoon-Mouth-Sound-20",
 	"url": "assets/audio\\Cartoon-Mouth-Sound-20.mp3"
+}, {
+	"id": "coins_04",
+	"url": "assets/audio\\coins_04.mp3"
 }, {
 	"id": "dropTile",
 	"url": "assets/audio\\dropTile.mp3"
@@ -62121,14 +62122,11 @@ var assets = [{
 	"id": "item",
 	"url": "assets/audio\\item.mp3"
 }, {
-	"id": "HolidayWeasel",
-	"url": "assets/audio\\HolidayWeasel.mp3"
+	"id": "kill",
+	"url": "assets/audio\\kill.mp3"
 }, {
 	"id": "magic",
 	"url": "assets/audio\\magic.mp3"
-}, {
-	"id": "kill",
-	"url": "assets/audio\\kill.mp3"
 }, {
 	"id": "Musical-Beep-Loop-02",
 	"url": "assets/audio\\Musical-Beep-Loop-02.mp3"
@@ -62136,11 +62134,11 @@ var assets = [{
 	"id": "Ping-Slide-Down",
 	"url": "assets/audio\\Ping-Slide-Down.mp3"
 }, {
-	"id": "place2",
-	"url": "assets/audio\\place2.mp3"
-}, {
 	"id": "place",
 	"url": "assets/audio\\place.mp3"
+}, {
+	"id": "place2",
+	"url": "assets/audio\\place2.mp3"
 }, {
 	"id": "place3",
 	"url": "assets/audio\\place3.mp3"
@@ -62150,6 +62148,9 @@ var assets = [{
 }, {
 	"id": "Pop-Musical",
 	"url": "assets/audio\\Pop-Musical.mp3"
+}, {
+	"id": "HolidayWeasel",
+	"url": "assets/audio\\HolidayWeasel.mp3"
 }, {
 	"id": "Pop-Tone",
 	"url": "assets/audio\\Pop-Tone.mp3"
@@ -62166,12 +62167,6 @@ var assets = [{
 	"id": "Synth-Appear-01",
 	"url": "assets/audio\\Synth-Appear-01.mp3"
 }, {
-	"id": "SneakySnitch",
-	"url": "assets/audio\\SneakySnitch.mp3"
-}, {
-	"id": "TheBuilder",
-	"url": "assets/audio\\TheBuilder.mp3"
-}, {
 	"id": "teleport",
 	"url": "assets/audio\\teleport.mp3"
 }, {
@@ -62180,6 +62175,12 @@ var assets = [{
 }, {
 	"id": "Whoosh",
 	"url": "assets/audio\\Whoosh.mp3"
+}, {
+	"id": "TheBuilder",
+	"url": "assets/audio\\TheBuilder.mp3"
+}, {
+	"id": "SneakySnitch",
+	"url": "assets/audio\\SneakySnitch.mp3"
 }];
 
 exports.default = assets;
@@ -62189,7 +62190,7 @@ module.exports = exports["default"];
 /* 344 */
 /***/ (function(module, exports) {
 
-module.exports = {"default":["image/particles/particles.json","image/pattern2/pattern2.json","image/pattern/pattern.json","image/background2/background2.json","image/parts/parts.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
+module.exports = {"default":["image/pattern2/pattern2.json","image/pattern/pattern.json","image/particles/particles.json","image/parts/parts.json","image/background2/background2.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
 
 /***/ }),
 /* 345 */
@@ -63583,10 +63584,10 @@ var MergeScreen = function (_Screen) {
 
                         this.soundButton.scale.set(this.systemButtonList.scale.x);
                         this.soundButton.x = topRight.x - this.soundButton.width / 2 - 20;
-                        this.soundButton.y = 40;
+                        this.soundButton.y = 40 * this.systemButtonList.scale.x;
 
                         this.systemButtonList.x = topRight.x - 80 * this.systemButtonList.scale.x / 2 - 20;
-                        this.systemButtonList.y = this.soundButton.y + 20 + 35 * this.systemButtonList.scale.y + 20;
+                        this.systemButtonList.y = this.soundButton.y + 20 * this.systemButtonList.scale.x + 35 * this.systemButtonList.scale.y + 20;
 
                         this.shopsLabel.x = this.shopButtonsList.x;
                         this.shopsLabel.y = this.shopButtonsList.y;
@@ -63759,6 +63760,10 @@ var _ShopItem = __webpack_require__(80);
 
 var _ShopItem2 = _interopRequireDefault(_ShopItem);
 
+var _config = __webpack_require__(10);
+
+var _config2 = _interopRequireDefault(_config);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -63766,10 +63771,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var AchievmentsWindow = function (_EntityShop) {
     (0, _inherits3.default)(AchievmentsWindow, _EntityShop);
 
-    function AchievmentsWindow(mainSystem, size) {
+    function AchievmentsWindow(mainSystem, systemID) {
         (0, _classCallCheck3.default)(this, AchievmentsWindow);
 
-        var _this = (0, _possibleConstructorReturn3.default)(this, (AchievmentsWindow.__proto__ || (0, _getPrototypeOf2.default)(AchievmentsWindow)).call(this, mainSystem, size, 5));
+        var _this = (0, _possibleConstructorReturn3.default)(this, (AchievmentsWindow.__proto__ || (0, _getPrototypeOf2.default)(AchievmentsWindow)).call(this, mainSystem, systemID, 7, {
+            w: _config2.default.width * 0.9,
+            h: _config2.default.height * 0.9
+        }));
 
         _this.onAddEntity = new _signals2.default();
         _this.onAchievmentPending = new _signals2.default();
@@ -63778,13 +63786,13 @@ var AchievmentsWindow = function (_EntityShop) {
         _this.onClaimAchievment = new _signals2.default();
         _this.systemID = 'monsters';
 
-        _this.backContainer.texture = PIXI.Texture.fromFrame(config.assets.popup.extra);
-        _this.shopList.addBaseGradient('base-gradient', _this.itemWidth, 0xFEF72B);
+        _this.backContainer.texture = PIXI.Texture.fromFrame(_config2.default.assets.popup.extra);
+        //this.shopList.addBaseGradient('base-gradient', this.itemWidth, 0xFEF72B)
 
         _this.title.updateText(window.localizationManager.getLabel('achievment'));
 
         _this.giftItem = new _ShopItem2.default({ w: _this.itemWidth, h: _this.size.h * 0.8 / 6 });
-        _this.giftItem.backShapeGeneral.texture = PIXI.Texture.from(config.assets.panel.tertiary);
+        _this.giftItem.backShapeGeneral.texture = PIXI.Texture.from(_config2.default.assets.panel.tertiary);
         //this.giftItem.itemIcon.texture = PIXI.Texture.from('Btn04')
         _this.container.addChild(_this.giftItem);
         _this.giftItem.x = _this.size.w * 0.1;
@@ -63922,7 +63930,7 @@ var AchievmentsWindow = function (_EntityShop) {
             this.currentItens = [];
             this.currentItensByType = {};
             for (var index = 0; index < items.length; index++) {
-                var shopItem = new _AchievmentView2.default(this.size.w - this.size.w * 0.2, this.size.h * 0.8 / 6, 28);
+                var shopItem = new _AchievmentView2.default(this.size.w - this.size.w * 0.2, this.size.h * 0.8 / 8, 28);
 
                 this.currentItensByType[items[index].variable] = shopItem;
 
@@ -65705,9 +65713,9 @@ var LevelMeter = function (_PIXI$Container) {
                 _this.logo = new PIXI.Sprite.fromFrame('topLogo');
                 _this.baseContainer.addChild(_this.logo);
                 _this.logo.anchor.set(0.5);
-                _this.logo.scale.set(0.65);
+                _this.logo.scale.set(0.75);
                 _this.logo.x = 270;
-                _this.logo.y = 20;
+                _this.logo.y = 30;
                 _this.baseBar = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame(_config2.default.assets.bars.background), 10, 10, 10, 10);
 
                 _this.baseContainer.addChild(_this.baseBar);
@@ -65929,7 +65937,6 @@ var MergeItemsShop = function (_EntityShop) {
                 } else {
                     element.unblock();
                     this.giftItem.unblock();
-                    //this.giftItem.shopButton.enable();
                 }
             }
         }
@@ -67770,7 +67777,7 @@ var MonsterBackground = function (_InteractiveBackgroun) {
                 this.castleBackground.pivot.x = 0;
                 this.castleBackground.pivot.y = 0;
                 this.castleBackground.x = 0;
-                this.castleBackground.y = -200;
+                this.castleBackground.y = -210;
                 this.castleBackground.scale.set(0.8);
             }
         }
@@ -67876,7 +67883,7 @@ var CastleBackground = function (_CastleBackgroundBase) {
 
                         this.rightDetail = new PIXI.Sprite.fromFrame('backPinePatch2');
                         this.rightDetail.scale.set(0.7);
-                        this.rightDetail.x = 200;
+                        this.rightDetail.x = 170;
                         this.rightDetail.y = -155;
                         this.baseContainer.addChild(this.rightDetail);
 
@@ -67894,7 +67901,7 @@ var CastleBackground = function (_CastleBackgroundBase) {
                         this.bottomTree2.y = 380;
                         this.bottomTree2.scale.set(650 / this.bottomTree2.width);
 
-                        this.castleSet = [{ src: 'stairs', order: 0, pos: { x: 305.7, y: 696.45 } }, { src: 'door1', order: 7, pos: { x: 282.35, y: 562.95 } }, { src: 'frontTower1', order: 2, pos: { x: 374.6, y: 447.3 } }, { src: 'side2', order: 1, pos: { x: 442.1, y: 532.5 } }, { src: 'side1', order: 3, pos: { x: 101.05, y: 368.55 } }, { src: 'side3', order: 4, pos: { x: 566.5, y: 506.5 } }, { src: 'side4', order: 6, pos: { x: 717.7, y: 264.9 } }, { src: 'sideTower', order: 5, pos: { x: 780.65, y: 320.35 } }, { src: 'middle1', order: 8, pos: { x: 385.35, y: 387.25 } }, { src: 'centerHouse1', order: 11, pos: { x: 274.3, y: 317.1 } }, { src: 'leftTower', order: 15, pos: { x: 123, y: 31.6 } }, { src: 'backforest', order: 20, pos: { x: -15.85, y: 348 } }, { src: 'bridgeTower', order: 16, pos: { x: 518.4, y: 49.4 } }, { src: 'sideHouse2', order: 10, pos: { x: 490.8, y: 277.15 } }, { src: 'sideHouse1', order: 9, pos: { x: 565.95, y: 308.35 } }, { src: 'side5', order: 17, pos: { x: 630.45, y: 0 } }, { src: 'thinHouse', order: 12, pos: { x: 230.05, y: 223.25 } }, { src: 'backTower', order: 19, pos: { x: 317.9, y: 0 } }, { src: 'tower6', order: 15, pos: { x: 448.25, y: 91.7 } }, { src: 'mainTower', order: 13, pos: { x: 301.1, y: 133.1 } }, { src: 'statue1', order: 18, pos: { x: 325.2, y: 50.05 } }, { src: 'spare', order: 8, pos: { x: 185.2, y: 360.05 } }];
+                        this.castleSet = [{ src: 'stairs', order: 0, pos: { x: 293.7, y: 676.45 } }, { src: 'door1', order: 7, pos: { x: 282.35, y: 562.95 } }, { src: 'frontTower1', order: 2, pos: { x: 374.6, y: 467.3 } }, { src: 'side2', order: 1, pos: { x: 438.1, y: 540.5 } }, { src: 'side1', order: 3, pos: { x: 115.05, y: 405 } }, { src: 'side3', order: 4, pos: { x: 546.5, y: 516.5 } }, { src: 'side4', order: 6, pos: { x: 680, y: 300 } }, { src: 'sideTower', order: 5, pos: { x: 735.65, y: 340.35 } }, { src: 'middle1', order: 8, pos: { x: 385.35, y: 387.25 } }, { src: 'centerHouse1', order: 11, pos: { x: 274.3, y: 350 } }, { src: 'leftTower', order: 15, pos: { x: 153, y: 110 } }, { src: 'backforest', order: 20, pos: { x: 50, y: 348 } }, { src: 'bridgeTower', order: 16, pos: { x: 500, y: 49.4 } }, { src: 'sideHouse2', order: 10, pos: { x: 420.8, y: 277.15 } }, { src: 'sideHouse1', order: 9, pos: { x: 535.95, y: 308.35 } }, { src: 'side5', order: 17, pos: { x: 580.45, y: 0 } }, { src: 'thinHouse', order: 12, pos: { x: 230.05, y: 250.25 } }, { src: 'backTower', order: 19, pos: { x: 317.9, y: 0 } }, { src: 'tower6', order: 15, pos: { x: 448.25, y: 91.7 } }, { src: 'mainTower', order: 13, pos: { x: 301.1, y: 180 } }, { src: 'statue1', order: 18, pos: { x: 325.2, y: 130 } }, { src: 'spare', order: 8, pos: { x: 185.2, y: 360.05 } }];
 
                         this.castleContainer.x = -280;
                         this.castleContainer.y = -400;
@@ -68017,7 +68024,7 @@ var PuzzleBackground = function (_PuzzleBackgroundBase) {
 
 								if (window.isPortrait) {
 										this.rightPines.visible = true;
-										this.baseTerrain.scale.set(1);
+										this.baseTerrain.scale.set(1, 1.5);
 										this.rightDetail.texture = new PIXI.Texture.fromFrame('rightPatch');
 										this.rightDetail.scale.set(1);
 										this.leftDetail.scale.set(1);

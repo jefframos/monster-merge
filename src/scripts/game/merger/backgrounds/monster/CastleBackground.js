@@ -49,7 +49,7 @@ export default class CastleBackground extends CastleBackgroundBase {
 
         this.rightDetail = new PIXI.Sprite.fromFrame('backPinePatch2')
         this.rightDetail.scale.set(0.7)
-        this.rightDetail.x = 200
+        this.rightDetail.x = 170
         this.rightDetail.y = -155
         this.baseContainer.addChild(this.rightDetail)
 
@@ -69,27 +69,27 @@ export default class CastleBackground extends CastleBackgroundBase {
 
 
         this.castleSet = [
-            { src: 'stairs', order: 0, pos: { x: 305.7, y: 696.45 } },
+            { src: 'stairs', order: 0, pos: { x: 293.7, y: 676.45 } },
             { src: 'door1', order: 7, pos: { x: 282.35, y: 562.95 } },
-            { src: 'frontTower1', order: 2, pos: { x: 374.6, y: 447.3 } },
-            { src: 'side2', order: 1, pos: { x: 442.1, y: 532.5 } },
-            { src: 'side1', order: 3, pos: { x: 101.05, y: 368.55 } },
-            { src: 'side3', order: 4, pos: { x: 566.5, y: 506.5 } },
-            { src: 'side4', order: 6, pos: { x: 717.7, y: 264.9 } },
-            { src: 'sideTower', order: 5, pos: { x: 780.65, y: 320.35 } },
+            { src: 'frontTower1', order: 2, pos: { x: 374.6, y: 467.3 } },
+            { src: 'side2', order: 1, pos: { x: 438.1, y: 540.5 } },
+            { src: 'side1', order: 3, pos: { x: 115.05, y: 405 } },
+            { src: 'side3', order: 4, pos: { x: 546.5, y: 516.5 } },
+            { src: 'side4', order: 6, pos: { x: 680, y: 300 } },
+            { src: 'sideTower', order: 5, pos: { x: 735.65, y: 340.35 } },
             { src: 'middle1', order: 8, pos: { x: 385.35, y: 387.25 } },
-            { src: 'centerHouse1', order: 11, pos: { x: 274.3, y: 317.1 } },
-            { src: 'leftTower', order: 15, pos: { x: 123, y: 31.6 } },
-            { src: 'backforest', order: 20, pos: { x: -15.85, y: 348 } },
-            { src: 'bridgeTower', order: 16, pos: { x: 518.4, y: 49.4 } },
-            { src: 'sideHouse2', order: 10, pos: { x: 490.8, y: 277.15 } },
-            { src: 'sideHouse1', order: 9, pos: { x: 565.95, y: 308.35 } },
-            { src: 'side5', order: 17, pos: { x: 630.45, y: 0 } },
-            { src: 'thinHouse', order: 12, pos: { x: 230.05, y: 223.25 } },
+            { src: 'centerHouse1', order: 11, pos: { x: 274.3, y: 350 } },
+            { src: 'leftTower', order: 15, pos: { x: 153, y: 110 } },
+            { src: 'backforest', order: 20, pos: { x: 50, y: 348 } },
+            { src: 'bridgeTower', order: 16, pos: { x: 500, y: 49.4 } },
+            { src: 'sideHouse2', order: 10, pos: { x: 420.8, y: 277.15 } },
+            { src: 'sideHouse1', order: 9, pos: { x: 535.95, y: 308.35 } },
+            { src: 'side5', order: 17, pos: { x: 580.45, y: 0 } },
+            { src: 'thinHouse', order: 12, pos: { x: 230.05, y: 250.25 } },
             { src: 'backTower', order: 19, pos: { x: 317.9, y: 0 } },
             { src: 'tower6', order: 15, pos: { x: 448.25, y: 91.7 } },
-            { src: 'mainTower', order: 13, pos: { x: 301.1, y: 133.1 } },
-            { src: 'statue1', order: 18, pos: { x: 325.2, y: 50.05 } },
+            { src: 'mainTower', order: 13, pos: { x: 301.1, y: 180 } },
+            { src: 'statue1', order: 18, pos: { x: 325.2, y: 130 } },
             { src: 'spare', order: 8, pos: { x: 185.2, y: 360.05 } }
         ]
 
@@ -97,7 +97,6 @@ export default class CastleBackground extends CastleBackgroundBase {
         this.castleContainer.x = -280
         this.castleContainer.y = -400
         this.castleContainer.scale.set(0.6)
-
     }
     
     resize(innerResolution, scale) {

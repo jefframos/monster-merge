@@ -24,12 +24,12 @@ const assets = [
 	"url":"assets/audio\\Cartoon-Mouth-Sound-18.mp3"
 	},
 	{
-	"id":"coins_04",
-	"url":"assets/audio\\coins_04.mp3"
-	},
-	{
 	"id":"Cartoon-Mouth-Sound-20",
 	"url":"assets/audio\\Cartoon-Mouth-Sound-20.mp3"
+	},
+	{
+	"id":"coins_04",
+	"url":"assets/audio\\coins_04.mp3"
 	},
 	{
 	"id":"dropTile",
@@ -60,16 +60,12 @@ const assets = [
 	"url":"assets/audio\\item.mp3"
 	},
 	{
-	"id":"HolidayWeasel",
-	"url":"assets/audio\\HolidayWeasel.mp3"
+	"id":"kill",
+	"url":"assets/audio\\kill.mp3"
 	},
 	{
 	"id":"magic",
 	"url":"assets/audio\\magic.mp3"
-	},
-	{
-	"id":"kill",
-	"url":"assets/audio\\kill.mp3"
 	},
 	{
 	"id":"Musical-Beep-Loop-02",
@@ -80,12 +76,12 @@ const assets = [
 	"url":"assets/audio\\Ping-Slide-Down.mp3"
 	},
 	{
-	"id":"place2",
-	"url":"assets/audio\\place2.mp3"
-	},
-	{
 	"id":"place",
 	"url":"assets/audio\\place.mp3"
+	},
+	{
+	"id":"place2",
+	"url":"assets/audio\\place2.mp3"
 	},
 	{
 	"id":"place3",
@@ -98,6 +94,10 @@ const assets = [
 	{
 	"id":"Pop-Musical",
 	"url":"assets/audio\\Pop-Musical.mp3"
+	},
+	{
+	"id":"HolidayWeasel",
+	"url":"assets/audio\\HolidayWeasel.mp3"
 	},
 	{
 	"id":"Pop-Tone",
@@ -120,14 +120,6 @@ const assets = [
 	"url":"assets/audio\\Synth-Appear-01.mp3"
 	},
 	{
-	"id":"SneakySnitch",
-	"url":"assets/audio\\SneakySnitch.mp3"
-	},
-	{
-	"id":"TheBuilder",
-	"url":"assets/audio\\TheBuilder.mp3"
-	},
-	{
 	"id":"teleport",
 	"url":"assets/audio\\teleport.mp3"
 	},
@@ -138,6 +130,14 @@ const assets = [
 	{
 	"id":"Whoosh",
 	"url":"assets/audio\\Whoosh.mp3"
+	},
+	{
+	"id":"TheBuilder",
+	"url":"assets/audio\\TheBuilder.mp3"
+	},
+	{
+	"id":"SneakySnitch",
+	"url":"assets/audio\\SneakySnitch.mp3"
 	}
 ];
 

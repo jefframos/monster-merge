@@ -77,7 +77,6 @@ export default class MergeItemsShop extends EntityShop {
             } else {
                 element.unblock();
                 this.giftItem.unblock()
-                //this.giftItem.shopButton.enable();
             }
 
         }

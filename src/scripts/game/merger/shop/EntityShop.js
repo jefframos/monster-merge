@@ -11,10 +11,10 @@ import config from '../../../config';
 import utils from '../../../utils';
 
 export default class EntityShop extends PIXI.Container {
-    constructor(mainSystem, systemID, itemsPerPage = 5) {
+    constructor(mainSystem, systemID, itemsPerPage = 5, size) {
         super()
         this.mainSystem = mainSystem;
-        this.size = {
+        this.size = size?size:{
             w: config.width * 0.9,
             h: config.height * 0.8
         }

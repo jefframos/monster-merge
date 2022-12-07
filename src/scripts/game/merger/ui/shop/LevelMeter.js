@@ -14,9 +14,9 @@ export default class LevelMeter extends PIXI.Container {
         this.logo = new PIXI.Sprite.fromFrame('topLogo')
         this.baseContainer.addChild(this.logo)
         this.logo.anchor.set(0.5)
-        this.logo.scale.set(0.65)
+        this.logo.scale.set(0.75)
         this.logo.x = 270
-        this.logo.y = 20
+        this.logo.y = 30
         this.baseBar = new PIXI.mesh.NineSlicePlane(
             PIXI.Texture.fromFrame(config.assets.bars.background), 10, 10, 10, 10)
 

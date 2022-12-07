@@ -52,7 +52,7 @@ export default class PuzzleBackground extends PuzzleBackgroundBase {
 
 			if (window.isPortrait) {
 				this.rightPines.visible = true;
-				this.baseTerrain.scale.set(1)
+				this.baseTerrain.scale.set(1,1.5)
 				this.rightDetail.texture = new PIXI.Texture.fromFrame('rightPatch')
 				this.rightDetail.scale.set(1)
 				this.leftDetail.scale.set(1)

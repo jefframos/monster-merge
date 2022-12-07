@@ -67,7 +67,7 @@ export default class MonsterBackground extends InteractiveBackgrounds {
             this.castleBackground.pivot.x = 0
             this.castleBackground.pivot.y = 0
             this.castleBackground.x = 0
-            this.castleBackground.y = -200
+            this.castleBackground.y = -210
             this.castleBackground.scale.set(0.8)
             
 
