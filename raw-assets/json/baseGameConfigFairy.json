@@ -31,9 +31,9 @@
         },    
         "visuals":{
             "backTiles":["slot3"],
-            "locks":["coffin1","coffin2","coffin3","coffin4"],
-            "gift":["coffinGift"],
-            "coin":"star"
+            "locks":["fgift1","fgift2","fgift3","fgift4"],
+            "gift":["fgiftGift"],
+            "coin":"coin3"
         }  ,
         "soundtrack":"SneakySnitch"
     }

@@ -68,6 +68,8 @@ export default class SoundManager extends AbstractSoundManager {
         this.playLoop(id, volume)
     }
     playLoop(id, volume = 1) {
+
+        this.stopAll();
         if (this.currentLoop) {
             this.currentLoop.stop();
         }

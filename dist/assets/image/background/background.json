@@ -34,15 +34,15 @@
 },
 "castleBase.png":
 {
-	"frame": {"x":1116,"y":1,"w":992,"h":545},
+	"frame": {"x":1116,"y":1,"w":993,"h":547},
 	"rotated": true,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":992,"h":545},
-	"sourceSize": {"w":992,"h":545}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":993,"h":547},
+	"sourceSize": {"w":997,"h":550}
 },
 "leftPatch.png":
 {
-	"frame": {"x":1341,"y":995,"w":308,"h":908},
+	"frame": {"x":1341,"y":996,"w":308,"h":908},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":123,"w":308,"h":908},
@@ -74,7 +74,7 @@
 },
 "rightPatchCliff.png":
 {
-	"frame": {"x":1088,"y":995,"w":251,"h":910},
+	"frame": {"x":1088,"y":996,"w":251,"h":910},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":66,"y":115,"w":251,"h":910},
@@ -105,8 +105,8 @@
 	"version": "1.0",
 	"image": "background.png",
 	"format": "RGBA8888",
-	"size": {"w":1662,"h":1981},
+	"size": {"w":1664,"h":1981},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:d4e47889ecbb3e3bde09cabddcbce121:42085a8acd2353a5ee869ad0de1b2555:2ba65c328dea799e4d80739630892abf$"
+	"smartupdate": "$TexturePacker:SmartUpdate:cabb4d70775942b336f3078dc0bed974:cedc76092592228ef814f089bc8472de:2ba65c328dea799e4d80739630892abf$"
 }
 }

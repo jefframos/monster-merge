@@ -70,7 +70,7 @@ export default class StandardPop extends PIXI.Container {
         this.container.addChild(this.glow)
         this.glow.anchor.set(0.5)
         this.glow.scale.set(3.5)
-        this.glow.y = -30
+        this.glow.y = -80
         this.glow.alpha = 0.3
 
         this.coin1 = new PIXI.Sprite()
@@ -187,7 +187,7 @@ export default class StandardPop extends PIXI.Container {
             this.coin2.visible = true
             this.closePopUp.visible = true
             this.coin2.x = 0
-            this.coin2.y = this.coin1.y - 40
+            this.coin2.y = this.coin1.y - 80
             this.confirmButton.x = 0
         } else {
 
@@ -202,7 +202,7 @@ export default class StandardPop extends PIXI.Container {
 
             this.coin1.x = this.cancelButton.x
             this.coin2.x = this.confirmButton.x
-            this.coin1.y = this.cancelButton.y - 260
+            this.coin1.y = this.cancelButton.y -300
             this.coin2.y = this.coin1.y - 30
         }
         if (param.hideAll) {
@@ -231,7 +231,7 @@ export default class StandardPop extends PIXI.Container {
             } else {
                 this.centerIcon.scale.set(this.h / this.centerIcon.height * this.centerIcon.scale.y * 0.3)
             }
-            this.centerIcon.y = -60
+            this.centerIcon.y = -100
 
             if (!param.onConfirm) {
                 this.coin1.visible = false;
@@ -296,7 +296,6 @@ export default class StandardPop extends PIXI.Container {
                 this.coin2.scale.set(this.coin1.scale.x * 1.3)
             }
         }
-
     }
     afterHide() {
 

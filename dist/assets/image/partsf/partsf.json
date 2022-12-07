@@ -1,0 +1,162 @@
+{"frames": {
+
+"fbackhouse.png":
+{
+	"frame": {"x":296,"y":679,"w":176,"h":168},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":176,"h":168},
+	"sourceSize": {"w":176,"h":168}
+},
+"fbacktower.png":
+{
+	"frame": {"x":171,"y":971,"w":44,"h":236},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":44,"h":236},
+	"sourceSize": {"w":44,"h":236}
+},
+"fbase1.png":
+{
+	"frame": {"x":1,"y":849,"w":176,"h":168},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":176,"h":168},
+	"sourceSize": {"w":176,"h":168}
+},
+"fbase2.png":
+{
+	"frame": {"x":1,"y":702,"w":141,"h":166},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":141,"h":166},
+	"sourceSize": {"w":141,"h":166}
+},
+"fbase3.png":
+{
+	"frame": {"x":296,"y":679,"w":176,"h":168},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":176,"h":168},
+	"sourceSize": {"w":176,"h":168}
+},
+"fcore1.png":
+{
+	"frame": {"x":1,"y":576,"w":124,"h":293},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":124,"h":293},
+	"sourceSize": {"w":124,"h":293}
+},
+"fcore2.png":
+{
+	"frame": {"x":1,"y":81,"w":174,"h":308},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":174,"h":308},
+	"sourceSize": {"w":174,"h":308}
+},
+"fcore3.png":
+{
+	"frame": {"x":1,"y":400,"w":174,"h":294},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":174,"h":294},
+	"sourceSize": {"w":174,"h":294}
+},
+"fstruct1.png":
+{
+	"frame": {"x":171,"y":702,"w":120,"h":207},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":120,"h":207},
+	"sourceSize": {"w":120,"h":207}
+},
+"fstruct2.png":
+{
+	"frame": {"x":293,"y":849,"w":120,"h":207},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":120,"h":207},
+	"sourceSize": {"w":120,"h":207}
+},
+"fstruct3.png":
+{
+	"frame": {"x":297,"y":508,"w":182,"h":169},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":182,"h":169},
+	"sourceSize": {"w":182,"h":169}
+},
+"fstruct5.png":
+{
+	"frame": {"x":298,"y":360,"w":194,"h":146},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":194,"h":146},
+	"sourceSize": {"w":194,"h":146}
+},
+"ftopTower.png":
+{
+	"frame": {"x":1,"y":257,"w":141,"h":295},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":141,"h":295},
+	"sourceSize": {"w":141,"h":295}
+},
+"ftower1.png":
+{
+	"frame": {"x":404,"y":1,"w":78,"h":277},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":78,"h":277},
+	"sourceSize": {"w":78,"h":277}
+},
+"ftower2.png":
+{
+	"frame": {"x":404,"y":1,"w":78,"h":277},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":78,"h":277},
+	"sourceSize": {"w":78,"h":277}
+},
+"ftower3.png":
+{
+	"frame": {"x":311,"y":81,"w":78,"h":277},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":78,"h":277},
+	"sourceSize": {"w":78,"h":277}
+},
+"ftower4.png":
+{
+	"frame": {"x":1,"y":1,"w":78,"h":401},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":78,"h":401},
+	"sourceSize": {"w":78,"h":401}
+},
+"ftower5.png":
+{
+	"frame": {"x":311,"y":81,"w":78,"h":277},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":78,"h":277},
+	"sourceSize": {"w":78,"h":277}
+}},
+"animations": {
+	"fbase": ["fbase1.png","fbase2.png","fbase3.png"],
+	"fcore": ["fcore1.png","fcore2.png","fcore3.png"],
+	"fstruct": ["fstruct1.png","fstruct2.png","fstruct3.png","fstruct5.png"],
+	"ftower": ["ftower1.png","ftower2.png","ftower3.png","ftower4.png","ftower5.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "partsf.png",
+	"format": "RGBA8888",
+	"size": {"w":501,"h":1026},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:8407acd1556980e9e1de1558aa55ffd5:5203d870a5413a2d955a1a53a96c51be:37488d65475c65312e43bb31d8d65e22$"
+}
+}

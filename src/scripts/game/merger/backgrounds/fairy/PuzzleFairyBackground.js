@@ -10,7 +10,7 @@ export default class PuzzleFairyBackground extends PuzzleBackgroundBase {
 		this.baseTerrain = new PIXI.Sprite.fromFrame('base-terrain')
 		this.baseTerrain.anchor.set(0.5, 0)
 		this.baseTerrain.scale.set(1)
-		this.baseTerrain.tint = 0xE193EC
+		this.baseTerrain.tint = 0xFFE6B5
 		this.baseContainer.addChild(this.baseTerrain)
 	}
 	build() {

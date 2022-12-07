@@ -4,7 +4,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_fairy_01",
-                "imageSrc": "nosferatu",
+                "imageSrc": "faun",
                 "displayName": "Fairy - 01",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -19,7 +19,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_fairy_02",
-                "imageSrc": "nosferatu",
+                "imageSrc": "marmaid",
                 "displayName": "Fairy - 02",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -34,7 +34,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_fairy_03",
-                "imageSrc": "nosferatu",
+                "imageSrc": "puss",
                 "displayName": "Fairy - 03",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -49,7 +49,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_fairy_04",
-                "imageSrc": "nosferatu",
+                "imageSrc": "genie",
                 "displayName": "Fairy - 04",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -64,7 +64,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_fairy_05",
-                "imageSrc": "nosferatu",
+                "imageSrc": "unicorn",
                 "displayName": "Fairy - 05",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -79,7 +79,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_fairy_06",
-                "imageSrc": "nosferatu",
+                "imageSrc": "ogre",
                 "displayName": "Fairy - 06",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -94,7 +94,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_fairy_07",
-                "imageSrc": "nosferatu",
+                "imageSrc": "bat",
                 "displayName": "Fairy - 07",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -109,7 +109,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_fairy_08",
-                "imageSrc": "nosferatu",
+                "imageSrc": "medusa",
                 "displayName": "Fairy - 08",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -124,7 +124,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_fairy_09",
-                "imageSrc": "nosferatu",
+                "imageSrc": "littlered",
                 "displayName": "Fairy - 09",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -139,7 +139,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_fairy_10",
-                "imageSrc": "nosferatu",
+                "imageSrc": "cyclop",
                 "displayName": "Fairy - 10",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.11,
@@ -154,7 +154,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_fairy_11",
-                "imageSrc": "nosferatu",
+                "imageSrc": "phoenix",
                 "displayName": "Fairy - 11",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -169,7 +169,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_fairy_12",
-                "imageSrc": "nosferatu",
+                "imageSrc": "gnome",
                 "displayName": "Fairy - 12",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -184,7 +184,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_fairy_13",
-                "imageSrc": "nosferatu",
+                "imageSrc": "frog",
                 "displayName": "Fairy - 13",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -199,7 +199,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_fairy_14",
-                "imageSrc": "nosferatu",
+                "imageSrc": "bear",
                 "displayName": "Fairy - 14",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -214,7 +214,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_fairy_15",
-                "imageSrc": "nosferatu",
+                "imageSrc": "humpty",
                 "displayName": "Fairy - 15",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -229,7 +229,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_fairy_16",
-                "imageSrc": "nosferatu",
+                "imageSrc": "dragon",
                 "displayName": "Fairy - 16",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -244,7 +244,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_fairy_17",
-                "imageSrc": "nosferatu",
+                "imageSrc": "skull",
                 "displayName": "Fairy - 17",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -259,7 +259,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_fairy_18",
-                "imageSrc": "nosferatu",
+                "imageSrc": "fairy",
                 "displayName": "Fairy - 18",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -274,7 +274,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_fairy_19",
-                "imageSrc": "nosferatu",
+                "imageSrc": "wizard",
                 "displayName": "Fairy - 19",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,
@@ -289,7 +289,7 @@
             {
                 "type": "resource",
                 "nameID": "entity_fairy_20",
-                "imageSrc": "nosferatu",
+                "imageSrc": "wolf",
                 "displayName": "Fairy - 20",
                 "attributeDescription": "$Damage",
                 "damageCoeficient": 1.1,

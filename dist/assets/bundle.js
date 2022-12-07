@@ -58432,6 +58432,8 @@ var SoundManager = function (_AbstractSoundManager) {
         value: function playLoop(id) {
             var volume = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
+
+            this.stopAll();
             if (this.currentLoop) {
                 this.currentLoop.stop();
             }
@@ -61738,14 +61740,14 @@ var assets = [{
 	"id": "achievments",
 	"url": "assets/json\\achievments.json"
 }, {
-	"id": "baseGameConfigMonster",
-	"url": "assets/json\\baseGameConfigMonster.json"
+	"id": "baseGameConfigFairy",
+	"url": "assets/json\\baseGameConfigFairy.json"
 }, {
 	"id": "baseGameConfigHumans",
 	"url": "assets/json\\baseGameConfigHumans.json"
 }, {
-	"id": "baseGameConfigFairy",
-	"url": "assets/json\\baseGameConfigFairy.json"
+	"id": "baseGameConfigMonster",
+	"url": "assets/json\\baseGameConfigMonster.json"
 }, {
 	"id": "fairies",
 	"url": "assets/json\\fairies.json"
@@ -61780,9 +61782,6 @@ var assets = [{
 	"id": "localization_PT",
 	"url": "assets/json\\localization_PT.json"
 }, {
-	"id": "localization_ZH",
-	"url": "assets/json\\localization_ZH.json"
-}, {
 	"id": "localization_TR",
 	"url": "assets/json\\localization_TR.json"
 }, {
@@ -61794,6 +61793,9 @@ var assets = [{
 }, {
 	"id": "monsters",
 	"url": "assets/json\\monsters.json"
+}, {
+	"id": "localization_ZH",
+	"url": "assets/json\\localization_ZH.json"
 }];
 
 exports.default = assets;
@@ -62077,11 +62079,11 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 var assets = [{
-	"id": "Assets_Audio_dashSimple",
-	"url": "assets/audio\\Assets_Audio_dashSimple.mp3"
-}, {
 	"id": "Cartoon-Mouth-Sound-01",
 	"url": "assets/audio\\Cartoon-Mouth-Sound-01.mp3"
+}, {
+	"id": "Assets_Audio_dashSimple",
+	"url": "assets/audio\\Assets_Audio_dashSimple.mp3"
 }, {
 	"id": "Cartoon-Mouth-Sound-02",
 	"url": "assets/audio\\Cartoon-Mouth-Sound-02.mp3"
@@ -62104,17 +62106,17 @@ var assets = [{
 	"id": "dropTile",
 	"url": "assets/audio\\dropTile.mp3"
 }, {
-	"id": "Fire-Burst-Small-01",
-	"url": "assets/audio\\Fire-Burst-Small-01.mp3"
-}, {
-	"id": "getCrazyOne",
-	"url": "assets/audio\\getCrazyOne.mp3"
-}, {
 	"id": "getstar",
 	"url": "assets/audio\\getstar.mp3"
 }, {
+	"id": "Fire-Burst-Small-01",
+	"url": "assets/audio\\Fire-Burst-Small-01.mp3"
+}, {
 	"id": "getThemAll",
 	"url": "assets/audio\\getThemAll.mp3"
+}, {
+	"id": "getCrazyOne",
+	"url": "assets/audio\\getCrazyOne.mp3"
 }, {
 	"id": "Harp-Flutter-02",
 	"url": "assets/audio\\Harp-Flutter-02.mp3"
@@ -62125,11 +62127,17 @@ var assets = [{
 	"id": "kill",
 	"url": "assets/audio\\kill.mp3"
 }, {
+	"id": "HolidayWeasel",
+	"url": "assets/audio\\HolidayWeasel.mp3"
+}, {
 	"id": "magic",
 	"url": "assets/audio\\magic.mp3"
 }, {
 	"id": "Musical-Beep-Loop-02",
 	"url": "assets/audio\\Musical-Beep-Loop-02.mp3"
+}, {
+	"id": "place2",
+	"url": "assets/audio\\place2.mp3"
 }, {
 	"id": "Ping-Slide-Down",
 	"url": "assets/audio\\Ping-Slide-Down.mp3"
@@ -62137,32 +62145,29 @@ var assets = [{
 	"id": "place",
 	"url": "assets/audio\\place.mp3"
 }, {
-	"id": "place2",
-	"url": "assets/audio\\place2.mp3"
+	"id": "Pop-Low-Pitch-Up-02",
+	"url": "assets/audio\\Pop-Low-Pitch-Up-02.mp3"
 }, {
 	"id": "place3",
 	"url": "assets/audio\\place3.mp3"
 }, {
-	"id": "Pop-Low-Pitch-Up-02",
-	"url": "assets/audio\\Pop-Low-Pitch-Up-02.mp3"
-}, {
 	"id": "Pop-Musical",
 	"url": "assets/audio\\Pop-Musical.mp3"
 }, {
-	"id": "HolidayWeasel",
-	"url": "assets/audio\\HolidayWeasel.mp3"
-}, {
 	"id": "Pop-Tone",
 	"url": "assets/audio\\Pop-Tone.mp3"
-}, {
-	"id": "pop",
-	"url": "assets/audio\\pop.mp3"
 }, {
 	"id": "pop2",
 	"url": "assets/audio\\pop2.mp3"
 }, {
 	"id": "shoosh",
 	"url": "assets/audio\\shoosh.mp3"
+}, {
+	"id": "SneakySnitch",
+	"url": "assets/audio\\SneakySnitch.mp3"
+}, {
+	"id": "pop",
+	"url": "assets/audio\\pop.mp3"
 }, {
 	"id": "Synth-Appear-01",
 	"url": "assets/audio\\Synth-Appear-01.mp3"
@@ -62173,14 +62178,11 @@ var assets = [{
 	"id": "Tap-01",
 	"url": "assets/audio\\Tap-01.mp3"
 }, {
-	"id": "Whoosh",
-	"url": "assets/audio\\Whoosh.mp3"
-}, {
 	"id": "TheBuilder",
 	"url": "assets/audio\\TheBuilder.mp3"
 }, {
-	"id": "SneakySnitch",
-	"url": "assets/audio\\SneakySnitch.mp3"
+	"id": "Whoosh",
+	"url": "assets/audio\\Whoosh.mp3"
 }];
 
 exports.default = assets;
@@ -62190,7 +62192,7 @@ module.exports = exports["default"];
 /* 344 */
 /***/ (function(module, exports) {
 
-module.exports = {"default":["image/pattern2/pattern2.json","image/pattern/pattern.json","image/particles/particles.json","image/parts/parts.json","image/background2/background2.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
+module.exports = {"default":["image/particles/particles.json","image/pattern2/pattern2.json","image/pattern/pattern.json","image/partsf/partsf.json","image/parts/parts.json","image/background2/background2.json","image/background/background.json","image/portraits/portraits.json","image/ui/ui.json"]}
 
 /***/ }),
 /* 345 */
@@ -65083,7 +65085,7 @@ var PuzzleFairyBackground = function (_PuzzleBackgroundBase) {
 		_this.baseTerrain = new PIXI.Sprite.fromFrame('base-terrain');
 		_this.baseTerrain.anchor.set(0.5, 0);
 		_this.baseTerrain.scale.set(1);
-		_this.baseTerrain.tint = 0xE193EC;
+		_this.baseTerrain.tint = 0xFFE6B5;
 		_this.baseContainer.addChild(_this.baseTerrain);
 		return _this;
 	}
@@ -68894,7 +68896,7 @@ var StandardPop = function (_PIXI$Container) {
         _this.container.addChild(_this.glow);
         _this.glow.anchor.set(0.5);
         _this.glow.scale.set(3.5);
-        _this.glow.y = -30;
+        _this.glow.y = -80;
         _this.glow.alpha = 0.3;
 
         _this.coin1 = new PIXI.Sprite();
@@ -69012,7 +69014,7 @@ var StandardPop = function (_PIXI$Container) {
                 this.coin2.visible = true;
                 this.closePopUp.visible = true;
                 this.coin2.x = 0;
-                this.coin2.y = this.coin1.y - 40;
+                this.coin2.y = this.coin1.y - 80;
                 this.confirmButton.x = 0;
             } else {
 
@@ -69027,7 +69029,7 @@ var StandardPop = function (_PIXI$Container) {
 
                 this.coin1.x = this.cancelButton.x;
                 this.coin2.x = this.confirmButton.x;
-                this.coin1.y = this.cancelButton.y - 260;
+                this.coin1.y = this.cancelButton.y - 300;
                 this.coin2.y = this.coin1.y - 30;
             }
             if (param.hideAll) {
@@ -69056,7 +69058,7 @@ var StandardPop = function (_PIXI$Container) {
                 } else {
                     this.centerIcon.scale.set(this.h / this.centerIcon.height * this.centerIcon.scale.y * 0.3);
                 }
-                this.centerIcon.y = -60;
+                this.centerIcon.y = -100;
 
                 if (!param.onConfirm) {
                     this.coin1.visible = false;
