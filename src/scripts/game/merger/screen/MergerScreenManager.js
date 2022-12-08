@@ -47,6 +47,13 @@ export default class MergerScreenManager extends ScreenManager {
                 this.mergeScreen.helperButtonList.visible = true
                 window.isDebug = true;
             }
+
+            let level = urlParams.get('level');
+            if(level !== undefined){
+                if(level >= 0 && level <= 2){
+                    this.mergeScreen.showSystem(level)
+                }
+            }
         }
 
 

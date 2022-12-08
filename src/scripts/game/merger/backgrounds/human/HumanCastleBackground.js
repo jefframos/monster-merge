@@ -9,6 +9,76 @@ export default class HumanCastleBackground extends CastleBackgroundBase {
     build() {
 
 
+
+        this.baseColor = new PIXI.Graphics().beginFill(0x6090EE).drawRect(-5000, -5000, 10000, 10000)
+        this.baseContainer.addChild(this.baseColor)
+
+        this.baseSky = new PIXI.Sprite.fromFrame('sky')
+        this.baseSky.anchor.set(0.5, 0.5)
+        this.baseSky.scale.set(2)
+        this.baseContainer.addChild(this.baseSky)
+        this.baseSky.y = 200
+
+        this.tiledBackground = new PIXI.TilingSprite(PIXI.Texture.fromFrame('tiledStars', 128, 128))
+        this.baseContainer.addChild(this.tiledBackground);
+        this.tiledBackground.width = 5000
+        this.tiledBackground.height = 5000
+        this.tiledBackground.anchor.set(0.5)
+        this.tiledBackground.alpha = 0.5
+
+
+        this.cloud1 = new PIXI.Sprite.fromFrame('cloud2')
+        this.cloud1.anchor.set(0.5)
+        this.baseContainer.addChild(this.cloud1)
+
+        this.cloud3 = new PIXI.Sprite.fromFrame('floud3')
+        this.cloud3.anchor.set(0.5)
+        this.baseContainer.addChild(this.cloud3)
+
+        this.cloud1.x = -250
+        this.cloud1.y = -400
+        this.cloud3.x = 350
+        this.cloud3.y = -400
+        this.cloud1.scale.set(2)
+        this.cloud3.scale.set(2)
+
+
+        this.castleBase = new PIXI.Sprite.fromFrame('hbase')
+        this.castleBase.anchor.set(0.5, 1)
+        this.baseContainer.addChild(this.castleBase)
+        this.castleBase.y = 180
+        this.castleBase.scale.set(650 / this.castleBase.width)
+
+
+        this.leftDetail = new PIXI.Sprite.fromFrame('backPinePatch1')
+        this.leftDetail.scale.set(0.7)
+        this.leftDetail.anchor.set(1, 0)
+        this.leftDetail.x = -190
+        this.leftDetail.y = -135
+        this.baseContainer.addChild(this.leftDetail)
+
+
+        this.rightDetail = new PIXI.Sprite.fromFrame('backPinePatch2')
+        this.rightDetail.scale.set(0.7)
+        this.rightDetail.x = 170
+        this.rightDetail.y = -155
+        this.baseContainer.addChild(this.rightDetail)
+
+        this.bottomTree = new PIXI.Sprite.fromFrame('bottomTreePatch')
+        this.bottomTree.anchor.set(0.5, 1)
+        this.baseContainer.addChild(this.bottomTree)
+        this.bottomTree.x = 0
+        this.bottomTree.y = 280
+        this.bottomTree.scale.set(650 / this.bottomTree.width)
+
+        this.bottomTree2 = new PIXI.Sprite.fromFrame('bottomTreePatch')
+        this.bottomTree2.anchor.set(0.5, 1)
+        this.baseContainer.addChild(this.bottomTree2)
+        this.bottomTree2.x = 0
+        this.bottomTree2.y = 380
+        this.bottomTree2.scale.set(650 / this.bottomTree2.width)
+
+
         this.castleContainer = new PIXI.Container();
         this.baseContainer.addChild(this.castleContainer)
 
@@ -43,12 +113,29 @@ export default class HumanCastleBackground extends CastleBackgroundBase {
         this.castleContainer.scale.set(0.55)
 
     }
-    
+
     resize(innerResolution, scale) {
         if (innerResolution && innerResolution.width && innerResolution.height) {
 
             this.innerResolution = innerResolution;
 
+
+
+            if (window.isPortrait) {
+                this.cloud1.x = -250
+                this.cloud1.y = -400
+                this.cloud3.x = 350
+                this.cloud3.y = -430
+                this.cloud1.scale.set(2)
+                this.cloud3.scale.set(2)
+            }else{
+                this.cloud1.x = -150
+                this.cloud1.y = -430
+                this.cloud3.x = 150
+                this.cloud3.y = -400
+                this.cloud1.scale.set(1)
+                this.cloud3.scale.set(1)
+            }
         }
 
     }

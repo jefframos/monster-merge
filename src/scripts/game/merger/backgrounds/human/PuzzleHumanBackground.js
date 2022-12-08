@@ -5,6 +5,10 @@ export default class PuzzleHumanBackground extends PuzzleBackgroundBase {
 	constructor() {
 
 		super();
+	}
+	build() {
+
+
 		this.baseContainer = new PIXI.Container()
 		this.addChild(this.baseContainer)
 		this.baseTerrain = new PIXI.Sprite.fromFrame('base-terrain')
@@ -12,8 +16,32 @@ export default class PuzzleHumanBackground extends PuzzleBackgroundBase {
 		this.baseTerrain.scale.set(1)
 		this.baseTerrain.tint = 0x888888
 		this.baseContainer.addChild(this.baseTerrain)
-	}
-	build() {
+
+
+		this.leftDetail = new PIXI.Sprite.fromFrame('hrightPatch')
+		this.leftDetail.anchor.set(1, 0)
+		this.leftDetail.scale.x = -1
+		this.leftDetail.x = -500
+		this.leftDetail.y = -180
+		this.baseContainer.addChild(this.leftDetail)
+
+
+		this.rightDetail = new PIXI.Sprite.fromFrame('hrightPatch')
+		this.rightDetail.x = 170
+		this.rightDetail.y = -180
+		this.baseContainer.addChild(this.rightDetail)
+
+		this.leftPines = new PIXI.Sprite.fromFrame('pineSidePatch')
+		this.leftPines.anchor.set(1, 0)
+		this.leftPines.x = -380
+		this.leftPines.y = -250
+		this.baseContainer.addChild(this.leftPines)
+
+
+		this.rightPines = new PIXI.Sprite.fromFrame('pineSidePatch')
+		this.rightPines.x = 380
+		this.rightPines.y = -250
+		this.baseContainer.addChild(this.rightPines)
 	}
 	resize(innerResolution, scale) {
 		if (innerResolution && innerResolution.width && innerResolution.height) {
@@ -21,9 +49,31 @@ export default class PuzzleHumanBackground extends PuzzleBackgroundBase {
 			this.innerResolution = innerResolution;
 
 			if (window.isPortrait) {
-				
+				this.rightPines.visible = true;
+				this.baseTerrain.scale.set(1,1.5)
+				// this.rightDetail.texture = new PIXI.Texture.fromFrame('rightPatch')
+				this.rightDetail.scale.set(1)
+				this.leftDetail.scale.set(-1,1)
+				this.leftDetail.x = -480 
+				this.leftDetail.y = -180
+				this.rightDetail.x = 150
+				this.rightDetail.y = -158
+				//this.bottomPatch.visible = false;
+
 			} else {
 
+				this.rightPines.visible = false;
+				this.baseTerrain.scale.x = 0.7
+				// this.rightDetail.texture = new PIXI.Texture.fromFrame('rightPatchCliff')
+				this.rightDetail.scale.set(0.8)
+				this.leftDetail.scale.set(-0.8,0.8)
+
+				this.leftDetail.x = -420
+				this.leftDetail.y = -140
+
+				this.rightDetail.x = 160
+				this.rightDetail.y = -140
+				//this.bottomPatch.visible = true;
 			}
 
 		}

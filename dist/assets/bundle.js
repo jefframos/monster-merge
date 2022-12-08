@@ -61776,26 +61776,26 @@ var assets = [{
 	"id": "localization_KO",
 	"url": "assets/json\\localization_KO.json"
 }, {
-	"id": "localization_RU",
-	"url": "assets/json\\localization_RU.json"
-}, {
 	"id": "localization_PT",
 	"url": "assets/json\\localization_PT.json"
+}, {
+	"id": "localization_RU",
+	"url": "assets/json\\localization_RU.json"
 }, {
 	"id": "localization_TR",
 	"url": "assets/json\\localization_TR.json"
 }, {
+	"id": "localization_ZH",
+	"url": "assets/json\\localization_ZH.json"
+}, {
 	"id": "modifyers",
 	"url": "assets/json\\modifyers.json"
-}, {
-	"id": "resources",
-	"url": "assets/json\\resources.json"
 }, {
 	"id": "monsters",
 	"url": "assets/json\\monsters.json"
 }, {
-	"id": "localization_ZH",
-	"url": "assets/json\\localization_ZH.json"
+	"id": "resources",
+	"url": "assets/json\\resources.json"
 }];
 
 exports.default = assets;
@@ -62079,11 +62079,11 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 var assets = [{
-	"id": "Cartoon-Mouth-Sound-01",
-	"url": "assets/audio\\Cartoon-Mouth-Sound-01.mp3"
-}, {
 	"id": "Assets_Audio_dashSimple",
 	"url": "assets/audio\\Assets_Audio_dashSimple.mp3"
+}, {
+	"id": "Cartoon-Mouth-Sound-01",
+	"url": "assets/audio\\Cartoon-Mouth-Sound-01.mp3"
 }, {
 	"id": "Cartoon-Mouth-Sound-02",
 	"url": "assets/audio\\Cartoon-Mouth-Sound-02.mp3"
@@ -62094,35 +62094,35 @@ var assets = [{
 	"id": "Cartoon-Mouth-Sound-13",
 	"url": "assets/audio\\Cartoon-Mouth-Sound-13.mp3"
 }, {
+	"id": "coins_04",
+	"url": "assets/audio\\coins_04.mp3"
+}, {
 	"id": "Cartoon-Mouth-Sound-18",
 	"url": "assets/audio\\Cartoon-Mouth-Sound-18.mp3"
 }, {
 	"id": "Cartoon-Mouth-Sound-20",
 	"url": "assets/audio\\Cartoon-Mouth-Sound-20.mp3"
 }, {
-	"id": "coins_04",
-	"url": "assets/audio\\coins_04.mp3"
-}, {
-	"id": "dropTile",
-	"url": "assets/audio\\dropTile.mp3"
-}, {
-	"id": "getstar",
-	"url": "assets/audio\\getstar.mp3"
-}, {
 	"id": "Fire-Burst-Small-01",
 	"url": "assets/audio\\Fire-Burst-Small-01.mp3"
-}, {
-	"id": "getThemAll",
-	"url": "assets/audio\\getThemAll.mp3"
 }, {
 	"id": "getCrazyOne",
 	"url": "assets/audio\\getCrazyOne.mp3"
 }, {
-	"id": "Harp-Flutter-02",
-	"url": "assets/audio\\Harp-Flutter-02.mp3"
+	"id": "getstar",
+	"url": "assets/audio\\getstar.mp3"
+}, {
+	"id": "dropTile",
+	"url": "assets/audio\\dropTile.mp3"
 }, {
 	"id": "item",
 	"url": "assets/audio\\item.mp3"
+}, {
+	"id": "getThemAll",
+	"url": "assets/audio\\getThemAll.mp3"
+}, {
+	"id": "Harp-Flutter-02",
+	"url": "assets/audio\\Harp-Flutter-02.mp3"
 }, {
 	"id": "kill",
 	"url": "assets/audio\\kill.mp3"
@@ -62136,20 +62136,20 @@ var assets = [{
 	"id": "Musical-Beep-Loop-02",
 	"url": "assets/audio\\Musical-Beep-Loop-02.mp3"
 }, {
-	"id": "place2",
-	"url": "assets/audio\\place2.mp3"
+	"id": "place",
+	"url": "assets/audio\\place.mp3"
+}, {
+	"id": "place3",
+	"url": "assets/audio\\place3.mp3"
 }, {
 	"id": "Ping-Slide-Down",
 	"url": "assets/audio\\Ping-Slide-Down.mp3"
 }, {
-	"id": "place",
-	"url": "assets/audio\\place.mp3"
+	"id": "place2",
+	"url": "assets/audio\\place2.mp3"
 }, {
 	"id": "Pop-Low-Pitch-Up-02",
 	"url": "assets/audio\\Pop-Low-Pitch-Up-02.mp3"
-}, {
-	"id": "place3",
-	"url": "assets/audio\\place3.mp3"
 }, {
 	"id": "Pop-Musical",
 	"url": "assets/audio\\Pop-Musical.mp3"
@@ -62163,26 +62163,26 @@ var assets = [{
 	"id": "shoosh",
 	"url": "assets/audio\\shoosh.mp3"
 }, {
-	"id": "SneakySnitch",
-	"url": "assets/audio\\SneakySnitch.mp3"
-}, {
 	"id": "pop",
 	"url": "assets/audio\\pop.mp3"
+}, {
+	"id": "SneakySnitch",
+	"url": "assets/audio\\SneakySnitch.mp3"
 }, {
 	"id": "Synth-Appear-01",
 	"url": "assets/audio\\Synth-Appear-01.mp3"
 }, {
-	"id": "teleport",
-	"url": "assets/audio\\teleport.mp3"
-}, {
 	"id": "Tap-01",
 	"url": "assets/audio\\Tap-01.mp3"
 }, {
-	"id": "TheBuilder",
-	"url": "assets/audio\\TheBuilder.mp3"
+	"id": "teleport",
+	"url": "assets/audio\\teleport.mp3"
 }, {
 	"id": "Whoosh",
 	"url": "assets/audio\\Whoosh.mp3"
+}, {
+	"id": "TheBuilder",
+	"url": "assets/audio\\TheBuilder.mp3"
 }];
 
 exports.default = assets;
@@ -62192,7 +62192,7 @@ module.exports = exports["default"];
 /* 344 */
 /***/ (function(module, exports) {
 
-module.exports = {"default":["image/particles/particles.json","image/pattern2/pattern2.json","image/pattern/pattern.json","image/partsf/partsf.json","image/parts/parts.json","image/background2/background2.json","image/background/background.json","image/portraits/portraits.json","image/ui/ui.json"]}
+module.exports = {"default":["image/particles/particles.json","image/pattern2/pattern2.json","image/pattern/pattern.json","image/parts/parts.json","image/partsf/partsf.json","image/background2/background2.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
 
 /***/ }),
 /* 345 */
@@ -62288,6 +62288,13 @@ var MergerScreenManager = function (_ScreenManager) {
             if (urlParams.get('debug')) {
                 _this.mergeScreen.helperButtonList.visible = true;
                 window.isDebug = true;
+            }
+
+            var level = urlParams.get('level');
+            if (level !== undefined) {
+                if (level >= 0 && level <= 2) {
+                    _this.mergeScreen.showSystem(level);
+                }
             }
         }
 
@@ -64955,7 +64962,7 @@ module.exports = exports["default"];
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+        value: true
 });
 
 var _getPrototypeOf = __webpack_require__(3);
@@ -64991,39 +64998,89 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var FairyCastleBackground = function (_CastleBackgroundBase) {
-    (0, _inherits3.default)(FairyCastleBackground, _CastleBackgroundBase);
+        (0, _inherits3.default)(FairyCastleBackground, _CastleBackgroundBase);
 
-    function FairyCastleBackground() {
-        (0, _classCallCheck3.default)(this, FairyCastleBackground);
-        return (0, _possibleConstructorReturn3.default)(this, (FairyCastleBackground.__proto__ || (0, _getPrototypeOf2.default)(FairyCastleBackground)).call(this));
-    }
-
-    (0, _createClass3.default)(FairyCastleBackground, [{
-        key: 'build',
-        value: function build() {
-
-            this.castleContainer = new PIXI.Container();
-            this.baseContainer.addChild(this.castleContainer);
-
-            this.castleSet = [{ src: 'stairs', order: 0, pos: { x: 299.7, y: 676.45 } }, { src: 'door1', order: 7, pos: { x: 282.35, y: 562.95 } }, { src: 'frontTower1', order: 2, pos: { x: 374.6, y: 447.3 } }, { src: 'side2', order: 1, pos: { x: 442.1, y: 532.5 } }, { src: 'side1', order: 3, pos: { x: 101.05, y: 368.55 } }, { src: 'side3', order: 4, pos: { x: 566.5, y: 506.5 } }, { src: 'side4', order: 6, pos: { x: 717.7, y: 264.9 } }, { src: 'sideTower', order: 5, pos: { x: 780.65, y: 320.35 } }, { src: 'middle1', order: 8, pos: { x: 385.35, y: 387.25 } }, { src: 'centerHouse1', order: 11, pos: { x: 274.3, y: 317.1 } }, { src: 'leftTower', order: 15, pos: { x: 123, y: 31.6 } }, { src: 'backforest', order: 20, pos: { x: -15.85, y: 348 } }, { src: 'bridgeTower', order: 16, pos: { x: 518.4, y: 49.4 } }, { src: 'sideHouse2', order: 10, pos: { x: 490.8, y: 277.15 } }, { src: 'sideHouse1', order: 9, pos: { x: 565.95, y: 308.35 } }, { src: 'side5', order: 17, pos: { x: 630.45, y: 0 } }, { src: 'thinHouse', order: 15, pos: { x: 225.05, y: 223.25 } }, { src: 'backTower', order: 19, pos: { x: 317.9, y: 0 } }, { src: 'tower6', order: 15, pos: { x: 448.25, y: 91.7 } }, { src: 'mainTower', order: 13, pos: { x: 301.1, y: 133.1 } }, { src: 'statue1', order: 18, pos: { x: 355.2, y: 71.05 } }];
-
-            this.castleContainer.x = -250;
-            this.castleContainer.y = -380;
-            this.castleContainer.scale.set(0.55);
+        function FairyCastleBackground() {
+                (0, _classCallCheck3.default)(this, FairyCastleBackground);
+                return (0, _possibleConstructorReturn3.default)(this, (FairyCastleBackground.__proto__ || (0, _getPrototypeOf2.default)(FairyCastleBackground)).call(this));
         }
-    }, {
-        key: 'resize',
-        value: function resize(innerResolution, scale) {
-            if (innerResolution && innerResolution.width && innerResolution.height) {
 
-                this.innerResolution = innerResolution;
-            }
-        }
-    }, {
-        key: 'update',
-        value: function update(delta) {}
-    }]);
-    return FairyCastleBackground;
+        (0, _createClass3.default)(FairyCastleBackground, [{
+                key: 'build',
+                value: function build() {
+
+                        this.baseColor = new PIXI.Graphics().beginFill(0x74CFE3).drawRect(-5000, -5000, 10000, 10000);
+                        this.baseContainer.addChild(this.baseColor);
+
+                        this.baseSky = new PIXI.Sprite.fromFrame('sky');
+                        this.baseSky.anchor.set(0.5, 0.5);
+                        this.baseSky.scale.set(2);
+                        this.baseSky.alpha = 0.2;
+                        this.baseContainer.addChild(this.baseSky);
+                        this.baseSky.y = 200;
+
+                        this.sun = new PIXI.Sprite.fromFrame('sun');
+                        this.sun.anchor.set(0.5);
+                        this.baseContainer.addChild(this.sun);
+                        this.sun.x = 0;
+                        this.sun.y = -320;
+                        this.sun.scale.set(1);
+
+                        this.castleBase = new PIXI.Sprite.fromFrame('fbase');
+                        this.castleBase.anchor.set(0.5, 1);
+                        this.baseContainer.addChild(this.castleBase);
+                        this.castleBase.y = 180;
+                        this.castleBase.scale.set(650 / this.castleBase.width);
+
+                        this.leftDetail = new PIXI.Sprite.fromFrame('backPinePatch1');
+                        this.leftDetail.scale.set(0.7);
+                        this.leftDetail.anchor.set(1, 0);
+                        this.leftDetail.x = -190;
+                        this.leftDetail.y = -135;
+                        this.baseContainer.addChild(this.leftDetail);
+
+                        this.rightDetail = new PIXI.Sprite.fromFrame('backPinePatch2');
+                        this.rightDetail.scale.set(0.7);
+                        this.rightDetail.x = 170;
+                        this.rightDetail.y = -155;
+                        this.baseContainer.addChild(this.rightDetail);
+
+                        this.bottomTree = new PIXI.Sprite.fromFrame('bottomTreePatch');
+                        this.bottomTree.anchor.set(0.5, 1);
+                        this.baseContainer.addChild(this.bottomTree);
+                        this.bottomTree.x = 0;
+                        this.bottomTree.y = 280;
+                        this.bottomTree.scale.set(650 / this.bottomTree.width);
+
+                        this.bottomTree2 = new PIXI.Sprite.fromFrame('bottomTreePatch');
+                        this.bottomTree2.anchor.set(0.5, 1);
+                        this.baseContainer.addChild(this.bottomTree2);
+                        this.bottomTree2.x = 0;
+                        this.bottomTree2.y = 380;
+                        this.bottomTree2.scale.set(650 / this.bottomTree2.width);
+
+                        this.castleContainer = new PIXI.Container();
+                        this.baseContainer.addChild(this.castleContainer);
+
+                        this.castleSet = [{ src: 'fbase2', order: 0, pos: { x: 196, y: 433 } }, { src: 'fbase1', order: 0, pos: { x: 11, y: 425 } }, { src: 'fbase3', order: 2, pos: { x: 445, y: 456 } }, { src: 'fcore1', order: 1, pos: { x: 276, y: 296 } }, { src: 'fcore2', order: 3, pos: { x: 374, y: 293 } }, { src: 'fcore3', order: 4, pos: { x: 123, y: 293 } }, { src: 'ffrontbushes', order: 0, pos: { x: 250, y: 500 } }, { src: 'fwell', order: 0, pos: { x: 120, y: 600 } }, { src: 'ftower5', order: 6, pos: { x: 73, y: 256 } }, { src: 'fbackhouse', order: 5, pos: { x: 458, y: 364 } }, { src: 'ftower1', order: 0, pos: { x: 364, y: 121 } }, { src: 'ftower2', order: 0, pos: { x: 175, y: 115 } }, { src: 'ftower4', order: 3, pos: { x: 582, y: 210 } }, { src: 'fstruct3', order: 2, pos: { x: 147, y: 145 } }, { src: 'fstruct5', order: 16, pos: { x: 108, y: 176 } }, { src: 'backforest', order: 100, pos: { x: -50, y: 330 } }, { src: 'ftower3', order: 9, pos: { x: 466, y: 130 } }, { src: 'fstruct1', order: 2, pos: { x: 364, y: 106 } }, { src: 'fstruct2', order: 8, pos: { x: 159, y: 92 } }, { src: 'fbacktower', order: 15, pos: { x: 418, y: 0 } }, { src: 'ftopTower', order: 1, pos: { x: 260, y: 32 } }];
+
+                        this.castleContainer.x = -200;
+                        this.castleContainer.y = -380;
+                        this.castleContainer.scale.set(0.55);
+                }
+        }, {
+                key: 'resize',
+                value: function resize(innerResolution, scale) {
+                        if (innerResolution && innerResolution.width && innerResolution.height) {
+
+                                this.innerResolution = innerResolution;
+                        }
+                }
+        }, {
+                key: 'update',
+                value: function update(delta) {}
+        }]);
+        return FairyCastleBackground;
 }(_CastleBackgroundBase3.default);
 
 exports.default = FairyCastleBackground;
@@ -65037,7 +65094,7 @@ module.exports = exports['default'];
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+		value: true
 });
 
 var _getPrototypeOf = __webpack_require__(3);
@@ -65073,38 +65130,86 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PuzzleFairyBackground = function (_PuzzleBackgroundBase) {
-	(0, _inherits3.default)(PuzzleFairyBackground, _PuzzleBackgroundBase);
+		(0, _inherits3.default)(PuzzleFairyBackground, _PuzzleBackgroundBase);
 
-	function PuzzleFairyBackground() {
-		(0, _classCallCheck3.default)(this, PuzzleFairyBackground);
-
-		var _this = (0, _possibleConstructorReturn3.default)(this, (PuzzleFairyBackground.__proto__ || (0, _getPrototypeOf2.default)(PuzzleFairyBackground)).call(this));
-
-		_this.baseContainer = new PIXI.Container();
-		_this.addChild(_this.baseContainer);
-		_this.baseTerrain = new PIXI.Sprite.fromFrame('base-terrain');
-		_this.baseTerrain.anchor.set(0.5, 0);
-		_this.baseTerrain.scale.set(1);
-		_this.baseTerrain.tint = 0xFFE6B5;
-		_this.baseContainer.addChild(_this.baseTerrain);
-		return _this;
-	}
-
-	(0, _createClass3.default)(PuzzleFairyBackground, [{
-		key: 'build',
-		value: function build() {}
-	}, {
-		key: 'resize',
-		value: function resize(innerResolution, scale) {
-			if (innerResolution && innerResolution.width && innerResolution.height) {
-
-				this.innerResolution = innerResolution;
-
-				if (window.isPortrait) {} else {}
-			}
+		function PuzzleFairyBackground() {
+				(0, _classCallCheck3.default)(this, PuzzleFairyBackground);
+				return (0, _possibleConstructorReturn3.default)(this, (PuzzleFairyBackground.__proto__ || (0, _getPrototypeOf2.default)(PuzzleFairyBackground)).call(this));
 		}
-	}]);
-	return PuzzleFairyBackground;
+
+		(0, _createClass3.default)(PuzzleFairyBackground, [{
+				key: 'build',
+				value: function build() {
+
+						this.baseContainer = new PIXI.Container();
+						this.addChild(this.baseContainer);
+
+						this.baseTerrain = new PIXI.Sprite.fromFrame('base-terrain');
+						this.baseTerrain.anchor.set(0.5, 0);
+						this.baseTerrain.scale.set(1);
+						this.baseTerrain.tint = 0xFFE6B5;
+						this.baseContainer.addChild(this.baseTerrain);
+
+						this.leftDetail = new PIXI.Sprite.fromFrame('frightPatch');
+						this.leftDetail.anchor.set(1, 0);
+						this.leftDetail.scale.x = -1;
+						this.leftDetail.x = -480;
+						this.leftDetail.y = -180;
+						this.baseContainer.addChild(this.leftDetail);
+
+						this.rightDetail = new PIXI.Sprite.fromFrame('frightPatch');
+						this.rightDetail.x = 150;
+						this.rightDetail.y = -180;
+						this.baseContainer.addChild(this.rightDetail);
+
+						this.leftPines = new PIXI.Sprite.fromFrame('pineSidePatch');
+						this.leftPines.anchor.set(1, 0);
+						this.leftPines.x = -380;
+						this.leftPines.y = -250;
+						this.baseContainer.addChild(this.leftPines);
+
+						this.rightPines = new PIXI.Sprite.fromFrame('pineSidePatch');
+						this.rightPines.x = 380;
+						this.rightPines.y = -250;
+						this.baseContainer.addChild(this.rightPines);
+				}
+		}, {
+				key: 'resize',
+				value: function resize(innerResolution, scale) {
+						if (innerResolution && innerResolution.width && innerResolution.height) {
+
+								this.innerResolution = innerResolution;
+
+								if (window.isPortrait) {
+										this.rightPines.visible = true;
+										this.baseTerrain.scale.set(1, 1.5);
+										// this.rightDetail.texture = new PIXI.Texture.fromFrame('rightPatch')
+										this.rightDetail.scale.set(1);
+										this.leftDetail.scale.set(-1, 1);
+										this.leftDetail.x = -480;
+										this.leftDetail.y = -180;
+										this.rightDetail.x = 150;
+										this.rightDetail.y = -158;
+										//this.bottomPatch.visible = false;
+								} else {
+
+										this.rightPines.visible = false;
+										this.baseTerrain.scale.x = 0.7;
+										// this.rightDetail.texture = new PIXI.Texture.fromFrame('rightPatchCliff')
+										this.rightDetail.scale.set(0.8);
+										this.leftDetail.scale.set(-0.8, 0.8);
+
+										this.leftDetail.x = -420;
+										this.leftDetail.y = -140;
+
+										this.rightDetail.x = 160;
+										this.rightDetail.y = -140;
+										//this.bottomPatch.visible = true;
+								}
+						}
+				}
+		}]);
+		return PuzzleFairyBackground;
 }(_PuzzleBackgroundBase3.default);
 
 exports.default = PuzzleFairyBackground;
@@ -65229,7 +65334,7 @@ module.exports = exports["default"];
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+        value: true
 });
 
 var _getPrototypeOf = __webpack_require__(3);
@@ -65265,39 +65370,119 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var HumanCastleBackground = function (_CastleBackgroundBase) {
-    (0, _inherits3.default)(HumanCastleBackground, _CastleBackgroundBase);
+        (0, _inherits3.default)(HumanCastleBackground, _CastleBackgroundBase);
 
-    function HumanCastleBackground() {
-        (0, _classCallCheck3.default)(this, HumanCastleBackground);
-        return (0, _possibleConstructorReturn3.default)(this, (HumanCastleBackground.__proto__ || (0, _getPrototypeOf2.default)(HumanCastleBackground)).call(this));
-    }
-
-    (0, _createClass3.default)(HumanCastleBackground, [{
-        key: 'build',
-        value: function build() {
-
-            this.castleContainer = new PIXI.Container();
-            this.baseContainer.addChild(this.castleContainer);
-
-            this.castleSet = [{ src: 'stairs', order: 0, pos: { x: 299.7, y: 676.45 } }, { src: 'door1', order: 7, pos: { x: 282.35, y: 562.95 } }, { src: 'frontTower1', order: 2, pos: { x: 374.6, y: 447.3 } }, { src: 'side2', order: 1, pos: { x: 442.1, y: 532.5 } }, { src: 'side1', order: 3, pos: { x: 101.05, y: 368.55 } }, { src: 'side3', order: 4, pos: { x: 566.5, y: 506.5 } }, { src: 'side4', order: 6, pos: { x: 717.7, y: 264.9 } }, { src: 'sideTower', order: 5, pos: { x: 780.65, y: 320.35 } }, { src: 'middle1', order: 8, pos: { x: 385.35, y: 387.25 } }, { src: 'centerHouse1', order: 11, pos: { x: 274.3, y: 317.1 } }, { src: 'leftTower', order: 15, pos: { x: 123, y: 31.6 } }, { src: 'backforest', order: 20, pos: { x: -15.85, y: 348 } }, { src: 'bridgeTower', order: 16, pos: { x: 518.4, y: 49.4 } }, { src: 'sideHouse2', order: 10, pos: { x: 490.8, y: 277.15 } }, { src: 'sideHouse1', order: 9, pos: { x: 565.95, y: 308.35 } }, { src: 'side5', order: 17, pos: { x: 630.45, y: 0 } }, { src: 'thinHouse', order: 15, pos: { x: 225.05, y: 223.25 } }, { src: 'backTower', order: 19, pos: { x: 317.9, y: 0 } }, { src: 'tower6', order: 15, pos: { x: 448.25, y: 91.7 } }, { src: 'mainTower', order: 13, pos: { x: 301.1, y: 133.1 } }, { src: 'statue1', order: 18, pos: { x: 355.2, y: 71.05 } }];
-
-            this.castleContainer.x = -250;
-            this.castleContainer.y = -380;
-            this.castleContainer.scale.set(0.55);
+        function HumanCastleBackground() {
+                (0, _classCallCheck3.default)(this, HumanCastleBackground);
+                return (0, _possibleConstructorReturn3.default)(this, (HumanCastleBackground.__proto__ || (0, _getPrototypeOf2.default)(HumanCastleBackground)).call(this));
         }
-    }, {
-        key: 'resize',
-        value: function resize(innerResolution, scale) {
-            if (innerResolution && innerResolution.width && innerResolution.height) {
 
-                this.innerResolution = innerResolution;
-            }
-        }
-    }, {
-        key: 'update',
-        value: function update(delta) {}
-    }]);
-    return HumanCastleBackground;
+        (0, _createClass3.default)(HumanCastleBackground, [{
+                key: 'build',
+                value: function build() {
+
+                        this.baseColor = new PIXI.Graphics().beginFill(0x6090EE).drawRect(-5000, -5000, 10000, 10000);
+                        this.baseContainer.addChild(this.baseColor);
+
+                        this.baseSky = new PIXI.Sprite.fromFrame('sky');
+                        this.baseSky.anchor.set(0.5, 0.5);
+                        this.baseSky.scale.set(2);
+                        this.baseContainer.addChild(this.baseSky);
+                        this.baseSky.y = 200;
+
+                        this.tiledBackground = new PIXI.TilingSprite(PIXI.Texture.fromFrame('tiledStars', 128, 128));
+                        this.baseContainer.addChild(this.tiledBackground);
+                        this.tiledBackground.width = 5000;
+                        this.tiledBackground.height = 5000;
+                        this.tiledBackground.anchor.set(0.5);
+                        this.tiledBackground.alpha = 0.5;
+
+                        this.cloud1 = new PIXI.Sprite.fromFrame('cloud2');
+                        this.cloud1.anchor.set(0.5);
+                        this.baseContainer.addChild(this.cloud1);
+
+                        this.cloud3 = new PIXI.Sprite.fromFrame('floud3');
+                        this.cloud3.anchor.set(0.5);
+                        this.baseContainer.addChild(this.cloud3);
+
+                        this.cloud1.x = -250;
+                        this.cloud1.y = -400;
+                        this.cloud3.x = 350;
+                        this.cloud3.y = -400;
+                        this.cloud1.scale.set(2);
+                        this.cloud3.scale.set(2);
+
+                        this.castleBase = new PIXI.Sprite.fromFrame('hbase');
+                        this.castleBase.anchor.set(0.5, 1);
+                        this.baseContainer.addChild(this.castleBase);
+                        this.castleBase.y = 180;
+                        this.castleBase.scale.set(650 / this.castleBase.width);
+
+                        this.leftDetail = new PIXI.Sprite.fromFrame('backPinePatch1');
+                        this.leftDetail.scale.set(0.7);
+                        this.leftDetail.anchor.set(1, 0);
+                        this.leftDetail.x = -190;
+                        this.leftDetail.y = -135;
+                        this.baseContainer.addChild(this.leftDetail);
+
+                        this.rightDetail = new PIXI.Sprite.fromFrame('backPinePatch2');
+                        this.rightDetail.scale.set(0.7);
+                        this.rightDetail.x = 170;
+                        this.rightDetail.y = -155;
+                        this.baseContainer.addChild(this.rightDetail);
+
+                        this.bottomTree = new PIXI.Sprite.fromFrame('bottomTreePatch');
+                        this.bottomTree.anchor.set(0.5, 1);
+                        this.baseContainer.addChild(this.bottomTree);
+                        this.bottomTree.x = 0;
+                        this.bottomTree.y = 280;
+                        this.bottomTree.scale.set(650 / this.bottomTree.width);
+
+                        this.bottomTree2 = new PIXI.Sprite.fromFrame('bottomTreePatch');
+                        this.bottomTree2.anchor.set(0.5, 1);
+                        this.baseContainer.addChild(this.bottomTree2);
+                        this.bottomTree2.x = 0;
+                        this.bottomTree2.y = 380;
+                        this.bottomTree2.scale.set(650 / this.bottomTree2.width);
+
+                        this.castleContainer = new PIXI.Container();
+                        this.baseContainer.addChild(this.castleContainer);
+
+                        this.castleSet = [{ src: 'stairs', order: 0, pos: { x: 299.7, y: 676.45 } }, { src: 'door1', order: 7, pos: { x: 282.35, y: 562.95 } }, { src: 'frontTower1', order: 2, pos: { x: 374.6, y: 447.3 } }, { src: 'side2', order: 1, pos: { x: 442.1, y: 532.5 } }, { src: 'side1', order: 3, pos: { x: 101.05, y: 368.55 } }, { src: 'side3', order: 4, pos: { x: 566.5, y: 506.5 } }, { src: 'side4', order: 6, pos: { x: 717.7, y: 264.9 } }, { src: 'sideTower', order: 5, pos: { x: 780.65, y: 320.35 } }, { src: 'middle1', order: 8, pos: { x: 385.35, y: 387.25 } }, { src: 'centerHouse1', order: 11, pos: { x: 274.3, y: 317.1 } }, { src: 'leftTower', order: 15, pos: { x: 123, y: 31.6 } }, { src: 'backforest', order: 20, pos: { x: -15.85, y: 348 } }, { src: 'bridgeTower', order: 16, pos: { x: 518.4, y: 49.4 } }, { src: 'sideHouse2', order: 10, pos: { x: 490.8, y: 277.15 } }, { src: 'sideHouse1', order: 9, pos: { x: 565.95, y: 308.35 } }, { src: 'side5', order: 17, pos: { x: 630.45, y: 0 } }, { src: 'thinHouse', order: 15, pos: { x: 225.05, y: 223.25 } }, { src: 'backTower', order: 19, pos: { x: 317.9, y: 0 } }, { src: 'tower6', order: 15, pos: { x: 448.25, y: 91.7 } }, { src: 'mainTower', order: 13, pos: { x: 301.1, y: 133.1 } }, { src: 'statue1', order: 18, pos: { x: 355.2, y: 71.05 } }];
+
+                        this.castleContainer.x = -250;
+                        this.castleContainer.y = -380;
+                        this.castleContainer.scale.set(0.55);
+                }
+        }, {
+                key: 'resize',
+                value: function resize(innerResolution, scale) {
+                        if (innerResolution && innerResolution.width && innerResolution.height) {
+
+                                this.innerResolution = innerResolution;
+
+                                if (window.isPortrait) {
+                                        this.cloud1.x = -250;
+                                        this.cloud1.y = -400;
+                                        this.cloud3.x = 350;
+                                        this.cloud3.y = -430;
+                                        this.cloud1.scale.set(2);
+                                        this.cloud3.scale.set(2);
+                                } else {
+                                        this.cloud1.x = -150;
+                                        this.cloud1.y = -430;
+                                        this.cloud3.x = 150;
+                                        this.cloud3.y = -400;
+                                        this.cloud1.scale.set(1);
+                                        this.cloud3.scale.set(1);
+                                }
+                        }
+                }
+        }, {
+                key: 'update',
+                value: function update(delta) {}
+        }]);
+        return HumanCastleBackground;
 }(_CastleBackgroundBase3.default);
 
 exports.default = HumanCastleBackground;
@@ -65311,7 +65496,7 @@ module.exports = exports['default'];
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+		value: true
 });
 
 var _getPrototypeOf = __webpack_require__(3);
@@ -65347,38 +65532,85 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PuzzleHumanBackground = function (_PuzzleBackgroundBase) {
-	(0, _inherits3.default)(PuzzleHumanBackground, _PuzzleBackgroundBase);
+		(0, _inherits3.default)(PuzzleHumanBackground, _PuzzleBackgroundBase);
 
-	function PuzzleHumanBackground() {
-		(0, _classCallCheck3.default)(this, PuzzleHumanBackground);
-
-		var _this = (0, _possibleConstructorReturn3.default)(this, (PuzzleHumanBackground.__proto__ || (0, _getPrototypeOf2.default)(PuzzleHumanBackground)).call(this));
-
-		_this.baseContainer = new PIXI.Container();
-		_this.addChild(_this.baseContainer);
-		_this.baseTerrain = new PIXI.Sprite.fromFrame('base-terrain');
-		_this.baseTerrain.anchor.set(0.5, 0);
-		_this.baseTerrain.scale.set(1);
-		_this.baseTerrain.tint = 0x888888;
-		_this.baseContainer.addChild(_this.baseTerrain);
-		return _this;
-	}
-
-	(0, _createClass3.default)(PuzzleHumanBackground, [{
-		key: 'build',
-		value: function build() {}
-	}, {
-		key: 'resize',
-		value: function resize(innerResolution, scale) {
-			if (innerResolution && innerResolution.width && innerResolution.height) {
-
-				this.innerResolution = innerResolution;
-
-				if (window.isPortrait) {} else {}
-			}
+		function PuzzleHumanBackground() {
+				(0, _classCallCheck3.default)(this, PuzzleHumanBackground);
+				return (0, _possibleConstructorReturn3.default)(this, (PuzzleHumanBackground.__proto__ || (0, _getPrototypeOf2.default)(PuzzleHumanBackground)).call(this));
 		}
-	}]);
-	return PuzzleHumanBackground;
+
+		(0, _createClass3.default)(PuzzleHumanBackground, [{
+				key: 'build',
+				value: function build() {
+
+						this.baseContainer = new PIXI.Container();
+						this.addChild(this.baseContainer);
+						this.baseTerrain = new PIXI.Sprite.fromFrame('base-terrain');
+						this.baseTerrain.anchor.set(0.5, 0);
+						this.baseTerrain.scale.set(1);
+						this.baseTerrain.tint = 0x888888;
+						this.baseContainer.addChild(this.baseTerrain);
+
+						this.leftDetail = new PIXI.Sprite.fromFrame('hrightPatch');
+						this.leftDetail.anchor.set(1, 0);
+						this.leftDetail.scale.x = -1;
+						this.leftDetail.x = -500;
+						this.leftDetail.y = -180;
+						this.baseContainer.addChild(this.leftDetail);
+
+						this.rightDetail = new PIXI.Sprite.fromFrame('hrightPatch');
+						this.rightDetail.x = 170;
+						this.rightDetail.y = -180;
+						this.baseContainer.addChild(this.rightDetail);
+
+						this.leftPines = new PIXI.Sprite.fromFrame('pineSidePatch');
+						this.leftPines.anchor.set(1, 0);
+						this.leftPines.x = -380;
+						this.leftPines.y = -250;
+						this.baseContainer.addChild(this.leftPines);
+
+						this.rightPines = new PIXI.Sprite.fromFrame('pineSidePatch');
+						this.rightPines.x = 380;
+						this.rightPines.y = -250;
+						this.baseContainer.addChild(this.rightPines);
+				}
+		}, {
+				key: 'resize',
+				value: function resize(innerResolution, scale) {
+						if (innerResolution && innerResolution.width && innerResolution.height) {
+
+								this.innerResolution = innerResolution;
+
+								if (window.isPortrait) {
+										this.rightPines.visible = true;
+										this.baseTerrain.scale.set(1, 1.5);
+										// this.rightDetail.texture = new PIXI.Texture.fromFrame('rightPatch')
+										this.rightDetail.scale.set(1);
+										this.leftDetail.scale.set(-1, 1);
+										this.leftDetail.x = -480;
+										this.leftDetail.y = -180;
+										this.rightDetail.x = 150;
+										this.rightDetail.y = -158;
+										//this.bottomPatch.visible = false;
+								} else {
+
+										this.rightPines.visible = false;
+										this.baseTerrain.scale.x = 0.7;
+										// this.rightDetail.texture = new PIXI.Texture.fromFrame('rightPatchCliff')
+										this.rightDetail.scale.set(0.8);
+										this.leftDetail.scale.set(-0.8, 0.8);
+
+										this.leftDetail.x = -420;
+										this.leftDetail.y = -140;
+
+										this.rightDetail.x = 160;
+										this.rightDetail.y = -140;
+										//this.bottomPatch.visible = true;
+								}
+						}
+				}
+		}]);
+		return PuzzleHumanBackground;
 }(_PuzzleBackgroundBase3.default);
 
 exports.default = PuzzleHumanBackground;
