@@ -22,7 +22,7 @@ export default class AchievmentsWindow extends EntityShop {
         this.backContainer.texture = PIXI.Texture.fromFrame(config.assets.popup.extra)
         //this.shopList.addBaseGradient('base-gradient', this.itemWidth, 0xFEF72B)
 
-        this.title.updateText(window.localizationManager.getLabel('achievment'))
+        this.title.updateText(window.localizationManager.getLabel('achievements'))
 
         this.giftItem = new ShopItem({ w: this.itemWidth, h: this.size.h * 0.8 / 6 })
         this.giftItem.backShapeGeneral.texture = PIXI.Texture.from(config.assets.panel.tertiary)
@@ -31,7 +31,7 @@ export default class AchievmentsWindow extends EntityShop {
         this.giftItem.x = this.size.w * 0.1
         this.giftItem.y = 80
         this.giftItem.updateHorizontalList();
-        this.giftItem.shopButton.updateCoast('Free Gift')
+        this.giftItem.shopButton.updateCoast(window.localizationManager.getLabel('freeGift'))
         this.giftItem.unblock()
         this.giftItem.shopButton.enable();
         this.giftItem.shopButton.onClickItem.removeAll()
@@ -96,7 +96,7 @@ export default class AchievmentsWindow extends EntityShop {
                 COOKIE_MANAGER.claimFreeMoney(this.systemID, -1);
             }
         } else {
-            this.giftItem.shopButton.updateCoast('Free Coins')
+            this.giftItem.shopButton.updateCoast(window.localizationManager.getLabel('freeCoins'))
             this.giftItem.shopButton.enable();
         }
         //console.log(latest);

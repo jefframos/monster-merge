@@ -22253,11 +22253,10 @@ var ShopItem = function (_UIList) {
         _this.descriptionLabel.style.stroke = 0;
         _this.descriptionLabel.style.strokeThickness = 6;
         _this.descriptionContainer.scaleContentMax = true;
-        _this.descriptionContainer.listScl = 0.4;
         _this.descriptionContainer.align = 0;
         _this.descriptionContainer.addChild(_this.descriptionLabel);
 
-        //this.elementsList.push(this.descriptionContainer);
+        _this.elementsList.push(_this.descriptionContainer);
         //this.container.addChild(this.descriptionContainer);
 
         _this.shopButton = new _ShopButton2.default();
@@ -22303,7 +22302,7 @@ var ShopItem = function (_UIList) {
         _this.noSlotAvailable = new PIXI.Container();
         _this.addChild(_this.noSlotAvailable);
 
-        _this.noSlotLabel = new PIXI.Text('No slot available', LABELS.LABEL1);
+        _this.noSlotLabel = new PIXI.Text(window.localizationManager.getLabel('noSlot'), LABELS.LABEL1);
         _this.noSlotAvailable.addChild(_this.noSlotLabel);
         _this.noSlotLabel.style.fontSize = 14;
 
@@ -22391,71 +22390,6 @@ var ShopItem = function (_UIList) {
                 this.onConfirmShop.dispatch(this.itemData, this.realCost, this.shopButton, this.previewValue);
                 this.updateData();
             }
-        }
-    }, {
-        key: 'updateValues',
-        value: function updateValues() {
-            var currentLevel = 1;
-            var levelPercent = currentLevel / this.staticData.levelMax;
-            var shopItemValues = GAME_DATA.getShopValues(this.itemData);
-            var leveldValues = GAME_DATA.getActionStats(this.itemData);
-            this.realCost = shopItemValues.cost;
-            var cost = _utils2.default.formatPointsLabel(shopItemValues.cost / MAX_NUMBER);
-            // let levelPercent = this.staticData.levelMax / ((this.staticData.levelMax + 1)  - currentLevel);
-            this.shopButton.updateCoast(cost);
-
-            if (!GAME_DATA.canBuyIt(this.itemData) && !this.isBlocked) {
-                this.shopButton.deactive();
-            } else {
-                this.shopButton.enable();
-            }
-            this.itemIcon.texture = PIXI.Texture.from(this.staticData.icon);
-
-            this.levelLabel.text = window.localizationManager.getLabel('level') + this.itemData.level;
-
-            if (this.itemData.level <= 0) {
-                this.attributesList.visible = false;
-                this.levelContainer.visible = false;
-            } else {
-                this.attributesList.visible = true;
-                this.levelContainer.visible = true;
-            }
-
-            if (this.staticData.shopType == 'video') {
-                this.attributesList.visible = true;
-                this.levelContainer.visible = true;
-                this.isVideo = true;
-            }
-            if (this.attributesList) {
-                for (var type in leveldValues) {
-                    if (this.staticData.stats[type]) {
-                        if (!this.staticData.stats[type].hideOnShop) {
-                            if (leveldValues[type]) {
-                                var desc = this.filterLocalized(this.itemData.rawData.attributeDescription);
-
-                                if (leveldValues[type] < 100) {
-                                    this.attributesList[type].text = leveldValues[type].toFixed(2);
-                                    if (desc) {
-                                        this.attributesList[type].text += desc;
-                                    }
-                                } else {
-                                    this.attributesList[type].text = _utils2.default.formatPointsLabel(leveldValues[type] / MAX_NUMBER);
-                                    if (desc) {
-                                        this.attributesList[type].text += desc;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                // this.descriptionLabel.pivot.x = this.descriptionLabel.width / 2
-                // this.totalLabel.text = 'cooldown ' + leveldValues.cooldown+ '\nactive time' + leveldValues.activeTime + '\nvalue' + leveldValues.value;
-            }
-            this.updateHorizontalList(true);
-            this.descriptionContainer.y = 0;
-            this.descriptionLabel.text = this.staticData.shopDesc.toUpperCase();
-            // this.descriptionLabel.x = this.attributesList.x + this.attributesList.width / 2
         }
     }, {
         key: 'changeBgColor',
@@ -22636,7 +22570,8 @@ var ShopItem = function (_UIList) {
             this.itemData = itemData;
             var image = this.itemData.rawData.tileImageSrc ? this.itemData.rawData.tileImageSrc : this.itemData.rawData.imageSrc;
             this.itemIcon.texture = new PIXI.Texture.from(image);
-            this.descriptionLabel.text = this.filterLocalized(this.itemData.rawData.displayName);
+            this.descriptionLabel.text = "@AAA"; //this.filterLocalized(this.itemData.rawData.displayName)
+
 
             var iconType = this.itemData.type == 'damage' ? 'bullets' : 'coin';
             if (this.itemData.modifyerIcon) {
@@ -22649,7 +22584,7 @@ var ShopItem = function (_UIList) {
                 //this.attributesList.w = this.descriptionContainer.listScl * this.w * 0.9;
                 //this.attributesList.h = this.h * 0.5
 
-                this.descriptionContainer.addChild(this.attributesList);
+                // this.descriptionContainer.addChild(this.attributesList);
 
                 var count = 0;
                 types.forEach(function (element) {
@@ -22979,10 +22914,19 @@ var CastleBackgroundBase = function (_PIXI$Container) {
     }, {
         key: 'showAll',
         value: function showAll() {
+            var _this3 = this;
+
             for (var index = 0; index < this.castleSet.length; index++) {
                 var element = this.castleSet[index];
                 element.sprite.visible = true;
             }
+
+            setTimeout(function () {
+                for (var _index = 0; _index < _this3.castleSet.length; _index++) {
+                    var _element = _this3.castleSet[_index];
+                    _element.sprite.visible = true;
+                }
+            }, 50);
         }
     }, {
         key: 'getPiece',
@@ -22999,9 +22943,9 @@ var CastleBackgroundBase = function (_PIXI$Container) {
                 var element = this.castleSet[index];
                 element.sprite.visible = false;
             }
-            for (var _index = 0; _index <= value; _index++) {
-                var _element = this.castleSet[_index];
-                _element.sprite.visible = true;
+            for (var _index2 = 0; _index2 <= value; _index2++) {
+                var _element2 = this.castleSet[_index2];
+                _element2.sprite.visible = true;
             }
             this.castleSet.forEach(function (element) {
                 element.sprite.x = element.pos.x;
@@ -33110,7 +33054,7 @@ var EntityShop = function (_PIXI$Container) {
         // this.tiledBackground2.alpha = 0.1
 
         _this.title = new _TextBox2.default(20, _config2.default.assets.panel.secondary, 32); //new PIXI.Text(window.localizationManager.getLabel('resources'), LABELS.LABEL1);
-        _this.title.updateText(window.localizationManager.getLabel('shop'));
+        _this.title.updateText(window.localizationManager.getLabel('entities'));
         // this.portrait = new PIXI.Sprite.fromFrame('skull');
         // this.container.addChild(this.portrait);
         // this.portrait.scale.set(0.65)
@@ -34643,7 +34587,6 @@ function startLoader() {
 
     PIXI.loader.onProgress.add(function (e) {
         game.updateLoader(e.progress);
-        console.log('loading', e.progress);
     });
     // FbManager.connect().then(() =>
     //     {
@@ -58222,6 +58165,11 @@ var CookieManager = function () {
 			return this.getCookie('economy');
 		}
 	}, {
+		key: 'getLastResourceTime',
+		value: function getLastResourceTime(id) {
+			return this.fullData[id].economy;
+		}
+	}, {
 		key: 'getResources',
 		value: function getResources(id) {
 			return this.fullData[id].resources;
@@ -61755,11 +61703,11 @@ var assets = [{
 	"id": "humans",
 	"url": "assets/json\\humans.json"
 }, {
-	"id": "localization_DE",
-	"url": "assets/json\\localization_DE.json"
-}, {
 	"id": "localization_EN",
 	"url": "assets/json\\localization_EN.json"
+}, {
+	"id": "localization_DE",
+	"url": "assets/json\\localization_DE.json"
 }, {
 	"id": "localization_ES",
 	"url": "assets/json\\localization_ES.json"
@@ -61779,20 +61727,20 @@ var assets = [{
 	"id": "localization_PT",
 	"url": "assets/json\\localization_PT.json"
 }, {
-	"id": "localization_RU",
-	"url": "assets/json\\localization_RU.json"
-}, {
 	"id": "localization_TR",
 	"url": "assets/json\\localization_TR.json"
+}, {
+	"id": "localization_RU",
+	"url": "assets/json\\localization_RU.json"
 }, {
 	"id": "localization_ZH",
 	"url": "assets/json\\localization_ZH.json"
 }, {
-	"id": "modifyers",
-	"url": "assets/json\\modifyers.json"
-}, {
 	"id": "monsters",
 	"url": "assets/json\\monsters.json"
+}, {
+	"id": "modifyers",
+	"url": "assets/json\\modifyers.json"
 }, {
 	"id": "resources",
 	"url": "assets/json\\resources.json"
@@ -62091,32 +62039,29 @@ var assets = [{
 	"id": "Cartoon-Mouth-Sound-06",
 	"url": "assets/audio\\Cartoon-Mouth-Sound-06.mp3"
 }, {
-	"id": "Cartoon-Mouth-Sound-13",
-	"url": "assets/audio\\Cartoon-Mouth-Sound-13.mp3"
-}, {
-	"id": "coins_04",
-	"url": "assets/audio\\coins_04.mp3"
-}, {
 	"id": "Cartoon-Mouth-Sound-18",
 	"url": "assets/audio\\Cartoon-Mouth-Sound-18.mp3"
 }, {
 	"id": "Cartoon-Mouth-Sound-20",
 	"url": "assets/audio\\Cartoon-Mouth-Sound-20.mp3"
 }, {
-	"id": "Fire-Burst-Small-01",
-	"url": "assets/audio\\Fire-Burst-Small-01.mp3"
+	"id": "coins_04",
+	"url": "assets/audio\\coins_04.mp3"
 }, {
-	"id": "getCrazyOne",
-	"url": "assets/audio\\getCrazyOne.mp3"
-}, {
-	"id": "getstar",
-	"url": "assets/audio\\getstar.mp3"
+	"id": "Cartoon-Mouth-Sound-13",
+	"url": "assets/audio\\Cartoon-Mouth-Sound-13.mp3"
 }, {
 	"id": "dropTile",
 	"url": "assets/audio\\dropTile.mp3"
 }, {
-	"id": "item",
-	"url": "assets/audio\\item.mp3"
+	"id": "getCrazyOne",
+	"url": "assets/audio\\getCrazyOne.mp3"
+}, {
+	"id": "Fire-Burst-Small-01",
+	"url": "assets/audio\\Fire-Burst-Small-01.mp3"
+}, {
+	"id": "getstar",
+	"url": "assets/audio\\getstar.mp3"
 }, {
 	"id": "getThemAll",
 	"url": "assets/audio\\getThemAll.mp3"
@@ -62124,11 +62069,14 @@ var assets = [{
 	"id": "Harp-Flutter-02",
 	"url": "assets/audio\\Harp-Flutter-02.mp3"
 }, {
-	"id": "kill",
-	"url": "assets/audio\\kill.mp3"
-}, {
 	"id": "HolidayWeasel",
 	"url": "assets/audio\\HolidayWeasel.mp3"
+}, {
+	"id": "item",
+	"url": "assets/audio\\item.mp3"
+}, {
+	"id": "kill",
+	"url": "assets/audio\\kill.mp3"
 }, {
 	"id": "magic",
 	"url": "assets/audio\\magic.mp3"
@@ -62136,26 +62084,29 @@ var assets = [{
 	"id": "Musical-Beep-Loop-02",
 	"url": "assets/audio\\Musical-Beep-Loop-02.mp3"
 }, {
-	"id": "place",
-	"url": "assets/audio\\place.mp3"
-}, {
-	"id": "place3",
-	"url": "assets/audio\\place3.mp3"
+	"id": "place2",
+	"url": "assets/audio\\place2.mp3"
 }, {
 	"id": "Ping-Slide-Down",
 	"url": "assets/audio\\Ping-Slide-Down.mp3"
 }, {
-	"id": "place2",
-	"url": "assets/audio\\place2.mp3"
+	"id": "place3",
+	"url": "assets/audio\\place3.mp3"
+}, {
+	"id": "place",
+	"url": "assets/audio\\place.mp3"
 }, {
 	"id": "Pop-Low-Pitch-Up-02",
 	"url": "assets/audio\\Pop-Low-Pitch-Up-02.mp3"
 }, {
-	"id": "Pop-Musical",
-	"url": "assets/audio\\Pop-Musical.mp3"
-}, {
 	"id": "Pop-Tone",
 	"url": "assets/audio\\Pop-Tone.mp3"
+}, {
+	"id": "pop",
+	"url": "assets/audio\\pop.mp3"
+}, {
+	"id": "Pop-Musical",
+	"url": "assets/audio\\Pop-Musical.mp3"
 }, {
 	"id": "pop2",
 	"url": "assets/audio\\pop2.mp3"
@@ -62163,26 +62114,23 @@ var assets = [{
 	"id": "shoosh",
 	"url": "assets/audio\\shoosh.mp3"
 }, {
-	"id": "pop",
-	"url": "assets/audio\\pop.mp3"
+	"id": "Tap-01",
+	"url": "assets/audio\\Tap-01.mp3"
 }, {
 	"id": "SneakySnitch",
 	"url": "assets/audio\\SneakySnitch.mp3"
 }, {
-	"id": "Synth-Appear-01",
-	"url": "assets/audio\\Synth-Appear-01.mp3"
-}, {
-	"id": "Tap-01",
-	"url": "assets/audio\\Tap-01.mp3"
-}, {
 	"id": "teleport",
 	"url": "assets/audio\\teleport.mp3"
 }, {
-	"id": "Whoosh",
-	"url": "assets/audio\\Whoosh.mp3"
+	"id": "Synth-Appear-01",
+	"url": "assets/audio\\Synth-Appear-01.mp3"
 }, {
 	"id": "TheBuilder",
 	"url": "assets/audio\\TheBuilder.mp3"
+}, {
+	"id": "Whoosh",
+	"url": "assets/audio\\Whoosh.mp3"
 }];
 
 exports.default = assets;
@@ -62192,7 +62140,7 @@ module.exports = exports["default"];
 /* 344 */
 /***/ (function(module, exports) {
 
-module.exports = {"default":["image/particles/particles.json","image/pattern2/pattern2.json","image/pattern/pattern.json","image/parts/parts.json","image/partsf/partsf.json","image/background2/background2.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
+module.exports = {"default":["image/particles/particles.json","image/pattern/pattern.json","image/pattern2/pattern2.json","image/partsf/partsf.json","image/parts/parts.json","image/partsh/partsh.json","image/background2/background2.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
 
 /***/ }),
 /* 345 */
@@ -63034,6 +62982,8 @@ var MergeScreen = function (_Screen) {
         }, {
                 key: 'showSystem',
                 value: function showSystem(id) {
+                        var _this3 = this;
+
                         if (this.activeMergeSystemID == id) return;
 
                         this.mergeSystemsList.forEach(function (element) {
@@ -63051,31 +63001,44 @@ var MergeScreen = function (_Screen) {
 
                         this.activeMergeSystem.achievments.checkAll();
 
+                        var lastTime = COOKIE_MANAGER.getLastResourceTime(this.activeMergeSystem.systemID);
+
+                        var calcTime = Date.now() / 1000 - lastTime.lastChanged;
+
+                        setTimeout(function () {
+
+                                if (_this3.activeMergeSystem.rps > 0 && calcTime > 60) {
+                                        calcTime = Math.min(calcTime, 600);
+                                        _this3.startGamePopUp(_this3.activeMergeSystem.rps * Math.ceil(calcTime));
+                                }
+                        }, 1);
                         this.refreshSystemVisuals();
                 }
         }, {
                 key: 'startGamePopUp',
-                value: function startGamePopUp() {
-                        var _this3 = this;
+                value: function startGamePopUp(targetMoney) {
+                        var _this4 = this;
 
-                        var target = this.activeMergeSystem.rps * 60;
-                        var target2 = this.activeMergeSystem.rps * 600;
+                        var target = targetMoney;
+                        var target2 = targetMoney * 2;
                         this.openPopUp(this.standardPopUp, {
                                 value1: _utils2.default.formatPointsLabel(target),
                                 value2: _utils2.default.formatPointsLabel(target2),
-                                title: 'Free Coins',
-                                confirmLabel: 'Collect',
-                                cancelLabel: 'Cancel',
+                                title: window.localizationManager.getLabel('welcomeBack'),
+                                confirmLabel: window.localizationManager.getLabel('collect'),
+                                cancelLabel: window.localizationManager.getLabel('ok'),
                                 video: true,
+                                popUpType: _config2.default.assets.popup.secondary,
+                                mainLabel2: window.localizationManager.getLabel('youEarned') + _utils2.default.formatPointsLabel(target) + '\n' + window.localizationManager.getLabel('watchDouble'),
                                 onConfirm: function onConfirm() {
                                         window.DO_REWARD(function () {
-                                                window.gameEconomy.addResources(target2, _this3.activeMergeSystem.systemID);
-                                                _this3.moneyFromCenter(target2);
+                                                window.gameEconomy.addResources(target2, _this4.activeMergeSystem.systemID);
+                                                _this4.moneyFromCenter(target2);
                                         });
                                 },
                                 onCancel: function onCancel() {
-                                        window.gameEconomy.addResources(target, _this3.activeMergeSystem.systemID);
-                                        _this3.moneyFromCenter(target);
+                                        window.gameEconomy.addResources(target, _this4.activeMergeSystem.systemID);
+                                        _this4.moneyFromCenter(target);
                                         SOUND_MANAGER.play('place2', 0.4);
                                 }
                         });
@@ -63083,24 +63046,24 @@ var MergeScreen = function (_Screen) {
         }, {
                 key: 'levelUpPopUp',
                 value: function levelUpPopUp(data) {
-                        var _this4 = this;
+                        var _this5 = this;
 
                         var target = this.activeMergeSystem.rps * 60;
                         var target2 = this.activeMergeSystem.rps * 600;
                         this.openPopUp(this.standardPopUp, {
                                 value1: '-',
                                 value2: _utils2.default.formatPointsLabel(target2),
-                                title: 'Level ' + data.currentLevel,
-                                confirmLabel: 'Open Shop',
-                                cancelLabel: 'OK',
-                                mainLabel2: this.activeMergeSystem.dataTiles[data.currentLevel - 1].rawData.displayName + '\nWas unlocked on the shop',
+                                title: window.localizationManager.getLabel('level') + ' ' + data.currentLevel,
+                                confirmLabel: window.localizationManager.getLabel('openShop'),
+                                cancelLabel: window.localizationManager.getLabel('ok'),
+                                mainLabel2: this.activeMergeSystem.dataTiles[data.currentLevel - 1].rawData.displayName + '\n' + window.localizationManager.getLabel('shopUnlocked'),
                                 video: false,
                                 popUpType: _config2.default.assets.popup.extra,
                                 hideAll: true,
                                 mainIcon: this.activeMergeSystem.dataTiles[data.currentLevel - 1].rawData.imageSrc,
                                 onConfirm: function onConfirm() {
 
-                                        _this4.openPopUp(_this4.activeMergeSystem.shop);
+                                        _this5.openPopUp(_this5.activeMergeSystem.shop);
                                         SOUND_MANAGER.play('getThemAll', 0.4);
                                 },
                                 onCancel: function onCancel() {
@@ -63111,23 +63074,23 @@ var MergeScreen = function (_Screen) {
         }, {
                 key: 'openHourCoinPopUp',
                 value: function openHourCoinPopUp() {
-                        var _this5 = this;
+                        var _this6 = this;
 
                         var target = this.activeMergeSystem.rps * 300;
                         target = Math.max(500, target);
                         this.openPopUp(this.standardPopUp, {
                                 value1: 0,
                                 value2: _utils2.default.formatPointsLabel(target),
-                                title: 'Free Coins',
-                                confirmLabel: 'Collect',
-                                cancelLabel: 'Cancel',
-                                mainLabel2: 'Watch a video earn 10 minutes\nworth of money',
+                                title: window.localizationManager.getLabel('freeCoins'),
+                                confirmLabel: window.localizationManager.getLabel('collect'),
+                                cancelLabel: window.localizationManager.getLabel('cancel'),
+                                mainLabel2: window.localizationManager.getLabel('watchToEarn') + ' 10\n' + window.localizationManager.getLabel('minutesWorth'),
                                 video: true,
                                 popUpType: _config2.default.assets.popup.secondary,
                                 onConfirm: function onConfirm() {
                                         window.DO_REWARD(function () {
-                                                window.gameEconomy.addResources(target, _this5.activeMergeSystem.systemID);
-                                                _this5.moneyFromCenter(target);
+                                                window.gameEconomy.addResources(target, _this6.activeMergeSystem.systemID);
+                                                _this6.moneyFromCenter(target);
                                         });
                                 },
                                 onCancel: function onCancel() {
@@ -63138,27 +63101,27 @@ var MergeScreen = function (_Screen) {
         }, {
                 key: 'newPiecePopup',
                 value: function newPiecePopup(pieceId) {
-                        var _this6 = this;
+                        var _this7 = this;
 
                         var imagesrc = this.activeMergeSystem.dataTiles[pieceId].rawData.imageSrc;
                         var name = this.activeMergeSystem.dataTiles[pieceId].rawData.displayName;
                         var castlePiece = this.activeMergeSystem.interactiveBackground.getPiece(pieceId).src;
 
-                        this.notificationPanel.buildNewPieceNotification(imagesrc, 'You discovered ' + name, null, _config2.default.assets.popup.secondary);
+                        this.notificationPanel.buildNewPieceNotification(imagesrc, window.localizationManager.getLabel('discovered') + ' ' + name, null, _config2.default.assets.popup.secondary);
 
                         SOUND_MANAGER.play('coins_04', 0.4);
 
                         setTimeout(function () {
 
                                 SOUND_MANAGER.play('coins_04', 0.4, 1.1);
-                                _this6.notificationPanel.buildNewPieceNotification(castlePiece, 'You unlock another piece of the castle', null, _config2.default.assets.popup.extra);
-                                _this6.activeMergeSystem.interactiveBackground.showAnimation(pieceId);
+                                _this7.notificationPanel.buildNewPieceNotification(castlePiece, window.localizationManager.getLabel('unlockedPiece'), null, _config2.default.assets.popup.extra);
+                                _this7.activeMergeSystem.interactiveBackground.showAnimation(pieceId);
                         }, 2000);
                 }
         }, {
                 key: 'upgradePiecePopUp',
                 value: function upgradePiecePopUp(slot, level) {
-                        var _this7 = this;
+                        var _this8 = this;
 
                         var piece1 = this.activeMergeSystem.dataTiles[level];
                         var piece2 = this.activeMergeSystem.dataTiles[level + 1];
@@ -63168,29 +63131,29 @@ var MergeScreen = function (_Screen) {
                                 value2: piece2.rawData.displayName,
                                 value1Icon: piece1.rawData.imageSrc,
                                 value2Icon: piece2.rawData.imageSrc,
-                                title: 'Upgrade',
-                                confirmLabel: 'Upgrade',
-                                cancelLabel: 'Cancel',
-                                mainLabel2: 'Watch a video to upgrade this slot',
+                                title: window.localizationManager.getLabel('upgrade'),
+                                confirmLabel: window.localizationManager.getLabel('upgrade'),
+                                cancelLabel: window.localizationManager.getLabel('cancel'),
+                                mainLabel2: window.localizationManager.getLabel('upgradeWatch'),
                                 popUpType: _config2.default.assets.popup.secondary,
                                 mainIcon: 'results_arrow_right',
                                 mainIconHeight: 30,
                                 video: true,
                                 onConfirm: function onConfirm() {
-                                        _this7.activeMergeSystem.addDataTo(slot, level + 1);
+                                        _this8.activeMergeSystem.addDataTo(slot, level + 1);
                                         SOUND_MANAGER.play('getThemAll', 0.4);
                                 },
                                 onCancel: function onCancel() {
                                         SOUND_MANAGER.play('place2', 0.4);
 
-                                        _this7.activeMergeSystem.addDataTo(slot, level);
+                                        _this8.activeMergeSystem.addDataTo(slot, level);
                                 }
                         });
                 }
         }, {
                 key: 'refreshSystemVisuals',
                 value: function refreshSystemVisuals() {
-                        var _this8 = this;
+                        var _this9 = this;
 
                         if (!this.activeMergeSystem.isLoaded) {
                                 this.activeMergeSystem.loadData();
@@ -63213,9 +63176,9 @@ var MergeScreen = function (_Screen) {
                         SOUND_MANAGER.playLoop(this.activeMergeSystem.soundtrack, 0.1);
                         this.resize(this.latestInner, this.latestInner);
                         setTimeout(function () {
-                                _this8.activeMergeSystem.activeSystem();
+                                _this9.activeMergeSystem.activeSystem();
 
-                                _this8.resize(_this8.latestInner, _this8.latestInner);
+                                _this9.resize(_this9.latestInner, _this9.latestInner);
                         }, 1);
                 }
         }, {
@@ -63356,7 +63319,7 @@ var MergeScreen = function (_Screen) {
         }, {
                 key: 'onMergeSystemUpdate',
                 value: function onMergeSystemUpdate(data) {
-                        var _this9 = this;
+                        var _this10 = this;
 
                         if (data) {
                                 this.levelMeter.updateData(data);
@@ -63365,23 +63328,23 @@ var MergeScreen = function (_Screen) {
 
                         var _loop = function _loop(index) {
                                 // if(!this.systemButtonList[index]) break
-                                var element = _this9.systemsList[index];
-                                var prev = _this9.systemsList[index - 1];
+                                var element = _this10.systemsList[index];
+                                var prev = _this10.systemsList[index - 1];
 
-                                var isInit = COOKIE_MANAGER.isInitialized(_this9.systemsList[index].systemID);
+                                var isInit = COOKIE_MANAGER.isInitialized(_this10.systemsList[index].systemID);
                                 //console.log('isInit',isInit,this.systemsList[index].systemID)
                                 if ((!prev.boardProgression || prev.boardProgression.currentLevel < 6) && !window.allUnlock) {
                                         element.toggle.disable();
                                 } else {
                                         if (!isInit) {
 
-                                                _this9.pendingNotification = function () {
+                                                _this10.pendingNotification = function () {
                                                         SOUND_MANAGER.play('Musical-Beep-Loop-02', 0.5);
-                                                        _this9.notificationPanel.buildNewPieceNotification(_this9.systemsList[index].dataTiles[0].rawData.imageSrc, 'You unlock a new level', null, _config2.default.assets.popup.tertiary);
-                                                        _gsap2.default.to(_this9.systemsList[index].toggle.unlockTextbox, 0.5, { alpha: 1, delay: 4 });
+                                                        _this10.notificationPanel.buildNewPieceNotification(_this10.systemsList[index].dataTiles[0].rawData.imageSrc, 'You unlock a new level', null, _config2.default.assets.popup.tertiary);
+                                                        _gsap2.default.to(_this10.systemsList[index].toggle.unlockTextbox, 0.5, { alpha: 1, delay: 4 });
                                                 };
                                                 //.alpha = 1;
-                                                COOKIE_MANAGER.initBoard(_this9.systemsList[index].systemID);
+                                                COOKIE_MANAGER.initBoard(_this10.systemsList[index].systemID);
                                         }
                                         element.toggle.enable();
                                 }
@@ -63504,7 +63467,7 @@ var MergeScreen = function (_Screen) {
         }, {
                 key: 'resize',
                 value: function resize(resolution, innerResolution) {
-                        var _this10 = this;
+                        var _this11 = this;
 
                         if (!innerResolution || !innerResolution.height) return;
 
@@ -63608,7 +63571,7 @@ var MergeScreen = function (_Screen) {
                         this.notificationPanel.x = _config2.default.width / 2;
                         this.notificationPanel.y = this.levelMeter.y + this.levelMeter.height + this.notificationPanel.notificationHeight / 2;
                         this.systemsList.forEach(function (element) {
-                                element.resize(resolution, innerResolution, _this10.resourcesWrapperRight);
+                                element.resize(resolution, innerResolution, _this11.resourcesWrapperRight);
                         });
                 }
         }, {
@@ -63639,7 +63602,7 @@ var MergeScreen = function (_Screen) {
         }, {
                 key: 'addHelpers',
                 value: function addHelpers() {
-                        var _this11 = this;
+                        var _this12 = this;
 
                         this.helperButtonList = new _UIList2.default();
                         this.helperButtonList.h = 400;
@@ -63671,7 +63634,7 @@ var MergeScreen = function (_Screen) {
                         this.addRandomShip = new _UIButton2.default(0x002299, 'vampire');
                         this.helperButtonList.addElement(this.addRandomShip);
                         this.addRandomShip.onClick.add(function () {
-                                _this11.activeMergeSystem.addShipBasedOnMax();
+                                _this12.activeMergeSystem.addShipBasedOnMax();
                         });
 
                         this.autoMergeToggle = new _UIButton2.default(0x002299, 'hand');
@@ -63694,12 +63657,12 @@ var MergeScreen = function (_Screen) {
                                         window.allUnlock = true;
                                 }
 
-                                _this11.onMergeSystemUpdate();
+                                _this12.onMergeSystemUpdate();
                         });
                         this.showCastle = new _UIButton2.default(0x002299, 'upArrow');
                         this.helperButtonList.addElement(this.showCastle);
                         this.showCastle.onClick.add(function () {
-                                _this11.activeMergeSystem.interactiveBackground.showAll();
+                                _this12.activeMergeSystem.interactiveBackground.showAll();
                         });
                         this.helperButtonList.updateVerticalList();
                         this.container.addChild(this.helperButtonList);
@@ -63798,7 +63761,7 @@ var AchievmentsWindow = function (_EntityShop) {
         _this.backContainer.texture = PIXI.Texture.fromFrame(_config2.default.assets.popup.extra);
         //this.shopList.addBaseGradient('base-gradient', this.itemWidth, 0xFEF72B)
 
-        _this.title.updateText(window.localizationManager.getLabel('achievment'));
+        _this.title.updateText(window.localizationManager.getLabel('achievements'));
 
         _this.giftItem = new _ShopItem2.default({ w: _this.itemWidth, h: _this.size.h * 0.8 / 6 });
         _this.giftItem.backShapeGeneral.texture = PIXI.Texture.from(_config2.default.assets.panel.tertiary);
@@ -63807,7 +63770,7 @@ var AchievmentsWindow = function (_EntityShop) {
         _this.giftItem.x = _this.size.w * 0.1;
         _this.giftItem.y = 80;
         _this.giftItem.updateHorizontalList();
-        _this.giftItem.shopButton.updateCoast('Free Gift');
+        _this.giftItem.shopButton.updateCoast(window.localizationManager.getLabel('freeGift'));
         _this.giftItem.unblock();
         _this.giftItem.shopButton.enable();
         _this.giftItem.shopButton.onClickItem.removeAll();
@@ -63879,7 +63842,7 @@ var AchievmentsWindow = function (_EntityShop) {
                     COOKIE_MANAGER.claimFreeMoney(this.systemID, -1);
                 }
             } else {
-                this.giftItem.shopButton.updateCoast('Free Coins');
+                this.giftItem.shopButton.updateCoast(window.localizationManager.getLabel('freeCoins'));
                 this.giftItem.shopButton.enable();
             }
             //console.log(latest);
@@ -64740,7 +64703,7 @@ var AchievmentView = function (_PIXI$Container) {
 
             this.data = data;
             //let desc = data.title+'\n'+data.description
-            var desc = data.description;
+            var desc = window.localizationManager.getLabel(data.description);
             this.descriptionLabel = this.addLabelToNotification(desc, this.popUp.width / 2);
             this.descriptionLabel.style.align = 'left';
 
@@ -64770,6 +64733,7 @@ var AchievmentView = function (_PIXI$Container) {
 
             var label = new PIXI.Text(text, LABELS.LABEL1);
             label.scaleContentMax = true;
+            label.style.fontSize = 22;
             if (wrap) {
                 label.style.wordWrap = true;
                 label.style.wordWrapWidth = wrap;
@@ -64791,7 +64755,7 @@ var AchievmentView = function (_PIXI$Container) {
             if (achieveData.claimed >= this.data.values.length) {
                 this.claimButton.deactiveMax();
                 this.progressBar.visible = false;
-                this.descriptionLabel.text = this.data.title;
+                this.descriptionLabel.text = window.localizationManager.getLabel(this.data.title);
                 this.contentList.updateHorizontalList();
                 return 0;
             }
@@ -65186,10 +65150,10 @@ var PuzzleFairyBackground = function (_PuzzleBackgroundBase) {
 										// this.rightDetail.texture = new PIXI.Texture.fromFrame('rightPatch')
 										this.rightDetail.scale.set(1);
 										this.leftDetail.scale.set(-1, 1);
-										this.leftDetail.x = -480;
-										this.leftDetail.y = -180;
+										this.leftDetail.x = -490;
+										this.leftDetail.y = -182;
 										this.rightDetail.x = 150;
-										this.rightDetail.y = -158;
+										this.rightDetail.y = -182;
 										//this.bottomPatch.visible = false;
 								} else {
 
@@ -65381,7 +65345,7 @@ var HumanCastleBackground = function (_CastleBackgroundBase) {
                 key: 'build',
                 value: function build() {
 
-                        this.baseColor = new PIXI.Graphics().beginFill(0x6090EE).drawRect(-5000, -5000, 10000, 10000);
+                        this.baseColor = new PIXI.Graphics().beginFill(0x9DBEE9).drawRect(-5000, -5000, 10000, 10000);
                         this.baseContainer.addChild(this.baseColor);
 
                         this.baseSky = new PIXI.Sprite.fromFrame('sky');
@@ -65415,19 +65379,23 @@ var HumanCastleBackground = function (_CastleBackgroundBase) {
                         this.castleBase = new PIXI.Sprite.fromFrame('hbase');
                         this.castleBase.anchor.set(0.5, 1);
                         this.baseContainer.addChild(this.castleBase);
-                        this.castleBase.y = 180;
+                        this.castleBase.y = 130;
+                        this.castleBase.x = -20;
                         this.castleBase.scale.set(650 / this.castleBase.width);
+
+                        this.castleContainer = new PIXI.Container();
+                        this.baseContainer.addChild(this.castleContainer);
 
                         this.leftDetail = new PIXI.Sprite.fromFrame('backPinePatch1');
                         this.leftDetail.scale.set(0.7);
                         this.leftDetail.anchor.set(1, 0);
-                        this.leftDetail.x = -190;
+                        this.leftDetail.x = -240;
                         this.leftDetail.y = -135;
                         this.baseContainer.addChild(this.leftDetail);
 
                         this.rightDetail = new PIXI.Sprite.fromFrame('backPinePatch2');
                         this.rightDetail.scale.set(0.7);
-                        this.rightDetail.x = 170;
+                        this.rightDetail.x = 200;
                         this.rightDetail.y = -155;
                         this.baseContainer.addChild(this.rightDetail);
 
@@ -65445,14 +65413,11 @@ var HumanCastleBackground = function (_CastleBackgroundBase) {
                         this.bottomTree2.y = 380;
                         this.bottomTree2.scale.set(650 / this.bottomTree2.width);
 
-                        this.castleContainer = new PIXI.Container();
-                        this.baseContainer.addChild(this.castleContainer);
-
-                        this.castleSet = [{ src: 'stairs', order: 0, pos: { x: 299.7, y: 676.45 } }, { src: 'door1', order: 7, pos: { x: 282.35, y: 562.95 } }, { src: 'frontTower1', order: 2, pos: { x: 374.6, y: 447.3 } }, { src: 'side2', order: 1, pos: { x: 442.1, y: 532.5 } }, { src: 'side1', order: 3, pos: { x: 101.05, y: 368.55 } }, { src: 'side3', order: 4, pos: { x: 566.5, y: 506.5 } }, { src: 'side4', order: 6, pos: { x: 717.7, y: 264.9 } }, { src: 'sideTower', order: 5, pos: { x: 780.65, y: 320.35 } }, { src: 'middle1', order: 8, pos: { x: 385.35, y: 387.25 } }, { src: 'centerHouse1', order: 11, pos: { x: 274.3, y: 317.1 } }, { src: 'leftTower', order: 15, pos: { x: 123, y: 31.6 } }, { src: 'backforest', order: 20, pos: { x: -15.85, y: 348 } }, { src: 'bridgeTower', order: 16, pos: { x: 518.4, y: 49.4 } }, { src: 'sideHouse2', order: 10, pos: { x: 490.8, y: 277.15 } }, { src: 'sideHouse1', order: 9, pos: { x: 565.95, y: 308.35 } }, { src: 'side5', order: 17, pos: { x: 630.45, y: 0 } }, { src: 'thinHouse', order: 15, pos: { x: 225.05, y: 223.25 } }, { src: 'backTower', order: 19, pos: { x: 317.9, y: 0 } }, { src: 'tower6', order: 15, pos: { x: 448.25, y: 91.7 } }, { src: 'mainTower', order: 13, pos: { x: 301.1, y: 133.1 } }, { src: 'statue1', order: 18, pos: { x: 355.2, y: 71.05 } }];
+                        this.castleSet = [{ src: 'hcore1', order: 5, pos: { x: 376, y: 600 } }, { src: 'hdoor', order: 5, pos: { x: 360, y: 786 } }, { src: 'hcore2', order: 5, pos: { x: 565, y: 606 } }, { src: 'hcore3', order: 5, pos: { x: 179, y: 606 } }, { src: 'hfront1', order: 4, pos: { x: 0, y: 777 } }, { src: 'hfront2', order: 4, pos: { x: 719, y: 784 } }, { src: 'hmidcenter2', order: 8, pos: { x: 542, y: 448 } }, { src: 'hmidcenter1', order: 8, pos: { x: 304, y: 446 } }, { src: 'happend1', order: 9, pos: { x: 436, y: 665 } }, { src: 'htower1', order: 7, pos: { x: 751, y: 601 } }, { src: 'happend2', order: 7, pos: { x: 798, y: 658 } }, { src: 'hmidappend2', order: 15, pos: { x: 101, y: 526 } }, { src: 'happend3', order: 7, pos: { x: 21, y: 629 } }, { src: 'hmidappend1', order: 16, pos: { x: 200, y: 414 } }, { src: 'hmaster1', order: 10, pos: { x: 325, y: 262 } }, { src: 'htower6', order: 50, pos: { x: 141, y: 254 } }, { src: 'htower2', order: 17, pos: { x: 350, y: 120 } }, { src: 'htower5', order: 19, pos: { x: 481, y: 0 } }, { src: 'htower3', order: 15, pos: { x: 597, y: 240 } }, { src: 'happend4', order: 13, pos: { x: 753, y: 289 } }, { src: 'htower4', order: 15, pos: { x: 477, y: 56 } }];
 
                         this.castleContainer.x = -250;
-                        this.castleContainer.y = -380;
-                        this.castleContainer.scale.set(0.55);
+                        this.castleContainer.y = -420;
+                        this.castleContainer.scale.set(0.45);
                 }
         }, {
                 key: 'resize',
@@ -65548,7 +65513,7 @@ var PuzzleHumanBackground = function (_PuzzleBackgroundBase) {
 						this.baseTerrain = new PIXI.Sprite.fromFrame('base-terrain');
 						this.baseTerrain.anchor.set(0.5, 0);
 						this.baseTerrain.scale.set(1);
-						this.baseTerrain.tint = 0x888888;
+						this.baseTerrain.tint = 0xF8EDDC;
 						this.baseContainer.addChild(this.baseTerrain);
 
 						this.leftDetail = new PIXI.Sprite.fromFrame('hrightPatch');
@@ -65587,10 +65552,10 @@ var PuzzleHumanBackground = function (_PuzzleBackgroundBase) {
 										// this.rightDetail.texture = new PIXI.Texture.fromFrame('rightPatch')
 										this.rightDetail.scale.set(1);
 										this.leftDetail.scale.set(-1, 1);
-										this.leftDetail.x = -480;
-										this.leftDetail.y = -180;
+										this.leftDetail.x = -435;
+										this.leftDetail.y = -182;
 										this.rightDetail.x = 150;
-										this.rightDetail.y = -158;
+										this.rightDetail.y = -182;
 										//this.bottomPatch.visible = false;
 								} else {
 
@@ -65600,7 +65565,7 @@ var PuzzleHumanBackground = function (_PuzzleBackgroundBase) {
 										this.rightDetail.scale.set(0.8);
 										this.leftDetail.scale.set(-0.8, 0.8);
 
-										this.leftDetail.x = -420;
+										this.leftDetail.x = -376;
 										this.leftDetail.y = -140;
 
 										this.rightDetail.x = 160;
@@ -66017,7 +65982,6 @@ var LevelMeter = function (_PIXI$Container) {
                         this.progressLabel.text = data.progress + '/' + getLevels(data.currentLevel);
                         var targetBar = Math.max((this.baseBar.width - 12) * data.percent, 30);
 
-                        console.log(data);
                         if (targetBar < this.fillBar.width) {
 
                                 this.fillBar.width = targetBar;
@@ -66107,7 +66071,7 @@ var MergeItemsShop = function (_EntityShop) {
         _this.giftItem.x = _this.size.w * 0.1;
         _this.giftItem.y = 80;
         _this.giftItem.updateHorizontalList();
-        _this.giftItem.shopButton.updateCoast('Free Gift');
+        _this.giftItem.shopButton.updateCoast(window.localizationManager.getLabel('freeGift'));
         _this.giftItem.unblock();
         _this.giftItem.shopButton.enable();
         _this.giftItem.shopButton.onClickItem.removeAll();
@@ -66143,7 +66107,7 @@ var MergeItemsShop = function (_EntityShop) {
                     COOKIE_MANAGER.claimGift(this.systemID, -1);
                 }
             } else if (!this.giftItem.isBlocked) {
-                this.giftItem.shopButton.updateCoast('Free Gift');
+                this.giftItem.shopButton.updateCoast(window.localizationManager.getLabel('freeGift'));
                 this.giftItem.shopButton.enable();
             }
             //console.log(latest);
@@ -66178,7 +66142,7 @@ var MergeItemsShop = function (_EntityShop) {
         key: 'show',
         value: function show(id) {
             this.visible = true;
-            this.title.text = window.localizationManager.getLabel('spaceships');
+
             var currentResources = COOKIE_MANAGER.getBoard(this.systemID);
             var currentEntities = [];
             for (var key in currentResources.entities) {
@@ -66268,7 +66232,6 @@ var MergeSystem = function () {
 
         this.baseData = data;
 
-        //console.log(this.baseData.visuals)
         this.systemID = systemID;
         this.gameplayData = data.general;
 
@@ -66522,8 +66485,6 @@ var MergeSystem = function () {
 
             var totalToSpawn = Math.min(Math.floor(timeDiff % 5) - 1, this.totalAvailable());
 
-            console.log('totalToSpawn', totalToSpawn);
-
             setTimeout(function () {
                 _this3.updateAllData();
                 for (var index = 0; index < totalToSpawn; index++) {
@@ -66767,7 +66728,6 @@ var MergeSystem = function () {
         value: function update(delta) {
             var _this5 = this;
 
-            //console.log(this.slots[0][0].scale.x, this.uiContainer.scale.x)
             this.pieceGeneratorsList.forEach(function (piece) {
                 if (_this5.totalAvailable() > 0) {
                     piece.standardState();
@@ -66881,8 +66841,9 @@ var MergeSystem = function () {
                 // let targetPos = slot.tileSprite.getGlobalPosition()
                 // this.onDealDamage.dispatch(targetPos, customData, data.getDamage(), 1)
 
-                console.log('DAMAGE');
+
                 //this.posShootingParticles(targetPos)
+
             });
 
             this.slotsContainer.addChild(slot);
@@ -67076,7 +67037,7 @@ var MergeSystem = function () {
     }, {
         key: 'autoPlace',
         value: function autoPlace(piece) {
-            //console.log("autoplace")
+
             var allAvailables = [];
             var firstAvailable = null;
             for (var i = 0; i < this.slots.length; i++) {
@@ -67123,7 +67084,6 @@ var MergeSystem = function () {
                 }
             }
 
-            //console.log(this.totalAvailable())
             if (this.totalAvailable() > 0) {
                 piece.startCharging();
             }
@@ -67470,7 +67430,7 @@ var ChargerTile = function (_MergeTile) {
         _this.systemID = '';
         _this.outState();
 
-        _this.fullLabel = new PIXI.Text('Full', LABELS.LABEL1);
+        _this.fullLabel = new PIXI.Text(window.localizationManager.getLabel('full'), LABELS.LABEL1);
         _this.fullLabel.anchor.set(0.5);
         _this.fullLabel.style.fontSize = 32;
         _this.container.addChild(_this.fullLabel);
@@ -68262,10 +68222,10 @@ var PuzzleBackground = function (_PuzzleBackgroundBase) {
 										this.rightDetail.texture = new PIXI.Texture.fromFrame('rightPatch');
 										this.rightDetail.scale.set(1);
 										this.leftDetail.scale.set(1);
-										this.leftDetail.x = -150;
-										this.leftDetail.y = -180;
+										this.leftDetail.x = -152;
+										this.leftDetail.y = -189;
 										this.rightDetail.x = 150;
-										this.rightDetail.y = -158;
+										this.rightDetail.y = -182;
 										//this.bottomPatch.visible = false;
 								} else {
 
@@ -68276,7 +68236,7 @@ var PuzzleBackground = function (_PuzzleBackgroundBase) {
 										this.leftDetail.scale.set(0.8);
 
 										this.leftDetail.x = -150;
-										this.leftDetail.y = -140;
+										this.leftDetail.y = -146;
 
 										this.rightDetail.x = 160;
 										this.rightDetail.y = -140;

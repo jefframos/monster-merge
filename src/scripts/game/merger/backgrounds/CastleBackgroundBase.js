@@ -45,6 +45,13 @@ export default class CastleBackgroundBase extends PIXI.Container {
             const element = this.castleSet[index];
             element.sprite.visible = true
         }
+
+        setTimeout(() => {
+            for (let index = 0; index < this.castleSet.length; index++) {
+                const element = this.castleSet[index];
+                element.sprite.visible = true
+            }
+        }, 50);
     }
     getPiece(id) {
         return this.castleSet[id];

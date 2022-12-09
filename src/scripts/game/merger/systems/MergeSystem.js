@@ -11,7 +11,7 @@ export default class MergeSystem {
 
         this.baseData = data;
 
-        //console.log(this.baseData.visuals)
+        
         this.systemID = systemID;
         this.gameplayData = data.general;
 
@@ -263,7 +263,7 @@ export default class MergeSystem {
 
         let totalToSpawn = Math.min(Math.floor(timeDiff % 5) - 1, this.totalAvailable())
 
-        console.log('totalToSpawn', totalToSpawn)
+        
 
         setTimeout(() => {
             this.updateAllData();
@@ -477,7 +477,7 @@ export default class MergeSystem {
     }
     update(delta) {
 
-        //console.log(this.slots[0][0].scale.x, this.uiContainer.scale.x)
+        
         this.pieceGeneratorsList.forEach(piece => {
             if (this.totalAvailable() > 0) {
                 piece.standardState();
@@ -590,7 +590,7 @@ export default class MergeSystem {
             // let targetPos = slot.tileSprite.getGlobalPosition()
             // this.onDealDamage.dispatch(targetPos, customData, data.getDamage(), 1)
 
-            console.log('DAMAGE')
+            
             //this.posShootingParticles(targetPos)
 
         });
@@ -769,7 +769,7 @@ export default class MergeSystem {
         return av
     }
     autoPlace(piece) {
-        //console.log("autoplace")
+        
         let allAvailables = []
         let firstAvailable = null;
         for (var i = 0; i < this.slots.length; i++) {
@@ -819,7 +819,7 @@ export default class MergeSystem {
             }
         }
 
-        //console.log(this.totalAvailable())
+        
         if (this.totalAvailable() > 0) {
             piece.startCharging()
         }

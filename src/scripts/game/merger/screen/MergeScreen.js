@@ -506,29 +506,46 @@ export default class MergeScreen extends Screen {
             element.interactiveBackground.visible = false;
         });
 
+
+        
         this.activeMergeSystemID = id;
         this.activeMergeSystemID %= this.mergeSystemsList.length
-
+        
         this.mergeSystemsList[this.activeMergeSystemID].visible = true;
         this.mergeSystemsList[this.activeMergeSystemID].interactiveBackground.visible = true;
         this.activeMergeSystem = this.mergeSystemsList[this.activeMergeSystemID]
         this.activeMergeSystem.toggle.unlockTextbox.alpha = 0;
-
+        
         this.activeMergeSystem.achievments.checkAll();
+        
+        var lastTime = COOKIE_MANAGER.getLastResourceTime(this.activeMergeSystem.systemID);
 
+        let calcTime = Date.now()/1000 - lastTime.lastChanged
+        
+        setTimeout(() => {
+            
+           
+
+            if(this.activeMergeSystem.rps > 0 && calcTime > 60){
+                calcTime = Math.min(calcTime, 600)
+                this.startGamePopUp(this.activeMergeSystem.rps * Math.ceil(calcTime))
+            }
+        }, 1);
         this.refreshSystemVisuals();
     }
-    startGamePopUp() {
+    startGamePopUp(targetMoney) {
 
-        let target = this.activeMergeSystem.rps * 60
-        let target2 = this.activeMergeSystem.rps * 600
+        let target = targetMoney
+        let target2 = targetMoney * 2
         this.openPopUp(this.standardPopUp, {
             value1: utils.formatPointsLabel(target),
             value2: utils.formatPointsLabel(target2),
-            title: 'Free Coins',
-            confirmLabel: 'Collect',
-            cancelLabel: 'Cancel',
+            title: window.localizationManager.getLabel('welcomeBack'),
+            confirmLabel: window.localizationManager.getLabel('collect'),
+            cancelLabel: window.localizationManager.getLabel('ok'),
             video: true,
+            popUpType: config.assets.popup.secondary,
+            mainLabel2:  window.localizationManager.getLabel('youEarned')+utils.formatPointsLabel(target)+ '\n'+ window.localizationManager.getLabel('watchDouble'),
             onConfirm: () => {
                 window.DO_REWARD(() => {
                     window.gameEconomy.addResources(target2, this.activeMergeSystem.systemID)
@@ -555,10 +572,10 @@ export default class MergeScreen extends Screen {
         this.openPopUp(this.standardPopUp, {
             value1: '-',
             value2: utils.formatPointsLabel(target2),
-            title: 'Level ' + data.currentLevel,
-            confirmLabel: 'Open Shop',
-            cancelLabel: 'OK',
-            mainLabel2: this.activeMergeSystem.dataTiles[data.currentLevel - 1].rawData.displayName + '\nWas unlocked on the shop',
+            title:window.localizationManager.getLabel('level')+' ' + data.currentLevel,
+            confirmLabel: window.localizationManager.getLabel('openShop'),
+            cancelLabel: window.localizationManager.getLabel('ok'),
+            mainLabel2: this.activeMergeSystem.dataTiles[data.currentLevel - 1].rawData.displayName + '\n'+window.localizationManager.getLabel('shopUnlocked'),
             video: false,
             popUpType: config.assets.popup.extra,
             hideAll: true,
@@ -584,10 +601,10 @@ export default class MergeScreen extends Screen {
         this.openPopUp(this.standardPopUp, {
             value1: 0,
             value2: utils.formatPointsLabel(target),
-            title: 'Free Coins',
-            confirmLabel: 'Collect',
-            cancelLabel: 'Cancel',
-            mainLabel2: 'Watch a video earn 10 minutes\nworth of money',
+            title: window.localizationManager.getLabel('freeCoins'),
+            confirmLabel: window.localizationManager.getLabel('collect'),
+            cancelLabel: window.localizationManager.getLabel('cancel'),
+            mainLabel2: window.localizationManager.getLabel('watchToEarn') +' 10\n'+ window.localizationManager.getLabel('minutesWorth'),
             video: true,
             popUpType: config.assets.popup.secondary,
             onConfirm: () => {
@@ -612,14 +629,14 @@ export default class MergeScreen extends Screen {
         let name = this.activeMergeSystem.dataTiles[pieceId].rawData.displayName
         let castlePiece = this.activeMergeSystem.interactiveBackground.getPiece(pieceId).src
 
-        this.notificationPanel.buildNewPieceNotification(imagesrc, 'You discovered ' + name, null, config.assets.popup.secondary)
+        this.notificationPanel.buildNewPieceNotification(imagesrc, window.localizationManager.getLabel('discovered')+' ' + name, null, config.assets.popup.secondary)
 
         SOUND_MANAGER.play('coins_04', 0.4)
 
         setTimeout(() => {
 
             SOUND_MANAGER.play('coins_04', 0.4, 1.1)
-            this.notificationPanel.buildNewPieceNotification(castlePiece, 'You unlock another piece of the castle', null, config.assets.popup.extra)
+            this.notificationPanel.buildNewPieceNotification(castlePiece, window.localizationManager.getLabel('unlockedPiece'), null, config.assets.popup.extra)
             this.activeMergeSystem.interactiveBackground.showAnimation(pieceId)
         }, 2000);
 
@@ -635,10 +652,10 @@ export default class MergeScreen extends Screen {
             value2: piece2.rawData.displayName,
             value1Icon: piece1.rawData.imageSrc,
             value2Icon: piece2.rawData.imageSrc,
-            title: 'Upgrade',
-            confirmLabel: 'Upgrade',
-            cancelLabel: 'Cancel',
-            mainLabel2: 'Watch a video to upgrade this slot',
+            title: window.localizationManager.getLabel('upgrade'),
+            confirmLabel: window.localizationManager.getLabel('upgrade'),
+            cancelLabel: window.localizationManager.getLabel('cancel'),
+            mainLabel2: window.localizationManager.getLabel('upgradeWatch'),
             popUpType: config.assets.popup.secondary,
             mainIcon: 'results_arrow_right',
             mainIconHeight: 30,

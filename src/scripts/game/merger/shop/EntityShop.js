@@ -47,7 +47,7 @@ export default class EntityShop extends PIXI.Container {
         // this.tiledBackground2.alpha = 0.1
 
         this.title = new TextBox(20,config.assets.panel.secondary, 32)//new PIXI.Text(window.localizationManager.getLabel('resources'), LABELS.LABEL1);
-        this.title.updateText(window.localizationManager.getLabel('shop'))
+        this.title.updateText(window.localizationManager.getLabel('entities'))
         // this.portrait = new PIXI.Sprite.fromFrame('skull');
         // this.container.addChild(this.portrait);
         // this.portrait.scale.set(0.65)

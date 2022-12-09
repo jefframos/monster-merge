@@ -56,10 +56,10 @@ export default class PuzzleBackground extends PuzzleBackgroundBase {
 				this.rightDetail.texture = new PIXI.Texture.fromFrame('rightPatch')
 				this.rightDetail.scale.set(1)
 				this.leftDetail.scale.set(1)
-				this.leftDetail.x = -150
-				this.leftDetail.y = -180
+				this.leftDetail.x = -152
+				this.leftDetail.y = -189
 				this.rightDetail.x = 150
-				this.rightDetail.y = -158
+				this.rightDetail.y = -182
 				//this.bottomPatch.visible = false;
 
 			} else {
@@ -71,7 +71,7 @@ export default class PuzzleBackground extends PuzzleBackgroundBase {
 				this.leftDetail.scale.set(0.8)
 
 				this.leftDetail.x = -150
-				this.leftDetail.y = -140
+				this.leftDetail.y = -146
 
 				this.rightDetail.x = 160
 				this.rightDetail.y = -140

@@ -342,6 +342,11 @@ export default class CookieManager {
 		return this.fullData[id].economy
 		return this.getCookie('economy')
 	}
+
+	getLastResourceTime(id){
+		return this.fullData[id].economy
+	}
+
 	getResources(id) {
 		return this.fullData[id].resources
 		return this.getCookie('resources')

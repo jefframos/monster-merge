@@ -20,7 +20,7 @@ export default class MergeItemsShop extends EntityShop {
         this.giftItem.x = this.size.w * 0.1
         this.giftItem.y = 80
         this.giftItem.updateHorizontalList();
-        this.giftItem.shopButton.updateCoast('Free Gift')
+        this.giftItem.shopButton.updateCoast(window.localizationManager.getLabel('freeGift'))
         this.giftItem.unblock()
         this.giftItem.shopButton.enable();
         this.giftItem.shopButton.onClickItem.removeAll()
@@ -52,7 +52,7 @@ export default class MergeItemsShop extends EntityShop {
             }
 
         } else if (!this.giftItem.isBlocked) {
-            this.giftItem.shopButton.updateCoast('Free Gift')
+            this.giftItem.shopButton.updateCoast(window.localizationManager.getLabel('freeGift'))
             this.giftItem.shopButton.enable();
         }
         //console.log(latest);
@@ -83,7 +83,7 @@ export default class MergeItemsShop extends EntityShop {
     }
     show(id) {
         this.visible = true;
-        this.title.text = window.localizationManager.getLabel('spaceships')
+       
         let currentResources = COOKIE_MANAGER.getBoard(this.systemID);
         let currentEntities = []
         for (const key in currentResources.entities) {

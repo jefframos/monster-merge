@@ -59,7 +59,7 @@ export default class AchievmentView extends PIXI.Container {
 
         this.data = data;
         //let desc = data.title+'\n'+data.description
-        let desc = data.description
+        let desc =  window.localizationManager.getLabel(data.description)
         this.descriptionLabel = this.addLabelToNotification(desc, this.popUp.width / 2)
         this.descriptionLabel.style.align = 'left'
 
@@ -84,6 +84,7 @@ export default class AchievmentView extends PIXI.Container {
     addLabelToNotification(text, wrap = 0) {
         let label = new PIXI.Text(text, LABELS.LABEL1);
         label.scaleContentMax = true;
+        label.style.fontSize = 22
         if (wrap) {
             label.style.wordWrap = true
             label.style.wordWrapWidth = wrap
@@ -102,7 +103,7 @@ export default class AchievmentView extends PIXI.Container {
         if(achieveData.claimed >= this.data.values.length){
             this.claimButton.deactiveMax();
             this.progressBar.visible = false;
-            this.descriptionLabel.text = this.data.title
+            this.descriptionLabel.text = window.localizationManager.getLabel(this.data.title)
             this.contentList.updateHorizontalList();
             return 0
         }

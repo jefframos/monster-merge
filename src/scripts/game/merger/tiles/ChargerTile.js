@@ -60,7 +60,7 @@ export default class ChargerTile extends MergeTile {
         this.systemID = '';
         this.outState()
 
-        this.fullLabel =new PIXI.Text('Full', LABELS.LABEL1)
+        this.fullLabel =new PIXI.Text(window.localizationManager.getLabel('full'), LABELS.LABEL1)
         this.fullLabel.anchor.set(0.5)
         this.fullLabel.style.fontSize = 32
         this.container.addChild(this.fullLabel)

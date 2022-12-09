@@ -8,7 +8,7 @@
             "stageMultiplier":1.2,
             "icon":"",
             "title":"Explorer",
-            "description":"Discover {x} Entities"
+            "description":"achievement1"
         },
         {
             "name":"reach",
@@ -18,7 +18,7 @@
             "stageMultiplier":1.2,
             "icon":"",
             "title":"Researcher",
-            "description":"Reach Level {x}"
+            "description":"achievement2"
         },
         {
             "name":"buy",
@@ -28,7 +28,7 @@
             "stageMultiplier":1.2,
             "icon":"",
             "title":"Buyer",
-            "description":"Buy {x} Entities"
+            "description":"achievement3"
         },
         {
             "name":"merge",
@@ -38,7 +38,7 @@
             "stageMultiplier":1.2,
             "icon":"",
             "title":"Merger",
-            "description":"Merge {x} Times"
+            "description":"achievement4"
         },
         {
             "name":"tap",
@@ -48,7 +48,7 @@
             "stageMultiplier":1.2,
             "icon":"",
             "title":"Builder",
-            "description":"Tap Generator {x} Times"
+            "description":"achievement5"
         },
         {
             "name":"reveal",
@@ -58,7 +58,7 @@
             "stageMultiplier":1.2,
             "icon":"",
             "title":"Adventorous",
-            "description":"Open {x} Boxes"
+            "description":"achievement6"
         },
         {
             "name":"mystery",
@@ -68,7 +68,7 @@
             "stageMultiplier":1.2,
             "icon":"",
             "title":"Curious",
-            "description":"Open {x} Mystery Crates"
+            "description":"achievement7"
         }
         
     ]

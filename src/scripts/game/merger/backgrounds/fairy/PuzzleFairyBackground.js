@@ -56,10 +56,10 @@ export default class PuzzleFairyBackground extends PuzzleBackgroundBase {
 				// this.rightDetail.texture = new PIXI.Texture.fromFrame('rightPatch')
 				this.rightDetail.scale.set(1)
 				this.leftDetail.scale.set(-1,1)
-				this.leftDetail.x = -480 
-				this.leftDetail.y = -180
+				this.leftDetail.x = -490 
+				this.leftDetail.y = -182
 				this.rightDetail.x = 150
-				this.rightDetail.y = -158
+				this.rightDetail.y = -182
 				//this.bottomPatch.visible = false;
 
 			} else {

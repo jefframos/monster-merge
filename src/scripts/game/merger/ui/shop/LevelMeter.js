@@ -86,7 +86,6 @@ export default class LevelMeter extends PIXI.Container {
         this.progressLabel.text = data.progress+'/'+getLevels(data.currentLevel)
         let targetBar = Math.max((this.baseBar.width-12) * data.percent, 30);
 
-        console.log(data)
         if(targetBar < this.fillBar.width){
 
             this.fillBar.width = targetBar

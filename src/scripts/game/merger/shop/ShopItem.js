@@ -70,11 +70,10 @@ export default class ShopItem extends UIList {
         this.descriptionLabel.style.stroke = 0
         this.descriptionLabel.style.strokeThickness = 6
         this.descriptionContainer.scaleContentMax = true;
-        this.descriptionContainer.listScl = 0.4;
         this.descriptionContainer.align = 0;
         this.descriptionContainer.addChild(this.descriptionLabel)
 
-        //this.elementsList.push(this.descriptionContainer);
+        this.elementsList.push(this.descriptionContainer);
         //this.container.addChild(this.descriptionContainer);
 
         this.shopButton = new ShopButton();
@@ -123,8 +122,8 @@ export default class ShopItem extends UIList {
 
         this.noSlotAvailable = new PIXI.Container();
         this.addChild(this.noSlotAvailable);
-
-        this.noSlotLabel = new PIXI.Text('No slot available', LABELS.LABEL1);
+        
+        this.noSlotLabel = new PIXI.Text(window.localizationManager.getLabel('noSlot'), LABELS.LABEL1);
         this.noSlotAvailable.addChild(this.noSlotLabel);
         this.noSlotLabel.style.fontSize = 14
 
@@ -202,74 +201,7 @@ export default class ShopItem extends UIList {
         }
 
     }
-    updateValues() {
-        let currentLevel = 1;
-        let levelPercent = currentLevel / this.staticData.levelMax;
-        let shopItemValues = GAME_DATA.getShopValues(this.itemData);
-        let leveldValues = GAME_DATA.getActionStats(this.itemData);
-        this.realCost = shopItemValues.cost;
-        let cost = utils.formatPointsLabel(shopItemValues.cost / MAX_NUMBER);
-        // let levelPercent = this.staticData.levelMax / ((this.staticData.levelMax + 1)  - currentLevel);
-        this.shopButton.updateCoast(cost)
-
-
-        if (!GAME_DATA.canBuyIt(this.itemData) && !this.isBlocked) {
-            this.shopButton.deactive();
-        }
-        else {
-            this.shopButton.enable();
-        }
-        this.itemIcon.texture = PIXI.Texture.from(this.staticData.icon)
-
-        this.levelLabel.text = window.localizationManager.getLabel('level') + this.itemData.level
-
-        if (this.itemData.level <= 0) {
-            this.attributesList.visible = false;
-            this.levelContainer.visible = false;
-        }
-        else {
-            this.attributesList.visible = true;
-            this.levelContainer.visible = true;
-        }
-
-        if (this.staticData.shopType == 'video') {
-            this.attributesList.visible = true;
-            this.levelContainer.visible = true;
-            this.isVideo = true;
-        }
-        if (this.attributesList) {
-            for (let type in leveldValues) {
-                if (this.staticData.stats[type]) {
-                    if (!this.staticData.stats[type].hideOnShop) {
-                        if (leveldValues[type]) {
-                            let desc = this.filterLocalized(this.itemData.rawData.attributeDescription);
-
-                            if (leveldValues[type] < 100) {
-                                this.attributesList[type].text = leveldValues[type].toFixed(2)
-                                if (desc) {
-                                    this.attributesList[type].text += desc
-                                }
-                            }
-                            else {
-                                this.attributesList[type].text = utils.formatPointsLabel(leveldValues[type] / MAX_NUMBER);
-                                if (desc) {
-                                    this.attributesList[type].text += desc
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            // this.descriptionLabel.pivot.x = this.descriptionLabel.width / 2
-            // this.totalLabel.text = 'cooldown ' + leveldValues.cooldown+ '\nactive time' + leveldValues.activeTime + '\nvalue' + leveldValues.value;
-        }
-        this.updateHorizontalList(true);
-        this.descriptionContainer.y = 0;
-        this.descriptionLabel.text = this.staticData.shopDesc.toUpperCase()
-        // this.descriptionLabel.x = this.attributesList.x + this.attributesList.width / 2
-
-    }
+   
     changeBgColor() {
         this.currentColor++;
         this.currentColor %= COLORS.length - 1;
@@ -442,7 +374,7 @@ export default class ShopItem extends UIList {
         this.itemData = itemData;
         let image = this.itemData.rawData.tileImageSrc ? this.itemData.rawData.tileImageSrc : this.itemData.rawData.imageSrc
         this.itemIcon.texture = new PIXI.Texture.from(image);
-        this.descriptionLabel.text = this.filterLocalized(this.itemData.rawData.displayName)
+        this.descriptionLabel.text = "@AAA"//this.filterLocalized(this.itemData.rawData.displayName)
 
 
         let iconType = this.itemData.type == 'damage' ? 'bullets' : 'coin'
@@ -457,7 +389,7 @@ export default class ShopItem extends UIList {
             //this.attributesList.w = this.descriptionContainer.listScl * this.w * 0.9;
             //this.attributesList.h = this.h * 0.5
 
-            this.descriptionContainer.addChild(this.attributesList);
+           // this.descriptionContainer.addChild(this.attributesList);
 
             let count = 0
             types.forEach(element => {

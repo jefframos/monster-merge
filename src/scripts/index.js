@@ -186,7 +186,6 @@ function startLoader() {
 
         PIXI.loader.onProgress.add((e)=>{
             game.updateLoader(e.progress)
-            console.log('loading',e.progress)
         })
     // FbManager.connect().then(() =>
     //     {
