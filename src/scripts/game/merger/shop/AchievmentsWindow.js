@@ -7,11 +7,12 @@ import ShopItem from './ShopItem';
 import config from '../../../config';
 
 export default class AchievmentsWindow extends EntityShop {
-    constructor(mainSystem, systemID, ) {
+    constructor(mainSystem, systemID, systemOrder) {
         super(mainSystem, systemID, 7, {
             w: config.width * 0.9,
             h: config.height * 0.9
         })
+        this.systemOrder = systemOrder;
         this.onAddEntity = new Signals();
         this.onAchievmentPending = new Signals();
         this.onNoAchievmentPending = new Signals();
@@ -146,7 +147,7 @@ export default class AchievmentsWindow extends EntityShop {
 
             this.currentItensByType[items[index].variable] = shopItem;
 
-            shopItem.setData(items[index], this.systemID)
+            shopItem.setData(items[index], this.systemID,this.systemOrder)
             //shopItem.nameID = items[index].rawData.nameID;
 
             shopItem.onClaim.add((value)=>{

@@ -3,6 +3,7 @@ import * as PIXI from 'pixi.js';
 import MergeScreen from './MergeScreen';
 import ScreenManager from '../../../screenManager/ScreenManager';
 import config from '../../../config';
+import ScreenTransition from './ScreenTransition';
 
 export default class MergerScreenManager extends ScreenManager {
     constructor() {
@@ -67,6 +68,10 @@ export default class MergerScreenManager extends ScreenManager {
             this.isPaused = false;
         })
 
+        this.screenTransition = new ScreenTransition();
+        this.addChild(this.screenTransition);
+
+        this.screenTransition.x = config.width/2;
     }
     addCoinsParticles(pos, quant = 5, customData = {}) {
         this.particleSystem.show(pos, quant, customData)
@@ -95,6 +100,7 @@ export default class MergerScreenManager extends ScreenManager {
     forceChange(screenLabel, param) {
 
         super.forceChange(screenLabel, param);
+        this.screenTransition.startTransitionOut();               
     }
     change(screenLabel, param) {
         super.change(screenLabel, param);

@@ -125,7 +125,7 @@ export default class ShopItem extends UIList {
         
         this.noSlotLabel = new PIXI.Text(window.localizationManager.getLabel('noSlot'), LABELS.LABEL1);
         this.noSlotAvailable.addChild(this.noSlotLabel);
-        this.noSlotLabel.style.fontSize = 14
+        this.noSlotLabel.style.fontSize = 20
 
 
         this.currentColor = 0;

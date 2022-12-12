@@ -532,7 +532,6 @@ export default class MergeSystem {
 
             SOUND_MANAGER.play('Pop-Tone', 0.3)
 
-
             this.updateAllData();
         });
 
@@ -546,6 +545,8 @@ export default class MergeSystem {
 
             this.currentDragSlot = null;
             this.draggingEntity = false;
+
+            this.entityDragSprite.visible = false
         });
         slot.onSpecialReveal.add((slot) => {
             this.checkMax();

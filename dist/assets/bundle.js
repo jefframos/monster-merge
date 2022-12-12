@@ -1522,6 +1522,128 @@ function premultiplyTintToRgba(tint, alpha, out, premultiply) {
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = {
+	width: 750 * 0.8,
+	height: 1334 * 0.8,
+	webgl: true,
+	effectsLayer: null,
+	colors: {
+		background: 0x000000
+	},
+	rendererOptions: {
+		//pixi rendererOptions
+		resolution: 2, //window.devicePixelRatio,
+		antialias: true,
+		backgroundColor: 0x000000
+	},
+	levels: [],
+	assets: {
+		button: {
+			primarySquare: 'square_0001',
+			secondarySquare: 'square_0002',
+			tertiarySquare: 'square_0003',
+			warningSquare: 'square_0004',
+			extraSquare: 'square_0005',
+			greySquare: 'square_0006',
+
+			squarePadding: [35, 35, 35, 35],
+
+			primaryLong: 'square_0001',
+			secondaryLong: 'square_0002',
+			tertiaryLong: 'square_0003',
+			warningLong: 'square_0004',
+			extraLong: 'square_0005',
+			greyLong: 'square_0006',
+
+			longPadding: [35, 35, 35, 35]
+		},
+		box: {
+			square: 'square_0006s',
+			squareExtra: 'square_0005',
+			squareWarning: 'square_0004',
+			padding: [20, 20, 20, 20],
+			squareSmall: 'square_0007s',
+			paddingSmall: [35 / 2, 35 / 2, 35 / 2, 35 / 2]
+		},
+		bars: {
+			background: 'square_0006s',
+			backgroundPadding: [35 / 2, 35 / 2, 35 / 2, 35 / 2],
+			primary: 'square_0001s',
+			secondary: 'square_0002s',
+			tertiary: 'square_0003s',
+			warning: 'square_0004s',
+			extra: 'square_0005s',
+
+			barPadding: [35 / 2, 0, 35 / 2, 0]
+
+		},
+		panel: {
+			primary: 'square_0001',
+			secondary: 'square_0002',
+			tertiary: 'square_0003',
+			grey: 'square_0006',
+			extra: 'square_0005',
+			padding: [35, 35, 35, 35]
+
+		},
+		popup: {
+			primary: 'square_0001',
+			secondary: 'square_0002',
+			tertiary: 'square_0003',
+			extra: 'square_0005',
+			grey: 'square_0006',
+			darkGrey: 'square_0007',
+			warning: 'square_0004',
+			padding: [35, 35, 35, 35]
+
+		}
+	},
+	addPaddingSquareButton: function addPaddingSquareButton(nineSlice) {
+		this.addPadding(nineSlice, this.assets.button.squarePadding);
+	},
+	addPaddingLongButton: function addPaddingLongButton(nineSlice) {
+		this.addPadding(nineSlice, this.assets.button.longPadding);
+	},
+	addPaddingPopup: function addPaddingPopup(nineSlice) {
+		this.addPadding(nineSlice, this.assets.popup.padding);
+	},
+	addPaddingPanel: function addPaddingPanel(nineSlice) {
+		this.addPadding(nineSlice, this.assets.panel.padding);
+	},
+	addPaddingBackBar: function addPaddingBackBar(nineSlice) {
+		this.addPadding(nineSlice, this.assets.bars.backgroundPadding);
+	},
+	addPaddingBar: function addPaddingBar(nineSlice) {
+		this.addPadding(nineSlice, this.assets.bars.barPadding);
+	},
+	addPaddingBoxSmall: function addPaddingBoxSmall(nineSlice) {
+		this.addPadding(nineSlice, this.assets.box.paddingSmall);
+	},
+	addPaddingBox: function addPaddingBox(nineSlice) {
+		this.addPadding(nineSlice, this.assets.box.padding);
+	},
+	addPadding: function addPadding(nineSlice, padding) {
+		var order = ['leftWidth', 'topHeight', 'rightWidth', 'bottomHeight'];
+
+		for (var index = 0; index < order.length; index++) {
+			var element = order[index];
+			nineSlice[element] = padding[index];
+		}
+	}
+
+};
+module.exports = exports['default'];
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var __WEBPACK_AMD_DEFINE_RESULT__;/*jslint onevar:true, undef:true, newcap:true, regexp:true, bitwise:true, maxerr:50, indent:4, white:false, nomen:false, plusplus:false */
 /*global define:false, require:false, exports:false, module:false, signals:false */
 
@@ -1971,128 +2093,6 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*jslint onevar:true, undef:true, newcap:true,
 
 
 /***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.default = {
-	width: 750 * 0.8,
-	height: 1334 * 0.8,
-	webgl: true,
-	effectsLayer: null,
-	colors: {
-		background: 0x000000
-	},
-	rendererOptions: {
-		//pixi rendererOptions
-		resolution: 2, //window.devicePixelRatio,
-		antialias: true,
-		backgroundColor: 0x000000
-	},
-	levels: [],
-	assets: {
-		button: {
-			primarySquare: 'square_0001',
-			secondarySquare: 'square_0002',
-			tertiarySquare: 'square_0003',
-			warningSquare: 'square_0004',
-			extraSquare: 'square_0005',
-			greySquare: 'square_0006',
-
-			squarePadding: [35, 35, 35, 35],
-
-			primaryLong: 'square_0001',
-			secondaryLong: 'square_0002',
-			tertiaryLong: 'square_0003',
-			warningLong: 'square_0004',
-			extraLong: 'square_0005',
-			greyLong: 'square_0006',
-
-			longPadding: [35, 35, 35, 35]
-		},
-		box: {
-			square: 'square_0006s',
-			squareExtra: 'square_0005',
-			squareWarning: 'square_0004',
-			padding: [20, 20, 20, 20],
-			squareSmall: 'square_0007s',
-			paddingSmall: [35 / 2, 35 / 2, 35 / 2, 35 / 2]
-		},
-		bars: {
-			background: 'square_0006s',
-			backgroundPadding: [35 / 2, 35 / 2, 35 / 2, 35 / 2],
-			primary: 'square_0001s',
-			secondary: 'square_0002s',
-			tertiary: 'square_0003s',
-			warning: 'square_0004s',
-			extra: 'square_0005s',
-
-			barPadding: [35 / 2, 0, 35 / 2, 0]
-
-		},
-		panel: {
-			primary: 'square_0001',
-			secondary: 'square_0002',
-			tertiary: 'square_0003',
-			grey: 'square_0006',
-			extra: 'square_0005',
-			padding: [35, 35, 35, 35]
-
-		},
-		popup: {
-			primary: 'square_0001',
-			secondary: 'square_0002',
-			tertiary: 'square_0003',
-			extra: 'square_0005',
-			grey: 'square_0006',
-			darkGrey: 'square_0007',
-			warning: 'square_0004',
-			padding: [35, 35, 35, 35]
-
-		}
-	},
-	addPaddingSquareButton: function addPaddingSquareButton(nineSlice) {
-		this.addPadding(nineSlice, this.assets.button.squarePadding);
-	},
-	addPaddingLongButton: function addPaddingLongButton(nineSlice) {
-		this.addPadding(nineSlice, this.assets.button.longPadding);
-	},
-	addPaddingPopup: function addPaddingPopup(nineSlice) {
-		this.addPadding(nineSlice, this.assets.popup.padding);
-	},
-	addPaddingPanel: function addPaddingPanel(nineSlice) {
-		this.addPadding(nineSlice, this.assets.panel.padding);
-	},
-	addPaddingBackBar: function addPaddingBackBar(nineSlice) {
-		this.addPadding(nineSlice, this.assets.bars.backgroundPadding);
-	},
-	addPaddingBar: function addPaddingBar(nineSlice) {
-		this.addPadding(nineSlice, this.assets.bars.barPadding);
-	},
-	addPaddingBoxSmall: function addPaddingBoxSmall(nineSlice) {
-		this.addPadding(nineSlice, this.assets.box.paddingSmall);
-	},
-	addPaddingBox: function addPaddingBox(nineSlice) {
-		this.addPadding(nineSlice, this.assets.box.padding);
-	},
-	addPadding: function addPadding(nineSlice, padding) {
-		var order = ['leftWidth', 'topHeight', 'rightWidth', 'bottomHeight'];
-
-		for (var index = 0; index < order.length; index++) {
-			var element = order[index];
-			nineSlice[element] = padding[index];
-		}
-	}
-
-};
-module.exports = exports['default'];
-
-/***/ }),
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2437,745 +2437,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /***/ }),
 /* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _defineProperty2 = __webpack_require__(161);
-
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
-
-var _typeof2 = __webpack_require__(50);
-
-var _typeof3 = _interopRequireDefault(_typeof2);
-
-var _isNan = __webpack_require__(190);
-
-var _isNan2 = _interopRequireDefault(_isNan);
-
-var _resizeToFitMaxAR$res;
-
-var _config = __webpack_require__(10);
-
-var _config2 = _interopRequireDefault(_config);
-
-var _pixi = __webpack_require__(0);
-
-var PIXI = _interopRequireWildcard(_pixi);
-
-var _conversionUtils = __webpack_require__(294);
-
-var _conversionUtils2 = _interopRequireDefault(_conversionUtils);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = (_resizeToFitMaxAR$res = {
-    resizeToFitMaxAR: function resizeToFitMaxAR(size, element, res) {
-        if (!res) {
-            res = element;
-        }
-        var sclX = size.width / (res.width / res.scale.x);
-        var sclY = size.height / (res.height / res.scale.y);
-        var min = Math.max(sclX, sclY);
-        element.scale.set(min);
-    },
-    resizeToFitAR: function resizeToFitAR(size, element, res) {
-        if (!res) {
-            res = element;
-        }
-        var sclX = size.width / (res.width / res.scale.x);
-        var sclY = size.height / (res.height / res.scale.y);
-        var min = Math.min(sclX, sclY);
-        element.scale.set(min);
-    },
-    resizeToFitARCap: function resizeToFitARCap(size, element, res) {
-        var cap = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
-
-        if (!res) {
-            res = element;
-        }
-        var sclX = size.width / (res.width / res.scale.x);
-        var sclY = size.height / (res.height / res.scale.y);
-        var min = Math.min(sclX, sclY);
-        min = Math.min(min, cap);
-        element.scale.set(min);
-    },
-    resizeToFit: function resizeToFit(size, element) {
-        var sclX = size.width / (element.width / element.scale.x);
-        var sclY = size.height / (element.height / element.scale.y);
-        var min = Math.min(sclX, sclY);
-        element.scale.set(sclX, sclY);
-    },
-    cloneMatrix: function cloneMatrix(target) {
-        var matrix = [];
-        for (var index = 0; index < target.length; index++) {
-            var temp = [];
-            for (var j = 0; j < target[index].length; j++) {
-                temp.push(target[index][j]);
-            }
-            matrix.push(temp);
-        }
-        return matrix;
-    },
-    findMax: function findMax(target) {
-        var matrix = [];
-        for (var index = 0; index < target.length; index++) {
-            for (var j = 0; j < target[index].length; j++) {
-                if (target[index][j] && target[index][j].tileData) {
-
-                    matrix.push(target[index][j].tileData.getID());
-                }
-            }
-        }
-        return Math.max.apply(Math, matrix);
-    },
-    findDPS: function findDPS(target) {
-        var max = 0;
-        for (var index = 0; index < target.length; index++) {
-            for (var j = 0; j < target[index].length; j++) {
-                if (target[index][j] && target[index][j].tileData) {
-                    var data = target[index][j].tileData;
-                    max += data.getRawDamage() / data.getGenerateDamageTime();
-                }
-            }
-        }
-        if ((0, _isNan2.default)(max)) {
-            return 0;
-        }
-        return max * window.gameModifyers.getDamageMultiplier();
-    },
-    findRPS2: function findRPS2(target) {
-        var max = 0;
-        for (var index = 0; index < target.length; index++) {
-            if (target[index] && target[index].tileData) {
-                var data = target[index].tileData;
-                max += Math.round(data.getRawResources() / data.getGenerateResourceTime());
-            }
-        }
-        if ((0, _isNan2.default)(max)) {
-            return 0;
-        }
-        return max * window.gameModifyers.getResourcesMultiplier();
-    },
-    findRPS: function findRPS(target) {
-        var max = 0;
-        for (var index = 0; index < target.length; index++) {
-            for (var j = 0; j < target[index].length; j++) {
-                if (target[index][j] && target[index][j].tileData) {
-                    var data = target[index][j].tileData;
-                    max += Math.round(data.getRawResources() / data.getGenerateResourceTime());
-                }
-            }
-        }
-        if ((0, _isNan2.default)(max)) {
-            return 0;
-        }
-        return max * window.gameModifyers.getResourcesMultiplier();
-    },
-    findRPS3: function findRPS3(target) {
-        var max = 0;
-        for (var index = 0; index < target.length; index++) {
-            for (var j = 0; j < target[index].length; j++) {
-                if (target[index][j] && target[index][j].tileData && target[index][j].visible && !target[index][j].showingGift) {
-                    var data = target[index][j].tileData;
-                    max += data.getRPS();
-                }
-            }
-        }
-        if ((0, _isNan2.default)(max)) {
-            return 0;
-        }
-        return max; //* window.gameModifyers.getResourcesMultiplier()
-    },
-    convertNumToTime: function convertNumToTime(number) {
-        // Check sign of given number
-        var hours = Math.floor(number / 60);
-        var minutes = number % 60;
-        if (minutes == 0) {
-            minutes += '0';
-        }
-        return hours + ":" + minutes;
-    },
-    generateTextureFromContainer: function generateTextureFromContainer(id, content, list) {
-        if (list[id]) {
-            return list[id];
-        }
-        var texture = renderer.renderer.generateTexture(content);
-        list[id] = texture;
-
-        return texture;
-    },
-    generateSpriteFromContainer: function generateSpriteFromContainer(id, content, list) {
-        if (list[id]) {
-            return list[id];
-        }
-        var texture = renderer.renderer.generateTexture(content);
-        var gridSprite = new PIXI.Sprite();
-        gridSprite.setTexture(texture);
-        list[id] = gridSprite;
-
-        return gridSprite;
-    },
-    getRandomValue: function getRandomValue(array, exception) {
-        var value = array[Math.floor(Math.random() * array.length)];
-        if (exception) {
-            var equal = true;
-            while (equal) {
-                equal = false;
-                for (var i = 0; i < exception.length; i++) {
-                    if (exception[i] == value) {
-                        equal = true;
-                    }
-                }
-                if (equal) {
-                    value = array[Math.floor(Math.random() * array.length)];
-                }
-            }
-        }
-        return value;
-    },
-    trimMatrix2: function trimMatrix2(piecesOP) {
-        var ignoreBlocker = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-        if (piecesOP.length <= 0) {
-            return;
-        }
-        var pieces = this.cloneMatrix(piecesOP);
-        var colCounters = [];
-        var lineCounters = [];
-        for (var i = 0; i < pieces.length; i++) {
-            colCounters.push(0);
-        }
-        for (var _i = 0; _i < pieces[0].length; _i++) {
-            lineCounters.push(0);
-        }
-        for (var _i2 = 0; _i2 < pieces.length; _i2++) {
-            for (var j = 0; j < pieces[_i2].length; j++) {
-                var element = pieces[_i2][j];
-                if (element && element.visible) {
-                    lineCounters[j]++;
-                    colCounters[_i2]++;
-                }
-            }
-        }
-
-        var padding = { left: 0, right: 0, top: 0, bottom: 0 };
-
-        for (var _i3 = 0; _i3 < lineCounters.length; _i3++) {
-            var _element = lineCounters[_i3];
-            if (!_element) {
-                padding.left++;
-            } else {
-                break;
-            }
-        }
-        for (var _i4 = lineCounters.length - 1; _i4 >= 0; _i4--) {
-            var _element2 = lineCounters[_i4];
-            if (!_element2) {
-                padding.right++;
-            } else {
-                break;
-            }
-        }
-
-        for (var _i5 = 0; _i5 < colCounters.length; _i5++) {
-            var _element3 = colCounters[_i5];
-            if (!_element3) {
-                padding.top++;
-            } else {
-                break;
-            }
-        }
-        for (var _i6 = colCounters.length - 1; _i6 >= 0; _i6--) {
-            var _element4 = colCounters[_i6];
-            if (!_element4) {
-                padding.bottom++;
-            } else {
-                break;
-            }
-        }
-
-        pieces.splice(0, padding.top);
-        pieces.splice(pieces.length - padding.bottom, padding.bottom);
-
-        for (var _i7 = 0; _i7 < pieces.length; _i7++) {
-            pieces[_i7].splice(0, padding.left);
-            pieces[_i7].splice(pieces[_i7].length - padding.right, padding.right);
-        }
-
-        return padding;
-    },
-    trimMatrix: function trimMatrix(piecesOP) {
-        var ignoreBlocker = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-        if (piecesOP.length <= 0) {
-            return;
-        }
-        var pieces = this.cloneMatrix(piecesOP);
-        var colCounters = [];
-        var lineCounters = [];
-        for (var i = 0; i < pieces.length; i++) {
-            colCounters.push(0);
-        }
-        for (var _i8 = 0; _i8 < pieces[0].length; _i8++) {
-            lineCounters.push(0);
-        }
-        for (var _i9 = 0; _i9 < pieces.length; _i9++) {
-            for (var j = 0; j < pieces[_i9].length; j++) {
-                var element = pieces[_i9][j];
-                if (element) {
-                    lineCounters[j]++;
-                    colCounters[_i9]++;
-                }
-            }
-        }
-
-        var padding = { left: 0, right: 0, top: 0, bottom: 0 };
-
-        for (var _i10 = 0; _i10 < lineCounters.length; _i10++) {
-            var _element5 = lineCounters[_i10];
-            if (!_element5) {
-                padding.left++;
-            } else {
-                break;
-            }
-        }
-        for (var _i11 = lineCounters.length - 1; _i11 >= 0; _i11--) {
-            var _element6 = lineCounters[_i11];
-            if (!_element6) {
-                padding.right++;
-            } else {
-                break;
-            }
-        }
-
-        for (var _i12 = 0; _i12 < colCounters.length; _i12++) {
-            var _element7 = colCounters[_i12];
-            if (!_element7) {
-                padding.top++;
-            } else {
-                break;
-            }
-        }
-        for (var _i13 = colCounters.length - 1; _i13 >= 0; _i13--) {
-            var _element8 = colCounters[_i13];
-            if (!_element8) {
-                padding.bottom++;
-            } else {
-                break;
-            }
-        }
-
-        pieces.splice(0, padding.top);
-        pieces.splice(pieces.length - padding.bottom, padding.bottom);
-
-        for (var _i14 = 0; _i14 < pieces.length; _i14++) {
-            pieces[_i14].splice(0, padding.left);
-            pieces[_i14].splice(pieces[_i14].length - padding.right, padding.right);
-        }
-
-        return padding;
-    },
-
-    // formatPointsLabel2(tempPoints){
-    //     let abv = ['','K','M','B','T','aa','bb','cc','dd','ee'];
-
-    //     let currentAbv = abv[Math.floor((tempPoints - 1).toString().length / 3)]
-
-    //     tempPoints = Math.round(tempPoints * MAX_NUMBER);
-    //     let lenght = Math.floor((tempPoints - 1).toString().length / 3) + 2;
-    //     // console.log(tempPoints, lenght);
-    //     let max = Math.pow(10, lenght)
-    //     // console.log(max);
-
-    //     console.log(tempPoints, max, 'div');
-    //     tempPoints /= max;
-    //     if (tempPoints.toString().length < 4)
-    //     {
-    //         let fix = 2
-    //         tempPoints = tempPoints.toFixed(fix).toString()
-    //         // console.log(tempPoints + temp);
-    //     }
-    //     else if (tempPoints.toString().length > 4)
-    //     {
-    //         let tempRound = Math.floor(tempPoints)
-    //         console.log(tempRound);
-    //         tempPoints = tempPoints.toFixed(4 - tempRound.toString().length - 1)
-    //     }
-
-    //     tempPoints = this.cleanString(tempPoints)
-
-    //     console.log(tempPoints + currentAbv);
-    // },
-    formatPointsLabel: function formatPointsLabel(tempPoints) {
-        var debug = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-        return _conversionUtils2.default.formatPointsLabel(tempPoints, debug);
-    },
-    cleanString: function cleanString(str) {
-        if (str.toString().indexOf('.') == -1) {
-            return str;
-        }
-        for (var i = str.length - 1; i >= 0; i--) {
-            if (str[i] == 0) {
-                str = str.slice(0, -1);
-            } else {
-                break;
-            }
-        }
-        if (str[str.length - 1] == '.') {
-            str = str.slice(0, -1);
-        }
-        return str;
-    },
-    stringToObject: function stringToObject(str, type) {
-        type = type || "object"; // can pass "function"
-        var arr = str.split(".");
-
-        var fn = window || this;
-        for (var i = 0, len = arr.length; i < len; i++) {
-            fn = fn[arr[i]];
-        }
-        if ((typeof fn === 'undefined' ? 'undefined' : (0, _typeof3.default)(fn)) !== type) {
-            throw new Error(type + " not found: " + str);
-        }
-
-        return fn;
-    },
-    centerObject: function centerObject(target, parent) {
-        target.x = parent.width / 2 - target.width * 0.5;
-        target.y = parent.height / 2 - target.height * 0.5;
-    },
-    shuffle: function shuffle(a) {
-        for (var i = a.length; i; i--) {
-            var j = Math.floor(Math.random() * i);
-            var _ref = [a[j], a[i - 1]];
-            a[i - 1] = _ref[0];
-            a[j] = _ref[1];
-        }
-    },
-    lerp: function lerp(x, y, a) {
-        return x * (1 - a) + y * a;
-    },
-    clamp: function clamp(a) {
-        var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-        var max = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-
-        return Math.min(max, Math.max(min, a));
-    },
-    invlerp: function invlerp(x, y, a) {
-        return clamp((a - x) / (y - x));
-    },
-    range: function range(x1, y1, x2, y2, a) {
-        return lerp(x2, y2, invlerp(x1, y1, a));
-    },
-    distance: function distance(x1, y1, x2, y2) {
-        return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
-    },
-    killColorTween: function killColorTween(target) {
-        for (var i = this.tweenList.length - 1; i >= 0; i--) {
-            if (this.tweenList[i].target == target) {
-                this.tweenList[i].tween.kill();
-                this.tweenList.splice(i, 1);
-            }
-        }
-    },
-    addColorTween: function addColorTween(target, currentColor, targetColor) {
-        var time = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 2;
-        var delay = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
-
-        if (!this.tweenList) {
-            this.tweenList = [];
-        }
-        var currentColorData = this.toRGB(currentColor);
-        var targetColorData = this.toRGB(targetColor);
-        var black = this.toRGB(0x000000);
-        var tweenObj = {
-            tween: TweenLite.to(currentColorData, time, {
-                delay: delay,
-                r: targetColorData.r,
-                g: targetColorData.g,
-                b: targetColorData.b,
-                onUpdate: function (targ) {
-                    currentColorData.r = Math.floor(currentColorData.r);
-                    currentColorData.g = Math.floor(currentColorData.g);
-                    currentColorData.b = Math.floor(currentColorData.b);
-                    targ.tint = this.rgbToColor(currentColorData.r, currentColorData.g, currentColorData.b);
-                }.bind(this),
-                onUpdateParams: [target]
-            }),
-            target: target
-        };
-        this.tweenList.push(tweenObj);
-        return tweenObj;
-    },
-    toRGB: function toRGB(rgb) {
-        var r = rgb >> 16 & 0xFF;
-        var g = rgb >> 8 & 0xFF;
-        var b = rgb & 0xFF;
-        return {
-            r: r,
-            g: g,
-            b: b
-        };
-    },
-    rgbToColor: function rgbToColor(r, g, b) {
-        return r << 16 | g << 8 | b;
-    },
-    getRect: function getRect() {
-        var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 4;
-        var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0xFFFFFF;
-
-        return new PIXI.Graphics().beginFill(color).drawRect(0, 0, size, size);
-    },
-    shuffleText: function shuffleText(label) {
-        return label;
-        var rnd1 = String.fromCharCode(Math.floor(Math.random() * 20) + 65);
-        var rnd2 = Math.floor(Math.random() * 9);
-        var rnd3 = String.fromCharCode(Math.floor(Math.random() * 20) + 65);
-        var tempLabel = label.split('');
-        var rndPause = Math.random();
-        if (rndPause < 0.2) {
-            var pos1 = Math.floor(Math.random() * tempLabel.length);
-            var pos2 = Math.floor(Math.random() * tempLabel.length);
-            if (tempLabel[pos1] != '\n') tempLabel[pos1] = rnd2;
-            if (tempLabel[pos2] != '\n') tempLabel[pos2] = rnd3;
-        } else if (rndPause < 0.5) {
-            var pos3 = Math.floor(Math.random() * tempLabel.length);
-            if (tempLabel[pos3] != '\n') tempLabel[pos3] = rnd3;
-        }
-        var returnLabel = '';
-        for (var i = 0; i < tempLabel.length; i++) {
-            returnLabel += tempLabel[i];
-        }
-        return returnLabel;
-    },
-    generateImage: function generateImage(level) {
-        var container = new PIXI.Container();
-        var tempRect = null;
-        var size = 16;
-        for (var i = 0; i < this.level.length; i++) {
-            for (var j = 0; j < this.level[i].length; j++) {
-                if (this.level[i][j] >= 0) {
-                    // this.cardsContainer.addChild(this.placeCard(j, i, ENEMIES.list[this.level[i][j]].life));
-                    tempRect = this.getRect(size, ENEMIES.list[this.level[i][j]].color);
-                    container.addChild(tempRect);
-                    tempRect.x = j * size;
-                    tempRect.y = i * size;
-                } else if (this.level[i][j] == -2) {
-                    tempRect = this.getRect(size, 0x333333);
-                    container.addChild(tempRect);
-                    tempRect.x = j * size;
-                    tempRect.y = i * size;
-                } else {
-                    tempRect = this.getRect(size, 0x000000);
-                    container.addChild(tempRect);
-                    tempRect.x = j * size;
-                    tempRect.y = i * size;
-                }
-            }
-        }
-        return container;
-    },
-    alphabetCompare: function alphabetCompare(a, b) {
-        var yA = a.type;
-        var yB = b.type;
-        if (yA < yB) {
-            return -1;
-        }
-        if (yA > yB) {
-            return 1;
-        }
-        return 0;
-    },
-    xCompare: function xCompare(a, b) {
-        var yA = a.x;
-        var yB = b.x;
-        if (yA > yB) {
-            return -1;
-        }
-        if (yA < yB) {
-            return 1;
-        }
-        return 0;
-    },
-    distCompare: function distCompare(a, b) {
-        var yA = a.dist;
-        var yB = b.dist;
-        if (yA === yB) {
-            return 0;
-        }
-        if (a.noDepth || b.noDepth) {
-            return 0;
-        }
-        if (yA < yB) {
-            return -1;
-        }
-        if (yA > yB) {
-            return 1;
-        }
-        return 0;
-    },
-    depthCompare: function depthCompare(a, b) {
-        var yA = a.y;
-        var yB = b.y;
-        if (yA === yB) {
-            return 0;
-        }
-        if (a.noDepth || b.noDepth) {
-            return 0;
-        }
-        if (yA < yB) {
-            return -1;
-        }
-        if (yA > yB) {
-            return 1;
-        }
-        return 0;
-    },
-    createNoiseTexture: function createNoiseTexture(config) {
-
-        var params = config ? config : {};
-
-        var canvas = document.createElement('canvas');
-        canvas.width = params.width ? params.width : 32;
-        canvas.height = params.height ? params.height : 32;
-
-        var ctx = canvas.getContext('2d'),
-            x,
-            y,
-            number,
-            opacity = params.opacity ? params.opacity : 0.2;
-
-        for (x = 0; x < canvas.width; x++) {
-            for (y = 0; y < canvas.height; y++) {
-                number = Math.floor(Math.random() * 60);
-                ctx.fillStyle = "rgba(" + number + "," + number + "," + number + "," + opacity + ")";
-                ctx.fillRect(x, y, 1, 1);
-            }
-        }
-
-        var sprite = new PIXI.Sprite(PIXI.Texture.fromCanvas(canvas));
-        sprite.anchor.set(0.5);
-        return sprite;
-    },
-    createDotTexture: function createDotTexture(config) {
-
-        var params = config ? config : {};
-
-        var canvas = document.createElement('canvas');
-        canvas.width = params.width ? params.width : 32;
-        canvas.height = params.height ? params.height : 32;
-
-        var ctx = canvas.getContext('2d');
-
-        var x = canvas.width / 2,
-            y = canvas.height / 2,
-
-        // Radii of the white glow.
-        innerRadius = config.innerRadius ? config.innerRadius : 0,
-            outerRadius = config.outerRadius ? config.outerRadius : canvas.width * 0.3,
-
-        // Radius of the entire circle.
-        radius = canvas.width;
-
-        var gradient = ctx.createRadialGradient(x, y, innerRadius, x, y, outerRadius);
-        gradient.addColorStop(0, 'white');
-        gradient.addColorStop(0.5, '#333');
-        // gradient.addColorStop(0.75, '#030303');
-        gradient.addColorStop(0.75, '#020202');
-        gradient.addColorStop(0.95, '#010101');
-        gradient.addColorStop(0.7, 'black');
-
-        ctx.arc(x, y, radius, 0, 2 * Math.PI);
-
-        ctx.fillStyle = gradient;
-        ctx.fill();
-
-        var sprite = new PIXI.Sprite(PIXI.Texture.fromCanvas(canvas));
-        sprite.anchor.set(0.5);
-        return sprite;
-    },
-    perlinNoise: function perlinNoise(config) {
-        var params = config ? config : {};
-
-        var canvas = document.createElement('canvas');
-        canvas.width = params.width ? params.width : 32;
-        canvas.height = params.height ? params.height : 32;
-
-        var noise = this.randomNoise(canvas);
-        var ctx = canvas.getContext('2d');
-        ctx.save();
-
-        /* Scale random iterations onto the canvas to generate Perlin noise. */
-        for (var size = 4; size <= noise.width; size *= 2) {
-            var x = Math.random() * (noise.width - size) | 0,
-                y = Math.random() * (noise.height - size) | 0;
-            ctx.globalAlpha = 4 / size;
-            ctx.drawImage(noise, x, y, size, size, 0, 0, canvas.width, canvas.height);
-        }
-
-        ctx.restore();
-        var sprite = new PIXI.Sprite(PIXI.Texture.fromCanvas(canvas));
-        sprite.anchor.set(0.5);
-        return sprite;
-    },
-    randomNoise: function randomNoise(canvas, x, y, width, height, alpha) {
-        var canvas = document.createElement('canvas');
-        x = x || 0;
-        y = y || 0;
-        width = width || canvas.width;
-        height = height || canvas.height;
-        alpha = alpha || 255;
-        var g = canvas.getContext("2d"),
-            imageData = g.getImageData(x, y, width, height),
-            random = Math.random,
-            pixels = imageData.data,
-            n = pixels.length,
-            i = 0;
-        while (i < n) {
-            pixels[i++] = pixels[i++] = pixels[i++] = random() * 256 | 0;
-            pixels[i++] = alpha;
-        }
-        g.putImageData(imageData, x, y);
-        return canvas;
-    },
-    getSprite: function getSprite(frame) {
-        var texture = PIXI.Texture.from(frame);
-        return new PIXI.Sprite(texture);
-    }
-}, (0, _defineProperty3.default)(_resizeToFitMaxAR$res, 'shuffle', function shuffle(a) {
-    for (var i = a.length; i; i--) {
-        var j = Math.floor(Math.random() * i);
-        var _ref2 = [a[j], a[i - 1]];
-        a[i - 1] = _ref2[0];
-        a[j] = _ref2[1];
-    }
-}), (0, _defineProperty3.default)(_resizeToFitMaxAR$res, 'distance', function distance(x1, y1, x2, y2) {
-    return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
-}), (0, _defineProperty3.default)(_resizeToFitMaxAR$res, 'linearTween', function linearTween(t, b, c, d) {
-    return c * t / d + b;
-}), (0, _defineProperty3.default)(_resizeToFitMaxAR$res, 'easeOutCubic', function easeOutCubic(t, b, c, d) {
-    t /= d;
-    t--;
-    return c * (t * t * t + 1) + b;
-}), (0, _defineProperty3.default)(_resizeToFitMaxAR$res, 'easeInExpo', function easeInExpo(t, b, c, d) {
-    return c * Math.pow(2, 10 * (t / d - 1)) + b;
-}), (0, _defineProperty3.default)(_resizeToFitMaxAR$res, 'easeInCirc', function easeInCirc(t, b, c, d) {
-    t /= d;
-    return -c * (Math.sqrt(1 - t * t) - 1) + b;
-}), _resizeToFitMaxAR$res);
-module.exports = exports['default'];
-
-/***/ }),
-/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -11159,6 +10420,745 @@ if (_gsScope._gsDefine) { _gsScope._gsQueue.pop()(); } //necessary in case Tween
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)))
 
 /***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _defineProperty2 = __webpack_require__(161);
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
+var _typeof2 = __webpack_require__(50);
+
+var _typeof3 = _interopRequireDefault(_typeof2);
+
+var _isNan = __webpack_require__(190);
+
+var _isNan2 = _interopRequireDefault(_isNan);
+
+var _resizeToFitMaxAR$res;
+
+var _config = __webpack_require__(9);
+
+var _config2 = _interopRequireDefault(_config);
+
+var _pixi = __webpack_require__(0);
+
+var PIXI = _interopRequireWildcard(_pixi);
+
+var _conversionUtils = __webpack_require__(294);
+
+var _conversionUtils2 = _interopRequireDefault(_conversionUtils);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = (_resizeToFitMaxAR$res = {
+    resizeToFitMaxAR: function resizeToFitMaxAR(size, element, res) {
+        if (!res) {
+            res = element;
+        }
+        var sclX = size.width / (res.width / res.scale.x);
+        var sclY = size.height / (res.height / res.scale.y);
+        var min = Math.max(sclX, sclY);
+        element.scale.set(min);
+    },
+    resizeToFitAR: function resizeToFitAR(size, element, res) {
+        if (!res) {
+            res = element;
+        }
+        var sclX = size.width / (res.width / res.scale.x);
+        var sclY = size.height / (res.height / res.scale.y);
+        var min = Math.min(sclX, sclY);
+        element.scale.set(min);
+    },
+    resizeToFitARCap: function resizeToFitARCap(size, element, res) {
+        var cap = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
+
+        if (!res) {
+            res = element;
+        }
+        var sclX = size.width / (res.width / res.scale.x);
+        var sclY = size.height / (res.height / res.scale.y);
+        var min = Math.min(sclX, sclY);
+        min = Math.min(min, cap);
+        element.scale.set(min);
+    },
+    resizeToFit: function resizeToFit(size, element) {
+        var sclX = size.width / (element.width / element.scale.x);
+        var sclY = size.height / (element.height / element.scale.y);
+        var min = Math.min(sclX, sclY);
+        element.scale.set(sclX, sclY);
+    },
+    cloneMatrix: function cloneMatrix(target) {
+        var matrix = [];
+        for (var index = 0; index < target.length; index++) {
+            var temp = [];
+            for (var j = 0; j < target[index].length; j++) {
+                temp.push(target[index][j]);
+            }
+            matrix.push(temp);
+        }
+        return matrix;
+    },
+    findMax: function findMax(target) {
+        var matrix = [];
+        for (var index = 0; index < target.length; index++) {
+            for (var j = 0; j < target[index].length; j++) {
+                if (target[index][j] && target[index][j].tileData) {
+
+                    matrix.push(target[index][j].tileData.getID());
+                }
+            }
+        }
+        return Math.max.apply(Math, matrix);
+    },
+    findDPS: function findDPS(target) {
+        var max = 0;
+        for (var index = 0; index < target.length; index++) {
+            for (var j = 0; j < target[index].length; j++) {
+                if (target[index][j] && target[index][j].tileData) {
+                    var data = target[index][j].tileData;
+                    max += data.getRawDamage() / data.getGenerateDamageTime();
+                }
+            }
+        }
+        if ((0, _isNan2.default)(max)) {
+            return 0;
+        }
+        return max * window.gameModifyers.getDamageMultiplier();
+    },
+    findRPS2: function findRPS2(target) {
+        var max = 0;
+        for (var index = 0; index < target.length; index++) {
+            if (target[index] && target[index].tileData) {
+                var data = target[index].tileData;
+                max += Math.round(data.getRawResources() / data.getGenerateResourceTime());
+            }
+        }
+        if ((0, _isNan2.default)(max)) {
+            return 0;
+        }
+        return max * window.gameModifyers.getResourcesMultiplier();
+    },
+    findRPS: function findRPS(target) {
+        var max = 0;
+        for (var index = 0; index < target.length; index++) {
+            for (var j = 0; j < target[index].length; j++) {
+                if (target[index][j] && target[index][j].tileData) {
+                    var data = target[index][j].tileData;
+                    max += Math.round(data.getRawResources() / data.getGenerateResourceTime());
+                }
+            }
+        }
+        if ((0, _isNan2.default)(max)) {
+            return 0;
+        }
+        return max * window.gameModifyers.getResourcesMultiplier();
+    },
+    findRPS3: function findRPS3(target) {
+        var max = 0;
+        for (var index = 0; index < target.length; index++) {
+            for (var j = 0; j < target[index].length; j++) {
+                if (target[index][j] && target[index][j].tileData && target[index][j].visible && !target[index][j].showingGift) {
+                    var data = target[index][j].tileData;
+                    max += data.getRPS();
+                }
+            }
+        }
+        if ((0, _isNan2.default)(max)) {
+            return 0;
+        }
+        return max; //* window.gameModifyers.getResourcesMultiplier()
+    },
+    convertNumToTime: function convertNumToTime(number) {
+        // Check sign of given number
+        var hours = Math.floor(number / 60);
+        var minutes = number % 60;
+        if (minutes == 0) {
+            minutes += '0';
+        }
+        return hours + ":" + minutes;
+    },
+    generateTextureFromContainer: function generateTextureFromContainer(id, content, list) {
+        if (list[id]) {
+            return list[id];
+        }
+        var texture = renderer.renderer.generateTexture(content);
+        list[id] = texture;
+
+        return texture;
+    },
+    generateSpriteFromContainer: function generateSpriteFromContainer(id, content, list) {
+        if (list[id]) {
+            return list[id];
+        }
+        var texture = renderer.renderer.generateTexture(content);
+        var gridSprite = new PIXI.Sprite();
+        gridSprite.setTexture(texture);
+        list[id] = gridSprite;
+
+        return gridSprite;
+    },
+    getRandomValue: function getRandomValue(array, exception) {
+        var value = array[Math.floor(Math.random() * array.length)];
+        if (exception) {
+            var equal = true;
+            while (equal) {
+                equal = false;
+                for (var i = 0; i < exception.length; i++) {
+                    if (exception[i] == value) {
+                        equal = true;
+                    }
+                }
+                if (equal) {
+                    value = array[Math.floor(Math.random() * array.length)];
+                }
+            }
+        }
+        return value;
+    },
+    trimMatrix2: function trimMatrix2(piecesOP) {
+        var ignoreBlocker = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+        if (piecesOP.length <= 0) {
+            return;
+        }
+        var pieces = this.cloneMatrix(piecesOP);
+        var colCounters = [];
+        var lineCounters = [];
+        for (var i = 0; i < pieces.length; i++) {
+            colCounters.push(0);
+        }
+        for (var _i = 0; _i < pieces[0].length; _i++) {
+            lineCounters.push(0);
+        }
+        for (var _i2 = 0; _i2 < pieces.length; _i2++) {
+            for (var j = 0; j < pieces[_i2].length; j++) {
+                var element = pieces[_i2][j];
+                if (element && element.visible) {
+                    lineCounters[j]++;
+                    colCounters[_i2]++;
+                }
+            }
+        }
+
+        var padding = { left: 0, right: 0, top: 0, bottom: 0 };
+
+        for (var _i3 = 0; _i3 < lineCounters.length; _i3++) {
+            var _element = lineCounters[_i3];
+            if (!_element) {
+                padding.left++;
+            } else {
+                break;
+            }
+        }
+        for (var _i4 = lineCounters.length - 1; _i4 >= 0; _i4--) {
+            var _element2 = lineCounters[_i4];
+            if (!_element2) {
+                padding.right++;
+            } else {
+                break;
+            }
+        }
+
+        for (var _i5 = 0; _i5 < colCounters.length; _i5++) {
+            var _element3 = colCounters[_i5];
+            if (!_element3) {
+                padding.top++;
+            } else {
+                break;
+            }
+        }
+        for (var _i6 = colCounters.length - 1; _i6 >= 0; _i6--) {
+            var _element4 = colCounters[_i6];
+            if (!_element4) {
+                padding.bottom++;
+            } else {
+                break;
+            }
+        }
+
+        pieces.splice(0, padding.top);
+        pieces.splice(pieces.length - padding.bottom, padding.bottom);
+
+        for (var _i7 = 0; _i7 < pieces.length; _i7++) {
+            pieces[_i7].splice(0, padding.left);
+            pieces[_i7].splice(pieces[_i7].length - padding.right, padding.right);
+        }
+
+        return padding;
+    },
+    trimMatrix: function trimMatrix(piecesOP) {
+        var ignoreBlocker = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+        if (piecesOP.length <= 0) {
+            return;
+        }
+        var pieces = this.cloneMatrix(piecesOP);
+        var colCounters = [];
+        var lineCounters = [];
+        for (var i = 0; i < pieces.length; i++) {
+            colCounters.push(0);
+        }
+        for (var _i8 = 0; _i8 < pieces[0].length; _i8++) {
+            lineCounters.push(0);
+        }
+        for (var _i9 = 0; _i9 < pieces.length; _i9++) {
+            for (var j = 0; j < pieces[_i9].length; j++) {
+                var element = pieces[_i9][j];
+                if (element) {
+                    lineCounters[j]++;
+                    colCounters[_i9]++;
+                }
+            }
+        }
+
+        var padding = { left: 0, right: 0, top: 0, bottom: 0 };
+
+        for (var _i10 = 0; _i10 < lineCounters.length; _i10++) {
+            var _element5 = lineCounters[_i10];
+            if (!_element5) {
+                padding.left++;
+            } else {
+                break;
+            }
+        }
+        for (var _i11 = lineCounters.length - 1; _i11 >= 0; _i11--) {
+            var _element6 = lineCounters[_i11];
+            if (!_element6) {
+                padding.right++;
+            } else {
+                break;
+            }
+        }
+
+        for (var _i12 = 0; _i12 < colCounters.length; _i12++) {
+            var _element7 = colCounters[_i12];
+            if (!_element7) {
+                padding.top++;
+            } else {
+                break;
+            }
+        }
+        for (var _i13 = colCounters.length - 1; _i13 >= 0; _i13--) {
+            var _element8 = colCounters[_i13];
+            if (!_element8) {
+                padding.bottom++;
+            } else {
+                break;
+            }
+        }
+
+        pieces.splice(0, padding.top);
+        pieces.splice(pieces.length - padding.bottom, padding.bottom);
+
+        for (var _i14 = 0; _i14 < pieces.length; _i14++) {
+            pieces[_i14].splice(0, padding.left);
+            pieces[_i14].splice(pieces[_i14].length - padding.right, padding.right);
+        }
+
+        return padding;
+    },
+
+    // formatPointsLabel2(tempPoints){
+    //     let abv = ['','K','M','B','T','aa','bb','cc','dd','ee'];
+
+    //     let currentAbv = abv[Math.floor((tempPoints - 1).toString().length / 3)]
+
+    //     tempPoints = Math.round(tempPoints * MAX_NUMBER);
+    //     let lenght = Math.floor((tempPoints - 1).toString().length / 3) + 2;
+    //     // console.log(tempPoints, lenght);
+    //     let max = Math.pow(10, lenght)
+    //     // console.log(max);
+
+    //     console.log(tempPoints, max, 'div');
+    //     tempPoints /= max;
+    //     if (tempPoints.toString().length < 4)
+    //     {
+    //         let fix = 2
+    //         tempPoints = tempPoints.toFixed(fix).toString()
+    //         // console.log(tempPoints + temp);
+    //     }
+    //     else if (tempPoints.toString().length > 4)
+    //     {
+    //         let tempRound = Math.floor(tempPoints)
+    //         console.log(tempRound);
+    //         tempPoints = tempPoints.toFixed(4 - tempRound.toString().length - 1)
+    //     }
+
+    //     tempPoints = this.cleanString(tempPoints)
+
+    //     console.log(tempPoints + currentAbv);
+    // },
+    formatPointsLabel: function formatPointsLabel(tempPoints) {
+        var debug = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+        return _conversionUtils2.default.formatPointsLabel(tempPoints, debug);
+    },
+    cleanString: function cleanString(str) {
+        if (str.toString().indexOf('.') == -1) {
+            return str;
+        }
+        for (var i = str.length - 1; i >= 0; i--) {
+            if (str[i] == 0) {
+                str = str.slice(0, -1);
+            } else {
+                break;
+            }
+        }
+        if (str[str.length - 1] == '.') {
+            str = str.slice(0, -1);
+        }
+        return str;
+    },
+    stringToObject: function stringToObject(str, type) {
+        type = type || "object"; // can pass "function"
+        var arr = str.split(".");
+
+        var fn = window || this;
+        for (var i = 0, len = arr.length; i < len; i++) {
+            fn = fn[arr[i]];
+        }
+        if ((typeof fn === 'undefined' ? 'undefined' : (0, _typeof3.default)(fn)) !== type) {
+            throw new Error(type + " not found: " + str);
+        }
+
+        return fn;
+    },
+    centerObject: function centerObject(target, parent) {
+        target.x = parent.width / 2 - target.width * 0.5;
+        target.y = parent.height / 2 - target.height * 0.5;
+    },
+    shuffle: function shuffle(a) {
+        for (var i = a.length; i; i--) {
+            var j = Math.floor(Math.random() * i);
+            var _ref = [a[j], a[i - 1]];
+            a[i - 1] = _ref[0];
+            a[j] = _ref[1];
+        }
+    },
+    lerp: function lerp(x, y, a) {
+        return x * (1 - a) + y * a;
+    },
+    clamp: function clamp(a) {
+        var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+        var max = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+
+        return Math.min(max, Math.max(min, a));
+    },
+    invlerp: function invlerp(x, y, a) {
+        return clamp((a - x) / (y - x));
+    },
+    range: function range(x1, y1, x2, y2, a) {
+        return lerp(x2, y2, invlerp(x1, y1, a));
+    },
+    distance: function distance(x1, y1, x2, y2) {
+        return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+    },
+    killColorTween: function killColorTween(target) {
+        for (var i = this.tweenList.length - 1; i >= 0; i--) {
+            if (this.tweenList[i].target == target) {
+                this.tweenList[i].tween.kill();
+                this.tweenList.splice(i, 1);
+            }
+        }
+    },
+    addColorTween: function addColorTween(target, currentColor, targetColor) {
+        var time = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 2;
+        var delay = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
+
+        if (!this.tweenList) {
+            this.tweenList = [];
+        }
+        var currentColorData = this.toRGB(currentColor);
+        var targetColorData = this.toRGB(targetColor);
+        var black = this.toRGB(0x000000);
+        var tweenObj = {
+            tween: TweenLite.to(currentColorData, time, {
+                delay: delay,
+                r: targetColorData.r,
+                g: targetColorData.g,
+                b: targetColorData.b,
+                onUpdate: function (targ) {
+                    currentColorData.r = Math.floor(currentColorData.r);
+                    currentColorData.g = Math.floor(currentColorData.g);
+                    currentColorData.b = Math.floor(currentColorData.b);
+                    targ.tint = this.rgbToColor(currentColorData.r, currentColorData.g, currentColorData.b);
+                }.bind(this),
+                onUpdateParams: [target]
+            }),
+            target: target
+        };
+        this.tweenList.push(tweenObj);
+        return tweenObj;
+    },
+    toRGB: function toRGB(rgb) {
+        var r = rgb >> 16 & 0xFF;
+        var g = rgb >> 8 & 0xFF;
+        var b = rgb & 0xFF;
+        return {
+            r: r,
+            g: g,
+            b: b
+        };
+    },
+    rgbToColor: function rgbToColor(r, g, b) {
+        return r << 16 | g << 8 | b;
+    },
+    getRect: function getRect() {
+        var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 4;
+        var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0xFFFFFF;
+
+        return new PIXI.Graphics().beginFill(color).drawRect(0, 0, size, size);
+    },
+    shuffleText: function shuffleText(label) {
+        return label;
+        var rnd1 = String.fromCharCode(Math.floor(Math.random() * 20) + 65);
+        var rnd2 = Math.floor(Math.random() * 9);
+        var rnd3 = String.fromCharCode(Math.floor(Math.random() * 20) + 65);
+        var tempLabel = label.split('');
+        var rndPause = Math.random();
+        if (rndPause < 0.2) {
+            var pos1 = Math.floor(Math.random() * tempLabel.length);
+            var pos2 = Math.floor(Math.random() * tempLabel.length);
+            if (tempLabel[pos1] != '\n') tempLabel[pos1] = rnd2;
+            if (tempLabel[pos2] != '\n') tempLabel[pos2] = rnd3;
+        } else if (rndPause < 0.5) {
+            var pos3 = Math.floor(Math.random() * tempLabel.length);
+            if (tempLabel[pos3] != '\n') tempLabel[pos3] = rnd3;
+        }
+        var returnLabel = '';
+        for (var i = 0; i < tempLabel.length; i++) {
+            returnLabel += tempLabel[i];
+        }
+        return returnLabel;
+    },
+    generateImage: function generateImage(level) {
+        var container = new PIXI.Container();
+        var tempRect = null;
+        var size = 16;
+        for (var i = 0; i < this.level.length; i++) {
+            for (var j = 0; j < this.level[i].length; j++) {
+                if (this.level[i][j] >= 0) {
+                    // this.cardsContainer.addChild(this.placeCard(j, i, ENEMIES.list[this.level[i][j]].life));
+                    tempRect = this.getRect(size, ENEMIES.list[this.level[i][j]].color);
+                    container.addChild(tempRect);
+                    tempRect.x = j * size;
+                    tempRect.y = i * size;
+                } else if (this.level[i][j] == -2) {
+                    tempRect = this.getRect(size, 0x333333);
+                    container.addChild(tempRect);
+                    tempRect.x = j * size;
+                    tempRect.y = i * size;
+                } else {
+                    tempRect = this.getRect(size, 0x000000);
+                    container.addChild(tempRect);
+                    tempRect.x = j * size;
+                    tempRect.y = i * size;
+                }
+            }
+        }
+        return container;
+    },
+    alphabetCompare: function alphabetCompare(a, b) {
+        var yA = a.type;
+        var yB = b.type;
+        if (yA < yB) {
+            return -1;
+        }
+        if (yA > yB) {
+            return 1;
+        }
+        return 0;
+    },
+    xCompare: function xCompare(a, b) {
+        var yA = a.x;
+        var yB = b.x;
+        if (yA > yB) {
+            return -1;
+        }
+        if (yA < yB) {
+            return 1;
+        }
+        return 0;
+    },
+    distCompare: function distCompare(a, b) {
+        var yA = a.dist;
+        var yB = b.dist;
+        if (yA === yB) {
+            return 0;
+        }
+        if (a.noDepth || b.noDepth) {
+            return 0;
+        }
+        if (yA < yB) {
+            return -1;
+        }
+        if (yA > yB) {
+            return 1;
+        }
+        return 0;
+    },
+    depthCompare: function depthCompare(a, b) {
+        var yA = a.y;
+        var yB = b.y;
+        if (yA === yB) {
+            return 0;
+        }
+        if (a.noDepth || b.noDepth) {
+            return 0;
+        }
+        if (yA < yB) {
+            return -1;
+        }
+        if (yA > yB) {
+            return 1;
+        }
+        return 0;
+    },
+    createNoiseTexture: function createNoiseTexture(config) {
+
+        var params = config ? config : {};
+
+        var canvas = document.createElement('canvas');
+        canvas.width = params.width ? params.width : 32;
+        canvas.height = params.height ? params.height : 32;
+
+        var ctx = canvas.getContext('2d'),
+            x,
+            y,
+            number,
+            opacity = params.opacity ? params.opacity : 0.2;
+
+        for (x = 0; x < canvas.width; x++) {
+            for (y = 0; y < canvas.height; y++) {
+                number = Math.floor(Math.random() * 60);
+                ctx.fillStyle = "rgba(" + number + "," + number + "," + number + "," + opacity + ")";
+                ctx.fillRect(x, y, 1, 1);
+            }
+        }
+
+        var sprite = new PIXI.Sprite(PIXI.Texture.fromCanvas(canvas));
+        sprite.anchor.set(0.5);
+        return sprite;
+    },
+    createDotTexture: function createDotTexture(config) {
+
+        var params = config ? config : {};
+
+        var canvas = document.createElement('canvas');
+        canvas.width = params.width ? params.width : 32;
+        canvas.height = params.height ? params.height : 32;
+
+        var ctx = canvas.getContext('2d');
+
+        var x = canvas.width / 2,
+            y = canvas.height / 2,
+
+        // Radii of the white glow.
+        innerRadius = config.innerRadius ? config.innerRadius : 0,
+            outerRadius = config.outerRadius ? config.outerRadius : canvas.width * 0.3,
+
+        // Radius of the entire circle.
+        radius = canvas.width;
+
+        var gradient = ctx.createRadialGradient(x, y, innerRadius, x, y, outerRadius);
+        gradient.addColorStop(0, 'white');
+        gradient.addColorStop(0.5, '#333');
+        // gradient.addColorStop(0.75, '#030303');
+        gradient.addColorStop(0.75, '#020202');
+        gradient.addColorStop(0.95, '#010101');
+        gradient.addColorStop(0.7, 'black');
+
+        ctx.arc(x, y, radius, 0, 2 * Math.PI);
+
+        ctx.fillStyle = gradient;
+        ctx.fill();
+
+        var sprite = new PIXI.Sprite(PIXI.Texture.fromCanvas(canvas));
+        sprite.anchor.set(0.5);
+        return sprite;
+    },
+    perlinNoise: function perlinNoise(config) {
+        var params = config ? config : {};
+
+        var canvas = document.createElement('canvas');
+        canvas.width = params.width ? params.width : 32;
+        canvas.height = params.height ? params.height : 32;
+
+        var noise = this.randomNoise(canvas);
+        var ctx = canvas.getContext('2d');
+        ctx.save();
+
+        /* Scale random iterations onto the canvas to generate Perlin noise. */
+        for (var size = 4; size <= noise.width; size *= 2) {
+            var x = Math.random() * (noise.width - size) | 0,
+                y = Math.random() * (noise.height - size) | 0;
+            ctx.globalAlpha = 4 / size;
+            ctx.drawImage(noise, x, y, size, size, 0, 0, canvas.width, canvas.height);
+        }
+
+        ctx.restore();
+        var sprite = new PIXI.Sprite(PIXI.Texture.fromCanvas(canvas));
+        sprite.anchor.set(0.5);
+        return sprite;
+    },
+    randomNoise: function randomNoise(canvas, x, y, width, height, alpha) {
+        var canvas = document.createElement('canvas');
+        x = x || 0;
+        y = y || 0;
+        width = width || canvas.width;
+        height = height || canvas.height;
+        alpha = alpha || 255;
+        var g = canvas.getContext("2d"),
+            imageData = g.getImageData(x, y, width, height),
+            random = Math.random,
+            pixels = imageData.data,
+            n = pixels.length,
+            i = 0;
+        while (i < n) {
+            pixels[i++] = pixels[i++] = pixels[i++] = random() * 256 | 0;
+            pixels[i++] = alpha;
+        }
+        g.putImageData(imageData, x, y);
+        return canvas;
+    },
+    getSprite: function getSprite(frame) {
+        var texture = PIXI.Texture.from(frame);
+        return new PIXI.Sprite(texture);
+    }
+}, (0, _defineProperty3.default)(_resizeToFitMaxAR$res, 'shuffle', function shuffle(a) {
+    for (var i = a.length; i; i--) {
+        var j = Math.floor(Math.random() * i);
+        var _ref2 = [a[j], a[i - 1]];
+        a[i - 1] = _ref2[0];
+        a[j] = _ref2[1];
+    }
+}), (0, _defineProperty3.default)(_resizeToFitMaxAR$res, 'distance', function distance(x1, y1, x2, y2) {
+    return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+}), (0, _defineProperty3.default)(_resizeToFitMaxAR$res, 'linearTween', function linearTween(t, b, c, d) {
+    return c * t / d + b;
+}), (0, _defineProperty3.default)(_resizeToFitMaxAR$res, 'easeOutCubic', function easeOutCubic(t, b, c, d) {
+    t /= d;
+    t--;
+    return c * (t * t * t + 1) + b;
+}), (0, _defineProperty3.default)(_resizeToFitMaxAR$res, 'easeInExpo', function easeInExpo(t, b, c, d) {
+    return c * Math.pow(2, 10 * (t / d - 1)) + b;
+}), (0, _defineProperty3.default)(_resizeToFitMaxAR$res, 'easeInCirc', function easeInCirc(t, b, c, d) {
+    t /= d;
+    return -c * (Math.sqrt(1 - t * t) - 1) + b;
+}), _resizeToFitMaxAR$res);
+module.exports = exports['default'];
+
+/***/ }),
 /* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13746,19 +13746,19 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var signals = _interopRequireWildcard(_signals);
 
-var _gsap = __webpack_require__(14);
+var _gsap = __webpack_require__(13);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
-var _utils = __webpack_require__(13);
+var _utils = __webpack_require__(14);
 
 var _utils2 = _interopRequireDefault(_utils);
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -22164,7 +22164,7 @@ var _ShopLockState = __webpack_require__(351);
 
 var _ShopLockState2 = _interopRequireDefault(_ShopLockState);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
@@ -22176,11 +22176,11 @@ var _UIList2 = __webpack_require__(30);
 
 var _UIList3 = _interopRequireDefault(_UIList2);
 
-var _utils = __webpack_require__(13);
+var _utils = __webpack_require__(14);
 
 var _utils2 = _interopRequireDefault(_utils);
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -22304,7 +22304,7 @@ var ShopItem = function (_UIList) {
 
         _this.noSlotLabel = new PIXI.Text(window.localizationManager.getLabel('noSlot'), LABELS.LABEL1);
         _this.noSlotAvailable.addChild(_this.noSlotLabel);
-        _this.noSlotLabel.style.fontSize = 14;
+        _this.noSlotLabel.style.fontSize = 20;
 
         _this.currentColor = 0;
         _this.realCost = 0;
@@ -22657,7 +22657,7 @@ var _inherits2 = __webpack_require__(5);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _gsap = __webpack_require__(14);
+var _gsap = __webpack_require__(13);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
@@ -22665,7 +22665,7 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -22847,15 +22847,15 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _utils = __webpack_require__(13);
+var _utils = __webpack_require__(14);
 
 var _utils2 = _interopRequireDefault(_utils);
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _gsap = __webpack_require__(14);
+var _gsap = __webpack_require__(13);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
@@ -23030,6 +23030,7 @@ var InteractiveBackgrounds = function (_PIXI$Container) {
         var _this = (0, _possibleConstructorReturn3.default)(this, (InteractiveBackgrounds.__proto__ || (0, _getPrototypeOf2.default)(InteractiveBackgrounds)).call(this));
 
         _this.build();
+        _this.skyColor = _this.castleBackground.skyColor;
         return _this;
     }
 
@@ -23117,15 +23118,15 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _utils = __webpack_require__(13);
+var _utils = __webpack_require__(14);
 
 var _utils2 = _interopRequireDefault(_utils);
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _gsap = __webpack_require__(14);
+var _gsap = __webpack_require__(13);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
@@ -23198,19 +23199,19 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var signals = _interopRequireWildcard(_signals);
 
-var _gsap = __webpack_require__(14);
+var _gsap = __webpack_require__(13);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(13);
+var _utils = __webpack_require__(14);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -32979,11 +32980,11 @@ var _ShopList = __webpack_require__(352);
 
 var _ShopList2 = _interopRequireDefault(_ShopList);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _gsap = __webpack_require__(14);
+var _gsap = __webpack_require__(13);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
@@ -32999,11 +33000,11 @@ var _UpgradesToggles = __webpack_require__(354);
 
 var _UpgradesToggles2 = _interopRequireDefault(_UpgradesToggles);
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(13);
+var _utils = __webpack_require__(14);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -33250,6 +33251,7 @@ var EntityShop = function (_PIXI$Container) {
                 var shopItem = new _ShopItem2.default({ w: this.itemWidth, h: this.size.h * 0.8 / 6 });
                 shopItem.setData(items[index]);
                 shopItem.nameID = items[index].rawData.nameID;
+                //console.log((index+1)+ ' - ' +items[index].rawData.initialCost)
                 this.currentItens.push(shopItem);
             }
 
@@ -33328,11 +33330,11 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -33571,11 +33573,11 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -33800,7 +33802,7 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
@@ -34428,11 +34430,11 @@ var _MergerScreenManager = __webpack_require__(345);
 
 var _MergerScreenManager2 = _interopRequireDefault(_MergerScreenManager);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _LocalizationManager = __webpack_require__(379);
+var _LocalizationManager = __webpack_require__(380);
 
 var _LocalizationManager2 = _interopRequireDefault(_LocalizationManager);
 
@@ -34754,11 +34756,11 @@ function tryStuff() {
 "use strict";
 
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(13);
+var _utils = __webpack_require__(14);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -57360,11 +57362,11 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(13);
+var _utils = __webpack_require__(14);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -57754,7 +57756,7 @@ var _createClass2 = __webpack_require__(2);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
@@ -61703,11 +61705,11 @@ var assets = [{
 	"id": "humans",
 	"url": "assets/json\\humans.json"
 }, {
-	"id": "localization_EN",
-	"url": "assets/json\\localization_EN.json"
-}, {
 	"id": "localization_DE",
 	"url": "assets/json\\localization_DE.json"
+}, {
+	"id": "localization_EN",
+	"url": "assets/json\\localization_EN.json"
 }, {
 	"id": "localization_ES",
 	"url": "assets/json\\localization_ES.json"
@@ -61715,11 +61717,11 @@ var assets = [{
 	"id": "localization_FR",
 	"url": "assets/json\\localization_FR.json"
 }, {
-	"id": "localization_IT",
-	"url": "assets/json\\localization_IT.json"
-}, {
 	"id": "localization_JA",
 	"url": "assets/json\\localization_JA.json"
+}, {
+	"id": "localization_IT",
+	"url": "assets/json\\localization_IT.json"
 }, {
 	"id": "localization_KO",
 	"url": "assets/json\\localization_KO.json"
@@ -61727,20 +61729,20 @@ var assets = [{
 	"id": "localization_PT",
 	"url": "assets/json\\localization_PT.json"
 }, {
-	"id": "localization_TR",
-	"url": "assets/json\\localization_TR.json"
-}, {
 	"id": "localization_RU",
 	"url": "assets/json\\localization_RU.json"
 }, {
 	"id": "localization_ZH",
 	"url": "assets/json\\localization_ZH.json"
 }, {
-	"id": "monsters",
-	"url": "assets/json\\monsters.json"
+	"id": "localization_TR",
+	"url": "assets/json\\localization_TR.json"
 }, {
 	"id": "modifyers",
 	"url": "assets/json\\modifyers.json"
+}, {
+	"id": "monsters",
+	"url": "assets/json\\monsters.json"
 }, {
 	"id": "resources",
 	"url": "assets/json\\resources.json"
@@ -62039,6 +62041,9 @@ var assets = [{
 	"id": "Cartoon-Mouth-Sound-06",
 	"url": "assets/audio\\Cartoon-Mouth-Sound-06.mp3"
 }, {
+	"id": "Cartoon-Mouth-Sound-13",
+	"url": "assets/audio\\Cartoon-Mouth-Sound-13.mp3"
+}, {
 	"id": "Cartoon-Mouth-Sound-18",
 	"url": "assets/audio\\Cartoon-Mouth-Sound-18.mp3"
 }, {
@@ -62048,17 +62053,14 @@ var assets = [{
 	"id": "coins_04",
 	"url": "assets/audio\\coins_04.mp3"
 }, {
-	"id": "Cartoon-Mouth-Sound-13",
-	"url": "assets/audio\\Cartoon-Mouth-Sound-13.mp3"
-}, {
 	"id": "dropTile",
 	"url": "assets/audio\\dropTile.mp3"
 }, {
-	"id": "getCrazyOne",
-	"url": "assets/audio\\getCrazyOne.mp3"
-}, {
 	"id": "Fire-Burst-Small-01",
 	"url": "assets/audio\\Fire-Burst-Small-01.mp3"
+}, {
+	"id": "getCrazyOne",
+	"url": "assets/audio\\getCrazyOne.mp3"
 }, {
 	"id": "getstar",
 	"url": "assets/audio\\getstar.mp3"
@@ -62084,20 +62086,23 @@ var assets = [{
 	"id": "Musical-Beep-Loop-02",
 	"url": "assets/audio\\Musical-Beep-Loop-02.mp3"
 }, {
-	"id": "place2",
-	"url": "assets/audio\\place2.mp3"
-}, {
 	"id": "Ping-Slide-Down",
 	"url": "assets/audio\\Ping-Slide-Down.mp3"
-}, {
-	"id": "place3",
-	"url": "assets/audio\\place3.mp3"
 }, {
 	"id": "place",
 	"url": "assets/audio\\place.mp3"
 }, {
+	"id": "place2",
+	"url": "assets/audio\\place2.mp3"
+}, {
 	"id": "Pop-Low-Pitch-Up-02",
 	"url": "assets/audio\\Pop-Low-Pitch-Up-02.mp3"
+}, {
+	"id": "Pop-Musical",
+	"url": "assets/audio\\Pop-Musical.mp3"
+}, {
+	"id": "place3",
+	"url": "assets/audio\\place3.mp3"
 }, {
 	"id": "Pop-Tone",
 	"url": "assets/audio\\Pop-Tone.mp3"
@@ -62105,26 +62110,23 @@ var assets = [{
 	"id": "pop",
 	"url": "assets/audio\\pop.mp3"
 }, {
-	"id": "Pop-Musical",
-	"url": "assets/audio\\Pop-Musical.mp3"
+	"id": "shoosh",
+	"url": "assets/audio\\shoosh.mp3"
 }, {
 	"id": "pop2",
 	"url": "assets/audio\\pop2.mp3"
 }, {
-	"id": "shoosh",
-	"url": "assets/audio\\shoosh.mp3"
+	"id": "SneakySnitch",
+	"url": "assets/audio\\SneakySnitch.mp3"
+}, {
+	"id": "Synth-Appear-01",
+	"url": "assets/audio\\Synth-Appear-01.mp3"
 }, {
 	"id": "Tap-01",
 	"url": "assets/audio\\Tap-01.mp3"
 }, {
-	"id": "SneakySnitch",
-	"url": "assets/audio\\SneakySnitch.mp3"
-}, {
 	"id": "teleport",
 	"url": "assets/audio\\teleport.mp3"
-}, {
-	"id": "Synth-Appear-01",
-	"url": "assets/audio\\Synth-Appear-01.mp3"
 }, {
 	"id": "TheBuilder",
 	"url": "assets/audio\\TheBuilder.mp3"
@@ -62189,9 +62191,13 @@ var _ScreenManager2 = __webpack_require__(378);
 
 var _ScreenManager3 = _interopRequireDefault(_ScreenManager2);
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
+
+var _ScreenTransition = __webpack_require__(379);
+
+var _ScreenTransition2 = _interopRequireDefault(_ScreenTransition);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -62256,6 +62262,10 @@ var MergerScreenManager = function (_ScreenManager) {
             _this.isPaused = false;
         });
 
+        _this.screenTransition = new _ScreenTransition2.default();
+        _this.addChild(_this.screenTransition);
+
+        _this.screenTransition.x = _config2.default.width / 2;
         return _this;
     }
 
@@ -62296,6 +62306,7 @@ var MergerScreenManager = function (_ScreenManager) {
         value: function forceChange(screenLabel, param) {
 
             (0, _get3.default)(MergerScreenManager.prototype.__proto__ || (0, _getPrototypeOf2.default)(MergerScreenManager.prototype), 'forceChange', this).call(this, screenLabel, param);
+            this.screenTransition.startTransitionOut();
         }
     }, {
         key: 'change',
@@ -62502,7 +62513,7 @@ var _TextBox = __webpack_require__(41);
 
 var _TextBox2 = _interopRequireDefault(_TextBox);
 
-var _gsap = __webpack_require__(14);
+var _gsap = __webpack_require__(13);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
@@ -62514,11 +62525,11 @@ var _UIList = __webpack_require__(30);
 
 var _UIList2 = _interopRequireDefault(_UIList);
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(13);
+var _utils = __webpack_require__(14);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -62888,7 +62899,7 @@ var MergeScreen = function (_Screen) {
                                 //POPUP
                         });
 
-                        var achievmentsWindow = new _AchievmentsWindow2.default(mergeSystem, slug);
+                        var achievmentsWindow = new _AchievmentsWindow2.default(mergeSystem, slug, this.mergeSystemsList.length);
                         achievmentsWindow.systemID = slug;
                         achievmentsWindow.addItems(window.baseAchievments.achievments);
                         achievmentsWindow.onAchievmentPending.add(function (slug) {
@@ -62964,7 +62975,12 @@ var MergeScreen = function (_Screen) {
                         toggleSystems.updateIconScale(0.9);
                         toggleSystems.systemArrayID = this.mergeSystemsList.length;
                         toggleSystems.onClick.add(function () {
-                                _this2.showSystem(toggleSystems.systemArrayID);
+
+                                if (_this2.activeMergeSystemID == toggleSystems.systemArrayID) return;
+
+                                _this2.screenManager.screenTransition.startTransitionIn(0, function () {
+                                        _this2.showSystem(toggleSystems.systemArrayID);
+                                }, mergeSystem.interactiveBackground.skyColor);
                         });
 
                         var unlockTextbox = new _TextBox2.default(20);
@@ -63018,6 +63034,8 @@ var MergeScreen = function (_Screen) {
                 key: 'startGamePopUp',
                 value: function startGamePopUp(targetMoney) {
                         var _this4 = this;
+
+                        SOUND_MANAGER.play('magic', 0.4);
 
                         var target = targetMoney;
                         var target2 = targetMoney * 2;
@@ -63708,7 +63726,7 @@ var _inherits2 = __webpack_require__(5);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _gsap = __webpack_require__(14);
+var _gsap = __webpack_require__(13);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
@@ -63720,7 +63738,7 @@ var _EntityShop2 = __webpack_require__(154);
 
 var _EntityShop3 = _interopRequireDefault(_EntityShop2);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
@@ -63732,7 +63750,7 @@ var _ShopItem = __webpack_require__(80);
 
 var _ShopItem2 = _interopRequireDefault(_ShopItem);
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -63743,7 +63761,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var AchievmentsWindow = function (_EntityShop) {
     (0, _inherits3.default)(AchievmentsWindow, _EntityShop);
 
-    function AchievmentsWindow(mainSystem, systemID) {
+    function AchievmentsWindow(mainSystem, systemID, systemOrder) {
         (0, _classCallCheck3.default)(this, AchievmentsWindow);
 
         var _this = (0, _possibleConstructorReturn3.default)(this, (AchievmentsWindow.__proto__ || (0, _getPrototypeOf2.default)(AchievmentsWindow)).call(this, mainSystem, systemID, 7, {
@@ -63751,6 +63769,7 @@ var AchievmentsWindow = function (_EntityShop) {
             h: _config2.default.height * 0.9
         }));
 
+        _this.systemOrder = systemOrder;
         _this.onAddEntity = new _signals2.default();
         _this.onAchievmentPending = new _signals2.default();
         _this.onNoAchievmentPending = new _signals2.default();
@@ -63906,7 +63925,7 @@ var AchievmentsWindow = function (_EntityShop) {
 
                 this.currentItensByType[items[index].variable] = shopItem;
 
-                shopItem.setData(items[index], this.systemID);
+                shopItem.setData(items[index], this.systemID, this.systemOrder);
                 //shopItem.nameID = items[index].rawData.nameID;
 
                 shopItem.onClaim.add(function (value) {
@@ -63982,11 +64001,11 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -64105,7 +64124,7 @@ var _ListScroller2 = __webpack_require__(353);
 
 var _ListScroller3 = _interopRequireDefault(_ListScroller2);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
@@ -64263,7 +64282,7 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
@@ -64473,11 +64492,11 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _gsap = __webpack_require__(14);
+var _gsap = __webpack_require__(13);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
@@ -64619,11 +64638,11 @@ var _ShopButton = __webpack_require__(155);
 
 var _ShopButton2 = _interopRequireDefault(_ShopButton);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _gsap = __webpack_require__(14);
+var _gsap = __webpack_require__(13);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
@@ -64631,11 +64650,11 @@ var _UIList = __webpack_require__(30);
 
 var _UIList2 = _interopRequireDefault(_UIList);
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(13);
+var _utils = __webpack_require__(14);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -64684,7 +64703,7 @@ var AchievmentView = function (_PIXI$Container) {
             //console.log(this.data.prizes)
             _this.notificationDispatched = false;
             var prog = COOKIE_MANAGER.getAchievment(_this.systemID, _this.data.variable);
-            _this.onClaim.dispatch(_this.data.prizes[prog.claimed]);
+            _this.onClaim.dispatch(_this.convertPrize(prog.claimed));
 
             COOKIE_MANAGER.claimAchievment(_this.systemID, _this.data.variable);
 
@@ -64698,8 +64717,9 @@ var AchievmentView = function (_PIXI$Container) {
 
     (0, _createClass3.default)(AchievmentView, [{
         key: 'setData',
-        value: function setData(data, systemID) {
+        value: function setData(data, systemID, systemOrder) {
             this.systemID = systemID;
+            this.systemOrder = systemOrder;
 
             this.data = data;
             //let desc = data.title+'\n'+data.description
@@ -64711,7 +64731,7 @@ var AchievmentView = function (_PIXI$Container) {
 
             this.progressBar = new _ProgressBar2.default({ width: this.popUp.width / 2, height: 30 }, 2);
             this.descriptionContainer.addChild(this.progressBar);
-            this.progressBar.y = 60;
+            this.progressBar.y = 55;
             this.addElement(this.descriptionContainer);
             this.addElement(this.claimContainer);
         }
@@ -64733,7 +64753,7 @@ var AchievmentView = function (_PIXI$Container) {
 
             var label = new PIXI.Text(text, LABELS.LABEL1);
             label.scaleContentMax = true;
-            label.style.fontSize = 22;
+            label.style.fontSize = 20;
             if (wrap) {
                 label.style.wordWrap = true;
                 label.style.wordWrapWidth = wrap;
@@ -64747,6 +64767,17 @@ var AchievmentView = function (_PIXI$Container) {
             sprite.scaleContentMax = true;
             sprite.fitHeight = 0.8;
             return sprite;
+        }
+    }, {
+        key: 'convertPrize',
+        value: function convertPrize(claimed) {
+
+            if (this.systemOrder > 0) {
+
+                return this.data.prizes[claimed] * (this.data.stageMultiplier * this.systemOrder);
+            } else {
+                return this.data.prizes[claimed];
+            }
         }
     }, {
         key: 'updateCurrentData',
@@ -64764,7 +64795,7 @@ var AchievmentView = function (_PIXI$Container) {
             this.progressBar.setLabel(currentValue + '/' + nextUnclaimed);
             this.descriptionLabel.text = this.descriptionLabel.text.replace('{x}', nextUnclaimed);
 
-            this.claimButton.updateCoast(_utils2.default.formatPointsLabel(this.data.prizes[achieveData.claimed]));
+            this.claimButton.updateCoast(_utils2.default.formatPointsLabel(this.convertPrize(achieveData.claimed)));
             if (currentValue == 0) {
                 this.progressBar.setProgressBar(0);
                 this.claimButton.deactive();
@@ -64815,7 +64846,7 @@ module.exports = exports['default'];
 
 
 Object.defineProperty(exports, "__esModule", {
-            value: true
+    value: true
 });
 
 var _getPrototypeOf = __webpack_require__(3);
@@ -64853,66 +64884,68 @@ var _PuzzleFairyBackground2 = _interopRequireDefault(_PuzzleFairyBackground);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var FairyBackground = function (_InteractiveBackgroun) {
-            (0, _inherits3.default)(FairyBackground, _InteractiveBackgroun);
+    (0, _inherits3.default)(FairyBackground, _InteractiveBackgroun);
 
-            function FairyBackground() {
-                        (0, _classCallCheck3.default)(this, FairyBackground);
+    function FairyBackground() {
+        (0, _classCallCheck3.default)(this, FairyBackground);
+        return (0, _possibleConstructorReturn3.default)(this, (FairyBackground.__proto__ || (0, _getPrototypeOf2.default)(FairyBackground)).call(this));
+    }
 
-                        var _this = (0, _possibleConstructorReturn3.default)(this, (FairyBackground.__proto__ || (0, _getPrototypeOf2.default)(FairyBackground)).call(this));
+    (0, _createClass3.default)(FairyBackground, [{
+        key: "build",
+        value: function build() {
 
-                        _this.castleBackground = new _FairyCastleBackground2.default();
-                        _this.puzzleBackground = new _PuzzleFairyBackground2.default();
-                        _this.addChildAt(_this.puzzleBackground, 0);
-                        _this.addChildAt(_this.castleBackground, 0);
+            this.castleBackground = new _FairyCastleBackground2.default();
+            this.puzzleBackground = new _PuzzleFairyBackground2.default();
+            this.addChildAt(this.puzzleBackground, 0);
+            this.addChildAt(this.castleBackground, 0);
 
-                        _this.zero = new PIXI.Graphics().beginFill(0x00FF00).drawCircle(0, 0, 50);
-                        //this.addChild(this.zero)
-                        _this.zero.alpha = 0.5;
-                        return _this;
+            this.zero = new PIXI.Graphics().beginFill(0x00FF00).drawCircle(0, 0, 50);
+            //this.addChild(this.zero)
+            this.zero.alpha = 0.5;
+        }
+    }, {
+        key: "resize",
+        value: function resize(resolution, innerResolution) {
+            if (!innerResolution || !innerResolution.height) return;
+            var topRight = game.getBorder('topRight', this.parent);
+            var toGlobalBack = this.toLocal({ x: 0, y: innerResolution.height });
+
+            this.puzzleBackground.resize(resolution, innerResolution);
+            this.castleBackground.resize(resolution, innerResolution);
+            if (!window.isPortrait) {
+
+                this.puzzleBackground.pivot.x = this.puzzleBackground.usableArea.x;
+                this.puzzleBackground.pivot.y = this.puzzleBackground.usableArea.height + this.puzzleBackground.usableArea.y;
+                this.puzzleBackground.x = toGlobalBack.x + 20; //toGlobalBack.x + 390
+                this.puzzleBackground.y = config.height / 2 + 20;
+                var scale = Math.min(topRight.x / this.puzzleBackground.usableArea.width * 0.6, config.height / this.puzzleBackground.usableArea.height * 0.9);
+                this.puzzleBackground.scale.set(scale);
+
+                this.castleBackground.x = toGlobalBack.x + (this.puzzleBackground.usableArea.width + 100) * scale;
+
+                scale = Math.min((topRight.x - this.castleBackground.x) / this.castleBackground.usableArea.width * 0.75, config.height / this.castleBackground.usableArea.height * 0.9);
+                scale = Math.max(0.55, scale);
+                this.castleBackground.scale.set(scale);
+                this.castleBackground.pivot.x = this.castleBackground.usableArea.x;
+                this.castleBackground.pivot.y = this.castleBackground.usableArea.height + this.castleBackground.usableArea.y;
+                this.castleBackground.y = config.height * 0.85 * 0.5;
+            } else {
+                this.puzzleBackground.pivot.x = 0;
+                this.puzzleBackground.pivot.y = 80;
+                this.puzzleBackground.scale.set(1);
+                this.puzzleBackground.x = 0;
+                this.puzzleBackground.y = -100;
+
+                this.castleBackground.pivot.x = 0;
+                this.castleBackground.pivot.y = 0;
+                this.castleBackground.x = 0;
+                this.castleBackground.y = -200;
+                this.castleBackground.scale.set(0.8);
             }
-
-            (0, _createClass3.default)(FairyBackground, [{
-                        key: "resize",
-                        value: function resize(resolution, innerResolution) {
-                                    if (!innerResolution || !innerResolution.height) return;
-                                    var topRight = game.getBorder('topRight', this.parent);
-                                    var toGlobalBack = this.toLocal({ x: 0, y: innerResolution.height });
-
-                                    this.puzzleBackground.resize(resolution, innerResolution);
-                                    this.castleBackground.resize(resolution, innerResolution);
-                                    if (!window.isPortrait) {
-
-                                                this.puzzleBackground.pivot.x = this.puzzleBackground.usableArea.x;
-                                                this.puzzleBackground.pivot.y = this.puzzleBackground.usableArea.height + this.puzzleBackground.usableArea.y;
-                                                this.puzzleBackground.x = toGlobalBack.x + 20; //toGlobalBack.x + 390
-                                                this.puzzleBackground.y = config.height / 2 + 20;
-                                                var scale = Math.min(topRight.x / this.puzzleBackground.usableArea.width * 0.6, config.height / this.puzzleBackground.usableArea.height * 0.9);
-                                                this.puzzleBackground.scale.set(scale);
-
-                                                this.castleBackground.x = toGlobalBack.x + (this.puzzleBackground.usableArea.width + 100) * scale;
-
-                                                scale = Math.min((topRight.x - this.castleBackground.x) / this.castleBackground.usableArea.width * 0.75, config.height / this.castleBackground.usableArea.height * 0.9);
-                                                scale = Math.max(0.55, scale);
-                                                this.castleBackground.scale.set(scale);
-                                                this.castleBackground.pivot.x = this.castleBackground.usableArea.x;
-                                                this.castleBackground.pivot.y = this.castleBackground.usableArea.height + this.castleBackground.usableArea.y;
-                                                this.castleBackground.y = config.height * 0.85 * 0.5;
-                                    } else {
-                                                this.puzzleBackground.pivot.x = 0;
-                                                this.puzzleBackground.pivot.y = 80;
-                                                this.puzzleBackground.scale.set(1);
-                                                this.puzzleBackground.x = 0;
-                                                this.puzzleBackground.y = -100;
-
-                                                this.castleBackground.pivot.x = 0;
-                                                this.castleBackground.pivot.y = 0;
-                                                this.castleBackground.x = 0;
-                                                this.castleBackground.y = -200;
-                                                this.castleBackground.scale.set(0.8);
-                                    }
-                        }
-            }]);
-            return FairyBackground;
+        }
+    }]);
+    return FairyBackground;
 }(_InteractiveBackgrounds2.default);
 
 exports.default = FairyBackground;
@@ -64973,6 +65006,7 @@ var FairyCastleBackground = function (_CastleBackgroundBase) {
                 key: 'build',
                 value: function build() {
 
+                        this.skyColor = 0x74CFE3;
                         this.baseColor = new PIXI.Graphics().beginFill(0x74CFE3).drawRect(-5000, -5000, 10000, 10000);
                         this.baseContainer.addChild(this.baseColor);
 
@@ -65187,7 +65221,7 @@ module.exports = exports['default'];
 
 
 Object.defineProperty(exports, "__esModule", {
-            value: true
+    value: true
 });
 
 var _getPrototypeOf = __webpack_require__(3);
@@ -65225,66 +65259,67 @@ var _PuzzleHumanBackground2 = _interopRequireDefault(_PuzzleHumanBackground);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var HumanBackground = function (_InteractiveBackgroun) {
-            (0, _inherits3.default)(HumanBackground, _InteractiveBackgroun);
+    (0, _inherits3.default)(HumanBackground, _InteractiveBackgroun);
 
-            function HumanBackground() {
-                        (0, _classCallCheck3.default)(this, HumanBackground);
+    function HumanBackground() {
+        (0, _classCallCheck3.default)(this, HumanBackground);
+        return (0, _possibleConstructorReturn3.default)(this, (HumanBackground.__proto__ || (0, _getPrototypeOf2.default)(HumanBackground)).call(this));
+    }
 
-                        var _this = (0, _possibleConstructorReturn3.default)(this, (HumanBackground.__proto__ || (0, _getPrototypeOf2.default)(HumanBackground)).call(this));
+    (0, _createClass3.default)(HumanBackground, [{
+        key: "build",
+        value: function build() {
+            this.castleBackground = new _HumanCastleBackground2.default();
+            this.puzzleBackground = new _PuzzleHumanBackground2.default();
+            this.addChildAt(this.puzzleBackground, 0);
+            this.addChildAt(this.castleBackground, 0);
 
-                        _this.castleBackground = new _HumanCastleBackground2.default();
-                        _this.puzzleBackground = new _PuzzleHumanBackground2.default();
-                        _this.addChildAt(_this.puzzleBackground, 0);
-                        _this.addChildAt(_this.castleBackground, 0);
+            this.zero = new PIXI.Graphics().beginFill(0x00FF00).drawCircle(0, 0, 50);
+            //this.addChild(this.zero)
+            this.zero.alpha = 0.5;
+        }
+    }, {
+        key: "resize",
+        value: function resize(resolution, innerResolution) {
+            if (!innerResolution || !innerResolution.height) return;
+            var topRight = game.getBorder('topRight', this.parent);
+            var toGlobalBack = this.toLocal({ x: 0, y: innerResolution.height });
 
-                        _this.zero = new PIXI.Graphics().beginFill(0x00FF00).drawCircle(0, 0, 50);
-                        //this.addChild(this.zero)
-                        _this.zero.alpha = 0.5;
-                        return _this;
+            this.puzzleBackground.resize(resolution, innerResolution);
+            this.castleBackground.resize(resolution, innerResolution);
+            if (!window.isPortrait) {
+
+                this.puzzleBackground.pivot.x = this.puzzleBackground.usableArea.x;
+                this.puzzleBackground.pivot.y = this.puzzleBackground.usableArea.height + this.puzzleBackground.usableArea.y;
+                this.puzzleBackground.x = toGlobalBack.x + 20; //toGlobalBack.x + 390
+                this.puzzleBackground.y = config.height / 2 + 20;
+                var scale = Math.min(topRight.x / this.puzzleBackground.usableArea.width * 0.6, config.height / this.puzzleBackground.usableArea.height * 0.9);
+                this.puzzleBackground.scale.set(scale);
+
+                this.castleBackground.x = toGlobalBack.x + (this.puzzleBackground.usableArea.width + 100) * scale;
+
+                scale = Math.min((topRight.x - this.castleBackground.x) / this.castleBackground.usableArea.width * 0.75, config.height / this.castleBackground.usableArea.height * 0.9);
+                scale = Math.max(0.55, scale);
+                this.castleBackground.scale.set(scale);
+                this.castleBackground.pivot.x = this.castleBackground.usableArea.x;
+                this.castleBackground.pivot.y = this.castleBackground.usableArea.height + this.castleBackground.usableArea.y;
+                this.castleBackground.y = config.height * 0.85 * 0.5;
+            } else {
+                this.puzzleBackground.pivot.x = 0;
+                this.puzzleBackground.pivot.y = 80;
+                this.puzzleBackground.scale.set(1);
+                this.puzzleBackground.x = 0;
+                this.puzzleBackground.y = -100;
+
+                this.castleBackground.pivot.x = 0;
+                this.castleBackground.pivot.y = 0;
+                this.castleBackground.x = 0;
+                this.castleBackground.y = -200;
+                this.castleBackground.scale.set(0.8);
             }
-
-            (0, _createClass3.default)(HumanBackground, [{
-                        key: "resize",
-                        value: function resize(resolution, innerResolution) {
-                                    if (!innerResolution || !innerResolution.height) return;
-                                    var topRight = game.getBorder('topRight', this.parent);
-                                    var toGlobalBack = this.toLocal({ x: 0, y: innerResolution.height });
-
-                                    this.puzzleBackground.resize(resolution, innerResolution);
-                                    this.castleBackground.resize(resolution, innerResolution);
-                                    if (!window.isPortrait) {
-
-                                                this.puzzleBackground.pivot.x = this.puzzleBackground.usableArea.x;
-                                                this.puzzleBackground.pivot.y = this.puzzleBackground.usableArea.height + this.puzzleBackground.usableArea.y;
-                                                this.puzzleBackground.x = toGlobalBack.x + 20; //toGlobalBack.x + 390
-                                                this.puzzleBackground.y = config.height / 2 + 20;
-                                                var scale = Math.min(topRight.x / this.puzzleBackground.usableArea.width * 0.6, config.height / this.puzzleBackground.usableArea.height * 0.9);
-                                                this.puzzleBackground.scale.set(scale);
-
-                                                this.castleBackground.x = toGlobalBack.x + (this.puzzleBackground.usableArea.width + 100) * scale;
-
-                                                scale = Math.min((topRight.x - this.castleBackground.x) / this.castleBackground.usableArea.width * 0.75, config.height / this.castleBackground.usableArea.height * 0.9);
-                                                scale = Math.max(0.55, scale);
-                                                this.castleBackground.scale.set(scale);
-                                                this.castleBackground.pivot.x = this.castleBackground.usableArea.x;
-                                                this.castleBackground.pivot.y = this.castleBackground.usableArea.height + this.castleBackground.usableArea.y;
-                                                this.castleBackground.y = config.height * 0.85 * 0.5;
-                                    } else {
-                                                this.puzzleBackground.pivot.x = 0;
-                                                this.puzzleBackground.pivot.y = 80;
-                                                this.puzzleBackground.scale.set(1);
-                                                this.puzzleBackground.x = 0;
-                                                this.puzzleBackground.y = -100;
-
-                                                this.castleBackground.pivot.x = 0;
-                                                this.castleBackground.pivot.y = 0;
-                                                this.castleBackground.x = 0;
-                                                this.castleBackground.y = -200;
-                                                this.castleBackground.scale.set(0.8);
-                                    }
-                        }
-            }]);
-            return HumanBackground;
+        }
+    }]);
+    return HumanBackground;
 }(_InteractiveBackgrounds2.default);
 
 exports.default = HumanBackground;
@@ -65345,7 +65380,8 @@ var HumanCastleBackground = function (_CastleBackgroundBase) {
                 key: 'build',
                 value: function build() {
 
-                        this.baseColor = new PIXI.Graphics().beginFill(0x9DBEE9).drawRect(-5000, -5000, 10000, 10000);
+                        this.skyColor = 0x9DBEE9;
+                        this.baseColor = new PIXI.Graphics().beginFill(this.skyColor).drawRect(-5000, -5000, 10000, 10000);
                         this.baseContainer.addChild(this.baseColor);
 
                         this.baseSky = new PIXI.Sprite.fromFrame('sky');
@@ -65600,7 +65636,7 @@ var _createClass2 = __webpack_require__(2);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
@@ -65702,7 +65738,7 @@ var _createClass2 = __webpack_require__(2);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
@@ -65882,7 +65918,7 @@ var _inherits2 = __webpack_require__(5);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _gsap = __webpack_require__(14);
+var _gsap = __webpack_require__(13);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
@@ -65890,7 +65926,7 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -66039,11 +66075,11 @@ var _ShopItem = __webpack_require__(80);
 
 var _ShopItem2 = _interopRequireDefault(_ShopItem);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _gsap = __webpack_require__(14);
+var _gsap = __webpack_require__(13);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
@@ -66054,11 +66090,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var MergeItemsShop = function (_EntityShop) {
     (0, _inherits3.default)(MergeItemsShop, _EntityShop);
 
-    function MergeItemsShop(mainSystem, size) {
+    function MergeItemsShop(mainSystem, systemID) {
         var border = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
         (0, _classCallCheck3.default)(this, MergeItemsShop);
 
-        var _this = (0, _possibleConstructorReturn3.default)(this, (MergeItemsShop.__proto__ || (0, _getPrototypeOf2.default)(MergeItemsShop)).call(this, mainSystem, size, 5));
+        var _this = (0, _possibleConstructorReturn3.default)(this, (MergeItemsShop.__proto__ || (0, _getPrototypeOf2.default)(MergeItemsShop)).call(this, mainSystem, systemID, 6, {
+            w: config.width * 0.9,
+            h: config.height * 0.9
+        }));
 
         _this.onAddEntity = new _signals2.default();
         _this.systemID = 'monsters';
@@ -66207,15 +66246,15 @@ var _MergeTile = __webpack_require__(158);
 
 var _MergeTile2 = _interopRequireDefault(_MergeTile);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(13);
+var _utils = __webpack_require__(14);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -66798,6 +66837,8 @@ var MergeSystem = function () {
 
                 _this6.currentDragSlot = null;
                 _this6.draggingEntity = false;
+
+                _this6.entityDragSprite.visible = false;
             });
             slot.onSpecialReveal.add(function (slot) {
                 _this6.checkMax();
@@ -67361,7 +67402,7 @@ var _ProgressBar = __webpack_require__(81);
 
 var _ProgressBar2 = _interopRequireDefault(_ProgressBar);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
@@ -67909,21 +67950,22 @@ var MonsterBackground = function (_InteractiveBackgroun) {
 
     function MonsterBackground() {
         (0, _classCallCheck3.default)(this, MonsterBackground);
-
-        var _this = (0, _possibleConstructorReturn3.default)(this, (MonsterBackground.__proto__ || (0, _getPrototypeOf2.default)(MonsterBackground)).call(this));
-
-        _this.castleBackground = new _CastleBackground2.default();
-        _this.puzzleBackground = new _PuzzleBackground2.default();
-        _this.addChildAt(_this.puzzleBackground, 0);
-        _this.addChildAt(_this.castleBackground, 0);
-
-        _this.zero = new PIXI.Graphics().beginFill(0x00FF00).drawCircle(0, 0, 50);
-        //this.addChild(this.zero)
-        _this.zero.alpha = 0.5;
-        return _this;
+        return (0, _possibleConstructorReturn3.default)(this, (MonsterBackground.__proto__ || (0, _getPrototypeOf2.default)(MonsterBackground)).call(this));
     }
 
     (0, _createClass3.default)(MonsterBackground, [{
+        key: "build",
+        value: function build() {
+            this.castleBackground = new _CastleBackground2.default();
+            this.puzzleBackground = new _PuzzleBackground2.default();
+            this.addChildAt(this.puzzleBackground, 0);
+            this.addChildAt(this.castleBackground, 0);
+
+            this.zero = new PIXI.Graphics().beginFill(0x00FF00).drawCircle(0, 0, 50);
+            //this.addChild(this.zero)
+            this.zero.alpha = 0.5;
+        }
+    }, {
         key: "update",
         value: function update(delta) {
             if (this.puzzleBackground) {
@@ -68037,7 +68079,8 @@ var CastleBackground = function (_CastleBackgroundBase) {
                 key: 'build',
                 value: function build() {
 
-                        this.baseColor = new PIXI.Graphics().beginFill(0x402A77).drawRect(-5000, -5000, 10000, 10000);
+                        this.skyColor = 0x402A77;
+                        this.baseColor = new PIXI.Graphics().beginFill(this.skyColor).drawRect(-5000, -5000, 10000, 10000);
                         this.baseContainer.addChild(this.baseColor);
 
                         this.baseSky = new PIXI.Sprite.fromFrame('sky');
@@ -68289,7 +68332,7 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
@@ -68305,7 +68348,7 @@ var _UILabelButton = __webpack_require__(85);
 
 var _UILabelButton2 = _interopRequireDefault(_UILabelButton);
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -68313,7 +68356,7 @@ var _NotificationView = __webpack_require__(374);
 
 var _NotificationView2 = _interopRequireDefault(_NotificationView);
 
-var _utils = __webpack_require__(13);
+var _utils = __webpack_require__(14);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -68453,7 +68496,7 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
@@ -68469,7 +68512,7 @@ var _UILabelButton = __webpack_require__(85);
 
 var _UILabelButton2 = _interopRequireDefault(_UILabelButton);
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -68477,7 +68520,7 @@ var _UIList = __webpack_require__(30);
 
 var _UIList2 = _interopRequireDefault(_UIList);
 
-var _gsap = __webpack_require__(14);
+var _gsap = __webpack_require__(13);
 
 var _gsap2 = _interopRequireDefault(_gsap);
 
@@ -68579,15 +68622,15 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(13);
+var _utils = __webpack_require__(14);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -69001,7 +69044,7 @@ var _pixi = __webpack_require__(0);
 
 var PIXI = _interopRequireWildcard(_pixi);
 
-var _signals = __webpack_require__(9);
+var _signals = __webpack_require__(10);
 
 var _signals2 = _interopRequireDefault(_signals);
 
@@ -69017,7 +69060,7 @@ var _UILabelButton = __webpack_require__(85);
 
 var _UILabelButton2 = _interopRequireDefault(_UILabelButton);
 
-var _config = __webpack_require__(10);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -69508,6 +69551,178 @@ module.exports = exports['default'];
 
 /***/ }),
 /* 379 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+        value: true
+});
+
+var _getPrototypeOf = __webpack_require__(3);
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(1);
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(2);
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(4);
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(5);
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _gsap = __webpack_require__(13);
+
+var _gsap2 = _interopRequireDefault(_gsap);
+
+var _pixi = __webpack_require__(0);
+
+var PIXI = _interopRequireWildcard(_pixi);
+
+var _config = __webpack_require__(9);
+
+var _config2 = _interopRequireDefault(_config);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ScreenTransition = function (_PIXI$Container) {
+        (0, _inherits3.default)(ScreenTransition, _PIXI$Container);
+
+        function ScreenTransition() {
+                (0, _classCallCheck3.default)(this, ScreenTransition);
+
+                var _this = (0, _possibleConstructorReturn3.default)(this, (ScreenTransition.__proto__ || (0, _getPrototypeOf2.default)(ScreenTransition)).call(this));
+
+                _this.container = new PIXI.Container();
+
+                _this.addChild(_this.container);
+
+                _this.screenCover = new PIXI.Graphics().beginFill(0x3B296D).drawRect(-5000, 0, 10000, _config2.default.height * 1.5);
+                _this.container.addChild(_this.screenCover);
+                _this.screenCover.interactive = true;
+                _this.screenCover.alpha = 0;
+
+                _this.shapeCover1 = new PIXI.mesh.NineSlicePlane(PIXI.Texture.fromFrame('progressBarSmall'), 10, 10, 10, 10);
+                _this.shapeCover1.tint = 0x3B296D;
+                _this.container.addChild(_this.shapeCover1);
+                _this.shapeCover1.height = _config2.default.height * 2;
+                _this.shapeCover1.width = _config2.default.width * 10;
+                _this.shapeCover1.pivot.x = _this.shapeCover1.width / 2;
+
+                _this.tiledBackground = new PIXI.TilingSprite(PIXI.Texture.fromFrame('patter-square', 256, 256));
+                _this.shapeCover1.addChild(_this.tiledBackground);
+                _this.tiledBackground.width = _this.shapeCover1.width;
+                _this.tiledBackground.height = _this.shapeCover1.height;
+                _this.tiledBackground.alpha = 0;
+
+                _this.logo = new PIXI.Sprite.fromFrame('logoTransparent');
+                _this.logo.anchor.set(0.5);
+
+                _this.container.addChild(_this.logo);
+
+                _this.logo.x = 0;
+                _this.logo.y = _config2.default.height / 2;
+                _this.logo.visible = false;
+
+                // this.center = new PIXI.Graphics().beginFill(0xFF296D).drawCircle(0,0,20)
+                // this.container.addChild(this.center)
+                return _this;
+        }
+
+        (0, _createClass3.default)(ScreenTransition, [{
+                key: 'startTransitionIn',
+                value: function startTransitionIn() {
+                        var delay = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+                        var _this2 = this;
+
+                        var callback = arguments[1];
+                        var color = arguments[2];
+
+                        this.shapeCover1.tint = color;
+                        this.container.visible = true;
+                        this.screenCover.interactive = true;
+                        this.shapeCover1.y = _config2.default.height * 1.5;
+                        this.shapeCover1.alpha = 1;
+
+                        _gsap2.default.to(this.tiledBackground, 1, { delay: delay + 0.1, alpha: 0.15 });
+                        this.logo.visible = true;
+
+                        setTimeout(function () {
+
+                                _this2.transitionIn(0, callback);
+                        }, delay * 1000);
+                }
+        }, {
+                key: 'transitionIn',
+                value: function transitionIn(delay, callback) {
+                        var _this3 = this;
+
+                        SOUND_MANAGER.play('shoosh', 0.4);
+
+                        this.logo.scale.set(0, 1.5);
+                        this.logo.rotation = -Math.PI / 4;
+                        _gsap2.default.to(this.logo, 1, { delay: delay + 0.4, rotation: 0, ease: Elastic.easeOut });
+                        _gsap2.default.to(this.logo.scale, 0.6, { delay: delay + 0.4, y: 1, x: 1, ease: Elastic.easeOut });
+                        _gsap2.default.to(this.shapeCover1, 0.7, { delay: delay, y: 0, ease: Cubic.easeOut, onComplete: function onComplete() {
+                                        _this3.endTransitionIn(callback);
+                                } });
+                }
+        }, {
+                key: 'endTransitionIn',
+                value: function endTransitionIn(callback) {
+                        this.startTransitionOut(0.5);
+
+                        if (callback) {
+                                callback();
+                        }
+                }
+        }, {
+                key: 'startTransitionOut',
+                value: function startTransitionOut() {
+                        var delay = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+
+                        this.shapeCover1.y = window.game.borders.topLeft.y;
+
+                        this.transitionOut(delay);
+                }
+        }, {
+                key: 'transitionOut',
+                value: function transitionOut(delay) {
+                        var _this4 = this;
+
+                        _gsap2.default.to(this.logo.scale, 0.6, { delay: delay, y: 0, x: 0, ease: Back.easeIn });
+                        _gsap2.default.to(this.shapeCover1, 0.6, { delay: delay, y: _config2.default.height, ease: Back.easeIn, onComplete: function onComplete() {
+                                        _this4.endTransitionOut();
+                                } });
+                }
+        }, {
+                key: 'endTransitionOut',
+                value: function endTransitionOut() {
+                        this.screenCover.interactive = false;
+                        this.container.visible = false;
+                }
+        }]);
+        return ScreenTransition;
+}(PIXI.Container);
+
+exports.default = ScreenTransition;
+module.exports = exports['default'];
+
+/***/ }),
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

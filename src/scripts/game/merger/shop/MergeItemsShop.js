@@ -6,8 +6,13 @@ import Signals from 'signals';
 import TweenMax from 'gsap';
 
 export default class MergeItemsShop extends EntityShop {
-    constructor(mainSystem, size, border = 0) {
-        super(mainSystem, size, 5)
+    constructor(mainSystem, systemID, border = 0) {
+        super(mainSystem, systemID, 6, {
+            w: config.width * 0.9,
+            h: config.height * 0.9
+        })
+
+
         this.onAddEntity = new Signals();
         this.systemID = 'monsters';
 

@@ -403,13 +403,11 @@ export default class MergeScreen extends Screen {
         });
 
 
-        let achievmentsWindow = new AchievmentsWindow(mergeSystem, slug)
+        let achievmentsWindow = new AchievmentsWindow(mergeSystem, slug, this.mergeSystemsList.length)
         achievmentsWindow.systemID = slug;
         achievmentsWindow.addItems(window.baseAchievments.achievments)
         achievmentsWindow.onAchievmentPending.add((slug, notification = false) => {
             if (slug != this.activeMergeSystem.systemID) return;
-
-
 
             if (notification) {
                 SOUND_MANAGER.play('coins_04', 0.5)
@@ -482,7 +480,12 @@ export default class MergeScreen extends Screen {
         toggleSystems.updateIconScale(0.9)
         toggleSystems.systemArrayID = this.mergeSystemsList.length;
         toggleSystems.onClick.add(() => {
-            this.showSystem(toggleSystems.systemArrayID)
+
+            if (this.activeMergeSystemID == toggleSystems.systemArrayID) return;
+
+            this.screenManager.screenTransition.startTransitionIn(0, ()=>{
+                this.showSystem(toggleSystems.systemArrayID)
+            }, mergeSystem.interactiveBackground.skyColor)
         })
 
         let unlockTextbox = new TextBox(20)
@@ -534,6 +537,9 @@ export default class MergeScreen extends Screen {
         this.refreshSystemVisuals();
     }
     startGamePopUp(targetMoney) {
+
+
+        SOUND_MANAGER.play('magic', 0.4)
 
         let target = targetMoney
         let target2 = targetMoney * 2

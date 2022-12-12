@@ -6,6 +6,9 @@ export default class MonsterBackground extends InteractiveBackgrounds {
     constructor() {
         super();
 
+       
+    }
+    build(){
         this.castleBackground = new CastleBackground();
         this.puzzleBackground = new PuzzleBackground();
         this.addChildAt(this.puzzleBackground, 0);

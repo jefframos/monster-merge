@@ -5,7 +5,11 @@ import PuzzleFairyBackground from "./PuzzleFairyBackground";
 export default class FairyBackground extends InteractiveBackgrounds {
     constructor() {
         super();
-        
+       
+    }
+
+    build(){
+ 
         this.castleBackground = new FairyCastleBackground();
         this.puzzleBackground = new PuzzleFairyBackground();
         this.addChildAt(this.puzzleBackground, 0);

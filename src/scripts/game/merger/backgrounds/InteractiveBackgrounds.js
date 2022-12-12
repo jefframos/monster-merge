@@ -2,6 +2,7 @@ export default class InteractiveBackgrounds extends PIXI.Container {
     constructor() {
         super();        
         this.build();
+        this.skyColor = this.castleBackground.skyColor
     }
     build(){
         

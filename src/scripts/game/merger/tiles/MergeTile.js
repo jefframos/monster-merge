@@ -438,7 +438,7 @@ export default class MergeTile extends PIXI.Container {
         this.isOver = false;
 
         if (!this.mouseDown) {
-            this.onUp.dispatch(this);
+            this.onUp.dispatch(this);            
             return;
         }
         this.mouseDown = false;

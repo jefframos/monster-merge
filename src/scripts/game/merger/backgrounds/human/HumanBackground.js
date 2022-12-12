@@ -6,6 +6,9 @@ export default class HumanBackground extends InteractiveBackgrounds {
     constructor() {
         super();
         
+        
+    }
+    build(){
         this.castleBackground = new HumanCastleBackground();
         this.puzzleBackground = new PuzzleHumanBackground();
         this.addChildAt(this.puzzleBackground, 0);
@@ -15,7 +18,6 @@ export default class HumanBackground extends InteractiveBackgrounds {
         //this.addChild(this.zero)
         this.zero.alpha = 0.5
     }
-    
     resize(resolution, innerResolution) {
         if(!innerResolution || !innerResolution.height) return
         var topRight = game.getBorder('topRight', this.parent)

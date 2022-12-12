@@ -44,7 +44,7 @@ export default class AchievmentView extends PIXI.Container {
                 //console.log(this.data.prizes)
                 this.notificationDispatched = false;
                 let prog = COOKIE_MANAGER.getAchievment(this.systemID, this.data.variable)
-                this.onClaim.dispatch(this.data.prizes[prog.claimed])
+                this.onClaim.dispatch(this.convertPrize(prog.claimed))
 
                 COOKIE_MANAGER.claimAchievment(this.systemID, this.data.variable);
 
@@ -54,8 +54,9 @@ export default class AchievmentView extends PIXI.Container {
         this.data = {}
         this.notificationDispatched = false;
     }
-    setData(data, systemID) {
+    setData(data, systemID, systemOrder) {
         this.systemID = systemID;
+        this.systemOrder = systemOrder;
 
         this.data = data;
         //let desc = data.title+'\n'+data.description
@@ -67,7 +68,7 @@ export default class AchievmentView extends PIXI.Container {
 
         this.progressBar = new ProgressBar({ width: this.popUp.width / 2, height: 30 }, 2)
         this.descriptionContainer.addChild(this.progressBar)
-        this.progressBar.y = 60
+        this.progressBar.y = 55
         this.addElement(this.descriptionContainer)
         this.addElement(this.claimContainer)
 
@@ -84,7 +85,7 @@ export default class AchievmentView extends PIXI.Container {
     addLabelToNotification(text, wrap = 0) {
         let label = new PIXI.Text(text, LABELS.LABEL1);
         label.scaleContentMax = true;
-        label.style.fontSize = 22
+        label.style.fontSize = 20
         if (wrap) {
             label.style.wordWrap = true
             label.style.wordWrapWidth = wrap
@@ -97,6 +98,16 @@ export default class AchievmentView extends PIXI.Container {
         sprite.scaleContentMax = true;
         sprite.fitHeight = 0.8;
         return sprite
+    }
+    convertPrize(claimed){
+
+        if(this.systemOrder > 0){
+
+            return this.data.prizes[claimed] * (this.data.stageMultiplier * this.systemOrder)
+        }else{
+            return this.data.prizes[claimed]
+        }
+        
     }
     updateCurrentData(){
         let achieveData = COOKIE_MANAGER.getAchievment(this.systemID, this.data.variable);
@@ -112,7 +123,7 @@ export default class AchievmentView extends PIXI.Container {
         this.progressBar.setLabel(currentValue + '/' + nextUnclaimed);
         this.descriptionLabel.text = this.descriptionLabel.text.replace('{x}', nextUnclaimed)
 
-        this.claimButton.updateCoast(utils.formatPointsLabel(this.data.prizes[achieveData.claimed]))
+        this.claimButton.updateCoast(utils.formatPointsLabel(this.convertPrize(achieveData.claimed)))
         if (currentValue == 0) {
             this.progressBar.setProgressBar(0)
             this.claimButton.deactive();

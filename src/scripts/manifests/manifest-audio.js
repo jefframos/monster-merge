@@ -16,6 +16,10 @@ const assets = [
 	"url":"assets/audio\\Cartoon-Mouth-Sound-06.mp3"
 	},
 	{
+	"id":"Cartoon-Mouth-Sound-13",
+	"url":"assets/audio\\Cartoon-Mouth-Sound-13.mp3"
+	},
+	{
 	"id":"Cartoon-Mouth-Sound-18",
 	"url":"assets/audio\\Cartoon-Mouth-Sound-18.mp3"
 	},
@@ -28,20 +32,16 @@ const assets = [
 	"url":"assets/audio\\coins_04.mp3"
 	},
 	{
-	"id":"Cartoon-Mouth-Sound-13",
-	"url":"assets/audio\\Cartoon-Mouth-Sound-13.mp3"
-	},
-	{
 	"id":"dropTile",
 	"url":"assets/audio\\dropTile.mp3"
 	},
 	{
-	"id":"getCrazyOne",
-	"url":"assets/audio\\getCrazyOne.mp3"
-	},
-	{
 	"id":"Fire-Burst-Small-01",
 	"url":"assets/audio\\Fire-Burst-Small-01.mp3"
+	},
+	{
+	"id":"getCrazyOne",
+	"url":"assets/audio\\getCrazyOne.mp3"
 	},
 	{
 	"id":"getstar",
@@ -76,24 +76,28 @@ const assets = [
 	"url":"assets/audio\\Musical-Beep-Loop-02.mp3"
 	},
 	{
-	"id":"place2",
-	"url":"assets/audio\\place2.mp3"
-	},
-	{
 	"id":"Ping-Slide-Down",
 	"url":"assets/audio\\Ping-Slide-Down.mp3"
-	},
-	{
-	"id":"place3",
-	"url":"assets/audio\\place3.mp3"
 	},
 	{
 	"id":"place",
 	"url":"assets/audio\\place.mp3"
 	},
 	{
+	"id":"place2",
+	"url":"assets/audio\\place2.mp3"
+	},
+	{
 	"id":"Pop-Low-Pitch-Up-02",
 	"url":"assets/audio\\Pop-Low-Pitch-Up-02.mp3"
+	},
+	{
+	"id":"Pop-Musical",
+	"url":"assets/audio\\Pop-Musical.mp3"
+	},
+	{
+	"id":"place3",
+	"url":"assets/audio\\place3.mp3"
 	},
 	{
 	"id":"Pop-Tone",
@@ -104,32 +108,28 @@ const assets = [
 	"url":"assets/audio\\pop.mp3"
 	},
 	{
-	"id":"Pop-Musical",
-	"url":"assets/audio\\Pop-Musical.mp3"
+	"id":"shoosh",
+	"url":"assets/audio\\shoosh.mp3"
 	},
 	{
 	"id":"pop2",
 	"url":"assets/audio\\pop2.mp3"
 	},
 	{
-	"id":"shoosh",
-	"url":"assets/audio\\shoosh.mp3"
+	"id":"SneakySnitch",
+	"url":"assets/audio\\SneakySnitch.mp3"
+	},
+	{
+	"id":"Synth-Appear-01",
+	"url":"assets/audio\\Synth-Appear-01.mp3"
 	},
 	{
 	"id":"Tap-01",
 	"url":"assets/audio\\Tap-01.mp3"
 	},
 	{
-	"id":"SneakySnitch",
-	"url":"assets/audio\\SneakySnitch.mp3"
-	},
-	{
 	"id":"teleport",
 	"url":"assets/audio\\teleport.mp3"
-	},
-	{
-	"id":"Synth-Appear-01",
-	"url":"assets/audio\\Synth-Appear-01.mp3"
 	},
 	{
 	"id":"TheBuilder",

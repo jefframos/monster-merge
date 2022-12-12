@@ -8,7 +8,7 @@ export default class FairyCastleBackground extends CastleBackgroundBase {
 
     build() {
 
-
+        this.skyColor = 0x74CFE3
         this.baseColor = new PIXI.Graphics().beginFill(0x74CFE3).drawRect(-5000,-5000,10000,10000)
         this.baseContainer.addChild(this.baseColor)
 
