@@ -133,6 +133,8 @@ export default class MergeSystem {
         this.visible = true;
 
         this.slotSpawned = Math.floor(Math.random() * 20)
+
+        this.totalMerge = 0
     }
 
     resetSystem() {
@@ -685,14 +687,14 @@ export default class MergeSystem {
         //slot.specialState();
         //COOKIE_MANAGER.addMergePiece(null, slot.id.i, slot.id.j, this.systemID, 2)
 
-        let customData = {}
-        customData.forceX = 0
-        customData.forceY = 100
-        customData.gravity = 0
-        customData.scale = 0.05
-        customData.alphaDecress = 1
-        customData.texture = 'shipPrize'
-        this.onParticles.dispatch(slot.tileSprite.getGlobalPosition(), customData, 1)
+        // let customData = {}
+        // customData.forceX = 0
+        // customData.forceY = 100
+        // customData.gravity = 0
+        // customData.scale = 0.05
+        // customData.alphaDecress = 1
+        // customData.texture = 'shipPrize'
+        // this.onParticles.dispatch(slot.tileSprite.getGlobalPosition(), customData, 1)
 
         // this.updateAllData();
 
@@ -881,6 +883,13 @@ export default class MergeSystem {
 
                 SOUND_MANAGER.play('pop', 0.4, Math.random() * 0.1 + 0.9)
                 COOKIE_MANAGER.addAchievment(this.systemID, 'merge', 1)
+
+
+                this.totalMerge ++
+                if(this.totalMerge >= 20){
+                    this.totalMerge = 0;
+                    window.DO_COMMERCIAL(()=>{})
+                }
 
 
             } else {

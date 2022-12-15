@@ -66,19 +66,28 @@ export default class ChargerTile extends MergeTile {
         this.container.addChild(this.fullLabel)
         this.fullLabel.x = size / 2
         this.fullLabel.y = size / 2
+
+
+        window.onSpacePressed.add(()=>{
+            this.tap()
+        })
     }
     onMouseDown(e) {
         if (this.isBlocked) return
         super.onMouseDown(e);
+        this.tap()
+    }
+    tap(){
         this.currentChargeTime -= 0.2
         COOKIE_MANAGER.addAchievment(this.systemID, 'tap', 1)
         SOUND_MANAGER.play('Pop-Low-Pitch-Up-02', 0.1, Math.random() * 0.1 + 0.9)
         if (this.currentChargeTime <= 0) {
             this.completeCharge();
         } else {
-
+    
             this.onShowParticles.dispatch()
         }
+
     }
     giftState() { }
     enterAnimation() { }

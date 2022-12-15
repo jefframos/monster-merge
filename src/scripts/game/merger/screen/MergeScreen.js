@@ -140,6 +140,15 @@ export default class MergeScreen extends Screen {
         this.container.addChild(this.soundButton)
 
 
+
+        if (!COOKIE_MANAGER.getSettings().isMute) {
+            SOUND_MANAGER.unmute()
+        } else {
+            SOUND_MANAGER.mute()
+        }
+
+
+
         this.bonusesList = new UIList()
         this.bonusesList.w = 80
         this.bonusesList.h = this.bonusesList.w * 2 + 20
@@ -386,13 +395,13 @@ export default class MergeScreen extends Screen {
         mergeItemsShop.addItems(rawMergeDataList)
         mergeItemsShop.hide();
         mergeItemsShop.onAddEntity.add((entity) => {
-            SOUND_MANAGER.play('getstar', 0.5)
+            SOUND_MANAGER.play('getstar', 0.65)
             mergeSystem.buyEntity(entity)
         })
         mergeItemsShop.onClaimGift.add((entity) => {
             mergeSystem.addSpecialPiece();
 
-            SOUND_MANAGER.play('magic', 0.5)
+            SOUND_MANAGER.play('magic', 0.75)
 
             COOKIE_MANAGER.claimGift(slug)
         })
@@ -539,7 +548,7 @@ export default class MergeScreen extends Screen {
     startGamePopUp(targetMoney) {
 
 
-        SOUND_MANAGER.play('magic', 0.4)
+        SOUND_MANAGER.play('magic', 0.7)
 
         let target = targetMoney
         let target2 = targetMoney * 2
@@ -667,8 +676,14 @@ export default class MergeScreen extends Screen {
             mainIconHeight: 30,
             video: true,
             onConfirm: () => {
-                this.activeMergeSystem.addDataTo(slot, level + 1)
-                SOUND_MANAGER.play('getThemAll', 0.4)
+
+
+                window.DO_REWARD(() => {
+                    this.activeMergeSystem.addDataTo(slot, level + 1)
+                    SOUND_MANAGER.play('getThemAll', 0.6)
+                })
+
+                
             },
             onCancel: () => {
                 SOUND_MANAGER.play('place2', 0.4)

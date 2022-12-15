@@ -56,12 +56,12 @@ const assets = [
 	"url":"assets/audio\\Harp-Flutter-02.mp3"
 	},
 	{
-	"id":"HolidayWeasel",
-	"url":"assets/audio\\HolidayWeasel.mp3"
-	},
-	{
 	"id":"item",
 	"url":"assets/audio\\item.mp3"
+	},
+	{
+	"id":"HolidayWeasel",
+	"url":"assets/audio\\HolidayWeasel.mp3"
 	},
 	{
 	"id":"kill",
@@ -80,24 +80,24 @@ const assets = [
 	"url":"assets/audio\\Ping-Slide-Down.mp3"
 	},
 	{
-	"id":"place",
-	"url":"assets/audio\\place.mp3"
-	},
-	{
 	"id":"place2",
 	"url":"assets/audio\\place2.mp3"
+	},
+	{
+	"id":"place3",
+	"url":"assets/audio\\place3.mp3"
 	},
 	{
 	"id":"Pop-Low-Pitch-Up-02",
 	"url":"assets/audio\\Pop-Low-Pitch-Up-02.mp3"
 	},
 	{
-	"id":"Pop-Musical",
-	"url":"assets/audio\\Pop-Musical.mp3"
+	"id":"place",
+	"url":"assets/audio\\place.mp3"
 	},
 	{
-	"id":"place3",
-	"url":"assets/audio\\place3.mp3"
+	"id":"Pop-Musical",
+	"url":"assets/audio\\Pop-Musical.mp3"
 	},
 	{
 	"id":"Pop-Tone",

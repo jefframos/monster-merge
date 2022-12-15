@@ -34480,17 +34480,26 @@ window.DO_COMMERCIAL = function (callback, params) {
         return;
     }
     window.onAdds.dispatch();
+
+    var wasMute = SOUND_MANAGER.isMute;
+
+    SOUND_MANAGER.mute();
+
     PokiSDK.commercialBreak().then(function () {
         console.log("Commercial break finished, proceeding to game");
         window.GAMEPLAY_START();
         window.onStopAdds.dispatch();
-
+        if (!wasMute) {
+            SOUND_MANAGER.unmute();
+        }
         if (callback) callback(params);
     }).catch(function () {
         console.log("Initialized, but the user likely has adblock");
         window.GAMEPLAY_START();
         window.onStopAdds.dispatch();
-
+        if (!wasMute) {
+            SOUND_MANAGER.unmute();
+        }
         if (callback) callback(params);
     });
 };
@@ -34506,15 +34515,27 @@ window.DO_REWARD = function (callback, params) {
     }
 
     window.onAdds.dispatch();
+
+    var wasMute = SOUND_MANAGER.isMute;
+
+    SOUND_MANAGER.mute();
     PokiSDK.rewardedBreak().then(function (success) {
         if (success) {
             window.onStopAdds.dispatch();
             window.GAMEPLAY_START();
+
+            if (!wasMute) {
+                SOUND_MANAGER.unmute();
+            }
             if (callback) callback(params);
         } else {
             window.onStopAdds.dispatch();
             window.GAMEPLAY_START();
             if (callback) callback(params);
+
+            if (!wasMute) {
+                SOUND_MANAGER.unmute();
+            }
         }
     });
 };
@@ -34654,8 +34675,8 @@ function configGame(evt) {
         game.resize();
     }, 1);
     window.GAMEPLAY_START(true);
-    window.addEventListener("focus", myFocusFunction, true);
-    window.addEventListener("blur", myBlurFunction, true);
+    // window.addEventListener("focus", myFocusFunction, true);
+    // window.addEventListener("blur", myBlurFunction, true);
 
     //SOUND_MANAGER.playLoop('dream1')
     setTimeout(function () {
@@ -34675,6 +34696,7 @@ function myFocusFunction() {
     // if (GAME_DATA.mute) {
     //     return
     // }
+
     if (!COOKIE_MANAGER.getSettings().isMute) {
         SOUND_MANAGER.unmute();
     }
@@ -34710,7 +34732,7 @@ window.getKey = function (e) {
     }
 };
 
-document.addEventListener('keydown', function (event) {
+document.addEventListener('keyup', function (event) {
     window.getKey(event);
     event.preventDefault();
 });
@@ -61732,20 +61754,20 @@ var assets = [{
 	"id": "localization_RU",
 	"url": "assets/json\\localization_RU.json"
 }, {
-	"id": "localization_ZH",
-	"url": "assets/json\\localization_ZH.json"
-}, {
 	"id": "localization_TR",
 	"url": "assets/json\\localization_TR.json"
 }, {
-	"id": "modifyers",
-	"url": "assets/json\\modifyers.json"
+	"id": "localization_ZH",
+	"url": "assets/json\\localization_ZH.json"
 }, {
 	"id": "monsters",
 	"url": "assets/json\\monsters.json"
 }, {
 	"id": "resources",
 	"url": "assets/json\\resources.json"
+}, {
+	"id": "modifyers",
+	"url": "assets/json\\modifyers.json"
 }];
 
 exports.default = assets;
@@ -62071,11 +62093,11 @@ var assets = [{
 	"id": "Harp-Flutter-02",
 	"url": "assets/audio\\Harp-Flutter-02.mp3"
 }, {
-	"id": "HolidayWeasel",
-	"url": "assets/audio\\HolidayWeasel.mp3"
-}, {
 	"id": "item",
 	"url": "assets/audio\\item.mp3"
+}, {
+	"id": "HolidayWeasel",
+	"url": "assets/audio\\HolidayWeasel.mp3"
 }, {
 	"id": "kill",
 	"url": "assets/audio\\kill.mp3"
@@ -62089,20 +62111,20 @@ var assets = [{
 	"id": "Ping-Slide-Down",
 	"url": "assets/audio\\Ping-Slide-Down.mp3"
 }, {
-	"id": "place",
-	"url": "assets/audio\\place.mp3"
-}, {
 	"id": "place2",
 	"url": "assets/audio\\place2.mp3"
+}, {
+	"id": "place3",
+	"url": "assets/audio\\place3.mp3"
 }, {
 	"id": "Pop-Low-Pitch-Up-02",
 	"url": "assets/audio\\Pop-Low-Pitch-Up-02.mp3"
 }, {
+	"id": "place",
+	"url": "assets/audio\\place.mp3"
+}, {
 	"id": "Pop-Musical",
 	"url": "assets/audio\\Pop-Musical.mp3"
-}, {
-	"id": "place3",
-	"url": "assets/audio\\place3.mp3"
 }, {
 	"id": "Pop-Tone",
 	"url": "assets/audio\\Pop-Tone.mp3"
@@ -62142,7 +62164,7 @@ module.exports = exports["default"];
 /* 344 */
 /***/ (function(module, exports) {
 
-module.exports = {"default":["image/particles/particles.json","image/pattern/pattern.json","image/pattern2/pattern2.json","image/partsf/partsf.json","image/parts/parts.json","image/partsh/partsh.json","image/background2/background2.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
+module.exports = {"default":["image/particles/particles.json","image/pattern/pattern.json","image/pattern2/pattern2.json","image/parts/parts.json","image/partsf/partsf.json","image/partsh/partsh.json","image/background2/background2.json","image/portraits/portraits.json","image/background/background.json","image/ui/ui.json"]}
 
 /***/ }),
 /* 345 */
@@ -62646,6 +62668,12 @@ var MergeScreen = function (_Screen) {
                 _this.soundButton.icon.texture = PIXI.Texture.from(COOKIE_MANAGER.getSettings().isMute ? 'soundoff' : 'soundon');
                 _this.container.addChild(_this.soundButton);
 
+                if (!COOKIE_MANAGER.getSettings().isMute) {
+                        SOUND_MANAGER.unmute();
+                } else {
+                        SOUND_MANAGER.mute();
+                }
+
                 _this.bonusesList = new _UIList2.default();
                 _this.bonusesList.w = 80;
                 _this.bonusesList.h = _this.bonusesList.w * 2 + 20;
@@ -62883,13 +62911,13 @@ var MergeScreen = function (_Screen) {
                         mergeItemsShop.addItems(rawMergeDataList);
                         mergeItemsShop.hide();
                         mergeItemsShop.onAddEntity.add(function (entity) {
-                                SOUND_MANAGER.play('getstar', 0.5);
+                                SOUND_MANAGER.play('getstar', 0.65);
                                 mergeSystem.buyEntity(entity);
                         });
                         mergeItemsShop.onClaimGift.add(function (entity) {
                                 mergeSystem.addSpecialPiece();
 
-                                SOUND_MANAGER.play('magic', 0.5);
+                                SOUND_MANAGER.play('magic', 0.75);
 
                                 COOKIE_MANAGER.claimGift(slug);
                         });
@@ -63035,7 +63063,7 @@ var MergeScreen = function (_Screen) {
                 value: function startGamePopUp(targetMoney) {
                         var _this4 = this;
 
-                        SOUND_MANAGER.play('magic', 0.4);
+                        SOUND_MANAGER.play('magic', 0.7);
 
                         var target = targetMoney;
                         var target2 = targetMoney * 2;
@@ -63158,8 +63186,11 @@ var MergeScreen = function (_Screen) {
                                 mainIconHeight: 30,
                                 video: true,
                                 onConfirm: function onConfirm() {
-                                        _this8.activeMergeSystem.addDataTo(slot, level + 1);
-                                        SOUND_MANAGER.play('getThemAll', 0.4);
+
+                                        window.DO_REWARD(function () {
+                                                _this8.activeMergeSystem.addDataTo(slot, level + 1);
+                                                SOUND_MANAGER.play('getThemAll', 0.6);
+                                        });
                                 },
                                 onCancel: function onCancel() {
                                         SOUND_MANAGER.play('place2', 0.4);
@@ -66391,6 +66422,8 @@ var MergeSystem = function () {
         this.visible = true;
 
         this.slotSpawned = Math.floor(Math.random() * 20);
+
+        this.totalMerge = 0;
     }
 
     (0, _createClass3.default)(MergeSystem, [{
@@ -66986,14 +67019,14 @@ var MergeSystem = function () {
             //slot.specialState();
             //COOKIE_MANAGER.addMergePiece(null, slot.id.i, slot.id.j, this.systemID, 2)
 
-            var customData = {};
-            customData.forceX = 0;
-            customData.forceY = 100;
-            customData.gravity = 0;
-            customData.scale = 0.05;
-            customData.alphaDecress = 1;
-            customData.texture = 'shipPrize';
-            this.onParticles.dispatch(slot.tileSprite.getGlobalPosition(), customData, 1);
+            // let customData = {}
+            // customData.forceX = 0
+            // customData.forceY = 100
+            // customData.gravity = 0
+            // customData.scale = 0.05
+            // customData.alphaDecress = 1
+            // customData.texture = 'shipPrize'
+            // this.onParticles.dispatch(slot.tileSprite.getGlobalPosition(), customData, 1)
 
             // this.updateAllData();
 
@@ -67194,6 +67227,12 @@ var MergeSystem = function () {
 
                     SOUND_MANAGER.play('pop', 0.4, Math.random() * 0.1 + 0.9);
                     COOKIE_MANAGER.addAchievment(this.systemID, 'merge', 1);
+
+                    this.totalMerge++;
+                    if (this.totalMerge >= 20) {
+                        this.totalMerge = 0;
+                        window.DO_COMMERCIAL(function () {});
+                    }
                 } else {
 
                     if (!currentDrag.isGenerator) {
@@ -67477,6 +67516,10 @@ var ChargerTile = function (_MergeTile) {
         _this.container.addChild(_this.fullLabel);
         _this.fullLabel.x = size / 2;
         _this.fullLabel.y = size / 2;
+
+        window.onSpacePressed.add(function () {
+            _this.tap();
+        });
         return _this;
     }
 
@@ -67485,6 +67528,11 @@ var ChargerTile = function (_MergeTile) {
         value: function onMouseDown(e) {
             if (this.isBlocked) return;
             (0, _get3.default)(ChargerTile.prototype.__proto__ || (0, _getPrototypeOf2.default)(ChargerTile.prototype), 'onMouseDown', this).call(this, e);
+            this.tap();
+        }
+    }, {
+        key: 'tap',
+        value: function tap() {
             this.currentChargeTime -= 0.2;
             COOKIE_MANAGER.addAchievment(this.systemID, 'tap', 1);
             SOUND_MANAGER.play('Pop-Low-Pitch-Up-02', 0.1, Math.random() * 0.1 + 0.9);
@@ -69220,7 +69268,7 @@ var StandardPop = function (_PIXI$Container) {
         key: 'show',
         value: function show(param, visuals) {
 
-            SOUND_MANAGER.play('Synth-Appear-01', 0.1);
+            SOUND_MANAGER.play('Synth-Appear-01', 0.8);
 
             this.visible = true;
             this.popUp.scale.set(1);

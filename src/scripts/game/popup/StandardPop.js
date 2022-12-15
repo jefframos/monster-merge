@@ -157,7 +157,7 @@ export default class StandardPop extends PIXI.Container {
     }
     show(param, visuals) {
 
-        SOUND_MANAGER.play('Synth-Appear-01', 0.1)
+        SOUND_MANAGER.play('Synth-Appear-01', 0.8)
 
         this.visible = true;
         this.popUp.scale.set(1)

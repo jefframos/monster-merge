@@ -59,12 +59,19 @@ window.DO_COMMERCIAL = function (callback, params) {
         return
     }
     window.onAdds.dispatch();
+
+    let wasMute = SOUND_MANAGER.isMute;
+
+    SOUND_MANAGER.mute();
+
     PokiSDK.commercialBreak().then(
         () => {
             console.log("Commercial break finished, proceeding to game");
             window.GAMEPLAY_START()
             window.onStopAdds.dispatch();
-
+            if (!wasMute) {
+                SOUND_MANAGER.unmute();
+            }
             if (callback) callback(params)
         }
     ).catch(
@@ -72,7 +79,9 @@ window.DO_COMMERCIAL = function (callback, params) {
             console.log("Initialized, but the user likely has adblock");
             window.GAMEPLAY_START()
             window.onStopAdds.dispatch();
-
+            if (!wasMute) {
+                SOUND_MANAGER.unmute();
+            }
             if (callback) callback(params)
         }
     );
@@ -89,16 +98,28 @@ window.DO_REWARD = function (callback, params) {
     }
 
     window.onAdds.dispatch();
+
+    let wasMute = SOUND_MANAGER.isMute;
+
+    SOUND_MANAGER.mute();
     PokiSDK.rewardedBreak().then(
         (success) => {
             if (success) {
                 window.onStopAdds.dispatch();
                 window.GAMEPLAY_START()
+
+                if (!wasMute) {
+                    SOUND_MANAGER.unmute();
+                }
                 if (callback) callback(params)
             } else {
                 window.onStopAdds.dispatch();
                 window.GAMEPLAY_START()
                 if (callback) callback(params)
+
+                if (!wasMute) {
+                    SOUND_MANAGER.unmute();
+                }
             }
         }
 
@@ -184,9 +205,9 @@ function startLoader() {
         .load(configGame);
 
 
-        PIXI.loader.onProgress.add((e)=>{
-            game.updateLoader(e.progress)
-        })
+    PIXI.loader.onProgress.add((e) => {
+        game.updateLoader(e.progress)
+    })
     // FbManager.connect().then(() =>
     //     {
     //         FbManager.trackLoader(PIXI.loader);
@@ -200,7 +221,7 @@ function startLoader() {
 
 window.COOKIE_MANAGER = new CookieManager();
 function configGame(evt) {
-    
+
     window.localizationManager = new LocalizationManager('');
 
     SOUND_MANAGER.load(audioManifest);
@@ -250,21 +271,21 @@ function configGame(evt) {
     // screenManager.forceChange('GameScreen');
     game.start();
 
-    setTimeout(() => {        
+    setTimeout(() => {
         game.resize();
     }, 1);
     window.GAMEPLAY_START(true)
-    window.addEventListener("focus", myFocusFunction, true);
-    window.addEventListener("blur", myBlurFunction, true);
+    // window.addEventListener("focus", myFocusFunction, true);
+    // window.addEventListener("blur", myBlurFunction, true);
 
     //SOUND_MANAGER.playLoop('dream1')
-    setTimeout(() => {        
+    setTimeout(() => {
         game.resize();
     }, 100);
 }
 
 window.onresize = function (event) {
-    if(! window.game) return;
+    if (!window.game) return;
     window.game.resize();
 };
 function myFocusFunction() {
@@ -275,7 +296,8 @@ function myFocusFunction() {
     // if (GAME_DATA.mute) {
     //     return
     // }
-    if(!COOKIE_MANAGER.getSettings().isMute){
+
+    if (!COOKIE_MANAGER.getSettings().isMute) {
         SOUND_MANAGER.unmute();
     }
 }
@@ -310,7 +332,7 @@ window.getKey = function (e) {
     }
 }
 
-document.addEventListener('keydown', (event) => {
+document.addEventListener('keyup', (event) => {
     window.getKey(event);
     event.preventDefault()
 })
