@@ -3,9 +3,9 @@ import * as PIXI from 'pixi.js';
 import ShopItem from './ShopItem';
 import ShopList from './ShopList';
 import Signals from 'signals';
+import TextBox from '../../ui/TextBox';
 import TweenMax from 'gsap';
 import UIButton1 from '../../ui/UIButton1';
-import TextBox from '../../ui/TextBox';
 import UpgradesToggles from './UpgradesToggles';
 import config from '../../../config';
 import utils from '../../../utils';
@@ -54,7 +54,6 @@ export default class EntityShop extends PIXI.Container {
         // this.portrait.anchor.set(0, 1)
         // this.portrait.x = 20
         // this.portrait.y = 104
-
         this.itemWidth = this.size.w - this.size.w * 0.2;
         this.itemHeight = this.size.h * 0.8 / (itemsPerPage+1);
 

@@ -1,4 +1,5 @@
 import * as PIXI from 'pixi.js';
+
 import CastleBackgroundBase from '../CastleBackgroundBase';
 
 export default class CastleBackground extends CastleBackgroundBase {
@@ -86,11 +87,11 @@ export default class CastleBackground extends CastleBackgroundBase {
             { src: 'sideHouse2', order: 10, pos: { x: 420.8, y: 277.15 } },
             { src: 'sideHouse1', order: 9, pos: { x: 535.95, y: 308.35 } },
             { src: 'side5', order: 17, pos: { x: 580.45, y: 0 } },
-            { src: 'thinHouse', order: 12, pos: { x: 230.05, y: 250.25 } },
-            { src: 'backTower', order: 19, pos: { x: 317.9, y: 0 } },
+            { src: 'thinHouse', order: 12, pos: { x: 230.05, y: 290.25 } },
             { src: 'tower6', order: 15, pos: { x: 448.25, y: 91.7 } },
             { src: 'mainTower', order: 13, pos: { x: 301.1, y: 180 } },
             { src: 'statue1', order: 18, pos: { x: 325.2, y: 130 } },
+            { src: 'backTower', order: 19, pos: { x: 317.9, y: 0 } },
             { src: 'spare', order: 8, pos: { x: 185.2, y: 360.05 } }
         ]
 
@@ -107,9 +108,6 @@ export default class CastleBackground extends CastleBackgroundBase {
 
         }
 
-    }
-
-    update(delta) {
     }
 
 }

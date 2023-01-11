@@ -24,7 +24,6 @@ export default class MonsterBackground extends InteractiveBackgrounds {
             this.puzzleBackground.update(delta)
         }
         if (this.castleBackground) {
-
             this.castleBackground.update(delta)
         }
     }

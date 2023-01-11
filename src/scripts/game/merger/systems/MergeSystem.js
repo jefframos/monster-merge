@@ -32,6 +32,7 @@ export default class MergeSystem {
         this.updateAvailableSlots = new Signals();
         this.updateMaxLevel = new Signals();
         this.specialTileReveal = new Signals();
+        this.onReveal = new Signals();
 
         this.slotsContainer = new PIXI.Container();
         this.container.addChild(this.slotsContainer)
@@ -535,6 +536,8 @@ export default class MergeSystem {
             SOUND_MANAGER.play('Pop-Tone', 0.3)
 
             this.updateAllData();
+
+            this.onReveal.dispatch(slot)
         });
 
 

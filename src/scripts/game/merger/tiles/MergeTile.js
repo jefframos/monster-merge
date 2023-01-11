@@ -1,7 +1,9 @@
 import * as PIXI from 'pixi.js';
-import Signals from 'signals';
+
 import CircleCounter from '../../ui/hudElements/CircleCounter';
 import ProgressBar from '../ProgressBar';
+import Signals from 'signals';
+
 export default class MergeTile extends PIXI.Container {
     constructor(i, j, size, lockIcon, visuals) {
         super();
@@ -243,6 +245,9 @@ export default class MergeTile extends PIXI.Container {
             return;
         }
         this.tileSprite.alpha = 1;
+        TweenLite.killTweensOf(this.tileSprite);
+        this.tileSprite.scale.set(0.5,1.5)
+        TweenLite.to(this.tileSprite.scale, 0.75, {x:1, y:1, ease:Elastic.easeOut})
         this.tileSprite.visible = true;
         return this.tileSprite.texture;
     }

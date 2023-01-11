@@ -7,7 +7,7 @@ import TweenMax from 'gsap';
 
 export default class MergeItemsShop extends EntityShop {
     constructor(mainSystem, systemID, border = 0) {
-        super(mainSystem, systemID, 6, {
+        super(mainSystem, systemID, 5, {
             w: config.width * 0.9,
             h: config.height * 0.9
         })

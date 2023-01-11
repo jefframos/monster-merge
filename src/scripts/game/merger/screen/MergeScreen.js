@@ -2,9 +2,9 @@ import * as PIXI from 'pixi.js';
 
 import AchievmentsWindow from '../shop/AchievmentsWindow';
 import FairyBackground from '../backgrounds/fairy/FairyBackground';
-import HumanBackground from '../backgrounds/human/HumanBackground';
 import GameEconomy from '../GameEconomy';
 import GameModifyers from '../GameModifyers';
+import HumanBackground from '../backgrounds/human/HumanBackground';
 import LevelMeter from '../ui/shop/LevelMeter';
 import MergeItemsShop from '../shop/MergeItemsShop';
 import MergeSystem from '../systems/MergeSystem';
@@ -126,7 +126,7 @@ export default class MergeScreen extends Screen {
         this.soundButton = new UIButton1(0x002299, 'soundon', 0xFFFFFF, 60, 60, config.assets.box.squareWarning)
         this.soundButton.updateIconScale(0.6)
         this.soundButton.onClick.add(() => {
-            
+
             if (COOKIE_MANAGER.getSettings().isMute) {
                 SOUND_MANAGER.unmute()
             } else {
@@ -134,7 +134,7 @@ export default class MergeScreen extends Screen {
             }
             COOKIE_MANAGER.setSettings('isMute', SOUND_MANAGER.isMute);
 
-            this.soundButton.icon.texture =  PIXI.Texture.from(SOUND_MANAGER.isMute ? 'soundoff' : 'soundon')
+            this.soundButton.icon.texture = PIXI.Texture.from(SOUND_MANAGER.isMute ? 'soundoff' : 'soundon')
         })
         this.soundButton.icon.texture = PIXI.Texture.from(COOKIE_MANAGER.getSettings().isMute ? 'soundoff' : 'soundon')
         this.container.addChild(this.soundButton)
@@ -357,6 +357,9 @@ export default class MergeScreen extends Screen {
 
         COOKIE_MANAGER.initBoard(this.activeMergeSystem.systemID)
 
+        this.topDark = new PIXI.Graphics().beginFill(0).drawRect(-5000, -5000, 10000, 10000)
+        this.addChild(this.topDark)
+        this.topDark.alpha = 0;
 
         this.particleSystemFront = new ParticleSystem();
         this.addChild(this.particleSystemFront)
@@ -389,6 +392,7 @@ export default class MergeScreen extends Screen {
         mergeSystem.onNextLevel.add(this.onNextLevel.bind(this));
         mergeSystem.onBoardLevelUpdate.add(this.onMergeSystemUpdate.bind(this));
         mergeSystem.specialTileReveal.add(this.onSpecialTileReveal.bind(this));
+        mergeSystem.onReveal.add(this.onRevealTile.bind(this));
 
         let mergeItemsShop = new MergeItemsShop([mergeSystem])
         this.uiLayer.addChild(mergeItemsShop);
@@ -463,7 +467,7 @@ export default class MergeScreen extends Screen {
 
             COOKIE_MANAGER.addAchievment(this.activeMergeSystem.systemID, 'discovery', max + 1, true)
 
-            this.activeMergeSystem.interactiveBackground.updateMax(max, true)
+            this.activeMergeSystem.interactiveBackground.updateMax(max, true, this.activeMergeSystem)
             if (max == 0 || skipPopup) {
                 this.activeMergeSystem.interactiveBackground.showAnimation(max)
                 return;
@@ -492,7 +496,7 @@ export default class MergeScreen extends Screen {
 
             if (this.activeMergeSystemID == toggleSystems.systemArrayID) return;
 
-            this.screenManager.screenTransition.startTransitionIn(0, ()=>{
+            this.screenManager.screenTransition.startTransitionIn(0, () => {
                 this.showSystem(toggleSystems.systemArrayID)
             }, mergeSystem.interactiveBackground.skyColor)
         })
@@ -519,26 +523,26 @@ export default class MergeScreen extends Screen {
         });
 
 
-        
+
         this.activeMergeSystemID = id;
         this.activeMergeSystemID %= this.mergeSystemsList.length
-        
+
         this.mergeSystemsList[this.activeMergeSystemID].visible = true;
         this.mergeSystemsList[this.activeMergeSystemID].interactiveBackground.visible = true;
         this.activeMergeSystem = this.mergeSystemsList[this.activeMergeSystemID]
         this.activeMergeSystem.toggle.unlockTextbox.alpha = 0;
-        
+
         this.activeMergeSystem.achievments.checkAll();
-        
+
         var lastTime = COOKIE_MANAGER.getLastResourceTime(this.activeMergeSystem.systemID);
 
-        let calcTime = Date.now()/1000 - lastTime.lastChanged
-        
-        setTimeout(() => {
-            
-           
+        let calcTime = Date.now() / 1000 - lastTime.lastChanged
 
-            if(this.activeMergeSystem.rps > 0 && calcTime > 60){
+        setTimeout(() => {
+
+
+
+            if (this.activeMergeSystem.rps > 0 && calcTime > 60) {
                 calcTime = Math.min(calcTime, 600)
                 this.startGamePopUp(this.activeMergeSystem.rps * Math.ceil(calcTime))
             }
@@ -560,7 +564,7 @@ export default class MergeScreen extends Screen {
             cancelLabel: window.localizationManager.getLabel('ok'),
             video: true,
             popUpType: config.assets.popup.secondary,
-            mainLabel2:  window.localizationManager.getLabel('youEarned')+utils.formatPointsLabel(target)+ '\n'+ window.localizationManager.getLabel('watchDouble'),
+            mainLabel2: window.localizationManager.getLabel('youEarned') + utils.formatPointsLabel(target) + '\n' + window.localizationManager.getLabel('watchDouble'),
             onConfirm: () => {
                 window.DO_REWARD(() => {
                     window.gameEconomy.addResources(target2, this.activeMergeSystem.systemID)
@@ -587,10 +591,10 @@ export default class MergeScreen extends Screen {
         this.openPopUp(this.standardPopUp, {
             value1: '-',
             value2: utils.formatPointsLabel(target2),
-            title:window.localizationManager.getLabel('level')+' ' + data.currentLevel,
+            title: window.localizationManager.getLabel('level') + ' ' + data.currentLevel,
             confirmLabel: window.localizationManager.getLabel('openShop'),
             cancelLabel: window.localizationManager.getLabel('ok'),
-            mainLabel2: this.activeMergeSystem.dataTiles[data.currentLevel - 1].rawData.displayName + '\n'+window.localizationManager.getLabel('shopUnlocked'),
+            mainLabel2: this.activeMergeSystem.dataTiles[data.currentLevel - 1].rawData.displayName + '\n' + window.localizationManager.getLabel('shopUnlocked'),
             video: false,
             popUpType: config.assets.popup.extra,
             hideAll: true,
@@ -619,7 +623,7 @@ export default class MergeScreen extends Screen {
             title: window.localizationManager.getLabel('freeCoins'),
             confirmLabel: window.localizationManager.getLabel('collect'),
             cancelLabel: window.localizationManager.getLabel('cancel'),
-            mainLabel2: window.localizationManager.getLabel('watchToEarn') +' 10\n'+ window.localizationManager.getLabel('minutesWorth'),
+            mainLabel2: window.localizationManager.getLabel('watchToEarn') + ' 10\n' + window.localizationManager.getLabel('minutesWorth'),
             video: true,
             popUpType: config.assets.popup.secondary,
             onConfirm: () => {
@@ -644,15 +648,19 @@ export default class MergeScreen extends Screen {
         let name = this.activeMergeSystem.dataTiles[pieceId].rawData.displayName
         let castlePiece = this.activeMergeSystem.interactiveBackground.getPiece(pieceId).src
 
-        this.notificationPanel.buildNewPieceNotification(imagesrc, window.localizationManager.getLabel('discovered')+' ' + name, null, config.assets.popup.secondary)
+        this.notificationPanel.buildNewPieceNotification(imagesrc, window.localizationManager.getLabel('discovered') + ' ' + name, null, config.assets.popup.secondary)
 
         SOUND_MANAGER.play('coins_04', 0.4)
+
+        let targetAnimation = this.activeMergeSystem.interactiveBackground.showAnimation(pieceId);
+
+        console.log(targetAnimation)
+        this.discoverParticles(targetAnimation);
 
         setTimeout(() => {
 
             SOUND_MANAGER.play('coins_04', 0.4, 1.1)
             this.notificationPanel.buildNewPieceNotification(castlePiece, window.localizationManager.getLabel('unlockedPiece'), null, config.assets.popup.extra)
-            this.activeMergeSystem.interactiveBackground.showAnimation(pieceId)
         }, 2000);
 
 
@@ -683,7 +691,7 @@ export default class MergeScreen extends Screen {
                     SOUND_MANAGER.play('getThemAll', 0.6)
                 })
 
-                
+
             },
             onCancel: () => {
                 SOUND_MANAGER.play('place2', 0.4)
@@ -748,7 +756,9 @@ export default class MergeScreen extends Screen {
         let toLocal = this.particleSystemFront.toLocal({ x: config.width / 2, y: config.height / 2 })
 
         SOUND_MANAGER.play('getThemAll', 0.5)
-
+        TweenLite.killTweensOf(this.topDark)
+        TweenLite.to(this.topDark, 0.25, { alpha: 0.75 });
+        TweenLite.to(this.topDark, 0.5, { delay: 2, alpha: 0 });
 
         for (let index = 1; index <= 10; index++) {
             let angle = (Math.PI * 2 / 10) * index
@@ -757,22 +767,57 @@ export default class MergeScreen extends Screen {
             customData.scale = 0.035
             customData.gravity = 20//1000
             customData.alphaDecress = 0
-            customData.forceX = Math.sin(angle) * 800
+            customData.forceX = Math.sin(angle) * 500
             customData.forceY = Math.cos(angle) * 500
             customData.ignoreMatchRotation = true
-
+            customData.fixedVelocity = true;
             let coinPosition = this.shardsTexture.getGlobalPosition();
 
             let toLocalTarget = this.particleSystemFront.toLocal(coinPosition)
 
             customData.target = { x: toLocalTarget.x, y: toLocalTarget.y, timer: 0.25 + Math.random() * 0.5 }
-            this.particleSystemFront.show(toLocal, 1, customData)
+
+            setTimeout(() => {
+
+                this.particleSystemFront.show(toLocal, 1, customData)
+            }, 50 * index + 300);
 
 
         }
         this.popLabelFront({ x: config.width / 2, y: config.height / 2 }, utils.formatPointsLabel(value), 2);
 
     }
+
+    discoverParticles(target) {
+        let targetGlobal = target.getGlobalPosition();
+        let toLocal = this.particleSystemFront.toLocal({ x: targetGlobal.x, y: targetGlobal.y })
+        toLocal.x += target.width / 2
+        toLocal.y += target.height / 2
+        SOUND_MANAGER.play('getThemAll', 0.5)
+
+        let colors = [0x7ded32, 0x32eda0, 0x3281ed, 0x9332ed, 0xed32cc, 0xedc832]
+        for (let index = 1; index <= 20; index++) {
+            let angle = (Math.PI / 20) * index
+            let customData = {};
+            customData.texture = 'spark2'
+            customData.scale = 0.01
+            customData.gravity = 200//1000
+            customData.alphaDecress = 0.5
+            customData.forceX = Math.random() * 100 - 50//Math.cos(angle) * 200
+            customData.forceY = Math.random() * - 150 - 150//Math.cos(angle)* 200
+            customData.angSpeed = Math.random() * 5
+            customData.fixedVelocity = true
+            customData.tint = colors[Math.floor(Math.random() * colors.length)]
+            let target = { x: toLocal.x + Math.random() * 60 - 30, y: toLocal.y + Math.random() * 60 - 30 }
+
+            setTimeout(() => {
+
+                this.particleSystemFront.show(target, 1, customData)
+            }, 50 * index);
+        }
+
+    }
+
     addSystem(system) {
         if (!this.systemsList.includes(system)) {
             this.systemsList.push(system)
@@ -831,6 +876,33 @@ export default class MergeScreen extends Screen {
     onNextLevel(data) {
         this.levelUpPopUp(data)
     }
+
+    onRevealTile(slot) {
+        let targetGlobal = slot.tileSprite.getGlobalPosition();
+        let toLocal = this.particleSystemFront.toLocal({ x: targetGlobal.x, y: targetGlobal.y })
+        let startAng = Math.PI * Math.random()
+        //let colors = [0x7ded32, 0x32eda0, 0x3281ed, 0x9332ed, 0xed32cc, 0xedc832]
+        for (let index = 1; index <= 8; index++) {
+            let angle = (Math.PI / 8 * 2) * index + startAng
+            let customData = {};
+            customData.texture = 'star23'
+            customData.scale = 0.015
+            customData.gravity = 0//1000
+            customData.alphaDecress = 1
+            customData.forceX = Math.sin(angle) * 75// * -200
+            customData.forceY = Math.cos(angle) * 75
+            customData.angSpeed = Math.random() * 5
+            customData.tint = 0xedc832
+            customData.fixedVelocity = true
+            //let target = { x: toLocal.x + Math.random() * 30 - 60, y: toLocal.y + Math.random() * 30 - 60 }
+            let target = { x: toLocal.x + Math.sin(angle) * 40, y: toLocal.y + Math.cos(angle) * 40 }
+
+            setTimeout(() => {
+                this.particleSystemFront.show(target, 1, customData)
+            }, 20 * index);
+
+        }
+    }
     onSpecialTileReveal(slot, level) {
 
         this.upgradePiecePopUp(slot, level)
@@ -865,6 +937,8 @@ export default class MergeScreen extends Screen {
                 element.toggle.enable()
             }
         }
+
+
 
     }
     addResourceParticles(targetPosition, customData, totalResources, quantParticles, showParticles = true) {
@@ -1079,7 +1153,7 @@ export default class MergeScreen extends Screen {
         this.soundButton.y = 40 * this.systemButtonList.scale.x
 
         this.systemButtonList.x = topRight.x - (80 * this.systemButtonList.scale.x) / 2 - 20
-        this.systemButtonList.y = this.soundButton.y + (20*this.systemButtonList.scale.x) + 35 * this.systemButtonList.scale.y + 20
+        this.systemButtonList.y = this.soundButton.y + (20 * this.systemButtonList.scale.x) + 35 * this.systemButtonList.scale.y + 20
 
 
         this.shopsLabel.x = this.shopButtonsList.x

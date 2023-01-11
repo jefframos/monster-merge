@@ -1,4 +1,5 @@
 import * as PIXI from 'pixi.js';
+
 import CastleBackgroundBase from '../CastleBackgroundBase';
 
 export default class FairyCastleBackground extends CastleBackgroundBase {
@@ -105,9 +106,6 @@ export default class FairyCastleBackground extends CastleBackgroundBase {
 
         }
 
-    }
-
-    update(delta) {
     }
 
 }

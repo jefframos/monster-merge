@@ -80,20 +80,20 @@ const assets = [
 	"url":"assets/audio\\Ping-Slide-Down.mp3"
 	},
 	{
-	"id":"place2",
-	"url":"assets/audio\\place2.mp3"
+	"id":"place",
+	"url":"assets/audio\\place.mp3"
 	},
 	{
 	"id":"place3",
 	"url":"assets/audio\\place3.mp3"
 	},
 	{
-	"id":"Pop-Low-Pitch-Up-02",
-	"url":"assets/audio\\Pop-Low-Pitch-Up-02.mp3"
+	"id":"place2",
+	"url":"assets/audio\\place2.mp3"
 	},
 	{
-	"id":"place",
-	"url":"assets/audio\\place.mp3"
+	"id":"Pop-Low-Pitch-Up-02",
+	"url":"assets/audio\\Pop-Low-Pitch-Up-02.mp3"
 	},
 	{
 	"id":"Pop-Musical",
@@ -108,16 +108,16 @@ const assets = [
 	"url":"assets/audio\\pop.mp3"
 	},
 	{
-	"id":"shoosh",
-	"url":"assets/audio\\shoosh.mp3"
+	"id":"SneakySnitch",
+	"url":"assets/audio\\SneakySnitch.mp3"
 	},
 	{
 	"id":"pop2",
 	"url":"assets/audio\\pop2.mp3"
 	},
 	{
-	"id":"SneakySnitch",
-	"url":"assets/audio\\SneakySnitch.mp3"
+	"id":"shoosh",
+	"url":"assets/audio\\shoosh.mp3"
 	},
 	{
 	"id":"Synth-Appear-01",

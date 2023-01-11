@@ -1,13 +1,13 @@
 export default class InteractiveBackgrounds extends PIXI.Container {
     constructor() {
-        super();        
+        super();
         this.build();
         this.skyColor = this.castleBackground.skyColor
     }
-    build(){
-        
+    build() {
+
     }
-  
+
 
     update(delta) {
         if (this.puzzleBackground) {
@@ -19,19 +19,19 @@ export default class InteractiveBackgrounds extends PIXI.Container {
             this.castleBackground.update(delta)
         }
     }
-    showAnimation(value){
-        this.castleBackground.showAnimation(value)
+    showAnimation(value) {
+        return this.castleBackground.showAnimation(value)
     }
-    showAll(){
+    showAll() {
         this.castleBackground.showAll()
     }
-    getPiece(id){
+    getPiece(id) {
         return this.castleBackground.getPiece(id)
     }
-    updateMax(max, hide){
-        this.castleBackground.updateMax(max, hide)
+    updateMax(max, hide, system) {
+        this.castleBackground.updateMax(max, hide, system)
     }
-    resize(resolution, innerResolution){
+    resize(resolution, innerResolution) {
         if (!resolution || !resolution.width || !resolution.height || !innerResolution) {
             return;
         }

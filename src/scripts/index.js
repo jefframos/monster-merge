@@ -1,23 +1,17 @@
-import globals from './globals';
-import plugins from './plugins';
-
+import CookieManager from './game/CookieManager';
 import Game from './Game';
 import LocalStorage from './game/data/LocalStorage';
-import CookieManager from './game/CookieManager';
-
+import LocalizationManager from './game/LocalizationManager';
+import MergerScreenManager from './game/merger/screen/MergerScreenManager';
 import SoundManager from './soundManager/SoundManager'
 import SoundManagerCordova from './soundManager/SoundManagerCordova'
-import jsonManifest from './manifests/manifest-json'
-import imageManifest from './manifests/manifest-image'
 import audioManifest from './manifests/manifest-audio'
-import spritesheetManifest from './manifests/manifest'
-import MergerScreenManager from './game/merger/screen/MergerScreenManager';
+import globals from './globals';
+import imageManifest from './manifests/manifest-image'
+import jsonManifest from './manifests/manifest-json'
+import plugins from './plugins';
 import signals from 'signals';
-import LocalizationManager from './game/LocalizationManager';
-
-
-
-
+import spritesheetManifest from './manifests/manifest'
 
 window.onAdds = new signals.Signal();
 window.onStopAdds = new signals.Signal();
@@ -182,6 +176,8 @@ window.game = new Game(config);
 window.SOUND_MANAGER
 function startLoader() {
 
+
+    let iOS = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     for (var i = 0; i < jsonManifest.length; i++) {
         jsonManifest[i].url = jsonManifest[i].url.replace(/\\/, "/")
         let url = jsonManifest[i].url//.substr(0, jsonManifest[i].url.length - 4);
