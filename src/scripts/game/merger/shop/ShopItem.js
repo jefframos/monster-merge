@@ -6,11 +6,12 @@ import Signals from 'signals';
 import UIBar from '../../ui/uiElements/UIBar';
 import UIList from '../../ui/uiElements/UIList';
 import utils from '../../../utils';
+import config from '../../../config';
 
 export default class ShopItem extends UIList {
     constructor(rect = {
         w: 500,
-        h: 80
+        h: 200
     }) {
         super();
         this.w = rect.w;
@@ -25,19 +26,21 @@ export default class ShopItem extends UIList {
         this.addChildAt(this.backgroundContainer, 0);
 
         this.backShapeGeneral = new PIXI.mesh.NineSlicePlane(
-            PIXI.Texture.fromFrame('small-no-pattern'), 10, 10, 10, 10)
+            PIXI.Texture.fromFrame(config.assets.panel.secondary), 10, 10, 10, 10)
         this.backShapeGeneral.width = this.w
         this.backShapeGeneral.height = this.h
 
+        config.addPaddingPanel(this.backShapeGeneral)
         this.backgroundContainer.addChildAt(this.backShapeGeneral, 0);
 
-        this.itemIcon = new PIXI.Sprite.from('ship01');
-        // this.itemIcon.scaleContent = true;
-        this.itemIcon.listScl = 0.15;
+        this.itemIcon = new PIXI.Sprite();
+        this.itemIcon.listScl = 0.5;
+        //this.itemIcon.anchor.set(0,0.5)
         // this.itemIcon.fitHeight = 0.7;
+        this.itemIcon.scaleContent = true;
         this.itemIcon.scaleContentMax = true;
-        this.itemIcon.fitWidth = 0.75;
-        // this.itemIcon.scaleContent = false;
+        this.itemIcon.fitHeight = 0.85;
+
         this.elementsList.push(this.itemIcon);
         this.container.addChild(this.itemIcon);
 
@@ -54,8 +57,8 @@ export default class ShopItem extends UIList {
         this.levelBar.updatePowerBar(0.5)
         this.levelContainer.scaleContentMax = true;
         this.levelContainer.listScl = 0.15;
-        this.elementsList.push(this.levelContainer);
-        this.container.addChild(this.levelContainer);
+        //this.elementsList.push(this.levelContainer);
+        //this.container.addChild(this.levelContainer);
 
         this.levelBar.y = this.levelLabel.y + this.levelLabel.height + 3;
         this.levelBar.scale.set(0.2)
@@ -67,25 +70,25 @@ export default class ShopItem extends UIList {
         this.descriptionLabel.style.stroke = 0
         this.descriptionLabel.style.strokeThickness = 6
         this.descriptionContainer.scaleContentMax = true;
-        this.descriptionContainer.listScl = 0.4;
         this.descriptionContainer.align = 0;
         this.descriptionContainer.addChild(this.descriptionLabel)
 
         this.elementsList.push(this.descriptionContainer);
-        this.container.addChild(this.descriptionContainer);
+        //this.container.addChild(this.descriptionContainer);
 
         this.shopButton = new ShopButton();
         this.shopButton.onClickItem.add(this.onShopItem.bind(this));
 
         // this.totalLabel2.fitHeight = 0.7;
         this.shopButton.scaleContentMax = true;
-        this.shopButton.listScl = 0.2;
-        this.shopButton.align = 1;
+        this.shopButton.listScl = 0.5;
+        this.shopButton.align = 0.5;
         this.elementsList.push(this.shopButton);
         this.container.addChild(this.shopButton);
 
         this.onConfirmShop = new Signals();
         this.onShowInfo = new Signals();
+        this.onShowBlock = new Signals();
         // this.icons = {
         //     value: 'icon_increase',
         //     cooldown: 'icon_duration_orange',
@@ -101,8 +104,8 @@ export default class ShopItem extends UIList {
         this.infoButton.align = 0.25;
         this.infoButton.fitHeight = 0.22;
         // this.infoButton.scaleContentMax = true;
-        this.elementsList.push(this.infoButton);
-        this.container.addChild(this.infoButton);
+        //this.elementsList.push(this.infoButton);
+        //this.container.addChild(this.infoButton);
 
         // this.itemIcon.scaleContent = false;
         this.isLocked = false;
@@ -116,27 +119,63 @@ export default class ShopItem extends UIList {
         this.lockStateContainer.interactive = true;
 
 
+
+        this.noSlotAvailable = new PIXI.Container();
+        this.addChild(this.noSlotAvailable);
+        
+        this.noSlotLabel = new PIXI.Text(window.localizationManager.getLabel('noSlot'), LABELS.LABEL1);
+        this.noSlotAvailable.addChild(this.noSlotLabel);
+        this.noSlotLabel.style.fontSize = 20
+
+
         this.currentColor = 0;
         this.realCost = 0
         this.previewValue = 1;
         this.unlockItem();
         this.currentTogglePreviewValue = 1;
 
+        this.isBlocked = false;
+
     }
 
+    block(ignoreLabel = false) {
+        this.isBlocked = true;
+        this.shopButton.deactive();
+
+        if(this.isLocked || ignoreLabel){
+            this.noSlotLabel.visible = false;
+            return
+        }
+        this.noSlotLabel.visible = true;
+        this.noSlotLabel.anchor.set(1, 0)
+        this.noSlotLabel.x = this.shopButton.x + this.shopButton.width
+        this.noSlotLabel.y = this.shopButton.y + this.shopButton.height - 2
+    }
+    unblock() {
+        this.isBlocked = false;
+        this.noSlotLabel.visible = false;
+    }
     lockItem() {
         if (this.itemData) {
             if (this.itemData.rawData.type == "resource") {
-                this.lockState.setLabel(window.localizationManager.getLabel('purchase') + ' ' + this.filterLocalized(this.itemData.rawData.displayName) + ' ' + window.localizationManager.getLabel('to-upgrade'))
-                this.lockState.setIcon(this.itemData.rawData.tileImageSrc)
+                //this.lockState.setLabel(window.localizationManager.getLabel('purchase') + ' ' + this.filterLocalized(this.itemData.rawData.displayName) + ' ' + window.localizationManager.getLabel('to-upgrade'))
+                //this.lockState.setIcon(this.itemData.rawData.tileImageSrc)
+
+                this.lockState.setLabel('?????')
+                //this.lockState.setLabel(window.localizationManager.getLabel('unlock') + ' ' + this.filterLocalized(this.itemData.rawData.displayName) + ' ' + window.localizationManager.getLabel('to-upgrade'))
+                this.lockState.setIcon(this.itemData.rawData.imageSrc, 0.8)
+                
             } else {
-                this.lockState.setLabel(window.localizationManager.getLabel('unlock') + ' ' + this.filterLocalized(this.itemData.rawData.displayName) + ' ' + window.localizationManager.getLabel('to-upgrade'))
+                this.lockState.setLabel('?????')
+                //this.lockState.setLabel(window.localizationManager.getLabel('unlock') + ' ' + this.filterLocalized(this.itemData.rawData.displayName) + ' ' + window.localizationManager.getLabel('to-upgrade'))
                 this.lockState.setIcon(this.itemData.rawData.imageSrc, 0.8)
             }
         }
         this.lockStateContainer.visible = true;
         this.container.visible = false;
         this.isLocked = true;
+
+        this.noSlotLabel.visible = false
 
     }
     unlockItem() {
@@ -150,7 +189,10 @@ export default class ShopItem extends UIList {
         this.onShowInfo.dispatch(this.itemData, this.infoButton);
     }
     onShopItem(itemData) {
-
+        if (this.isBlocked) {
+            this.onShowBlock.dispatch();
+            return;
+        }
         if (window.gameEconomy.hasEnoughtResources(this.realCost)) {
 
             window.gameEconomy.useResources(this.realCost)
@@ -159,74 +201,7 @@ export default class ShopItem extends UIList {
         }
 
     }
-    updateValues() {
-        let currentLevel = 1;
-        let levelPercent = currentLevel / this.staticData.levelMax;
-        let shopItemValues = GAME_DATA.getShopValues(this.itemData);
-        let leveldValues = GAME_DATA.getActionStats(this.itemData);
-        this.realCost = shopItemValues.cost;
-        let cost = utils.formatPointsLabel(shopItemValues.cost / MAX_NUMBER);
-        // let levelPercent = this.staticData.levelMax / ((this.staticData.levelMax + 1)  - currentLevel);
-        this.shopButton.updateCoast(cost)
-
-
-        if (!GAME_DATA.canBuyIt(this.itemData)) {
-            this.shopButton.deactive();
-        }
-        else {
-            this.shopButton.enable();
-        }
-        this.itemIcon.texture = PIXI.Texture.from(this.staticData.icon)
-
-        this.levelLabel.text = window.localizationManager.getLabel('level') + this.itemData.level
-
-        if (this.itemData.level <= 0) {
-            this.attributesList.visible = false;
-            this.levelContainer.visible = false;
-        }
-        else {
-            this.attributesList.visible = true;
-            this.levelContainer.visible = true;
-        }
-
-        if (this.staticData.shopType == 'video') {
-            this.attributesList.visible = true;
-            this.levelContainer.visible = true;
-            this.isVideo = true;
-        }
-        if (this.attributesList) {
-            for (let type in leveldValues) {
-                if (this.staticData.stats[type]) {
-                    if (!this.staticData.stats[type].hideOnShop) {
-                        if (leveldValues[type]) {
-                            let desc = this.filterLocalized(this.itemData.rawData.attributeDescription);
-
-                            if (leveldValues[type] < 100) {
-                                this.attributesList[type].text = leveldValues[type].toFixed(2)
-                                if (desc) {
-                                    this.attributesList[type].text += desc
-                                }
-                            }
-                            else {
-                                this.attributesList[type].text = utils.formatPointsLabel(leveldValues[type] / MAX_NUMBER);
-                                if (desc) {
-                                    this.attributesList[type].text += desc
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            // this.descriptionLabel.pivot.x = this.descriptionLabel.width / 2
-            // this.totalLabel.text = 'cooldown ' + leveldValues.cooldown+ '\nactive time' + leveldValues.activeTime + '\nvalue' + leveldValues.value;
-        }
-        this.updateHorizontalList();
-        this.descriptionContainer.y = 0;
-        this.descriptionLabel.text = this.staticData.shopDesc.toUpperCase()
-        // this.descriptionLabel.x = this.attributesList.x + this.attributesList.width / 2
-
-    }
+   
     changeBgColor() {
         this.currentColor++;
         this.currentColor %= COLORS.length - 1;
@@ -280,12 +255,14 @@ export default class ShopItem extends UIList {
 
         this.infoUpgrade.text = '+' + this.previewValue;
         this.updateData()
+
+
     }
     updateData() {
-        let next = this.previewValue
+        let next = 1//this.previewValue
 
         //this.attributesList['cost'].text = utils.formatPointsLabel(this.itemData.getRPS())+'/s'
-        this.realCost = this.itemData.getUpgradeCost(next);
+        this.realCost = this.itemData.getUpgradeCost2(next);
 
         let currentRPS = this.itemData.getRPS()
         let nextRPS = this.itemData.getRPS(next)
@@ -304,13 +281,26 @@ export default class ShopItem extends UIList {
 
             extra += ' ' + desc
         }
+
+
         this.attributesList['cost'].text = utils.formatPointsLabel(currentRPS) + extra
         //this.attributesList['value'].text = utils.formatPointsLabel(Math.ceil(nextRPS - currentRPS)) + extra
-        this.attributesList['value'].text = '+ ' + utils.formatPointsLabel(nextRPS - currentRPS)
+        //this.attributesList['value'].text = '+ ' + utils.formatPointsLabel(nextRPS - currentRPS)
 
-        this.shopButton.updateCoast(utils.formatPointsLabel(this.realCost))
+        //console.log(this.realCost)
 
-        if (this.realCost <= window.gameEconomy.currentResources) {
+
+        if (this.realCost < 1000) {
+
+            this.shopButton.updateCoast(this.realCost)
+        } else {
+
+            this.shopButton.updateCoast(utils.formatPointsLabel(this.realCost))
+        }
+
+
+        if (this.realCost <= window.gameEconomy.currentResources && !this.isBlocked) {
+            //console.log(this.realCost)
             this.shopButton.enable()
         } else {
             this.shopButton.deactive()
@@ -326,10 +316,10 @@ export default class ShopItem extends UIList {
         if (this.itemData.rawData.quantify && !this.itemData.rawData.quantifyBoolean) {
             isMax = this.itemData.currentLevel >= this.itemData.rawData.levelMax;
         }
-        this.levelLabel.text = window.localizationManager.getLabel('level')+'\n' + this.itemData.currentLevel
+        this.levelLabel.text = window.localizationManager.getLabel('level') + '\n' + this.itemData.currentLevel
         // this.itemData = GAME_DATA.getUpdatedItem(this.itemData.dataType, this.itemData.id)
         if (isMax) {
-            this.levelLabel.text = window.localizationManager.getLabel('level')+'\n' + this.itemData.rawData.levelMax;
+            this.levelLabel.text = window.localizationManager.getLabel('level') + '\n' + this.itemData.rawData.levelMax;
             this.levelBar.updatePowerBar(1)
             this.shopButton.deactiveMax()
             this.infoUpgrade.text = ''
@@ -384,7 +374,7 @@ export default class ShopItem extends UIList {
         this.itemData = itemData;
         let image = this.itemData.rawData.tileImageSrc ? this.itemData.rawData.tileImageSrc : this.itemData.rawData.imageSrc
         this.itemIcon.texture = new PIXI.Texture.from(image);
-        this.descriptionLabel.text = this.filterLocalized(this.itemData.rawData.displayName)
+        this.descriptionLabel.text = "@AAA"//this.filterLocalized(this.itemData.rawData.displayName)
 
 
         let iconType = this.itemData.type == 'damage' ? 'bullets' : 'coin'
@@ -399,7 +389,7 @@ export default class ShopItem extends UIList {
             //this.attributesList.w = this.descriptionContainer.listScl * this.w * 0.9;
             //this.attributesList.h = this.h * 0.5
 
-            this.descriptionContainer.addChild(this.attributesList);
+           // this.descriptionContainer.addChild(this.attributesList);
 
             let count = 0
             types.forEach(element => {
@@ -430,7 +420,7 @@ export default class ShopItem extends UIList {
             });
 
 
-            //this.attributesList.updateHorizontalList();
+            //this.attributesList.updateHorizontalList(true);
             this.descriptionContainer.y = 0;
         }
         this.updateHorizontalList();

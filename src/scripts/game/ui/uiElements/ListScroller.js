@@ -29,6 +29,8 @@ export default class ListScroller extends PIXI.Container {
         }
         this.container.interactive = true;
 
+        this.extraHeight = 0;
+
         this.container.on('mousemove', this.moveDrag.bind(this))
             .on('touchmove', this.moveDrag.bind(this))
 
@@ -71,7 +73,7 @@ export default class ListScroller extends PIXI.Container {
 
         let target = 0;
         let targY = this.listContainer.y
-        let maxH = this.itemHeight * this.itens.length;
+        let maxH = this.itemHeight * this.itens.length + this.extraHeight;
         if (this.goingDown == 1) {
             targY -= this.itemHeight / 2;
             target = Math.floor(targY / this.itemHeight) * this.itemHeight

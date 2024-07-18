@@ -27,6 +27,25 @@ for (let index = 15; index < 309; index+=3) {
 
 //console.log(window.numberList)
 
+window.getCurrency = function (e) {
+    let a = Math.pow(2, e)
+    console.log(a)
+}
+
+window.getLevels = function (e) {
+    let a = e < 6 ? 6 * (e + 1) * (e + 1) - 6 * (e + 1) : e < 7 ? 5 * (e + 1) * (e + 1) - 5 * (e + 1) : e < 8 ? 4 * (e + 1) * (e + 1) - 4 * (e + 1) : e < 9 ? 3 * (e + 1) * (e + 1) - 3 * (e + 1) : e < 10 ? 2 * (e + 1) * (e + 1) - 2 * (e + 1) : (e + 1) * (e + 1) - (e + 1)
+    return a
+}
+
+window.getPrices = function (e) {
+    let s = 50;
+    for (let index = 0; index < e; index++) {
+        s *= 2.5
+    }
+    s = Math.floor(s)
+    console.log(s * 10)
+}
+
 window.config = config;
 window.utils = utils;
 
@@ -44,60 +63,59 @@ window.console.groupCollapsed = function (teste) {
 
 window.MAX_NUMBER = 1000000;
 
-window.MAIN_FONT = 'retro_computerregular'
+window.MAIN_FONT = 'fredokaone'
+window.SEC_FONT = 'poppins'
 
 
 
 window.LABELS = {};
 window.LABELS.LABEL1 = {
-    fontFamily: 'retro_computerregular',
+    fontFamily: window.MAIN_FONT,
     fontSize: '18px',
     fill: 0xFFFFFF,
-    align: 'center',
-    fontWeight: '800'
+    align: 'center',    
+    stroke: 0,
+    strokeThickness: 4
 }
 window.LABELS.LABEL_CHEST = {
-    fontFamily: 'retro_computerregular',
+    fontFamily: window.SEC_FONT,
     fontSize: '18px',
     fill: 0xFFFFFF,
-    align: 'center',
-    fontWeight: '800',
+    align: 'center',    
     stroke:0xbb00bb,
     strokeThickness:4,
 }
 window.LABELS.LABEL_SPACESHIP = {
-    fontFamily: 'retro_computerregular',
+    fontFamily: window.SEC_FONT,
     fontSize: '18px',
     fill: 0xFFFFFF,
-    align: 'center',
-    fontWeight: '800',
+    align: 'center',    
     stroke:0xFFFF00,
     strokeThickness:4,
 }
 window.LABELS.LABEL_STATS = {
-    fontFamily: 'retro_computerregular',
+    fontFamily: window.SEC_FONT,
     fontSize: '14px',
     fill: 0xFFFFFF,
     align: 'center',
-    fontWeight: '800'
+    stroke: 0,
+    strokeThickness: 4
 }
 
 window.LABELS.LABEL2 = {
-    fontFamily: 'retro_computerregular',
+    fontFamily: window.SEC_FONT,
     fontSize: '24px',
-    fill: 0x000000,
-    align: 'center',
-    fontWeight: '800'
+    fill: 0xFFFFFF,
+    align: 'center',    
 }
 
 window.LABELS.LABEL_DAMAGE= {
-    fontFamily: 'retro_computerregular',
+    fontFamily: window.SEC_FONT,
     fontSize: '14px',
     fill: 0xFFFFFF,
     align: 'center',
     stroke:0,
-    strokeThickness:4,
-    fontWeight: '600'
+    strokeThickness:4,    
 }
 
 window.iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);

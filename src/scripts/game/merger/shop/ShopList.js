@@ -14,15 +14,22 @@ export default class ShopList extends ListScroller
         this.onItemShop = new Signals();
         this.onShowInfo = new Signals();
         this.onVideoItemShop = new Signals();
+        this.onShowBlock = new Signals();
         // this.onShopItem = new Signals();
         this.container = new PIXI.Container();
-
-
-
         this.itens = [];
 
     }
-
+    addBaseGradient(texture, width, color){
+        this.extraHeight = 30
+        this.baseGradient = new PIXI.Sprite.fromFrame(texture);
+        this.baseGradient.tint = color;
+        this.baseGradient.width = width;
+        this.baseGradient.height = this.extraHeight;
+        this.baseGradient.anchor.set(0,1);
+        this.baseGradient.y = this.rect.h + 2
+        this.addChild(this.baseGradient)
+    }
     addItens(itens)
     {
         for (var i = 0; i < itens.length; i++)
@@ -34,11 +41,16 @@ export default class ShopList extends ListScroller
             {
                 tempItem.onConfirmShop.add(this.onShopItemCallback.bind(this));
                 tempItem.onShowInfo.add(this.onShowInfoCallback.bind(this));
+                tempItem.onShowBlock.add(this.onShowBlockCallback.bind(this));
             }
             this.itens.push(tempItem);
 
         }
         this.lastItemClicked = this.itens[0]
+    }
+    onShowBlockCallback(itemData, button)
+    {
+        this.onShowBlock.dispatch(itemData, button);
     }
     onShowInfoCallback(itemData, button)
     {

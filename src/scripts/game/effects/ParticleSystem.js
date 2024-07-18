@@ -100,7 +100,7 @@ export default class ParticleSystem extends PIXI.Container {
         this.particles = []
     }
 
-    popLabel(pos, label, delay = 0, dir = 1, scale = 1, style = {}, ease = Back.easeOut, time = 0.5) {
+    popLabel(pos, label, delay = 0, dir = 1, scale = 1, style = {}, ease = Back.easeOut, time = 0.5, delayRemove = 0) {
         let tempLabel = null;
         if (window.LABEL_POOL.length > 0) {
             tempLabel = window.LABEL_POOL[0];
@@ -114,8 +114,7 @@ export default class ParticleSystem extends PIXI.Container {
         this.addChild(tempLabel);
         tempLabel.x = pos.x;
         tempLabel.y = pos.y;
-        tempLabel.pivot.x = tempLabel.width / 2;
-        tempLabel.pivot.y = tempLabel.height / 2;
+        tempLabel.anchor.set(0.5)
         tempLabel.alpha = 0;
         tempLabel.scale.set(0);
 
@@ -128,7 +127,7 @@ export default class ParticleSystem extends PIXI.Container {
             }
         })
         TweenMax.to(tempLabel, time, {
-            delay: time + delay, alpha: 0, onCompleteParams: [tempLabel], onComplete: function (temp) {
+            delay: time + delay + delayRemove, alpha: 0, onCompleteParams: [tempLabel], onComplete: function (temp) {
                 temp.parent.removeChild(temp);
                 window.LABEL_POOL.push(temp);
             }
@@ -170,7 +169,7 @@ export default class ParticleSystem extends PIXI.Container {
             let scl = customData.scale || 0.03
             coin.timer = (customData.timer != undefined ? customData.timer : 0)
             coin.target = customData.target
-            coin.matchRotation = false;
+            coin.matchRotation = (customData.matchRotation != undefined ? customData.matchRotation : false);
             if (coin.target) {
                 coin.timer = coin.target.timer;
                 coin.speed = coin.target.speed | 500;
@@ -183,9 +182,17 @@ export default class ParticleSystem extends PIXI.Container {
                 x: (customData.forceX != undefined ? customData.forceX : 400),
                 y: (customData.forceY != undefined ? customData.forceY : 500)
             }
-            coin.velocity = {
-                x: (Math.random() * 1 - 0.5) * force.x,
-                y: (-Math.random() * 0.5 - 0.5) * force.y,
+            if (customData.fixedVelocity) {
+                coin.velocity = {
+                    x: force.x,
+                    y: force.y,
+                }
+            } else {
+
+                coin.velocity = {
+                    x: (Math.random() * 1 - 0.5) * force.x,
+                    y: (-Math.random() * 0.5 - 0.5) * force.y,
+                }
             }
             let parent = this;
             if (customData.customContainer) {

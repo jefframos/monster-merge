@@ -6,9 +6,15 @@
   <meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name=apple-mobile-web-app-capable content=yes>
   <meta name=apple-mobile-web-app-status-bar-style content=black>
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+
   <script src="//game-cdn.poki.com/scripts/v2/poki-sdk.js"></script>
 
-  <title>Space Merge</title>
+  <title>Monster Castle</title>
   <link rel="stylesheet" href="assets/fonts/stylesheet.css" type="text/css" charset="utf-8" />
   <style>
     html,
@@ -21,7 +27,7 @@
       overflow: hidden;
       text-align: center;
       background-color: black;
-      background-image: url("tex.png");
+      /* background-image: url("tex.png"); */
       background-repeat: repeat;
     }
 
@@ -35,7 +41,13 @@
 
     p.font-default {
       position: absolute;
-      font-family: 'retro_computerregular';
+      font-family: 'poppins';
+      visibility: hidden;
+    }
+
+    p.font-default2 {
+      position: absolute;
+      font-family: 'fredokaone';
       visibility: hidden;
     }
   </style>
@@ -43,7 +55,8 @@
 
 <body>
   <p class="font-default">P</p>
-  <img src="logoTransparent.png" alt="logo" class="center">
+  <p class="font-default2">P</p>
+  <!-- <img src="logoTransparent.png" alt="logo" class="center"> -->
   <div id="og-game-holder"></div>
 
   <script src="assets/bundle.js" charset="utf-8"></script>

@@ -1,27 +1,43 @@
 const assets = [
 	{
-	"id":"asas",
-	"url":"assets/json\\asas"
+	"id":"achievments",
+	"url":"assets/json\\achievments.json"
 	},
 	{
-	"id":"baseGameConfig",
-	"url":"assets/json\\baseGameConfig.json"
+	"id":"baseConfigUnicorn",
+	"url":"assets/json\\baseConfigUnicorn.json"
 	},
 	{
-	"id":"entities",
-	"url":"assets/json\\entities.json"
+	"id":"baseGameConfigHumans",
+	"url":"assets/json\\baseGameConfigHumans.json"
+	},
+	{
+	"id":"baseGameConfigMonster",
+	"url":"assets/json\\baseGameConfigMonster.json"
+	},
+	{
+	"id":"fairies",
+	"url":"assets/json\\fairies.json"
+	},
+	{
+	"id":"humans",
+	"url":"assets/json\\humans.json"
+	},
+	{
+	"id":"baseGameConfigFairy",
+	"url":"assets/json\\baseGameConfigFairy.json"
 	},
 	{
 	"id":"localization_DE",
 	"url":"assets/json\\localization_DE.json"
 	},
 	{
-	"id":"localization_EN",
-	"url":"assets/json\\localization_EN.json"
-	},
-	{
 	"id":"localization_ES",
 	"url":"assets/json\\localization_ES.json"
+	},
+	{
+	"id":"localization_EN",
+	"url":"assets/json\\localization_EN.json"
 	},
 	{
 	"id":"localization_FR",
@@ -36,10 +52,6 @@ const assets = [
 	"url":"assets/json\\localization_JA.json"
 	},
 	{
-	"id":"localization_KO",
-	"url":"assets/json\\localization_KO.json"
-	},
-	{
 	"id":"localization_PT",
 	"url":"assets/json\\localization_PT.json"
 	},
@@ -48,20 +60,32 @@ const assets = [
 	"url":"assets/json\\localization_RU.json"
 	},
 	{
-	"id":"localization_TR",
-	"url":"assets/json\\localization_TR.json"
+	"id":"localization_KO",
+	"url":"assets/json\\localization_KO.json"
 	},
 	{
-	"id":"modifyers",
-	"url":"assets/json\\modifyers.json"
+	"id":"localization_TR",
+	"url":"assets/json\\localization_TR.json"
 	},
 	{
 	"id":"localization_ZH",
 	"url":"assets/json\\localization_ZH.json"
 	},
 	{
+	"id":"modifyers",
+	"url":"assets/json\\modifyers.json"
+	},
+	{
 	"id":"resources",
 	"url":"assets/json\\resources.json"
+	},
+	{
+	"id":"monsters",
+	"url":"assets/json\\monsters.json"
+	},
+	{
+	"id":"unicorns",
+	"url":"assets/json\\unicorns.json"
 	}
 ];
 

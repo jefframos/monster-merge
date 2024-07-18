@@ -3,20 +3,21 @@ import * as signals from 'signals';
 
 import TweenLite from 'gsap';
 import utils from '../../utils';
+import config from '../../config';
 
 export default class UIButton1 extends PIXI.Container {
-	constructor(color, icon, iconColor = 0xFFFFFF, width = 65, height = 65, texture = 'square-pattern1') {
+	constructor(color, icon, iconColor = 0xFFFFFF, width = 65, height = 65, texture = config.assets.button.primarySquare) {
 		super();
 		this.build(color, icon, iconColor, width, height, texture)
 
 	}
-	build(color, icon, iconColor = 0xFFFFFF, width = 65, height = 65, texture = 'square-pattern1') {
+	build(color, icon, iconColor = 0xFFFFFF, width = 65, height = 65, texture = config.assets.button.primarySquare) {
 		this.w = width;
 		this.h = height;
 
 		this.mainContainer = new PIXI.Container();
 		//this.backShape = PIXI.Sprite.fromImage(
-
+		this.mainTexture = texture;
 		if (!icon) {
 			this.icon = new PIXI.Sprite();
 
@@ -32,14 +33,15 @@ export default class UIButton1 extends PIXI.Container {
 			}
 		}
 		this.icon.tint = iconColor;
-
+		this.enabled = true;
 		
 		this.backShape = new PIXI.mesh.NineSlicePlane(
-			PIXI.Texture.fromFrame(texture), 30, 30, 25, 10)
+			PIXI.Texture.fromFrame(texture), 0, 0, 0, 0)
 		this.backShape.width = width
 		this.backShape.height = height
 		this.backShape.pivot.set(width / 2, height / 2)
 		
+		config.addPaddingSquareButton(this.backShape)
 
 		this.icon.anchor.set(0.5);
 
@@ -57,12 +59,12 @@ export default class UIButton1 extends PIXI.Container {
 		this.interactive = true;
 		this.buttonMode = true;
 	}
-	addBadge(texture, scale = 0.3){
+	addBadge(texture, scale = 0.8){
 		this.badge = PIXI.Sprite.fromFrame(texture);
-		this.badge.scale.set(0.5);
+		this.badge.scale.set(scale);
 		this.badge.anchor.set(this.badge.width * scale / this.badge.width);
-		this.badge.x = this.backShape.width / 2 - this.badge.width - 10
-		this.badge.y = -this.backShape.height / 2 + this.badge.height
+		this.badge.x = this.backShape.width / 2 -4//- this.badge.width
+		this.badge.y = -this.backShape.height / 2 + this.badge.height/2+8
 		this.mainContainer.addChild(this.badge);
 
 	}
@@ -136,9 +138,23 @@ export default class UIButton1 extends PIXI.Container {
 	updateIconTexture(texture) {
 		this.icon.texture = texture;
 	}
-	click() {
-		//this.backShape.scale.set(1)
+	disable(){
+		this.enabled = false;
+		this.icon.tint = 0;
 
+		this.backShape.texture = new PIXI.Texture.fromFrame(config.assets.button.greySquare);
+
+	}
+	enable(){
+		this.enabled = true;
+		this.icon.tint = 0xFFFFFF;
+
+		this.backShape.texture = new PIXI.Texture.fromFrame(this.mainTexture);
+	}
+	click() {
+		if(!this.enabled) return
+		//this.backShape.scale.set(1)
+		SOUND_MANAGER.play('Tap-01', 0.1)
 		this.onClick.dispatch();
 		//window.SOUND_MANAGER.play('tap2', { volume: 0.5 })
 	}

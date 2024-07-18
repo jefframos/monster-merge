@@ -1,23 +1,17 @@
-import globals from './globals';
-import plugins from './plugins';
-
+import CookieManager from './game/CookieManager';
 import Game from './Game';
 import LocalStorage from './game/data/LocalStorage';
-import CookieManager from './game/CookieManager';
-
+import LocalizationManager from './game/LocalizationManager';
+import MergerScreenManager from './game/merger/screen/MergerScreenManager';
 import SoundManager from './soundManager/SoundManager'
 import SoundManagerCordova from './soundManager/SoundManagerCordova'
-import jsonManifest from './manifests/manifest-json'
-import imageManifest from './manifests/manifest-image'
 import audioManifest from './manifests/manifest-audio'
-import spritesheetManifest from './manifests/manifest'
-import MergerScreenManager from './game/merger/screen/MergerScreenManager';
+import globals from './globals';
+import imageManifest from './manifests/manifest-image'
+import jsonManifest from './manifests/manifest-json'
+import plugins from './plugins';
 import signals from 'signals';
-import LocalizationManager from './game/LocalizationManager';
-
-
-
-
+import spritesheetManifest from './manifests/manifest'
 
 window.onAdds = new signals.Signal();
 window.onStopAdds = new signals.Signal();
@@ -59,12 +53,19 @@ window.DO_COMMERCIAL = function (callback, params) {
         return
     }
     window.onAdds.dispatch();
+
+    let wasMute = SOUND_MANAGER.isMute;
+
+    SOUND_MANAGER.mute();
+
     PokiSDK.commercialBreak().then(
         () => {
             console.log("Commercial break finished, proceeding to game");
             window.GAMEPLAY_START()
             window.onStopAdds.dispatch();
-
+            if (!wasMute) {
+                SOUND_MANAGER.unmute();
+            }
             if (callback) callback(params)
         }
     ).catch(
@@ -72,7 +73,9 @@ window.DO_COMMERCIAL = function (callback, params) {
             console.log("Initialized, but the user likely has adblock");
             window.GAMEPLAY_START()
             window.onStopAdds.dispatch();
-
+            if (!wasMute) {
+                SOUND_MANAGER.unmute();
+            }
             if (callback) callback(params)
         }
     );
@@ -89,16 +92,28 @@ window.DO_REWARD = function (callback, params) {
     }
 
     window.onAdds.dispatch();
+
+    let wasMute = SOUND_MANAGER.isMute;
+
+    SOUND_MANAGER.mute();
     PokiSDK.rewardedBreak().then(
         (success) => {
             if (success) {
                 window.onStopAdds.dispatch();
                 window.GAMEPLAY_START()
+
+                if (!wasMute) {
+                    SOUND_MANAGER.unmute();
+                }
                 if (callback) callback(params)
             } else {
                 window.onStopAdds.dispatch();
                 window.GAMEPLAY_START()
                 if (callback) callback(params)
+
+                if (!wasMute) {
+                    SOUND_MANAGER.unmute();
+                }
             }
         }
 
@@ -155,8 +170,14 @@ function afterLoadManifests(evt) {
 
 }
 
+
+window.game = new Game(config);
+
+window.SOUND_MANAGER
 function startLoader() {
 
+
+    let iOS = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     for (var i = 0; i < jsonManifest.length; i++) {
         jsonManifest[i].url = jsonManifest[i].url.replace(/\\/, "/")
         let url = jsonManifest[i].url//.substr(0, jsonManifest[i].url.length - 4);
@@ -179,6 +200,10 @@ function startLoader() {
         .add('./assets/fonts/stylesheet.css')
         .load(configGame);
 
+
+    PIXI.loader.onProgress.add((e) => {
+        game.updateLoader(e.progress)
+    })
     // FbManager.connect().then(() =>
     //     {
     //         FbManager.trackLoader(PIXI.loader);
@@ -196,7 +221,6 @@ function configGame(evt) {
     window.localizationManager = new LocalizationManager('');
 
     SOUND_MANAGER.load(audioManifest);
-    window.game = new Game(config);
     // FbManager.start()
     // console.log(CAT_LIST);
     let sotrageData = STORAGE.getObject('space-cats-game-data')
@@ -233,22 +257,31 @@ function configGame(evt) {
     //window.screenManager = new HellScreenManager();
     game.screenManager = screenManager;
 
-    game.initialize()
     // // screenManager.timeScale = 0;
     // //create screen manager
     // //add screens
     // let gameScreen = new GameScreen('GameScreen');
     game.stage.addChild(screenManager);
+    game.initialize()
     // screenManager.addScreen(gameScreen);
     // screenManager.forceChange('GameScreen');
     game.start();
-    window.GAMEPLAY_START(true)
-    window.addEventListener("focus", myFocusFunction, true);
-    window.addEventListener("blur", myBlurFunction, true);
 
+    setTimeout(() => {
+        game.resize();
+    }, 1);
+    window.GAMEPLAY_START(true)
+    // window.addEventListener("focus", myFocusFunction, true);
+    // window.addEventListener("blur", myBlurFunction, true);
+
+    //SOUND_MANAGER.playLoop('dream1')
+    setTimeout(() => {
+        game.resize();
+    }, 100);
 }
 
 window.onresize = function (event) {
+    if (!window.game) return;
     window.game.resize();
 };
 function myFocusFunction() {
@@ -259,7 +292,10 @@ function myFocusFunction() {
     // if (GAME_DATA.mute) {
     //     return
     // }
-    // SOUND_MANAGER.unmute();
+
+    if (!COOKIE_MANAGER.getSettings().isMute) {
+        SOUND_MANAGER.unmute();
+    }
 }
 
 function myBlurFunction() {
@@ -268,7 +304,7 @@ function myBlurFunction() {
     //     timeScale: 0
     // })
 
-    // SOUND_MANAGER.mute();
+    SOUND_MANAGER.mute(false);
 }
 
 
@@ -292,7 +328,7 @@ window.getKey = function (e) {
     }
 }
 
-document.addEventListener('keydown', (event) => {
+document.addEventListener('keyup', (event) => {
     window.getKey(event);
     event.preventDefault()
 })

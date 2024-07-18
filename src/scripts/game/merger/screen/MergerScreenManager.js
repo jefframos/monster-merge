@@ -1,8 +1,9 @@
 import * as PIXI from 'pixi.js';
 
-import MergeScreen from './MergeScreen';
-import ScreenManager from '../../../screenManager/ScreenManager';
 import config from '../../../config';
+import ScreenManager from '../../../screenManager/ScreenManager';
+import MergeScreen from './MergeScreen';
+import ScreenTransition from './ScreenTransition';
 
 export default class MergerScreenManager extends ScreenManager {
     constructor() {
@@ -26,11 +27,6 @@ export default class MergerScreenManager extends ScreenManager {
 
 
 
-        let vignette = new PIXI.Sprite(PIXI.Texture.from('vignette'));
-        this.backgroundContainer.addChild(vignette)
-        vignette.width = config.width;
-        vignette.height = config.height;
-
         this.timeScale = 1;
 
 
@@ -46,48 +42,18 @@ export default class MergerScreenManager extends ScreenManager {
         this.prevPopUp = null;
 
 
-        // this.startPopUp = new StandardPopUp('init', this);
-        // this.startPopUp.onConfirm.add(() => {
-        //     this.gameScreen.resetGame();
-        // });
-
-
-        // this.popUpList.push(this.startPopUp);
-
-        // this.gameScreen.onGameOver.add(() => {
-        //     setTimeout(() => {
-        //         this.change('PartyScreen');
-        //     }, 1000);
-
-        // })
-
-        // this.startPopUp.hide();
-
-
-        // this.showPopUp('init')
-
-
-
-        // const urlParams = new URLSearchParams(window.location.search);
-        // let levelRedirectParameters = urlParams.get('quickstart')
-        // window.SPEED_UP = 1
-        // if (levelRedirectParameters) {
-        //     levelRedirectParameters = levelRedirectParameters.split(',');
-        //     if (levelRedirectParameters[1]) {
-        //         window.SPEED_UP = levelRedirectParameters[1]
-        //     }
-        //     if (levelRedirectParameters) {
-        //         setTimeout(() => {
-        //             this.change('GameScreen');
-        //             this.gameScreen.resetGame();
-        //         }, 1);
-        //     }
-        // }
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams) {
             if (urlParams.get('debug')) {
                 this.mergeScreen.helperButtonList.visible = true
                 window.isDebug = true;
+            }
+
+            let level = urlParams.get('level');
+            if (level !== undefined) {
+                if (level >= 0 && level <= 3) {
+                    this.mergeScreen.showSystem(level)
+                }
             }
         }
 
@@ -102,6 +68,10 @@ export default class MergerScreenManager extends ScreenManager {
             this.isPaused = false;
         })
 
+        this.screenTransition = new ScreenTransition();
+        this.addChild(this.screenTransition);
+
+        this.screenTransition.x = config.width / 2;
     }
     addCoinsParticles(pos, quant = 5, customData = {}) {
         this.particleSystem.show(pos, quant, customData)
@@ -130,6 +100,7 @@ export default class MergerScreenManager extends ScreenManager {
     forceChange(screenLabel, param) {
 
         super.forceChange(screenLabel, param);
+        this.screenTransition.startTransitionOut();
     }
     change(screenLabel, param) {
         super.change(screenLabel, param);
@@ -141,7 +112,7 @@ export default class MergerScreenManager extends ScreenManager {
         this.showPopUp('init')
     }
     update(delta) {
-        if(this.isPaused) return;
+        if (this.isPaused) return;
         super.update(delta * this.timeScale);
 
         if (this.currentPopUp) {
@@ -151,8 +122,6 @@ export default class MergerScreenManager extends ScreenManager {
             this.prevPopUp.parent.removeChild(this.prevPopUp);
             this.prevPopUp = null;
         }
-
-
     }
 
     toGame() {

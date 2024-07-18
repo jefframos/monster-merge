@@ -1,12 +1,19 @@
+import Signals from 'signals';
+
 export default class CookieManager {
 	constructor() {
+		this.onUpdateAchievments = new Signals();
 		this.defaultStats = {
 			test: 0,
-			tutorialStep:0
+			tutorialStep: 0
+		}
+		this.defaultSettings = {
+			isMute: false
 		}
 		this.defaultEconomy = {
 			resources: 0,
-			lastChanged: 0
+			lastChanged: 0,
+			lastOpen: 0
 		}
 		this.defaultResources = {
 			version: '0.0.1',
@@ -15,15 +22,45 @@ export default class CookieManager {
 		}
 		this.defaultProgression = {
 			version: '0.0.1',
-			currentEnemyLevel: 1,
-			currentEnemyLife: 0,
+			latestClaim: -1,
+			latestClaimFreeMoney: -1,
+			isInitialized: false
 		}
 		this.defaultBoard = {
 			version: '0.0.1',
 			currentBoardLevel: 0,
 			entities: {},
-			dataProgression: {}
+			dataProgression: {},
+			boardLevel: {
+				currentLevel: 1,
+				progress: 0,
+				percent: 0,
+			}
 		}
+
+		this.defaultGifts = {
+			version: '0.0.1',
+			entities: {},
+		}
+		this.defaultAchievments = {
+			version: '0.0.1',
+			discovery: { progress: 0, claimed: 0 },
+			level: { progress: 0, claimed: 0 },
+			buy: { progress: 0, claimed: 0 },
+			merge: { progress: 0, claimed: 0 },
+			tap: { progress: 0, claimed: 0 },
+			reveal: { progress: 0, claimed: 0 },
+			revealMystery: { progress: 0, claimed: 0 },
+		}
+
+		//discore 10 / 15/ 20
+		//reach level 10 / 15 / 20
+		//buy 50 /500 /1500 250k-375k
+		//merge 500/1500/2500
+		//tap crate 700/1500/3000
+		//open crates 300
+		//open mystery 40
+
 		this.defaultModifyers = {
 			version: '0.0.1',
 			entities: {},
@@ -42,21 +79,96 @@ export default class CookieManager {
 				shards: 0
 			}
 		}
-		this.economy = {}
-		this.stats = {}
-		this.resources = {}
-		this.progression = {}
-		this.board = {}
-		this.modifyers = {}
-		this.economy = this.sortCookieData('economy', this.defaultEconomy);
-		this.stats = this.sortCookieData('stats', this.defaultStats);
-		this.resources = this.sortCookieData('resources', this.defaultResources);
-		this.progression = this.sortCookieData('progression', this.defaultProgression);
-		this.board = this.sortCookieData('board', this.defaultBoard);
-		this.modifyers = this.sortCookieData('modifyers', this.defaultModifyers);
+
+		this.version = '0.0.18'
+		this.cookieVersion = this.getCookie('cookieVersion')
+		//alert(this.cookieVersion != this.version)
+		if (!this.cookieVersion || this.cookieVersion != this.version) {
+			this.storeObject('cookieVersion', this.version)
+			this.wipeData2();
+		}
+		this.fullData = this.getCookie('fullData')
+		if (!this.fullData) {
+			this.fullData = {}
+		}
+
+		this.storeObject('fullData', this.fullData)
+
+		this.settings= this.getCookie('settings')
+		if(!this.settings){
+			this.storeObject('settings', this.defaultSettings)
+
+			this.settings = this.defaultSettings;
+		}
 
 	}
+	claimAchievment(id, type){
+		if (this.fullData[id].achievments[type] !== undefined) {
+			this.fullData[id].achievments[type].claimed ++;
+			this.storeObject('fullData', this.fullData)
 
+		} else {
+			console.log('achievment ', type, ' not found')
+		}
+	}
+	getAchievment(id, type) {
+		if (this.fullData[id].achievments[type] !== undefined) {
+			return this.fullData[id].achievments[type];
+
+		} else {
+			console.log('achievment ', type, ' from ', id, ' not found')
+		}
+	}
+	addAchievment(id, type, quant = 1, hard = false) {
+		if (this.fullData[id].achievments[type] !== undefined) {
+			if(hard){
+				this.fullData[id].achievments[type].progress = quant;
+			}else{
+				this.fullData[id].achievments[type].progress += quant;
+			}
+			this.onUpdateAchievments.dispatch(type);
+			this.storeObject('fullData', this.fullData)
+
+		} else {
+			console.log('achievment ', type, ' not found')
+		}
+	}
+	sortCookie(id) {
+		if (!this.fullData[id]) {
+
+			this.fullData[id] = {}
+			this.fullData[id]['board'] = this.sortCookieData('board', this.defaultBoard);
+			this.fullData[id]['gifts'] = this.sortCookieData('gifts', this.defaultGifts);
+			this.fullData[id]['progression'] = this.sortCookieData('progression', this.defaultProgression);
+			console.log(this.fullData[id]['progression'])
+			this.fullData[id]['economy'] = this.sortCookieData('economy', this.defaultEconomy);
+			this.fullData[id]['achievments'] = this.sortCookieData('achievments', this.defaultAchievments);
+		}
+
+		this.storeObject('fullData', this.fullData)
+
+	}
+	generateCookieData(nameID, defaultData, force = false) {
+		let cookie = this.getCookie(nameID);
+		if (force) {
+			cookie = null;
+		}
+		let target
+		if (cookie) {
+			target = cookie;
+
+			for (const key in defaultData) {
+				const element = defaultData[key];
+				if (target[key] === undefined) {
+					target[key] = element;
+				}
+			}
+		} else {
+			target = defaultData
+		}
+
+		return target
+	}
 	sortCookieData(nameID, defaultData, force = false) {
 		let cookie = this.getCookie(nameID);
 		if (force) {
@@ -80,10 +192,11 @@ export default class CookieManager {
 
 		return target
 	}
-	updateResources(total) {
-		this.economy.resources = total;
-		this.economy.lastChanged = Date.now() / 1000 | 0
-		this.storeObject('economy', this.economy)
+	updateResources(total, id) {
+		this.fullData[id].economy.resources = total;
+		this.fullData[id].economy.lastChanged = Date.now() / 1000 | 0
+		//this.storeObject('economy', this.economy)
+		this.storeObject('fullData', this.fullData)
 	}
 	resetAllCollects() {
 		for (const key in this.resources) {
@@ -105,6 +218,10 @@ export default class CookieManager {
 		this.storeObject('resources', this.resources)
 
 	}
+	openSystem(id) {
+		this.fullData[id].economy.lastOpen = Date.now() / 1000 | 0
+		this.storeObject('fullData', this.fullData)
+	}
 	addResourceUpgrade(mergeData) {
 		this.resources.entities[mergeData.rawData.nameID].currentLevel = mergeData.currentLevel
 		this.storeObject('resources', this.resources)
@@ -125,47 +242,76 @@ export default class CookieManager {
 		this.storeObject('resources', this.resources)
 	}
 
-	addMergePiece(mergeData, i, j) {
+	addMergePiece(mergeData, i, j, id, blocked) {
+		if (blocked > 0) {
+			this.fullData[id].gifts.entities[i + ";" + j] = blocked
+			this.fullData[id].board.entities[i + ";" + j] = null
+		}
 		if (mergeData == null) {
-			this.board.entities[i + ";" + j] = null
+			this.fullData[id].board.entities[i + ";" + j] = null
 		} else {
-			this.board.entities[i + ";" + j] = {
-				nameID: mergeData.rawData.nameID
+			this.fullData[id].gifts.entities[i + ";" + j] = null
+			this.fullData[id].board.entities[i + ";" + j] = {
+				nameID: mergeData.rawData.nameID,
 			}
 		}
-		this.storeObject('board', this.board)
-	}
-	addMergePieceUpgrade(mergeData) {
 
-		if (this.board.dataProgression[mergeData.rawData.nameID] == null) {
-			this.board.dataProgression[mergeData.rawData.nameID] = {
+		this.fullData[id].economy.lastChanged = Date.now() / 1000 | 0
+
+		this.storeObject('fullData', this.fullData)
+	}
+	addMergePieceUpgrade(mergeData, id) {
+
+		if (this.fullData[id].board.dataProgression[mergeData.rawData.nameID] == null) {
+			this.fullData[id].board.dataProgression[mergeData.rawData.nameID] = {
 				currentLevel: mergeData.currentLevel
 			}
 		} else {
-			this.board.dataProgression[mergeData.rawData.nameID].currentLevel = mergeData.currentLevel
+			this.fullData[id].board.dataProgression[mergeData.rawData.nameID].currentLevel = mergeData.currentLevel
 		}
-
-		this.storeObject('board', this.board)
+		this.storeObject('fullData', this.fullData)
+		//this.storeObject('board', this.board)
 	}
-	endTutorial(step){
+	endTutorial(step) {
 		this.stats.tutorialStep = step;
 		this.storeObject('stats', this.stats)
 
 	}
-	saveBoardLevel(level) {
-		this.board.currentBoardLevel = level;
-		this.storeObject('board', this.board)
+	saveBoardLevel(level, id) {
+		this.fullData[id].board.currentBoardLevel = level;
+		this.storeObject('fullData', this.fullData)
+		//this.storeObject('board', this.board)
 
 	}
-	saveEnemyLife(value) {
-		this.progression.currentEnemyLife = value;
-		this.storeObject('progression', this.progression)
-	}
-	saveEnemyLevel(level) {
-		this.progression.currentEnemyLevel = level;
-		this.storeObject('progression', this.progression)
+
+	claimGift(id, override = 0) {
+		this.fullData[id].progression.latestClaim = override ? override : Date.now();
+		this.storeObject('fullData', this.fullData)
 	}
 
+	claimFreeMoney(id, override = 0) {
+		this.fullData[id].progression.latestClaimFreeMoney = override ? override : Date.now();
+		this.storeObject('fullData', this.fullData)
+	}
+	getLatestGiftClaimFreeMoney(id) {
+		return this.fullData[id].progression.latestClaimFreeMoney;
+	}
+	getLatestGiftClaim(id) {
+		return this.fullData[id].progression.latestClaim;
+	}
+	initBoard(id) {
+		this.fullData[id].progression.isInitialized = true;
+		this.storeObject('fullData', this.fullData)
+	}
+	isInitialized(id) {
+		return this.fullData[id].progression.isInitialized;
+	}
+	saveBoardProgress(boardProgress, id) {
+		this.fullData[id].board.boardLevel = boardProgress;
+		this.storeObject('fullData', this.fullData)
+		//this.storeObject('board', this.board)
+
+	}
 
 	updateModifyers(data) {
 		this.modifyers = data;
@@ -177,16 +323,32 @@ export default class CookieManager {
 		this.sortCookieData('resources', this.defaultResources, true)
 		this.sortCookieData('economy', this.defaultEconomy, true)
 	}
+	getSettings() {
+		return this.getCookie('settings')
+	}
+	setSettings(param, value) {
+		if(this.settings[param] !== undefined){
+			this.settings[param] = value;
+		}
+		return this.storeObject('settings', this.settings)
+	}
 	getStats() {
 		return this.getCookie('stats')
 	}
 	getModifyers() {
 		return this.getCookie('modifyers')
 	}
-	getEconomy() {
+	getEconomy(id) {
+		return this.fullData[id].economy
 		return this.getCookie('economy')
 	}
-	getResources() {
+
+	getLastResourceTime(id){
+		return this.fullData[id].economy
+	}
+
+	getResources(id) {
+		return this.fullData[id].resources
 		return this.getCookie('resources')
 	}
 	getProgression() {
@@ -195,8 +357,11 @@ export default class CookieManager {
 	resetBoard() {
 		this.sortCookieData('board', this.defaultBoard, true)
 	}
-	getBoard() {
-		return this.getCookie('board')
+	getGifts(id) {
+		return this.fullData[id].gifts//this.getCookie('board')
+	}
+	getBoard(id) {
+		return this.fullData[id].board//this.getCookie('board')
 	}
 
 	createCookie(name, value, days) {
@@ -233,6 +398,17 @@ export default class CookieManager {
 
 		try {
 			window.localStorage.clear();
+			window.location.reload();
+		} catch (e) {
+		}
+	}
+
+	wipeData2() {
+		this.resetCookie();
+
+		try {
+			window.localStorage.clear();
+			this.storeObject('cookieVersion', this.version)
 			window.location.reload();
 		} catch (e) {
 		}
