@@ -898,11 +898,11 @@
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
-	"version": "1.0",
+	"version": "1.1",
 	"image": "enemies.png",
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":1114},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:70bd1ae1f07ce7c36e33ed3a84867224:65438ab608bdf56b9abbbede15791fa1:9b2a76c8b2a408b3f0547a4eddda1e06$"
+	"smartupdate": "$TexturePacker:SmartUpdate:f624e62b081541c51fd077c70f4ac69b:65438ab608bdf56b9abbbede15791fa1:9b2a76c8b2a408b3f0547a4eddda1e06$"
 }
 }

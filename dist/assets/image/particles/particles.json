@@ -53,11 +53,11 @@
 },
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
-	"version": "1.0",
+	"version": "1.1",
 	"image": "particles.png",
 	"format": "RGBA8888",
 	"size": {"w":157,"h":63},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:addfeacff132401b6637e143b113bbfa:3b60a0dc6fb45919f89a9f8b762f0756:767f0aa26e08023d62afa20c0c952bea$"
+	"smartupdate": "$TexturePacker:SmartUpdate:39ccc75bb088daaae51f574d742160cb:3b60a0dc6fb45919f89a9f8b762f0756:767f0aa26e08023d62afa20c0c952bea$"
 }
 }

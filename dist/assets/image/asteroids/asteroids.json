@@ -90,11 +90,11 @@
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
-	"version": "1.0",
+	"version": "1.1",
 	"image": "asteroids.png",
 	"format": "RGBA8888",
 	"size": {"w":840,"h":80},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:312bd7511f81f2cbfdc836f677b077f9:66c362571e2c96946d7a1e3532cc2b63:3cb2167982f406a3d6627570b02f9be7$"
+	"smartupdate": "$TexturePacker:SmartUpdate:a13149c78740504c2800ae91df0478b0:66c362571e2c96946d7a1e3532cc2b63:3cb2167982f406a3d6627570b02f9be7$"
 }
 }
