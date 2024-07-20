@@ -18,7 +18,7 @@
 },
 "floud3.png":
 {
-	"frame": {"x":1612,"y":1730,"w":211,"h":100},
+	"frame": {"x":1612,"y":1791,"w":211,"h":100},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":211,"h":100},
@@ -42,11 +42,11 @@
 },
 "landscapeSide.png":
 {
-	"frame": {"x":1612,"y":1022,"w":225,"h":706},
+	"frame": {"x":1612,"y":1022,"w":245,"h":767},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":66,"y":196,"w":225,"h":706},
-	"sourceSize": {"w":291,"h":902}
+	"spriteSourceSize": {"x":72,"y":148,"w":245,"h":767},
+	"sourceSize": {"w":320,"h":917}
 },
 "sky.png":
 {
@@ -71,6 +71,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2043,"h":1918},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:9d6aef5af0ac3ad294765886be38b80b:749548e78e606becc4888057c5ed9b51:5cceb5aa1fc53de943b35965712e21ef$"
+	"smartupdate": "$TexturePacker:SmartUpdate:fa6f3ac7eef313ad90971f13ac4fcaf9:3598ec256e5cf998673768e1d3665bec:5cceb5aa1fc53de943b35965712e21ef$"
 }
 }

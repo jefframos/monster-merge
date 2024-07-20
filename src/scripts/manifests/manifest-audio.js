@@ -8,12 +8,12 @@ const assets = [
 	"url":"assets/audio\\Cartoon-Mouth-Sound-01.mp3"
 	},
 	{
-	"id":"Cartoon-Mouth-Sound-02",
-	"url":"assets/audio\\Cartoon-Mouth-Sound-02.mp3"
-	},
-	{
 	"id":"Cartoon-Mouth-Sound-06",
 	"url":"assets/audio\\Cartoon-Mouth-Sound-06.mp3"
+	},
+	{
+	"id":"Cartoon-Mouth-Sound-02",
+	"url":"assets/audio\\Cartoon-Mouth-Sound-02.mp3"
 	},
 	{
 	"id":"Cartoon-Mouth-Sound-13",
@@ -24,12 +24,12 @@ const assets = [
 	"url":"assets/audio\\Cartoon-Mouth-Sound-18.mp3"
 	},
 	{
-	"id":"Cartoon-Mouth-Sound-20",
-	"url":"assets/audio\\Cartoon-Mouth-Sound-20.mp3"
-	},
-	{
 	"id":"coins_04",
 	"url":"assets/audio\\coins_04.mp3"
+	},
+	{
+	"id":"Cartoon-Mouth-Sound-20",
+	"url":"assets/audio\\Cartoon-Mouth-Sound-20.mp3"
 	},
 	{
 	"id":"dropTile",
@@ -56,12 +56,12 @@ const assets = [
 	"url":"assets/audio\\Harp-Flutter-02.mp3"
 	},
 	{
-	"id":"item",
-	"url":"assets/audio\\item.mp3"
-	},
-	{
 	"id":"HolidayWeasel",
 	"url":"assets/audio\\HolidayWeasel.mp3"
+	},
+	{
+	"id":"item",
+	"url":"assets/audio\\item.mp3"
 	},
 	{
 	"id":"kill",
@@ -108,16 +108,16 @@ const assets = [
 	"url":"assets/audio\\pop.mp3"
 	},
 	{
-	"id":"SneakySnitch",
-	"url":"assets/audio\\SneakySnitch.mp3"
-	},
-	{
 	"id":"pop2",
 	"url":"assets/audio\\pop2.mp3"
 	},
 	{
 	"id":"shoosh",
 	"url":"assets/audio\\shoosh.mp3"
+	},
+	{
+	"id":"SneakySnitch",
+	"url":"assets/audio\\SneakySnitch.mp3"
 	},
 	{
 	"id":"Synth-Appear-01",
