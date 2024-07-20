@@ -18,7 +18,7 @@
 },
 "floud3.png":
 {
-	"frame": {"x":1614,"y":1730,"w":211,"h":100},
+	"frame": {"x":1612,"y":1730,"w":211,"h":100},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":211,"h":100},
@@ -42,7 +42,7 @@
 },
 "landscapeSide.png":
 {
-	"frame": {"x":1614,"y":1022,"w":225,"h":706},
+	"frame": {"x":1612,"y":1022,"w":225,"h":706},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":66,"y":196,"w":225,"h":706},
@@ -58,19 +58,19 @@
 },
 "uni-base.png":
 {
-	"frame": {"x":1260,"y":1022,"w":896,"h":352},
+	"frame": {"x":1260,"y":1022,"w":895,"h":350},
 	"rotated": true,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":896,"h":352},
-	"sourceSize": {"w":896,"h":352}
+	"spriteSourceSize": {"x":0,"y":0,"w":895,"h":350},
+	"sourceSize": {"w":895,"h":350}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.1",
 	"image": "background2.png",
 	"format": "RGBA8888",
-	"size": {"w":2043,"h":1919},
+	"size": {"w":2043,"h":1918},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:6197e7f69e47e0efb516552f74188b32:cd4af2bcca1c720e574373fdb9f3e5e6:5cceb5aa1fc53de943b35965712e21ef$"
+	"smartupdate": "$TexturePacker:SmartUpdate:9d6aef5af0ac3ad294765886be38b80b:749548e78e606becc4888057c5ed9b51:5cceb5aa1fc53de943b35965712e21ef$"
 }
 }

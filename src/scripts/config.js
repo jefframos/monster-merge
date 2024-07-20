@@ -1,6 +1,6 @@
 export default {
-	width: 750 * 0.8,
-	height: 1334 * 0.8,
+	width: 750 * 0.9,
+	height: 1334 * 0.9,
 	webgl: true,
 	effectsLayer: null,
 	colors: {
@@ -39,18 +39,18 @@ export default {
 			squareWarning: 'square_0004',
 			padding: [20, 20, 20, 20],
 			squareSmall: 'square_0007s',
-			paddingSmall: [35/2, 35/2, 35/2, 35/2],
+			paddingSmall: [35 / 2, 35 / 2, 35 / 2, 35 / 2],
 		},
 		bars: {
 			background: 'square_0006s',
-			backgroundPadding: [35/2, 35/2, 35/2, 35/2],
+			backgroundPadding: [35 / 2, 35 / 2, 35 / 2, 35 / 2],
 			primary: 'square_0001s',
 			secondary: 'square_0002s',
 			tertiary: 'square_0003s',
 			warning: 'square_0004s',
 			extra: 'square_0005s',
 
-			barPadding: [35/2, 0, 35/2, 0],
+			barPadding: [35 / 2, 0, 35 / 2, 0],
 
 		},
 		panel: {

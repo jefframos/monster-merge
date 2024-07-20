@@ -1,13 +1,13 @@
 import * as PIXI from 'pixi.js';
 
 import TweenLite from 'gsap';
-import config from '../../../config';
-import utils from '../../../utils';
 
 export default class CastleBackgroundBase extends PIXI.Container {
+
     constructor() {
 
         super();
+        this.customAnchor = new PIXI.Point()
         this.baseContainer = new PIXI.Container()
         this.addChild(this.baseContainer)
         this.castleContainer = new PIXI.Container();
@@ -18,6 +18,7 @@ export default class CastleBackgroundBase extends PIXI.Container {
         this.usableArea.alpha = 0.15
         this.usableArea.x = - this.usableArea.width / 2
         this.usableArea.y = - 450
+
 
 
         this.roundContainer = new PIXI.Container();
@@ -46,22 +47,24 @@ export default class CastleBackgroundBase extends PIXI.Container {
             copy.push(element)
         });
 
-        copy.sort(function(a, b){return b.order-a.order});
+        copy.sort(function (a, b) { return b.order - a.order });
 
         copy.forEach(element => {
             let img = new PIXI.Sprite.fromFrame(element.src)
             img.x = element.pos.x
             img.y = element.pos.y
+            img.anchor.x = this.customAnchor.x
+            img.anchor.y = this.customAnchor.y
             this.castleContainer.addChild(img)
 
             this.castleSet.forEach(element2 => {
-                if(element2.src == element.src){
+                if (element2.src == element.src) {
                     element2.sprite = img;
                 }
             });
         })
     }
-    showAll(){
+    showAll() {
         for (let index = 0; index < this.castleSet.length; index++) {
             const element = this.castleSet[index];
             element.sprite.visible = true
@@ -84,7 +87,7 @@ export default class CastleBackgroundBase extends PIXI.Container {
             element.sprite.visible = false
         }
         for (let index = 0; index <= value; index++) {
-            const element = this.castleSet[index];            
+            const element = this.castleSet[index];
             element.sprite.visible = true
             this.castleSet[index].sprite.tint = 0xFFFFFF;
         }
@@ -92,17 +95,17 @@ export default class CastleBackgroundBase extends PIXI.Container {
             element.sprite.x = element.pos.x
             element.sprite.y = element.pos.y
 
-        });      
+        });
 
-        
-        if(hide){
+
+        if (hide) {
             this.castleSet[value].sprite.alpha = 0
         }
 
         let next = value + 1
-        if(next < this.castleSet.length - 1){
+        if (next < this.castleSet.length - 1) {
 
-            
+
             this.castleSet[next].sprite.visible = true;
             this.castleSet[next].sprite.tint = 0;
             this.castleSet[next].sprite.alpha = 1;
@@ -118,19 +121,19 @@ export default class CastleBackgroundBase extends PIXI.Container {
 
             TweenLite.killTweensOf(this.roundContainer.scale)
             this.roundContainer.scale.set(0)
-            TweenLite.to(this.roundContainer.scale, 1.5, {delay:1, x:1,y:1, ease:Elastic.easeOut})
+            TweenLite.to(this.roundContainer.scale, 1.5, { delay: 1, x: 1, y: 1, ease: Elastic.easeOut })
             this.roundContainer.visible = true;
 
-        }else{
+        } else {
             this.roundContainer.visible = false;
         }
-        
+
         console.log("castle")
     }
-    showNext(){
-        
+    showNext() {
+
     }
-    showAnimation(value){
+    showAnimation(value) {
 
 
         this.castleSet[0].sprite.visible = true
@@ -141,14 +144,14 @@ export default class CastleBackgroundBase extends PIXI.Container {
             element.sprite.y = element.pos.y
             TweenLite.killTweensOf(element.sprite);
 
-        }); 
+        });
 
-        if (value > 0){
+        if (value > 0) {
             this.castleSet[value].sprite.tint = 0xFFFFFF;
             this.castleSet[value].sprite.visible = true
             this.castleSet[value].sprite.alpha = 0
             //TweenLite.to(this.castleSet[value].sprite, 3, {delay:0.5, alpha:1})
-            TweenLite.to(this.castleSet[value].sprite, 2, {alpha:1})
+            TweenLite.to(this.castleSet[value].sprite, 2, { alpha: 1 })
             //TweenLite.from(this.castleSet[value].sprite, 0.8, {delay:0.5,  y: this.castleSet[value - 1].sprite.y - this.castleSet[value - 1].sprite.height * 1.5, ease:Bounce.easeOut });
 
             return this.castleSet[value].sprite;

@@ -27,6 +27,32 @@ export default class UnicornCastleBackground extends CastleBackgroundBase {
         // this.sun.y = -320
         // this.sun.scale.set(1)
 
+        this.rainbow = new PIXI.Sprite.fromFrame('rainbow')
+        this.rainbow.anchor.set(0.5)
+        this.baseContainer.addChild(this.rainbow)
+
+        this.rainbow.x = -10
+        this.rainbow.y = -180
+        this.rainbow.scale.set(0.5)
+
+        this.cloud1 = new PIXI.Sprite.fromFrame('mountain-uni')
+        this.cloud1.anchor.set(0.5)
+        this.baseContainer.addChild(this.cloud1)
+
+        this.cloud3 = new PIXI.Sprite.fromFrame('mountain-uni')
+        this.cloud3.anchor.set(0.5)
+        this.baseContainer.addChild(this.cloud3)
+
+        this.cloud1.x = -310
+        this.cloud1.y = -100
+        this.cloud3.x = 310
+        this.cloud3.y = -100
+        this.cloud1.scale.set(-1, 1)
+        this.cloud3.scale.set(1)
+
+
+
+
         this.castleBase = new PIXI.Sprite.fromFrame('uni-base')
         this.castleBase.anchor.set(0.5, 1)
         this.baseContainer.addChild(this.castleBase)
@@ -63,41 +89,45 @@ export default class UnicornCastleBackground extends CastleBackgroundBase {
         this.bottomTree2.scale.set(650 / this.bottomTree2.width)
 
 
+
+
         this.castleContainer = new PIXI.Container();
         this.baseContainer.addChild(this.castleContainer)
 
 
         this.castleSet = [
-            { src: 'fbase2', order: 0, pos: { x: 196, y: 433 } },
-            { src: 'fbase1', order: 0, pos: { x: 11, y: 425 } },
-            { src: 'fbase3', order: 2, pos: { x: 445, y: 456 } },
-            { src: 'fcore1', order: 1, pos: { x: 276, y: 296 } },
-            { src: 'fcore2', order: 3, pos: { x: 374, y: 293 } },
-            { src: 'fcore3', order: 4, pos: { x: 123, y: 293 } },
-            { src: 'ffrontbushes', order: 0, pos: { x: 250, y: 500 } },
-            { src: 'fwell', order: 0, pos: { x: 120, y: 600 } },
-            { src: 'ftower5', order: 6, pos: { x: 73, y: 256 } },
-            { src: 'fbackhouse', order: 5, pos: { x: 458, y: 364 } },
-            { src: 'ftower1', order: 0, pos: { x: 364, y: 121 } },
-            { src: 'ftower2', order: 0, pos: { x: 175, y: 115 } },
-            { src: 'ftower4', order: 3, pos: { x: 582, y: 210 } },
-            { src: 'fstruct3', order: 2, pos: { x: 147, y: 145 } },
-            { src: 'fstruct5', order: 16, pos: { x: 108, y: 176 } },
-            { src: 'backforest', order: 100, pos: { x: -50, y: 330 } },
-            { src: 'ftower3', order: 9, pos: { x: 466, y: 130 } },
-            { src: 'fstruct1', order: 2, pos: { x: 364, y: 106 } },
-            { src: 'fstruct2', order: 8, pos: { x: 159, y: 92 } },
-            { src: 'fbacktower', order: 15, pos: { x: 418, y: 0 } },
-            { src: 'ftopTower', order: 1, pos: { x: 260, y: 32 } },
+            { src: 'u1', order: 0, pos: { x: 278, y: 230 } },
+            { src: 'u2', order: 1, pos: { x: 155, y: 459 } },
+            { src: 'u3', order: 4, pos: { x: 385, y: 456 } },
+            { src: 'u4', order: 1, pos: { x: 85, y: 345 } },
+            { src: 'u5', order: 3, pos: { x: 508, y: 345 } },
+            { src: 'u6', order: 1, pos: { x: 85, y: 275 } },
+            { src: 'u7', order: 0, pos: { x: 82, y: 169 } },
+            { src: 'u8', order: 2, pos: { x: 508, y: 275 } },
+            { src: 'u9', order: 2, pos: { x: 508, y: 210 } },
+            { src: 'u10', order: 2, pos: { x: 517, y: 30 } },
+            { src: 'u11', order: 0, pos: { x: -15, y: 250 } },
+            { src: 'u12', order: 0, pos: { x: 605, y: 250 } },
+            { src: 'u13-a', order: 3, pos: { x: 630, y: 44 } },
+            { src: 'u13', order: 2, pos: { x: 670, y: 125 } },
+            { src: 'u14', order: 16, pos: { x: 459, y: 320 } },
+            { src: 'u15', order: 100, pos: { x: 150, y: 170 } },
+            { src: 'u16', order: 109, pos: { x: 216, y: 48 } },
+            { src: 'u17', order: 105, pos: { x: 195, y: 83 } },
+            { src: 'u18', order: 8, pos: { x: 381, y: 210 } },
+            { src: 'u19', order: 50, pos: { x: 410, y: 120 } },
+            { src: 'u20', order: 200, pos: { x: 295, y: -32 } },
         ]
 
 
         this.castleContainer.x = -200
-        this.castleContainer.y = -380
+        this.castleContainer.y = -320
         this.castleContainer.scale.set(0.55)
 
     }
-
+    initCastle() {
+        super.initCastle();
+    }
     resize(innerResolution, scale) {
         if (innerResolution && innerResolution.width && innerResolution.height) {
 
